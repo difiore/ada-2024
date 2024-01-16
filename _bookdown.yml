@@ -1,0 +1,50 @@
+book_filename: "ada-2022"
+delete_merged_file: false
+new_session: false
+language:
+  ui:
+    chapter_name: "Module "
+rmd_files:
+  ["index.Rmd",
+  "00-course-logistics.Rmd",
+  "00-typography-and-formatting.Rmd",
+  "00-programming-style-guide.Rmd",
+  "00-course-schedule.Rmd",
+  "01-module.Rmd", "02-module.Rmd",
+  # "03-module.Rmd", "04-module.Rmd",
+  # "05-module.Rmd", "06-module.Rmd",
+  # "07-module.Rmd", "08-module.Rmd",
+  # "09-module.Rmd", "10-module.Rmd",
+  # "11-module.Rmd", "12-module.Rmd",
+  # "13-module.Rmd", "14-module.Rmd",
+  # "15-module.Rmd", "16-module.Rmd",
+  # "17-module.Rmd", "18-module.Rmd",
+  # "19-module.Rmd", "20-module.Rmd",
+  # "21-module.Rmd", "22-module.Rmd",
+  # "23-module.Rmd", "24-module.Rmd",
+  # "25-r-packages.Rmd",
+  # "26-shiny.Rmd",
+  # "27-python-from-R.Rmd",
+  "exercise-01.Rmd",
+  # "exercise-02.Rmd",
+  # "exercise-03.Rmd",
+  # "exercise-04.Rmd", "exercise-04-solution.Rmd",
+  # "exercise-05.Rmd", "exercise-05-solution.Rmd",
+  # "exercise-07.Rmd", "exercise-07-solution.Rmd",
+  # "exercise-08.Rmd",
+  # "exercise-09.Rmd", "exercise-09-solution.Rmd",
+  # "exercise-10.Rmd", "exercise-10-solution.Rmd",
+  # "exercise-11.Rmd", "exercise-11-solution.Rmd",
+  # "data-analysis-replication-assignment.Rmd",
+  # # "data-analysis-replication-assignment-rubric.Rmd",
+  # # "data-analysis-replication-assignment-template.Rmd",
+  # "custom-package-and-vignette-assignment.Rmd",
+  # # "custom-package-and-vignette-template.Rmd",
+  # "creative-dataviz-assignment.Rmd",
+  # # "shiny-app-assignment.Rmd",
+  "packages.Rmd",
+  "package-bibliography.Rmd"
+  ]
+output_dir: docs
+clean:
+  ["_bookdown_files", "output"]

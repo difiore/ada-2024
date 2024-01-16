@@ -1,0 +1,60 @@
+---
+title: "Custom ***R*** Package and Vignette"
+author: "Your Name(s)"
+date: "Date"
+output:
+    html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = TRUE,
+	message = TRUE,
+	comment = "##",
+	prompt = FALSE,
+	tidy = TRUE,
+	tidy.opts = list(blank = FALSE, width.cutoff = 75),
+	fig.path = "img/",
+	fig.align = "center"
+)
+```
+
+# HEADING 1 {.unnumbered}
+
+## Preliminaries {.unnumbered}
+
+-   Install this package in ***R***: [{package name}](url)
+
+## Objectives {.unnumbered}
+
+> The objective of this module...
+
+## HEADING 2 {.unnumbered}
+
+Lorem ipsum...
+
+::: {.fold .s .o}
+```{r}
+# This block of R code will be foldable after knitting
+# It relies on having the "hide_output.js" Javascript file referenced
+#   at the end of this ".Rmd" document in a `src/` directory within
+#   your project
+```
+:::
+
+Lorem ipsum...
+
+```{r echo=FALSE, out.width="###%"}
+# This block of R code allows you to reference figures or images stored
+# in an `img/` directory... just unquote the line below and add the # path/filename between quotes inside the `knitr::include_graphics()` function
+# knitr::include_graphics("")
+```
+
+<hr>
+
+## Concept Review {.unnumbered}
+
+-   Point 1
+-   Point 2
+-   Point 3
