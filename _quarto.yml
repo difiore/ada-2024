@@ -26,14 +26,15 @@ book:
       - 00-course-schedule.qmd
     - part: 00-part-1.qmd
       chapters:
-      - 01-module.qmd
+      - text: "My very own chapter name"
+        file: 01-module.qmd
       - 02-module.qmd
       - 03-module.qmd
       - 04-module.qmd
-      - 05-module.qmd
-      - 06-module.qmd
-      - 07-module.qmd
-      - 08-module.qmd
+      # - 05-module.qmd
+      # - 06-module.qmd
+      # - 07-module.qmd
+      # - 08-module.qmd
       # - 09-module.qmd
       # - 10-module.qmd
       # - 11-module.qmd
@@ -103,23 +104,3 @@ bibliography:
   - bib/ada.bib
 
 csl: bib/my-format.csl
-
-
-# bookdown::gitbook:
-#   css: css/style.css
-#   split_bib: false
-#   split_by: rmd
-#   number_sections: true
-#   config:
-#     toc:
-#       collapse: section
-#       collapsed: true
-#       scroll_highlight: true
-#       before: |
-#         <li><a href="./">Applied Data Analysis S2024</a></li>
-#       after: |
-#         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with {bookdown}</a></li>
-#     search: true
-#     download: false
-#     sharing: false
-#     info: false

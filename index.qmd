@@ -1,5 +1,5 @@
 ---
-title: "**Applied Data Analysis S2022**"
+title: "**Applied Data Analysis S2024**"
 subtitle: Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences
 format: html
 # site: bookdown::bookdown_site
