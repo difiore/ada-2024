@@ -6,7 +6,6 @@ book:
   title: "Applied Data Analysis 2024"
   author: "Anthony Di Fiore"
   search: true
-  reader-mode: true
   sidebar:
     style: docked
     background: light
