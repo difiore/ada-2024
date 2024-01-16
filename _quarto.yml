@@ -102,6 +102,7 @@ bibliography:
   - bib/book.bib
   - bib/ada.bib
 
+csl: bib/my-format.csl
 
 
 # bookdown::gitbook:
