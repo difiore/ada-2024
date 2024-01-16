@@ -47,3 +47,9 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# quarto files
+/.quarto/
+
+# other
+.DS_Store

@@ -1,0 +1,350 @@
+---
+title: "Exercise 01"
+---
+
+# (PART\*) Exercises {.unnumbered}
+
+# Send Emails Programmatically {.unnumbered}
+
+## Learning Objectives {.unnumbered}
+
+-   Installing and loading/attaching packages
+-   Introducing functions and arguments
+-   Introducing the {tidyverse} and the pipe `%>%` operator
+
+> **NOTE:** For both of the approaches below, before using Google's gmail server to send emails, there seems to be a key Gmail account setting that has to be changed from the default value: you have to allow "Less Secure Apps" to use your the Gmail account. Details on this setting and on how to make this change can be found as [this link](https://support.google.com/accounts/answer/6010255?hl=en)
+
+## Version 1: Using the {emayaili} package {.unnumbered}
+
+The {emayili} package makes sending simple text emails very easy.
+
+#### Step 1 {.unnumbered}
+
+- Install the {emayili} and {tidyverse} packages.
+
+We can do this at the console prompt...
+
+```{r eval = FALSE}
+install.packages("emayili")
+install.packages("tidyverse")
+
+# or to do them together...
+
+install.packages(c("emayili", "tidyverse"))
+```
+
+We can also do this by using the package manager in ***RStudio***.
+
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/install-packages.png")
+```
+
+#### Step 2 {.unnumbered}
+
+- Load and attach these packages to the search path so you can call functions they contain.
+
+```{r message = FALSE}
+library(emayili)
+library(tidyverse)
+# Note that we can also use `require()` in lieu of `library()`
+```
+
+We can also use the {easypackages} packages to do both of these things... {easypackage} makes installing and loading multiple packages "easy" by introducing the `packages()` and `libaries()` functions.
+
+- First, install and load {easypackages}:
+
+```{r eval = FALSE}
+install.packages("easypackages")
+library(easypackages)
+```
+
+- Then...
+ 
+```{r eval = FALSE}
+packages("emayili", "tidyverse")
+libraries("emayili", "tidyverse")
+
+# or even...
+
+my_packages <- c("emayili", "tidyverse")
+packages(my_packages)
+libraries(my_packages)
+```
+
+#### Step 3 {.unnumbered}
+
+- Create a new email "message" with the `envelope()` function.
+
+This function takes several intuitive arguments that we can assign values to directly within the function.
+
+```{r}
+message <- envelope(
+  from = "anthony.difiore@gmail.com",
+  to = c("anthony.difiore@gmail.com", "anthony.difiore@austin.utexas.edu"),
+  subject = "Sending a message using {emayili}...",
+  text = "Hello! This is a plain text message.")
+```
+
+> **NOTE:** ***R*** essentially ignores whitespace (spaces and tab characters) and also allows you to run code from one line to the next. It is even pretty forgiving about where you put carriage returns, although it is good form to place them following a "," or before/after a parenthesis or brace.
+
+Using {tidyverse} syntax, we can set up the same email as follows:
+
+```{r}
+message <- envelope() %>%
+  from("anthony.difiore@gmail.com") %>%
+  to(c("anthony.difiore@gmail.com", "anthony.difiore@austin.utexas.edu")) %>%
+  subject("Sending a message using {emayili}...") %>%
+  text("Hello! This is a plain text message.")
+```
+
+The difference here is that we are first creating an empty "message" object and then "piping" that object using `%>%` into different helper functions to create the details of the message.
+
+#### Step 4 {.unnumbered}
+
+- Create an SMTP (or "Simple Mail Transfer Protocol") "server" object with details about how to send a message
+
+```{r}
+smtp <- server(
+  host = "smtp.gmail.com",
+  port = 465,
+  username = "anthony.difiore@gmail.com",
+  password = "") # add your password between quotation marks here
+```
+
+#### Step 5 {.unnumbered}
+
+- Send your message by passing it as an argument to the server object. Then, CHECK YOUR EMAIL to confirm that you receive the message.
+
+```{r eval = FALSE}
+smtp(message, verbose = TRUE)
+
+# NOTE: setting verbose = FALSE (or omitting the argument) will suppress output to the console
+```
+
+#### Next Steps? {.unnumbered}
+
+Use the ***RStudio*** **Help** tab to browse the documentation associated with the {emayali} package to see how you can customize your message, e.g., by adding `cc` or `bcc` arguments, by using a different "reply to" address, by adding attachments, or by encrypting your message.
+
+## Version 2: Using the {blastula} package {.unnumbered}
+
+The {blastula} package allows us to create and send more complex HTML and markdown-based formatted emails.
+
+Similar to {emayili}, {blastula} provides two main functions: [1] `compose_email()` for constructing various parts of a message and [2] `smtp_send()` for specifying email server settings and passing the message to the server to send. However, {blastula} but also adds in some helper functions that allow you to store credentialing information in either a separate text file that is referenced when you run the function to send a message or in your computer's keychain. {blastula} also stores some default information on commonly-used email providers and services (e.g., on Google's "gmail" and Microsoft's "office365" and "outlook"), which may make configuring the server setup easier than using {emayili}.
+
+#### Step 1 {.unnumbered}
+
+- Install the {blastula} package.
+
+```{r eval = FALSE}
+install.packages("blastula")
+```
+
+#### Step 2 {.unnumbered}
+
+- Load the {blastula} package.
+
+```{r}
+library(blastula)
+```
+
+#### Step 3 {.unnumbered}
+
+- Create a new email "message" with the `compose_email()` function.
+
+This function takes several intuitive arguments that we can assign values to directly within the function.
+
+```{r}
+# Compose the message
+message <- compose_email(
+  body = "Hello! This is a simple HTML message."
+  )
+
+# Preview the message
+# This will open the HTML message in a browser window or in the RStudio Viewer tab
+message
+```
+
+We can add some formatting to our email by using the `md()` function and markdown syntax. Here, we pipe `%>%` the `body` argument to the `md()` function to convert it to markdown.
+
+```{r}
+# Compose the message
+message <- compose_email(
+  body = "# Hello!\nThis is a simple **HTML** message with some *markdown* syntax." %>% md()
+)
+
+# Preview the message
+message
+```
+
+We can also spice up our email with an image from a local file
+
+```{r}
+# Create text as html
+text <- "# Hello!\nThis is a simple **HTML** message with some *markdown* syntax... and a cool picture!"
+
+# Create image as html
+image <- add_image(
+  file = "/Users/ad26693/Development/Repos/ada-2022/img/batnet.jpg",
+  width = 300, align = "center"
+)
+
+# Compose the message
+message <- compose_email(
+  body = c(text, image) %>% md()
+)
+
+# Preview the message
+message
+```
+
+#### Step 4 {.unnumbered}
+
+- Create a credentials file.
+
+The following will create a `JSON` text file in your working directory that contains default information for your outgoing mail server, e.g., Google's "gmail" server (`host = "smtp.gmail.com"`, `port = 465`) or Microsoft's Office365 server (`host = "smtp.office365.com"`, `port = 587`), along with your email address and your password. When you run the following lines of code, you will be asked to enter a password, which will be stored in the credentials file:
+
+```{r eval = FALSE}
+# gmail credentials file
+create_smtp_creds_file(
+  file = "my_gmail_creds",
+  user = "anthony.difiore@gmail.com",
+  provider = "gmail"
+)
+# show the credentials file
+creds_file("my_gmail_creds")
+
+# office365 credentials file
+create_smtp_creds_file(
+  file = "my_office365_creds",
+  user = "anthony.difiore@austin.utexas.edu",
+  provider = "office365"
+)
+# show the credentials file
+creds_file("my_office365_creds")
+```
+
+> **NOTE**: If you omit the `provider=` argument, you should pass `host=`, `port=`, and `use_ssl=` arguments to the `create_smtp_creds_file()` function.
+
+#### Step 5 {.unnumbered}
+
+- Send the message via STMP using a credentials file.
+
+```{r eval = FALSE}
+smtp_send(email = message,
+  from = "anthony.difiore@gmail.com",
+  to = "anthony.difiore@gmail.com",
+  subject = "Sending a message using {blastula} and a credentials file...",
+  credentials = creds_file(file = "my_gmail_creds"),
+  verbose = TRUE
+  # NOTE: As above, setting verbose = FALSE (or omitting the argument) will suppress output to the console
+)
+
+# or, using the %>% operator and a different server and credentials file...
+
+message %>% smtp_send(
+    from = "anthony.difiore@austin.utexas.edu",
+    to = "anthony.difiore@austin.utexas.edu",
+    subject = "Sending a message using {blastula} and a credentials file...",
+    credentials = creds_file(file = "my_office365_creds")
+)
+```
+
+#### Step 6 {.unnumbered}
+
+- We can also send the message by specifying our credentials manually within the `smtp_send()` function.
+
+The following will prompt us for our password to send the message:
+
+```{r eval = FALSE}
+message %>% smtp_send(
+    from = "anthony.difiore@gmail.com",
+    to = "anthony.difiore@gmail.com",
+    subject = "Sending a message using {blastula} and entering credentials manually...",
+    credentials = creds(
+      user = "anthony.difiore@gmail.com",
+      provider = "gmail"
+    )
+  )
+
+message %>% smtp_send(
+    from = "anthony.difiore@austin.utexas.edu",
+    to = "anthony.difiore@austin.utexas.edu",
+    subject = "Sending a message using {blastula} and entering credentials manually...",
+    credentials = creds(
+      user = "anthony.difiore@austin.utexas.edu",
+      provider = "office365"
+    )
+  )
+```
+
+#### Optional Next Steps? {.unnumbered}
+
+Again, use the ***RStudio*** **Help** tab to browse the documentation associated with the {blastula} package to see how you can customize your message, e.g., with attachments.
+
+#### Even More Next Steps? {.unnumbered}
+
+Finally, it is a bit more complicated, but note that we can also use the {keyring} package along with {blastula} to set up a credentials "key" in our computer's keychain and refer to that to specify our credentials for sending a message. When you create the keys, you will be asked to provide your password.
+
+```{r eval = FALSE}
+install.packages("keyring")
+```
+
+```{r}
+library(keyring)
+```
+
+```{r eval=FALSE}
+# Create gmail key
+create_smtp_creds_key(
+  id = "my_gmail_key", # an identifier for the key
+  user = "anthony.difiore@gmail.com",
+  provider = "gmail",
+  overwrite = TRUE # this argument is only needed if you have an existing key
+)
+creds_key("my_gmail_key") # show the key info
+
+# Create office365 key
+create_smtp_creds_key(
+  id = "my_office365_key", # an identifier for the key
+  user = "anthony.difiore@austin.utexas.edu",
+  provider = "office365",
+  overwrite = TRUE
+)
+creds_key("my_office365_key") # show the key info
+```
+
+```{r eval=FALSE}
+# View all keys
+view_credential_keys()
+```
+
+```{r eval=FALSE}
+# Send a message with a credentials key
+message %>%
+  smtp_send(
+    from = "anthony.difiore@gmail.com",
+    to = "anthony.difiore@gmail.com",
+    subject = "Sending a message using {blastula} and a credentials key...",
+    credentials = creds_key(id = "my_gmail_key")
+  )
+
+message %>%
+  smtp_send(
+    from = "anthony.difiore@austin.utexas.edu",
+    to = "anthony.difiore@austin.utexas.edu",
+    subject = "Sending a message using {blastula} and a credentials key...",
+    credentials = creds_key(id = "my_office365_key"), verbose = TRUE
+  )
+```
+
+```{r eval=FALSE}
+# Delete all keys
+delete_all_credential_keys()
+```
+
+```{r include=FALSE}
+detach(package:emayili)
+detach(package:tidyverse)
+detach(package:blastula)
+detach(package:keyring)
+```

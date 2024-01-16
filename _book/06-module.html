@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Applied Data Analysis 2024 - 11&nbsp; Module 06</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-module.html" rel="next">
+<link href="./05-module.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="nav-sidebar docked fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-part-1.html"><strong>Part I</strong> - Using <strong><em>R</em></strong> and <strong><em>RStudio</em></strong></a></li><li class="breadcrumb-item"><a href="./06-module.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 06</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Data Analysis 2024</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Applied Data Analysis S2022</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./00-preliminaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">__Preliminaries__</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-course-logistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Logistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-typography-and-formatting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Typography and Formatting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-programming-style-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Style Guide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./00-part-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">**Part I** - Using ***R*** and ***RStudio***</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 01</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 05</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-module.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 06</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 07</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Module 08</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">List of Packages Used</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 06</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="module-06" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Reproducible Research</h1>
+<section id="objectives" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">12.1</span> Objectives</h2>
+<blockquote class="blockquote">
+<p>In the last module, we introduced the concept of version control and looked at tools for interfacing between between a repository maintained remotely on <strong><em>GitHub</em></strong> and a local repository, using the version control system, <strong><em>git</em></strong>. Now, we are going to learn how we can use <strong><em>RStudio</em></strong> to manage the <strong><em>git/GitHub</em></strong> version control workflow. An additional objective of this module is to promote the ideas of <strong>reproducible research</strong> practice and <strong>literate programming</strong> by introducing you to <strong>RMarkdown</strong>, a plain-text document format that allows us to mix text and code in a flexible way.</p>
+</blockquote>
+</section>
+<section id="preliminaries" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">12.2</span> Preliminaries</h2>
+<p>As a first step, if you haven’t done so already in <a href="02-module.html#module-02"><strong>Module 02</strong></a>, open the <strong>Preferences</strong> pane in <strong><em>RStudio</em></strong> (MacOS), go to the <em>Git/SVN</em> section, and make sure that the checkbox “Enable version control interface for RStudio projects” is selected. Alternatively, you can access the same dialog box by choosing <strong>Global Options</strong> from the <strong>Tools</strong> menu (MacOS and PC).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/r-global-options.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<p>In this dialog box, also confirm that the path to your <strong><em>git</em></strong> executable is filled in and correct. If you have already successfully installed <strong><em>git</em></strong>, this <strong>should</strong> be filled with something like “/usr/bin/git” (on MacOS or Linux) or “C:\Program Files\Git\bin\git.exe” on Windows). If it is not, then you can try troubleshooting by following the recommendations in Chapters 13 and 14 of the web book <a href="https://happygitwithr.com"><em>Happy Git and GitHub for the useR</em></a>.</p>
+</section>
+<section id="backstory" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="backstory"><span class="header-section-number">12.3</span> Backstory</h2>
+<p><strong>Reproducible research</strong> refers to the practice of conducting and disseminating scientific research in a way that makes data analysis (and scientific claims more generally) more transparent and repeatable Academics already have means of sharing <em>methods</em> and <em>results</em> generally, through publications (although perhaps typically in less than complete detail), and we can share the data on which those our analyses are based by depositing them in some form of online repository (e.g., via “supplementary information” that accompanies an article or by posting datasets to repositories like the <a href="http://datadryad.org/"><strong>Dryad Digital Repository</strong></a> or <a href="https://figshare.com/"><strong>Figshare</strong></a>.</p>
+<p>But how do we share the details of exactly <em>how</em> we did an analysis? And how can we ensure that it is possible for us to go back, ourselves, and replicate a particular analysis or data transformation? One solution is to integrate detailed text describing a workflow and analytical source code (such as <strong><em>R</em></strong> scripts) <strong>together in the same document</strong>.</p>
+<p>This idea of tying together narrative, logic, specific code, and data (or references to them) in a single document stems from the principle of <a href="https://en.wikipedia.org/wiki/Literate_programming"><strong>literate programming</strong></a> developed by Donald Knuth. Applied to scientific practice, the concept of literate programming means documenting both the logic behind and analysis <strong><em>and</em></strong> the code used to implement that analysis using computer software. This documentation allows researchers to return to and re-examine their own thought processes at any later time, and also allows them to share their thought processes so that others can understand how an analysis was performed. The upshot is that our scholarship can be better understood, recreated, and independently verified.</p>
+<p>This is exactly the point of an <strong>RMarkdown</strong> document and of other, similar document formats (e.g., <strong><em>R</em></strong> <strong>Notebooks</strong>, <strong>iPython Notebooks</strong>, or <strong>Julia Notebooks</strong>).</p>
+<p>So, how does this work?</p>
+<p>First, as we saw in the last module, <a href="https://en.wikipedia.org/wiki/Markdown"><strong>Markdown</strong></a>, is simply a formal way of styling a plain text document so that it can be easily rendered into HTML or PDF files for sharing or publishing. It is based on using some simple formatting and special characters to tag pieces of text such that a parser knows how to convert a plain text document into HTML or PDF. <a href="https://daringfireball.net/projects/markdown/syntax">This link</a> takes you to a description of <strong>Markdown</strong>, its syntax, and the philosophy behind it written by John Gruber, Markdown’s creator. There are now several different “dialects” of Markdown that have been developed, derived from Gruber’s original suggestions, including a specific one used on <strong><em>GitHub</em></strong> called “GitHub Flavored Markdown”, or <strong><em>GFM</em></strong>. A guide to this dialect is provided as a PDF <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf">here</a> and is available online at <a href="https://github.github.com/gfm/">this link</a>.</p>
+<p><strong>RMarkdown</strong>, then, is an extension of standard <strong>Markdown</strong> that allows you to embed chunks of <strong><em>R</em></strong> code (or code blocks of other programming languages, e.g., <strong><em>Python</em></strong>, <strong><em>Latex</em></strong>), along with additional parsing instructions and options for running code, in a plain text file. During the parsing and rendering (or “knitting”) stage, when the text file is being converted to HTML or PDF format, the output of running the embedded code can also be included.</p>
+<p><strong>RMarkdown</strong> uses the package {knitr} to produce intermediate files that can then be translated into a variety of formats, including HTML, traditional <strong>Markdown</strong>, PDFs, MS Word documents, web presentations, and others. A cheatsheet on <strong>RMarkdown</strong> syntax (which, again, is very similar to <strong>Markdown</strong>) can be found <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">here</a>.</p>
+<p>It is important to stress that <strong>Markdown</strong> and <strong>RMarkdown</strong> files ARE JUST PLAIN TEXT files! They are easy to work with, easy to share, easy to edit, easy to put under version control, and robust to changes in proprietary file formats!</p>
+<p>As a demonstration of reproducible research workflow and best practices, we are to create a new <strong><em>R</em></strong> project and corresponding repository that we will track with version control using <strong><em>git</em></strong>. Within that project, we then are going to create an <strong>RMarkdown</strong> document in which you can take notes or practice coding during class today.</p>
+<p>As we have seen already, <strong><em>git</em></strong>, at its heart, is a command-line tool, but both local (on your computer) and hosted (e.g., on <strong><em>GitHub</em></strong>) <strong><em>git</em></strong> repositories can be managed using a dedicated <strong><em>git</em></strong> <em>client GUI</em>, such as <strong><em>GitHub Desktop</em></strong>, <strong><em>GitUp</em></strong>, <strong><em>GitKraken</em></strong>, <strong><em>SourceTree</em></strong>, or a host of others. Importantly for us, <strong><em>RStudio</em></strong> is designed to also function as a powerful <strong><em>git</em></strong> client. We will explore several ways of setting up <strong><em>RStudio</em></strong> to manage both local and remote copies of a <strong><em>git</em></strong> repository and of keep them in sync.</p>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> See also Chapters 8 and 12 of the web book <a href="https://happygitwithr.com/"><em>Happy Git and GitHub for the useR</em></a> for more information on managing <strong><em>git</em></strong> and <strong><em>GitHub</em></strong> through <strong><em>RStudio</em></strong>.</p>
+</blockquote>
+</section>
+<section id="organizing-work-with-r-projects" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="organizing-work-with-r-projects"><span class="header-section-number">12.4</span> Organizing Work with <strong><em>R</em></strong> Projects</h2>
+<p>The easiest way to get <strong><em>RStudio</em></strong> to play nicely with <strong><em>git</em></strong> and <strong><em>GitHub</em></strong> for version control - and a recommended best practice - is to organize your work in <strong><em>RStudio</em></strong> using <em>projects</em>. You can think of an <strong><em>R</em></strong> <em>project</em> as a convenient workspace that is associated with its own working directory, data files, scripts, images, history log, etc. We might, for example, create a separate <strong><em>R</em></strong> project for each manuscript that we are working on.</p>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> Not surprisingly, the idea of an <strong><em>RStudio</em></strong> “project” (i.e., an organizing workspace and its associated files) and a “repo” (a directory that is under version control) go together nicely. It is, however, totally possible to create <strong><em>RStudio</em></strong> projects without having them be under version control, and it is also quite possible to use <strong><em>git</em></strong> or another VCS to track changes to files in a directory without there being an associated <strong><em>RStudio</em></strong> project!</p>
+</blockquote>
+<p>Basically, creating an <strong><em>RStudio</em></strong> project means creating a special text file (“<project name="">.Rproj”) that stores the particular settings for an <strong><em>RStudio</em></strong> setup and session. When we open an “.Rproj” file, the <em>working directory</em> is automatically set to the <em>root directory for the project</em> (i.e., the directory in which the actual “.Rproj” file is stored), which makes organizing and navigating around the computer’s filesystem, either from the command line or in <strong><em>R</em></strong> scripts within the project, much easier.</project></p>
+<section id="workflows-for-creating-projects" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="workflows-for-creating-projects">Workflows for Creating Projects</h3>
+<p>For the sake of security, reproducibility, and collaboration, it makes a lot of sense for us to have all of our data science/data analysis projects both be <em>under version control</em> (e.g., using <strong><em>git</em></strong>) and <em>hosted remotely</em> on a secure and reliable platform (e.g., <strong><em>GitHub</em></strong>) that we and collaborators can access from different locations. There are multiple ways we can accomplish this.</p>
+<p>For example, we could first create a new version-controlled <strong><em>RStudio</em></strong> project in a local directory and then push it up to <strong><em>GitHub</em></strong> or some other hosting site. Alternatively, we could begin by setting up a new repository remotely, as we did in <a href="05-module.html#module-05"><strong>Module 05</strong></a>, and then “clone” it to our local computer and establish it as a version-controlled <strong><em>RStudio</em></strong> project. [For either of these scenarios, we could also begin with either a new, or empty, repository or with one that already has files in it.] We will go through all of these methods below, but I personally think the process of beginning with a remote repository is easiest, but below I describe all of these approaches.</p>
+<section id="method-1-create-a-new-rstudio-project-by-cloning-from-a-remote-repository" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="method-1-create-a-new-rstudio-project-by-cloning-from-a-remote-repository"><strong>Method 1</strong>: Create a new <strong><em>RStudio</em></strong> project by cloning from a remote repository</h4>
+<p>Perhaps the easiest way to get <strong><em>RStudio</em></strong> working nicely with <strong><em>git</em></strong> and <strong><em>GitHub</em></strong> is by creating a new repository on <strong><em>GitHub</em></strong> and then “cloning” this remote repository to a local computer and placing it under version control.</p>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> Before completing the following, you should make sure to <strong>delete</strong> any existing local version of the remote repository that you might have cloned previously, e.g., by moving it to the <code>Trash</code> on MacOS or the <code>Recycle Bin</code> on Windows. This is because if you try to clone a remote repository into an existing directory, you will get an error!</p>
+</blockquote>
+<section id="step-1" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="step-1">Step 1</h5>
+<ul>
+<li>First, as described in <a href="05-module.html#module-05"><strong>Module 05</strong></a>, go to your user profile in <strong><em>GitHub</em></strong> and create a new repository.</li>
+</ul>
+<p>You will need to specify a repository name (with no spaces), whether it is a public or private repository, and whether to initialize the repository with one or more files already in it. I recommend initializing with both a “README” file and with a “.gitignore” file. You can also choose to use an <strong><em>R</em></strong> template to follow for the “.gitignore” file. The “.gitignore” file is simply a text document the provides <strong><em>git</em></strong> with a list of files that you ask it NOT to track changes to. These are typically either very large files (e.g., data files) or various hidden files that are either unnecessary or undesirable to track every single change to.</p>
+<ul>
+<li>Once your repository is created, go to the green “Code” popdown menu and click the clipboard icon to copy the repository’s HTTPS URL. This is the same process we used in <a href="05-module.html#module-05"><strong>Module 05</strong></a> for cloning a remote repository, and the URL is likely to be <code>https://github.com/</code> followed by <code>&lt;your user name&gt;/&lt;your repository name&gt;</code>).</li>
+</ul>
+</section>
+<section id="step-2" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="step-2">Step 2</h5>
+<ul>
+<li>From the <strong>File</strong> menu in <strong><em>RStudio</em></strong>, choose <strong>New Project</strong> and select to “Checkout a project from a version control repository”…</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> This step can also be done from the popdown menu located at the top right of the <strong><em>RStudio</em></strong> IDE.</p>
+</blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-project-version-control.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li>Choose the top item, “Clone a project from a Git repository”…</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-project-from-git.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li>In the subsequent dialog box, paste in the “Repository URL:” you copied in <strong>Step 1</strong>.</li>
+</ul>
+<p>You can choose what parent folder to clone the repository into using the “Create project as a subdirectory of:” field (e.g., <code>~/Development/Repos</code>). In most cases, the “Project directory name:” field will be filled in automatically, as the name of the remote repository you are cloning.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/clone-git-repo.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<p>Hitting the “Create Project” button will download the repository from <strong><em>GitHub</em></strong> into a new directory on your local computer. <strong><em>RStudio</em></strong> will close and reopen, after which the working directory will be set to the new local repository directory, which you can confirm by typing <code>getwd()</code> at the <strong><em>R</em></strong> console prompt. The local directory is now set up to be tracked by <strong><em>git</em></strong> and should be connected to <strong><em>GitHub</em></strong>.</p>
+<p>Selecting the <em>Files</em> tab in <strong><em>RStudio</em></strong> will then show you all of the files in the newly created local repository, which should now contain a “.gitignore” file and an “.Rproj” file with the name of your project (e.g., “test-repo.Rproj”), in addition to the “README.md” file you created on <strong><em>GitHub</em></strong>.</p>
+<p>You should now see a “Git” tab in the upper right pane of the <strong><em>RStudio</em></strong> IDE, and that tab should list the “.Rproj” file associated with the status <code>?</code>, indicating that it has not yet been added, committed, or synced with the remote repository. The other two files (“.gitignore” and “README.md”) are already in sync.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-test-repo.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+</section>
+<section id="other-notes" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="other-notes">Other Notes</h5>
+<p>This process works identically if you want to clone a repo from <strong><em>GitHub</em></strong> that already has other files in it besides “.gitignore” and “README.md”. In that case, <strong><em>RStudio</em></strong> will simply just create the “.Rproj” file and modify any existing “.gitignore” file to also include one or more other files that it recommends that <strong><em>git</em></strong> not track, e.g., “.Rproj.user”. The new “.Rproj” file and modified “.gitignore” file, which were created locally, should appear under the “Git” tab with with the status <code>?</code> until you add, commit, and push them.</p>
+<p>The process also works the same if you set up an empty repo on <strong><em>GitHub</em></strong>, in which case you will have seen the window below immediately upon creating the repository:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/empty-repo.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<p>Here, grabbing the URL from the “Quick setup” section and using that to set up a new project is <strong><em>RStudio</em></strong> is exactly the same process as we followed above.</p>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> You could also, in a terminal window, navigate to where you want the remote project to be cloned and follow either the “… or create” or “… or push” instructions listed. Doing so will link a local directory to the remote repo you created on <strong><em>GitHub</em></strong> BUT you will then not have created that as an <strong><em>RStudio</em></strong> project and would need to follow up with other instructions below about creating a new project from an existing local directory.</p>
+</blockquote>
+</section>
+</section>
+<section id="method-2-creating-a-new-rstudio-project-in-a-new-directory" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="method-2-creating-a-new-rstudio-project-in-a-new-directory"><strong>Method 2</strong>: Creating a new <strong><em>RStudio</em></strong> project in a new directory</h4>
+<ul>
+<li>In <strong><em>RStudio</em></strong>, select <strong>File &gt; New project</strong> and click <code>New Directory</code>.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-project-new-directory.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li>Choose the project type as “New Project”, then name the directory and choose where you would like it to be stored, checking the box marked <code>Create a git repository</code>, and pressing “Create Project”.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-project-type.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-project-create-new.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li><strong><em>RStudio</em></strong> will create a new directory for you with an “.Rproj” file (with the name of your project) and a “.gitignore” file inside of it. This directory is now being tracked by <strong><em>git</em></strong> and <strong><em>RStudio</em></strong>. You can now create and edit files in this new directory and stage and commit them locally directly from <strong><em>RStudio</em></strong>. See the section below on <a href="#modifying-local-files">“Modifying Files Locally”</a> in <strong><em>RStudio</em></strong>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> It is important to remember that this project is still only under <em>local version control</em>… you will not yet be able to push changes up to <strong><em>GitHub</em></strong>. To do that, see the section below on <a href="#connect-local-repo-to-github">“Connecting a Local Repo to <strong><em>GitHub</em></strong>”</a>.</p>
+</blockquote>
+</section>
+<section id="method-3-creating-a-new-rstudio-project-in-an-existing-directory" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="method-3-creating-a-new-rstudio-project-in-an-existing-directory"><strong>Method 3</strong>: Creating a new <strong><em>RStudio</em></strong> project in an existing directory</h4>
+<p>If you have an existing directory on your local computer that is already under <strong><em>git</em></strong> version control, then you can simply create a new <strong><em>RStudio</em></strong> project for that directory, and version control features will be automatically enabled. To do this:</p>
+<ul>
+<li>Execute the <strong>New Project</strong> command (from the <strong>File</strong> menu)</li>
+<li>Choose to create a new project from an <code>Existing Directory</code></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-project-existing-directory.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li>Select the appropriate directory and then click <strong>Create Project</strong></li>
+</ul>
+<p>New “.Rproj” and “.gitignore” files will be created inside of that directory, and <strong><em>RStudio</em></strong>’s version control features will then be available for that directory. Now, you can edit files currently in the directory or create new ones, as well as stage and commit them to the local repository directly from <strong><em>RStudio</em></strong>. See the section below on <a href="#modifying-local-files">“Modifying Files Locally”</a> in <strong><em>RStudio</em></strong>.</p>
+<p>If you create a new project for a directory that was <em>not</em> already under version control, you can enable version control within <strong><em>RStudio</em></strong> by choosing <strong>Tools&gt;Project Options</strong> to open the <em>Project Options</em> dialog box. Once there, go to the <em>Git/SVN</em> section and choose “Git” from the “Version control system” popdown menu, and then confirm that you want to set up version control for the project. You can also enable version control for a new project in a directory not formerly under version control by running the <code>use_git()</code> command from the {usethis} package. In either case, again, new “.Rproj” and “.gitignore” files will be created inside that directory, and <strong><em>RStudio</em></strong>’s version control features will then be available.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/project-options.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/switch-to-git.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> Again, it is important to remember that local projects created via <strong>Method 2</strong> and <strong>Method 3</strong> are still only under <em>local version control</em>… you will not yet be able to push any additional files you add to the project directory or changes to local files up to <strong><em>GitHub</em></strong>. To do that, see the section below on <a href="#connect-local-repo-to-github">“Connecting a Local Repo to <strong><em>GitHub</em></strong>”</a>.</p>
+</blockquote>
+</section>
+</section>
+<section id="connect-local-repo-to-github" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="connect-local-repo-to-github">Connecting a Local Repo to <strong><em>GitHub</em></strong></h3>
+<p>To create a new remote repository on <strong><em>GitHub</em></strong> into which you can push the contents of an <em>existing</em> local repository, e.g., one created by <strong>Method 2</strong> or <strong>Method 3</strong> above, so that it is also backed-up off site and accessible to you or collaborators working at different locations, you have a couple of different options (see also Chapter 17 of the web book <a href="https://happygitwithr.com"><em>Happy Git and GitHub for the userR</em></a>).</p>
+<section id="option-1-use-the-usethis-package-to-create-a-new-remote-repository-on-github-from-within-rstudio" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="option-1-use-the-usethis-package-to-create-a-new-remote-repository-on-github-from-within-rstudio"><strong>Option 1</strong>: Use the {usethis} package to create a new remote repository on <strong><em>GitHub</em></strong> from within <strong><em>RStudio</em></strong></h4>
+<section id="step-1-1" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="step-1-1">Step 1</h5>
+<ul>
+<li><p>Configure a <strong><em>GitHub</em></strong> Personal Access Token (PAT):</p>
+<ul>
+<li>Login to your <strong><em>GitHub</em></strong> account and go to the <em>Settings</em> tab. Then select <code>Developer Settings</code> and then <code>Personal Access Tokens</code>.</li>
+<li>Select <code>Generate new token</code> and give it a nickname that reminds you of the intended purpose (e.g., “Access GitHub from RStudio”).</li>
+<li>Pick a <em>scope</em> that confers the privileges you need, e.g., <code>repo</code>, and then press the green “Generate Token” button.</li>
+<li>The PAT will be displayed. It is a string of 40 random letters and digits. Copy this string to the clipboard.</li>
+<li>Enter the PAT in your “.Renviron” file as a line that looks like this: <code>GITHUB_PAT=YOUR_TOKEN</code>.</li>
+<li>The “.Renviron” file is a hidden file located in home directory that can be used to set some default parameters for new <strong><em>R</em></strong> sessions. You can load and edit this with a function from the {usethis} package. At a console prompt, type <code>usethis::edit_r_environ()</code>. Your “.Renviron” file should open up in the <strong><em>RStudio</em></strong> editor. Add your the <code>GITHUB_PAT=YOUR_TOKEN</code> line as above, save and close the file. Be sure to put a line break at the end!</li>
+<li>Restart R (<strong>Session &gt; Restart R</strong> in the <strong><em>RStudio</em></strong> menu bar), as environment variables are loaded from “.Renviron” only at the start of an <strong><em>R</em></strong> session. Check that the PAT is now available: <code>Sys.getenv("GITHUB_PAT")</code>. You should see your PAT print to screen.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2-1" class="level5 unnumbered">
+<h5 class="unnumbered anchored" data-anchor-id="step-2-1">Step 2</h5>
+<ul>
+<li><p>Create a remote repository on <strong><em>GitHub</em></strong> and push a local repository to it:</p>
+<ul>
+<li>Open the <strong><em>RStudio</em></strong> project that you want to create a remote repository for. This project needs to be under version control already and include at least one commit.</li>
+<li>At the <strong><em>R</em></strong> console prompt within the project’s working directory, type <code>usethis::use_github(protocol="https")</code></li>
+<li>Answer the question about whether the suggested name for the remote repository is adequate.</li>
+<li>This should create a new repository on <strong><em>GitHub</em></strong>, add it as a remote <code>origin/main</code>, set up a tracking branch, and open it in your browser.</li>
+</ul></li>
+</ul>
+<p>From within <strong><em>RStudio</em></strong>, you can now add or edit files to the project, locally commit any changes you make to those files, and push them up to <strong><em>GitHub</em></strong> as described above.</p>
+</section>
+</section>
+<section id="option-2-set-up-a-dummy-remote-repository-on-github-and-push-to-it-from-within-rstudio" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="option-2-set-up-a-dummy-remote-repository-on-github-and-push-to-it-from-within-rstudio"><strong>Option 2</strong>: Set up a dummy remote repository on <strong><em>GitHub</em></strong> and push to it from within <strong><em>RStudio</em></strong></h4>
+<ul>
+<li>Go to the <strong><em>GitHub</em></strong> website and create a new, empty repository. You can use the same name as that of the <strong><em>RStudio</em></strong> project you want to push up, or you can create a different one.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/create-test-repo-2.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> In setting up the repository on <strong><em>GitHub</em></strong>, you should choose <strong>not</strong> to initialize the remote repository you are going to be pushing to with either a “README” or “.gitignore” file!</p>
+</blockquote>
+<ul>
+<li>From the <em>Git</em> tab in <strong><em>RStudio</em></strong>, select the <strong>New Branch</strong> icon.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/new-remote-branch.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li>Click “Add remote”, paste in the URL for your dummy remote repository in the text field, and type in “origin” for the name of the remote branch.</li>
+<li>Click “Add”. We should be back in the “New Branch” dialog box. Enter <code>main</code> as the branch name (to push from the local <code>main</code> branch to a remote <code>main</code>), and make sure “Sync branch with remote” button is checked.</li>
+<li>Click “Create” and in the next dialog box, choose “Overwrite”. This should push your local repository <code>main</code> branch up to the remote <code>main</code> branch.</li>
+</ul>
+</section>
+<section id="option-3-set-up-a-dummy-remote-repository-on-github-and-push-to-it-from-a-terminal-shell" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="option-3-set-up-a-dummy-remote-repository-on-github-and-push-to-it-from-a-terminal-shell"><strong>Option 3</strong>: Set up a dummy remote repository on <strong><em>GitHub</em></strong> and push to it from a terminal shell</h4>
+<ul>
+<li>As in <strong>Option 2</strong>, go to the <strong><em>GitHub</em></strong> website and create a new, empty repository. You can use the same name as that of the <strong><em>RStudio</em></strong> project you want to push up, or you can create a different one.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/create-test-repo-2.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> Here, again, you should choose <strong>not</strong> to initialize the remote repository you are going to be pushing to with either a “README” or “.gitignore” file!</p>
+</blockquote>
+<ul>
+<li>From the next screen, select the desired transfer protocol you want to use under the <code>Quick setup...</code> option at the top (HTTPS or SSH). Then, scroll down to the option: <code>...or push an existing repository from the command line</code>.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/setup-test-repo.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<ul>
+<li>Copy the lines of code listed there and then return to <strong><em>RStudio</em></strong>.</li>
+<li>In <strong><em>RStudio</em></strong>, open the project that you want to push to <strong><em>GitHub</em></strong> and click <strong>Tools &gt; Terminal &gt; New Terminal</strong> or <strong>Tools &gt; Shell…</strong> to open a terminal window. Alternatively, open a separate terminal window and navigate to the root of the directory of the repository you wish to push.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> It is important that your run these commands from within the directory that you wish to push to <strong><em>GitHub</em></strong> before running these lines of code! When you open a new terminal or shell from within <strong><em>RStudio</em></strong>, you <strong>should</strong> be in the correct directory as those processes open the shell in the current working directory. If not, use shell commands (i.e., <code>cd</code>) to navigate into the correct directory.</p>
+</blockquote>
+<p>At the shell prompt, enter the lines of code you copied.</p>
+<pre><code>git remote add origin https://github.com/&lt;your user name&gt;/&lt;your repository name&gt;.git
+git branch -M main
+git push -u origin main</code></pre>
+<p>The first line tells <strong><em>git</em></strong> the remote URL that you are going to push to, the second makes sure you are on the <code>main</code> branch of the repository, and the third pushes your local repository <code>main</code> branch up to the remote <code>main</code> branch.</p>
+<p><strong>Congratulations!</strong> You have now pushed commits from a local repository to <strong><em>GitHub</em></strong>, and you should be able to see those files in your remote <strong><em>GitHub</em></strong> repository online. The “Pull” (blue down arrow) and “Push” (green up arrow) buttons in <strong><em>RStudio</em></strong> should now also work. Remember, after each commit you do via <strong><em>RStudio</em></strong> (or via the command line), you will have to push to <strong><em>GitHub</em></strong> manually. This does not happen automatically!</p>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> Additional information on using projects in <strong><em>RStudio</em></strong> is available <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">here</a>.</p>
+</blockquote>
+</section>
+</section>
+<section id="troubleshooting" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="troubleshooting">Troubleshooting</h3>
+<p>Most of the time, the installation and setup instructions provided in <a href="05-module.html#module-05"><strong>Module 05</strong></a> and this module for getting <strong><em>git</em></strong> and <strong><em>RStudio</em></strong> to work together work just fine, but sometimes you may have issues. The most common problem I have seen is when <strong><em>RStudio</em></strong> is unable to find your proper <strong><em>git</em></strong> installation, either because the path to the correct <strong><em>git</em></strong> executable did not get written into your shell profile when you installed <strong><em>git</em></strong> or because the correct path to <strong><em>git</em></strong> has not be set properly in <strong><em>RStudio</em></strong>.</p>
+<p>Chapter 13 and 14 of the web book <a href="https://happygitwithr.com"><em>Happy Git and GitHub R</em></a> offer a number of suggestions for how to troubleshoot these problems, but some things to check are:</p>
+<ul>
+<li>Is <strong><em>git</em></strong> installed correctly? An easy way to test this is to oenter <code>git</code> in a terminal shell. If you get a complaint about <strong><em>git</em></strong> not being found, it means either installation was unsuccessful or that the path to the <strong><em>git</em></strong> program is not on your <code>PATH</code> in your shell profile. Try reinstalling <strong><em>git</em></strong> and then either logging out of your computer and logging in again or restarting.</li>
+<li>Is the proper path to <strong><em>git</em></strong> set in <strong><em>RStudio</em></strong>? In<strong><em>RStudio</em></strong>, go to <strong>Tools&gt;Global Options</strong> and select the “Git/SVN” tab and make sure that the box “Git executable” points to the executably file for your <strong><em>git</em></strong> installation. On macOS and Linux operating systems, the path usually is “/usr/bin/git” (on MacOS or Linux) and on Windows operating systems it is usually “C:\Program Files\Git\bin\git.exe”. Sometimes, <strong><em>git</em></strong> will be installed in a slightly different place, most commonly (on MacOS) in “/usr/local/bin/git”, in which case you will need to change the path in the dialog box. To find the correct path, type <code>which git</code> in a terminal shell and then enter that in the ““Git executable” box.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> If you make any changes, e.g., if you reinstall <strong><em>git</em></strong>, you will likely need to open a new shell window (so that your updated <code>PATH</code> gets read and your computer can find <strong><em>git</em></strong>). You may also need to also either log out of your commputer and log in again or restart your computer. If you make changes in the <strong><em>RStudio</em></strong> IDE, e.g., if you change the path to your <strong><em>git</em></strong> executable via the <strong>Tools&gt;Global Options&gt;Git/SVN</strong> tab, you will need to completely <strong>RESTART</strong> <strong><em>RStudio</em></strong>, and you may need to also log out and back in or restart your computer.</p>
+</blockquote>
+</section>
+</section>
+<section id="working-with-projects-in-rstudio" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="working-with-projects-in-rstudio"><span class="header-section-number">12.5</span> Working with Projects in <strong><em>RStudio</em></strong></h2>
+<p>Once you have a project set up in <strong><em>RStudio</em></strong> and under version control, <strong><em>git</em></strong> will be watching your local project directory for any changes that you might make to what is contained in that directory or to the files therein. For example, if you add a file to the directory, it will show up in the <em>Files</em> tab, and if you delete a file, it will disappear from that list. Thus, you can drag and drop files and directories into and out of the project repo and <strong><em>git</em></strong> will keep track of them.</p>
+<p>Now, you might either edit an existing file in the repository (e.g., the “README.md” file) or create one or more new script (“.R”) or <strong>RMarkdown</strong> (“.Rmd”) files and add them to your repository.</p>
+<section id="modifying-local-files" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="modifying-local-files">Modifying Files Locally</h3>
+<p>Within <strong><em>RStudio</em></strong>, click on the “README.md” file to open it in the text editor panel of the IDE. Make some changes to this file (e.g., add the line, “And here is some new text I am adding in the RStudio IDE.”) and then save your changes. When you do, the “README.md” file should show up in the <em>Git</em> tab with a blue “M” next to it, indicating that it has been “modified”.</p>
+<p>We can now commit these changes to the local repository and push them up to <strong><em>GitHub</em></strong> as follows:</p>
+<ul>
+<li>Click the <em>Git</em> tab in upper right pane.</li>
+<li>Check the <code>Staged</code> box next to the “README.md” file, which will get the file ready to commit to your local repository. If you have not already done so, you should also stage the “.gitignore” and “.Rproj” files.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> The “.gitignore” file that was created when you activated version control is basically a list of files that you want <strong><em>git</em></strong> to ignore and not worry about tracking changes to. By default, it includes the names of several files, e.g., “.Rhistory” and “.RData”, which can be quite large and are not necessarily that important to track all changes to. You can also add to the “.gitignore” document the names of any other files in your working directory that you do not want <strong><em>git</em></strong> to track. These files can sit in your local working directory, unstaged and uncommitted, with no problems.</p>
+</blockquote>
+<p>After being staged, the status of the files should turn to a green <code>A</code> (for “added”).</p>
+<ul>
+<li>Click the “Commit” button. You will see a new, “Review Changes” window open up with the names of the files in your directory in the upper left pane. Selecting any of these will show you, in the lower pane, an overview of the differences between current version of the file and the version that was most recently previously committed.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/review-changes.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<ul>
+<li>Enter an identifying “Commit message” in the box in the upper right pane, e.g., “First commit from RStudio” and then click “Commit”.</li>
+</ul>
+<p>A window will pop up confirming what you have just done, which you can then close.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/successful-commit.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<p>If you now select the <em>History</em> tab in the “Review Changes” window, you can see the history of commits. Selecting any of the nodes in the commit history will show you (in the lower pane) the files involved in the commit and how the content of those files has changed since your last commit. For example, the node associated with your initial commit will show you the initial file contents, while subsequent nodes highlight where a new version differs from the previous one.</p>
+</section>
+<section id="pushing-changes-to-a-remote-repo" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="pushing-changes-to-a-remote-repo">Pushing Changes to a Remote Repo</h3>
+<ul>
+<li>With your commits completed, the files disappear from the “Review Changes” window and from the <em>Git</em> tab in <strong><em>RStudio</em></strong> window (meaning they have all been committed locally). You should now be able to pass all of your local changes up to <strong><em>GitHub</em></strong> by clicking the green “Push” (up arrow) button. This updates the remote copy of your repository and makes it available to collaborators or to you, working on a different local computer.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/push.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+<p>You should see a dialog box like the following indicating success:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/successful-push.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+</section>
+<section id="confirming-changes" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="confirming-changes">Confirming Changes</h3>
+<p>Finally, you can confirm that the local changes were indeed sent up to the remote repository on <strong><em>GitHub</em></strong> by going back to the page for the repository in your web browser and hitting refresh… again, you should see that the “README.md” file has been updated with new text and, if you click on the “commits” tab, you should see one with the message “Commit from RStudio”.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/commit-from-RStudio.png" class="img-fluid" style="width:90.0%"></p>
+</div>
+</div>
+</section>
+<section id="challenge" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="challenge">CHALLENGE:</h3>
+<p>Create and save a completely new text document in your current working directory/test repository - the content does not matter… be creative and try some markdown formatting! Save it as a file with the extension “.md” (for “markdown”), then commit that file to the local clone of your repository and push it from your local repository up to the <code>main</code> branch on <strong><em>GitHub</em></strong>.</p>
+</section>
+</section>
+<section id="deleting-repositories" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="deleting-repositories"><span class="header-section-number">12.6</span> Deleting Repositories</h2>
+<p>If you want to get rid of a local repository, you can simply send it to the <code>Trash</code> (on MacOS) or <code>Recycle Bin</code> (on Windows) and throw it away. It is just a regular, self-contained directory, and your local <strong><em>git</em></strong> executable will no longer track it.</p>
+<p>If you want to get rid of a remote repository on <strong><em>GitHub</em></strong>, navigate to the repository’s web page in a browser, click on “Settings” tab, scroll down to bottom of the page in the “Danger Zone” section, and select the option “Delete this repository”. You will be asked to type in the repository name to confirm that you want to delete it and will likely have to enter your <strong><em>GitHub</em></strong> password.</p>
+</section>
+<section id="additional-resources" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="additional-resources"><span class="header-section-number">12.7</span> Additional Resources</h2>
+<p>The web book <a href="https://happygitwithr.com"><em>Happy Git and GitHub for the useR</em></a> by Dr.&nbsp;Jenny Bryan (an important contributor to a number of key <strong><em>R</em></strong> packages) is an excellent source of information about how to set up and troubleshoot your <strong><em>RStudio/git/GitHub</em></strong> workflow… I encourage you to check it out!</p>
+<hr>
+</section>
+<section id="concept-review" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="concept-review">Concept Review</h2>
+<ul>
+<li><strong>RMarkdown</strong> documents</li>
+<li>Creating <strong>R Projects</strong> (3 ways)
+<ul>
+<li>Creating a project from a remote repository under version control (<strong>Method 1</strong>)</li>
+<li>Creating a brand new project locally (<strong>Method 2</strong>)</li>
+<li>Creating a project from an existing local repository under version control (<strong>Method 3</strong>)</li>
+</ul></li>
+<li>Connecting a local repository and a remote repository on <strong><em>GitHub</em></strong> (2 ways)
+<ul>
+<li><em>LESS COMPLICATED</em> (Corresponding to <strong>Method 1</strong>): Start by setting up a repository on <strong><em>GitHub</em></strong> and then clone the repository locally (see above). Once created, you can copy files into it, stage and commit those files, and push them to <strong><em>GitHub</em></strong></li>
+<li><em>MORE COMPLICATED</em> (Corresponding to <strong>Method 2</strong> and <strong>Method 3</strong>): Start by setting up a local repository under version control and then set up and connect to a remote repository on <strong><em>GitHub</em></strong>. See Chapter 17 of the web book <a href="https://happygitwithr.com"><em>Happy Git and GitHub for the useR</em></a> for additional instructions to use for following this workflow.</li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-module.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 05</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-module.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 07</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

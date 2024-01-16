@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Applied Data Analysis 2024 - 8&nbsp; Module 03</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-module.html" rel="next">
+<link href="./02-module.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="nav-sidebar docked fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00-part-1.html"><strong>Part I</strong> - Using <strong><em>R</em></strong> and <strong><em>RStudio</em></strong></a></li><li class="breadcrumb-item"><a href="./03-module.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Applied Data Analysis 2024</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Applied Data Analysis S2022</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./00-preliminaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">__Preliminaries__</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-course-logistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Logistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-typography-and-formatting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Typography and Formatting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-programming-style-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Style Guide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./00-part-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">**Part I** - Using ***R*** and ***RStudio***</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 01</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-module.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Module 05</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Module 06</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Module 07</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Module 08</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">List of Packages Used</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="module-03" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Extending the Functionality of <strong><em>R</em></strong></h1>
+<section id="objectives" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">9.1</span> Objectives</h2>
+<blockquote class="blockquote">
+<p>The goal of this module is to show you how to extend the base functionality of <strong><em>R</em></strong> by installing and loading packages.</p>
+</blockquote>
+</section>
+<section id="preliminaries" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">9.2</span> Preliminaries</h2>
+<ul>
+<li>Install this package in <strong><em>R</em></strong>: <a href="https://cran.r-project.org/web/packages/easypackages/easypackages.pdf">{easypackages}</a></li>
+</ul>
+</section>
+<section id="r-packages" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="r-packages"><span class="header-section-number">9.3</span> <strong><em>R</em></strong> Packages</h2>
+<p>One of the fantastic things about <strong><em>R</em></strong>, and one of the reasons it is such a flexible tool for so many types of data analysis, is the ability to extend its functionality in a huge variety of ways with <em>packages</em>. Packages are sets of reusable <strong><em>R</em></strong> functions created by the core development team or by users and are akin to <em>libraries</em> in other programming software, like <strong><em>Python</em></strong>. As of January 2020, there are over 15,300 packages that have been contributed to the most common package repository, hosted on the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a> site.</p>
+<p>From the console prompt, packages can be installed into <strong><em>R</em></strong> (using the <code>install.packages()</code> function, with the name of the package in parentheses) and then loaded (using the <code>require()</code> or <code>library()</code> functions), which then gives the user access to the functions contained therein. Both <strong><em>RStudio</em></strong> and the base <strong><em>R</em></strong> GUIs for MacOS and Windows have built-in package managers that allow you to search for and install packages.</p>
+<p>Each package includes a <em>namespace</em> associated with the functions contained therein, and those functions are loaded into their own, separate <strong><em>R</em></strong> <em>environments</em>, distinct from the global environment, where the variables we assigned values to in <a href="01-module.html#module-01"><strong>Module 01</strong></a> were created. An <em>environment</em> can be thought of as a collection of objects (functions, variables etc.) associated either globally, with the <strong><em>R</em></strong> interpreter (the “R_GlobalEnv”) or with a particular package and its namespace. In <strong><em>RStudio</em></strong>, you can see all of the objects associated with a particular environment in the <strong>Environment</strong> tab.</p>
+<p>If a package is loaded that has a function with the same name as one in a previously loaded package or in base <strong><em>R</em></strong>, then the older function will be <em>masked</em> and the newer will be used if called by a user. This is because whenever an object is referenced in a command, the <strong><em>R</em></strong> interpreter searches for that object in various loaded environments in a particular order and operates on the first one it encounters. The global environment is searched first, followed by the environments associated with each loaded package in <em>reverse chronological order</em> of when they are loaded and ending with the base <strong><em>R</em></strong> environment.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/search-path-2.png" class="img-fluid" style="width:75.0%"></p>
+</div>
+</div>
+<div style="color:#787878; font-size: 14px;">
+<center>
+<p>FROM: Wickham (2019). <em>Advanced R, Second Edition.</em> Chapman &amp; Hall/CRC.</p>
+</center>
+<p><br></p>
+</div>
+<p>However, functions from different packages with the same name can be called explicitly by using the <code>::</code> operator, using the construct <code>package-name::function</code> to access the desired namespace and environment. A particular function can be called in this way even if the package as a whole has not been loaded into <strong><em>R</em></strong> using <code>library()</code> or <code>require()</code>. The <code>search()</code> function can be used to return a vector of environment names in the order they will be searched.</p>
+<section id="installing-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="installing-packages">Installing Packages</h3>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> A list of packages we will be using in this course is available <a href="packages.html#package-list">here</a>.</p>
+</blockquote>
+<section id="using-the-base-macos-gui" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-the-base-macos-gui">Using the base MacOS GUI</h4>
+<ul>
+<li>Select the <strong>Packages &amp; Data</strong> menu.</li>
+<li>Choose <strong>Package Installer</strong>.</li>
+<li>Select a package repository to install from, e.g., <strong>CRAN (binaries)</strong>.</li>
+<li>The first time you go to install packages, you will be prompted to select a mirror site (i.e., the remote server from where you can download any of the packages hosted in the selected package repository).</li>
+<li>Select an install location. I usually install packages to the <em>system</em> rather than <em>user</em> level.</li>
+<li>Check the box “Install dependencies”.</li>
+<li>Select a package to install.</li>
+</ul>
+</section>
+<section id="using-the-base-windows-gui" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-the-base-windows-gui">Using the base Windows GUI</h4>
+<ul>
+<li>Select the <strong>Packages</strong> menu.</li>
+<li>Choose <strong>Install package(s)…</strong>.</li>
+<li>By default, the package repository that you will install from is <strong>CRAN (binaries)</strong>.</li>
+<li>The first time you go to install packages, you will be prompted to select a mirror site (a.k.a., the remote server from where you can download any of the packages hosted in the selected package repository).</li>
+<li>Select a package to install.</li>
+<li>By default, packages are installed at the <em>system</em> level (inside of the <strong>library</strong> folder within your <strong><em>R</em></strong> installation), and any missing dependenices are also installed by default.</li>
+</ul>
+</section>
+<section id="using-the-r-console-prompt" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-the-r-console-prompt">Using the <strong><em>R</em></strong> console prompt</h4>
+<ul>
+<li>Use the function <code>install.packages("&lt;package name&gt;")</code>, where you include, between the quotes, the name of the package you want to install. This command installs the package, by default, to the <em>user</em> level, though this can be changed by providing a path to install to using the <code>lib="&lt;path&gt;</code> argument. Other arguments for this function can be set to specify the repository to download from, etc.</li>
+</ul>
+</section>
+<section id="using-rstudio" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-rstudio">Using <strong><em>RStudio</em></strong></h4>
+<ul>
+<li>Select the <strong>Packages</strong> tab and then click the “Install” button.</li>
+<li>A dialog box will open where you can choose where to install the package from (the central CRAN repository is typically the source you will use) and the install location on your computer.</li>
+<li>You can install packages either to the <em>user</em> level library (in which case, only the user who is logged in when the package is installed will have access to it) or to the <em>system</em> library (which will make the package available for all users).</li>
+<li>Type the name of the package you want to install in the text field in the middle of the dialog box (code completion will list available packages that match what you are typing as you type). You can install multiple packages at the same time by separating them with a space or comma.</li>
+<li>Make sure the “Install dependencies” checkbox is selected… this will automatically check whether other packages that are referenced in the package you want to install are already installed and, if not, will install them as well.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/install-dialog.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="loading-and-attaching-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="loading-and-attaching-packages">Loading and Attaching Packages</h3>
+<p>Note that <em>installing</em> packages simply places them into a standard location on your computer. To actually <em>use</em> the functions they contain in an <strong><em>R</em></strong> session, you need to also load them into your <strong><em>R</em></strong> workspace.</p>
+<section id="using-the-base-macos-gui-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-the-base-macos-gui-1">Using the base MacOS GUI</h4>
+<ul>
+<li>Select the <strong>Packages &amp; Data</strong> menu.</li>
+<li>Choose <strong>Package Manager</strong>.</li>
+<li>Check the box next to the package name.</li>
+</ul>
+</section>
+<section id="using-the-base-windows-gui-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-the-base-windows-gui-1">Using the base Windows GUI</h4>
+<ul>
+<li>Select the <strong>Packages</strong> menu.</li>
+<li>Choose <strong>Load package…</strong>.</li>
+<li>Select the package to load.</li>
+</ul>
+</section>
+<section id="using-rstudio-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-rstudio-1">Using <strong><em>RStudio</em></strong></h4>
+<ul>
+<li>You can load a package interactively in <strong><em>RStudio</em></strong> by clicking the checkbox next to the package name in the <em>Packages</em> tab.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/load-tidyverse.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+</section>
+<section id="using-the-console-prompt-or-a-script" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="using-the-console-prompt-or-a-script">Using the console prompt or a script</h4>
+<ul>
+<li>The most common way that you will load packages is to do so either interactively at the console prompt or in a script using the command <code>library(&lt;package name&gt;)</code> with the package name, not in quotes, as an argument.</li>
+<li>The <code>require()</code> function is nearly identical to the <code>library()</code> function except that the former is safer to use inside functions because it will not throw an error if a package is not installed. <code>require()</code> also returns a value of <strong>TRUE</strong> or <strong>FALSE</strong> depending on whether the package loaded successfully or not. However, I almost always use the <code>library()</code> function in my scripts. Using <code>library()</code> and <code>require()</code> both load a package’s named components (its “namespace”) and attach those to the global environments search list.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> When loading a package with <code>library()</code> or <code>require()</code>, the package name need <em>not</em> be in quotes, although it works if you were to do that.</p>
+</blockquote>
+<p>Be aware that if a named function of a package conflicts with one in an already loaded/attached package, then by default <strong><em>R</em></strong> will warn of the conflict. In that case, it is good form to use explicit function calls, i.e., use the <code>::</code> operator to specify first the package and then the function (e.g., <code>dplyr::filter()</code>) you wish to call.</p>
+</section>
+</section>
+<section id="working-with-packages" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="working-with-packages">Working with Packages</h3>
+<ul>
+<li><p>You can use either of the following to list the set of packages you have installed:</p>
+<ul>
+<li><code>library()</code></li>
+<li><code>installed.packages()</code></li>
+</ul></li>
+<li><p>The command <code>(.packages())</code> can be used print out the set packages that have been loaded/attached in your current workspace.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> In the example above, the <code>.packages()</code> function is wrapped in parentheses to immediately print the result of the function.</p>
+</blockquote>
+<p>In <strong><em>RStudio</em></strong>, you can also see a list of all loaded packages by clicking the down arrow next to “Global Environment” in the <em>Environment</em> tab.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/loaded-packages.png" class="img-fluid" style="width:50.0%"></p>
+</div>
+</div>
+<ul>
+<li>The command <code>detach(package:&lt;package name&gt;)</code>, where “package name”, <strong>not</strong> in quotes, is the name of the package you want to unload, will unload a currently loaded package from memory. You can also do this interactively in <strong><em>RStudio</em></strong> by unchecking the box next to the package name in the <em>Packages</em> tab.</li>
+<li>To update your installed packages to the latest version, you can use the function <code>update.packages()</code>. Using <strong><em>RStudio</em></strong>, you can also select “Update” from the <em>Packages</em> tab to get an interactive dialog box showing you what updates are available from <strong>CRAN</strong> and letting you install them.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/update-packages.png" class="img-fluid" style="width:60.0%"></p>
+</div>
+</div>
+<ul>
+<li>To remove installed packages from your <strong><em>R</em></strong> installation, you can use the function <code>remove.packages()</code> or click the small “x” to the right of the package name in the <strong><em>RStudio</em></strong> packages tab.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="img/remove-tidyverse.png" class="img-fluid" style="width:50.0%"></p>
+</div>
+</div>
+<ul>
+<li><p>To process several package at once, you can pass a vector of package names to many of these functions as an argument, e.g., <code>remove.packages(c("abc","citr"))</code></p></li>
+<li><p>Finally, the {easypackages} packages makes installing and loading multiple packages “easy” by introducing two helper functions, <code>packages()</code> and <code>libraries()</code>. Both let you specify a vector of package names to either install (e.g., <code>packages(c("tidyverse", "magrittr"))</code>) or load (e.g., <code>libraries(c("tidyverse", "magrittr"))</code>). For these functions, package names need to be specified in quotation marks.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="concept-review" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="concept-review">Concept Review</h2>
+<ul>
+<li>Working with packages: <code>install_packages()</code>, <code>library()</code>, <code>require()</code>, <code>detach()</code>, <code>update.packages()</code>, <code>remove.packages()</code>, and {easypackages}</li>
+<li>Environments and namespaces: <code>::</code>, <code>search()</code></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-module.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-module.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

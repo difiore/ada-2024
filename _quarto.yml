@@ -1,0 +1,124 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Applied Data Analysis 2024"
+  author: "Anthony Di Fiore"
+  search: true
+  reader-mode: true
+  sidebar:
+    style: docked
+    background: light
+    number-depth: 2
+
+# language:
+#   ui:
+#     chapter_name: "Module "
+
+  chapters:
+    - index.qmd
+    - part: 00-preliminaries.qmd
+      chapters:
+      - 00-course-logistics.qmd
+      - 00-typography-and-formatting.qmd
+      - 00-programming-style-guide.qmd
+      - 00-course-schedule.qmd
+    - part: 00-part-1.qmd
+      chapters:
+      - 01-module.qmd
+      - 02-module.qmd
+      - 03-module.qmd
+      - 04-module.qmd
+      - 05-module.qmd
+      - 06-module.qmd
+      - 07-module.qmd
+      - 08-module.qmd
+      # - 09-module.qmd
+      # - 10-module.qmd
+      # - 11-module.qmd
+      # - 12-module.qmd
+      # - 13-module.qmd
+      # - 14-module.qmd
+      # - 15-module.qmd
+      # - 16-module.qmd
+      # - 17-module.qmd
+      # - 18-module.qmd
+      # - 19-module.qmd
+      # - 20-module.qmd
+      # - 21-module.qmd
+      # - 22-module.qmd
+      # - 23-module.qmd
+      # - 24-module.qmd
+      # - 25-r-packages.qmd
+      # - 26-shiny.qmd
+      # - 27-python-from-R.qmd
+    - exercise-01.qmd
+      # - exercise-02.qmd
+      # - exercise-03.qmd
+      # - exercise-04.qmd
+      # - exercise-04-solution.qmd
+      # - exercise-05.qmd
+      # - exercise-05-solution.qmd
+      # - exercise-07.qmd
+      # - exercise-07-solution.qmd
+      # - exercise-08.qmd
+      # - exercise-09.qmd
+      # - exercise-09-solution.qmd
+      # - exercise-10.qmd
+      # - exercise-10-solution.qmd
+      # - exercise-11.qmd
+      # - exercise-11-solution.qmd
+      # - data-analysis-replication-assignment.qmd
+      # - data-analysis-replication-assignment-rubric.qmd
+      # - data-analysis-replication-assignment-template.qmd
+      # - custom-package-and-vignette-assignment.qmd
+      # - custom-package-and-vignette-template.qmd
+      # - creative-dataviz-assignment.qmd
+      # - shiny-app-assignment.qmd
+    - packages.qmd
+
+format:
+  html:
+    css: css/style.css
+    grid:
+      sidebar-width: 330px
+    toc: false
+    fontsize: 11pt
+    toc-title: "hi"
+    toc-expand: false
+      # collapse: section
+      # collapsed: true
+      # scroll_highlight: true
+#       before: |
+# <li><a href="./">Applied Data Analysis S2024</a></li>
+#       after: |
+#       <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with {bookdown}</a></li>
+    
+comments:
+  hypothesis: true
+
+bibliography:
+  - bib/book.bib
+  - bib/ada.bib
+
+
+
+# bookdown::gitbook:
+#   css: css/style.css
+#   split_bib: false
+#   split_by: rmd
+#   number_sections: true
+#   config:
+#     toc:
+#       collapse: section
+#       collapsed: true
+#       scroll_highlight: true
+#       before: |
+#         <li><a href="./">Applied Data Analysis S2024</a></li>
+#       after: |
+#         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with {bookdown}</a></li>
+#     search: true
+#     download: false
+#     sharing: false
+#     info: false
