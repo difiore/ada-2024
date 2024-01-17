@@ -1,5 +1,7 @@
 ---
 title: "Exercise 01"
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Send Emails Programmatically {.unnumbered}
@@ -10,7 +12,7 @@ title: "Exercise 01"
 -   Introducing functions and arguments
 -   Introducing the {tidyverse} and the pipe `%>%` operator
 
-> **NOTE:** For both of the approaches below, before using Google's gmail server to send emails, there seems to be a key Gmail account setting that has to be changed from the default value: you have to allow "Less Secure Apps" to use your the Gmail account. Details on this setting and on how to make this change can be found as [this link](https://support.google.com/accounts/answer/6010255?hl=en)
+> **NOTE:** For both of the approaches below, before using Google's gmail server to send emails, a key Gmail account setting that has to be changed from the default value: you have to have 2-factor authorization established for your account and you will need to set up an "app password". We can go over this process in class.
 
 ## Version 1: Using the {emayaili} package {.unnumbered}
 
@@ -76,8 +78,14 @@ libraries(my_packages)
 This function takes several intuitive arguments that we can assign values to directly within the function.
 
 ```{r}
-message <- envelope(
+message_gmail <- envelope(
   from = "anthony.difiore@gmail.com",
+  to = c("anthony.difiore@gmail.com", "anthony.difiore@austin.utexas.edu"),
+  subject = "Sending a message using {emayili}...",
+  text = "Hello! This is a plain text message.")
+
+message_outlook365 <- envelope(
+  from = "anthony.difiore@austin.utexas.edu",
   to = c("anthony.difiore@gmail.com", "anthony.difiore@austin.utexas.edu"),
   subject = "Sending a message using {emayili}...",
   text = "Hello! This is a plain text message.")
@@ -88,7 +96,7 @@ message <- envelope(
 Using {tidyverse} syntax, we can set up the same email as follows:
 
 ```{r}
-message <- envelope() %>%
+message_gmail <- envelope() %>%
   from("anthony.difiore@gmail.com") %>%
   to(c("anthony.difiore@gmail.com", "anthony.difiore@austin.utexas.edu")) %>%
   subject("Sending a message using {emayili}...") %>%
@@ -102,11 +110,17 @@ The difference here is that we are first creating an empty "message" object and 
 - Create an SMTP (or "Simple Mail Transfer Protocol") "server" object with details about how to send a message
 
 ```{r}
-smtp <- server(
+smtp_gmail <- server(
   host = "smtp.gmail.com",
   port = 465,
   username = "anthony.difiore@gmail.com",
-  password = "") # add your password between quotation marks here
+  password = "") # add your Google account app password between quotation marks here
+
+smtp_outlook365 <- server(
+  host = "smtp.office365.com",
+  port = 587,
+  username = "anthony.difiore@austin.utexas.edu",
+  password = "")  # add your UT email password between quotation marks here
 ```
 
 #### Step 5 {.unnumbered}
@@ -114,8 +128,8 @@ smtp <- server(
 - Send your message by passing it as an argument to the server object. Then, CHECK YOUR EMAIL to confirm that you receive the message.
 
 ```{r eval = FALSE}
-smtp(message, verbose = TRUE)
-
+smtp_gmail(message_gmail, verbose = TRUE)
+smtp_outlook365(message_outlook365, verbose = TRUE)
 # NOTE: setting verbose = FALSE (or omitting the argument) will suppress output to the console
 ```
 

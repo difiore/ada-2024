@@ -9,19 +9,6 @@ description: This is a bookdown version of ANT 388/BIO 384K course content
 source("src/config.R")
 ```
 
-```
-Class Meetings: MON and WED, 2:00-3:30 pm
-Student Hours: MON and WED 4:00-5:00 pm and by appointment
-```
-
-<br>
-
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/confounding_variables_2x.png")
-```
-
-<br>
-
 # Overview {.unnumbered}
 
 ```{r echo=FALSE, out.width="40%", out.extra='style="width: 300px; padding-top: 10px; padding-left: 20px; padding-right: 20px; padding-bottom: 10px" align="right"'}

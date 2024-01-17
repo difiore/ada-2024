@@ -290,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Introducing the {tidyverse} and the pipe <code>%&gt;%</code> operator</li>
 </ul>
 <blockquote class="blockquote">
-<p><strong>NOTE:</strong> For both of the approaches below, before using Google’s gmail server to send emails, there seems to be a key Gmail account setting that has to be changed from the default value: you have to allow “Less Secure Apps” to use your the Gmail account. Details on this setting and on how to make this change can be found as <a href="https://support.google.com/accounts/answer/6010255?hl=en">this link</a></p>
+<p><strong>NOTE:</strong> For both of the approaches below, before using Google’s gmail server to send emails, a key Gmail account setting that has to be changed from the default value: you have to have 2-factor authorization established for your account and you will need to set up an “app password”. We can go over this process in class.</p>
 </blockquote>
 </section>
 <section id="version-1-using-the-emayaili-package" class="level2 unnumbered">
@@ -356,18 +356,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>This function takes several intuitive arguments that we can assign values to directly within the function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>message_gmail <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="fu">c</span>(<span class="st">"anthony.difiore@gmail.com"</span>, <span class="st">"anthony.difiore@austin.utexas.edu"</span>),</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {emayili}..."</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">"Hello! This is a plain text message."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">"Hello! This is a plain text message."</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>message_outlook365 <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@austin.utexas.edu"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="fu">c</span>(<span class="st">"anthony.difiore@gmail.com"</span>, <span class="st">"anthony.difiore@austin.utexas.edu"</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {emayili}..."</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">"Hello! This is a plain text message."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> <strong><em>R</em></strong> essentially ignores whitespace (spaces and tab characters) and also allows you to run code from one line to the next. It is even pretty forgiving about where you put carriage returns, although it is good form to place them following a “,” or before/after a parenthesis or brace.</p>
 </blockquote>
 <p>Using {tidyverse} syntax, we can set up the same email as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">envelope</span>() <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>message_gmail <span class="ot">&lt;-</span> <span class="fu">envelope</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">from</span>(<span class="st">"anthony.difiore@gmail.com"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">to</span>(<span class="fu">c</span>(<span class="st">"anthony.difiore@gmail.com"</span>, <span class="st">"anthony.difiore@austin.utexas.edu"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">subject</span>(<span class="st">"Sending a message using {emayili}..."</span>) <span class="sc">%&gt;%</span></span>
@@ -381,11 +387,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create an SMTP (or “Simple Mail Transfer Protocol”) “server” object with details about how to send a message</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>smtp <span class="ot">&lt;-</span> <span class="fu">server</span>(</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>smtp_gmail <span class="ot">&lt;-</span> <span class="fu">server</span>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"smtp.gmail.com"</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">port =</span> <span class="dv">465</span>,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">""</span>) <span class="co"># add your password between quotation marks here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">""</span>) <span class="co"># add your Google account app password between quotation marks here</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>smtp_outlook365 <span class="ot">&lt;-</span> <span class="fu">server</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"smtp.office365.com"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">port =</span> <span class="dv">587</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"anthony.difiore@austin.utexas.edu"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">""</span>)  <span class="co"># add your UT email password between quotation marks here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-5" class="level4 unnumbered">
@@ -394,8 +406,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Send your message by passing it as an argument to the server object. Then, CHECK YOUR EMAIL to confirm that you receive the message.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp</span>(message, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_gmail</span>(message_gmail, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_outlook365</span>(message_outlook365, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: setting verbose = FALSE (or omitting the argument) will suppress output to the console</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
