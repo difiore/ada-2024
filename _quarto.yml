@@ -56,7 +56,9 @@ book:
       # - 25-r-packages.qmd
       # - 26-shiny.qmd
       # - 27-python-from-R.qmd
-    - exercise-01.qmd
+    - part: 00--exercises.qmd
+      chapters:
+      - exercise-01.qmd
       # - exercise-02.qmd
       # - exercise-03.qmd
       # - exercise-04.qmd

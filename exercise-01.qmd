@@ -2,8 +2,6 @@
 title: "Exercise 01"
 ---
 
-# (PART\*) Exercises {.unnumbered}
-
 # Send Emails Programmatically {.unnumbered}
 
 ## Learning Objectives {.unnumbered}

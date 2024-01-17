@@ -9,6 +9,7 @@ As much as possible, your scripts, programs, and functions should be written in 
 -   Use the uppercase ".R" extension for files containing ***R*** code
 -   Use the ".RData" extension for files that contain binary data
 -   Use the ".Rmd" extension for ***RMarkdown*** documents
+-   Use the ".qmd" extension for ***Quarto*** documents
 -   Use lowercase file extensions for other standard filetypes (e.g., ".csv", ".jpg", ".docx", ".xlsx")
 
 ## Stylistic Conventions {.unnumbered}
