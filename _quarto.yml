@@ -8,9 +8,11 @@ book:
   search: true
   reader-mode: true
   sidebar:
-    style: docked
+    style: floating
     background: light
-    number-depth: 3
+    collapse-level: 2
+    # header: "Applied Data Analysis"
+    footer: "Spring 2024"
 
 # language:
 #   ui:
@@ -18,15 +20,15 @@ book:
 
   chapters:
     - index.qmd
-    - part: 00-preliminaries.qmd
+    - part: 00--preliminaries.qmd
       chapters:
       - 00-course-logistics.qmd
       - 00-typography-and-formatting.qmd
       - 00-programming-style-guide.qmd
       - 00-course-schedule.qmd
-    - part: 00-part-1.qmd
+    - part: 00--part-1.qmd
       chapters:
-      - text: "My very own chapter name"
+      - text: "Module 1"
         file: 01-module.qmd
       - 02-module.qmd
       - 03-module.qmd
@@ -77,7 +79,9 @@ book:
       # - custom-package-and-vignette-template.qmd
       # - creative-dataviz-assignment.qmd
       # - shiny-app-assignment.qmd
-    - packages.qmd
+    - part: 00--references.qmd
+      chapters:
+        - packages.qmd
 
 format:
   html:

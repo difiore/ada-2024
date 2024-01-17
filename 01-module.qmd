@@ -2,7 +2,7 @@
 title: "Module 01"
 ---
 
-# Getting Started with ***R*** {#module-01}
+# Getting Started with ***R*** {#module-01} {.unnumbered}
 
 ## Objectives
 

@@ -1,13 +1,7 @@
 ---
-title: "**Applied Data Analysis S2024**"
+title: Applied Data Analysis S2024
 subtitle: Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences
 format: html
-# site: bookdown::bookdown_site
-# documentclass: book
-# bibliography:
-# - bib/book.bib
-# - bib/ada.bib
-# citation-style: bib/my-format.csl
 # link-citations: true
 description: This is a bookdown version of ANT 388/BIO 384K course content
 ---
@@ -17,8 +11,7 @@ source("src/config.R")
 ```
 
 ```
-Professor Anthony Di Fiore
-Class Meetings: TUE and THU, 3:30-5:00 pm
+Class Meetings: MON and WED, 2:00-3:30 pm
 Student Hours: MON and WED 4:00-5:00 pm and by appointment
 ```
 
