@@ -12,6 +12,7 @@ book:
   reader-mode: true
   sidebar:
     style: floating
+    logo: "img/p-values.png"
     background: light
     collapse-level: 2
     # header: "Applied Data Analysis"
