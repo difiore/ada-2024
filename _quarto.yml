@@ -5,6 +5,7 @@ project:
 book:
   title: "Applied Data Analysis 2024"
   author: "Anthony Di Fiore"
+  image: "img/p-values.png"
   search: true
   reader-mode: true
   sidebar:
