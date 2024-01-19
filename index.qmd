@@ -1,8 +1,3 @@
----
-subtitle: Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences
-description: "This is a Quarto version of ANT 388/BIO 384K course content"
----
-
 ```{r include=FALSE}
 source("src/config.R")
 ```

@@ -5,6 +5,8 @@ project:
 book:
   title: "Applied Data Analysis 2024"
   author: "Anthony Di Fiore"
+  subtitle: "Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences"
+  description: "This is a Quarto version of ANT 388/BIO 384K course content"
   image: "img/p-values.png"
   search: true
   reader-mode: true
