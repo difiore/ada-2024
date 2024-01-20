@@ -19,6 +19,7 @@ book:
   title: "Applied Data Analysis"
   author: "Anthony Di Fiore"
   subtitle: "Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences"
+  reader-mode: true
   sidebar:
     align: center
     pinned: false
