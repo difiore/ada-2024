@@ -21,7 +21,7 @@ book:
   subtitle: "Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences"
   sidebar:
     align: center
-    pinned: true
+    pinned: false
     search: true
     logo: "img/chart.png"
     style: "docked"
