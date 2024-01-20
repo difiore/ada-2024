@@ -1,7 +1,3 @@
----
-title: "Module 10"
----
-
 # Data Wrangling with {dplyr} {#module-10}
 
 ## Objectives

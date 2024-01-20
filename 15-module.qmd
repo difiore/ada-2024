@@ -1,7 +1,3 @@
----
-title: "Module 15"
----
-
 # Classical Hypothesis Testing {#module-15}
 
 ## Objectives

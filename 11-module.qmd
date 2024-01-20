@@ -1,7 +1,3 @@
----
-title: "Module 11"
----
-
 # Functions and Flow Control {#module-11}
 
 ## Objectives
@@ -32,6 +28,7 @@ function_name <- function(<argument list>) {
 Functions that we define ourselves can have *multiple arguments*, and each argument can have a *default value*. Arguments are separated by commas and default values are specified in the list of arguments. For example, suppose we wanted to make a function that added a user-specified `prefix` to every entry in a particular named variable in a data frame, we could write the following:
 
 ```{r}
+#| code-overflow: wrap
 add_prefix <- function(df, prefix = "", variable) {
   df[[variable]] <- paste0(prefix, df[[variable]])
   return(df)
@@ -39,22 +36,19 @@ add_prefix <- function(df, prefix = "", variable) {
 
 my_data <-
   data.frame(
-    "name" = c("Ned", "Sansa", "Cersei",  "Tyrion", "Jon", "Daenerys",
-               "Aria", "Brienne", "Rickon", "Edmure", "Petyr", "Jamie",
-               "Robert", "Stannis", "Theon"
+    "name" = c("Ned", "Sansa", "Cersei",  "Tyrion", "Jon", "Daenerys", "Aria", "Brienne", "Rickon", "Edmure", "Petyr", "Jamie", "Robert", "Stannis", "Theon"
     ),
-    "house" = c("Stark", "Stark", "Lannister", "Lannister", "Stark",
-                "Targaryen", "Stark", "Tarth", "Stark", "Tully", 
-                "Baelish", "Lannister", "Baratheon", "Baratheon", "Greyjoy"
+    "house" = c("Stark", "Stark", "Lannister", "Lannister", "Stark", "Targaryen", "Stark", "Tarth", "Stark", "Tully", "Baelish", "Lannister", "Baratheon", "Baratheon", "Greyjoy"
     ),
     "code" = sample(100000:999999, 15, replace = FALSE)
   )
-my_data <- add_prefix(my_data, variable = "house") # uses default prefix
+
+df <- add_prefix(my_data, variable = "house") # uses default prefix
 head(df)
-my_data <- add_prefix(my_data, prefix = "House ", variable = "house") 
+df <- add_prefix(my_data, prefix = "House ", variable = "house") 
 head(df)
-my_data <- add_prefix(my_data, prefix = "00001-", variable = "code") 
-head(my_data)
+df <- add_prefix(my_data, prefix = "00001-", variable = "code") 
+head(df)
 ```
 
 > **NOTE:** Arguments can be passed to a function in any order, as long as the argument name is included. For example, for the `add_prefix()` function above, the following are equivalent:
@@ -185,18 +179,15 @@ i < 12 & (i%%3) == 0 # element-wise logical AND
 ```
 
 ```{r}
-i <- 1:20
-i < 12 && (i%%3) == 0 # logical AND
+i[1] < 12 && (i[1]%%3) == 0 # logical AND
 ```
 
 ```{r}
-i <- 1:20
 i > 10 | (i%%2) == 0 # element-wise logical OR
 ```
 
 ```{r}
-i <- 1:20
-i > 10 || (i%%2) == 0 # logical OR
+i[1] > 10 || (i[1]%%2) == 0 # logical OR
 ```
 
 ```{r}
@@ -270,27 +261,28 @@ output
 
 ### CHALLENGE: {.unnumbered}
 
-Write a `for()` loop to print out each row in the data frame **df**.
+Write a `for()` loop to print out each row in the data frame **my_data**.
 
-::: {.fold .s .o}
 ```{r}
-for (i in 1:nrow(df)){
-  print(df[i,])
+#| code-fold: true
+for (i in 1:nrow(my_data)) {
+  print(my_data[i,])
 }
 ```
-:::
 
-Write a `for()` loop to print out the reverse of each element in the **code** vector in the data frame **df**.
+Write a `for()` loop to print out the reverse of each element in the **code** vector in the data frame **my_data**.
 
 > **HINT:** Check out the function `stri_reverse()` from the {stringi} package.
 
-::: {.fold .s .o}
 ```{r}
-for (i in df$code){
+#| code-fold: true
+#| tidy: true
+#| background: "#F7F7F7"
+#| comment: "##"
+for (i in my_data$code){
   print(stringi::stri_reverse(i))
 }
 ```
-:::
 
 ### `while()` Loops {.unnumbered}
 
@@ -304,7 +296,7 @@ while (<test expression>) {
 
 Here, the test expression is evaluated at the start of the loop, and the body of the loop is only entered if the result is TRUE. Once the statements inside the loop are executed, flow returns to the top of the loop to evaluate the test expression again. That process is repeated until the test expression is FALSE, and then the loop is exited and control moves on to subsequent parts of the program.
 
-As above, the following example print out each element in the vector, **v**:
+As above, the following example prints out each element in the vector, **v**:
 
 ```{r}
 v <- seq(from = 100, to = 120, by = 2)
@@ -325,14 +317,7 @@ The following examples replicate what we did with `for()` loops above. Here, **s
 
 ```{r}
 output <- sapply(s, FUN = median, na.rm = TRUE)
-# Here we are passing on an extra argument to the `median()`function,
-# i.e., `na.rm=TRUE`
-# This is an example of "dot-dot-dot" (`...`) being an extra argument
-# of the `sapply()` function where those arguments are "passed through"
-# as arguments of the `FUN=` function
-# Basically, this means that we can pass on an arbitrary set and number
-# of arguments into `sapply()` which, in this case, are then being used
-# in the `median()` function
+# Here we are passing on an extra argument to the `median()`function, i.e., `na.rm=TRUE`. This is an example of "dot-dot-dot" (`...`) being an extra argument of the `sapply()` function where those arguments are "passed through" as arguments of the `FUN=` function. Basically, this means that we can pass on an arbitrary set and number of arguments into `sapply()` which, in this case, are then being used in the `median()` function.
 output
 class(output)
 output <- lapply(s, FUN = median, na.rm = TRUE)

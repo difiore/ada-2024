@@ -25,42 +25,42 @@ If you have a Google **Gmail** account (either a personal one or one associated 
 
 - Log into your Google account or your UT Gmail account on a web browser, click on your user icon and choose "Manage your Google Account". For example...
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/user-manage-google.png")
 ```
 
 ... OR ...
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/user-manage-utexas.png")
 ```
 
 - Select "Security"...
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/security.png")
 ```
 
 ... and in the window that opens scroll down to the section on "2-Step Verification" and click the arrow at the right.
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/2-step.png")
 ```
 
 At this point, you may need to provide information to verify your identity, e.g., by entering a password and/or entering a code you receive from Google. Once in the "Security" section, scroll down to the bottom of the page to the section on "App passwords" and click the "App passwords" button.
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/app-passwords.png")
 ```
 
 - Create a "new app specific password" by typing a name for the password in the grey field and then click "Create". The name does not matter, but here I have called it "R".
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/app-name.png")
 ```
 
 Google will create new 16-digit password that you can use in lieu of your actual Google password when sending emails via Gmail in the {emayili} and {blastula} functions below. Copy and save this code in a safe place!
 
-```{r echo=FALSE, out.width="80%"}
+```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/password.png")
 ```
 
@@ -301,8 +301,7 @@ message <- compose_email(
   body = "Hello! This is a simple HTML message."
   )
 
-# Preview the message
-# This will open the HTML message in a browser window or in the RStudio Viewer tab
+# Preview the message. This will open the HTML message in a browser window or in the RStudio Viewer tab
 message
 ```
 
@@ -346,14 +345,14 @@ message
 The following will create a text file (in `JSON` format) in the current working directory that contains default information for your outgoing mail server, e.g., Google's Gmail server (`host = "smtp.gmail.com"`) or Microsoft's Office365 server (`host = "smtp.office365.com"`), along with your email address and your password. When you run the following lines of code, you will be asked to enter your password, which will then be stored in the credentials file. For a Gmail account, you can use the app password you created above. For an Outlook account, use your standard password.
 
 ```{r eval = FALSE}
-# Credentials file for a Gmail account
+# credentials file for a Gmail account
 create_smtp_creds_file(
   file = "my_gmail_creds",
   user = "anthony.difiore@utexas.edu",
   provider = "gmail"
 )
 
-# office365 credentials file
+# credentials file for an Outlook account
 create_smtp_creds_file(
   file = "my_outlook_creds",
   user = "anthony.difiore@outlook.com",
@@ -378,8 +377,7 @@ smtp_send(email = message,
   # NOTE: As above, setting verbose = FALSE (or omitting the argument) will suppress output to the console
 )
 
-# send using Microsofts's servers...
-# using the %>% operator and different credentials file...
+# send using Microsofts's servers, using the %>% operator and different credentials file...
 
 message %>% smtp_send(
     from = "anthony.difiore@outlook.com",
@@ -460,8 +458,7 @@ view_credential_keys()
 ```
 
 ```{r eval=FALSE}
-# send a message with credentials from a keychain
-# using Google's servers...
+# send a message with credentials from a keychain using Google's servers...
 message %>%
   smtp_send(
     from = "anthony.difiore@utexas.edu",
@@ -470,8 +467,7 @@ message %>%
     credentials = creds_key(id = "my_gmail_key")
   )
 
-# send a message with credentials from a keychain
-# using Microsoft's servers...
+# send a message with credentials from a keychain using Microsoft's servers...
 message %>%
   smtp_send(
     from = "anthony.difiore@outlook.com",
@@ -484,7 +480,7 @@ message %>%
 ## Clean-Up Steps {.unnumbered}
 
 ```{r eval=FALSE}
-# Delete all keys
+# delete all keys
 delete_all_credential_keys()
 ```
 

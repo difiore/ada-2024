@@ -1,10 +1,4 @@
----
-title: "Module 12"
----
-
-# (PART\*) Part II - Statistics and Inference {.unnumbered}
-
-# Location, Central Tendency, and Spread {#module-12}
+# Central Tendency and Spread {#module-12}
 
 ## Objectives
 

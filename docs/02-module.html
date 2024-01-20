@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This is a Quarto version of ANT 388/BIO 384K course content">
 
-<title>Applied Data Analysis 2024 - 1&nbsp; Getting Started with RStudio</title>
+<title>Applied Data Analysis - 2&nbsp; Getting Started with RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="nav-sidebar floating fullcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -77,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./02-module.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with ***RStudio***</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-module.html">Part I - Using <strong><em>R</em></strong> and <strong><em>RStudio</em></strong></a></li><li class="breadcrumb-item"><a href="./02-module.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Started with ***RStudio***</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -89,13 +88,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./img/p-values.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./img/chart.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Applied Data Analysis 2024</a> 
+      <a href="./">Applied Data Analysis</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -113,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./00--preliminaries.html" class="sidebar-item-text sidebar-link">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Preliminaries</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -122,8 +121,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-course-logistics.html" class="sidebar-item-text sidebar-link">
+  <a href="./00-logistics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Logistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -140,16 +145,16 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Schedule</span></a>
+  <a href="./00-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./00--part-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Part I - Using R and RStudio</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Part I - Using <strong><em>R</em></strong> and <strong><em>RStudio</em></strong></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -158,63 +163,75 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started with <strong><em>R</em></strong> {#module-01}</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-module.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional Data Structures in <strong><em>R</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Additional Data Structures in <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting Data into <strong><em>R</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Getting Data into <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling with {dplyr}</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Functions and Flow Control</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./00--exercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Part II - Statistics and Inference</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -222,21 +239,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
+  <a href="./12-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./00--references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Exercises</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 01</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">References</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./packages.html" class="sidebar-item-text sidebar-link">
@@ -247,18 +281,31 @@ ul.task-list li input[type="checkbox"] {
   </li>
     </ul>
     </div>
-<div class="quarto-sidebar-footer"><div class="sidebar-footer-item">
-<p>Spring 2024</p>
-</div></div></nav>
+</nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives"><span class="header-section-number">2.1</span> Objectives</a></li>
+  <li><a href="#installing-the-rstudio-software" id="toc-installing-the-rstudio-software" class="nav-link" data-scroll-target="#installing-the-rstudio-software"><span class="header-section-number">2.2</span> Installing the <strong><em>RStudio</em></strong> Software</a>
+  <ul class="collapse">
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">CHALLENGE:</a></li>
+  </ul></li>
+  <li><a href="#using-the-rstudio-cloud-server" id="toc-using-the-rstudio-cloud-server" class="nav-link" data-scroll-target="#using-the-rstudio-cloud-server"><span class="header-section-number">2.3</span> Using the <strong><em>RStudio</em></strong> <strong>Cloud</strong> Server</a></li>
+  <li><a href="#customizing-the-rstudio-ide" id="toc-customizing-the-rstudio-ide" class="nav-link" data-scroll-target="#customizing-the-rstudio-ide"><span class="header-section-number">2.4</span> Customizing the <strong><em>RStudio</em></strong> IDE</a></li>
+  <li><a href="#concept-review" id="toc-concept-review" class="nav-link" data-scroll-target="#concept-review">Concept Review</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="module-02" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></h1>
+<h1 class="title"><span id="module-02" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></h1>
 </div>
 
 
@@ -273,89 +320,125 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="objectives" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">1.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">2.1</span> Objectives</h2>
 <blockquote class="blockquote">
 <p>The goal of this module is to familiar yourself with the <strong><em>RStudio</em></strong> Integrated Development Environment (IDE).</p>
 </blockquote>
 </section>
-<section id="installing-the-rstudio-software" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="installing-the-rstudio-software"><span class="header-section-number">1.2</span> Installing the <strong><em>RStudio</em></strong> Software</h2>
+<section id="installing-the-rstudio-software" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="installing-the-rstudio-software"><span class="header-section-number">2.2</span> Installing the <strong><em>RStudio</em></strong> Software</h2>
 <p>Apart from the GUIs included in the MacOS and Windows installations of <strong><em>R</em></strong>, there are several IDEs that connect to the <strong><em>R</em></strong> interpreter and provide lots of convenient functionality. One of the most versatile and easy to use (and my favorite) is <strong><em>RStudio</em></strong>.</p>
 <ul>
 <li>Download and install the <a href="https://www.rstudio.com/"><strong><em>RStudio</em></strong></a> Integrated Development Environment (IDE)</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/install-RStudio.png" class="img-fluid" style="width:80.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/install-RStudio.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>Open the <strong><em>RStudio</em></strong> program</li>
 </ul>
 <p>The workspace that you see is divided into four separate panes (<strong>Source</strong> and <strong>Console</strong> panes on the left, two customizable panes on the right). You can modify the layout and appearance of the <strong><em>RStudio</em></strong> IDE to suit your taste by selecting <strong>Preferences</strong> from the <strong>RStudio</strong> menu (MacOS) or by selecting <strong>Global Options</strong> from the <strong>Tools</strong> menu (both MacOS and Windows).</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/RStudio.png" class="img-fluid" style="width:80.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/RStudio.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The <strong>Source</strong> pane is where you work with and edit various file types (e.g., scripts), while the <strong>Console</strong> pane is where you run commands in the <strong><em>R</em></strong> interpreter and see the results of those commands. The other two customizable panes provide easy access to useful tools and overviews of your interactions with <strong><em>R</em></strong>. For example, the <strong>Environment</strong> tab can be used to view all of the objects in the different environments in your current workspace, the <strong>History</strong> tab shows the log of all of the commands you have sent to the interpreter, and the <strong>Packages</strong> tab provides a convenient interface for installing and loading packages (see below).</p>
 <p>Within <strong><em>RStudio</em></strong>, you can change the working directory by going to the <strong>Session</strong> menu and selecting <strong>Set Working Directory</strong>.</p>
 <section id="challenge" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="challenge">CHALLENGE:</h3>
-<p>Repeat the basic maths CHALLENGE from <a href="#module-01"><strong>Module 01</strong></a> using the editor and console in <strong><em>RStudio</em></strong>.</p>
+<p>Repeat the basic maths CHALLENGE from <a href="01-module.html"><strong>Module 01</strong></a> using the editor and console in <strong><em>RStudio</em></strong>.</p>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> In both the base GUI that ships with the <strong><em>R</em></strong> application and in <strong><em>RStudio</em></strong>, the console supports <em>code completion</em>. Pressing <code>TAB</code> after starting to type a function or variable name will give you suggestions as to how to complete what you have begun to type. In <strong><em>RStudio</em></strong>, this functionality is present also when you are typing code in the text editor in the <strong>Source</strong> pane. Also helpful in <strong><em>RStudio</em></strong> are popup windows that accompany code completion that show, for each function, what possible arguments that function can take and their default values.</p>
 </blockquote>
 </section>
 </section>
-<section id="using-the-rstudio-cloud-server" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="using-the-rstudio-cloud-server"><span class="header-section-number">1.3</span> Using the <strong><em>RStudio</em></strong> <strong>Cloud</strong> Server</h2>
+<section id="using-the-rstudio-cloud-server" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="using-the-rstudio-cloud-server"><span class="header-section-number">2.3</span> Using the <strong><em>RStudio</em></strong> <strong>Cloud</strong> Server</h2>
 <p>An alternative (though likely slower!) way to use <strong><em>R</em></strong> and <strong><em>RStudio</em></strong> is to run them through a browser from <strong>RStudio’s</strong> cloud computing server. To use this approach, visit the <a href="https://rstudio.cloud/"><strong><em>RStudio Cloud</em></strong> website</a>, click the <code>Get Started</code> button, and create or sign up for an account.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/rstudio-cloud.png" class="img-fluid" style="width:80.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rstudio-cloud.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
 </div>
 </div>
-<p>You can use a <strong><em>Facebook</em></strong> or <strong><em>GitHub</em></strong> account to sign up (I recommend the latter. See <a href="05-module.html#module-05"><strong>Module 05</strong></a> for more info on signing up for and using <strong><em>GitHub</em></strong>) or create a new account that is specifically for <strong><em>RStudio Cloud</em></strong>.</p>
-<div class="cell">
+</div>
+<p>You can use a <strong><em>Facebook</em></strong> or <strong><em>GitHub</em></strong> account to sign up (I recommend the latter. See <a href="05-module.html"><strong>Module 05</strong></a> for more info on signing up for and using <strong><em>GitHub</em></strong>) or create a new account that is specifically for <strong><em>RStudio Cloud</em></strong>.</p>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/rstudio-cloud-signin.png" class="img-fluid" style="width:80.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rstudio-cloud-signin.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Once you are signed up, or if you have already done so, you can use your account to log in. Doing so will bring you to the landing page for your <strong><em>RStudio Cloud</em></strong> account.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/rstudio-cloud-landing.png" class="img-fluid" style="width:80.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rstudio-cloud-landing.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Your account lets you access a sandboxed environment on <strong>RStudio’s</strong> servers that contains <strong><em>R</em></strong>, <strong><em>RStudio</em></strong>, any packages you install, your own files, etc., which you are connecting via a web browser. You can effectively use it for development without storing anything on your local machine.</p>
 <p>There, if you create a <code>New Project</code>, you will set up a new <strong><em>R</em></strong> project within your account space. Your account space can include multiple projects, each with its own set of associated files.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/rstudio-cloud-new-project.png" class="img-fluid" style="width:95.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rstudio-cloud-new-project.png" class="img-fluid figure-img" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="customizing-the-rstudio-ide" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="customizing-the-rstudio-ide"><span class="header-section-number">1.4</span> Customizing the <strong><em>RStudio</em></strong> IDE</h2>
+<section id="customizing-the-rstudio-ide" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="customizing-the-rstudio-ide"><span class="header-section-number">2.4</span> Customizing the <strong><em>RStudio</em></strong> IDE</h2>
 <p>If you open either the <em>Preferences</em> (MacOS) or <em>Global Options</em> (MacOS or PC) dialog box in <strong><em>RStudio</em></strong> you can customize the setup and functionality of your IDE.</p>
 <p>In the <em>General</em> section, I recommend the settings shown below, particularly about restoring your last workspace into memory upon startup and about asking if you wish to save the contents of your current workspace upon shutdown.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/preferences-general.png" class="img-fluid" style="width:60.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/preferences-general.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Feel free to organize the rest of your setup as you would like. For example, you can change lots of options in the <em>Code</em>, <em>Console</em>, <em>Appearance</em>, and <em>Pane Layout</em> sections to set up the IDE as best suits your personal tastes.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/preferences-other.png" class="img-fluid" style="width:60.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/preferences-other.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Finally, if you have already installed <strong><em>git</em></strong> on your computer, go to the <em>Git/SVN</em> section and make sure that the checkbox “Enable version control interface for RStudio projects” is selected and that the path to your <strong><em>git</em></strong> executable is filled. If you have installed <strong><em>git</em></strong> successfully, this should be filled with something like “/usr/bin/git”. If it is not, do not worry… we can set this later after installing and troubleshooting that program.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<p><img src="img/git-svn.png" class="img-fluid" style="width:60.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/git-svn.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -607,12 +690,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./01-module.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting Started with <strong><em>R</em></strong> {#module-01}</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>R</em></strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./03-module.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

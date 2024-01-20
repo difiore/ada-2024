@@ -280,18 +280,17 @@ filenames <- vector()
 for (i in 1:length(f$matches)) {
   filenames <- c(filenames, f$matches[[i]]$metadata$path_display)
   # this is the location of the results returned above
-  # the [[i]] returns each encountered file with a matching filename
-  # and puts them into a vector
+  # the [[i]] returns each encountered file with a matching filename and puts them into a vector
 }
 d <-
   drop_read_csv(
     filenames[1],
-    # here the [1] reads only the first file...
-    # modify this to read more than one file
     header = TRUE,
     sep = ",",
     stringsAsFactors = FALSE
   )
+# here the [1] reads only the first file from filenames
+# modify this to read more than one file
 detach(package:rdrop2)
 ```
 

@@ -1,43 +1,41 @@
 project:
   type: book
   output-dir: docs
+  
+knitr:
+  opts_chunk:
+    echo: TRUE
+    warning: TRUE
+    message: TRUE
+    comment: "##"
+    prompt: FALSE
+    tidy: TRUE
+    tidy.opts:
+      width.cutoff: 80
+    fig.align: "center"
+    fig.path: "output/"
 
 book:
-  title: "Applied Data Analysis 2024"
+  title: "Applied Data Analysis"
   author: "Anthony Di Fiore"
   subtitle: "Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences"
-  description: "This is a Quarto version of ANT 388/BIO 384K course content"
-  image: "img/p-values.png"
-  search:
-    location: sidebar
-    type: textbox
-  # navbar:
-  #   right:
-  #     - icon: github
-  #       href: https://github.com/difiore/ada-2024
-  #       aria-label: GitHub
   sidebar:
-    style: floating
-    logo: "img/p-values.png"
-    background: light
-    collapse-level: 3
-    # header: "Applied Data Analysis"
-    footer: "Spring 2024"
-    number-depth: 3
-
-# language:
-#   ui:
-#     chapter_name: "Module "
-
+    align: center
+    search: true
+    logo: "img/chart.png"
+    style: "docked"
+    background: "light"
+    collapse-level: 2
   chapters:
     - index.qmd
-    - part: 00--preliminaries.qmd
+    - part: "Preliminaries"
       chapters:
-      - 00-course-logistics.qmd
+      - 00-logistics.qmd
+      - 00-course-schedule.qmd
       - 00-typography-and-formatting.qmd
       - 00-programming-style-guide.qmd
-      - 00-course-schedule.qmd
-    - part: 00--part-1.qmd
+      - 00-resources.qmd
+    - part: "Part I - Using ***R*** and ***RStudio***"
       chapters:
       - 01-module.qmd
       - 02-module.qmd
@@ -48,9 +46,11 @@ book:
       - 07-module.qmd
       - 08-module.qmd
       - 09-module.qmd
-      # - 10-module.qmd
-      # - 11-module.qmd
-      # - 12-module.qmd
+      - 10-module.qmd
+      - 11-module.qmd
+    - part: "Part II - Statistics and Inference"
+      chapters:
+      - 12-module.qmd
       # - 13-module.qmd
       # - 14-module.qmd
       # - 15-module.qmd
@@ -66,7 +66,7 @@ book:
       # - 25-r-packages.qmd
       # - 26-shiny.qmd
       # - 27-python-from-R.qmd
-    - part: 00--exercises.qmd
+    - part: "Exercises"
       chapters:
       - exercise-01.qmd
       # - exercise-02.qmd
@@ -91,7 +91,7 @@ book:
       # - custom-package-and-vignette-template.qmd
       # - creative-dataviz-assignment.qmd
       # - shiny-app-assignment.qmd
-    - part: 00--references.qmd
+    - part: "References"
       chapters:
         - packages.qmd
 
@@ -99,19 +99,12 @@ format:
   html:
     css: css/style.css
     grid:
-      sidebar-width: 330px
-    toc: false
-    fontsize: 11pt
-    toc-title: "hi"
-    toc-expand: false
-      # collapse: section
-      # collapsed: true
-      # scroll_highlight: true
-#       before: |
-# <li><a href="./">Applied Data Analysis S2024</a></li>
-#       after: |
-#       <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with {bookdown}</a></li>
-    
+      sidebar-width: 350px
+    toc: true
+    fontsize: 12pt
+    toc-title: "Table of Contents"
+    toc-expand: true
+
 comments:
   hypothesis: true
 

@@ -1,7 +1,3 @@
----
-title: "Module 14"
----
-
 # Confidence Intervals {#module-14}
 
 ## Objectives

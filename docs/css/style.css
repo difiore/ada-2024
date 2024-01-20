@@ -67,3 +67,8 @@ pre code {
     overflow: auto;
     padding: 8px;
 }
+
+.cell-output {
+  background-color: lightblue;
+  border-radius: 4px;
+}

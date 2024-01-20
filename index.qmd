@@ -1,16 +1,17 @@
-```{r include=FALSE}
-source("src/config.R")
-```
-
 # Overview {.unnumbered}
 
-```{r echo=FALSE, out.width="40%", out.extra='style="width: 300px; padding-top: 10px; padding-left: 20px; padding-right: 20px; padding-bottom: 10px" align="right"'}
-knitr::include_graphics("img/p-values.png")
+<div style = "float:right; padding-top: 10px; padding-left: 20px; padding-right: 20px; padding-bottom: 10px">
+
+```{r}
+#| echo: FALSE
+#| out.width: 250px
+knitr::include_graphics("img/p_values_2x.png")
 ```
+</div>
 
 This course provides an overview of methods and tools for applied data analysis. It is geared toward research in biological anthropology and evolutionary biology, but the material covered is applicable to a wide range of natural, social science, and humanities disciplines. Students will receive practical, hands-on training in various data science tools and workflows, including data acquisition and wrangling, exploratory data analysis and visualization, statistical analysis and interpretation, and literate programming and version control.
 
-Statistical topics to be covered include basic descriptive and inferential statistics, hypothesis testing, regression, and linear modeling. Statistical inference will be considered from a frequentist perspective, introducing both parametric and permutation/resampling techniques. If we have time, I will also introduce a Bayesian perspective, although this approach will not be tackled at a particularly advanced level. Additional methods and tools will also be covered based on student interest (e.g., geospatial data analysis, phylogenetic comparative methods, social network analysis, text corpus construction and mining, population genetic analysis) and on how quickly the class feels moving forward.
+Statistical topics to be covered include basic descriptive and inferential statistics, hypothesis testing, regression, and linear modeling. Statistical inference will be considered from a frequentist perspective, introducing both parametric and permutation/resampling techniques. If we have time, I will also introduce a Bayesian perspective, although this approach will not be tackled at a particularly advanced level. Additional methods and tools will also be covered based on student interest (e.g., geospatial data analysis, phylogenetic comparative methods, social network analysis, text corpus construction and mining, population genetic analysis) and on how quickly the class feels we can move forward.
 
 The course particularly emphasizes the development of data science skills, focusing on the practical side of data manipulation, analysis, and visualization. Students will learn to use the statistical programming language ***R*** as well as other useful software tools (e.g., text editors, shell scripts, databases, query languages, and version control systems).
 
@@ -20,6 +21,8 @@ The course particularly emphasizes the development of data science skills, focus
 
 <hr>
 
-```{r echo=FALSE, out.width="30%"}
+```{r}
+#| echo: false
+#| out.width: "30%"
 knitr::include_graphics("img/DataCamp-50px.png")
 ```

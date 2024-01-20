@@ -1,7 +1,3 @@
----
-title: "Module 13"
----
-
 # Probability and Distributions {#module-13}
 
 ## Objectives
