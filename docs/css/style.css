@@ -71,4 +71,6 @@ pre code {
 .cell-output {
   background-color: lightblue;
   border-radius: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
