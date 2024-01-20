@@ -1,6 +1,3 @@
----
-title: "Course Logistics"
----
 # Course Logistics {.unnumbered}
 
 ## Learning Objectives {.unnumbered}

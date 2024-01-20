@@ -1,7 +1,3 @@
----
-title: "Module 07"
----
-
 # Additional Data Structures in ***R*** {#module-07}
 
 ## Objectives

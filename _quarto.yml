@@ -8,15 +8,22 @@ book:
   subtitle: "Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences"
   description: "This is a Quarto version of ANT 388/BIO 384K course content"
   image: "img/p-values.png"
-  search: true
-  reader-mode: true
+  search:
+    location: sidebar
+    type: textbox
+  # navbar:
+  #   right:
+  #     - icon: github
+  #       href: https://github.com/difiore/ada-2024
+  #       aria-label: GitHub
   sidebar:
     style: floating
     logo: "img/p-values.png"
     background: light
-    collapse-level: 2
+    collapse-level: 3
     # header: "Applied Data Analysis"
     footer: "Spring 2024"
+    number-depth: 3
 
 # language:
 #   ui:
@@ -32,16 +39,15 @@ book:
       - 00-course-schedule.qmd
     - part: 00--part-1.qmd
       chapters:
-      - text: "Module 1"
-        file: 01-module.qmd
+      - 01-module.qmd
       - 02-module.qmd
       - 03-module.qmd
       - 04-module.qmd
-      # - 05-module.qmd
-      # - 06-module.qmd
-      # - 07-module.qmd
-      # - 08-module.qmd
-      # - 09-module.qmd
+      - 05-module.qmd
+      - 06-module.qmd
+      - 07-module.qmd
+      - 08-module.qmd
+      - 09-module.qmd
       # - 10-module.qmd
       # - 11-module.qmd
       # - 12-module.qmd

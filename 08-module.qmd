@@ -1,7 +1,3 @@
----
-title: "Module 08"
----
-
 # Getting Data into ***R*** {#module-08}
 
 ## Objectives

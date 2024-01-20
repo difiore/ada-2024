@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="This is a Quarto version of ANT 388/BIO 384K course content">
 
-<title>Applied Data Analysis 2024 - 9&nbsp; Module 04</title>
+<title>Applied Data Analysis 2024 - 3&nbsp; Fundamentals of the R Language</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./00--exercises.html" rel="next">
+<link href="./05-module.html" rel="next">
 <link href="./03-module.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./04-module.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./04-module.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the ***R*** Language</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -123,16 +124,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/p-values.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Data Analysis 2024</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -145,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Applied Data Analysis S2024</span></span></a>
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -160,25 +157,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-course-logistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Logistics</span></span></a>
+ <span class="menu-text">Course Logistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-typography-and-formatting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Typography and Formatting</span></span></a>
+ <span class="menu-text">Typography and Formatting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-programming-style-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Style Guide</span></span></a>
+ <span class="menu-text">Programming Style Guide</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
+ <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
       </ul>
@@ -195,25 +192,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 1</span></span></a>
+ <span class="menu-text">Getting Started with <strong><em>R</em></strong> {#module-01}</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-module.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional Data Structures in <strong><em>R</em></strong></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting Data into <strong><em>R</em></strong></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
   </div>
 </li>
       </ul>
@@ -265,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></h1>
+<h1 class="title"><span id="module-04" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></h1>
 </div>
 
 
@@ -280,16 +307,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="module-04" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Fundamentals of the <strong><em>R</em></strong> Language</h1>
-<section id="objectives" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">10.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">3.1</span> Objectives</h2>
 <blockquote class="blockquote">
 <p>The goal of this module is review important conceptual aspects of the <strong><em>R</em></strong> language as well as practices for updating <strong><em>R</em></strong> components of interest.</p>
 </blockquote>
 </section>
-<section id="r-objects" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="r-objects"><span class="header-section-number">10.2</span> <strong><em>R</em></strong> Objects</h2>
+<section id="r-objects" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="r-objects"><span class="header-section-number">3.2</span> <strong><em>R</em></strong> Objects</h2>
 <p>Almost everything in <strong><em>R</em></strong> can be thought of as an <em>object</em>, including variables, functions, complex data structures, and environments.</p>
 <section id="classes-modes-and-types" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="classes-modes-and-types">Classes, Modes, and Types</h3>
@@ -640,18 +665,18 @@ length</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 80.15378</code></pre>
+<pre><code>[1] 79.96805</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 9.911311</code></pre>
+<pre><code>[1] 9.968008</code></pre>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="scripts-and-functions" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="scripts-and-functions"><span class="header-section-number">10.3</span> Scripts and Functions</h2>
+<section id="scripts-and-functions" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="scripts-and-functions"><span class="header-section-number">3.3</span> Scripts and Functions</h2>
 <p>As mentioned previously, scripts in <strong><em>R</em></strong> are simply text files that store an order list of commands, which can be used to link together sets of operations to perform complete analyses and show results.</p>
 <p>For example, you could enter the lines below into a text editor and then save the script in a file named “my_script.R” in a folder called <code>src/</code> inside your working directory.</p>
 <div class="cell">
@@ -729,8 +754,8 @@ length</code></pre>
 </div>
 </section>
 </section>
-<section id="quitting-r-and-saving-your-work" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="quitting-r-and-saving-your-work"><span class="header-section-number">10.4</span> Quitting <strong><em>R</em></strong> and Saving your Work</h2>
+<section id="quitting-r-and-saving-your-work" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="quitting-r-and-saving-your-work"><span class="header-section-number">3.4</span> Quitting <strong><em>R</em></strong> and Saving your Work</h2>
 <p>Working in <strong><em>RStudio</em></strong>, you can save script files (which, again, are just plain text files) using standard dialog boxes.</p>
 <p>When you go to quit <strong><em>R</em></strong> (by using the <code>q()</code> function or by trying to close <strong><em>RStudio</em></strong>), you may be asked whether you want to…</p>
 <p>“Save workspace image to &lt;path&gt;/.Rdata?”, where &lt;path&gt; is the path to your working directory.</p>
@@ -746,8 +771,8 @@ length</code></pre>
 <p>The next time you start <strong><em>R</em></strong>, the workspace from “.RData” will be loaded again automatically, provided you have not changed your working directory and you have not unchecked “Restore .RData into workspace at startup” in preferences.</p>
 <p>A second hidden file, “.Rhistory”, will also be stored in the same directory, which will contain a log of all commands you sent to the console, provided you have not unchecked “Always save history”.</p>
 </section>
-<section id="updating-r" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="updating-r"><span class="header-section-number">10.5</span> Updating <strong><em>R</em></strong></h2>
+<section id="updating-r" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="updating-r"><span class="header-section-number">3.5</span> Updating <strong><em>R</em></strong></h2>
 <p><strong><em>R</em></strong> has been under continuous and active development since its inception in the late 1990s, and several updates are made available each year. These update help to fix bugs, improve speed and computational efficiency, and add new functionality to the software. The following information on how to update <strong><em>R</em></strong> is based on <a href="http://stackoverflow.com/questions/13656699/update-r-using-rstudio"><strong>this post from Stack Overflow</strong></a></p>
 <ul>
 <li><p>Step 1: Get the latest version of <strong><em>R</em></strong> {-}</p>
@@ -800,7 +825,6 @@ length</code></pre>
 <script src="src/hide_output.js"></script>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1040,12 +1064,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03-module.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./00--exercises.html" class="pagination-link">
-        <span class="nav-page-text">Exercises</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-module.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

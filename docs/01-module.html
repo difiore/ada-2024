@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="This is a Quarto version of ANT 388/BIO 384K course content">
 
-<title>Applied Data Analysis 2024 - 6&nbsp; Module 01</title>
+<title>Applied Data Analysis 2024 - Getting Started with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./01-module.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 1</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./01-module.html">Getting Started with <strong><em>R</em></strong></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -123,16 +124,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/p-values.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Data Analysis 2024</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -145,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Applied Data Analysis S2024</span></span></a>
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -160,25 +157,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-course-logistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Logistics</span></span></a>
+ <span class="menu-text">Course Logistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-typography-and-formatting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Typography and Formatting</span></span></a>
+ <span class="menu-text">Typography and Formatting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-programming-style-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Style Guide</span></span></a>
+ <span class="menu-text">Programming Style Guide</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
+ <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
       </ul>
@@ -195,25 +192,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-module.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 1</span></span></a>
+ <span class="menu-text">Getting Started with <strong><em>R</em></strong></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional Data Structures in <strong><em>R</em></strong></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting Data into <strong><em>R</em></strong></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
   </div>
 </li>
       </ul>
@@ -265,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 01</span></h1>
+<h1 class="title"><span id="module-01" class="quarto-section-identifier">Getting Started with <strong><em>R</em></strong></span></h1>
 </div>
 
 
@@ -280,16 +307,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="getting-started-with-r-module-01" class="level1 unnumbered">
-<h1 class="unnumbered">Getting Started with <strong><em>R</em></strong> {#module-01}</h1>
-<section id="objectives" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">6.1</span> Objectives</h2>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
 <blockquote class="blockquote">
 <p>The goal of this module is to get everyone’s computers set up with <strong><em>R</em></strong> for the semester and to provide background and an introduction to the <strong><em>R</em></strong> programming language and environment.</p>
 </blockquote>
 </section>
-<section id="backstory" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="backstory"><span class="header-section-number">6.2</span> Backstory</h2>
+<section id="backstory" class="level2">
+<h2 class="anchored" data-anchor-id="backstory">Backstory</h2>
 <p>The name <strong><em>R</em></strong> is a nod to the statistical programming language <strong><em>S</em></strong> (for “Statistics”) that inspired its creation. <strong><em>S</em></strong> was developed at Bell Laboratories by John Chambers and later sold to a small company that further developed it into <strong><em>S-Plus</em></strong>. <strong><em>R</em></strong> was then developed as an alternative to <strong><em>S</em></strong> by Ross Ihaka and Robert Gentleman in the Department of Statistics at the University of Aukland, New Zealand.</p>
 <p><strong><em>R</em></strong> is an high-level, interpreted language, like <strong><em>Python</em></strong> or <strong><em>Ruby</em></strong>, where commands are executed directly and sequentially, without previously compiling a program into machine-language instructions. Each statement is translated, on the fly, into a sequence of subroutines that have already been compiled into machine code.</p>
 <p><strong><em>R</em></strong> is open-source software, meaning that the source code for the program is freely available for anyone to modify, extend, and improve upon. <strong><em>R</em></strong> is also FREE (!) for anyone to use and distribution. The large and active community of users and developers is one of the reasons that <strong><em>R</em></strong> has become very popular in academics, science, engineering, and business - any field that requires data analytics. Developers have also built in the capacity for easily making production-quality graphics, making it a great tool for data visualization. There are thus <strong>many</strong> good reasons to learn and use <strong><em>R</em></strong>.</p>
@@ -310,8 +335,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>We are going to introduce several of these ways of working with <strong><em>R</em></strong>, but the easiest and most convenient is to use an IDE.</p>
 </section>
-<section id="installing-the-r-software" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="installing-the-r-software"><span class="header-section-number">6.3</span> Installing the <strong><em>R</em></strong> Software</h2>
+<section id="installing-the-r-software" class="level2">
+<h2 class="anchored" data-anchor-id="installing-the-r-software">Installing the <strong><em>R</em></strong> Software</h2>
 <ul>
 <li>Download and install <strong><em>R</em></strong> from the <a href="https://cran.r-project.org/"><strong>Compehensive R Archive Network (CRAN)</strong></a> website. Choose the correct version for your operating system.</li>
 </ul>
@@ -349,8 +374,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="exploring-the-r-console" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="exploring-the-r-console"><span class="header-section-number">6.4</span> Exploring the <strong><em>R</em></strong> Console</h2>
+<section id="exploring-the-r-console" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-r-console">Exploring the <strong><em>R</em></strong> Console</h2>
 <ul>
 <li><p><strong><em>R</em></strong> can be used as an interactive calculator from the console prompt, either in a GUI or in the shell.</p>
 <ul>
@@ -537,7 +562,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -782,7 +806,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./02-module.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

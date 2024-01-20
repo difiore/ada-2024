@@ -1,7 +1,3 @@
----
-title: "Module 09"
----
-
 # Exploratory Data Analysis {#module-09}
 
 ## Objectives

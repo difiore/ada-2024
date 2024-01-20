@@ -1,6 +1,4 @@
----
-title: "Programming Style Guide"
----
+# Programming Style Guide {.unnumbered}
 
 As much as possible, your scripts, programs, and functions should be written in a **consistent** programming style, which makes them easier to read, write, and understand. Some programmers are very opinionated as to what stylistic conventions to follow, and as you become more familiar with ***R*** and more practiced with writing code, you will likely settle on a set that you find particular sensible. I try (not always successfully!) to follow recommendations below, which are largely consistent with those in the much-more-complete [{tidyverse} Style Guide](https://style.tidyverse.org/).
 

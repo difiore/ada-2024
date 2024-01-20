@@ -1,6 +1,4 @@
----
-title: "Typography and Formatting"
----
+# Typography and Formatting {.unnumbered}
 
 To the extent possible, I have tried to follow the following typographic and formatting conventions throughout the course modules.
 

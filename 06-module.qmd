@@ -1,7 +1,3 @@
----
-title: "Module 06"
----
-
 # Reproducible Research {#module-06}
 
 ## Objectives

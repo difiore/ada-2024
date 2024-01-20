@@ -1,7 +1,3 @@
----
-title: "Module 02"
----
-
 # Getting Started with ***RStudio*** {#module-02}
 
 ## Objectives

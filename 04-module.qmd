@@ -1,7 +1,3 @@
----
-title: "Module 04"
----
-
 # Fundamentals of the ***R*** Language {#module-04}
 
 ## Objectives

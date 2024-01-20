@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="This is a Quarto version of ANT 388/BIO 384K course content">
 
-<title>Applied Data Analysis 2024 - 8&nbsp; Module 03</title>
+<title>Applied Data Analysis 2024 - 2&nbsp; Extending the Functionality of R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./03-module.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00--part-1.html">Part I - Using R and RStudio</a></li><li class="breadcrumb-item"><a href="./03-module.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of ***R***</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -89,16 +90,12 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./img/p-values.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Data Analysis 2024</a> 
-        <div class="sidebar-tools-main">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -111,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Applied Data Analysis S2024</span></span></a>
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -126,25 +123,25 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-course-logistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Course Logistics</span></span></a>
+ <span class="menu-text">Course Logistics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-typography-and-formatting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Typography and Formatting</span></span></a>
+ <span class="menu-text">Typography and Formatting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-programming-style-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Style Guide</span></span></a>
+ <span class="menu-text">Programming Style Guide</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Course Schedule</span></span></a>
+ <span class="menu-text">Course Schedule</span></a>
   </div>
 </li>
       </ul>
@@ -161,25 +158,55 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Module 1</span></span></a>
+ <span class="menu-text">Getting Started with <strong><em>R</em></strong> {#module-01}</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-module.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-module.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Additional Data Structures in <strong><em>R</em></strong></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Getting Data into <strong><em>R</em></strong></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
   </div>
 </li>
       </ul>
@@ -196,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Exercise 01</span></span></a>
   </div>
 </li>
       </ul>
@@ -231,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Module 03</span></h1>
+<h1 class="title"><span id="module-03" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Extending the Functionality of <strong><em>R</em></strong></span></span></h1>
 </div>
 
 
@@ -246,22 +273,20 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="module-03" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Extending the Functionality of <strong><em>R</em></strong></h1>
-<section id="objectives" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">9.1</span> Objectives</h2>
+<section id="objectives" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">2.1</span> Objectives</h2>
 <blockquote class="blockquote">
 <p>The goal of this module is to show you how to extend the base functionality of <strong><em>R</em></strong> by installing and loading packages.</p>
 </blockquote>
 </section>
-<section id="preliminaries" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">9.2</span> Preliminaries</h2>
+<section id="preliminaries" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">2.2</span> Preliminaries</h2>
 <ul>
 <li>Install this package in <strong><em>R</em></strong>: <a href="https://cran.r-project.org/web/packages/easypackages/easypackages.pdf">{easypackages}</a></li>
 </ul>
 </section>
-<section id="r-packages" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="r-packages"><span class="header-section-number">9.3</span> <strong><em>R</em></strong> Packages</h2>
+<section id="r-packages" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="r-packages"><span class="header-section-number">2.3</span> <strong><em>R</em></strong> Packages</h2>
 <p>One of the fantastic things about <strong><em>R</em></strong>, and one of the reasons it is such a flexible tool for so many types of data analysis, is the ability to extend its functionality in a huge variety of ways with <em>packages</em>. Packages are sets of reusable <strong><em>R</em></strong> functions created by the core development team or by users and are akin to <em>libraries</em> in other programming software, like <strong><em>Python</em></strong>. As of January 2020, there are over 15,300 packages that have been contributed to the most common package repository, hosted on the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a> site.</p>
 <p>From the console prompt, packages can be installed into <strong><em>R</em></strong> (using the <code>install.packages()</code> function, with the name of the package in parentheses) and then loaded (using the <code>require()</code> or <code>library()</code> functions), which then gives the user access to the functions contained therein. Both <strong><em>RStudio</em></strong> and the base <strong><em>R</em></strong> GUIs for MacOS and Windows have built-in package managers that allow you to search for and install packages.</p>
 <p>Each package includes a <em>namespace</em> associated with the functions contained therein, and those functions are loaded into their own, separate <strong><em>R</em></strong> <em>environments</em>, distinct from the global environment, where the variables we assigned values to in <a href="#module-01"><strong>Module 01</strong></a> were created. An <em>environment</em> can be thought of as a collection of objects (functions, variables etc.) associated either globally, with the <strong><em>R</em></strong> interpreter (the “R_GlobalEnv”) or with a particular package and its namespace. In <strong><em>RStudio</em></strong>, you can see all of the objects associated with a particular environment in the <strong>Environment</strong> tab.</p>
@@ -421,7 +446,6 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -661,12 +685,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./02-module.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Module 02</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./04-module.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Module 04</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

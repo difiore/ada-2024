@@ -1,7 +1,3 @@
----
-title: "Module 03"
----
-
 # Extending the Functionality of ***R*** {#module-03}
 
 ## Objectives
