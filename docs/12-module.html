@@ -58,7 +58,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -572,8 +571,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># `plotDist()` comes from the {mosaic} package and makes it</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># easy to plot a distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># `plotDist()` comes from the {mosaic} package and makes it easy to plot a</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In the following code block, we first set up a plot window to hold the results of our simulations and plot a line for the known population variance (i.e., the square of <span class="math inline">\(\sigma\)</span>, the standard deviation). We then use nested <code>for</code> loops to iterate the process of drawing samples of a specific size, <span class="math inline">\(n\)</span>, from the specified distribution. We do this for samples of size <span class="math inline">\(n\)</span> = 5, 10, 15… up to 100, and we draw out 50 replicates of each sample size. Recall from <a href="11-module.html"><strong>Module 11</strong></a> that the structure for <code>for</code> loops is:</p>
 <pre><code>for (&lt;index&gt; in &lt;range&gt;){
@@ -624,14 +623,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pop_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.996166</code></pre>
+<pre><code>## [1] 1.995533</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">sample_var</span>(x))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.997165</code></pre>
+<pre><code>## [1] 1.996532</code></pre>
 </div>
 </div>
 <p>The <code>sdpop()</code> function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.</p>
@@ -639,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(radiant)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sdpop</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.996166</code></pre>
+<pre><code>## [1] 1.995533</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>radiant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -647,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.997165</code></pre>
+<pre><code>## [1] 1.996532</code></pre>
 </div>
 </div>
 </section>
@@ -688,9 +687,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the `histogram()` function from {mosaic} plots neat</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 'augmented' histograms</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> d, <span class="at">xlab =</span> <span class="st">"Average Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the `histogram()` function from {mosaic} plots neat 'augmented' histograms</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> d, <span class="at">xlab =</span> <span class="st">"Average Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -698,8 +696,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the `favstats()` function from {mosiac} calculates a</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variant of the 5-number summary</span></span>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the `favstats()` function from {mosiac} calculates a variant of the 5-number</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># summary</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>(pop_stats <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> d))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##  min  Q1 median  Q3 max     mean       sd     n missing
@@ -716,8 +714,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(d, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># `sample_n()` from {dplyr} selects rows at random from a</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data frame it's another SUPER useful function</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># `sample_n()` from {dplyr} selects rows at random from a data frame it's</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># another SUPER useful function</span></span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(s<span class="sc">$</span>startYear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## 
@@ -754,27 +752,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-the-mosaic-package" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="using-the-mosaic-package">Using the {mosaic} Package</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using `do(reps) *` from {mosaic} to generate a sampling</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>samp_dist_mean <span class="ot">&lt;-</span> <span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">mean</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d,</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># generates a sampling distribution</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>mean_plot <span class="ot">&lt;-</span> <span class="fu">histogram</span>(<span class="sc">~</span>mean, <span class="at">data =</span> samp_dist_mean, <span class="at">xlab =</span> <span class="st">"Sampling Distribution for the</span><span class="sc">\n</span><span class="st">Mean of Average Rating"</span>)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>samp_dist_median <span class="ot">&lt;-</span> <span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">median</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d,</span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co"># generates a sampling distribution</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>median_plot <span class="ot">&lt;-</span> <span class="fu">histogram</span>(<span class="sc">~</span>median, <span class="at">data =</span> samp_dist_median, <span class="at">xlab =</span> <span class="st">"Sampling Distribution for the</span><span class="sc">\n</span><span class="st">Median of Average Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using `do(reps) *` from {mosaic} to generate a sampling distribution</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>samp_dist_mean <span class="ot">&lt;-</span> <span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">mean</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># generates a sampling distribution</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>mean_plot <span class="ot">&lt;-</span> <span class="fu">histogram</span>(<span class="sc">~</span>mean, <span class="at">data =</span> samp_dist_mean, <span class="at">xlab =</span> <span class="st">"Sampling Distribution for the</span><span class="sc">\n</span><span class="st">Mean of Average Rating"</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>samp_dist_median <span class="ot">&lt;-</span> <span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">median</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d, <span class="at">size =</span> n,</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># generates a sampling distribution</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>median_plot <span class="ot">&lt;-</span> <span class="fu">histogram</span>(<span class="sc">~</span>median, <span class="at">data =</span> samp_dist_median, <span class="at">xlab =</span> <span class="st">"Sampling Distribution for the</span><span class="sc">\n</span><span class="st">Median of Average Rating"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-the-purrr-package" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="using-the-purrr-package">Using the {purrr} Package</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using `rerun()` from {purrr} to generate a sampling</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>samp_dist_mean_alt1 <span class="ot">&lt;-</span> <span class="fu">rerun</span>(reps, <span class="fu">mean</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d,</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unlist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using `rerun()` from {purrr} to generate a sampling distribution</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>samp_dist_mean_alt1 <span class="ot">&lt;-</span> <span class="fu">rerun</span>(reps, <span class="fu">mean</span>(<span class="sc">~</span>averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d, <span class="at">size =</span> n,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">FALSE</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unlist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## Warning: `rerun()` was deprecated in purrr 1.0.0.
 ## ℹ Please use `map()` instead.
@@ -792,9 +787,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="using-the-infer-package" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="using-the-infer-package">Using the {infer} Package</h4>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using `rep_sample_n()` from {infer} to generate a</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sampling distribution</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using `rep_sample_n()` from {infer} to generate a sampling distribution</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## 
 ## Attaching package: 'infer'</code></pre>
@@ -853,8 +847,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 6.239391</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the estimated population mean calculated as the</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of the sampling distribution of sample means</span></span>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the estimated population mean calculated as the mean of the sampling</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="co"># distribution of sample means</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>pop_stats<span class="sc">$</span>mean  <span class="co"># true population mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 6.238972</code></pre>
@@ -863,8 +857,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 6.38125</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the estimated population median calculated as the</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of the sampling distribution of sample medians</span></span>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the estimated population median calculated as the mean of the</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sampling distribution of sample medians</span></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>pop_stats<span class="sc">$</span>median  <span class="co"># true population median</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 6.4</code></pre>
@@ -883,18 +877,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>se_mean <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span>mean, <span class="at">data =</span> samp_dist_mean)<span class="sc">$</span>sd</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or, se_mean &lt;- sd(samp_dist_mean$mean)</span></span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">paste0</span>(<span class="st">"Estimated population mean = "</span>, <span class="fu">round</span>(<span class="fu">favstats</span>(<span class="sc">~</span>mean,</span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> samp_dist_mean)<span class="sc">$</span>mean, <span class="dv">3</span>), <span class="st">" ± "</span>, <span class="fu">round</span>(se_mean, <span class="dv">3</span>),</span>
-<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">" SE based on "</span>, reps, <span class="st">" samples of size "</span>, n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">paste0</span>(<span class="st">"Estimated population mean = "</span>, <span class="fu">round</span>(<span class="fu">favstats</span>(<span class="sc">~</span>mean, <span class="at">data =</span> samp_dist_mean)<span class="sc">$</span>mean,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>), <span class="st">" ± "</span>, <span class="fu">round</span>(se_mean, <span class="dv">3</span>), <span class="st">" SE based on "</span>, reps, <span class="st">" samples of size "</span>, n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "Estimated population mean = 6.239 ± 0.121 SE based on 1000 samples of size 100"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>se_median <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span>median, <span class="at">data =</span> samp_dist_median)<span class="sc">$</span>sd</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or, se_median &lt;- sd(samp_dist_median$median)</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>(<span class="fu">paste0</span>(<span class="st">"Estimated population median = "</span>, <span class="fu">round</span>(<span class="fu">favstats</span>(<span class="sc">~</span>median,</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> samp_dist_median)<span class="sc">$</span>mean, <span class="dv">3</span>), <span class="st">" ± "</span>, <span class="fu">round</span>(se_median,</span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>), <span class="st">" SE based on "</span>, reps, <span class="st">" samples of size "</span>, n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>(<span class="fu">paste0</span>(<span class="st">"Estimated population median = "</span>, <span class="fu">round</span>(<span class="fu">favstats</span>(<span class="sc">~</span>median, <span class="at">data =</span> samp_dist_median)<span class="sc">$</span>mean,</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>), <span class="st">" ± "</span>, <span class="fu">round</span>(se_median, <span class="dv">3</span>), <span class="st">" SE based on "</span>, reps, <span class="st">" samples of size "</span>,</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "Estimated population median = 6.381 ± 0.134 SE based on 1000 samples of size 100"</code></pre>
 </div>
@@ -923,30 +916,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(s, samp_dist)</span>
 <span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">n =</span> <span class="fu">numeric</span>(), <span class="at">reps =</span> <span class="fu">numeric</span>(), <span class="at">samp_dist_mean =</span> <span class="fu">numeric</span>(),</span>
-<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">samp_dist_se =</span> <span class="fu">numeric</span>())</span>
-<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (reps <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">250</span>, <span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>)) {</span>
-<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>    subsample <span class="ot">&lt;-</span> s <span class="sc">%&gt;%</span></span>
-<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sample_n</span>(reps, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">samp_dist_mean =</span> <span class="fu">mean</span>(mean), <span class="at">samp_dist_se =</span> <span class="fu">sd</span>(mean)) <span class="sc">%&gt;%</span></span>
-<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">reps =</span> reps)</span>
-<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(output, subsample)</span>
-<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">n =</span> <span class="fu">numeric</span>(), <span class="at">reps =</span> <span class="fu">numeric</span>(), <span class="at">samp_dist_mean =</span> <span class="fu">numeric</span>(), <span class="at">samp_dist_se =</span> <span class="fu">numeric</span>())</span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (reps <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">250</span>, <span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>)) {</span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>    subsample <span class="ot">&lt;-</span> s <span class="sc">%&gt;%</span></span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span></span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sample_n</span>(reps, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">samp_dist_mean =</span> <span class="fu">mean</span>(mean), <span class="at">samp_dist_se =</span> <span class="fu">sd</span>(mean)) <span class="sc">%&gt;%</span></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">reps =</span> reps)</span>
+<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(output, subsample)</span>
+<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> output, <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> samp_dist_mean)) <span class="sc">+</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(<span class="sc">~</span>reps) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Sample Size"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Mean"</span>) <span class="sc">+</span></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">6</span>, <span class="fl">6.5</span>)</span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> output, <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> samp_dist_se)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>reps) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Sample Size"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"SE"</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,</span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.5</span>)</span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> output, <span class="fu">aes</span>(<span class="at">x =</span> n)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> samp_dist_mean <span class="sc">+</span></span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    samp_dist_se), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> samp_dist_mean)) <span class="sc">+</span></span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> samp_dist_mean <span class="sc">-</span> samp_dist_se), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>reps) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Sample Size"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Mean ± SE"</span>) <span class="sc">+</span></span>
-<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="fl">5.8</span>, <span class="fl">6.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> output, <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> samp_dist_mean)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(<span class="sc">~</span>reps) <span class="sc">+</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Sample Size"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Mean"</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">6</span>, <span class="fl">6.5</span>)</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> output, <span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> samp_dist_se)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">facet_grid</span>(<span class="sc">~</span>reps) <span class="sc">+</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Sample Size"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"SE"</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> output, <span class="fu">aes</span>(<span class="at">x =</span> n)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> samp_dist_mean <span class="sc">+</span> samp_dist_se),</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> samp_dist_mean)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> samp_dist_mean <span class="sc">-</span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>    samp_dist_se), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span> <span class="fu">facet_grid</span>(<span class="sc">~</span>reps) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Sample Size"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Mean ± SE"</span>) <span class="sc">+</span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="fl">5.8</span>, <span class="fl">6.7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
@@ -968,18 +957,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>where <span class="math inline">\(\sigma^2\)</span> is the population variance (and <span class="math inline">\(\sigma\)</span> is thus the population standard deviation) and <span class="math inline">\(n\)</span> is the sample size.</p>
 <p>We can compare the SEs for different sample sizes estimated above from our empirical sampling distributions with the SEs calculated directly from the population variance using the code below.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select estimated SEs for different sample sizes with 1000</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># reps from our output tibble</span></span>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select estimated SEs for different sample sizes with 1000 reps from our</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="co"># output tibble</span></span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>sampling_output <span class="ot">&lt;-</span> <span class="fu">filter</span>(output, reps <span class="sc">==</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(n, samp_dist_se)</span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tibble of SEs based on the known population</span></span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="co"># variance</span></span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>pop_output <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">n =</span> <span class="fu">numeric</span>(), <span class="at">pop_se =</span> <span class="fu">numeric</span>())</span>
-<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">10</span>)) {</span>
-<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>    pop_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">pop_var</span>(d<span class="sc">$</span>averageRating)<span class="sc">/</span>n)</span>
-<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>    pop_output <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(pop_output, <span class="fu">c</span>(<span class="at">n =</span> n, <span class="at">pop_se =</span> pop_se))</span>
-<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>(compare <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(sampling_output, pop_output, <span class="at">by =</span> <span class="st">"n"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create a tibble of SEs based on the known population variance</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>pop_output <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">n =</span> <span class="fu">numeric</span>(), <span class="at">pop_se =</span> <span class="fu">numeric</span>())</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">10</span>, <span class="at">to =</span> <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">10</span>)) {</span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>    pop_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">pop_var</span>(d<span class="sc">$</span>averageRating)<span class="sc">/</span>n)</span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>    pop_output <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(pop_output, <span class="fu">c</span>(<span class="at">n =</span> n, <span class="at">pop_se =</span> pop_se))</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>(compare <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(sampling_output, pop_output, <span class="at">by =</span> <span class="st">"n"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 10 × 3
 ##        n samp_dist_se pop_se
@@ -995,8 +983,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ##  9   180       0.0859 0.0865
 ## 10   200       0.0775 0.0820</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the sample_dist_se and pop_se columns should be very</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># close in value!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the sample_dist_se and pop_se columns should be very close in value!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="estimating-ses-from-a-single-sample" class="level4 unnumbered">
@@ -1027,8 +1014,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>new_sample <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(d, <span class="at">size =</span> n)</span>
-<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(new_sample, <span class="at">se1 =</span> <span class="fu">my_se1</span>(averageRating), <span class="at">se2 =</span> <span class="fu">my_se2</span>(averageRating),</span>
-<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">se3 =</span> <span class="fu">my_se3</span>(averageRating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(new_sample, <span class="at">se1 =</span> <span class="fu">my_se1</span>(averageRating), <span class="at">se2 =</span> <span class="fu">my_se2</span>(averageRating), <span class="at">se3 =</span> <span class="fu">my_se3</span>(averageRating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 1 × 3
 ##     se1   se2   se3

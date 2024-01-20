@@ -58,7 +58,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -693,10 +692,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>The process works by matching observations in two different tables by a common key variable and then selecting additional variables of interest to pull from each of the tables. A simple example is the following… suppose we have two tables, one that contains average brain sizes for particular species of primates and one that contains individual body sizes for some of the same species, plus others. In the latter table, too, we may have data from multiple individuals of the same species represented.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Taxon =</span> <span class="fu">c</span>(<span class="st">"Gorilla"</span>, <span class="st">"Human"</span>, <span class="st">"Chimpanzee"</span>,</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Orangutan"</span>, <span class="st">"Baboon"</span>), <span class="at">Avg_Brain_Size =</span> <span class="fu">c</span>(<span class="dv">470</span>, <span class="dv">1100</span>, <span class="dv">350</span>,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">340</span>, <span class="dv">140</span>))</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Taxon =</span> <span class="fu">c</span>(<span class="st">"Gorilla"</span>, <span class="st">"Human"</span>, <span class="st">"Chimpanzee"</span>, <span class="st">"Orangutan"</span>, <span class="st">"Baboon"</span>),</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">Avg_Brain_Size =</span> <span class="fu">c</span>(<span class="dv">470</span>, <span class="dv">1100</span>, <span class="dv">350</span>, <span class="dv">340</span>, <span class="dv">140</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>table1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 5 × 2
 ##   Taxon      Avg_Brain_Size
@@ -707,11 +705,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## 4 Orangutan             340
 ## 5 Baboon                140</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Taxon =</span> <span class="fu">c</span>(<span class="st">"Gorilla"</span>, <span class="st">"Gorilla"</span>, <span class="st">"Gorilla"</span>, <span class="st">"Human"</span>,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Human"</span>, <span class="st">"Chimpanzee"</span>, <span class="st">"Orangutan"</span>, <span class="st">"Orangutan"</span>, <span class="st">"Macaque"</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Macaque"</span>, <span class="st">"Macaque"</span>), <span class="at">Body_Weight =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">81</span>, <span class="dv">77</span>, <span class="dv">48</span>, <span class="dv">49</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">38</span>, <span class="dv">37</span>, <span class="dv">36</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">6</span>))</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">Taxon =</span> <span class="fu">c</span>(<span class="st">"Gorilla"</span>, <span class="st">"Gorilla"</span>, <span class="st">"Gorilla"</span>, <span class="st">"Human"</span>, <span class="st">"Human"</span>, <span class="st">"Chimpanzee"</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Orangutan"</span>, <span class="st">"Orangutan"</span>, <span class="st">"Macaque"</span>, <span class="st">"Macaque"</span>, <span class="st">"Macaque"</span>), <span class="at">Body_Weight =</span> <span class="fu">c</span>(<span class="dv">80</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">81</span>, <span class="dv">77</span>, <span class="dv">48</span>, <span class="dv">49</span>, <span class="dv">38</span>, <span class="dv">37</span>, <span class="dv">36</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">6</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>table2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 11 × 2
 ##    Taxon      Body_Weight
@@ -940,14 +937,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="fold s o">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d, <span class="at">Binomial =</span> <span class="fu">paste</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Binomial, Family, Body_mass_female_mean, Body_mass_male_mean,</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        Mass_Dimorphism) <span class="sc">%&gt;%</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Family) <span class="sc">%&gt;%</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">avgF =</span> <span class="fu">mean</span>(Body_mass_female_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">avgM =</span> <span class="fu">mean</span>(Body_mass_male_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">avgBMD =</span> <span class="fu">mean</span>(Mass_Dimorphism,</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(avgBMD))</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Binomial, Family, Body_mass_female_mean, Body_mass_male_mean, Mass_Dimorphism) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Family) <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">avgF =</span> <span class="fu">mean</span>(Body_mass_female_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">avgM =</span> <span class="fu">mean</span>(Body_mass_male_mean,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">avgBMD =</span> <span class="fu">mean</span>(Mass_Dimorphism, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(avgBMD))</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 14 × 4
 ##    Family            avgF   avgM avgBMD
@@ -1068,8 +1063,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>… which means we can do something like this to pipe <strong>d</strong> into a function such as <code>lm()</code> (“linear model”), where the data frame that the function is run on is not the first argument:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(<span class="fu">log</span>(Body_mass_female_mean) <span class="sc">~</span> <span class="fu">log</span>(Brain_Size_Species_Mean),</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(<span class="fu">log</span>(Body_mass_female_mean) <span class="sc">~</span> <span class="fu">log</span>(Brain_Size_Species_Mean), <span class="at">data =</span> .)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## 
 ## Call:
@@ -1167,10 +1161,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ##     filter</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare...</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(d, Family <span class="sc">==</span> <span class="st">"Hominidae"</span> <span class="sc">&amp;</span> Mass_Dimorphism <span class="sc">&gt;</span></span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>)</span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># to...</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, Family <span class="sc">==</span> <span class="st">"Hominidae"</span> <span class="sc">&amp;</span> Mass_Dimorphism <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(d, Family <span class="sc">==</span> <span class="st">"Hominidae"</span> <span class="sc">&amp;</span> Mass_Dimorphism <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to...</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, Family <span class="sc">==</span> <span class="st">"Hominidae"</span> <span class="sc">&amp;</span> Mass_Dimorphism <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## filter: removed 210 rows (99%), 3 rows remaining</code></pre>
 </div>
@@ -1190,8 +1183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>NOTE:</strong> Loading in {tidylog} function will conflict with or “mask” corresponding function names from {dplyr} and {tidyr}. In the examples above, then, to run the {tidyverse} versions of <code>filter()</code> and <code>select_n()</code>, it was necessary to use the <code>::</code> notation to specifically call the {dplyr} version of the functions directly. The {tidylog} versions of these functions run a bit more slowly, so if speed is important, you may not want to use {tidylog}, you may want to call the {dplyr} or {tidyr} functions explicitly after loading {tidylog}, or you may want to simply call the {tidylog} version of a function explicitly.</p>
 </blockquote>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> tidylog<span class="sc">::</span><span class="fu">filter</span>(d, Family <span class="sc">==</span> <span class="st">"Hominidae"</span> <span class="sc">&amp;</span> Mass_Dimorphism <span class="sc">&gt;</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> tidylog<span class="sc">::</span><span class="fu">filter</span>(d, Family <span class="sc">==</span> <span class="st">"Hominidae"</span> <span class="sc">&amp;</span> Mass_Dimorphism <span class="sc">&gt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## filter: removed 210 rows (99%), 3 rows remaining</code></pre>
 </div>
