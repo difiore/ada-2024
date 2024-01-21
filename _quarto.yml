@@ -17,17 +17,17 @@ knitr:
 
 book:
   title: "Applied Data Analysis"
-  author: "Anthony Di Fiore"
+  # author: "Anthony Di Fiore"
   subtitle: "Practical Data Science Tools, Programming, and Statistics for the Natural and Social Sciences"
   sidebar:
     align: center
-    pinned: false
     search: true
-    # logo: "img/chart.png"
     logo: "img/statistics(1).svg"
-    style: "floating"
+    style: docked
+    pinned: false
     background: "light"
     collapse-level: 2
+    border: false
   chapters:
     - index.qmd
     - part: "Preliminaries"
