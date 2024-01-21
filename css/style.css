@@ -57,8 +57,18 @@ pre code {
     font-family: Consolas, Menlo, Courier, monospace;
 }
 
-/* Place thin blue border around code blocks & increase font size from 85% to 105% */
+/* Place thin blue border around code blocks & increase font size from 85% to 105%
 .book .book-body .page-wrapper .page-inner section.normal .highlight pre, .book .book-body .page-wrapper .page-inner section.normal pre {
+    background-color: #eeeeee;
+    border: 3px solid #d9edf7;
+    border-radius: 2px;
+    font-size: 105%;
+    line-height: 1.2;
+    overflow: auto;
+    padding: 8px;
+}
+*/
+.sourceCode .cell-code {
     background-color: #eeeeee;
     border: 3px solid #d9edf7;
     border-radius: 2px;
