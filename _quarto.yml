@@ -23,7 +23,8 @@ book:
     align: center
     pinned: false
     search: true
-    logo: "img/chart.png"
+    # logo: "img/chart.png"
+    logo: "img/statistics(1).svg"
     style: "floating"
     background: "light"
     collapse-level: 2
