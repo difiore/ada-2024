@@ -161,6 +161,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
@@ -348,11 +354,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong><em>R</em></strong></li>
 <li><strong><em>RStudio</em></strong></li>
 </ul></li>
-<li><p>Functions, commands, and <strong><em>R</em></strong> code are written as <code>inline code</code>, e.g., <code>x &lt;- 5</code>, or in code blocks:</p>
+<li><p>Functions, commands, and <strong><em>R</em></strong> code are written as <code>inline code</code>, e.g., <code>x &lt;- 5</code>, or in code blocks:</p></li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+</div>
+<ul>
+<li>Code output appears in a colored cell, prefaced by “##”:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>## [1] 5</code></pre>
+</div>
+</div>
+<ul>
 <li><p>Package names are written in {curly braces}:</p>
 <ul>
 <li>{tidyverse}</li>
@@ -364,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>y</strong></li>
 <li><strong>airline_flights</strong></li>
 </ul></li>
-<li><p>Column names within a data frame are written in <strong>bold</strong>, whether referred to separately or as part of the table:</p>
+<li><p>Column names within a data frame are also written in <strong>bold</strong>, whether referred to separately or as part of the table:</p>
 <ul>
 <li><strong>origin</strong></li>
 <li><strong>destination</strong></li>
@@ -380,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>“/Users/Tony/Desktop/myData.R”</li>
 <li>“~/Desktop/myData.R”</li>
-<li>“C:and SettingsDi Fiore.R”</li>
+<li>“C:\Documents and Settings\Anthony Di Fiore\Desktop\myData.R”</li>
 </ul></li>
 <li><p>Directory names are written as <code>inline code</code> followed by a slash:</p>
 <ul>
@@ -399,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Argument values or values to be replaced are written in lowercase text between &lt;angle brackets&gt;, where that entire text, brackets included, should be replaced with the text being asked for:</p>
 <ul>
 <li><code>setwd("&lt;your working directory&gt;")</code></li>
-<li>“<your file="" name="">.csv”</your></li>
+<li>“&lt;your file name&gt;.csv”</li>
 </ul></li>
 <li><p>Constants are written in italics:</p>
 <ul>
@@ -446,10 +462,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>main</code></li>
 <li><code>origin/main</code></li>
 </ul></li>
-<li><p>Full URLs/links are written in <code>inline code</code>:</p>
+<li><p>Full URLs/links are written in <code>inline code</code> and may include hyperlinks:</p>
 <ul>
-<li><code>https://cran.r-project.org/</code></li>
-<li><code>https://difiore.github.io/ada-2022/</code></li>
+<li><a href="https://cran.r-project.org/"><code>https://cran.r-project.org/</code></a></li>
+<li><a href="https://difiore.github.io/ada-2024/"><code>https://difiore.github.io/ada-2024/</code></a></li>
 </ul></li>
 </ul>
 

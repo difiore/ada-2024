@@ -15,47 +15,46 @@ Objects in ***R*** fall into different *classes*. There are a few basic (or *ato
 Examples:
 
 ```{r}
-# Class of a variable
+# class of a variable
 x <- 4
 class(x)
 x <- "hi there"
 class(x)
 
-# Class of a function
+# class of a function
 class(mean)
 ```
 
 In ***R***, *environments* are objects as well.
 
--   What is the class of the *global environment*, where we have been binding values to variable names? To check, use `class(globalenv())`.
+- What is the class of the *global environment*, where we have been binding values to variable names? To check, use `class(globalenv())`.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 class(globalenv())
 ```
-:::
 
 Objects in ***R*** also each have a *mode* and a *base type*. These are often closely aligned with and similar to the *class* of an object, but the three terms refer to slightly different things. If an object has no specific class assigned to it, its class is typically the same as its mode. Mode is a mutually exclusive classification of objects, according to their basic structure. When we coerce an object to another basic structure, we are changing its mode but not necessarily the class.
 
 ```{r}
-# Mode of a variable
+# mode of a variable
 x <- 4
 mode(x)
 x <- "hi there"
 mode(x)
 
-# Mode of a function
+# mode of a function
 mode(mean)
 ```
 
 ```{r}
-# Type of a variable
+# type of a variable
 x <- 4
 typeof(x)
 x <- "hi there"
 typeof(x)
 
-# Type of a function
+# type of a function
 typeof(mean)
 ```
 
@@ -65,7 +64,7 @@ typeof(mean)
 
 ***R*** also supports a variety of *data structures* for variable objects, the most fundamental of which is the *vector*. Vectors are *variables consisting of one or more values of the same type*, e.g., student's grades on an exam. The *class* of a vector has to be one of the atomic classes described above. A *scalar* variable, such as a constant, is simply a vector with only one value.
 
--   There are lots of ways to create vectors... one of the most common is to use the `c()` or "combine" command:
+- There are lots of ways to create vectors... one of the most common is to use the `c()` or "combine" command:
 
 ```{r}
 x <- c(15, 16, 12, 3, 21, 45, 23)
@@ -78,23 +77,21 @@ z <- "once upon a time"
 z
 ```
 
--   What is the *class* of the vector **x**? Of **z**? Use the `class()` function to check.
+- What is the *class* of the vector **x**? Of **z**? Use the `class()` function to check.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 class(x)
 class(z)
 ```
-:::
 
--   What happens if you try the following assignment: `x <- c("2", 2, "zombies")`? What is the class of vector **x** now?
+- What happens if you try the following assignment: `x <- c("2", 2, "zombies")`? What is the class of vector **x** now?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 x <- c("2", 2, "zombies")
 class(x)
 ```
-:::
 
 This last case is an example of *coercion*, which happens automatically and often behind the scenes in ***R***. When you attempt to combine different types of elements in the same vector, they are coerced to all be of the same type - the most restrictive type that can accommodate all of the elements. This takes place in a fixed order: logical → integer → double → character. For example, combining a character and an integer yields a character; combining a logical and a double yields a double.
 
@@ -170,22 +167,22 @@ str(attributes(x)) # attribute names are stored as a list
 
 Try some vector math using the console in ***RStudio***:
 
--   Assign a sequence of numbers from 15 to 28 to a vector, **x**.
+- Assign a sequence of numbers from 15 to 28 to a vector, **x**.
 
 > **NOTE:** There are at least two different ways to do this!
 
--   Assign a sequence of numbers from 1 to 4 to a vector, **y**.
--   Add **x** and **y**. What happens?
+- Then, assign a sequence of numbers from 1 to 4 to a vector, **y**.
+- Finally, add **x** and **y**. What happens?
 
-::: {.fold .s .o}
 ```{r}
+#| warning: false
+#| code-fold: true
 x <- 15:28 # or x <- c(15, 16, 17...)
 y <- 1:4
 (x + y)
 ```
-:::
 
--   Use the up arrow to recall the last command from history and modify the command to store the result of the addition to a variable, **z**. What kind of object is **z**? Examine it using the `class()` function. What is the length of **z**?
+- Use the up arrow to recall the last command from history and modify the command to store the result of the addition to a variable, **z**. What kind of object is **z**? Examine it using the `class()` function. What is the length of **z**?
 
 Now, think carefully about this output... there are two important things going on.
 
@@ -197,9 +194,9 @@ This means we can very easily do things like adding a constant to all of the ele
 
 ```{r}
 y <- 2
-# we can use parentheses for simultaneous assignment and printing
-(x + y)
-(x * y)
+# note that we can wrap a command in parentheses for simultaneous assignment/operation and printing
+(z <- x + y)
+(z <- x * y)
 ```
 
 Many function operations in ***R*** are also vectorized, meaning that if argument of a function is a vector, but the function acts on a single value, then the function will be applied to each value in the vector and will return a vector of the same length where the function has been applied to each element.
@@ -213,9 +210,10 @@ x <- 1:20
 
 We can use the {base} ***R*** function `plot()` to do some quick visualizations.
 
-```{r fig.height=3}
-# `plot()` takes values of x and y values as first two arguments
-# the `type="o"` argument superimposes points and lines
+```{r}
+#| fig.height: 4
+#| out-width: "80%"
+# `plot()` takes values of x and y values as the first two arguments, and the `type="o"` argument superimposes points and lines
 plot(x, logx, type = "o")
 plot(x, x2, type = "o")
 plot(x, y, type = "o")
@@ -223,27 +221,28 @@ plot(x, y, type = "o")
 
 ### CHALLENGE: {.unnumbered}
 
--   Use the `rnorm()` function to create a vector, **s** that contains a set of random numbers drawn from a normal distribution with mean 80 and standard deviation 10. Try doing this with n = 10, n = 100, n = 1000, n = 10000.
+- Use the `rnorm()` function to create a vector, **s** that contains a set of random numbers drawn from a normal distribution with mean 80 and standard deviation 10. Try doing this with n = 10, n = 100, n = 1000, n = 10000.
 
 > **HINT:** Use `?rnorm` or `help(rnorm)` to access the help documentation on how to use the `rnorm()` function.
 
 Then, use the `hist()` function to plot a histogram showing the distribution of these numbers.
 
-::: {.fold .s .o}
-```{r out.extra='style="margin-top: 10px; border: 2px solid #cccccc; width: 100%"'}
+```{r}
+#| code-fold: true
+#| fig-align: center
+#| out-width: "80%"
+
 s <- rnorm(n = 10000, mean = 80, sd = 10)
 hist(s) # hist() plots a simple histogram of values for s
 ```
-:::
 
--   Use the `mean()` and `sd()` functions to calculate the mean and standard deviation of **s**. Here, the whole vector is used as the argument of the function, i.e., the function applies to a set of values not a single value. The function thus returns a vector of length 1.
+- Use the `mean()` and `sd()` functions to calculate the mean and standard deviation of **s**. Here, the whole vector is used as the argument of the function, i.e., the function applies to a set of values not a single value. The function thus returns a vector of length 1.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 mean(s)
 sd(s)
 ```
-:::
 
 ## Scripts and Functions
 
@@ -272,24 +271,21 @@ In an ***R*** script, you might use several lines of code to accomplish a single
 
 Try writing a function!
 
--   Open a new blank document in ***RStudio***
+- Open a new blank document in ***RStudio***
 
-    -   **File \> New \> R Script**
+    - **File \> New \> R Script**
 
--   Type in the code below to create the `say_hi()` function, which adds a name to a greeting:
+- Type in the code below to create the `say_hi()` function, which adds a name to a greeting:
 
 ```{r}
-# this function takes one argument, x...
-# appends the value of that argument to a greeting...
-# and then prints the whole greeting
+# this function takes one argument, `x`, appends the value of that argument to a greeting, and then prints the whole greeting
 say_hi <- function(x) {
   hi <- paste("Greetings, ", x, "!", sep = "")
-  # the `paste()` command allows string concatenation
-  # alternatively, we could use `paste0()` and omit the
-  # `sep=` argument
   return(hi)
 }
 ```
+
+> **NOTE:** Here, the `paste()` command allows string concatenation. Alternatively, we could use `paste0()` and omit the `sep=` argument.
 
 In general, the format for a function is as follows:
 
@@ -301,7 +297,7 @@ You can send this function to the ***R*** console by highlighting it in the edit
 knitr::include_graphics("img/say_hi.png")
 ```
 
--   Now we can create some test data and call the function. What are the results?
+- Now we can create some test data and call the function. What are the results?
 
 ```{r}
 name1 <- "Rick Grimes"
@@ -342,31 +338,31 @@ A second hidden file, ".Rhistory", will also be stored in the same directory, wh
 
 ***R*** has been under continuous and active development since its inception in the late 1990s, and several updates are made available each year. These update help to fix bugs, improve speed and computational efficiency, and add new functionality to the software. The following information on how to update ***R*** is based on [**this post from Stack Overflow**](http://stackoverflow.com/questions/13656699/update-r-using-rstudio)
 
--   Step 1: Get the latest version of ***R*** {-}
+- Step 1: Get the latest version of ***R*** {-}
 
-    -   Go to the [**R Project**](http://www.r-project.org) website.
-    -   Click on **CRAN** in the sidebar on the left.
-    -   Choose the **CRAN Mirror** site that you like.
-    -   Click on **Download R for...** (choose your operating system).
-    -   Follow the installation procedures for your system.
-    -   Restart ***RStudio***.
+    - Go to the [**R Project**](http://www.r-project.org) website.
+    - Click on **CRAN** in the sidebar on the left.
+    - Choose the **CRAN Mirror** site that you like.
+    - Click on **Download R for...** (choose your operating system).
+    - Follow the installation procedures for your system.
+    - Restart ***RStudio***.
 
--   Step 2: Relocate your packages {-}
+- Step 2: Relocate your packages {-}
 
-    -   To ensure that your packages work with your shiny new version of ***R***, you need to:
+    - To ensure that your packages work with your shiny new version of ***R***, you need to:
 
-        -   Move the packages from your old ***R*** installation into the new one.
-        -   On MacOS, this typically means moving all library folders from "/Library/Frameworks/R.framework/Versions/3.5/Resources/library" to "/Library/Frameworks/R.framework/Versions/4.1/Resources/library"
+        - Move the packages from your old ***R*** installation into the new one.
+        - On MacOS, this typically means moving all library folders from "/Library/Frameworks/R.framework/Versions/3.5/Resources/library" to "/Library/Frameworks/R.framework/Versions/4.3/Resources/library"
 
-> **NOTE:** You should replace "3.5" and "4.1" with whatever versions you are upgrading from and to, respectively.
+> **NOTE:** You should replace "3.5" and "4.3" with whatever versions you are upgrading from and to, respectively.
 
--   On Windows, this typically means moving all library folders from "C:\\Program Files\\R\\R-3.5\\library" to "C:\\Program Files\\R\\R-4.1\\library" (if your packages are installed at the *system* level) or from "C:\\Users\\\<user name\>\\R\\win-library\\3.5\\" to "C:\\Users\\\<user name\>\\R\\win-library\\4.1\\" (if your packages are installed at the *user* level)
+- On Windows, this typically means moving all library folders from "C:\\Program Files\\R\\R-3.5\\library" to "C:\\Program Files\\R\\R-4.3\\library" (if your packages are installed at the *system* level) or from "C:\\Users\\\<user name\>\\R\\win-library\\3.5\\" to "C:\\Users\\\<user name\>\\R\\win-library\\4.3\\" (if your packages are installed at the *user* level)
 
 > **NOTE:** You only need to copy whatever packages are not already in the destination directory, i.e., you do not need to overwrite your new {base} package, etc., with your old one.
 
--   If those paths do not work for you, try using `installed.packages()` to find the proper path names. These may vary on your system, depending on where you installed ***R***
--   Now you can update your packages by typing `update.packages()` in your ***RStudio*** console, and answering "y" to all of the prompts.
--   Finally, to reassure yourself that you have done everything correctly, type these two commands in the ***RStudio*** console to see what you've got in terms of what version of ***R*** you are running, the number of packages you have installed, and what packages you have loaded:
+- If those paths do not work for you, try using `installed.packages()` to find the proper path names. These may vary on your system, depending on where you installed ***R***
+- Now you can update your packages by typing `update.packages()` in your ***RStudio*** console, and answering "y" to all of the prompts.
+- Finally, to reassure yourself that you have done everything correctly, type these two commands in the ***RStudio*** console to see what you've got in terms of what version of ***R*** you are running, the number of packages you have installed, and what packages you have loaded:
 
 ```{r eval=FALSE}
 version
@@ -378,11 +374,7 @@ packageStatus()
 
 ## Concept Review {.unnumbered}
 
--   Characteristics of ***R*** objects: `class()`, `mode()`, `typeof()`, `str()`, `attributes()`, `dplyr::glimpse()`
--   Using scripts: `source()`
--   ".RData" and ".RHistory" files
--   Updating ***R*** and packages
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Characteristics of ***R*** objects: `class()`, `mode()`, `typeof()`, `str()`, `attributes()`, `dplyr::glimpse()`
+- Using scripts: `source()`
+- ".RData" and ".RHistory" files
+- Updating ***R*** and packages

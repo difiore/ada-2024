@@ -1,19 +1,24 @@
 project:
   type: book
   output-dir: docs
-  
+
+filters:
+  - fold_results.lua
+
 knitr:
   opts_chunk:
-    echo: TRUE
-    warning: TRUE
-    message: TRUE
+    echo: true
+    warning: true
+    message: true
     comment: "##"
-    prompt: FALSE
-    tidy: TRUE
+    prompt: false
+    tidy: true
     tidy.opts:
       width.cutoff: 80
     fig.align: "center"
     fig.path: "output/"
+    R.options:
+      width: 80
 
 book:
   title: "Applied Data Analysis"
@@ -22,7 +27,7 @@ book:
   sidebar:
     align: center
     search: true
-    logo: "img/statistics(1).svg"
+    logo: "img/statistics-hand.svg"
     style: docked
     pinned: false
     background: "light"
@@ -33,6 +38,7 @@ book:
     - part: "Preliminaries"
       chapters:
       - 00-logistics.qmd
+      - 00-structure.qmd
       - 00-course-schedule.qmd
       - 00-typography-and-formatting.qmd
       - 00-programming-style-guide.qmd
@@ -106,6 +112,7 @@ format:
     fontsize: 12pt
     toc-title: "Table of Contents"
     toc-expand: true
+    toc-depth: 3
 
 comments:
   hypothesis: true

@@ -20,71 +20,44 @@ pre code {
   white-space: pre-wrap;
 }
 
-.showopt {
-  background-color: #004c93;
-  color: #FFFFFF;
-  width: 104px;
-  height: 24px;
-  text-align: center;
-  vertical-align: middle;
-  float: right;
-  border: 3px solid #d9edf7;
-  border-radius: 2px;
-  font-size: 13px;
-}
-
-.showopt:hover {
-  background-color: #d9edf7;
-  color: #004c93;
-}
-
-.book .book-summary {
-  width: 330px;
-  position:absolute;
-  top:0;
-  left:-330px;
-}
-
-.book.with-summary .book-header.fixed {
-    left: 330px;
-}
-
-.book.with-summary .book-body {
-    left: 330px;
-}
-
-.book .book-body .page-wrapper .page-inner section.normal code {
-    font-family: Consolas, Menlo, Courier, monospace;
-}
-
-/* Place thin blue border around code blocks & increase font size from 85% to 105%
-.book .book-body .page-wrapper .page-inner section.normal .highlight pre, .book .book-body .page-wrapper .page-inner section.normal pre {
-    background-color: #eeeeee;
-    border: 3px solid #d9edf7;
-    border-radius: 2px;
-    font-size: 105%;
-    line-height: 1.2;
-    overflow: auto;
-    padding: 8px;
-}
-*/
 .sourceCode .cell-code {
     background-color: #eeeeee;
-    border: 3px solid #d9edf7;
-    border-radius: 2px;
+    border: 3px solid #C8E1FF;
+    border-radius: 4px;
     font-size: 105%;
     line-height: 1.2;
     overflow: auto;
     padding: 8px;
 }
 
-.cell-output {
-  background-color: lightblue;
+.cell-output pre {
+  background-color: #C8E1FF;
   border-radius: 4px;
   overflow-x: auto;
   overflow-y: hidden;
+  padding: 8px;
 }
 
 .sidebar-logo {
   max-height: 100px;
 }
+
+ /* unvisited link */
+a:link {
+  color: #81A8D7;
+}
+
+/* visited link */
+a:visited {
+  color: #81A8D7;
+}
+
+/* mouse over link */
+a:hover {
+  color: darkblue;
+}
+
+/* selected link */
+a:active {
+  color: #81A8D7;
+} 

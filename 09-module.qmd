@@ -6,9 +6,9 @@
 
 ## Preliminaries
 
--   GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".csv" version of the "Country-Data-2016" file, then press the "RAW" button, highlight, and copy the text to a text editor and save it locally. Do the same for the "KamilarAndCooperData" file.
--   Install these packages in ***R***: [{skimr}](https://cran.r-project.org/web/packages/skimr/skimr.pdf), [{summarytools}](https://cran.r-project.org/web/packages/summarytools/summarytools.pdf), [{dataMaid}](https://cran.r-project.org/web/packages/dataMaid/dataMaid.pdf), [{psych}](https://cran.r-project.org/web/packages/psych/psych.pdf), [{pastecs}](https://cran.r-project.org/web/packages/pastecs/pastecs.pdf), [{Hmisc}](https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf), [{ggExtra}](https://cran.r-project.org/web/packages/ggExtra/ggExtra.pdf), [{car}](https://cran.r-project.org/web/packages/car/car.pdf), [{GGally}](https://cran.r-project.org/web/packages/GGally/GGally.pdf), [{corrplot}](https://cran.r-project.org/web/packages/corrplot/corrplot.pdf), [{patchwork}](https://cran.r-project.org/web/packages/patchwork/patchwork.pdf), [{cowplot}](https://cran.r-project.org/web/packages/cowplot/cowplot.pdf), and [{gridExtra}](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)
--   Load {curl} and {tidyverse}
+- GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".csv" version of the "Country-Data-2016" file, then press the "RAW" button, highlight, and copy the text to a text editor and save it locally. Do the same for the "KamilarAndCooperData" file.
+- Install these packages in ***R***: [{skimr}](https://cran.r-project.org/web/packages/skimr/skimr.pdf), [{summarytools}](https://cran.r-project.org/web/packages/summarytools/summarytools.pdf), [{dataMaid}](https://cran.r-project.org/web/packages/dataMaid/dataMaid.pdf), [{psych}](https://cran.r-project.org/web/packages/psych/psych.pdf), [{pastecs}](https://cran.r-project.org/web/packages/pastecs/pastecs.pdf), [{Hmisc}](https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf), [{ggExtra}](https://cran.r-project.org/web/packages/ggExtra/ggExtra.pdf), [{car}](https://cran.r-project.org/web/packages/car/car.pdf), [{GGally}](https://cran.r-project.org/web/packages/GGally/GGally.pdf), [{corrplot}](https://cran.r-project.org/web/packages/corrplot/corrplot.pdf), [{patchwork}](https://cran.r-project.org/web/packages/patchwork/patchwork.pdf), [{cowplot}](https://cran.r-project.org/web/packages/cowplot/cowplot.pdf), and [{gridExtra}](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)
+- Load {curl} and {tidyverse}
 
 ```{r include=FALSE}
 library(curl)
@@ -19,11 +19,11 @@ library(tidyverse)
 
 Exploratory data analysis (EDA) is typically the first step in any kind of data analysis in which you examine your dataset, often using visual methods, to summarize the main characteristics of your variables (central tendency, distributions) and check for various issues that may complicate further analysis (e.g., missing data). The influential statistician, John Tukey, wrote a classic book on the subject, ***Exploratory Data Analysis*** (Addison-Wesley) in 1977, in which he advocated the use of the *five-number summary* to quickly understand the distributions of numeric variables. These include:
 
--   the sample minimum (i.e., the value of the smallest observation)
--   the lower or first quartile
--   the median (i.e., the middle value in the distribution of observation)
--   the upper quartile or third quartile
--   the sample maximum (i.e., the value of the largest observation)
+- the sample minimum (i.e., the value of the smallest observation)
+- the lower or first quartile
+- the median (i.e., the middle value in the distribution of observation)
+- the upper quartile or third quartile
+- the sample maximum (i.e., the value of the largest observation)
 
 ***R*** has some very easy to use functions for taking a quick tour of your data. We have seen some of these already (e.g., `head()`, `tail()`, and `str()`), and you should always use these right after loading in a dataset to work with. Also useful are `dim()` to return the number of rows and columns in a data frame, `names()`, `colnames()`, and sometimes `rownames()`.
 
@@ -155,7 +155,7 @@ The `summary()` function from {base} ***R*** provides a quick overview of each v
 
 ### CHALLENGE: {.unnumbered}
 
--   Load the "Country-Data-2016" dataset into a data frame variable, **d**, and summarize the variables in that data frame. You can load the file any way you want, e.g., load from a local file or access the data straight from ***GitHub***, as in the code below.
+- Load the "Country-Data-2016" dataset into a data frame variable, **d**, and summarize the variables in that data frame. You can load the file any way you want, e.g., load from a local file or access the data straight from ***GitHub***, as in the code below.
 
 ```{r}
 # using {base} R
@@ -172,24 +172,23 @@ head(d)
 names(d)
 ```
 
--   What are the median area and population size of all countries in the dataset?
+- What are the median area and population size of all countries in the dataset?
 
 > **HINT:** There are a couple of ways to do this... try `summary()` and `median()` (for the latter, you'll need to use the `na.rm=TRUE` argument).
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 summary(d)
 median(d$area, na.rm=TRUE)
 median(d$population, na.rm=TRUE)
 ```
-:::
 
--   Create a new **density** variable in your data frame which is population / area. What are the 10 most dense countries? The 10 least dense?
+- Create a new **density** variable in your data frame which is population / area. What are the 10 most dense countries? The 10 least dense?
 
 > **HINT:** Check out the `order()` function.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 d$density <- d$population/d$area
 d <- d[order(d$density, decreasing = TRUE),] # or
 d <- d[order(-d$density),]
@@ -197,12 +196,11 @@ d[1:10,]
 d <- d[order(d$density),]
 d[1:10,]
 ```
-:::
 
--   Use subsetting or filtering to extract data from the 20 largest countries into a new variable, **s**. What are the median area and population size of these countries?
+- Use subsetting or filtering to extract data from the 20 largest countries into a new variable, **s**. What are the median area and population size of these countries?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 s <- d[order(-d$population),]
 s <- s[1:20,]
 med_area <- median(s$area, na.rm = TRUE)
@@ -210,38 +208,34 @@ med_area
 med_pop <- median(s$population, na.rm = TRUE)
 med_pop
 ```
-:::
 
--   Extract data from all countries beginning with the letters "A" through "F". What are the mean area and population size of these countries?
+- Extract data from all countries beginning with the letters "A" through "F". What are the mean area and population size of these countries?
 
 > **NOTE:** Single bracket notation subsetting is used here to return the rows of the **d** data frame where the country name (`d$country`) begins with the capital letters "A" through "F". The `grep()` function is a pattern recognition function that uses a **regular expression** to pull out the country names of interest.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 s <- d[grep(pattern = "^[A-F]", d$country),]
 summary(s)
 ```
-:::
 
 Doing the same thing with {dplyr} verbs (see [**Module 10**](#module-10)) is easier...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 s <- filter(d, grepl(pattern = "^[A-F]", country))
 summary(s)
 ```
-:::
 
 > **NOTE:** Here, we use `grepl()` instead of `grep()` because we want to return a logical vector for all of the elements of "country" to `filter()` on the basis of. `grep()` returns a vector of index positions.
 
 Or, instead of `summary()`, we can use `mean()` with the `na.rm=TRUE` argument...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 mean(s$population, na.rm = TRUE)
 mean(s$area, na.rm = TRUE)
 ```
-:::
 
 There are a number of other packages and associated functions we might also use to generate nice summaries of our data.
 
@@ -314,12 +308,12 @@ The `barplot()` function is also useful taking a quick look at crude data, with 
 
 ### CHALLENGE: {.unnumbered}
 
--   Make boxplots, barplots, and dotcharts of the raw population and area data, then `log()` transform the variables and repeat the boxplots.
+- Make boxplots, barplots, and dotcharts of the raw population and area data, then `log()` transform the variables and repeat the boxplots.
 
 > **NOTE:** The `par()` command in the code below lets you set up a grid of panels in which to plot. Here, we set up a 1 row x 2 column grid.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 par(mfrow = c(1, 2))
 d$log_population <- log(d$population)
 d$log_area <- log(d$area)
@@ -333,7 +327,6 @@ dotchart(d$area, xlab = "Area", ylab = "Case")
 boxplot(d$log_population, ylab = "log(Population)")
 boxplot(d$log_area, ylab = "log(Area)")
 ```
-:::
 
 ### Plotting with {ggplot2} {.unnumbered}
 
@@ -406,10 +399,10 @@ The `hist()` function returns a histogram showing the complete empirical distrib
 
 ### CHALLENGE: {.unnumbered}
 
--   Make histograms of the `log()` transformed population and area data from the "Country-Data-2016" file. Explore what happens if you set `freq=FALSE` versus the default of `freq=TRUE`. Try looking at other variables as well.
+- Make histograms of the `log()` transformed population and area data from the "Country-Data-2016" file. Explore what happens if you set `freq=FALSE` versus the default of `freq=TRUE`. Try looking at other variables as well.
 
-::: {.fold .s .o}
 ```{r message=FALSE}
+#| code-fold: true
 par(mfrow = c(1, 2)) # sets up two panels side by side
 attach(d) # lets us use variable names without specifying the data frame!
 hist(
@@ -431,12 +424,11 @@ hist(
   ylim = c(0, 0.2)
 )
 ```
-:::
 
 > **NOTE:** You can add lines to your histograms (e.g., to show the mean value for a variable) using the `abline()` command, with arguments. For example, to show a single *vertical* line representing the mean log(population size), you would add the argument `v=mean(log(area), na.rm=TRUE)`. We need to set `na.rm` to be TRUE otherwise the `mean()` function will not run the way we expect.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 hist(
   log(area),
   freq = FALSE,
@@ -448,7 +440,6 @@ hist(
 )
 abline(v = mean(log(area), na.rm = TRUE))
 ```
-:::
 
 ### Density Plots {.unnumbered}
 
@@ -476,16 +467,15 @@ The `table()` function can be used to summarize counts and proportions for categ
 
 ### CHALLENGE: {.unnumbered}
 
--   Using the `table()` function, find what is the most common form of government in the "Country-Data-2016" dataset. How many countries have that form?
+- Using the `table()` function, find what is the most common form of government in the "Country-Data-2016" dataset. How many countries have that form?
 
 > **HINT:** We can combine `table()` with `sort()` and the argument `decreasing=TRUE` to get the desired answered straight away.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 t <- sort(table(d$govt_form), decreasing=TRUE)
 t
 ```
-:::
 
 Doing the same thing with {dplyr} verbs (see [**Module 10**](#module-10)) provides nicer output...
 
@@ -501,7 +491,7 @@ t
 
 ### Plotting Several Variables {.unnumbered}
 
--   Multiple boxplots or histograms can be laid out side-by-side or overlaid.
+- Multiple boxplots or histograms can be laid out side-by-side or overlaid.
 
 ### CHALLENGE: {.unnumbered}
 
@@ -509,21 +499,20 @@ Read in the dataset "KamilarAndCooperData", which contains a host of summary inf
 
 Spend some time exploring the data on your own and then make boxplots of **log(female body mass) \~ family**. Try doing this with {base} graphics and then look at how we might do in in {ggplot2}, which provides a standard "grammar of graphics" (see the [{ggplot2} documentation](http://docs.ggplot2.org/current/))
 
-::: {.fold .s .o}
 ```{r message=FALSE}
+#| code-fold: true
 f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
 ```
-:::
 
 ```{r message=FALSE}
 library(skimr)
 library(kableExtra)
 ```
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 s <- skim(d) # formats results to a wide table
 # here we make use of the `%>%` operator and {dplyr} verbs... see below
 s %>%
@@ -536,7 +525,6 @@ s %>%
   kable() %>%
   kable_styling(font_size = 10, full_width = FALSE)
 ```
-:::
 
 ```{r message=FALSE}
 detach(package:kableExtra)
@@ -567,15 +555,14 @@ Scatterplots are a natural tool for visualizing two continuous variables and can
 
 ### CHALLENGE: {.unnumbered}
 
--   Again using data from the "KamilarAndCooperData" dataset, plot the relationship between female body size and female brain size. Then, play with log transforming the data and plot again.
+- Again using data from the "KamilarAndCooperData" dataset, plot the relationship between female body size and female brain size. Then, play with log transforming the data and plot again.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 par(mfrow=c(1,2)) # sets up two panels side by side
 plot(x = d$Body_mass_female_mean, y = d$Brain_Size_Female_Mean)
 plot(x = log(d$Body_mass_female_mean), y = log(d$Brain_Size_Female_Mean))
 ```
-:::
 
 The grammar for {ggplot2} is a bit more complicated... see if you can follow it in the example below.
 
@@ -643,17 +630,16 @@ detach(package:car)
 
 ### CHALLENGE: {.unnumbered}
 
--   Build your own bivariate scatterplot of **log(MaxLongevity_m)** by **log(Body_mass_female_mean)** using the "KamilarAndCooperData" dataset.
+- Build your own bivariate scatterplot of **log(MaxLongevity_m)** by **log(Body_mass_female_mean)** using the "KamilarAndCooperData" dataset.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 p <- ggplot(data=d, aes(x=log(Body_mass_female_mean),
   y=log(MaxLongevity_m)))
 p <- p + geom_point(na.rm = TRUE)
 p <- p + geom_smooth(method="lm", na.rm = TRUE)
 p
 ```
-:::
 
 We can also use either the `pairs()` function from {base} ***R***, the `scatterplotMatrix()` function from the {car} package, or the `pairs.panel()` function from the {psych} package to do multiple scatterplots simulaneously. The `ggpairs()` function from the {GGally} package can also be used, but it is slower.
 
@@ -663,8 +649,8 @@ Select the variables **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **Me
 
 > **NOTE:** Here we are using the `select()` function from the {dplyr} package, which we cover in more detail in [**Module 10**](#module-10).
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 s <-
   select(d,
     c(
@@ -681,7 +667,6 @@ pairs(s[,1:ncol(s)]) # or
 pairs(data=s, ~.) # NAs are ignored by default
 # adding argument `upper.panel=NULL` will suppress plots above the diagonal
 ```
-:::
 
 The {car} package function `scatterplotMatrix()` provides a more customizable interface to the `pairs()` function from {base} ***R***. It includes a neat rug plot for each variable.
 
@@ -816,12 +801,8 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Summary statistics: `summary()`, `skim()`
--   Basic plotting: `boxplot()`, `barplot()`, `histogram()`
--   Plotting with {ggplot2}: `ggplot(data = , mapping = aes()) + geom() + theme() + ...`
--   Summarizing by groups: `aggregrate()`
--   Arranging plots with {patchwork}, {cowplot}, and {gridExtra}
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Summary statistics: `summary()`, `skim()`
+- Basic plotting: `boxplot()`, `barplot()`, `histogram()`
+- Plotting with {ggplot2}: `ggplot(data = , mapping = aes()) + geom() + theme() + ...`
+- Summarizing by groups: `aggregrate()`
+- Arranging plots with {patchwork}, {cowplot}, and {gridExtra}

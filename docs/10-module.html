@@ -161,6 +161,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
@@ -935,8 +941,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>And arrange by <em>decreasing</em> average mass dimorphism.</li>
 </ul></li>
 </ul>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">mutate</span>(d, <span class="at">Binomial =</span> <span class="fu">paste</span>(Genus, Species, <span class="at">sep =</span> <span class="st">" "</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Binomial, Family, Body_mass_female_mean, Body_mass_male_mean, Mass_Dimorphism) <span class="sc">%&gt;%</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Family) <span class="sc">%&gt;%</span></span>
@@ -944,6 +951,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">avgBMD =</span> <span class="fu">mean</span>(Mass_Dimorphism, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(avgBMD))</span>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 14 × 4
 ##    Family            avgF   avgM avgBMD
@@ -962,7 +970,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## 12 Cheirogalidae     186.   193.  1.02 
 ## 13 Lepilemuridae     814.   792   0.980
 ## 14 Indriidae        3887.  3638.  0.950</code></pre>
-</div>
 </div>
 </div>
 <p>There are several other, very cool, “special case” pipe operators that are useful in particular situations. These are available from the {magrittr} package. [Actually, the functionality of the forward pipe operator also comes from the {magrittr} package, but it is replicated in {dplyr}.]</p>
@@ -1199,7 +1206,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Joining tables: <code>inner_join()</code>, <code>left_join()</code>, <code>right_join()</code>, <code>full_join()</code></li>
 <li>Using the {tidylog} package</li>
 </ul>
-<script src="src/hide_output.js"></script>
 
 
 </section>

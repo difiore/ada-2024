@@ -164,6 +164,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
@@ -737,9 +743,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>HINT:</strong> There are a couple of ways to do this… try <code>summary()</code> and <code>median()</code> (for the latter, you’ll need to use the <code>na.rm=TRUE</code> argument).</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>##    country            population             area           govt_form        
 ##  Length:248         Min.   :3.000e+01   Min.   :       0   Length:248        
@@ -774,14 +782,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ##  Max.   :301.00   Max.   :340.00   Max.   :1856.00   Max.   :12.0000  
 ##  NA's   :3        NA's   :3        NA's   :3         NA's   :3</code></pre>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(d<span class="sc">$</span>area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 69700</code></pre>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(d<span class="sc">$</span>population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 4911766</code></pre>
-</div>
 </div>
 </div>
 <ul>
@@ -790,12 +803,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>HINT:</strong> Check out the <code>order()</code> function.</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>density <span class="ot">&lt;-</span> d<span class="sc">$</span>population<span class="sc">/</span>d<span class="sc">$</span>area</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d[<span class="fu">order</span>(d<span class="sc">$</span>density, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), ]  <span class="co"># or</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d[<span class="fu">order</span>(<span class="sc">-</span>d<span class="sc">$</span>density), ]</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 10 × 17
 ##    country   population   area govt_form birthrate deathrate life_expect mammals
@@ -814,8 +829,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## #   fishes &lt;dbl&gt;, mollucs &lt;dbl&gt;, other_inverts &lt;dbl&gt;, plants &lt;dbl&gt;,
 ## #   fungi_protists &lt;dbl&gt;, density &lt;dbl&gt;</code></pre>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d[<span class="fu">order</span>(d<span class="sc">$</span>density), ]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>d[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 10 × 17
 ##    country   population   area govt_form birthrate deathrate life_expect mammals
@@ -835,24 +853,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## #   fungi_protists &lt;dbl&gt;, density &lt;dbl&gt;</code></pre>
 </div>
 </div>
-</div>
 <ul>
 <li>Use subsetting or filtering to extract data from the 20 largest countries into a new variable, <strong>s</strong>. What are the median area and population size of these countries?</li>
 </ul>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> d[<span class="fu">order</span>(<span class="sc">-</span>d<span class="sc">$</span>population), ]</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> s[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, ]</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>med_area <span class="ot">&lt;-</span> <span class="fu">median</span>(s<span class="sc">$</span>area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>med_area</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 1052875</code></pre>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>med_pop <span class="ot">&lt;-</span> <span class="fu">median</span>(s<span class="sc">$</span>population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>med_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 124328234</code></pre>
-</div>
 </div>
 </div>
 <ul>
@@ -861,10 +882,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> Single bracket notation subsetting is used here to return the rows of the <strong>d</strong> data frame where the country name (<code>d$country</code>) begins with the capital letters “A” through “F”. The <code>grep()</code> function is a pattern recognition function that uses a <strong>regular expression</strong> to pull out the country names of interest.</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> d[<span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">"^[A-F]"</span>, d<span class="sc">$</span>country), ]</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>##    country            population             area           govt_form        
 ##  Length:78          Min.   :5.960e+02   Min.   :      14   Length:78         
@@ -906,14 +929,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ##  3rd Qu.: 140.7140  
 ##  Max.   :1771.8592  
 ##  NA's   :4</code></pre>
-</div>
 </div>
 </div>
 <p>Doing the same thing with {dplyr} verbs (see <a href="10-module.html"><strong>Module 10</strong></a>) is easier…</p>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, <span class="fu">grepl</span>(<span class="at">pattern =</span> <span class="st">"^[A-F]"</span>, country))</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>##    country            population             area           govt_form        
 ##  Length:78          Min.   :5.960e+02   Min.   :      14   Length:78         
@@ -955,23 +979,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ##  3rd Qu.: 140.7140  
 ##  Max.   :1771.8592  
 ##  NA's   :4</code></pre>
-</div>
 </div>
 </div>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> Here, we use <code>grepl()</code> instead of <code>grep()</code> because we want to return a logical vector for all of the elements of “country” to <code>filter()</code> on the basis of. <code>grep()</code> returns a vector of index positions.</p>
 </blockquote>
 <p>Or, instead of <code>summary()</code>, we can use <code>mean()</code> with the <code>na.rm=TRUE</code> argument…</p>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(s<span class="sc">$</span>population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 35065172</code></pre>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(s<span class="sc">$</span>area, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] 918247.7</code></pre>
-</div>
 </div>
 </div>
 <p>There are a number of other packages and associated functions we might also use to generate nice summaries of our data.</p>
@@ -1210,13 +1237,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> The <code>par()</code> command in the code below lets you set up a grid of panels in which to plot. Here, we set up a 1 row x 2 column grid.</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>log_population <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>population)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>log_area <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>area)</span>
 <span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>population, <span class="at">ylab =</span> <span class="st">"Population"</span>)</span>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>area, <span class="at">ylab =</span> <span class="st">"Area"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1224,8 +1253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(d<span class="sc">$</span>population, <span class="at">xlab =</span> <span class="st">"Case"</span>, <span class="at">ylab =</span> <span class="st">"Population"</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(d<span class="sc">$</span>population, <span class="at">xlab =</span> <span class="st">"Population"</span>, <span class="at">ylab =</span> <span class="st">"Case"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1233,8 +1265,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(d<span class="sc">$</span>area, <span class="at">xlab =</span> <span class="st">"Case"</span>, <span class="at">ylab =</span> <span class="st">"Area"</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(d<span class="sc">$</span>area, <span class="at">xlab =</span> <span class="st">"Area"</span>, <span class="at">ylab =</span> <span class="st">"Case"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1242,14 +1277,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>log_population, <span class="at">ylab =</span> <span class="st">"log(Population)"</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>log_area, <span class="at">ylab =</span> <span class="st">"log(Area)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="output/unnamed-chunk-20-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -1309,14 +1346,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Make histograms of the <code>log()</code> transformed population and area data from the “Country-Data-2016” file. Explore what happens if you set <code>freq=FALSE</code> versus the default of <code>freq=TRUE</code>. Try looking at other variables as well.</li>
 </ul>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))  <span class="co"># sets up two panels side by side</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(d)  <span class="co"># lets us use variable names without specifying the data frame!</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(population), <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">main =</span> <span class="st">"Plot 1"</span>, <span class="at">xlab =</span> <span class="st">"log(population size)"</span>,</span>
 <span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">"density"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>))</span>
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(area), <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">main =</span> <span class="st">"Plot 2"</span>, <span class="at">xlab =</span> <span class="st">"log(area)"</span>, <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
 <span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1325,21 +1364,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> You can add lines to your histograms (e.g., to show the mean value for a variable) using the <code>abline()</code> command, with arguments. For example, to show a single <em>vertical</em> line representing the mean log(population size), you would add the argument <code>v=mean(log(area), na.rm=TRUE)</code>. We need to set <code>na.rm</code> to be TRUE otherwise the <code>mean()</code> function will not run the way we expect.</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(area), <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">main =</span> <span class="st">"Plot 2"</span>, <span class="at">xlab =</span> <span class="st">"log(area)"</span>, <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>))</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">log</span>(area), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="output/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -1375,10 +1414,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>HINT:</strong> We can combine <code>table()</code> with <code>sort()</code> and the argument <code>decreasing=TRUE</code> to get the desired answered straight away.</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(d<span class="sc">$</span>govt_form), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## 
 ##                                republic                 constitutional monarchy 
@@ -1413,7 +1454,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ##                                       1                                       1 
 ##                territory of New Zealand            territory of the Netherlands 
 ##                                       1                                       1</code></pre>
-</div>
 </div>
 </div>
 <p>Doing the same thing with {dplyr} verbs (see <a href="10-module.html"><strong>Module 10</strong></a>) provides nicer output…</p>
@@ -1453,11 +1493,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="unnumbered anchored" data-anchor-id="challenge-4">CHALLENGE:</h3>
 <p>Read in the dataset “KamilarAndCooperData”, which contains a host of summary information about 213 primate species.</p>
 <p>Spend some time exploring the data on your own and then make boxplots of <strong>log(female body mass) ~ family</strong>. Try doing this with {base} graphics and then look at how we might do in in {ggplot2}, which provides a standard “grammar of graphics” (see the <a href="http://docs.ggplot2.org/current/">{ggplot2} documentation</a>)</p>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 6 × 44
 ##   Scientific_Name             Family        Genus Species Brain_Size_Species_M…¹
@@ -1477,13 +1519,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## #   WeaningAge_d &lt;dbl&gt;, MaxLongevity_m &lt;dbl&gt;, LitterSz &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
-</div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">skim</span>(d)  <span class="co"># formats results to a wide table</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="co"># here we make use of the `%&gt;%` operator and {dplyr} verbs... see below</span></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span></span>
@@ -1495,6 +1537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># drop p25 and p75 for purposes of display</span></span>
 <span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
@@ -1806,7 +1849,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
-</div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>kableExtra)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1848,17 +1890,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Again using data from the “KamilarAndCooperData” dataset, plot the relationship between female body size and female brain size. Then, play with log transforming the data and plot again.</li>
 </ul>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))  <span class="co"># sets up two panels side by side</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> d<span class="sc">$</span>Body_mass_female_mean, <span class="at">y =</span> d<span class="sc">$</span>Brain_Size_Female_Mean)</span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">log</span>(d<span class="sc">$</span>Body_mass_female_mean), <span class="at">y =</span> <span class="fu">log</span>(d<span class="sc">$</span>Brain_Size_Female_Mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="output/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -1960,12 +2003,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Build your own bivariate scatterplot of <strong>log(MaxLongevity_m)</strong> by <strong>log(Body_mass_female_mean)</strong> using the “KamilarAndCooperData” dataset.</li>
 </ul>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(Body_mass_female_mean), <span class="at">y =</span> <span class="fu">log</span>(MaxLongevity_m)))</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
@@ -1977,7 +2022,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
 <p>We can also use either the <code>pairs()</code> function from {base} <strong><em>R</em></strong>, the <code>scatterplotMatrix()</code> function from the {car} package, or the <code>pairs.panel()</code> function from the {psych} package to do multiple scatterplots simulaneously. The <code>ggpairs()</code> function from the {GGally} package can also be used, but it is slower.</p>
 </section>
 <section id="challenge-7" class="level3 unnumbered">
@@ -1986,12 +2030,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> Here we are using the <code>select()</code> function from the {dplyr} package, which we cover in more detail in <a href="10-module.html"><strong>Module 10</strong></a>.</p>
 </blockquote>
-<div class="fold s o">
 <div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">select</span>(d, <span class="fu">c</span>(<span class="st">"Brain_Size_Female_Mean"</span>, <span class="st">"Body_mass_female_mean"</span>, <span class="st">"MeanGroupSize"</span>,</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"WeaningAge_d"</span>, <span class="st">"MaxLongevity_m"</span>, <span class="st">"HomeRange_km2"</span>, <span class="st">"DayLength_km"</span>))</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(s[, <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(s)])  <span class="co"># or</span></span>
 <span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="at">data =</span> s, <span class="sc">~</span>.)  <span class="co"># NAs are ignored by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1999,8 +2045,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adding argument `upper.panel=NULL` will suppress plots above the diagonal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</details>
 </div>
 <p>The {car} package function <code>scatterplotMatrix()</code> provides a more customizable interface to the <code>pairs()</code> function from {base} <strong><em>R</em></strong>. It includes a neat rug plot for each variable.</p>
 <div class="cell" data-layout-align="center">
@@ -2184,7 +2232,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Summarizing by groups: <code>aggregrate()</code></li>
 <li>Arranging plots with {patchwork}, {cowplot}, and {gridExtra}</li>
 </ul>
-<script src="src/hide_output.js"></script>
 
 
 </section>

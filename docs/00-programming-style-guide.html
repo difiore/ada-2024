@@ -161,6 +161,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./00-course-schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Schedule</span></a>
   </div>
@@ -376,8 +382,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Even though the syntax is valid, do not abbreviate <code>TRUE</code> and <code>FALSE</code> to <code>T</code> and <code>F</code></p></li>
 <li><p>Generally avoid using the forward assignment operator <code>-&gt;</code> except at the end of a sequence of piped operations:</p>
 <ul>
-<li><code>df &lt;- df %&gt;% filter(age &gt; 50) %&gt;% select(name, age, sex, body_weight)</code></li>
-<li><code>df %&gt;% filter(age &gt; 50) %&gt;% select(name, age, sex, body_weight) -&gt; df</code></li>
+<li><code>df &lt;- df %&gt;% select(name, age, sex, body_weight)</code></li>
+<li><code>df |&gt; select(name, age, sex, body_weight) -&gt; df</code></li>
 </ul></li>
 <li><p>Use a space after a comma when listing the arguments of a function:</p>
 <ul>
@@ -392,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Use simple, single characters for temporary variables, like indices:</p>
 <ul>
 <li><code>x &lt;- 1:10</code></li>
-<li><code>for (i in 1:100){print(i)}</code></li>
+<li><code>for (i in 1:100) {print(i)}</code></li>
 </ul></li>
 <li><p>Whenever possible, use short, descriptive names for variables:</p>
 <ul>
@@ -402,8 +408,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>For longer, multi-word variable, function, or argument names, use either <em>camelCase</em> or <em>snake_case</em>:</p>
 <ul>
 <li><code>interestRate &lt;- 0.45</code></li>
-<li><code>say_hi &lt;- function(x){print(paste0("Hello, ",x))}</code></li>
-<li><code>print_n_rows &lt;- function(x, n_rows=10){print(x[n_rows,])}</code></li>
+<li><code>say_hello &lt;- function(x) {print(paste0("Hello, ",x))}</code></li>
+<li><code>print_n_rows &lt;- function(x, n_rows=10) {print(x[n_rows,])}</code></li>
 </ul></li>
 <li><p>Include <em>default</em> values in your function definitions:</p>
 <ul>
@@ -421,34 +427,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="code-formatting-conventions">Code Formatting Conventions</h2>
 <ul>
 <li><p>Try to keep lines of code to less than 80 characters</p></li>
-<li><p>Use comments liberally to make notes about what you code does</p>
+<li><p>Use comments liberally to make notes about what your code does</p>
 <ul>
-<li><p><strong><em>R</em></strong> ignores lines starting with the hashtag character (<code>#</code>) as well as text after this character (until it encounters a line break)</p>
+<li><strong><em>R</em></strong> ignores lines starting with the hashtag character (<code>#</code>) as well as text after this character (until it encounters a line break)</li>
+</ul></li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assign `g`, the constant for gravitational acceleration</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fl">9.80665</span>  <span class="co"># units are m/s^2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p>Use a single <code>#</code> to introduce a comment, and separate comments from code with a single empty line before the comment:</p>
+</div>
+<ul>
+<li>Use a single <code>#</code> to introduce a comment, and separate comments from code with a single empty line before the comment</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Now add 2 to x...</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p>In <strong><em>RStudio</em></strong>, use four dashes <code>----</code> at the end of a comment line to indicate a section… this should allow for code folding in your scripts:</p>
+</div>
+<ul>
+<li>In <strong><em>RStudio</em></strong>, use four dashes <code>----</code> at the end of a comment line to indicate a section… this should allow for code folding in your scripts:</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Section 1 ----</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x <span class="sc">+</span> y<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul></li>
-</ul>
+</div>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> In <strong><em>RStudio</em></strong>, you can highlight several lines and then use <code>⌘-SHIFT-C</code> to comment/uncomment multiple lines simultaneously.</p>
 </blockquote>
 <ul>
-<li><p>Use indentation to identify (nested) blocks of code</p>
+<li><p>Use indentation to identify (nested) blocks of code:</p>
 <ul>
 <li>Use spaces rather than the invisible tab (<code>\t</code>) character for indentation</li>
 <li>Use consistent indentation (e.g., 2 spaces, 4 spaces) to keep your code looking neat</li>
@@ -464,10 +474,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li>Use a <em>linter</em> (see under the “Addins” section of the <strong><em>RStudio</em></strong> toolbar) to catch common style “errors”</li>
+<li>Use a <em>linter</em> (see the “Addins” section under the <strong><em>Tools</em></strong> menu or in the <strong><em>RStudio</em></strong> toolbar) to catch common style “errors”</li>
 </ul>
 <blockquote class="blockquote">
-<p><strong>NOTE:</strong> In <strong><em>RStudio</em></strong>, you can use <code>⌘-SHIFT-A</code> within in an <strong><em>R</em></strong> code block to try to neatly and consistently reformat your code. Also, when working in the text editor in <strong><em>RStudio</em></strong>, holding the option (<code>⌥</code>) key while selecting with the cursor allows you to highlight/edit replace text in multiple rows simultaneously.</p>
+<p><strong>NOTE:</strong> In <strong><em>RStudio</em></strong>, you can use highlight a chunk of code within an <strong><em>R</em></strong> code block and then use <code>⌘-SHIFT-A</code> to try to neatly and consistently reformat your code. Also, when working in the text editor in <strong><em>RStudio</em></strong>, holding the option (<code>⌥</code>) key while selecting with the cursor allows you to highlight/edit replace text in multiple rows simultaneously.</p>
 </blockquote>
 </section>
 <section id="version-control-system" class="level2 unnumbered">

@@ -6,18 +6,18 @@
 
 ## Preliminaries
 
--   GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".txt" version of "Country-Data-2016", then press the "Edit" button (the pencil icon), highlight all of the text in the editor window, copy it to a text editor of your choice (you can use ***RStudio*** to create a new text file!) and save it locally. Do the same for the ".csv" version.
+- GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".txt" version of "Country-Data-2016", then press the "Edit" button (the pencil icon), highlight all of the text in the editor window, copy it to a text editor of your choice (you can use ***RStudio*** to create a new text file!) and save it locally. Do the same for the ".csv" version.
 
 This data set consists of basic statistics (area, current population size, birth rate, death rate, life expectancy, and form of government) for 249 countries taken from [WorldData.info](https://www.worlddata.info) that I have combined with data from the International Union for the Conservation of Nature (IUCN)'s [Red List Summary Statistics](http://www.iucnredlist.org/about/summary-statistics) about the number of threatened animal species by country.
 
--   From the same page, select the ".xlsx" version of "CPDS-1960-2014-reduced", then press "DOWNLOAD" and save it locally. Also download these data in ".txt" and ".csv" formats using the procedure described above.
+- From the same page, select the ".xlsx" version of "CPDS-1960-2014-reduced", then press "DOWNLOAD" and save it locally. Also download these data in ".txt" and ".csv" formats using the procedure described above.
 
 This is a version of the **Comparative Political Data Set (CPDS)**, which is "a collection of political and institutional country-level data provided by Prof. Dr. Klaus Armingeon and collaborators at the University of Berne. It consists of annual data for 36 democratic countries for the period of 1960 to 2014 or since their transition to democracy" (Armingeon et al. 2016). The full dataset consists of 300 variables, which I have pared down to a smaller set of economical and population size variables.
 
 > **CITATION:** Armingeon K, Isler C, Knöpfel L, Weisstanner D, and Engler S. 2016. Comparative Political Data Set 1960-2014. Bern: Institute of Political Science, University of Berne.
 
--   Install these packages in ***R***: [{readxl}](https://cran.r-project.org/web/packages/readxl/readxl.pdf), [{XLConnect}](https://cran.r-project.org/web/packages/XLConnect/XLConnect.pdf), [{gdata}](https://cran.r-project.org/web/packages/gdata/gdata.pdf), [{xlsx}](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf), [{curl}](https://cran.r-project.org/web/packages/curl/curl.pdf), [{rdrop2}](https://cran.r-project.org/web/packages/rdrop2/rdrop2.pdf), [{repmis}](https://cran.r-project.org/web/packages/repmis/repmis.pdf), [{googlesheets4}](https://cran.r-project.org/web/packages/googlesheets4/googlesheets4.pdf), and [{googledrive}](https://cran.r-project.org/web/packages/googledrive/googledrive.pdf)
--   Load {tidyverse}
+- Install these packages in ***R***: [{readxl}](https://cran.r-project.org/web/packages/readxl/readxl.pdf), [{XLConnect}](https://cran.r-project.org/web/packages/XLConnect/XLConnect.pdf), [{gdata}](https://cran.r-project.org/web/packages/gdata/gdata.pdf), [{xlsx}](https://cran.r-project.org/web/packages/xlsx/xlsx.pdf), [{curl}](https://cran.r-project.org/web/packages/curl/curl.pdf), [{rdrop2}](https://cran.r-project.org/web/packages/rdrop2/rdrop2.pdf), [{repmis}](https://cran.r-project.org/web/packages/repmis/repmis.pdf), [{googlesheets4}](https://cran.r-project.org/web/packages/googlesheets4/googlesheets4.pdf), and [{googledrive}](https://cran.r-project.org/web/packages/googledrive/googledrive.pdf)
+- Load {tidyverse}
 
 > **NOTE:** Some of these packages (e.g., {XLConnect}, {xlsx}) require that your computer has a Java Runtime Environment (JRE) installed. A JRE is a bundle of software contaiing an interpreter and compiler for **Java** code, which is used to implement some of the functionality in the package. If your computer does not already have a JRE installed, you will need to also install one before being able to use these packages.
 
@@ -31,17 +31,17 @@ So far, we have seen how to create a variety of data structures by hand (e.g., u
 
 Plain text files are, arguably, the very best way to store data (and scripts and other documents) as they are a standard format that has been around longer than most operating systems and are unlikely to change anytime soon. Some of the benefits of using text files are listed below:
 
--   Plain text does not have a version and does not age.
--   Plain text files are platform and software agnostic.
--   Plain text files can be opened by a wide variety of programs.
--   Plain text can easily be copied and pasted into a wide range of software.
--   Plain text files tend to be smaller and quicker to open then proprietary formats.
--   Plain text files are easy to transmit over the web.
--   Many mature and efficient software tools exist for indexing, parsing, searching, and modifying text.
--   The content of plain text files looks the same on any system.
--   Various flavors of **Markdown** can be used for styling plain text files, if needed.
--   Plain text remains itself outside of the digital context.
--   **CAVEAT:** With text, we do have to think about the sometimes gnarly issue of text encoding. See [this article](http://kunststube.net/encoding/) or [this pdf](cheatsheet/encodings.pdf) for a nice overview of the issues.
+- Plain text does not have a version and does not age.
+- Plain text files are platform and software agnostic.
+- Plain text files can be opened by a wide variety of programs.
+- Plain text can easily be copied and pasted into a wide range of software.
+- Plain text files tend to be smaller and quicker to open then proprietary formats.
+- Plain text files are easy to transmit over the web.
+- Many mature and efficient software tools exist for indexing, parsing, searching, and modifying text.
+- The content of plain text files looks the same on any system.
+- Various flavors of **Markdown** can be used for styling plain text files, if needed.
+- Plain text remains itself outside of the digital context.
+- **CAVEAT:** With text, we do have to think about the sometimes gnarly issue of text encoding. See [this article](http://kunststube.net/encoding/) or [this pdf](cheatsheet/encodings.pdf) for a nice overview of the issues.
 
 > **TL/DR**: Work with UTF-8 encoding whenever you can!
 
@@ -475,7 +475,7 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   There are **lots and lots** of ways to get data into ***R*** from a variety of sources!
--   The `file.choose()` command will allow you to browse the directory structure on your local machine
--   The {readr} and {readxl} packages contain probably the most useful functions for reading in most types of delimited data (".csv", ".txt", ".tsv", ".xlsx")
--   We can read in or download data from remote sites on the web with {curl} or specific packages designed to work with particular hosting sites (e.g., ***GitHub***, ***Dropbox***, ***Box***, ***Google Sheets***, ***Google Drive***)
+- There are **lots and lots** of ways to get data into ***R*** from a variety of sources!
+- The `file.choose()` command will allow you to browse the directory structure on your local machine
+- The {readr} and {readxl} packages contain probably the most useful functions for reading in most types of delimited data (".csv", ".txt", ".tsv", ".xlsx")
+- We can read in or download data from remote sites on the web with {curl} or specific packages designed to work with particular hosting sites (e.g., ***GitHub***, ***Dropbox***, ***Box***, ***Google Sheets***, ***Google Drive***)

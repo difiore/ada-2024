@@ -2,112 +2,119 @@
 
 To the extent possible, I have tried to follow the following typographic and formatting conventions throughout the course modules.
 
--   Program names are written in ***bold italics***:
+- Program names are written in ***bold italics***:
 
-    -   ***R***
-    -   ***RStudio***
+    - ***R***
+    - ***RStudio***
 
--   Functions, commands, and ***R*** code are written as `inline code`, e.g., `x <- 5`, or in code blocks:
+- Functions, commands, and ***R*** code are written as `inline code`, e.g., `x <- 5`, or in code blocks:
 
-    ```{r eval = FALSE}
-    x <- 5
-    print(x)
-    ```
+```{r eval = FALSE}
+x <- 5
+print(x)
+```
 
--   Package names are written in {curly braces}:
+- Code output appears in a colored cell, prefaced by "##":
 
-    -   {tidyverse}
-    -   {lubridate}
+```{r echo= FALSE, eval = TRUE}
+x <- 5
+print(x)
+```
 
--   Variable names (for vectors, data frames and other tabular data, etc.) are written in **bold**:
+- Package names are written in {curly braces}:
 
-    -   **x**
-    -   **y**
-    -   **airline_flights**
+    - {tidyverse}
+    - {lubridate}
 
--   Column names within a data frame are written in **bold**, whether referred to separately or as part of the table:
+- Variable names (for vectors, data frames and other tabular data, etc.) are written in **bold**:
 
-    -   **origin**
-    -   **destination**
-    -   **airline_flights$origin**
-    -   **airline_flights[["destination"]]**
+    - **x**
+    - **y**
+    - **airline_flights**
 
--   Filenames and file types are written in "quotation marks":
+- Column names within a data frame are also written in **bold**, whether referred to separately or as part of the table:
 
-    -   "myData.R"
-    -   ".csv"
+    - **origin**
+    - **destination**
+    - **airline_flights\$origin**
+    - **airline_flights\[\["destination"\]\]**
 
--   Full file path names are written in "quotation marks":
+- Filenames and file types are written in "quotation marks":
 
-    -   "/Users/Tony/Desktop/myData.R"
-    -   "~/Desktop/myData.R"
-    -   "C:\Documents and Settings\Anthony Di Fiore\Desktop\myData.R"
+    - "myData.R"
+    - ".csv"
 
--   Directory names are written as `inline code` followed by a slash:
+- Full file path names are written in "quotation marks":
 
-    -   `img/`, `src/`
+    - "/Users/Tony/Desktop/myData.R"
+    - "\~/Desktop/myData.R"
+    - "C:\\Documents and Settings\\Anthony Di Fiore\\Desktop\\myData.R"
 
--   Important concepts are written in *italics* when first referred to:
+- Directory names are written as `inline code` followed by a slash:
 
-    -   *working directory*
-    -   *environment*
-    -   *namespace*
+    - `img/`, `src/`
 
--   Menu names and menu commands are written in **bold**:
+- Important concepts are written in *italics* when first referred to:
 
-    -   **File > New File > R Script**
+    - *working directory*
+    - *environment*
+    - *namespace*
 
--   Argument values or values to be replaced are written in lowercase text between \<angle brackets\>, where that entire text, brackets included, should be replaced with the text being asked for:
+- Menu names and menu commands are written in **bold**:
 
-    -   `setwd("<your working directory>")`
-    -   "<your file name>.csv"
+    - **File \> New File \> R Script**
 
--   Constants are written in italics:
+- Argument values or values to be replaced are written in lowercase text between \<angle brackets\>, where that entire text, brackets included, should be replaced with the text being asked for:
 
-    -   *pi*
+    - `setwd("<your working directory>")`
+    - "\<your file name\>.csv"
 
--   Argument names and assignments are written as inline code:
+- Constants are written in italics:
 
-    -   Set `na.rm=TRUE`
-    -   Set `data=df`
-    -   Set `filename="~/Users/Tony/Desktop/output.csv"`
+    - *pi*
 
--   Names of ***RStudio*** panes are written in **bold**:
+- Argument names and assignments are written as inline code:
 
-    -   **Console**
-    -   **Environment/History**
+    - Set `na.rm=TRUE`
+    - Set `data=df`
+    - Set `filename="~/Users/Tony/Desktop/output.csv"`
 
--   Names of ***RStudio*** tabs within panes are written in *italics*:
+- Names of ***RStudio*** panes are written in **bold**:
 
-    -   *History*
-    -   *Plots*
-    -   *Help*
-    -   *Git*
+    - **Console**
+    - **Environment/History**
 
--   Names of dialog boxes are written in *italics*:
+- Names of ***RStudio*** tabs within panes are written in *italics*:
 
-    -   *Global Options*
+    - *History*
+    - *Plots*
+    - *Help*
+    - *Git*
 
--   Button names and sections within dialog boxes are written in quotation marks:
+- Names of dialog boxes are written in *italics*:
 
-    -   "OK"
-    -   "Cancel"
+    - *Global Options*
 
--   Check box names within dialog boxes are written in `inline code`:
+- Button names and sections within dialog boxes are written in quotation marks:
 
-    -   `Restore .RData into workspace at startup`
+    - "OK"
+    - "Cancel"
 
--   ***R*** object class names are written in **bold**:
+- Check box names within dialog boxes are written in `inline code`:
 
-    -   **numeric**
-    -   **function**
+    - `Restore .RData into workspace at startup`
 
--   ***git*** repository branch names are written as `inline code`:
+- ***R*** object class names are written in **bold**:
 
-    -   `main`
-    -   `origin/main`
+    - **numeric**
+    - **function**
 
--   Full URLs/links are written in `inline code`:
+- ***git*** repository branch names are written as `inline code`:
 
-    -   `https://cran.r-project.org/`
-    -   `https://difiore.github.io/ada-2022/`
+    - `main`
+    - `origin/main`
+
+- Full URLs/links are written in `inline code` and may include hyperlinks:
+
+    - [`https://cran.r-project.org/`](https://cran.r-project.org/)
+    - [`https://difiore.github.io/ada-2024/`](https://difiore.github.io/ada-2024/)

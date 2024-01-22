@@ -6,8 +6,8 @@
 
 ## Preliminaries
 
--   Install this package in ***R***: [{sjmisc}](https://cran.r-project.org/web/packages/sjmisc/sjmisc.pdf)
--   Load {tidyverse}
+- Install this package in ***R***: [{sjmisc}](https://cran.r-project.org/web/packages/sjmisc/sjmisc.pdf)
+- Load {tidyverse}
 
 ```{r include=FALSE}
 library(tidyverse)
@@ -148,22 +148,22 @@ all(i <= 10)
 
 The following relational operators are often used in conditional expressions:
 
--   less than, greater than: `<`, `>`
--   less than or equal to, greater than or equal to: `<=`, `>=`
--   equal to: `==` **NOTE:** This uses a double equal sign!
--   not equal to: `!=`
+- less than, greater than: `<`, `>`
+- less than or equal to, greater than or equal to: `<=`, `>=`
+- equal to: `==` **NOTE:** This uses a double equal sign!
+- not equal to: `!=`
 
 ## Logical and Other Operators
 
 The following additional operators are also useful and important:
 
--   `!`: logical **NOT** Note that this operator can be applied to values *and* to functions
--   `&`: element-wise logical **AND** (applies to element in a vector)
--   `&&`: logical **AND** (applies to single conditions or first element in vector)
--   `|`: element-wise logical **OR** (applies to element in a vector)
--   `||`: logical **OR** (applies to single conditions or first element in vector)
--   `%in%`: tests for membership **in** a vector
--   the {sjmisc} package adds a "not in" operator to test for membership in a vector: `%nin%`
+- `!`: logical **NOT** Note that this operator can be applied to values *and* to functions
+- `&`: element-wise logical **AND** (applies to element in a vector)
+- `&&`: logical **AND** (applies to single conditions or first element in vector)
+- `|`: element-wise logical **OR** (applies to element in a vector)
+- `||`: logical **OR** (applies to single conditions or first element in vector)
+- `%in%`: tests for membership **in** a vector
+- the {sjmisc} package adds a "not in" operator to test for membership in a vector: `%nin%`
 
 Examples:
 
@@ -351,11 +351,7 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Functions: arguments, default values, and "dot-dot-dot" (`...`)
--   Conditional expressions: `if... else...`, `ifelse()`, `if_else()`, `case_when()`
--   Iterating with loops: `for()` loops, `while()` loops
--   Functionals for vectorizing data manipulations: `apply()` and `map()` families of function
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Functions: arguments, default values, and "dot-dot-dot" (`...`)
+- Conditional expressions: `if... else...`, `ifelse()`, `if_else()`, `case_when()`
+- Iterating with loops: `for()` loops, `while()` loops
+- Functionals for vectorizing data manipulations: `apply()` and `map()` families of function

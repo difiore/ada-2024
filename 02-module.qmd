@@ -8,13 +8,13 @@
 
 Apart from the GUIs included in the MacOS and Windows installations of ***R***, there are several IDEs that connect to the ***R*** interpreter and provide lots of convenient functionality. One of the most versatile and easy to use (and my favorite) is ***RStudio***.
 
--   Download and install the [***RStudio***](https://www.rstudio.com/) Integrated Development Environment (IDE)
+- Download and install the [***RStudio***](https://www.rstudio.com/) Integrated Development Environment (IDE)
 
 ```{r echo=FALSE, out.width="80%"}
 knitr::include_graphics("img/install-RStudio.png")
 ```
 
--   Open the ***RStudio*** program
+- Open the ***RStudio*** program
 
 The workspace that you see is divided into four separate panes (**Source** and **Console** panes on the left, two customizable panes on the right). You can modify the layout and appearance of the ***RStudio*** IDE to suit your taste by selecting **Preferences** from the **RStudio** menu (MacOS) or by selecting **Global Options** from the **Tools** menu (both MacOS and Windows).
 
@@ -86,5 +86,5 @@ knitr::include_graphics("img/git-svn.png")
 
 ## Concept Review {.unnumbered}
 
--   Installing, navigating and customizing the ***RStudio*** IDE
--   Running ***R*** and ***RStudio*** through a browser using ***RStudio Cloud***
+- Installing, navigating and customizing the ***RStudio*** IDE
+- Running ***R*** and ***RStudio*** through a browser using ***RStudio Cloud***

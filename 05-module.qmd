@@ -6,7 +6,7 @@
 
 ## Preliminaries
 
--   Install this package in ***R***: [{usethis}](https://cran.r-project.org/web/packages/usethis/usethis.pdf)
+- Install this package in ***R***: [{usethis}](https://cran.r-project.org/web/packages/usethis/usethis.pdf)
 
 ## Version Control Systems
 
@@ -22,7 +22,7 @@ You can also *branch* a repository - basically, make a duplicate copy of it - an
 
 One of the most popular and frequently used VCSs is ***git***.
 
--   Download and install [**git**](https://git-scm.com/) for your operating system. This will put the appropriate software on your machine.
+- Download and install [**git**](https://git-scm.com/) for your operating system. This will put the appropriate software on your machine.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/install-git.png")
@@ -34,8 +34,8 @@ Note that ***git*** is simply a bit of software running on your own computer tha
 
 Let us now check if you have installed correctly...
 
--   In ***RStudio***, go to the **Tools** menu and select **Terminal \> New Terminal**. In the terminal window, type, `which git`. On MacOS you should see something like: `/usr/bin/git` or `/usr/local/bin/git`, which is the path to your ***git*** executable file. On Windows, you should see something like: `/cmd/git`
--   In the same terminal, type `git --version` to see which version of ***git*** you are running. You should see something like `git version 2.35.0`.
+- In ***RStudio***, go to the **Tools** menu and select **Terminal \> New Terminal**. In the terminal window, type, `which git`. On MacOS you should see something like: `/usr/bin/git` or `/usr/local/bin/git`, which is the path to your ***git*** executable file. On Windows, you should see something like: `/cmd/git`
+- In the same terminal, type `git --version` to see which version of ***git*** you are running. You should see something like `git version 2.35.0`.
 
 Running the `git --version` command or the command `git config` on MacOS may also prompt you to install a set of developer command line tools... this is okay (and good!) to accept. Doing so will install the **Xcode Command Line Tools**. You can also install these using the command `xcode-select --install`.
 
@@ -45,7 +45,7 @@ Running the `git --version` command or the command `git config` on MacOS may als
 
 The ***git*** software we just installed is strictly a command-line tool and is a bit difficult to pick up from scratch. However, the remote repository hosting service ***GitHub*** provides an easy to use web-based graphical interface for repository management and version control. ***GitHub*** offers the distributed version control and source code management functionality of ***git*** plus some additional features. We will get introduced to the main features of ***git*** by using ***GitHub***.
 
--   Go to [**GitHub.com**](https://github.com/), choose `Sign up for GitHub ` and create your own account. You will be asked to provide an username and email address and to select a password.
+- Go to [**GitHub.com**](https://github.com/), choose `Sign up for GitHub ` and create your own account. You will be asked to provide an username and email address and to select a password.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/github.png")
@@ -190,18 +190,18 @@ The information above was pulled from the [authentication](https://docs.github.c
 
 Now, we will begin demonstrating how a VCS works by first setting up and working with a remote repository (colloquially, a "repo") hosted on ***GitHub***. You can do this either by following the instructions laid out in the ["Hello World"](https://guides.github.com/activities/hello-world/) ***GitHub*** guide or as below:
 
--   Sign in to ***GitHub*** in a web browser, navigate to the "Repositories" tab on your user dashboard, and press the green "NEW" button.
+- Sign in to ***GitHub*** in a web browser, navigate to the "Repositories" tab on your user dashboard, and press the green "NEW" button.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/create-new-repo.png")
 ```
 
--   Enter a name for your repository (e.g., "test-repo"). By default, the repository will be designated as a "public" one. You can create "private" repositories, too, but this typically requires paying a hosting fee.
+- Enter a name for your repository (e.g., "test-repo"). By default, the repository will be designated as a "public" one. You can create "private" repositories, too, but this typically requires paying a hosting fee.
 
 > **NOTE:** Do not include spaces in your repository name!
 
--   It is also a good idea to click the "Add a README file" checkbox under "Initialize this repository with:"  so that your repository includes at least one file in it. A README file serves as a nice, introductory landing page for your repo. By creating at least one file in your repo, you will also set a default *branch*, named "main", for 
--   When you are done, click the large green "Create repository" button.
+- It is also a good idea to click the "Add a README file" checkbox under "Initialize this repository with:"  so that your repository includes at least one file in it. A README file serves as a nice, introductory landing page for your repo. By creating at least one file in your repo, you will also set a default *branch*, named "main", for 
+- When you are done, click the large green "Create repository" button.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/create-test-repo.png")
@@ -211,13 +211,13 @@ Congratulations! You've just set up your first **GitHub** hosted repository!
 
 ### Changes and Commits {.unnumbered}
 
--   As a first step to working with version control, let's make some edits to the remote "README" file in your repository using the browser-based [**Markdown**](https://en.wikipedia.org/wiki/Markdown) editor included in ***GitHub***. Clicking the pencil icon at the top right of the "README" file will bring up the editor...
+- As a first step to working with version control, let's make some edits to the remote "README" file in your repository using the browser-based [**Markdown**](https://en.wikipedia.org/wiki/Markdown) editor included in ***GitHub***. Clicking the pencil icon at the top right of the "README" file will bring up the editor...
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/readme-edit.png")
 ```
 
--   You can then type in edits, using [**Markdown**](https://en.wikipedia.org/wiki/Markdown) styling.
+- You can then type in edits, using [**Markdown**](https://en.wikipedia.org/wiki/Markdown) styling.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/readme-markdown-editor.png")
@@ -225,7 +225,7 @@ knitr::include_graphics("img/readme-markdown-editor.png")
 
 > **NOTE:** **Markdown** is essentially a set of rules for how to easily style plain text files in such a way that can be easily converted and rendered in HTML, the structural language of the web. This module, for example, was written in ***RStudio*** using a particular version of **Markdown**. ***GitHub*** has a nice, short tutorial that you can follow about ["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/). There is also a nice ***GitHub*** guide on ["Documenting your Projects on GitHub"](https://guides.github.com/features/wikis/) that provides a useful overview of the benefits of good documentation.
 
--   When you are done editing, **commit** the changes to your remote "README" file by scrolling to the bottom of the editor window and clicking the "Commit Changes" button. Note that every commit you make to a repository must have some sort of brief, descriptive message associated with it. Here, ***GitHub*** has populated the message field with default text ("Update README.md"), but you can change this and, optionally, add a fuller message as well.
+- When you are done editing, **commit** the changes to your remote "README" file by scrolling to the bottom of the editor window and clicking the "Commit Changes" button. Note that every commit you make to a repository must have some sort of brief, descriptive message associated with it. Here, ***GitHub*** has populated the message field with default text ("Update README.md"), but you can change this and, optionally, add a fuller message as well.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/readme-commit-changes.png")
@@ -237,13 +237,13 @@ So far, all of the changes you have made have been to the `main` branch of your 
 
 Here, we are going to create a new branch of our repository, edit a file in that new branch, and then merge the changes back into the `main` branch.
 
--   Create a new *branch* of your repository (e.g., "readme-edits") by opening the "branch" popdown menu, typing a new branch name, and then clicking on the "Create branch:" text. This will switch you over to the new branch.
+- Create a new *branch* of your repository (e.g., "readme-edits") by opening the "branch" popdown menu, typing a new branch name, and then clicking on the "Create branch:" text. This will switch you over to the new branch.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/new-branch.png")
 ```
 
--   Using the same procedure as above, make some edits to the "README" file on your new branch and then commit those changes. E.g., add a new section to you Markdown file...
+- Using the same procedure as above, make some edits to the "README" file on your new branch and then commit those changes. E.g., add a new section to you Markdown file...
 
 To merge changes from the new branch back into the `main` branch, we now need to [1] compare changes between branches, [2] create what is called a "pull request", and [3] pull in changes. Along the way, if there are any differences between the two branches that cannot be merged without conflicts (e.g., the same section of a particular file has been modified in both branches), then these will be highlighted and a merge prevented until the conflict is resolved.
 
@@ -317,9 +317,9 @@ It is *very* easy to do this process through the ***RStudio*** IDE, as we will s
 
 There are two ways to connect between remote and local ***git*** repositories, via either **HTTPS** ("hypertext transfer protocol") or **SSH** (secure shell). Our first steps will use the first of these approaches and will create a local "cloned" copy of a remote repository we have hosted on ***GitHub***.
 
--   Open a terminal shell. You can either do this directly from your operating system or you can access a shell from within ***RStudio*** by choosing **Tools \> Terminal \> New Terminal** or **Tools \> Shell...**. Again, the former command opens a new terminal within the ***RStudio*** IDE, while the latter opens an external terminal window.
--   Using the UNIX and DOS shell command `cd` (for "change directories"), navigate into the folder that you want your cloned repository to be created in. I typically create new repos in a dedicated folder called `Repos/` that I use for development work, which I keep in my main user folder on MacOS (e.g., "\~/Development/Repos").
--   Now open a web browser, go to the landing page for your repository on **GitHub.com**, click the green button that says "Code", then select the "HTTPS" tab and copy the web URL that shows up in the text box by clicking on the tiny clipboard icon.
+- Open a terminal shell. You can either do this directly from your operating system or you can access a shell from within ***RStudio*** by choosing **Tools \> Terminal \> New Terminal** or **Tools \> Shell...**. Again, the former command opens a new terminal within the ***RStudio*** IDE, while the latter opens an external terminal window.
+- Using the UNIX and DOS shell command `cd` (for "change directories"), navigate into the folder that you want your cloned repository to be created in. I typically create new repos in a dedicated folder called `Repos/` that I use for development work, which I keep in my main user folder on MacOS (e.g., "\~/Development/Repos").
+- Now open a web browser, go to the landing page for your repository on **GitHub.com**, click the green button that says "Code", then select the "HTTPS" tab and copy the web URL that shows up in the text box by clicking on the tiny clipboard icon.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/clone-with-https.png")
@@ -331,7 +331,7 @@ The web URL should include your ***GitHub*** username and the name of your the r
 
 e.g., `https://github.com/difiore/test-repo.git`
 
--   Return to the terminal window in ***RStudio*** or to the external shell prompt and type: `git clone` followed by the copied URL, e.g., `git clone https://github.com/difiore/test-repo.git`
+- Return to the terminal window in ***RStudio*** or to the external shell prompt and type: `git clone` followed by the copied URL, e.g., `git clone https://github.com/difiore/test-repo.git`
 
 > **NOTE**: Here, you may be asked for your **GitHub** username and password... if so, enter you "personal access token" instead of the password.
 
@@ -351,10 +351,10 @@ Resolving deltas: 100% (1/1), done.
 
 If you then navigate into the newly created local directory using the `cd` command, you can list and look at the cloned files. To do so, at the shell prompt type...
 
--   `cd test-repo` (to change into the correct directory)
--   `ls -a` (to list all the files in the directory)
--   `head README.md` (shows the first few lines of the file "README.md")
--   `git remote show origin` (shows information about the remote repository, including the branch that "push" and "fetch" commands will be applied to and which branch is being tracked locally)
+- `cd test-repo` (to change into the correct directory)
+- `ls -a` (to list all the files in the directory)
+- `head README.md` (shows the first few lines of the file "README.md")
+- `git remote show origin` (shows information about the remote repository, including the branch that "push" and "fetch" commands will be applied to and which branch is being tracked locally)
 
 The output should look something like:
 
@@ -449,15 +449,15 @@ knitr::include_graphics("img/commits-history.png")
 
 Similarly, we can make edits to files in a remote repository on ***GitHub*** using the service's web-based **Markdown** editor and then then "pull" those down to our local repository.
 
--   In your web browser, navigate to the page for your repository (e.g., "test-repo") and again click on the pencil icon at the top right of the "README" file in a remote repository to bring up the editor.
+- In your web browser, navigate to the page for your repository (e.g., "test-repo") and again click on the pencil icon at the top right of the "README" file in a remote repository to bring up the editor.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/readme-edit-again.png")
 ```
 
--   Add some new text to the file and then scroll to the bottom of the page and "commit" your changes - remember that you need to enter a commit message in the text box (or accept the default "Update README.md" that is auto-filled).
+- Add some new text to the file and then scroll to the bottom of the page and "commit" your changes - remember that you need to enter a commit message in the text box (or accept the default "Update README.md" that is auto-filled).
 
--   Return to the shell prompt inside the local directory for your repository and enter the command `git pull`. You should see something like the following, indicating that the `main` branch of the local repository has been "fast-forwarded" to the state of the remote `main` branch that is being tracked:
+- Return to the shell prompt inside the local directory for your repository and enter the command `git pull`. You should see something like the following, indicating that the `main` branch of the local repository has been "fast-forwarded" to the state of the remote `main` branch that is being tracked:
 
 ```
 [14:30:05] ~/Development/Repos/test-repo$ git pull
@@ -491,15 +491,15 @@ Already up to date.
 
 ***RStudio*** includes functionality to make it very straightforward to use various system shells with projects under version control. This includes:
 
--   You can use the **Tools \> Terminal \> New Terminal** and **Tools \> Shell...** commands to open a new terminal within ***RStudio*** or a new system shell window with the working directory already initialized to your project's root directory.
--   When using ***git*** on Windows, these command by default should open the **Git Bash** shell, which is a port of the Unix bash shell to Windows that has been specially configured for use with ***MSYS Git***. Note that you can disable this behavior and use the standard Windows command prompt instead choosing using **Tools \> Global Options** and selecting an alternative terminal in the *Terminal* section).
+- You can use the **Tools \> Terminal \> New Terminal** and **Tools \> Shell...** commands to open a new terminal within ***RStudio*** or a new system shell window with the working directory already initialized to your project's root directory.
+- When using ***git*** on Windows, these command by default should open the **Git Bash** shell, which is a port of the Unix bash shell to Windows that has been specially configured for use with ***MSYS Git***. Note that you can disable this behavior and use the standard Windows command prompt instead choosing using **Tools \> Global Options** and selecting an alternative terminal in the *Terminal* section).
 
 ### Using SSH instead of HTTPS {.unnumbered}
 
 Remote repositories under version control can be accessed using a variety of internet file transfer protocols, including **HTTPS** (the protocol used above) and **SSH** ("secure shell"), a different file transfer protocol that does not require sending a user name and email address for authentication with every information transfer request. Typically, the authentication for an **SSH** connection is done using what are know as public/private `RSA` key pairs. This type of authentication requires two steps:
 
--   Generating a public/private key pair
--   Providing the public key to the hosting provider (e.g., ***GitHub*** or another service)
+- Generating a public/private key pair
+- Providing the public key to the hosting provider (e.g., ***GitHub*** or another service)
 
 While Linux and Mac OSX both include **SSH** as part of the base system, Windows does not. As a result the standard Windows distribution of ***git*** (***MSYS Git***, referenced above) also includes an SSH client.
 
@@ -554,13 +554,13 @@ You should now be set up to use **SSH** in lieu of **HTTPS** URLs for cloning re
 
 The process is essentially the same as we used above for cloning via HTTPS.
 
--   Open a web browser, go to your repository on **GitHub.com**, click the green button that says "Clone or download" (but now choose "Clone with SSH"), and copy the URL that shows up in the text box.
+- Open a web browser, go to your repository on **GitHub.com**, click the green button that says "Clone or download" (but now choose "Clone with SSH"), and copy the URL that shows up in the text box.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/clone-with-ssh.png")
 ```
 
--   Go to a shell prompt, `cd` to the directory that you want the repository to be downloaded into, and type: `git clone` followed by the copied SSH URL, e.g., `git clone git@github.com:<your user name>/<your repository name>.git`
+- Go to a shell prompt, `cd` to the directory that you want the repository to be downloaded into, and type: `git clone` followed by the copied SSH URL, e.g., `git clone git@github.com:<your user name>/<your repository name>.git`
 
 The output should look something like:
 
@@ -616,13 +616,13 @@ Sometimes, getting ***git*** set up and working properly on Windows machines can
 
 [1] When you install ***git*** and you are going through the installation dialog boxes, you can keep the defaults on all of them - just be sure to confirm that...
 
--   In the box about "Adjusting your PATH environment" you check the radio button to say "Git from the command line and also from 3rd party software"
+- In the box about "Adjusting your PATH environment" you check the radio button to say "Git from the command line and also from 3rd party software"
 
 ```{r echo=FALSE, out.width="75%"}
 knitr::include_graphics("img/git4.png")
 ```
 
--   In the box about "Configuring the terminal editor to use with Git Bash" you check the radio box that says "Use MinTTY (the default terminal of MSYS2)"
+- In the box about "Configuring the terminal editor to use with Git Bash" you check the radio box that says "Use MinTTY (the default terminal of MSYS2)"
 
 ```{r echo=FALSE, out.width="75%"}
 knitr::include_graphics("img/git7.png")
@@ -708,10 +708,10 @@ knitr::include_graphics("img/select-terminal.png")
 
 Choose **Tools \> Shell...** or **Tools \> Terminal \> New Terminal" and confirm that you are opening in the** *Git Bash*\*\* shell. This should be the case if you have done step 4 above. The command prompt will read something like...
 
--   In green: `YOUR.USERNAME@YOUR.COMPUTER NAME`
--   In purple: `MSYS` (the default name for the MinTTY ***Git Bash*** shell)
--   In orange: The name of the directory/repository you are currently in (i.e., your current working directory)
--   The typical **bash** command prompt: `$`
+- In green: `YOUR.USERNAME@YOUR.COMPUTER NAME`
+- In purple: `MSYS` (the default name for the MinTTY ***Git Bash*** shell)
+- In orange: The name of the directory/repository you are currently in (i.e., your current working directory)
+- The typical **bash** command prompt: `$`
 
 ```{r echo=FALSE, out.width="75%"}
 knitr::include_graphics("img/msys-git.png")
@@ -769,10 +769,10 @@ Voíla!!! You should now be ready to go! Try creating a new file in your project
 
 ## Concept Review {.unnumbered}
 
--   Setting up ***git***
--   Setting up ***GitHub***
--   Working in the Terminal/Shell
--   Cloning a remote repository
--   ***git*** basics
-    -   Staging and committing changes to a repository
-    -   Pushing to and pulling from a remote repository
+- Setting up ***git***
+- Setting up ***GitHub***
+- Working in the Terminal/Shell
+- Cloning a remote repository
+- ***git*** basics
+    - Staging and committing changes to a repository
+    - Pushing to and pulling from a remote repository

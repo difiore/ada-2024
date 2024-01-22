@@ -6,10 +6,10 @@
 
 ## Preliminaries
 
--   Install (but do not load yet) this package in ***R***: [{tidylog}](https://cran.r-project.org/web/packages/tidylog/tidylog.pdf)
--   Install and load this package: [{magrittr}](https://cran.r-project.org/web/packages/magrittr/magrittr.pdf)
--   Load {tidyverse}
--   Load in the KamilarAndCooper dataset we used in [**Module 09**](#module-09) as a "tibble" named **d**
+- Install (but do not load yet) this package in ***R***: [{tidylog}](https://cran.r-project.org/web/packages/tidylog/tidylog.pdf)
+- Install and load this package: [{magrittr}](https://cran.r-project.org/web/packages/magrittr/magrittr.pdf)
+- Load {tidyverse}
+- Load in the KamilarAndCooper dataset we used in [**Module 09**](#module-09) as a "tibble" named **d**
 
 ```{r include=FALSE}
 library(tidyverse)
@@ -193,12 +193,12 @@ s
 
 ## Other Useful {dplyr} Functions
 
--   `ungroup()` - clears group metadata from a table put in place `group_by()`
--   `bind_rows()` and `bind_cols()` - adds rows and columns, respectively, to a dataframe or tibble; when binding rows, if the column names do not match, the column will still be added and missing values filled with `NA`; when binding columns, the number of rows in each dataframe needs to be the same
--   `pull()` - pulls a single variable out of a dataframe as a vector
--   `sample_n()` - randomly samples a set of "size=" rows from a dataframe with ("replace=TRUE") or without ("replace=FALSE") replacement; this function is being superceded in favor of `slice_sample()`, where an additional argument (`n=` or `prop=`) allows you to specify the number or proportion of rows, respectively, to sample randomly
--   `drop_na()` - drops rows from a dataframe that have `NA` values for any variable names passed as arguments to the function
--   `rowwise()` - allows you to explicitly perform functions on a data frame on a row-at-a-time basis, which is useful if a vectorized function does not exit
+- `ungroup()` - clears group metadata from a table put in place `group_by()`
+- `bind_rows()` and `bind_cols()` - adds rows and columns, respectively, to a dataframe or tibble; when binding rows, if the column names do not match, the column will still be added and missing values filled with `NA`; when binding columns, the number of rows in each dataframe needs to be the same
+- `pull()` - pulls a single variable out of a dataframe as a vector
+- `sample_n()` - randomly samples a set of "size=" rows from a dataframe with ("replace=TRUE") or without ("replace=FALSE") replacement; this function is being superceded in favor of `slice_sample()`, where an additional argument (`n=` or `prop=`) allows you to specify the number or proportion of rows, respectively, to sample randomly
+- `drop_na()` - drops rows from a dataframe that have `NA` values for any variable names passed as arguments to the function
+- `rowwise()` - allows you to explicitly perform functions on a data frame on a row-at-a-time basis, which is useful if a vectorized function does not exit
 
 A full list of {dplyr} functions and their descriptions is available [here](https://dplyr.tidyverse.org/reference/index.html).
 
@@ -263,9 +263,9 @@ inner_join(table1, table2, by="Taxon")
 
 While an inner join keeps only observations that appear in both tables, different flavors of *outer joins* keep observations that appear in at least one of the tables. There are three types of outer joins:
 
--   A *left join* returns all rows from the left-hand table, **x**, and all columns from **x** and **y**. Rows in **x** with no match in **y** will have `NA` values in the new columns from the **y** table. If there are multiple matches between **x** and \***y**, all combinations of the matches are returned.
--   A *right join* returns all rows from the right-hand table, **y**, and all columns from **x** and **y**. Rows in **y** with no match in **x** will have `NA` values in the new columns from the **x** table. If there are multiple matches between **x** and **y**, all combinations of the matches are returned.
--   A *full join* returns all rows and all columns in both the left-hand (**x**) and right-hand (**y**) tables, joining them where there are matches. Where there are not matching values, the join returns `NA` for the columns from table where they are missing.
+- A *left join* returns all rows from the left-hand table, **x**, and all columns from **x** and **y**. Rows in **x** with no match in **y** will have `NA` values in the new columns from the **y** table. If there are multiple matches between **x** and \***y**, all combinations of the matches are returned.
+- A *right join* returns all rows from the right-hand table, **y**, and all columns from **x** and **y**. Rows in **y** with no match in **x** will have `NA` values in the new columns from the **x** table. If there are multiple matches between **x** and **y**, all combinations of the matches are returned.
+- A *full join* returns all rows and all columns in both the left-hand (**x**) and right-hand (**y**) tables, joining them where there are matches. Where there are not matching values, the join returns `NA` for the columns from table where they are missing.
 
 The following figure shows a schematic representation of these various types of outer joins:
 
@@ -293,8 +293,8 @@ full_join(table1, table2, by="Taxon")
 
 There are also two additional join types that may be sometimes be useful... note that these joins only return columns from the left-hand table, **x**.
 
--   A *semi_join* returns rows from the left-hand table, **x**, where there are matching values in **y**, but keeping just the columns from **x**. A *semi_join* differs from an *inner_join* because an *inner_join* will return a row of *x* for every matching row of **y** (so some **x** rows can be duplicated), whereas a *semi_join* will never duplicate rows of **x**.
--   An *anti_join* returns all rows from the left-hand table,**x** where there are not matching values in **y**, keeping just the columns from **x**.
+- A *semi_join* returns rows from the left-hand table, **x**, where there are matching values in **y**, but keeping just the columns from **x**. A *semi_join* differs from an *inner_join* because an *inner_join* will return a row of *x* for every matching row of **y** (so some **x** rows can be duplicated), whereas a *semi_join* will never duplicate rows of **x**.
+- An *anti_join* returns all rows from the left-hand table,**x** where there are not matching values in **y**, keeping just the columns from **x**.
 
 ```{r}
 semi_join(table1, table2, by="Taxon")
@@ -330,16 +330,16 @@ The forward pipe is useful because it allows us to write and follow code from le
 
 ### CHALLENGE: {.unnumbered}
 
--   In **one line of code**, do the following:
+- In **one line of code**, do the following:
 
-    -   Add a variable, **Binomial** to our data frame **d**, which is a concatenation of the **Genus** and **Species**...
-    -   Trim the data frame to only include the variables **Binomial**, **Family**, **Body_mass_female_mean**, **Body_mass_male_mean** and **Mass_Dimorphism**...
-    -   Group these variables by **Family**...
-    -   Calculate the average value for female body mass, male body mass, and mass dimorphism (remember, you will need to specify `na.rm = TRUE`...)
-    -   And arrange by *decreasing* average mass dimorphism.
+    - Add a variable, **Binomial** to our data frame **d**, which is a concatenation of the **Genus** and **Species**...
+    - Trim the data frame to only include the variables **Binomial**, **Family**, **Body_mass_female_mean**, **Body_mass_male_mean** and **Mass_Dimorphism**...
+    - Group these variables by **Family**...
+    - Calculate the average value for female body mass, male body mass, and mass dimorphism (remember, you will need to specify `na.rm = TRUE`...)
+    - And arrange by *decreasing* average mass dimorphism.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 s <- mutate(d, Binomial = paste(Genus, Species, sep = " ")) %>%
   select(Binomial,
          Family,
@@ -355,11 +355,10 @@ s <- mutate(d, Binomial = paste(Genus, Species, sep = " ")) %>%
   arrange(desc(avgBMD))
 s
 ```
-:::
 
 There are several other, very cool, "special case" pipe operators that are useful in particular situations. These are available from the {magrittr} package. [Actually, the functionality of the forward pipe operator also comes from the {magrittr} package, but it is replicated in {dplyr}.]
 
--   The "tee" pipe (`%T>%`) allows you to pipe the outcome of a process into a new expression (just like the forward pipe operator does) *and* to simultaneously return the original value instead of the forward-piped result to an intermediate expression. This is useful, for example, for printing out or plotting intermediate results. In the example below, we filter our data frame for just observations of the genus *Alouatta*, print those to the screen as an intermediate side effect, and pass the filtered data to the `summarise()` function.
+- The "tee" pipe (`%T>%`) allows you to pipe the outcome of a process into a new expression (just like the forward pipe operator does) *and* to simultaneously return the original value instead of the forward-piped result to an intermediate expression. This is useful, for example, for printing out or plotting intermediate results. In the example below, we filter our data frame for just observations of the genus *Alouatta*, print those to the screen as an intermediate side effect, and pass the filtered data to the `summarise()` function.
 
 ```{r}
 s <- filter(d, Genus == "Alouatta") %T>% print() %>%
@@ -367,7 +366,7 @@ s <- filter(d, Genus == "Alouatta") %T>% print() %>%
 s
 ```
 
--   The "assignment" pipe (`%<>%`) evaluates the expression on the right-hand side of the pipe operator and reassigns the resultant value to the left-hand side.
+- The "assignment" pipe (`%<>%`) evaluates the expression on the right-hand side of the pipe operator and reassigns the resultant value to the left-hand side.
 
 ```{r}
 s <- filter(d, Genus == "Alouatta")
@@ -375,7 +374,7 @@ s %<>% select(Genus, Species)
 s
 ```
 
--   Finally, the "exposition" pipe (`%$%`) exposes the names *within* the object on the left-hand side of the pipe to the right-hand side expression.
+- Finally, the "exposition" pipe (`%$%`) exposes the names *within* the object on the left-hand side of the pipe to the right-hand side expression.
 
 ```{r}
 s <- filter(d, Genus == "Alouatta") %$% paste0(Genus, " ", Species)
@@ -458,11 +457,7 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Using {dplyr}: `select()`, `filter()`, `arrange()`, `rename()`, `mutate()`, `summarise()`, `group_by()`
--   Chaining and piping with `%>%` and other pipe operators
--   Joining tables: `inner_join()`, `left_join()`, `right_join()`, `full_join()`
--   Using the {tidylog} package
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Using {dplyr}: `select()`, `filter()`, `arrange()`, `rename()`, `mutate()`, `summarise()`, `group_by()`
+- Chaining and piping with `%>%` and other pipe operators
+- Joining tables: `inner_join()`, `left_join()`, `right_join()`, `full_join()`
+- Using the {tidylog} package

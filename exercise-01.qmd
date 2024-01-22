@@ -3,9 +3,9 @@
 
 ## Learning Objectives {.unnumbered}
 
--   Installing and loading/attaching packages
--   Introducing functions and arguments
--   Introducing the pipe (`%>%` or `|>`) operator
+- Installing and loading/attaching packages
+- Introducing functions and arguments
+- Introducing the pipe (`%>%` or `|>`) operator
 
 ## Preliminary Steps {.unnumbered}
 

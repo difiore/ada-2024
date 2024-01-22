@@ -78,13 +78,13 @@ You will need to specify a repository name (with no spaces), whether it is a pub
 knitr::include_graphics("img/new-project-version-control.png")
 ```
 
--   Choose the top item, "Clone a project from a Git repository"...
+- Choose the top item, "Clone a project from a Git repository"...
 
 ```{r echo=FALSE, out.width="60%"}
 knitr::include_graphics("img/new-project-from-git.png")
 ```
 
--   In the subsequent dialog box, paste in the "Repository URL:" you copied in **Step 1**.
+- In the subsequent dialog box, paste in the "Repository URL:" you copied in **Step 1**.
 
 You can choose what parent folder to clone the repository into using the "Create project as a subdirectory of:" field (e.g., `~/Development/Repos`). In most cases, the "Project directory name:" field will be filled in automatically, as the name of the remote repository you are cloning.
 
@@ -118,13 +118,13 @@ Here, grabbing the URL from the "Quick setup" section and using that to set up a
 
 #### **Method 2**: Creating a new ***RStudio*** project in a new directory {.unnumbered}
 
--   In ***RStudio***, select **File \> New project** and click `New Directory`.
+- In ***RStudio***, select **File \> New project** and click `New Directory`.
 
 ```{r echo=FALSE, out.width="60%"}
 knitr::include_graphics("img/new-project-new-directory.png")
 ```
 
--   Choose the project type as "New Project", then name the directory and choose where you would like it to be stored, checking the box marked `Create a git repository`, and pressing "Create Project".
+- Choose the project type as "New Project", then name the directory and choose where you would like it to be stored, checking the box marked `Create a git repository`, and pressing "Create Project".
 
 ```{r echo=FALSE, out.width="60%"}
 knitr::include_graphics("img/new-project-type.png")
@@ -134,7 +134,7 @@ knitr::include_graphics("img/new-project-type.png")
 knitr::include_graphics("img/new-project-create-new.png")
 ```
 
--   ***RStudio*** will create a new directory for you with an ".Rproj" file (with the name of your project) and a ".gitignore" file inside of it. This directory is now being tracked by ***git*** and ***RStudio***. You can now create and edit files in this new directory and stage and commit them locally directly from ***RStudio***. See the section below on ["Modifying Files Locally"](#modifying-local-files) in ***RStudio***.
+- ***RStudio*** will create a new directory for you with an ".Rproj" file (with the name of your project) and a ".gitignore" file inside of it. This directory is now being tracked by ***git*** and ***RStudio***. You can now create and edit files in this new directory and stage and commit them locally directly from ***RStudio***. See the section below on ["Modifying Files Locally"](#modifying-local-files) in ***RStudio***.
 
 > **NOTE:** It is important to remember that this project is still only under *local version control*... you will not yet be able to push changes up to ***GitHub***. To do that, see the section below on ["Connecting a Local Repo to ***GitHub***"](#connect-local-repo-to-github).
 
@@ -142,14 +142,14 @@ knitr::include_graphics("img/new-project-create-new.png")
 
 If you have an existing directory on your local computer that is already under ***git*** version control, then you can simply create a new ***RStudio*** project for that directory, and version control features will be automatically enabled. To do this:
 
--   Execute the **New Project** command (from the **File** menu)
--   Choose to create a new project from an `Existing Directory`
+- Execute the **New Project** command (from the **File** menu)
+- Choose to create a new project from an `Existing Directory`
 
 ```{r echo=FALSE, out.width="60%"}
 knitr::include_graphics("img/new-project-existing-directory.png")
 ```
 
--   Select the appropriate directory and then click **Create Project**
+- Select the appropriate directory and then click **Create Project**
 
 New ".Rproj" and ".gitignore" files will be created inside of that directory, and ***RStudio***'s version control features will then be available for that directory. Now, you can edit files currently in the directory or create new ones, as well as stage and commit them to the local repository directly from ***RStudio***. See the section below on ["Modifying Files Locally"](#modifying-local-files) in ***RStudio***.
 
@@ -175,28 +175,28 @@ To create a new remote repository on ***GitHub*** into which you can push the co
 
 - Configure a ***GitHub*** Personal Access Token (PAT):
 
-  -   Login to your ***GitHub*** account and go to the *Settings* tab. Then select `Developer Settings` and then `Personal Access Tokens`.
-  -   Select `Generate new token` and give it a nickname that reminds you of the intended purpose (e.g., "Access GitHub from RStudio").
-  -   Pick a *scope* that confers the privileges you need, e.g., `repo`, and then press the green "Generate Token" button.
-  -   The PAT will be displayed. It is a string of 40 random letters and digits. Copy this string to the clipboard.
-  -   Enter the PAT in your ".Renviron" file as a line that looks like this: `GITHUB_PAT=YOUR_TOKEN`.
-  -   The ".Renviron" file is a hidden file located in home directory that can be used to set some default parameters for new ***R*** sessions. You can load and edit this with a function from the {usethis} package. At a console prompt, type `usethis::edit_r_environ()`. Your ".Renviron" file should open up in the ***RStudio*** editor. Add your the `GITHUB_PAT=YOUR_TOKEN` line as above, save and close the file. Be sure to put a line break at the end!
-  -   Restart R (**Session \> Restart R** in the ***RStudio*** menu bar), as environment variables are loaded from ".Renviron" only at the start of an ***R*** session. Check that the PAT is now available: `Sys.getenv("GITHUB_PAT")`. You should see your PAT print to screen.
+  - Login to your ***GitHub*** account and go to the *Settings* tab. Then select `Developer Settings` and then `Personal Access Tokens`.
+  - Select `Generate new token` and give it a nickname that reminds you of the intended purpose (e.g., "Access GitHub from RStudio").
+  - Pick a *scope* that confers the privileges you need, e.g., `repo`, and then press the green "Generate Token" button.
+  - The PAT will be displayed. It is a string of 40 random letters and digits. Copy this string to the clipboard.
+  - Enter the PAT in your ".Renviron" file as a line that looks like this: `GITHUB_PAT=YOUR_TOKEN`.
+  - The ".Renviron" file is a hidden file located in home directory that can be used to set some default parameters for new ***R*** sessions. You can load and edit this with a function from the {usethis} package. At a console prompt, type `usethis::edit_r_environ()`. Your ".Renviron" file should open up in the ***RStudio*** editor. Add your the `GITHUB_PAT=YOUR_TOKEN` line as above, save and close the file. Be sure to put a line break at the end!
+  - Restart R (**Session \> Restart R** in the ***RStudio*** menu bar), as environment variables are loaded from ".Renviron" only at the start of an ***R*** session. Check that the PAT is now available: `Sys.getenv("GITHUB_PAT")`. You should see your PAT print to screen.
 
 ##### Step 2 {.unnumbered}
 
 - Create a remote repository on ***GitHub*** and push a local repository to it: 
 
-  -   Open the ***RStudio*** project that you want to create a remote repository for. This project needs to be under version control already and include at least one commit.
-  -   At the ***R*** console prompt within the project's working directory, type `usethis::use_github(protocol="https")`
-  -   Answer the question about whether the suggested name for the remote repository is adequate.
-  -   This should create a new repository on ***GitHub***, add it as a remote `origin/main`, set up a tracking branch, and open it in your browser.
+  - Open the ***RStudio*** project that you want to create a remote repository for. This project needs to be under version control already and include at least one commit.
+  - At the ***R*** console prompt within the project's working directory, type `usethis::use_github(protocol="https")`
+  - Answer the question about whether the suggested name for the remote repository is adequate.
+  - This should create a new repository on ***GitHub***, add it as a remote `origin/main`, set up a tracking branch, and open it in your browser.
 
 From within ***RStudio***, you can now add or edit files to the project, locally commit any changes you make to those files, and push them up to ***GitHub*** as described above.
 
 #### **Option 2**: Set up a dummy remote repository on ***GitHub*** and push to it from within ***RStudio*** {.unnumbered}
 
--   Go to the ***GitHub*** website and create a new, empty repository. You can use the same name as that of the ***RStudio*** project you want to push up, or you can create a different one.
+- Go to the ***GitHub*** website and create a new, empty repository. You can use the same name as that of the ***RStudio*** project you want to push up, or you can create a different one.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/create-test-repo-2.png")
@@ -204,19 +204,19 @@ knitr::include_graphics("img/create-test-repo-2.png")
 
 > **NOTE:** In setting up the repository on ***GitHub***, you should choose **not** to initialize the remote repository you are going to be pushing to with either a "README" or ".gitignore" file!
 
--   From the *Git* tab in ***RStudio***, select the **New Branch** icon.
+- From the *Git* tab in ***RStudio***, select the **New Branch** icon.
 
 ```{r echo=FALSE, out.width="60%"}
 knitr::include_graphics("img/new-remote-branch.png")
 ```
 
--   Click "Add remote", paste in the URL for your dummy remote repository in the text field, and type in "origin" for the name of the remote branch.
--   Click "Add". We should be back in the "New Branch" dialog box. Enter `main` as the branch name (to push from the local `main` branch to a remote `main`), and make sure "Sync branch with remote" button is checked.
--   Click "Create" and in the next dialog box, choose "Overwrite". This should push your local repository `main` branch up to the remote `main` branch.
+- Click "Add remote", paste in the URL for your dummy remote repository in the text field, and type in "origin" for the name of the remote branch.
+- Click "Add". We should be back in the "New Branch" dialog box. Enter `main` as the branch name (to push from the local `main` branch to a remote `main`), and make sure "Sync branch with remote" button is checked.
+- Click "Create" and in the next dialog box, choose "Overwrite". This should push your local repository `main` branch up to the remote `main` branch.
 
 #### **Option 3**: Set up a dummy remote repository on ***GitHub*** and push to it from a terminal shell {.unnumbered}
 
--   As in **Option 2**, go to the ***GitHub*** website and create a new, empty repository. You can use the same name as that of the ***RStudio*** project you want to push up, or you can create a different one.
+- As in **Option 2**, go to the ***GitHub*** website and create a new, empty repository. You can use the same name as that of the ***RStudio*** project you want to push up, or you can create a different one.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/create-test-repo-2.png")
@@ -224,14 +224,14 @@ knitr::include_graphics("img/create-test-repo-2.png")
 
 > **NOTE:** Here, again, you should choose **not** to initialize the remote repository you are going to be pushing to with either a "README" or ".gitignore" file!
 
--   From the next screen, select the desired transfer protocol you want to use under the `Quick setup...` option at the top (HTTPS or SSH). Then, scroll down to the option: `...or push an existing repository from the command line`.
+- From the next screen, select the desired transfer protocol you want to use under the `Quick setup...` option at the top (HTTPS or SSH). Then, scroll down to the option: `...or push an existing repository from the command line`.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/setup-test-repo.png")
 ```
 
--   Copy the lines of code listed there and then return to ***RStudio***.
--   In ***RStudio***, open the project that you want to push to ***GitHub*** and click **Tools \> Terminal \> New Terminal** or **Tools \> Shell...** to open a terminal window. Alternatively, open a separate terminal window and navigate to the root of the directory of the repository you wish to push.
+- Copy the lines of code listed there and then return to ***RStudio***.
+- In ***RStudio***, open the project that you want to push to ***GitHub*** and click **Tools \> Terminal \> New Terminal** or **Tools \> Shell...** to open a terminal window. Alternatively, open a separate terminal window and navigate to the root of the directory of the repository you wish to push.
 
 > **NOTE:** It is important that your run these commands from within the directory that you wish to push to ***GitHub*** before running these lines of code! When you open a new terminal or shell from within ***RStudio***, you **should** be in the correct directory as those processes open the shell in the current working directory. If not, use shell commands (i.e., `cd`) to navigate into the correct directory.
 
@@ -255,8 +255,8 @@ Most of the time, the installation and setup instructions provided in [**Module 
 
 Chapter 13 and 14 of the web book [*Happy Git and GitHub R*](https://happygitwithr.com) offer a number of suggestions for how to troubleshoot these problems, but some things to check are:
 
--   Is ***git*** installed correctly? An easy way to test this is to oenter `git` in a terminal shell. If you get a complaint about ***git*** not being found, it means either installation was unsuccessful or that the path to the ***git*** program is not on your `PATH` in your shell profile. Try reinstalling ***git*** and then either logging out of your computer and logging in again or restarting.
--   Is the proper path to ***git*** set in ***RStudio***? In***RStudio***, go to **Tools\>Global Options** and select the "Git/SVN" tab and make sure that the box "Git executable" points to the executably file for your ***git*** installation. On macOS and Linux operating systems, the path usually is "/usr/bin/git" (on MacOS or Linux) and on Windows operating systems it is usually "C:\\Program Files\\Git\\bin\\git.exe". Sometimes, ***git*** will be installed in a slightly different place, most commonly (on MacOS) in "/usr/local/bin/git", in which case you will need to change the path in the dialog box. To find the correct path, type `which git` in a terminal shell and then enter that in the ""Git executable" box.
+- Is ***git*** installed correctly? An easy way to test this is to oenter `git` in a terminal shell. If you get a complaint about ***git*** not being found, it means either installation was unsuccessful or that the path to the ***git*** program is not on your `PATH` in your shell profile. Try reinstalling ***git*** and then either logging out of your computer and logging in again or restarting.
+- Is the proper path to ***git*** set in ***RStudio***? In***RStudio***, go to **Tools\>Global Options** and select the "Git/SVN" tab and make sure that the box "Git executable" points to the executably file for your ***git*** installation. On macOS and Linux operating systems, the path usually is "/usr/bin/git" (on MacOS or Linux) and on Windows operating systems it is usually "C:\\Program Files\\Git\\bin\\git.exe". Sometimes, ***git*** will be installed in a slightly different place, most commonly (on MacOS) in "/usr/local/bin/git", in which case you will need to change the path in the dialog box. To find the correct path, type `which git` in a terminal shell and then enter that in the ""Git executable" box.
 
 > **NOTE:** If you make any changes, e.g., if you reinstall ***git***, you will likely need to open a new shell window (so that your updated `PATH` gets read and your computer can find ***git***). You may also need to also either log out of your commputer and log in again or restart your computer. If you make changes in the ***RStudio*** IDE, e.g., if you change the path to your ***git*** executable via the **Tools\>Global Options\>Git/SVN** tab, you will need to completely **RESTART** ***RStudio***, and you may need to also log out and back in or restart your computer.
 
@@ -272,20 +272,20 @@ Within ***RStudio***, click on the "README.md" file to open it in the text edito
 
 We can now commit these changes to the local repository and push them up to ***GitHub*** as follows:
 
--   Click the *Git* tab in upper right pane.
--   Check the `Staged` box next to the "README.md" file, which will get the file ready to commit to your local repository. If you have not already done so, you should also stage the ".gitignore" and ".Rproj" files.
+- Click the *Git* tab in upper right pane.
+- Check the `Staged` box next to the "README.md" file, which will get the file ready to commit to your local repository. If you have not already done so, you should also stage the ".gitignore" and ".Rproj" files.
 
 > **NOTE:** The ".gitignore" file that was created when you activated version control is basically a list of files that you want ***git*** to ignore and not worry about tracking changes to. By default, it includes the names of several files, e.g., ".Rhistory" and ".RData", which can be quite large and are not necessarily that important to track all changes to. You can also add to the ".gitignore" document the names of any other files in your working directory that you do not want ***git*** to track. These files can sit in your local working directory, unstaged and uncommitted, with no problems.
 
 After being staged, the status of the files should turn to a green `A` (for "added").
 
--   Click the "Commit" button. You will see a new, "Review Changes" window open up with the names of the files in your directory in the upper left pane. Selecting any of these will show you, in the lower pane, an overview of the differences between current version of the file and the version that was most recently previously committed.
+- Click the "Commit" button. You will see a new, "Review Changes" window open up with the names of the files in your directory in the upper left pane. Selecting any of these will show you, in the lower pane, an overview of the differences between current version of the file and the version that was most recently previously committed.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/review-changes.png")
 ```
 
--   Enter an identifying "Commit message" in the box in the upper right pane, e.g., "First commit from RStudio" and then click "Commit".
+- Enter an identifying "Commit message" in the box in the upper right pane, e.g., "First commit from RStudio" and then click "Commit".
 
 A window will pop up confirming what you have just done, which you can then close.
 
@@ -297,7 +297,7 @@ If you now select the *History* tab in the "Review Changes" window, you can see 
 
 ### Pushing Changes to a Remote Repo {.unnumbered}
 
--   With your commits completed, the files disappear from the "Review Changes" window and from the *Git* tab in ***RStudio*** window (meaning they have all been committed locally). You should now be able to pass all of your local changes up to ***GitHub*** by clicking the green "Push" (up arrow) button. This updates the remote copy of your repository and makes it available to collaborators or to you, working on a different local computer.
+- With your commits completed, the files disappear from the "Review Changes" window and from the *Git* tab in ***RStudio*** window (meaning they have all been committed locally). You should now be able to pass all of your local changes up to ***GitHub*** by clicking the green "Push" (up arrow) button. This updates the remote copy of your repository and makes it available to collaborators or to you, working on a different local computer.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/push.png")
@@ -335,11 +335,11 @@ The web book [*Happy Git and GitHub for the useR*](https://happygitwithr.com) by
 
 ## Concept Review {.unnumbered}
 
--   **RMarkdown** documents
--   Creating **R Projects** (3 ways)
-    -   Creating a project from a remote repository under version control (**Method 1**)
-    -   Creating a brand new project locally (**Method 2**)
-    -   Creating a project from an existing local repository under version control (**Method 3**)
--   Connecting a local repository and a remote repository on ***GitHub*** (2 ways)
-    -   *LESS COMPLICATED* (Corresponding to **Method 1**): Start by setting up a repository on ***GitHub*** and then clone the repository locally (see above). Once created, you can copy files into it, stage and commit those files, and push them to ***GitHub***
-    -   *MORE COMPLICATED* (Corresponding to **Method 2** and **Method 3**): Start by setting up a local repository under version control and then set up and connect to a remote repository on ***GitHub***. See Chapter 17 of the web book [*Happy Git and GitHub for the useR*](https://happygitwithr.com) for additional instructions to use for following this workflow.
+- **RMarkdown** documents
+- Creating **R Projects** (3 ways)
+    - Creating a project from a remote repository under version control (**Method 1**)
+    - Creating a brand new project locally (**Method 2**)
+    - Creating a project from an existing local repository under version control (**Method 3**)
+- Connecting a local repository and a remote repository on ***GitHub*** (2 ways)
+    - *LESS COMPLICATED* (Corresponding to **Method 1**): Start by setting up a repository on ***GitHub*** and then clone the repository locally (see above). Once created, you can copy files into it, stage and commit those files, and push them to ***GitHub***
+    - *MORE COMPLICATED* (Corresponding to **Method 2** and **Method 3**): Start by setting up a local repository under version control and then set up and connect to a remote repository on ***GitHub***. See Chapter 17 of the web book [*Happy Git and GitHub for the useR*](https://happygitwithr.com) for additional instructions to use for following this workflow.
