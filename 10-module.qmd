@@ -167,10 +167,10 @@ FROM: Baumer et al. (2017). *Modern Data Science with R.* Chapman and Hall/CRC.
 :::
 
 ```{r}
+# NOTE: # the n() function from {dplyr} returns the number of rows in the data frame
 s <- summarize(
   d,
   n_cases = n(),
-  # the n() function from {dplyr} returns the number of rows in the data frame
   avgF = mean(Body_mass_female_mean, na.rm = TRUE),
   avgM = mean(Body_mass_male_mean, na.rm = TRUE)
 )
@@ -181,10 +181,10 @@ Additionally, the `group_by()` function allows us to construct these summary var
 
 ```{r}
 byFamily <- group_by(d, Family)
+# NOTE: here, n() returns the number of rows in the group being considered
 s <- summarise(
   byFamily,
   n_cases = n(),
-  # here, n() returns the number of rows in the group being considered
   avgF = mean(Body_mass_female_mean, na.rm = TRUE),
   avgM = mean(Body_mass_male_mean, na.rm = TRUE)
 )

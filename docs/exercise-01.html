@@ -517,14 +517,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create a new email “message” with the <code>envelope()</code> function from the {emayili} package.</li>
 </ul>
 <p>This function takes several intuitive arguments (<code>from</code>, <code>to</code>, <code>subject</code>, and <code>text</code>) that we can assign values to directly within the function using the <code>=</code> operator.</p>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> <code>from=</code> should typically be the email address you are sending the from, although some SMTP transactions will accept alternatives, such as just a name. You can also use a vector of email addresses for the <code>to=</code> argument to send a message to more than one recipient.</p>
+</blockquote>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>message_gmail <span class="ot">&lt;-</span> <span class="fu">envelope</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this should typically be the email address you are sending the from, although some SMTP transactions will accept alternatives, such as just a name</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span><span class="al">NOTE</span><span class="co">: you can also use a vector of email addresses for the `to` argument to send a message to more than one recipient</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {emayili}"</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">text =</span> <span class="st">"Hello! This is a plain text message sent from a Gmail account."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>message_gmail <span class="ot">&lt;-</span> <span class="fu">envelope</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {emayili}"</span>, <span class="at">text =</span> <span class="st">"Hello! This is a plain text message sent from a Gmail account."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> <strong><em>R</em></strong> essentially ignores all the whitespace (spaces and tab characters) and also allows you to have code continue from one line to the next. It is even pretty forgiving about where you put carriage returns, although it is good form to place them following a “,” or before/after a parenthesis or brace.</p>
@@ -552,21 +550,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create an SMTP (or “Simple Mail Transfer Protocol”) “server” object that includes details about how to send a message, i.e., by specifying the email service’s outgoing server host name, a communications port number to use, and user and password information for authenticating use of the server. SMTP transmission can often use any of several standard port numbers (25, 465, 587, and 2525), but 587 and 465 are the most commonly used and support TLS encryption. To use Google’s outgoing email server, set the host to “smtp.gmail.com” and the port to either 465 or 587.</li>
 </ul>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> <code>max_times=</code> sets the number of attempts the function will make to send the message. The default (if the argument is omitted) is 5, and below I have set it to 1 to exit quickly if the server is not contacted. For <code>username=</code> enter your login ID for the service you are sending from, and for <code>password=</code> use the variable you set up above to hold your “app password” for your Google account, or enter your password directly here, in quotation marks it, in lieu of the variable <code>gmail_pwd</code></p>
+</blockquote>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>smtp_gmail <span class="ot">&lt;-</span> <span class="fu">server</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"smtp.gmail.com"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">port =</span> <span class="dv">465</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_times =</span> <span class="dv">1</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># this sets the number of attempts the function will make to send the message</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># username for service you are sending from</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> pwd_gmail)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># use the variable you set up to hold your "app password" for your Google account or enter your password here, in quotation marks it, in lieu of the variable `gmail_pwd`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>smtp_gmail <span class="ot">&lt;-</span> <span class="fu">server</span>(<span class="at">host =</span> <span class="st">"smtp.gmail.com"</span>, <span class="at">port =</span> <span class="dv">465</span>, <span class="at">max_times =</span> <span class="dv">1</span>, <span class="at">username =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">password =</span> pwd_gmail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> In the example above, I am sending the message to one Gmail address (anthony.difiore@gmail.com) from a different Gmail account (anthony.difiore@utexas.edu) to access the Gmail server!</p>
 </blockquote>
-<p>To use Microsoft’s outgoing email server for <strong>Outlook</strong> email accounts, the host should be set to “smtp.office365.com”, the port should be set to 587, and the message <strong>must</strong> come <code>from</code> the email address you are sending from that you are using to authenticate your account.</p>
+<p>To use Microsoft’s outgoing email server for <strong>Outlook</strong> email accounts, the host should be set to “smtp.office365.com”, the port should be set to 587, and the message <strong>must</strong> come <code>from()</code> the email address you are sending from that you are using to authenticate your account.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>message_outlook365 <span class="ot">&lt;-</span> <span class="fu">envelope</span>() <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">from</span>(<span class="st">"anthony.difiore@outlook.com"</span>) <span class="sc">|&gt;</span></span>
@@ -604,7 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="version-2-using-the-mailr-package" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="version-2-using-the-mailr-package">Version 2: Using the {mailR} package</h2>
-<p>The {mailR} package also allows you to easily send simple emails with a single function, <code>send.mail()</code>. Here, we need to specify details about the SMTP server more explicitly than if we use {blastula}.</p>
+<p>The {mailR} package also allows you to easily send simple emails with a single function, <code>send.mail()</code>. Here, we need to specify details about the SMTP server more explicitly than if we use {emayili} (above) or {blastula} (below).</p>
 <section id="step-1-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-1-1">Step 1</h4>
 <ul>
@@ -625,46 +619,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-3-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-3-1">Step 3</h4>
-<p>Create and send the email.</p>
+<p>Create and send the email</p>
+<ul>
+<li>Using Google’s Gmail server…
+<ul>
+<li>To use the Gmail server with ports <em>other than 587</em> (e.g., 465) the argument <code>ssl=</code> must be set to TRUE, which initiates a secure connection and allows required encryption</li>
+<li>If port 587 is used, either the argument <code>ssl=</code> or <code>tls=</code> should be set to TRUE</li>
+</ul></li>
+</ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">send.mail</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">subject =</span> <span class="st">"Sending a message using {mailR}"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">body =</span> <span class="st">"Hello! This is a plain text message sent from a Gmail account."</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">smtp =</span> <span class="fu">list</span>(</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">host.name =</span> <span class="st">"smtp.gmail.com"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">port =</span> <span class="dv">587</span>, <span class="co"># most commonly 465 or 587</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">user.name =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">passwd =</span> pwd_gmail,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">ssl =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to use the Gmail server with ports *other than 587*, `ssl` must be set to TRUE</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># this initiates a secure connection and allows required encryption</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># if port 587 is used, either `ssl` or `tls` may be set to TRUE</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">authenticate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">send =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsoft's servers...</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="fu">send.mail</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">subject =</span> <span class="st">"Sending a message using {mailR}"</span>,</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">body =</span> <span class="st">"Hello! This is a plain text message sent from an Outlook account."</span>,</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">smtp =</span> <span class="fu">list</span>(</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">host.name =</span> <span class="st">"smtp.office365.com"</span>,</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">port =</span> <span class="dv">587</span>,</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to use the Outlook server, the port should be set to 587</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">user.name =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">passwd =</span> pwd_outlook,</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">tls =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to use the Outlook server, `tls` (and not `ssl`) must be set to TRUE to allow TLS encryption</span></span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>          <span class="at">authenticate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>          <span class="at">send =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">send.mail</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {mailR}"</span>, <span class="at">body =</span> <span class="st">"Hello! This is a plain text message sent from a Gmail account."</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">smtp =</span> <span class="fu">list</span>(<span class="at">host.name =</span> <span class="st">"smtp.gmail.com"</span>, <span class="at">port =</span> <span class="dv">587</span>, <span class="at">user.name =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">passwd =</span> pwd_gmail, <span class="at">ssl =</span> <span class="cn">TRUE</span>), <span class="at">authenticate =</span> <span class="cn">TRUE</span>, <span class="at">send =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Using Microsoft’s Outlook/Office365 server…
+<ul>
+<li>To use the Outlook/Office365 server, <code>port=</code> should be set to 587 and the argument <code>tls=</code> (and not <code>ssl=</code>) must be set to TRUE to allow TLS encryption.</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">send.mail</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {mailR}"</span>, <span class="at">body =</span> <span class="st">"Hello! This is a plain text message sent from an Outlook account."</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">smtp =</span> <span class="fu">list</span>(<span class="at">host.name =</span> <span class="st">"smtp.office365.com"</span>, <span class="at">port =</span> <span class="dv">587</span>, <span class="at">user.name =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">passwd =</span> pwd_outlook, <span class="at">tls =</span> <span class="cn">TRUE</span>), <span class="at">authenticate =</span> <span class="cn">TRUE</span>, <span class="at">send =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="version-3-using-the-blastula-package" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="version-3-using-the-blastula-package">Version 3: Using the {blastula} package</h2>
-<p>The {blastula} package allows us to create and send more complex HTML and markdown-based formatted emails.</p>
+<p>The {blastula} package allows us to create and send more complex HTML and markdown-based formatted emails. Using it is a bit more complicated (but much more flexible) than using the procedures above.</p>
 <p>Similar to {emayili}, {blastula} provides two main functions: [1] <code>compose_email()</code> for constructing various parts of a message and [2] <code>smtp_send()</code> for specifying email server settings and passing the message to the server to send. However, {blastula} also adds in some helper functions that allow you to store authentication information in either a separate “credentials” text file that is referenced when you run the function to send a message or in your computer’s keychain. {blastula} also stores some default information on commonly-used email providers and services (e.g., on Google’s Gmail and Microsoft’s Office365 and Outlook), which may make configuring the server setup easier than using {emayili} or {mailR}.</p>
 <section id="step-1-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-1-2">Step 1</h4>
@@ -672,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Install the {blastula} package.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"blastula"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"blastula"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-2-2" class="level4 unnumbered">
@@ -681,7 +666,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Load the {blastula} package.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blastula)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(blastula)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-3-2" class="level4 unnumbered">
@@ -691,36 +676,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>This function takes several intuitive arguments that we can assign values to directly within the function.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compose the message</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(<span class="at">body =</span> <span class="st">"Hello! This is a simple HTML message."</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the message. This will open the HTML message in a browser window or</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in the RStudio Viewer tab</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compose the message</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(<span class="at">body =</span> <span class="st">"Hello! This is a simple HTML message."</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the message. This will open the HTML message in a browser window or</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># in the RStudio Viewer tab</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can add some formatting to our email by using the <code>md()</code> function and markdown syntax. Here, we pipe (<code>%&gt;%</code> or <code>\&gt;</code> the <code>body</code> argument to the <code>md()</code> function to convert it to markdown.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compose the message</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(<span class="at">body =</span> <span class="st">"# Hello!</span><span class="sc">\n</span><span class="st">This is a simple **HTML** message with some *markdown* syntax."</span> <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">md</span>())</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the message</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compose the message</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(<span class="at">body =</span> <span class="st">"# Hello!</span><span class="sc">\n</span><span class="st">This is a simple **HTML** message with some *markdown* syntax."</span> <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">md</span>())</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the message</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can also spice up our email with an image from a local file. Here, I use an image stored in a folder called “img” inside the my current working directory.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create text as html</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="st">"# Hello!</span><span class="sc">\n</span><span class="st">This is a simple **HTML** message with some *markdown* syntax... and a cool picture!"</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create image as html</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">add_image</span>(<span class="at">file =</span> <span class="st">"./img/batnet.jpg"</span>, <span class="at">width =</span> <span class="dv">300</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compose the message</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(<span class="at">body =</span> <span class="fu">c</span>(text, image) <span class="sc">%&gt;%</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">md</span>())</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the message</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create text as html</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="st">"# Hello!</span><span class="sc">\n</span><span class="st">This is a simple **HTML** message with some *markdown* syntax... and a cool picture!"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create image as html</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>image <span class="ot">&lt;-</span> <span class="fu">add_image</span>(<span class="at">file =</span> <span class="st">"./img/batnet.jpg"</span>, <span class="at">width =</span> <span class="dv">300</span>, <span class="at">align =</span> <span class="st">"center"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compose the message</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>message <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(<span class="at">body =</span> <span class="fu">c</span>(text, image) <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">md</span>())</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview the message</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>message</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-4-1" class="level4 unnumbered">
@@ -730,13 +715,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The following will create a text file (in <code>JSON</code> format) in the current working directory that contains default information for your outgoing mail server, e.g., Google’s Gmail server (<code>host = "smtp.gmail.com"</code>) or Microsoft’s Office365 server (<code>host = "smtp.office365.com"</code>), along with your email address and your password. When you run the following lines of code, you will be asked to enter your password, which will then be stored in the credentials file. For a Gmail account, you can use the app password you created above. For an Outlook account, use your standard password.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file for a Gmail account</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(<span class="at">file =</span> <span class="st">"my_gmail_creds"</span>, <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">provider =</span> <span class="st">"gmail"</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file for an Outlook account</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(<span class="at">file =</span> <span class="st">"my_outlook_creds"</span>, <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">provider =</span> <span class="st">"office365"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file for a Gmail account</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(<span class="at">file =</span> <span class="st">"my_gmail_creds"</span>, <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">provider =</span> <span class="st">"gmail"</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file for an Outlook account</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(<span class="at">file =</span> <span class="st">"my_outlook_creds"</span>, <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">provider =</span> <span class="st">"office365"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
 <p><strong>NOTE</strong>: If you omit the <code>provider=</code> argument, you should then pass <code>host=</code>, <code>port=</code>, and <code>use_ssl=</code> arguments yourself to the <code>create_smtp_creds_file()</code> function. The <code>use_ssl=</code> argument allows the use of STARTTLS, which initiates secured (encrypted) TLS or SSL connection, which many email servers require.</p>
@@ -748,24 +733,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Send the message via STMP using a credentials file.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_send</span>(<span class="at">email =</span> message,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and a credentials file"</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="at">file =</span> <span class="st">"my_gmail_creds"</span>),</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span><span class="al">NOTE</span><span class="co">: As above, setting verbose = FALSE (or omitting the argument) will suppress output to the console</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsofts's servers, using the %&gt;% operator and different credentials file...</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span> <span class="fu">smtp_send</span>(</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and a credentials file"</span>,</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="at">file =</span> <span class="st">"my_outlook_creds"</span>)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_send</span>(<span class="at">email =</span> message, <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and a credentials file"</span>, <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="at">file =</span> <span class="st">"my_gmail_creds"</span>))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsofts's servers, using the %&gt;% operator and different</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file...</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and a credentials file"</span>, <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="at">file =</span> <span class="st">"my_outlook_creds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-6" class="level4 unnumbered">
@@ -775,18 +751,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The following will prompt us for our password to send the message:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and entering credentials manually"</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds</span>(<span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">provider =</span> <span class="st">"gmail"</span>))</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsoft's servers...</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and entering credentials manually"</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds</span>(<span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">provider =</span> <span class="st">"office365"</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">use_ssl =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and entering credentials manually"</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds</span>(<span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">provider =</span> <span class="st">"gmail"</span>))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsoft's servers...</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and entering credentials manually"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds</span>(<span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">provider =</span> <span class="st">"office365"</span>,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">use_ssl =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="next-steps-1" class="level4 unnumbered">
@@ -797,52 +773,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="unnumbered anchored" data-anchor-id="even-more-next-steps">Even More Next Steps?</h4>
 <p>Finally, it is a bit more complicated, but note that we can also use the {keyring} package along with {blastula} to set up a credentials “key” in our computer’s keychain and refer to that to specify our credentials for sending a message. When you create the keys, you will be asked to provide your password.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"keyring"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"keyring"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keyring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keyring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create Gmail key</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_key</span>(</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"my_gmail_key"</span>, <span class="co"># an identifier for the key</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">provider =</span> <span class="st">"gmail"</span>,</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span> <span class="co"># this argument is only needed if you have an existing key</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create Outlook key</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_key</span>(</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"my_outlook_key"</span>, <span class="co"># an identifier for the key</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">provider =</span> <span class="st">"office365"</span>,</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create Gmail key with a user-specified name, `id=`</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_key</span>(<span class="at">id =</span> <span class="st">"my_gmail_key"</span>, <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">provider =</span> <span class="st">"gmail"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">overwrite =</span> <span class="cn">TRUE</span>  <span class="co"># this argument is only needed if you have an existing key</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create Outlook key with a user-specified name, `id=`</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_key</span>(<span class="at">id =</span> <span class="st">"my_outlook_key"</span>, <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">provider =</span> <span class="st">"office365"</span>, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View all keys</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">view_credential_keys</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View all keys</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">view_credential_keys</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send a message with credentials from a keychain using Google's servers...</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and credentials from a keychain"</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds_key</span>(<span class="at">id =</span> <span class="st">"my_gmail_key"</span>))</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># send a message with credentials from a keychain using Microsoft's servers...</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and and credentials from a keychain"</span>,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds_key</span>(<span class="at">id =</span> <span class="st">"my_outlook_key"</span>), <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send a message with credentials from a keychain using Google's servers...</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and credentials from a keychain"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds_key</span>(<span class="at">id =</span> <span class="st">"my_gmail_key"</span>))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># send a message with credentials from a keychain using Microsoft's servers...</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">smtp_send</span>(<span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>, <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and and credentials from a keychain"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">credentials =</span> <span class="fu">creds_key</span>(<span class="at">id =</span> <span class="st">"my_outlook_key"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="clean-up-steps" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="clean-up-steps">Clean-Up Steps</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete all keys</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">delete_all_credential_keys</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete all keys</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">delete_all_credential_keys</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

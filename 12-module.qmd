@@ -6,8 +6,8 @@
 
 ## Preliminaries
 
--   Install these packages in ***R***: [{mosiac}](https://cran.r-project.org/web/packages/mosaic/mosaic), [{radiant}](https://cran.r-project.org/web/packages/radiant/radiant.pdf), [{sciplot}](https://cran.r-project.org/web/packages/sciplot/sciplot.pdf), and [{infer}](https://cran.r-project.org/web/packages/infer/infer.pdf)
--   Load {tidyverse}
+- Install these packages in ***R***: [{mosiac}](https://cran.r-project.org/web/packages/mosaic/mosaic), [{radiant}](https://cran.r-project.org/web/packages/radiant/radiant.pdf), [{sciplot}](https://cran.r-project.org/web/packages/sciplot/sciplot.pdf), and [{infer}](https://cran.r-project.org/web/packages/infer/infer.pdf)
+- Load {tidyverse}
 
 ```{r include=FALSE}
 library(tidyverse)
@@ -15,16 +15,16 @@ library(tidyverse)
 
 ## Important Terms
 
--   **Population** - **all** of the elements from a set of data (e.g., all of the gorillas in the world) = ***N***
--   **Sample** - one or more observations drawn from a population by some kind of sampling process (e.g., the set of gorillas living in Rwanda, the set of gorilla skeletons found in a museum) = ***n***
+- **Population** - **all** of the elements from a set of data (e.g., all of the gorillas in the world) = ***N***
+- **Sample** - one or more observations drawn from a population by some kind of sampling process (e.g., the set of gorillas living in Rwanda, the set of gorilla skeletons found in a museum) = ***n***
 
 > **NOTE:** We often assume that a sampling process is *random*, but there are lots of ways in which sampling might be biased, thus the samples we work with *may not* be (and often *are not*) random samples!
 
--   **Parameter** - a measurable characteristic of a population that summarizes data (e.g., the mean value of the femur length of all gorillas)
+- **Parameter** - a measurable characteristic of a population that summarizes data (e.g., the mean value of the femur length of all gorillas)
 
 > **NOTE:** Population means for a given variable, **x**, are often indicated as $\mu_x$
 
--   **Statistic** - a measurable characteristic about a sample that summarizes data (e.g., the mean femur length of gorilla femurs found at the American Museum of Natural History)
+- **Statistic** - a measurable characteristic about a sample that summarizes data (e.g., the mean femur length of gorilla femurs found at the American Museum of Natural History)
 
 > **NOTE:** Sample means for a given variable, **x**, are often indicated as $\bar{x}$
 
@@ -32,9 +32,9 @@ When we use statistical methods or attempt statistical inference - whether using
 
 Regardless, we should always keep in mind that the process of trying to draw conclusions about a population based on a sample can be complicated by the fact that...
 
--   our sample may be biased, non-random, or non-representative in some way
--   there may be unknown or unobserved variables that impact how the sample is related to the population
--   the assumptions we make about the population that our sample is drawn from might not be correct
+- our sample may be biased, non-random, or non-representative in some way
+- there may be unknown or unobserved variables that impact how the sample is related to the population
+- the assumptions we make about the population that our sample is drawn from might not be correct
 
 ## Describing Sets of Observations
 
@@ -42,23 +42,23 @@ It is important for us to be able to describe the general characteristics of the
 
 ### Measures of Central Tendency {.unnumbered}
 
--   **Median** - the middle value in a rank ordered series of values
--   **Mean** - the sum of measured values divided by $n$, a.k.a., the *average* or the *arithimetic mean*
--   **Mode** - the most common measurement of values observed
--   **Harmonic mean** - the reciprocal of the average of the reciprocals of a set of values
+- **Median** - the middle value in a rank ordered series of values
+- **Mean** - the sum of measured values divided by $n$, a.k.a., the *average* or the *arithimetic mean*
+- **Mode** - the most common measurement of values observed
+- **Harmonic mean** - the reciprocal of the average of the reciprocals of a set of values
 
 The measures above are relevant to summarizing observations about processes that are additive.
 
--   **Geometric mean** - a measure of central tendency for processes that are exponential (e.g., some phases of population growth in natural populations) or multiplicative (e.g., increases in area or volume that accompany increases in linear dimension) in nature, rather than additive = the $n^{th}$ root of the product of the values, taken across a set of $n$ values; for the mathematically inclined, it also equals the *antilog* of the averaged *log* values
+- **Geometric mean** - a measure of central tendency for processes that are exponential (e.g., some phases of population growth in natural populations) or multiplicative (e.g., increases in area or volume that accompany increases in linear dimension) in nature, rather than additive = the $n^{th}$ root of the product of the values, taken across a set of $n$ values; for the mathematically inclined, it also equals the *antilog* of the averaged *log* values
 
 ### CHALLENGE: {.unnumbered}
 
--   Given a vector, `x <- c(1,2,3,4,5,6,7,8,9,10,25,50,100,200,1000)`, write your own function to determine the *geometric mean* of the values in a vector. Remember the general form for functions is: `<function name> <- function(<arguments>){<code>}`
+- Given a vector, `x <- c(1,2,3,4,5,6,7,8,9,10,25,50,100,200,1000)`, write your own function to determine the *geometric mean* of the values in a vector. Remember the general form for functions is: `<function name> <- function(<arguments>) {<code>}`
 
 > **HINT:** Taking the $n^{th}$ root of a number is equivalent to raising the number to the power of $\frac{1}{n}$
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 x <- c(1,2,3,4,5,6,7,8,9,10,25,50,100,200,1000)
 geometric_mean <- function(x){prod(x)^(1/length(x))}
 geometric_mean(x)
@@ -66,7 +66,6 @@ geometric_mean(x)
 geometric_mean <- function(x){exp(mean(log(x)))}
 geometric_mean(x)
 ```
-:::
 
 What happens if you have `NA`s or zeros or negative numbers in your vector?
 
@@ -78,16 +77,16 @@ In addition to measures of central tendency, measures of spread or variability i
 
 We more commonly characterize spread, however, in terms of some measure of the *deviation of a set of values from the mean of those values*. One such measure is the **sum of squares**...
 
--   ***Sum of Squares*** = the sum of the squared deviations of a set of values from the mean of that set
+- ***Sum of Squares*** = the sum of the squared deviations of a set of values from the mean of that set
 
 > **NOTE:** Why do we use the sum of the **squared** deviations of values from the mean rather than just the sum of deviations? Because the latter would simply be ZERO!
 
 ### CHALLENGE: {.unnumbered}
 
--   Write a function to calculate the **sum of squares** for a vector.
+- Write a function to calculate the **sum of squares** for a vector.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 sum_of_squares <- function(x){sum((x-mean(x))^2)}
 sum_of_squares(x)
 
@@ -96,7 +95,6 @@ sum_of_squares(x)
 sum_of_squares <- function(x){sum(x^2) - length(x)*mean(x)^2}
 sum_of_squares(x)
 ```
-:::
 
 A shortcut to calculate the **sum of squares** for a vector, **x**, that does not actually require calculating `mean(x)` is the `(sum of the squared values in the dataset) minus the (square of the summed values) / n`, or...
 
@@ -113,7 +111,7 @@ Note that the **sum of squares** always increases with sample size... you can se
 
 This is the definition of the variability or **variance** in a dataset. If we are simply interested in describing the mean squared deviation in a *population*, where we have a value or measurement for every case (e.g., the femur length of all of the gorillas in a museum *population*), we could then just divide the **sum of squares** by the number of cases.
 
--   ***Population Variance*** ($\sigma^2$) = $\frac{SS}{N}$
+- ***Population Variance*** ($\sigma^2$) = $\frac{SS}{N}$
 
 In ***R*** parlance, we can write this as:
 
@@ -124,32 +122,30 @@ pop_var(x)
 
 If, however, we have not measured all of the individual cases in population - i.e., if we are, instead, dealing with a *sample* from the population and are trying to use that sample to say something about the population from which it is drawn (e.g., to say something about gorilla femur lengths in general based on those that appear in a museum *sample*) - then we need to use a slightly different formula to get an unbiased estimate of the population variance. Such an estimate for a population parameter, based on data from a sample, is calculated as:
 
--   ***Sample Variance*** (an *estimator* of the population variance) = $\frac{SS}{n-1}$
+- ***Sample Variance*** (an *estimator* of the population variance) = $\frac{SS}{n-1}$
 
 In this formula, $n - 1$ is the number of *degrees of freedom* implied by the sample. The *degrees of freedom* is the number of values used to calculate a sample statistic that are "free to vary". For example, we used *n* observations to calculate the mean of our sample, which implies $n - 1$ degrees of freedom (i.e., if we know the mean and $n - 1$ values, then we also know the last value... it is *not* "free to vary"). We then use that statistic about our sample (i.e., the sample mean) as an estimate of the population mean, which is then used to derive an estimate of the population variance based on the sample variance.
 
 ### CHALLENGE: {.unnumbered}
 
--   Write a function to calculate the **variance** for a vector of values representing a *sample* of measurements. Remember this means dividing the sample sum of squares by $n-1$.
+- Write a function to calculate the **variance** for a vector of values representing a *sample* of measurements. Remember this means dividing the sample sum of squares by $n-1$.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 sample_var <- function (x){sum((x-mean(x))^2)/(length(x)-1)}
 sample_var(x)
 ```
-:::
 
 Compare the results of your function to the built-in ***R*** function, `var()`, which calculates sample variance.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 var(x)
 ```
-:::
 
 ### Questions to Explore {.unnumbered}
 
--   For a random variable, how is variance related to sample size?
+- For a random variable, how is variance related to sample size?
 
 We will explore this, and at the same time practice a bit about **loops** in ***R*** programming, via **simulation**, where we repeatedly draw samples of random variables from a specific distribution. As an example, we will we draw from a normal distribution with a mean of 10 and a standard deviation of 2.
 
@@ -196,7 +192,7 @@ for (n in seq(from = 5, to = 100, by = 5))
   }
 ```
 
--   How does *sample variance* compare to *population variance*? What happens to the sample variances as sample size increases?
+- How does *sample variance* compare to *population variance*? What happens to the sample variances as sample size increases?
 
 Another measure of spread around a mean that we often see reported is the **standard deviation**. The standard deviation is simply the *square root of the variance* ($\sqrt{\sigma^2} = \sigma$). The advantage of using the standard deviation as a statistic or parameter is that the units of standard deviation are the same as the units of our original measurement (rather than being units squared, which are our units for variance).
 
@@ -380,8 +376,8 @@ As we might expect for any measure of uncertainty or error, the **SE** [1] incre
 
 ### Questions to Explore {.unnumbered}
 
--   How does changing the **size of our samples** (**n**) impact the **mean** and **SE** of our estimate of the population parameter?
--   How does changing the **number of replicate samples** (**reps**) impact the **mean** and **SE** of our estimate of the population parameter?
+- How does changing the **size of our samples** (**n**) impact the **mean** and **SE** of our estimate of the population parameter?
+- How does changing the **number of replicate samples** (**reps**) impact the **mean** and **SE** of our estimate of the population parameter?
 
 We can explore these two questions with the following code... note that we just take one set of 2000 replicates and then resample from that randomly to explore the impact of different, smaller numbers of replicates:
 
@@ -483,10 +479,10 @@ where $s^2$ is the sample variance and $s$ is the sample standard deviation.
 
 ### CHALLENGE: {.unnumbered}
 
--   Write your own function to calculate the **standard error of the mean** for a vector of values representing a single sample of observations from a population. You can use either your own function for the sample variance that you created above or the built-in `var()` function. There are, of course, several ways you could do this. Then, use your new function with `summarize()` and `sample_n()` to extract a single sample of size "n=100" from **d** and calculate an estimate of the population SE for that sample size.
+- Write your own function to calculate the **standard error of the mean** for a vector of values representing a single sample of observations from a population. You can use either your own function for the sample variance that you created above or the built-in `var()` function. There are, of course, several ways you could do this. Then, use your new function with `summarize()` and `sample_n()` to extract a single sample of size "n=100" from **d** and calculate an estimate of the population SE for that sample size.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 n <- 100
 set.seed(100)
 my_se1 <- function(x) {sqrt(sample_var(x) / length(x))}
@@ -501,7 +497,6 @@ summarize(
   se3 = my_se3(averageRating)
 )
 ```
-:::
 
 The package {sciplot} includes the function, `se()`, for calculating standard errors (as do others).
 
@@ -521,32 +516,28 @@ detach(package:mosaic)
 
 ## Concept Review {.unnumbered}
 
--   $\mu, \bar{x}$ = population mean, sample mean
+- $\mu, \bar{x}$ = population mean, sample mean
 
-    -   $\bar{x}$ is an estimator for $\mu$
+    - $\bar{x}$ is an estimator for $\mu$
 
--   $\sigma^2, s^2$ = population variance, sample variance
+- $\sigma^2, s^2$ = population variance, sample variance
 
--   $\sigma, s$ = population standard deviation, sample standard deviation
+- $\sigma, s$ = population standard deviation, sample standard deviation
 
-    -   $s$ is an estimator for $\sigma$
+    - $s$ is an estimator for $\sigma$
 
--   Sample variance and standard deviation: `var()`, `sd()`
+- Sample variance and standard deviation: `var()`, `sd()`
 
-    -   These are measures of the variation/spread in a **sample**
+    - These are measures of the variation/spread in a **sample**
 
--   Sampling distributions and standard errors
+- Sampling distributions and standard errors
 
-    -   Mean of the sampling distribution of $\bar{x}$ is an estimate of $\mu$
+    - Mean of the sampling distribution of $\bar{x}$ is an estimate of $\mu$
 
-    -   Standard deviation of the sampling distribution of $\bar{x}$ = $\frac{\sigma}{\sqrt{n}}$ = standard error
+    - Standard deviation of the sampling distribution of $\bar{x}$ = $\frac{\sigma}{\sqrt{n}}$ = standard error
 
-        -   This is a measure of the variation/spread in a **sample statistic**
+        - This is a measure of the variation/spread in a **sample statistic**
 
-    -   Standard errors: `sciplot::se()`
+    - Standard errors: `sciplot::se()`
 
--   Using the `sample_n()` function from {dplyr} and `do() * <function>` construction from {mosaic} to generate sampling distributions
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Using the `sample_n()` function from {dplyr} and `do() * <function>` construction from {mosaic} to generate sampling distributions

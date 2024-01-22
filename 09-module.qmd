@@ -619,7 +619,7 @@ scatterplot(
   boxplots = "xy",
   regLine = 
     list(
-       # method = lm,
+       method = lm,
        lty = 1,
        lwd = 2,
        col = "red"
@@ -684,17 +684,17 @@ scatterplotMatrix(s,
 detach(package:car)
 ```
 
-The {psych} package also makes it easy to construct a scatterplot matrix with customizable output.
+The {psych} package also makes it easy to construct a scatterplot matrix with customizable output using the `pairs.panel()` function. Here, `method=` specifies the correlation method, `density=` specifies whether to superimpose a density curve on the histogram, and `elipses=` specifies whether to show correlation elipses.
 
 ```{r message=FALSE}
 library(psych)
 pairs.panels(s[], 
   smooth = FALSE,
   lm = TRUE,
-  method = "pearson", # method = correlation method
+  method = "pearson",
   hist.col = "#00AFBB",
-  density = TRUE, # density = show density curve on histogram
-  ellipses = TRUE # ellipses = show correlation ellipses
+  density = TRUE,
+  ellipses = TRUE
 )
 # NAs are ignored by default
 detach(package:psych)

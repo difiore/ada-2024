@@ -120,12 +120,12 @@ library(tidyverse)
 
 This function takes several intuitive arguments (`from`, `to`, `subject`, and `text`) that we can assign values to directly within the function using the `=` operator.
 
+> **NOTE:** `from=` should typically be the email address you are sending the from, although some SMTP transactions will accept alternatives, such as just a name. You can also use a vector of email addresses for the `to=` argument to send a message to more than one recipient.
+
 ```{r}
 message_gmail <- envelope(
   from = "anthony.difiore@utexas.edu",
-  # this should typically be the email address you are sending the from, although some SMTP transactions will accept alternatives, such as just a name
   to = "anthony.difiore@gmail.com",
-  # NOTE: you can also use a vector of email addresses for the `to` argument to send a message to more than one recipient
   subject = "Sending a message using {emayili}",
   text = "Hello! This is a plain text message sent from a Gmail account.")
 ```
@@ -158,21 +158,20 @@ The difference here is that we are first creating an empty "message" object and 
 
 - Create an SMTP (or "Simple Mail Transfer Protocol") "server" object that includes details about how to send a message, i.e., by specifying the email service's outgoing server host name, a communications port number to use, and user and password information for authenticating use of the server. SMTP transmission can often use any of several standard port numbers (25, 465, 587, and 2525), but 587 and 465 are the most commonly used and support TLS encryption. To use Google's outgoing email server, set the host to "smtp.gmail.com" and the port to either 465 or 587.
 
+> **NOTE:** `max_times=` sets the number of attempts the function will make to send the message. The default (if the argument is omitted) is 5, and below I have set it to 1 to exit quickly if the server is not contacted. For `username=` enter your login ID for the service you are sending from, and for `password=` use the variable you set up above to hold your "app password" for your Google account, or enter your password directly here, in quotation marks it, in lieu of the variable `gmail_pwd`
+
 ```{r}
 smtp_gmail <- server(
   host = "smtp.gmail.com",
   port = 465,
   max_times = 1,
-  # this sets the number of attempts the function will make to send the message
   username = "anthony.difiore@utexas.edu",
-  # username for service you are sending from
   password = pwd_gmail)
-  # use the variable you set up to hold your "app password" for your Google account or enter your password here, in quotation marks it, in lieu of the variable `gmail_pwd`
 ```
 
 > **NOTE:** In the example above, I am sending the message to one Gmail address (anthony.difiore@gmail.com) from a different Gmail account (anthony.difiore@utexas.edu) to access the Gmail server!
 
-To use Microsoft's outgoing email server for **Outlook** email accounts, the host should be set to "smtp.office365.com", the port should be set to 587, and the message **must** come `from` the email address you are sending from that you are using to authenticate your account.
+To use Microsoft's outgoing email server for **Outlook** email accounts, the host should be set to "smtp.office365.com", the port should be set to 587, and the message **must** come `from()` the email address you are sending from that you are using to authenticate your account.
 
 ```{r}
 message_outlook365 <- envelope() |>
@@ -212,7 +211,7 @@ Use the ***RStudio*** **Help** tab to browse the documentation associated with t
 
 ## Version 2: Using the {mailR} package {.unnumbered}
 
-The {mailR} package also allows you to easily send simple emails with a single function, `send.mail()`. Here, we need to specify details about the SMTP server more explicitly than if we use {blastula}.
+The {mailR} package also allows you to easily send simple emails with a single function, `send.mail()`. Here, we need to specify details about the SMTP server more explicitly than if we use {emayili} (above) or {blastula} (below).
 
 #### Step 1 {.unnumbered}
 
@@ -232,27 +231,32 @@ library(mailR)
 
 #### Step 3 {.unnumbered}
 
-Create and send the email.
+Create and send the email
+
+- Using Google's Gmail server...
+    - To use the Gmail server with ports *other than 587* (e.g., 465) the argument `ssl=` must be set to TRUE, which initiates a secure connection and allows required encryption
+    - If port 587 is used, either the argument `ssl=` or `tls=` should be set to TRUE
 
 ```{r eval = FALSE}
-# send using Google's servers...
+
 send.mail(from = "anthony.difiore@utexas.edu",
           to = "anthony.difiore@gmail.com",
           subject = "Sending a message using {mailR}",
           body = "Hello! This is a plain text message sent from a Gmail account.",
           smtp = list(
             host.name = "smtp.gmail.com",
-            port = 587, # most commonly 465 or 587
+            port = 587,
             user.name = "anthony.difiore@utexas.edu",
             passwd = pwd_gmail,
             ssl = TRUE),
-            # to use the Gmail server with ports *other than 587*, `ssl` must be set to TRUE
-            # this initiates a secure connection and allows required encryption
-            # if port 587 is used, either `ssl` or `tls` may be set to TRUE
           authenticate = TRUE,
           send = TRUE)
+```
 
-# send using Microsoft's servers...
+- Using Microsoft's Outlook/Office365 server...
+    - To use the Outlook/Office365 server, `port=` should be set to 587 and the argument `tls=` (and not `ssl=`) must be set to TRUE to allow TLS encryption.
+
+```{r eval = FALSE}
 send.mail(from = "anthony.difiore@outlook.com",
           to = "anthony.difiore@gmail.com",
           subject = "Sending a message using {mailR}",
@@ -260,18 +264,16 @@ send.mail(from = "anthony.difiore@outlook.com",
           smtp = list(
             host.name = "smtp.office365.com",
             port = 587,
-            # to use the Outlook server, the port should be set to 587
             user.name = "anthony.difiore@outlook.com",
             passwd = pwd_outlook,
             tls = TRUE),
-            # to use the Outlook server, `tls` (and not `ssl`) must be set to TRUE to allow TLS encryption
           authenticate = TRUE,
           send = TRUE)
 ```
 
 ## Version 3: Using the {blastula} package {.unnumbered}
 
-The {blastula} package allows us to create and send more complex HTML and markdown-based formatted emails.
+The {blastula} package allows us to create and send more complex HTML and markdown-based formatted emails. Using it is a bit more complicated (but much more flexible) than using the procedures above.
 
 Similar to {emayili}, {blastula} provides two main functions: [1] `compose_email()` for constructing various parts of a message and [2] `smtp_send()` for specifying email server settings and passing the message to the server to send. However, {blastula} also adds in some helper functions that allow you to store authentication information in either a separate "credentials" text file that is referenced when you run the function to send a message or in your computer's keychain. {blastula} also stores some default information on commonly-used email providers and services (e.g., on Google's Gmail and Microsoft's Office365 and Outlook), which may make configuring the server setup easier than using {emayili} or {mailR}.
 
@@ -374,13 +376,10 @@ smtp_send(email = message,
   from = "anthony.difiore@utexas.edu",
   to = "anthony.difiore@gmail.com",
   subject = "Sending a message using {blastula} and a credentials file",
-  credentials = creds_file(file = "my_gmail_creds"),
-  verbose = TRUE
-  # NOTE: As above, setting verbose = FALSE (or omitting the argument) will suppress output to the console
+  credentials = creds_file(file = "my_gmail_creds")
 )
 
 # send using Microsofts's servers, using the %>% operator and different credentials file...
-
 message %>% smtp_send(
     from = "anthony.difiore@outlook.com",
     to = "anthony.difiore@gmail.com",
@@ -437,17 +436,17 @@ library(keyring)
 ```
 
 ```{r eval=FALSE}
-# create Gmail key
+# create Gmail key with a user-specified name, `id=`
 create_smtp_creds_key(
-  id = "my_gmail_key", # an identifier for the key
+  id = "my_gmail_key",
   user = "anthony.difiore@utexas.edu",
   provider = "gmail",
   overwrite = TRUE # this argument is only needed if you have an existing key
 )
 
-# create Outlook key
+# create Outlook key with a user-specified name, `id=`
 create_smtp_creds_key(
-  id = "my_outlook_key", # an identifier for the key
+  id = "my_outlook_key",
   user = "anthony.difiore@outlook.com",
   provider = "office365",
   overwrite = TRUE
@@ -475,7 +474,7 @@ message %>%
     from = "anthony.difiore@outlook.com",
     to = "anthony.difiore@gmail.com",
     subject = "Sending a message using {blastula} and and credentials from a keychain",
-    credentials = creds_key(id = "my_outlook_key"), verbose = TRUE
+    credentials = creds_key(id = "my_outlook_key")
   )
 ```
 
