@@ -180,7 +180,9 @@ message_outlook365 <- envelope() |>
   to("anthony.difiore@gmail.com") |>
   subject("Sending a message using {emayili}") |>
   text("Hello! This is a plain text message sent from an Outlook account.")
+```
 
+```{r}
 smtp_outlook365 <- server(
   host = "smtp.office365.com",
   port = 587,
