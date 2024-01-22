@@ -166,7 +166,8 @@ smtp_gmail <- server(
   port = 465,
   max_times = 1,
   username = "anthony.difiore@utexas.edu",
-  password = pwd_gmail)
+  password = pwd_gmail
+)
 ```
 
 > **NOTE:** In the example above, I am sending the message to one Gmail address (anthony.difiore@gmail.com) from a different Gmail account (anthony.difiore@utexas.edu) to access the Gmail server!
@@ -187,8 +188,9 @@ smtp_outlook365 <- server(
   port = 587,
   max_times = 1,
   username = "anthony.difiore@outlook.com",
-  password = pwd_outlook)
-  # either use a variable, e.g., `outlook_pwd` for your password or add your password between quotation marks here
+  password = pwd_outlook
+)
+# either use a variable, e.g., `outlook_pwd` for your password or add your password between quotation marks
 ```
 
 #### Step 5 {.unnumbered}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Data Analysis - 10&nbsp; Data Wrangling with {dplyr}</title>
+<title>Applied Data Analysis - 10&nbsp; Data Wrangling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-module.html">Part I - Using <strong><em>R</em></strong> and <strong><em>RStudio</em></strong></a></li><li class="breadcrumb-item"><a href="./10-module.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling with {dplyr}</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-module.html">Part I - Using <strong><em>R</em></strong> and <strong><em>RStudio</em></strong></a></li><li class="breadcrumb-item"><a href="./10-module.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-module.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling with {dplyr}</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -352,7 +352,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">CHALLENGE:</a></li>
   </ul></li>
   <li><a href="#dot-syntax-and-the-pipe" id="toc-dot-syntax-and-the-pipe" class="nav-link" data-scroll-target="#dot-syntax-and-the-pipe"><span class="header-section-number">10.7</span> Dot Syntax and the Pipe</a></li>
-  <li><a href="#useful-related-packages" id="toc-useful-related-packages" class="nav-link" data-scroll-target="#useful-related-packages"><span class="header-section-number">10.8</span> Useful Related Packages</a></li>
+  <li><a href="#pivoting-data-between-long-and-wide-formats" id="toc-pivoting-data-between-long-and-wide-formats" class="nav-link" data-scroll-target="#pivoting-data-between-long-and-wide-formats"><span class="header-section-number">10.8</span> Pivoting Data between Long and Wide Formats</a></li>
+  <li><a href="#useful-related-packages" id="toc-useful-related-packages" class="nav-link" data-scroll-target="#useful-related-packages"><span class="header-section-number">10.9</span> Useful Related Packages</a></li>
   <li><a href="#concept-review" id="toc-concept-review" class="nav-link" data-scroll-target="#concept-review">Concept Review</a></li>
   </ul>
 </nav>
@@ -362,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="module-10" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling with {dplyr}</span></span></h1>
+<h1 class="title"><span id="module-10" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Data Wrangling</span></span></h1>
 </div>
 
 
@@ -380,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="objectives" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">10.1</span> Objectives</h2>
 <blockquote class="blockquote">
-<p>The objective of this module to introduce you to data wrangling using the {dplyr} package, which is part of the {tidyverse} family.</p>
+<p>The objective of this module to introduce you to data wrangling and transformation using the {dplyr} and {tidyr} packages, which are part of the {tidyverse} family.</p>
 </blockquote>
 </section>
 <section id="preliminaries" class="level2" data-number="10.2">
@@ -1126,8 +1127,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="useful-related-packages" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="useful-related-packages"><span class="header-section-number">10.8</span> Useful Related Packages</h2>
+<section id="pivoting-data-between-long-and-wide-formats" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="pivoting-data-between-long-and-wide-formats"><span class="header-section-number">10.8</span> Pivoting Data between Long and Wide Formats</h2>
+</section>
+<section id="useful-related-packages" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="useful-related-packages"><span class="header-section-number">10.9</span> Useful Related Packages</h2>
 <p>The {tidylog} package provides wrappers around many {dplyr} and {tidyr} package functions that provide logged feedback on the outcome of those functions, which can be useful for understanding the effects of whatever data wrangling processes we run. For example, running <code>filter()</code> will provide feedback on the number of runs removed and kept as part of a filtering operation…</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidylog)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
