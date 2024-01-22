@@ -212,7 +212,7 @@ Use the ***RStudio*** **Help** tab to browse the documentation associated with t
 
 The {mailR} package also allows you to easily send simple emails with a single function, `send.mail()`. Here, we need to specify details about the SMTP server more explicitly than if we use {blastula}.
 
-### Step 1 {.unnumbered}
+#### Step 1 {.unnumbered}
 
 - Install the {mailR} package.
 
@@ -220,7 +220,7 @@ The {mailR} package also allows you to easily send simple emails with a single f
 install.packages("mailR")
 ```
 
-### Step 2 {.unnumbered}
+#### Step 2 {.unnumbered}
 
 - Load the {mailR} package.
 
@@ -228,7 +228,7 @@ install.packages("mailR")
 library(mailR)
 ```
 
-### Step 3 {.unnumbered}
+#### Step 3 {.unnumbered}
 
 Create and send the email.
 

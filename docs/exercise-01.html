@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./img/statistics(1).svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./img/statistics-hand.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Applied Data Analysis</a> 
@@ -334,12 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#preliminary-steps" id="toc-preliminary-steps" class="nav-link" data-scroll-target="#preliminary-steps">Preliminary Steps</a></li>
   <li><a href="#version-1-using-the-emayaili-package" id="toc-version-1-using-the-emayaili-package" class="nav-link" data-scroll-target="#version-1-using-the-emayaili-package">Version 1: Using the {emayaili} package</a></li>
-  <li><a href="#version-2-using-the-mailr-package" id="toc-version-2-using-the-mailr-package" class="nav-link" data-scroll-target="#version-2-using-the-mailr-package">Version 2: Using the {mailR} package</a>
-  <ul class="collapse">
-  <li><a href="#step-1-1" id="toc-step-1-1" class="nav-link" data-scroll-target="#step-1-1">Step 1</a></li>
-  <li><a href="#step-2-1" id="toc-step-2-1" class="nav-link" data-scroll-target="#step-2-1">Step 2</a></li>
-  <li><a href="#step-3-1" id="toc-step-3-1" class="nav-link" data-scroll-target="#step-3-1">Step 3</a></li>
-  </ul></li>
+  <li><a href="#version-2-using-the-mailr-package" id="toc-version-2-using-the-mailr-package" class="nav-link" data-scroll-target="#version-2-using-the-mailr-package">Version 2: Using the {mailR} package</a></li>
   <li><a href="#version-3-using-the-blastula-package" id="toc-version-3-using-the-blastula-package" class="nav-link" data-scroll-target="#version-3-using-the-blastula-package">Version 3: Using the {blastula} package</a></li>
   <li><a href="#clean-up-steps" id="toc-clean-up-steps" class="nav-link" data-scroll-target="#clean-up-steps">Clean-Up Steps</a></li>
   </ul></li>
@@ -609,8 +604,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="version-2-using-the-mailr-package" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="version-2-using-the-mailr-package">Version 2: Using the {mailR} package</h2>
 <p>The {mailR} package also allows you to easily send simple emails with a single function, <code>send.mail()</code>. Here, we need to specify details about the SMTP server more explicitly than if we use {blastula}.</p>
-<section id="step-1-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="step-1-1">Step 1</h3>
+<section id="step-1-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-1-1">Step 1</h4>
 <ul>
 <li>Install the {mailR} package.</li>
 </ul>
@@ -618,8 +613,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"mailR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-2-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="step-2-1">Step 2</h3>
+<section id="step-2-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-2-1">Step 2</h4>
 <ul>
 <li>Load the {mailR} package.</li>
 </ul>
@@ -627,8 +622,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mailR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-3-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="step-3-1">Step 3</h3>
+<section id="step-3-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-3-1">Step 3</h4>
 <p>Create and send the email.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>

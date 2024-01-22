@@ -2,24 +2,6 @@ project:
   type: book
   output-dir: docs
 
-filters:
-  - fold_results.lua
-
-knitr:
-  opts_chunk:
-    echo: true
-    warning: true
-    message: true
-    comment: "##"
-    prompt: false
-    tidy: true
-    tidy.opts:
-      width.cutoff: 80
-    fig.align: "center"
-    fig.path: "output/"
-    R.options:
-      width: 80
-
 book:
   title: "Applied Data Analysis"
   # author: "Anthony Di Fiore"
@@ -103,6 +85,21 @@ book:
       chapters:
         - packages.qmd
 
+knitr:
+  opts_chunk:
+    echo: true
+    warning: true
+    message: true
+    comment: "##"
+    prompt: false
+    tidy: true
+    tidy.opts:
+      width.cutoff: 80
+    fig.align: "center"
+    fig.path: "output/"
+    R.options:
+      width: 80
+
 format:
   html:
     css: css/style.css
@@ -113,6 +110,8 @@ format:
     toc-title: "Table of Contents"
     toc-expand: true
     toc-depth: 3
+    theme:
+      - css/theme.scss
 
 comments:
   hypothesis: true
