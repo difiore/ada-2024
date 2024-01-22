@@ -1,8 +1,8 @@
-# Data Wrangling with {dplyr} {#module-10}
+# Data Wrangling {#module-10}
 
 ## Objectives
 
-> The objective of this module to introduce you to data wrangling using the {dplyr} package, which is part of the {tidyverse} family.
+> The objective of this module to introduce you to data wrangling and transformation using the {dplyr} and {tidyr} packages, which are part of the {tidyverse} family.
 
 ## Preliminaries
 
@@ -419,6 +419,8 @@ d %>% {plot(log(.$Brain_Size_Species_Mean), log(.$Body_mass_female_mean))}
 d %>% select(Brain_Size_Female_Mean) %>% log %>% head
 d |> select(Brain_Size_Female_Mean) |> log() |> head()
 ```
+
+## Pivoting Data between Long and Wide Formats
 
 ## Useful Related Packages
 
