@@ -142,7 +142,7 @@ message_gmail <- envelope() %>%
   text("Hello! This is a plain text message sent from a Gmail account.")
 ```
 
-As of ***R*** version 4.x, we can alternatively use ***R***'s "native" pipe operator, `|>:
+As of ***R*** version 4.1, we can alternatively use ***R***'s "native" pipe operator, `|>`:
 
 ```{r}
 message_gmail <- envelope() |>
