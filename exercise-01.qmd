@@ -238,37 +238,42 @@ Create and send the email
     - If port 587 is used, either the argument `ssl=` or `tls=` should be set to TRUE
 
 ```{r eval = FALSE}
-
-send.mail(from = "anthony.difiore@utexas.edu",
-          to = "anthony.difiore@gmail.com",
-          subject = "Sending a message using {mailR}",
-          body = "Hello! This is a plain text message sent from a Gmail account.",
-          smtp = list(
-            host.name = "smtp.gmail.com",
-            port = 587,
-            user.name = "anthony.difiore@utexas.edu",
-            passwd = pwd_gmail,
-            ssl = TRUE),
-          authenticate = TRUE,
-          send = TRUE)
+send.mail(
+  from = "anthony.difiore@utexas.edu",
+  to = "anthony.difiore@gmail.com",
+  subject = "Sending a message using {mailR}",
+  body = "Hello! This is a plain text message sent from a Gmail account.",
+  smtp = list(
+    host.name = "smtp.gmail.com",
+    port = 587,
+    user.name = "anthony.difiore@utexas.edu",
+    passwd = pwd_gmail,
+    ssl = TRUE
+  ),
+  authenticate = TRUE,
+  send = TRUE
+)
 ```
 
 - Using Microsoft's Outlook/Office365 server...
     - To use the Outlook/Office365 server, `port=` should be set to 587 and the argument `tls=` (and not `ssl=`) must be set to TRUE to allow TLS encryption.
 
 ```{r eval = FALSE}
-send.mail(from = "anthony.difiore@outlook.com",
-          to = "anthony.difiore@gmail.com",
-          subject = "Sending a message using {mailR}",
-          body = "Hello! This is a plain text message sent from an Outlook account.",
-          smtp = list(
-            host.name = "smtp.office365.com",
-            port = 587,
-            user.name = "anthony.difiore@outlook.com",
-            passwd = pwd_outlook,
-            tls = TRUE),
-          authenticate = TRUE,
-          send = TRUE)
+send.mail(
+  from = "anthony.difiore@outlook.com",
+  to = "anthony.difiore@gmail.com",
+  subject = "Sending a message using {mailR}",
+  body = "Hello! This is a plain text message sent from an Outlook account.",
+  smtp = list(
+    host.name = "smtp.office365.com",
+    port = 587,
+    user.name = "anthony.difiore@outlook.com",
+    passwd = pwd_outlook,
+    tls = TRUE
+  ),
+  authenticate = TRUE,
+  send = TRUE
+)
 ```
 
 ## Version 3: Using the {blastula} package {.unnumbered}

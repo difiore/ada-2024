@@ -160,6 +160,7 @@
     - Chapter 7 - Basic Statistics
 
 #### Other Useful Readings {.unnumbered}
+
 - *The Book of R*
     - Chapter 13 - Elementary Statistics
     - Chapter 14 - Basic Data Visualization
@@ -290,7 +291,7 @@
     - Chapter 16 - Statistical Inference
 - *The Book of R*
     - Chapter 17 - Sampling Distributions and Confidence
-    
+
 #### Other Useful Readings {.unnumbered}
 
 - *Statistical Inference via Data Science*
@@ -405,7 +406,7 @@
 
 #### Topics {.unnumbered}
 
--   Regression with categorical predictors
+- Regression with categorical predictors
     - One- and multiple-factor ANOVA
     - Type I, Type II, Type III sums of squares
     - Interaction plots to visualize changes across groups
@@ -478,7 +479,7 @@
     - Logistic regression, multiple logistic regression
     - Log-linear modeling
     - Likelihood ratio tests
--   Introduction to mixed effects modeling
+- Introduction to mixed effects modeling
     - Combining fixed and random factors
 - Assessing model fit for GLMs and mixed models
 
@@ -540,31 +541,31 @@
 
 <!-- - Using APIs ("application programing interfaces") -->
 
-<!--    - Accessing data from Twitter and Facebook -->
+<!--  - Accessing data from Twitter and Facebook -->
 
-<!--    - Tweeting and posting from R -->
+<!--  - Tweeting and posting from R -->
 
 <!-- - Text mining basics -->
 
-<!--    - Building a corpus -->
+<!--  - Building a corpus -->
 
-<!--    - Introduction to regular expressions -->
+<!--  - Introduction to regular expressions -->
 
-<!--    - Building a document-term matrix -->
+<!--  - Building a document-term matrix -->
 
-<!--    - Term frequency analysis -->
+<!--  - Term frequency analysis -->
 
-<!--    - Visualizing text data -->
+<!--  - Visualizing text data -->
 
 <!-- #### Other Useful Readings {-} -->
 
-<!--    - Williams, G. (2016). Hands-on data science with R - Text Mining. -->
+<!--  - Williams, G. (2016). Hands-on data science with R - Text Mining. -->
 
-<!--    - Gentry, J. (2014). Twitter client for R. -->
+<!--  - Gentry, J. (2014). Twitter client for R. -->
 
-<!--    - Kumar, S., Morstatter, F., and Huan, L. 2014. *Twitter Data Analytics.* New York: Springer. -->
+<!--  - Kumar, S., Morstatter, F., and Huan, L. 2014. *Twitter Data Analytics.* New York: Springer. -->
 
-<!--    - Package descriptions for {rtweet}, {RFacebook}, {SocialMediaLab} -->
+<!--  - Package descriptions for {rtweet}, {RFacebook}, {SocialMediaLab} -->
 
 <!-- #### Cluster Analysis, Classification Trees, and Random Forests -->
 
