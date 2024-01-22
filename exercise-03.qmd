@@ -7,7 +7,7 @@ title: "Exercise 03"
 ## Learning Objectives {.unnumbered}
 
 -   Integrating an ***RStudio*** project, a local ***git*** repository, and a **GitHub** remote repository
--   Performing basic exploratory data analysesand visualization
+-   Performing basic exploratory data analyses and visualization
 -   Using {dplyr} and the pipe operator (`%>%`) for data wrangling
 
 #### Preliminaries {.unnumbered}
@@ -40,8 +40,8 @@ Create a new **RMarkdown** document, called "EDA-challenge.Rmd" within the proje
 
 > **HINT:** To create this new variable, try combining `mutate()` with `ifelse()` or `case_when()` statements... check out the notes on "Conditional Expressions" in [**Module 11**](#module-11). Take a peak at the code snippet below if you get stuck!
 
-::: {.fold .s .o}
 ```{r eval=FALSE}
+#| code-fold: true
 mutate(d, "diet" = ifelse(
   Fruit >= 50,
   "frugivore",
@@ -57,9 +57,8 @@ mutate(
   )
 )
 ```
-:::
 
-8. In one line of code, using {dplyr} verbs and the forward pipe (`%>%`) operator, do the following:
+8. In one line of code, using {dplyr} verbs and the forward pipe (`%>%` or `|>`) operator, do the following:
 
 - Add a variable, **Binomial** to the data frame **d**, which is a concatenation of the **Genus** and **Species**...
 - Trim the data frame to only include the variables **Binomial**, **Family**, **Brain_size_species_mean**, and **Body_mass_male_mean**...

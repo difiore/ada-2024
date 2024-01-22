@@ -167,29 +167,40 @@ In the following code block, we first set up a plot window to hold the results o
 
 ```{r fig.height=4}
 # set up plot window
-plot(c(0, 100), c(0, 15), type="n", xlab= "Sample Size", ylab="Variance")
+plot(c(0, 100),
+     c(0, 15),
+     type = "n",
+     xlab = "Sample Size",
+     ylab = "Variance")
 
 # add the population variance (= square of population standard deviation) to the plot
-abline(h=4, col ="red", lwd = 2, lty = 2)
+abline(
+  h = 4,
+  col = "red",
+  lwd = 2,
+  lty = 2
+)
 
 # run simulations and add results to plot
 mu <- 10
 sigma <- 2
-for (n in seq(from = 5, to = 100, by = 5))
-  # samples of 5, 10, 15...
-  {
-    # set up a variable, reps, to hold the set of variances calculated for each replicate
-    reps <- vector("double", 50)
-    for (i in 1:50) # 50 replicates
-      {
-        x <- rnorm(n, mean=mu, sd=sigma)
-        points(n, var(x))
-        reps[[i]] = var(x)
-        # this is a common programming motif in R and is more memory and
-        # time efficient than another common motif, reps <- c(reps, var(x))
-      }
-  points(n, mean(reps), bg="red", pch=23, cex=2) # plots average
+# samples of 5, 10, 15...
+for (n in seq(from = 5, to = 100, by = 5)) {
+  # set up a variable, reps, to hold the set of variances calculated for each replicate
+  reps <- vector("double", 50)
+  # 50 replicates
+  for (i in 1:50) {
+    x <- rnorm(n, mean = mu, sd = sigma)
+    points(n, var(x))
+    reps[[i]] = var(x)
+    # this is a common programming motif in R and is more memory and time efficient than another common motif, `reps <- c(reps, var(x))`
   }
+  points(n,
+         mean(reps),
+         bg = "red",
+         pch = 23,
+         cex = 2) # plots average
+}
 ```
 
 - How does *sample variance* compare to *population variance*? What happens to the sample variances as sample size increases?

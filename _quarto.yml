@@ -96,7 +96,7 @@ knitr:
     tidy.opts:
       width.cutoff: 80
     fig.align: "center"
-    fig.path: "output/"
+    # fig.path: "output/"
     R.options:
       width: 80
 

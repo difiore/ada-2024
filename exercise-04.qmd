@@ -6,15 +6,15 @@ title: "Exercise 04"
 
 ## Learning Objectives {.unnumbered}
 
--   Loading data files into ***R***
--   Breaking a programming challenge down into discrete steps
--   Writing novel functions
--   Using arguments in functions
--   Using set operation functions
--   Using loops and conditional statements
--   Working with different data structures (vectors, tabular data)
--   Practicing data wrangling
--   Dealing with keyboard input
+- Loading data files into ***R***
+- Breaking a programming challenge down into discrete steps
+- Writing novel functions
+- Using arguments in functions
+- Using set operation functions
+- Using loops and conditional statements
+- Working with different data structures (vectors, tabular data)
+- Practicing data wrangling
+- Dealing with keyboard input
 
 ## **Wordle** Puzzle Challenge {.unnumbered}
 
@@ -22,16 +22,16 @@ The rules of **Wordle** are simple: A player has SIX tries to guess a 5-letter w
 
 This week's programming exercise is to work with a partner to get as far along as you can writing ***R*** code that allows you to play **Wordle** to your heart's content using ***R***/***RStudio***!
 
-The assignment and steps below were inspired by [this fun blog post](https://statisticaloddsandends.wordpress.com/2022/01/18/playing-wordle-in-r/)... but before you reference it or other online sites, try to do tackle this coding exercise on your own.
+The assignment and steps below were inspired by [this fun blog post](https://statisticaloddsandends.wordpress.com/2022/01/18/playing-wordle-in-r/)... but before you reference it or other online sites, try to tackle this coding exercise on your own.
 
 #### Preliminaries {.unnumbered}
 
--   Set up a new ***GitHub*** repo in you or your partner's ***GitHub*** workspace named "exercise-04" and clone that down to both of your computers as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful. Make sure that both you and your partner are collaborators on the repo and that you add me as a collaborator as well (my ***GitHub*** username is "difiore").
+- Set up a new ***GitHub*** repo in you or your partner's ***GitHub*** workspace named "exercise-04" and clone that down to both of your computers as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful. Make sure that both you and your partner are collaborators on the repo and that you add me as a collaborator as well (my ***GitHub*** username is "difiore").
 
--   Go to <https://github.com/difiore/ada-2022-datasets>, download the following two data files, and add them to your repo:
+- Go to <https://github.com/difiore/ada-2022-datasets>, download the following two data files, and add them to your repo:
 
-    -   collins-scrabble-words-2019.txt
-    -   google-10000-english-usa-no-swears.txt
+    - collins-scrabble-words-2019.txt
+    - google-10000-english-usa-no-swears.txt
 
 The first of these files (279,497 lines long) contains a list of "Official Scrabble Words" in the English language based on the ***Collins English Dictionary*** published by HarperCollins. The first line in the file is the word "words" and is used as a header.
 
@@ -51,9 +51,9 @@ Additionally, also need to establish a dictionary of "valid" words that players 
 
 #### Step 1 {.unnumbered}
 
--   Create your own custom function called `load_dictionary()` that takes a single argument, "filename", that can be used to read in either of the two data files your downloaded.
+- Create your own custom function called `load_dictionary()` that takes a single argument, "filename", that can be used to read in either of the two data files your downloaded.
 
--   Once you have created your function, use that function to create two variables, **solution_list** and **valid_list**, that, respectively contain *vectors* of possible solution words and valid words to guess. That is, you should be able to run the following to create these two vectors:
+- Once you have created your function, use that function to create two variables, **solution_list** and **valid_list**, that, respectively contain *vectors* of possible solution words and valid words to guess. That is, you should be able to run the following to create these two vectors:
 
 ```
 valid_list <- load_dictionary(<filename here>)
@@ -73,11 +73,11 @@ chr [1:8336] "THE" "OF" "AND" "TO"...
 
 #### Step 2 {.unnumbered}
 
--   Winnow your variable **solution_list** to only include words that are included in **valid_list**. There are multiple ways that you could do this, but the set operation function, `intersection()` is an easy way. Use ***R*** help to look at the documentation for the `intersection()` function to see if you can get that to work. How many words are in your updated **solution_list** vector?
+- Winnow your variable **solution_list** to only include words that are included in **valid_list**. There are multiple ways that you could do this, but the set operation function, `intersection()` is an easy way. Use ***R*** help to look at the documentation for the `intersection()` function to see if you can get that to work. How many words are in your updated **solution_list** vector?
 
 #### Step 3 {.unnumbered}
 
--   Write a custom function called `pick_solution()` that [1] removes all words from **solution_list** that are not 5 letters in length, [2] then randomly chooses a single word from those that remain, and [3] then splits that word into a vector of single-character elements. You should be able to pass your **solution_list** vector as the argument to the function.
+- Write a custom function called `pick_solution()` that [1] removes all words from **solution_list** that are not 5 letters in length, [2] then randomly chooses a single word from those that remain, and [3] then splits that word into a vector of single-character elements. You should be able to pass your **solution_list** vector as the argument to the function.
 
 > **HINT**: For [1], you will want to subset the `solution_list` vector according to some criterion of word length. For [2], you may find the `sample()` function useful (use ***R*** help to look up documentation on that function). For [3], you may want to look at the functions `strsplit()` from {base} ***R*** or `str_split()` from the {stringr} package (part of {tidyverse}). Pay attention to the data structure that those functions return, because you will need to carefully reference one of the elements that is returned in order to wind up with a vector.
 
