@@ -246,7 +246,7 @@ sd(s)
 
 ## Scripts and Functions
 
-As mentioned previously, scripts in ***R*** are simply text files that store an order list of commands, which can be used to link together sets of operations to perform complete analyses and show results.
+As mentioned previously, scripts in ***R*** are simply text files that store an ordered list of commands, which can be used to link together sets of operations to perform complete analyses and show results.
 
 For example, you could enter the lines below into a text editor and then save the script in a file named "my_script.R" in a folder called `src/` inside your working directory.
 
@@ -287,11 +287,9 @@ say_hi <- function(x) {
 
 > **NOTE:** Here, the `paste()` command allows string concatenation. Alternatively, we could use `paste0()` and omit the `sep=` argument.
 
-In general, the format for a function is as follows:
+In general, the format for a function is as follows: `function_name <- function(<arguments>) {<function code>}`
 
-    function_name <- function(<arguments>) {<function code>}
-
-You can send this function to the ***R*** console by highlighting it in the editor and hitting `⌘-RETURN` (Mac) or `control-ENTER` (PC). This loads the function as an object into the working environment.
+You can send your new function to the ***R*** console by highlighting it in the editor and hitting `⌘-RETURN` (Mac) or `control-ENTER` (PC). This loads the function as an object into the working environment.
 
 ```{r echo=FALSE, out.width="90%"}
 knitr::include_graphics("img/say_hi.png")
@@ -338,7 +336,7 @@ A second hidden file, ".Rhistory", will also be stored in the same directory, wh
 
 ***R*** has been under continuous and active development since its inception in the late 1990s, and several updates are made available each year. These update help to fix bugs, improve speed and computational efficiency, and add new functionality to the software. The following information on how to update ***R*** is based on [**this post from Stack Overflow**](http://stackoverflow.com/questions/13656699/update-r-using-rstudio)
 
-- Step 1: Get the latest version of ***R*** {-}
+- Step 1: Get the latest version of ***R***
 
     - Go to the [**R Project**](http://www.r-project.org) website.
     - Click on **CRAN** in the sidebar on the left.
@@ -347,7 +345,7 @@ A second hidden file, ".Rhistory", will also be stored in the same directory, wh
     - Follow the installation procedures for your system.
     - Restart ***RStudio***.
 
-- Step 2: Relocate your packages {-}
+- Step 2: Relocate your packages
 
     - To ensure that your packages work with your shiny new version of ***R***, you need to:
 
@@ -376,5 +374,5 @@ packageStatus()
 
 - Characteristics of ***R*** objects: `class()`, `mode()`, `typeof()`, `str()`, `attributes()`, `dplyr::glimpse()`
 - Using scripts: `source()`
-- ".RData" and ".RHistory" files
+- ".RData" and ".Rhistory" files
 - Updating ***R*** and packages

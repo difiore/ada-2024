@@ -749,21 +749,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 79.8981</code></pre>
+<pre><code>## [1] 80.03347</code></pre>
 </div>
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 9.976194</code></pre>
+<pre><code>## [1] 10.05206</code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="scripts-and-functions" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="scripts-and-functions"><span class="header-section-number">4.3</span> Scripts and Functions</h2>
-<p>As mentioned previously, scripts in <strong><em>R</em></strong> are simply text files that store an order list of commands, which can be used to link together sets of operations to perform complete analyses and show results.</p>
+<p>As mentioned previously, scripts in <strong><em>R</em></strong> are simply text files that store an ordered list of commands, which can be used to link together sets of operations to perform complete analyses and show results.</p>
 <p>For example, you could enter the lines below into a text editor and then save the script in a file named “my_script.R” in a folder called <code>src/</code> inside your working directory.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
@@ -805,9 +805,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> Here, the <code>paste()</code> command allows string concatenation. Alternatively, we could use <code>paste0()</code> and omit the <code>sep=</code> argument.</p>
 </blockquote>
-<p>In general, the format for a function is as follows:</p>
-<pre><code>function_name &lt;- function(&lt;arguments&gt;) {&lt;function code&gt;}</code></pre>
-<p>You can send this function to the <strong><em>R</em></strong> console by highlighting it in the editor and hitting <code>⌘-RETURN</code> (Mac) or <code>control-ENTER</code> (PC). This loads the function as an object into the working environment.</p>
+<p>In general, the format for a function is as follows: <code>function_name &lt;- function(&lt;arguments&gt;) {&lt;function code&gt;}</code></p>
+<p>You can send your new function to the <strong><em>R</em></strong> console by highlighting it in the editor and hitting <code>⌘-RETURN</code> (Mac) or <code>control-ENTER</code> (PC). This loads the function as an object into the working environment.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -821,22 +820,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Now we can create some test data and call the function. What are the results?</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>name1 <span class="ot">&lt;-</span> <span class="st">"Rick Grimes"</span></span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>name2 <span class="ot">&lt;-</span> <span class="st">"Ruth Bader Ginsburg"</span></span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>name1 <span class="ot">&lt;-</span> <span class="st">"Rick Grimes"</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>name2 <span class="ot">&lt;-</span> <span class="st">"Ruth Bader Ginsburg"</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "Greetings, Rick Grimes!"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "Greetings, Ruth Bader Ginsburg!"</code></pre>
 </div>
 </div>
 <p>You can also save the function in a file, e.g., in the <code>src/</code> folder inside your working directory, and then <code>source("&lt;path&gt;")</code> it in code. Save your function script as “say_hi.R” and then run the following:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"src/say_hi.R"</span>)</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>name3 <span class="ot">&lt;-</span> <span class="st">"Charles Darwin"</span></span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"src/say_hi.R"</span>)</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>name3 <span class="ot">&lt;-</span> <span class="st">"Charles Darwin"</span></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "Greetings, Charles Darwin!"</code></pre>
 </div>
@@ -868,7 +867,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.5" class="anchored" data-anchor-id="updating-r"><span class="header-section-number">4.5</span> Updating <strong><em>R</em></strong></h2>
 <p><strong><em>R</em></strong> has been under continuous and active development since its inception in the late 1990s, and several updates are made available each year. These update help to fix bugs, improve speed and computational efficiency, and add new functionality to the software. The following information on how to update <strong><em>R</em></strong> is based on <a href="http://stackoverflow.com/questions/13656699/update-r-using-rstudio"><strong>this post from Stack Overflow</strong></a></p>
 <ul>
-<li><p>Step 1: Get the latest version of <strong><em>R</em></strong> {-}</p>
+<li><p>Step 1: Get the latest version of <strong><em>R</em></strong></p>
 <ul>
 <li>Go to the <a href="http://www.r-project.org"><strong>R Project</strong></a> website.</li>
 <li>Click on <strong>CRAN</strong> in the sidebar on the left.</li>
@@ -877,7 +876,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Follow the installation procedures for your system.</li>
 <li>Restart <strong><em>RStudio</em></strong>.</li>
 </ul></li>
-<li><p>Step 2: Relocate your packages {-}</p>
+<li><p>Step 2: Relocate your packages</p>
 <ul>
 <li><p>To ensure that your packages work with your shiny new version of <strong><em>R</em></strong>, you need to:</p>
 <ul>
@@ -901,9 +900,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Finally, to reassure yourself that you have done everything correctly, type these two commands in the <strong><em>RStudio</em></strong> console to see what you’ve got in terms of what version of <strong><em>R</em></strong> you are running, the number of packages you have installed, and what packages you have loaded:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>version</span>
-<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageStatus</span>()</span>
-<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>version</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="fu">packageStatus</span>()</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -912,7 +911,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Characteristics of <strong><em>R</em></strong> objects: <code>class()</code>, <code>mode()</code>, <code>typeof()</code>, <code>str()</code>, <code>attributes()</code>, <code>dplyr::glimpse()</code></li>
 <li>Using scripts: <code>source()</code></li>
-<li>“.RData” and “.RHistory” files</li>
+<li>“.RData” and “.Rhistory” files</li>
 <li>Updating <strong><em>R</em></strong> and packages</li>
 </ul>
 
