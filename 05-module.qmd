@@ -223,6 +223,8 @@ knitr::include_graphics("img/create-new-repo.png")
 - It is also a good idea to click the "Add a README file" checkbox under "Initialize this repository with:"  so that your repository includes at least one file in it. A README file serves as a nice, introductory landing page for your repo. By creating at least one file in your repo, you will also set a default *branch*, named "main", for 
 - When you are done, click the large green "Create repository" button.
 
+> **NOTE:** It is also good to click the checkbox for "Add .gitignore" and select ".gitignore template R". This will create a hidden file in which you can specify files within your repo that you DO NOT want or need to keep under version control.
+
 ```{r}
 #| echo: false
 #| out_width: "90%"
@@ -249,9 +251,9 @@ knitr::include_graphics("img/readme-edit.png")
 knitr::include_graphics("img/readme-markdown-editor.png")
 ```
 
-> **NOTE:** **Markdown** is essentially a set of rules for how to easily style plain text files in such a way that can be easily converted and rendered in HTML, the structural language of the web. This module, for example, was written in ***RStudio*** using a particular version of **Markdown**. ***GitHub*** has a nice, short tutorial that you can follow about ["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/). There is also a nice ***GitHub*** guide on ["Documenting your Projects on GitHub"](https://guides.github.com/features/wikis/) that provides a useful overview of the benefits of good documentation.
+> **NOTE:** **Markdown** is essentially a set of rules for how to easily style plain text files in such a way that can be easily converted and rendered in HTML, the structural language of the web. This module, and this entire website, for example, were written in ***RStudio*** using a particular version of **Markdown** called "Quarto Markdown". ***GitHub*** has a nice, short tutorial that you can follow about ["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/). There is also a nice ***GitHub*** guide on ["Documenting your Projects on GitHub"](https://guides.github.com/features/wikis/) that provides a useful overview of the benefits of good documentation.
 
-- When you are done editing, **commit** the changes to your remote "README" file by scrolling to the bottom of the editor window and clicking the "Commit Changes" button. Note that every commit you make to a repository must have some sort of brief, descriptive message associated with it. Here, ***GitHub*** has populated the message field with default text ("Update README.md"), but you can change this and, optionally, add a fuller message as well.
+- When you are done editing, **commit** the changes to your remote "README" file by scrolling to the bottom of the editor window and clicking the "Commit Changes" button. Note that every commit you make to a repository **must** have some sort of brief, descriptive message associated with it. Here, ***GitHub*** has populated the message field with default text ("Update README.md"), but you can change this and, optionally, add a fuller message as well.
 
 ```{r}
 #| echo: false
@@ -273,9 +275,9 @@ Here, we are going to create a new branch of our repository, edit a file in that
 knitr::include_graphics("img/new-branch.png")
 ```
 
-- Using the same procedure as above, make some edits to the "README" file on your new branch and then commit those changes. E.g., add a new section to you Markdown file...
+- Using the same procedure as above, make some edits to the "README" file on your new branch and then commit those changes. E.g., add a new section to your **Markdown** file...
 
-To merge changes from the new branch back into the `main` branch, we now need to [1] compare changes between branches, [2] create what is called a "pull request", and [3] pull in changes. Along the way, if there are any differences between the two branches that cannot be merged without conflicts (e.g., the same section of a particular file has been modified in both branches), then these will be highlighted and a merge prevented until the conflict is resolved.
+To merge changes from the new branch back into the `main` branch, we now need to [1] compare changes between branches, [2] create what is called a "pull request", and [3] pull changes from the new branch back into the `main` branch. Along the way, if there are any differences between the two branches that cannot be merged without "conflicts" (e.g., cases where the same section of a particular file has been modified in both branches), then these will be highlighted and a merge prevented until the conflict is resolved.
 
 #### Step 1 {.unnumbered}
 
@@ -297,7 +299,7 @@ knitr::include_graphics("img/compare-and-pull-request.png")
 
 - Select the branches to compare. Choose `main` as the "base" branch (the branch we are comparing to and merging into) and `readme-edits` as the "compare" or "head" branch (the branch we are currently working in, where our most recent changes have been made).
 
-Note that when we shifted over to the `readme-edits` branch, ***GitHub*** switched the the "head" branch from `main` to `readme-edits`.
+> **NOTE:** You should notice that when we shifted over to the `readme-edits` branch, ***GitHub*** switched the "head" branch from `main` to `readme-edits`.
 
 ```{r}
 #| echo: false
@@ -305,7 +307,7 @@ Note that when we shifted over to the `readme-edits` branch, ***GitHub*** switch
 knitr::include_graphics("img/branches.png")
 ```
 
-After making these selections, scroll to the bottom of the window... you should see you a *diffs* (for "differences") section that summarizes the differences between the `main` (base) and `compare` (head) versions.
+After making these selections, scroll to the bottom of the window... there you should see you a *diffs* (for "differences") section that summarizes the differences between the `main` (base) and `compare` (head) versions.
 
 ```{r}
 #| echo: false
@@ -353,15 +355,15 @@ knitr::include_graphics("img/delete-branch.png")
 
 ## Connecting ***git*** and ***GitHub***
 
-Now that we some familiarity with working with a remotely hosted repository, our next step in developing a **git/GitHub** workflow is to make a *clone* of that repository on one or more local computer(s). We can then work on and commit changes locally and then, when we are ready, we can "push" those changes up to the remotely hosted repository.
+Now that we some familiarity with working with a remotely hosted repository, our next step in developing a **git/GitHub** workflow is to make a *clone* of that repository on one or more local computer(s). We can then work on and commit changes locally via **git** and then, when we are ready, we can "push" those changes up to the remotely hosted repository on **GitHub**.
 
-Similarly, once a local repository has been created and connected to a remotely hosted version, we can also make changes remotely and then "pull" those changes down to our local repository to keep them in sync.
+Similarly, once a local repository under version control has been created and connected to a remotely hosted version, we can also make changes remotely and then "pull" those changes down to our local repository to keep them in sync.
 
 It is *very* easy to do this process through the ***RStudio*** IDE, as we will see below, but we are going to first do it through the command line to show you all of the steps that ***RStudio*** facilitates.
 
 ### Cloning a Remote Repository {.unnumbered}
 
-There are two ways to connect between remote and local ***git*** repositories, via either **HTTPS** ("hypertext transfer protocol") or **SSH** (secure shell). Our first steps will use the first of these approaches and will create a local "cloned" copy of a remote repository we have hosted on ***GitHub***.
+There are two ways to connect between remote and local ***git*** repositories, via either **HTTPS** (which stands for "hypertext transfer protocol") or **SSH** (which stands for "secure shell"). Our first steps will use the first of these approaches and will create a local "cloned" copy of a remote repository we have hosted on ***GitHub***.
 
 - Open a terminal shell. You can either do this directly from your operating system or you can access a shell from within ***RStudio*** by choosing **Tools \> Terminal \> New Terminal** or **Tools \> Shell...**. Again, the former command opens a new terminal within the ***RStudio*** IDE, while the latter opens an external terminal window.
 - Using the UNIX and DOS shell command `cd` (for "change directories"), navigate into the folder that you want your cloned repository to be created in. I typically create new repos in a dedicated folder called `Repos/` that I use for development work, which I keep in my main user folder on MacOS (e.g., "\~/Development/Repos").
@@ -394,7 +396,7 @@ remote: Compressing objects: 100% (10/10), done.
 remote: Total 11 (delta 1), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (11/11), done.
 Resolving deltas: 100% (1/1), done.
-[13:55:51] ~/Development/repos$
+[13:55:51] ~/Development/Repos$
 ```
 
 If you then navigate into the newly created local directory using the `cd` command, you can list and look at the cloned files. To do so, at the shell prompt type...
@@ -439,9 +441,9 @@ I can use simple text formating to make **bold** or *italicized* text!
 
 Now, edit one of the local files in your repo. You can do this by opening the "README.md" file in any text editor (e.g., use the shell command `open README.md`, make some changes, and save) or by using the shell commands `echo` and `>>` (which redirects output to a file instead of the command prompt) to add text to the end of the file (e.g., `echo "Here is some new text I am adding from the shell to update the README file." >> README.md`).
 
-You can also do this by navigating to the "README.md" file through the normal Windows or MacOS file browswer, opening it up, and editing it with any plain text text editor like [Atom](https://atom.io/), [Visual Studio Code](https://code.visualstudio.com/), or [BBEdit](https://www.barebones.com/products/bbedit/index.html).
+You can also do this by navigating to the "README.md" file through the normal Windows or MacOS file manager, opening it up, and editing it with any plain text text editor like [Visual Studio Code](https://code.visualstudio.com/) or [BBEdit](https://www.barebones.com/products/bbedit/index.html).
 
-If you now type `git status` at the shell prompt, you will see a message that the the "README.md" file has been changed:
+If you now type `git status` at the shell prompt, you will see a message that the "README.md" file has been changed:
 
 ```
 [14:14:42] ~/Development/Repos/test-repo$ git status
@@ -451,7 +453,7 @@ Your branch is up to date with 'origin/main'.
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   README.md
+  modified:   README.md
 
 no changes added to commit (use "git add" and/or "git commit -a")
 [14:14:45] ~/Development/Repos/test-repo$
@@ -546,7 +548,7 @@ Already up to date.
 ***RStudio*** includes functionality to make it very straightforward to use various system shells with projects under version control. This includes:
 
 - You can use the **Tools \> Terminal \> New Terminal** and **Tools \> Shell...** commands to open a new terminal within ***RStudio*** or a new system shell window with the working directory already initialized to your project's root directory.
-- When using ***git*** on Windows, these command by default should open the **Git Bash** shell, which is a port of the Unix bash shell to Windows that has been specially configured for use with ***MSYS Git***. Note that you can disable this behavior and use the standard Windows command prompt instead choosing using **Tools \> Global Options** and selecting an alternative terminal in the *Terminal* section).
+- When using ***git*** on Windows, these command by default should open the **Git Bash** shell, which is a port of the Unix bash shell to Windows that has been specially configured for use with a version of **git** called ***MSYS Git***. Note that you can disable this behavior and use the standard Windows command prompt instead choosing using **Tools \> Global Options** and selecting an alternative terminal in the *Terminal* section).
 
 ### Using SSH instead of HTTPS {.unnumbered}
 

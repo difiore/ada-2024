@@ -2,7 +2,7 @@
 
 ## Objectives
 
-> In the last module, we introduced the concept of version control and looked at tools for interfacing between between a repository maintained remotely on ***GitHub*** and a local repository, using the version control system, ***git***. Now, we are going to learn how we can use ***RStudio*** to manage the ***git/GitHub*** version control workflow. An additional objective of this module is to promote the ideas of **reproducible research** practice and **literate programming** by introducing you to **RMarkdown**, a plain-text document format that allows us to mix text and code in a flexible way.
+> In the last module, we introduced the concept of version control and looked at tools for interfacing between between a repository maintained remotely on ***GitHub*** and a local repository, using the version control system, ***git***. Now, we are going to learn how we can use ***RStudio*** to manage the ***git/GitHub*** version control workflow. An additional objective of this module is to promote the ideas of **reproducible research** practice and **literate programming** by introducing you to **RMarkdown** and **Quarto**, which are both plain-text document formats that allow us to mix text and code in a flexible way and to generate a variety of nicely rendered outputs (e.g., websites, books, PDFs, presentations, and other media formats).
 
 ## Preliminaries
 
@@ -24,21 +24,21 @@ But how do we share the details of exactly *how* we did an analysis? And how can
 
 This idea of tying together narrative, logic, specific code, and data (or references to them) in a single document stems from the principle of [**literate programming**](https://en.wikipedia.org/wiki/Literate_programming) developed by Donald Knuth. Applied to scientific practice, the concept of literate programming means documenting both the logic behind and analysis ***and*** the code used to implement that analysis using computer software. This documentation allows researchers to return to and re-examine their own thought processes at any later time, and also allows them to share their thought processes so that others can understand how an analysis was performed. The upshot is that our scholarship can be better understood, recreated, and independently verified.
 
-This is exactly the point of an **RMarkdown** document and of other, similar document formats (e.g., ***R*** **Notebooks**, **iPython Notebooks**, or **Julia Notebooks**).
+This is exactly the point of an **RMarkdown** or **Quarto** document and of other, similar document formats (e.g., ***R*** **Notebooks**, **iPython Notebooks**, or **Julia Notebooks**).
 
 So, how does this work?
 
-First, as we saw in the last module, [**Markdown**](https://en.wikipedia.org/wiki/Markdown), is simply a formal way of styling a plain text document so that it can be easily rendered into HTML or PDF files for sharing or publishing. It is based on using some simple formatting and special characters to tag pieces of text such that a parser knows how to convert a plain text document into HTML or PDF. [This link](https://daringfireball.net/projects/markdown/syntax) takes you to a description of **Markdown**, its syntax, and the philosophy behind it written by John Gruber, Markdown's creator. There are now several different "dialects" of Markdown that have been developed, derived from Gruber's original suggestions, including a specific one used on ***GitHub*** called "GitHub Flavored Markdown", or ***GFM***. A guide to this dialect is provided as a PDF [here](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) and is available online at [this link](https://github.github.com/gfm/).
+First, as we saw in the last module, [**Markdown**](https://en.wikipedia.org/wiki/Markdown), is simply a formal way of styling a plain text document so that it can be easily rendered into HTML or PDF files for sharing or publishing. It is based on using some simple formatting and special characters to tag pieces of text such that a parser knows how to convert a plain text document into HTML or PDF. [This link](https://daringfireball.net/projects/markdown/syntax) takes you to a classic description of **Markdown**, its syntax, and the philosophy behind it written by John Gruber, **Markdown**'s creator. There are now several different "dialects" of **Markdown** that have been developed, derived from Gruber's original suggestions, including a specific one used on ***GitHub*** called "GitHub Flavored Markdown", or ***GFM***. A guide to this dialect is provided as a PDF [here](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf) and is available online at [this link](https://github.github.com/gfm/).
 
-**RMarkdown**, then, is an extension of standard **Markdown** that allows you to embed chunks of ***R*** code (or code blocks of other programming languages, e.g., ***Python***, ***Latex***), along with additional parsing instructions and options for running code, in a plain text file. During the parsing and rendering (or "knitting") stage, when the text file is being converted to HTML or PDF format, the output of running the embedded code can also be included.
+**RMarkdown** and **Quarto** documents are very similar extensions of standard **Markdown** that allows you to embed chunks of ***R*** code (or code blocks of other programming languages, e.g., ***Python***, ***Latex***), along with additional parsing instructions and options for running code, in a plain text file. During the parsing and rendering (or "knitting") stage, when the text file is being converted to HTML or PDF format, the output of running the embedded code can also be included.
 
-**RMarkdown** uses the package {knitr} to produce intermediate files that can then be translated into a variety of formats, including HTML, traditional **Markdown**, PDFs, MS Word documents, web presentations, and others. A cheatsheet on **RMarkdown** syntax (which, again, is very similar to **Markdown**) can be found [here](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf).
+**RMarkdown** uses the package {knitr} to produce intermediate files that can then be translated into a variety of formats, including HTML, traditional **Markdown**, PDFs, MS Word documents, web presentations, and others. A cheatsheet on **RMarkdown** syntax (which, again, is very similar to **Markdown**) can be found [here](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf). **Quarto** documents use a separate piece of independent software, **quarto** (along with {knitr}, in some cases), to do the same thing. An overview and useful definitive guide to all you can do with **Quarto** can be found [here](https://quarto.org/docs/guide/)
 
-It is important to stress that **Markdown** and **RMarkdown** files ARE JUST PLAIN TEXT files! They are easy to work with, easy to share, easy to edit, easy to put under version control, and robust to changes in proprietary file formats!
+It is important to stress that **Markdown** (".md"), **RMarkdown** (".Rmd") and **Quarto** (".qmd") files ARE JUST PLAIN TEXT files! They are easy to work with, easy to share, easy to edit, easy to put under version control, and robust to changes in proprietary file formats!
 
 As a demonstration of reproducible research workflow and best practices, we are to create a new ***R*** project and corresponding repository that we will track with version control using ***git***. Within that project, we then are going to create an **RMarkdown** document in which you can take notes or practice coding during class today.
 
-As we have seen already, ***git***, at its heart, is a command-line tool, but both local (on your computer) and hosted (e.g., on ***GitHub***) ***git*** repositories can be managed using a dedicated ***git*** *client GUI*, such as ***GitHub Desktop***, ***GitUp***, ***GitKraken***, ***SourceTree***, or a host of others. Importantly for us, ***RStudio*** is designed to also function as a powerful ***git*** client. We will explore several ways of setting up ***RStudio*** to manage both local and remote copies of a ***git*** repository and of keep them in sync.
+As we have seen already, ***git***, at its heart, is a command-line tool, but both local (on your computer) and hosted (e.g., on ***GitHub***) ***git*** repositories can be managed using a dedicated ***git*** *client GUI*, such as ***GitHub Desktop***, ***GitUp***, ***GitKraken***, ***SourceTree***, or a host of others. Importantly for us, though, ***RStudio*** is designed to also function as a powerful ***git*** client. We will explore several ways of setting up ***RStudio*** to manage both local and remote copies of a ***git*** repository and of keep them in sync.
 
 > **NOTE:** See also Chapters 8 and 12 of the web book [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) for more information on managing ***git*** and ***GitHub*** through ***RStudio***.
 
@@ -48,13 +48,13 @@ The easiest way to get ***RStudio*** to play nicely with ***git*** and ***GitHub
 
 > **NOTE:** Not surprisingly, the idea of an ***RStudio*** "project" (i.e., an organizing workspace and its associated files) and a "repo" (a directory that is under version control) go together nicely. It is, however, totally possible to create ***RStudio*** projects without having them be under version control, and it is also quite possible to use ***git*** or another VCS to track changes to files in a directory without there being an associated ***RStudio*** project!
 
-Basically, creating an ***RStudio*** project means creating a special text file ("<project name>.Rproj") that stores the particular settings for an ***RStudio*** setup and session. When we open an ".Rproj" file, the *working directory* is automatically set to the *root directory for the project* (i.e., the directory in which the actual ".Rproj" file is stored), which makes organizing and navigating around the computer's filesystem, either from the command line or in ***R*** scripts within the project, much easier.
+Basically, creating an ***RStudio*** project means creating a special text file ("<project name>.Rproj") that stores settings for particular ***RStudio*** setup and session. When we open an ".Rproj" file, the *working directory* is automatically set to the *root directory for the project* (i.e., the directory in which the actual ".Rproj" file is stored), which makes organizing and navigating around the computer's filesystem, either from the command line or in ***R*** scripts within the project, much easier.
 
 ### Workflows for Creating Projects {.unnumbered}
 
 For the sake of security, reproducibility, and collaboration, it makes a lot of sense for us to have all of our data science/data analysis projects both be *under version control* (e.g., using ***git***) and *hosted remotely* on a secure and reliable platform (e.g., ***GitHub***) that we and collaborators can access from different locations. There are multiple ways we can accomplish this.
 
-For example, we could first create a new version-controlled ***RStudio*** project in a local directory and then push it up to ***GitHub*** or some other hosting site. Alternatively, we could begin by setting up a new repository remotely, as we did in [**Module 05**](#module-05), and then "clone" it to our local computer and establish it as a version-controlled ***RStudio*** project. [For either of these scenarios, we could also begin with either a new, or empty, repository or with one that already has files in it.] We will go through all of these methods below, but I personally think the process of beginning with a remote repository is easiest, but below I describe all of these approaches.
+For example, we could begin by setting up a new repository remotely, as we did in [**Module 05**](#module-05), and then "clone" it to our local computer and establish it as a version-controlled ***RStudio*** project. Alternatively, we could first create a new version-controlled ***RStudio*** project in a local directory and then push it up to ***GitHub*** or some other hosting site. [For either of these scenarios, we could also begin with either a new (empty) repository or with one that already has files in it.] We will go through all of these methods below, but I personally think the first process - beginning with a remote repository - is the easiest and most intuitive, but I describe all of these approaches further below.
 
 #### **Method 1**: Create a new ***RStudio*** project by cloning from a remote repository {.unnumbered}
 
@@ -100,11 +100,11 @@ You can choose what parent folder to clone the repository into using the "Create
 knitr::include_graphics("img/clone-git-repo.png")
 ```
 
-Hitting the "Create Project" button will download the repository from ***GitHub*** into a new directory on your local computer. ***RStudio*** will close and reopen, after which the working directory will be set to the new local repository directory, which you can confirm by typing `getwd()` at the ***R*** console prompt. The local directory is now set up to be tracked by ***git*** and should be connected to ***GitHub***.
+Hitting the "Create Project" button will download the repository from ***GitHub*** into a new directory on your local computer. ***RStudio*** will close and reopen, after which the working directory will be set to the new local repository directory, which you can confirm by typing `getwd()` at the ***R*** console prompt. The local directory is now set up to be tracked by ***git*** on your local computer and should be connected to ***GitHub***.
 
 Selecting the *Files* tab in ***RStudio*** will then show you all of the files in the newly created local repository, which should now contain a ".gitignore" file and an ".Rproj" file with the name of your project (e.g., "test-repo.Rproj"), in addition to the "README.md" file you created on ***GitHub***.
 
-You should now see a "Git" tab in the upper right pane of the ***RStudio*** IDE, and that tab should list the ".Rproj" file associated with the status `?`, indicating that it has not yet been added, committed, or synced with the remote repository. The other two files (".gitignore" and "README.md") are already in sync.
+You should now also see a "Git" tab in the upper right pane of the ***RStudio*** IDE, and that tab should list the ".Rproj" file associated with the status `?`, indicating that it has not yet been added, committed, or synced with the remote repository. The other two files (".gitignore" and "README.md") are already in sync.
 
 ```{r}
 #| echo: false
@@ -128,7 +128,7 @@ Here, grabbing the URL from the "Quick setup" section and using that to set up a
 
 > **NOTE:** You could also, in a terminal window, navigate to where you want the remote project to be cloned and follow either the "... or create" or "... or push" instructions listed. Doing so will link a local directory to the remote repo you created on ***GitHub*** BUT you will then not have created that as an ***RStudio*** project and would need to follow up with other instructions below about creating a new project from an existing local directory.
 
-#### **Method 2**: Creating a new ***RStudio*** project in a new directory {.unnumbered}
+#### **Method 2**: Creating a new ***RStudio*** project under version control in a new directory {.unnumbered}
 
 - In ***RStudio***, select **File \> New project** and click `New Directory`.
 
@@ -204,7 +204,7 @@ To create a new remote repository on ***GitHub*** into which you can push the co
   - Pick a *scope* that confers the privileges you need, e.g., `repo`, and then press the green "Generate Token" button.
   - The PAT will be displayed. It is a string of 40 random letters and digits. Copy this string to the clipboard.
   - Enter the PAT in your ".Renviron" file as a line that looks like this: `GITHUB_PAT=YOUR_TOKEN`.
-  - The ".Renviron" file is a hidden file located in home directory that can be used to set some default parameters for new ***R*** sessions. You can load and edit this with a function from the {usethis} package. At a console prompt, type `usethis::edit_r_environ()`. Your ".Renviron" file should open up in the ***RStudio*** editor. Add your the `GITHUB_PAT=YOUR_TOKEN` line as above, save and close the file. Be sure to put a line break at the end!
+  - The ".Renviron" file is a hidden file located in a user's home directory that can be used to set some default parameters for new ***R*** sessions. You can load and edit this with a function from the {usethis} package. At a console prompt, type `usethis::edit_r_environ()`. Your ".Renviron" file should open up in the ***RStudio*** editor. Add your the `GITHUB_PAT=YOUR_TOKEN` line as above, save and close the file. Be sure to put a line break at the end!
   - Restart R (**Session \> Restart R** in the ***RStudio*** menu bar), as environment variables are loaded from ".Renviron" only at the start of an ***R*** session. Check that the PAT is now available: `Sys.getenv("GITHUB_PAT")`. You should see your PAT print to screen.
 
 ##### Step 2 {.unnumbered}
@@ -265,7 +265,7 @@ knitr::include_graphics("img/setup-test-repo.png")
 - Copy the lines of code listed there and then return to ***RStudio***.
 - In ***RStudio***, open the project that you want to push to ***GitHub*** and click **Tools \> Terminal \> New Terminal** or **Tools \> Shell...** to open a terminal window. Alternatively, open a separate terminal window and navigate to the root of the directory of the repository you wish to push.
 
-> **NOTE:** It is important that your run these commands from within the directory that you wish to push to ***GitHub*** before running these lines of code! When you open a new terminal or shell from within ***RStudio***, you **should** be in the correct directory as those processes open the shell in the current working directory. If not, use shell commands (i.e., `cd`) to navigate into the correct directory.
+> **NOTE:** It is important that you run these lines of code from within the directory that you wish to push to ***GitHub***. When you open a new terminal or shell from within ***RStudio***, you **should** be in the correct directory, as those processes open the shell in the current working directory. If not, though, use shell commands (i.e., `cd`) to navigate into the correct directory.
 
 At the shell prompt, enter the lines of code you copied.
 
@@ -277,7 +277,9 @@ git push -u origin main
 
 The first line tells ***git*** the remote URL that you are going to push to, the second makes sure you are on the `main` branch of the repository, and the third pushes your local repository `main` branch up to the remote `main` branch.
 
-**Congratulations!** You have now pushed commits from a local repository to ***GitHub***, and you should be able to see those files in your remote ***GitHub*** repository online. The "Pull" (blue down arrow) and "Push" (green up arrow) buttons in ***RStudio*** should now also work. Remember, after each commit you do via ***RStudio*** (or via the command line), you will have to push to ***GitHub*** manually. This does not happen automatically!
+**Congratulations!** You have now pushed commits from a local repository to ***GitHub***, and you should be able to see those files in your remote ***GitHub*** repository online. The "Pull" (blue down arrow) and "Push" (green up arrow) buttons in ***RStudio*** should now also work.
+
+> **IMPORTANT:** Remember, after each commit you do via ***RStudio*** (or via the command line), you will have to push to ***GitHub*** manually. This does not happen automatically!
 
 > **NOTE:** Additional information on using projects in ***RStudio*** is available [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
@@ -285,9 +287,9 @@ The first line tells ***git*** the remote URL that you are going to push to, the
 
 Most of the time, the installation and setup instructions provided in [**Module 05**](#module-05) and this module for getting ***git*** and ***RStudio*** to work together work just fine, but sometimes you may have issues. The most common problem I have seen is when ***RStudio*** is unable to find your proper ***git*** installation, either because the path to the correct ***git*** executable did not get written into your shell profile when you installed ***git*** or because the correct path to ***git*** has not be set properly in ***RStudio***.
 
-Chapter 13 and 14 of the web book [*Happy Git and GitHub R*](https://happygitwithr.com) offer a number of suggestions for how to troubleshoot these problems, but some things to check are:
+Chapters 13 and 14 of the web book [*Happy Git and GitHub R*](https://happygitwithr.com) offer a number of suggestions for how to troubleshoot these problems, but some things to check are:
 
-- Is ***git*** installed correctly? An easy way to test this is to oenter `git` in a terminal shell. If you get a complaint about ***git*** not being found, it means either installation was unsuccessful or that the path to the ***git*** program is not on your `PATH` in your shell profile. Try reinstalling ***git*** and then either logging out of your computer and logging in again or restarting.
+- Is ***git*** installed correctly? An easy way to test this is to enter `git` in a terminal shell. If you get a complaint about ***git*** not being found, it means either installation was unsuccessful or that the path to the ***git*** program is not on your `PATH` in your shell profile. Try reinstalling ***git*** and then either logging out of your computer and logging in again or restarting.
 - Is the proper path to ***git*** set in ***RStudio***? In***RStudio***, go to **Tools\>Global Options** and select the "Git/SVN" tab and make sure that the box "Git executable" points to the executably file for your ***git*** installation. On macOS and Linux operating systems, the path usually is "/usr/bin/git" (on MacOS or Linux) and on Windows operating systems it is usually "C:\\Program Files\\Git\\bin\\git.exe". Sometimes, ***git*** will be installed in a slightly different place, most commonly (on MacOS) in "/usr/local/bin/git", in which case you will need to change the path in the dialog box. To find the correct path, type `which git` in a terminal shell and then enter that in the ""Git executable" box.
 
 > **NOTE:** If you make any changes, e.g., if you reinstall ***git***, you will likely need to open a new shell window (so that your updated `PATH` gets read and your computer can find ***git***). You may also need to also either log out of your commputer and log in again or restart your computer. If you make changes in the ***RStudio*** IDE, e.g., if you change the path to your ***git*** executable via the **Tools\>Global Options\>Git/SVN** tab, you will need to completely **RESTART** ***RStudio***, and you may need to also log out and back in or restart your computer.
@@ -296,13 +298,13 @@ Chapter 13 and 14 of the web book [*Happy Git and GitHub R*](https://happygitwit
 
 Once you have a project set up in ***RStudio*** and under version control, ***git*** will be watching your local project directory for any changes that you might make to what is contained in that directory or to the files therein. For example, if you add a file to the directory, it will show up in the *Files* tab, and if you delete a file, it will disappear from that list. Thus, you can drag and drop files and directories into and out of the project repo and ***git*** will keep track of them.
 
-Now, you might either edit an existing file in the repository (e.g., the "README.md" file) or create one or more new script (".R") or **RMarkdown** (".Rmd") files and add them to your repository.
+Now, you can edit existing files in the repository (e.g., the "README.md" file), create one or more new scripts (".R"), **RMarkdown** (".Rmd") files, or **Quarto** (".qmd") documents, add other files and folders (e.g., data files) to your repository and **git** will keept track of them.
 
 ### Modifying Files Locally {#modifying-local-files .unnumbered}
 
 Within ***RStudio***, click on the "README.md" file to open it in the text editor panel of the IDE. Make some changes to this file (e.g., add the line, "And here is some new text I am adding in the RStudio IDE.") and then save your changes. When you do, the "README.md" file should show up in the *Git* tab with a blue "M" next to it, indicating that it has been "modified".
 
-We can now commit these changes to the local repository and push them up to ***GitHub*** as follows:
+We can commit these changes to the local repository and push them up to ***GitHub*** as follows:
 
 - Click the *Git* tab in upper right pane.
 - Check the `Staged` box next to the "README.md" file, which will get the file ready to commit to your local repository. If you have not already done so, you should also stage the ".gitignore" and ".Rproj" files.
@@ -373,7 +375,7 @@ If you want to get rid of a remote repository on ***GitHub***, navigate to the r
 
 The web book [*Happy Git and GitHub for the useR*](https://happygitwithr.com) by Dr. Jenny Bryan (an important contributor to a number of key ***R*** packages) is an excellent source of information about how to set up and troubleshoot your ***RStudio/git/GitHub*** workflow... I encourage you to check it out!
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 
