@@ -4,19 +4,43 @@
 
 ## Learning Objectives {.unnumbered}
 
--   Integrating an ***RStudio*** project, a local ***git*** repository, and a **GitHub** remote repository
+- Integrating an ***RStudio*** project, a local ***git*** repository, and a **GitHub** remote repository
 
-## Version 1: Beginning with a remote repo {.unnumbered}
+## Task 1: Begin with a remote repo... {.unnumbered}
 
 Follow the instructions outlined as **Method 1** in [**Module 6**](#module-06) to do the following:
 
 #### Step 1 {.unnumbered}
 
-- Set up a new ***GitHub*** repo in your ***GitHub*** workspace named "exercise-02".
+- Set up a new ***GitHub*** repo in your ***GitHub*** workspace named "exercise-02a".
+
+```{r}
+#| echo: false
+#| out-width: "80%"
+knitr::include_graphics("img/exercise-2a.png")
+```
 
 #### Step 2 {.unnumbered}
 
-- Add me as a collaborator on the repo (my ***GitHub*** username is “difiore”).
+- Add me as a collaborator on the repo by going to "Settings", choosing "Collaborators", then "Add People", and searching for my ***GitHub*** username (“difiore”).
+
+```{r}
+#| echo: false
+#| out-width: "80%"
+knitr::include_graphics("img/settings.png")
+```
+
+```{r}
+#| echo: false
+#| out-width: "80%"
+knitr::include_graphics("img/collaborators.png")
+```
+
+```{r}
+#| echo: false
+#| out-width: "80%"
+knitr::include_graphics("img/add-collaborator.png")
+```
 
 #### Step 3 {.unnumbered}
 
@@ -24,15 +48,43 @@ Follow the instructions outlined as **Method 1** in [**Module 6**](#module-06) t
 
 #### Step 4 {.unnumbered}
 
-- Create an **RMarkdown** document locally with notes you take in class this week - maybe call it "Notes.Rmd"? - including at least some expository text written in **Markdown** and at least one ***R*** code block.
+- Create an new **RMarkdown** or **Quarto** document locally with notes you take in class this week - maybe call it "notes.Rmd" or "notes.qmd"? - including at least some expository text written in **Markdown** and at least one ***R*** code block. If you make a ".qmd" document, I recommend unchecking "Use visual markdown editor", though that is your choice.
+
+```{r}
+#| echo: false
+#| out-width: "60%"
+knitr::include_graphics("img/new-Rmd.png")
+```
+
+... OR ...
+
+```{r}
+#| echo: false
+#| out-width: "60%"
+knitr::include_graphics("img/new-qmd.png")
+```
 
 #### Step 5 {.unnumbered}
 
-- Use {knitr} to `knit()` your **RMardown** document to HTML.
+- Use `Knit` (for ".Rmd") or `Render` (for ".qmd") to publish your document as HTML.
+
+```{r}
+#| echo: false
+#| out-width: "75%"
+knitr::include_graphics("img/knit-Rmd.png")
+```
+
+... OR ...
+
+```{r}
+#| echo: false
+#| out-width: "75%"
+knitr::include_graphics("img/render-qmd.png")
+```
 
 #### Step 6 {.unnumbered}
 
-- Stage (or "add") and "commit" your changes to the repo locally and then "push" those up to ***GitHub***.
+- Stage (or "add") and "commit" the changes to your repo locally and then "push" those up to ***GitHub***.
 
 #### Step 7 {.unnumbered}
 
@@ -42,19 +94,38 @@ Follow the instructions outlined as **Method 1** in [**Module 6**](#module-06) t
 
 - Submit the URL for your repo in **Canvas**
 
-## Version 2: Beginning with a local repo {.unnumbered}
+## Task 2: Begin with a local repo... {.unnumbered}
 
-This is an alternative workflow that I have found works well. It is described in [**Module 6**](#module-06) as "Option 3" under **Connecting a Local Repo to ***GitHub*** **.
+This is an alternative workflow to that described above, which also works well. It is outlined in more detail in [**Module 6**](#module-06) as "Option 3" under **Connecting a Local Repo to ***GitHub*** **.
 
 #### Step 1 {.unnumbered}
 
-- From within ***RStudio***, create a new project in a brand new directory of your choosing.
+- From within ***RStudio***, create a new project called "exercise-2b" in a brand new directory also called "exercise-2b".
+
+
+```{r}
+#| echo: false
+#| out-width: "60%"
+knitr::include_graphics("img/new-local-project.png")
+```
+
+```{r}
+#| echo: false
+#| out-width: "60%"
+knitr::include_graphics("img/choose-project-type.png")
+```
+
+```{r}
+#| echo: false
+#| out-width: "60%"
+knitr::include_graphics("img/exercise-2b.png")
+```
 
 > **NOTE** Be sure to check the box marked "Create a git repository" pressing the "Create Project" button.
 
 #### Step 2 {.unnumbered}
 
-- Configure a ***GitHub*** Personal Access Token (PAT) and add it to your “.Renviron” file as described [**Module 6**](#module-06) using the {usethis} package.
+- Configure a ***GitHub*** Personal Access Token (PAT) and add it to your “.Renviron” file as described in [**Module 6**](#module-06) using the {usethis} package.
 
 #### Step 3 {.unnumbered}
 
