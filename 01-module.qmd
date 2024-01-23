@@ -1,8 +1,8 @@
 ---
-output: html_document
-editor_options: 
-  chunk_output_type: console
+include-in-header:
+  text: <script type="text/javascript" src="src/hide_output.js"></script>
 ---
+
 # Getting Started with ***R*** {#module-01}
 
 ## Objectives
@@ -38,13 +38,17 @@ We are going to introduce several of these ways of working with ***R***, but the
 
 - Download and install ***R*** from the [**Compehensive R Archive Network (CRAN)**](https://cran.r-project.org/) website. Choose the correct version for your operating system.
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/install-R.png")
 ```
 
 - If you are using MacOS, you should consider also installing [***XQuartz***](https://www.xquartz.org/), which lets you use the ***X11*** X Windows management software.
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/install-XQuartz.png")
 ```
 
@@ -54,13 +58,17 @@ Also, note that you can also run ***R*** in a terminal shell (MacOS or Unix) or 
 
 - On MacOS, the default GUI will look as follows:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/R-console-Mac.png")
 ```
 
 - On Windows, the default GUI (***RGui***) looks like this:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/RGui-windows.png")
 ```
 
@@ -104,7 +112,7 @@ knitr::include_graphics("img/RGui-windows.png")
 
     - In this case, you are passing to `rm()` a list consisting of all the objects in the workspace, provided by the `ls()` function.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Fire up ***R*** in your mode of choice (by typing "R" at the console prompt in the **Terminal** in MacOS or from a **cmd** or other shell prompt in Windows) and then practice interacting with the software via the command line and console window.
 
@@ -179,6 +187,7 @@ abs(z * y)
 
 ```{r}
 #| code-fold: true
+#| attr.output: '.details summary="Output"'
 ls()
 ```
 
@@ -186,7 +195,7 @@ ls()
 - What happens if you type a function name without including the parentheses?
 - What happens if you type a function with an invalid or missing argument?
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

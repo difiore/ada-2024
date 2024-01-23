@@ -38,6 +38,10 @@ pre code {
   padding: 8px;
 }
 
+/*.cell-output summary {
+  padding: 8px;
+} */
+
 .sidebar-logo {
   max-height: 100px;
 }

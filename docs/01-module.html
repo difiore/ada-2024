@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <script async="" src="https://hypothes.is/embed.js"></script>
+<script type="text/javascript" src="src/hide_output.js"></script>
 
 
 <link rel="stylesheet" href="css/style.css">
@@ -334,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#installing-the-r-software" id="toc-installing-the-r-software" class="nav-link" data-scroll-target="#installing-the-r-software"><span class="header-section-number">1.3</span> Installing the <strong><em>R</em></strong> Software</a></li>
   <li><a href="#exploring-the-r-console" id="toc-exploring-the-r-console" class="nav-link" data-scroll-target="#exploring-the-r-console"><span class="header-section-number">1.4</span> Exploring the <strong><em>R</em></strong> Console</a>
   <ul class="collapse">
-  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">CHALLENGE:</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">CHALLENGE</a></li>
   </ul></li>
   <li><a href="#concept-review" id="toc-concept-review" class="nav-link" data-scroll-target="#concept-review">Concept Review</a></li>
   </ul>
@@ -345,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="module-01" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>R</em></strong></span></span></h1>
+<div class="quarto-title-block"><div><h1 class="title"><span id="module-01" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>R</em></strong></span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -482,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <section id="challenge" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="challenge">CHALLENGE:</h3>
+<h3 class="unnumbered anchored" data-anchor-id="challenge">CHALLENGE</h3>
 <p>Fire up <strong><em>R</em></strong> in your mode of choice (by typing “R” at the console prompt in the <strong>Terminal</strong> in MacOS or from a <strong>cmd</strong> or other shell prompt in Windows) and then practice interacting with the software via the command line and console window.</p>
 <ul>
 <li><p>Try doing some math in <strong><em>R</em></strong> by using it to evaluate the following expressions:</p>
@@ -657,8 +658,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] "has_annotations" "x"               "x2"              "y"              
+<details><summary>Output</summary>
+<pre class="details" data-summary="Output"><code>## [1] "has_annotations" "x"               "x2"              "y"              
 ## [5] "z"</code></pre>
+</details>
 </div>
 </div>
 <ul>
@@ -681,6 +684,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Accessing the console history</li>
 </ul>
 
+
+<!-- -->
 
 </section>
 
@@ -764,6 +769,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -929,7 +985,217 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Getting Started with <strong><em>RStudio</em></strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb35" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="an">include-in-header:</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">  text: &lt;script type="text/javascript" src="src/hide_output.js"&gt;&lt;/script&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Getting Started with ***R*** {#module-01}</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The goal of this module is to get everyone's computers set up with ***R*** for the semester and to provide background and an introduction to the ***R*** programming language and environment.</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backstory</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>The name ***R*** is a nod to the statistical programming language ***S*** (for "Statistics") that inspired its creation. ***S*** was developed at Bell Laboratories by John Chambers and later sold to a small company that further developed it into ***S-Plus***. ***R*** was then developed as an alternative to ***S*** by Ross Ihaka and Robert Gentleman in the Department of Statistics at the University of Aukland, New Zealand.</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>***R*** is an high-level, interpreted language, like ***Python*** or ***Ruby***, where commands are executed directly and sequentially, without previously compiling a program into machine-language instructions. Each statement is translated, on the fly, into a sequence of subroutines that have already been compiled into machine code.</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>***R*** is open-source software, meaning that the source code for the program is freely available for anyone to modify, extend, and improve upon. ***R*** is also FREE (!) for anyone to use and distribution. The large and active community of users and developers is one of the reasons that ***R*** has become very popular in academics, science, engineering, and business - any field that requires data analytics. Developers have also built in the capacity for easily making production-quality graphics, making it a great tool for data visualization. There are thus **many** good reasons to learn and use ***R***.</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>Here are a few of the main ones, in a nutshell:</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** is high quality software. It is actively developed by an international community of statisticians and software developers with multiple releases and bug fixes every year.</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** is FREE (as in thought). The source code is openly avaialable under the GNU General Public License, which allows others to easily evaluate the quality of the code, contribute new functionality, and quickly fix bugs.</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** is FREE (as in beer). Whereas licenses for other statistical software such as ***SAS***, ***SPSS***, or ***Stata*** may cost thousands of dollars, ***R*** is available free of charge.</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** is available for multiple platforms. Installers are available for Windows, MacOS, and other Unix based systems and most package are OS agnostic.</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** is extremely extensible. If there is a procedure you want to run that is not included in one of the standard packages, it is likely available in one of the thousands of extensions packages that have been developed and are also freely available. You can also use ***R*** to control or interface with external applications, including other programming languages (like ***Python***, ***SQL***, ***C++***, ***NetLogo***), other analysis tools (like GIS software), and databases (like ***MySQL***, ***PostgreSQL***, ***SQLite***, etc). It is also always possible for you to improve ***R*** yourself. You can **literally** do just about anything in ***R***.</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** has a vibrant, intelligent, and generous user community. LOTS of resources are available online for learning and troubleshooting (see, for example, the section on ***R*** at the [**Stack Overflow**](http://stackoverflow.com/tags/r/info) website.</span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>***R*** can be run in several ways:</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interactively from a console prompt after launching the program from the command line in either a terminal window or command shell.</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>In batch mode, by sourcing commands from an ***R*** script file (which is a simple text file).</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>From within an ***R*** graphical user interface (or GUI) or integrated development envrionment (or IDE), which accommodates both of the above.</span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>We are going to introduce several of these ways of working with ***R***, but the easiest and most convenient is to use an IDE.</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Installing the ***R*** Software</span></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Download and install ***R*** from the [**Compehensive R Archive Network (CRAN)**](https://cran.r-project.org/) website. Choose the correct version for your operating system.</span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/install-R.png"</span>)</span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If you are using MacOS, you should consider also installing <span class="co">[</span><span class="ot">***XQuartz***</span><span class="co">](https://www.xquartz.org/)</span>, which lets you use the ***X11*** X Windows management software.</span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/install-XQuartz.png"</span>)</span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Open the ***R*** program from wherever you installed it (e.g., in MacOS, double-click on the ***R.app*** application in your Applications folder; on a PC, search for and open the ***Rgui.exe*** application, which should be located somewhere inside your <span class="in">`C:\Program Files\R\R-[version]`</span> folder... you should see the console window and the <span class="in">`&gt;`</span> prompt. Note that your screen may look slightly different from the screenshots below.</span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>Also, note that you can also run ***R*** in a terminal shell (MacOS or Unix) or from the Windows command shell after starting it with the command `r`. Depending on whether you have set your PATH variable to detect the ***R*** executable file, you may or may not need to first navigate into the directory containing the executable file.</span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>On MacOS, the default GUI will look as follows:</span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/R-console-Mac.png"</span>)</span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>On Windows, the default GUI (***RGui***) looks like this:</span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/RGui-windows.png"</span>)</span>
+<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring the ***R*** Console</span></span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>***R*** can be used as an interactive calculator from the console prompt, either in a GUI or in the shell.</span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Standard mathematical order of operations applies (PEMDAS - parentheses, exponents, multiplication/division, addition/subtraction).</span>
+<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The assignment operator <span class="in">`&lt;-`</span> can be used to assign a value, the results of an operation, or specific code to an *object* (e.g., a variable, a function, a complex data structure).</span>
+<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>You can also use <span class="in">`=`</span>, but I prefer to use that **only** to assign values to function *arguments* (more on this later).</span>
+<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>You can set various *settings* to customize your interactions with ***R***.</span>
+<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>To change the standard *prompt*, use the function <span class="in">`options()`</span> with the <span class="in">`prompt`</span> argument: <span class="in">`options(prompt="&lt;prompt text&gt;")`</span>, where you supply, between the quotes, text with what you want the prompt to say.</span>
+<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>To list the current *working directory* (the default folder where dialog boxes will open and where files and output will be stored unless otherwise specified), use the function <span class="in">`getwd()`</span>, which has no arguments.</span>
+<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>To set the current *working directory*, use the function <span class="in">`setwd("&lt;path&gt;")`</span>, where you supply, between the quotes, the path to the desired directory.</span>
+<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>On MacOS, these directory options are also available under the **Misc** menu.</span>
+<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>On Windows, you can set the *working directory* with the **Change dir** command under the **File** menu.</span>
+<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>In ***RStudio***, the *working directory* can be set under the **Session** menu.</span>
+<span id="cb35-104"><a href="#cb35-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-105"><a href="#cb35-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Within the active workspace, ***R*** keeps a log of all executed commands, and you can use the *arrow keys* to scroll through this history. In ***RStudio***, this list is accessible in the **History** tab.</span>
+<span id="cb35-106"><a href="#cb35-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-107"><a href="#cb35-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Commands and code can also be written in a text file or *script* and sent to the console for execution.</span>
+<span id="cb35-108"><a href="#cb35-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-109"><a href="#cb35-109" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>In most GUIs/IDEs, you can choose to create a new *script* document from the **File** menu, which opens in a text editor of some kind.</span>
+<span id="cb35-110"><a href="#cb35-110" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>From within the text editor, you can send an individual command to the ***R*** interpreter by positioning your cursor somewhere in the line you want to execute and hitting `⌘-RETURN` (Mac) or either `control-R` (for the default GUI that ships with ***R***) or `control-ENTER` (for the ***RStudio*** GUI) (PC).</span>
+<span id="cb35-111"><a href="#cb35-111" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>To send a set of commands to the console as a *batch*, you can highlight the code lines of code you want to execute and then use these same commands.</span>
+<span id="cb35-112"><a href="#cb35-112" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>You can include comments in your scripts by prefacing them with <span class="in">`#`</span>.</span>
+<span id="cb35-113"><a href="#cb35-113" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Script files can be saved just like any other type of text file, usually with the ".R" extension by default.</span>
+<span id="cb35-114"><a href="#cb35-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-115"><a href="#cb35-115" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>To view the names of all of the objects in your current *workspace*, you can use the `ls()` function. In ***RStudio***, these also all appear in the **Environment** tab.</span>
+<span id="cb35-116"><a href="#cb35-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-117"><a href="#cb35-117" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>To clear objects from your workspace, use the <span class="in">`rm()`</span> function, where an individual object's name or a list of object names can be included as the argument to <span class="in">`rm()`</span>.</span>
+<span id="cb35-118"><a href="#cb35-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-119"><a href="#cb35-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>To remove all objects from your workspace, you can use <span class="in">`rm(list=ls())`</span>.</span>
+<span id="cb35-120"><a href="#cb35-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-121"><a href="#cb35-121" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>In this case, you are passing to <span class="in">`rm()`</span> a list consisting of all the objects in the workspace, provided by the <span class="in">`ls()`</span> function.</span>
+<span id="cb35-122"><a href="#cb35-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-123"><a href="#cb35-123" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb35-124"><a href="#cb35-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-125"><a href="#cb35-125" aria-hidden="true" tabindex="-1"></a>Fire up ***R*** in your mode of choice (by typing "R" at the console prompt in the **Terminal** in MacOS or from a **cmd** or other shell prompt in Windows) and then practice interacting with the software via the command line and console window.</span>
+<span id="cb35-126"><a href="#cb35-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-127"><a href="#cb35-127" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Try doing some math in ***R*** by using it to evaluate the following expressions:</span>
+<span id="cb35-128"><a href="#cb35-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-129"><a href="#cb35-129" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>8 + 5</span>
+<span id="cb35-130"><a href="#cb35-130" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>10 - 6 / 2</span>
+<span id="cb35-131"><a href="#cb35-131" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>(10 - 6) / 2</span>
+<span id="cb35-132"><a href="#cb35-132" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>10 <span class="sc">\*</span> 5</span>
+<span id="cb35-133"><a href="#cb35-133" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>15 / 5</span>
+<span id="cb35-134"><a href="#cb35-134" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>10 \^ 5</span>
+<span id="cb35-135"><a href="#cb35-135" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>3 <span class="sc">\*</span> *pi* (where *pi* is a built-in constant)</span>
+<span id="cb35-136"><a href="#cb35-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-139"><a href="#cb35-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-140"><a href="#cb35-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb35-141"><a href="#cb35-141" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span> <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb35-142"><a href="#cb35-142" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">6</span> <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb35-143"><a href="#cb35-143" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span> <span class="sc">-</span> <span class="dv">6</span>) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb35-144"><a href="#cb35-144" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">*</span> <span class="dv">5</span></span>
+<span id="cb35-145"><a href="#cb35-145" aria-hidden="true" tabindex="-1"></a><span class="dv">15</span> <span class="sc">/</span> <span class="dv">5</span></span>
+<span id="cb35-146"><a href="#cb35-146" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">^</span> <span class="dv">5</span></span>
+<span id="cb35-147"><a href="#cb35-147" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">*</span> pi</span>
+<span id="cb35-148"><a href="#cb35-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-149"><a href="#cb35-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-150"><a href="#cb35-150" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Try working with assignments:</span>
+<span id="cb35-151"><a href="#cb35-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-152"><a href="#cb35-152" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign the number 6 to a variable called **x**.</span>
+<span id="cb35-153"><a href="#cb35-153" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign the number 5 to a variable called **y**.</span>
+<span id="cb35-154"><a href="#cb35-154" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign x <span class="sc">\*</span> y to a variable called **z**.</span>
+<span id="cb35-155"><a href="#cb35-155" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign x\^2 to a variable called **x2**.</span>
+<span id="cb35-156"><a href="#cb35-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-159"><a href="#cb35-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-160"><a href="#cb35-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb35-161"><a href="#cb35-161" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb35-162"><a href="#cb35-162" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb35-163"><a href="#cb35-163" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb35-164"><a href="#cb35-164" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb35-165"><a href="#cb35-165" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> x <span class="sc">*</span> y</span>
+<span id="cb35-166"><a href="#cb35-166" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb35-167"><a href="#cb35-167" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> x <span class="sc">^</span> <span class="dv">2</span></span>
+<span id="cb35-168"><a href="#cb35-168" aria-hidden="true" tabindex="-1"></a>x2</span>
+<span id="cb35-169"><a href="#cb35-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-170"><a href="#cb35-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-171"><a href="#cb35-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Try out some of the built-in functions in ***R***:</span>
+<span id="cb35-172"><a href="#cb35-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-173"><a href="#cb35-173" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign the number 10 to a variable called **x**.</span>
+<span id="cb35-174"><a href="#cb35-174" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Take the natural log of **x** using the <span class="in">`log()`</span> function.</span>
+<span id="cb35-175"><a href="#cb35-175" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Find the factorial of **x** using the <span class="in">`factorial()`</span> function.</span>
+<span id="cb35-176"><a href="#cb35-176" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign the number 81 to a variable called **y**.</span>
+<span id="cb35-177"><a href="#cb35-177" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Take the square root of y using the <span class="in">`sqrt()`</span> function.</span>
+<span id="cb35-178"><a href="#cb35-178" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Assign the number -8.349218 to a variable called **z**.</span>
+<span id="cb35-179"><a href="#cb35-179" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Use <span class="in">`?round`</span> or <span class="in">`help(round)`</span> to view the help file for the function <span class="in">`round()`</span>.</span>
+<span id="cb35-180"><a href="#cb35-180" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Round **z** to the 1000ths place.</span>
+<span id="cb35-181"><a href="#cb35-181" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Use <span class="in">`?abs()`</span> to view the help file for the function <span class="in">`abs()`</span>.</span>
+<span id="cb35-182"><a href="#cb35-182" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Take the absolute value of **z** \* **y**.</span>
+<span id="cb35-183"><a href="#cb35-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-186"><a href="#cb35-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-187"><a href="#cb35-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb35-188"><a href="#cb35-188" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb35-189"><a href="#cb35-189" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(x)</span>
+<span id="cb35-190"><a href="#cb35-190" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(x)</span>
+<span id="cb35-191"><a href="#cb35-191" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">81</span></span>
+<span id="cb35-192"><a href="#cb35-192" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(y)</span>
+<span id="cb35-193"><a href="#cb35-193" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">8.349218</span></span>
+<span id="cb35-194"><a href="#cb35-194" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(z, <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb35-195"><a href="#cb35-195" aria-hidden="true" tabindex="-1"></a><span class="fu">abs</span>(z <span class="sc">*</span> y)</span>
+<span id="cb35-196"><a href="#cb35-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-197"><a href="#cb35-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-198"><a href="#cb35-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the <span class="in">`ls()`</span> function to list the variables currently stored in your active session.</span>
+<span id="cb35-199"><a href="#cb35-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-200"><a href="#cb35-200" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>How many variables do you have?</span>
+<span id="cb35-201"><a href="#cb35-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-204"><a href="#cb35-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-205"><a href="#cb35-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb35-206"><a href="#cb35-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Output"'</span></span>
+<span id="cb35-207"><a href="#cb35-207" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span>
+<span id="cb35-208"><a href="#cb35-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb35-209"><a href="#cb35-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-210"><a href="#cb35-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the command <span class="in">`rm(list=ls())`</span> to clear all the variables you have defined.</span>
+<span id="cb35-211"><a href="#cb35-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What happens if you type a function name without including the parentheses?</span>
+<span id="cb35-212"><a href="#cb35-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What happens if you type a function with an invalid or missing argument?</span>
+<span id="cb35-213"><a href="#cb35-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-214"><a href="#cb35-214" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb35-215"><a href="#cb35-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-216"><a href="#cb35-216" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb35-217"><a href="#cb35-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-218"><a href="#cb35-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Interacting with ***R*** from the console prompt</span>
+<span id="cb35-219"><a href="#cb35-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Variable assignment: <span class="in">`&lt;-`</span></span>
+<span id="cb35-220"><a href="#cb35-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calling built-in functions: <span class="in">`function(&lt;arguments&gt;)`</span></span>
+<span id="cb35-221"><a href="#cb35-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Accessing ***R*** documentation and help files: <span class="in">`?function`</span> or <span class="in">`help(function)`</span></span>
+<span id="cb35-222"><a href="#cb35-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Workspaces and the working directory: <span class="in">`getwd()`</span>, <span class="in">`setwd()`</span></span>
+<span id="cb35-223"><a href="#cb35-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Listing and removing variables from the environment: <span class="in">`ls()`</span>, <span class="in">`rm()`</span></span>
+<span id="cb35-224"><a href="#cb35-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Accessing the console history</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

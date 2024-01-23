@@ -112,6 +112,10 @@ format:
     toc-depth: 3
     theme:
       - css/theme.scss
+    code-tools: true
+
+filters:
+  - fold_results.lua
 
 comments:
   hypothesis: true
