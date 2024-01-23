@@ -31,6 +31,8 @@ In ***R***, *environments* are objects as well.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 class(globalenv())
 ```
 
@@ -81,6 +83,8 @@ z
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 class(x)
 class(z)
 ```
@@ -89,6 +93,8 @@ class(z)
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 x <- c("2", 2, "zombies")
 class(x)
 ```
@@ -177,6 +183,8 @@ Try some vector math using the console in ***RStudio***:
 ```{r}
 #| warning: false
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 x <- 15:28 # or x <- c(15, 16, 17...)
 y <- 1:4
 (x + y)
@@ -229,6 +237,8 @@ Then, use the `hist()` function to plot a histogram showing the distribution of 
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 #| fig-align: center
 #| out-width: "80%"
 
@@ -240,6 +250,8 @@ hist(s) # hist() plots a simple histogram of values for s
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 mean(s)
 sd(s)
 ```
@@ -291,7 +303,9 @@ In general, the format for a function is as follows: `function_name <- function(
 
 You can send your new function to the ***R*** console by highlighting it in the editor and hitting `⌘-RETURN` (Mac) or `control-ENTER` (PC). This loads the function as an object into the working environment.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/say_hi.png")
 ```
 
@@ -324,7 +338,9 @@ Saying "Save" will store all of the contents of your workspace in a single *hidd
 
 > **NOTE:** I tend to NOT save my workspace images. You can change the default behavior for this by editing ***RStudio***'s preferences and choosing "Always", "Never", or "Ask".
 
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out_width: "60%"
 knitr::include_graphics("img/rdata-prefs.png")
 ```
 
@@ -368,7 +384,7 @@ packageStatus()
 (.packages())
 ```
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

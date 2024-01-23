@@ -28,7 +28,6 @@ function_name <- function(<argument list>) {
 Functions that we define ourselves can have *multiple arguments*, and each argument can have a *default value*. Arguments are separated by commas and default values are specified in the list of arguments. For example, suppose we wanted to make a function that added a user-specified `prefix` to every entry in a particular named variable in a data frame, we could write the following:
 
 ```{r}
-#| code-overflow: wrap
 add_prefix <- function(df, prefix = "", variable) {
   df[[variable]] <- paste0(prefix, df[[variable]])
   return(df)
@@ -259,12 +258,14 @@ for (i in seq_along(s)) {
 output
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Write a `for()` loop to print out each row in the data frame **my_data**.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 for (i in 1:nrow(my_data)) {
   print(my_data[i,])
 }
@@ -276,9 +277,8 @@ Write a `for()` loop to print out the reverse of each element in the **code** ve
 
 ```{r}
 #| code-fold: true
-#| tidy: true
-#| background: "#F7F7F7"
-#| comment: "##"
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 for (i in my_data$code){
   print(stringi::stri_reverse(i))
 }
@@ -347,7 +347,7 @@ output
 detach(package:tidyverse)
 ```
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

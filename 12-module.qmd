@@ -51,7 +51,7 @@ The measures above are relevant to summarizing observations about processes that
 
 - **Geometric mean** - a measure of central tendency for processes that are exponential (e.g., some phases of population growth in natural populations) or multiplicative (e.g., increases in area or volume that accompany increases in linear dimension) in nature, rather than additive = the $n^{th}$ root of the product of the values, taken across a set of $n$ values; for the mathematically inclined, it also equals the *antilog* of the averaged *log* values
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Given a vector, `x <- c(1,2,3,4,5,6,7,8,9,10,25,50,100,200,1000)`, write your own function to determine the *geometric mean* of the values in a vector. Remember the general form for functions is: `<function name> <- function(<arguments>) {<code>}`
 
@@ -59,6 +59,8 @@ The measures above are relevant to summarizing observations about processes that
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 x <- c(1,2,3,4,5,6,7,8,9,10,25,50,100,200,1000)
 geometric_mean <- function(x){prod(x)^(1/length(x))}
 geometric_mean(x)
@@ -81,12 +83,14 @@ We more commonly characterize spread, however, in terms of some measure of the *
 
 > **NOTE:** Why do we use the sum of the **squared** deviations of values from the mean rather than just the sum of deviations? Because the latter would simply be ZERO!
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Write a function to calculate the **sum of squares** for a vector.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 sum_of_squares <- function(x){sum((x-mean(x))^2)}
 sum_of_squares(x)
 
@@ -126,12 +130,14 @@ If, however, we have not measured all of the individual cases in population - i.
 
 In this formula, $n - 1$ is the number of *degrees of freedom* implied by the sample. The *degrees of freedom* is the number of values used to calculate a sample statistic that are "free to vary". For example, we used *n* observations to calculate the mean of our sample, which implies $n - 1$ degrees of freedom (i.e., if we know the mean and $n - 1$ values, then we also know the last value... it is *not* "free to vary"). We then use that statistic about our sample (i.e., the sample mean) as an estimate of the population mean, which is then used to derive an estimate of the population variance based on the sample variance.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Write a function to calculate the **variance** for a vector of values representing a *sample* of measurements. Remember this means dividing the sample sum of squares by $n-1$.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 sample_var <- function (x){sum((x-mean(x))^2)/(length(x)-1)}
 sample_var(x)
 ```
@@ -140,6 +146,8 @@ Compare the results of your function to the built-in ***R*** function, `var()`, 
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 var(x)
 ```
 
@@ -488,12 +496,14 @@ $$SE = \sqrt{\frac{s^2}{n}} = \frac{s}{\sqrt{n}}$$
 
 where $s^2$ is the sample variance and $s$ is the sample standard deviation.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Write your own function to calculate the **standard error of the mean** for a vector of values representing a single sample of observations from a population. You can use either your own function for the sample variance that you created above or the built-in `var()` function. There are, of course, several ways you could do this. Then, use your new function with `summarize()` and `sample_n()` to extract a single sample of size "n=100" from **d** and calculate an estimate of the population SE for that sample size.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 n <- 100
 set.seed(100)
 my_se1 <- function(x) {sqrt(sample_var(x) / length(x))}

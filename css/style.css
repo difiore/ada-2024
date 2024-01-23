@@ -30,17 +30,17 @@ pre code {
     padding: 8px;
 }
 
+.cell-output summary {
+  margin-bottom: 15px;
+}
+
 .cell-output pre {
   background-color: #C8E1FF;
   border-radius: 4px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  line-height: 1.2;
+  overflow: auto;
   padding: 8px;
 }
-
-/*.cell-output summary {
-  padding: 8px;
-} */
 
 .sidebar-logo {
   max-height: 100px;

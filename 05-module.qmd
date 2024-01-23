@@ -24,7 +24,9 @@ One of the most popular and frequently used VCSs is ***git***.
 
 - Download and install [**git**](https://git-scm.com/) for your operating system. This will put the appropriate software on your machine.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/install-git.png")
 ```
 
@@ -47,7 +49,9 @@ The ***git*** software we just installed is strictly a command-line tool and is 
 
 - Go to [**GitHub.com**](https://github.com/), choose `Sign up for GitHub ` and create your own account. You will be asked to provide an username and email address and to select a password.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/github.png")
 ```
 
@@ -96,7 +100,9 @@ Make sure your email address is verified in ***GitHub***. You probably will have
 
 - In the upper-right corner of any page on ***GitHub***, click your profile photo, then click "Settings".
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/profile-settings.png")
 ```
 
@@ -112,25 +118,33 @@ Generate a new PAT.
 
 - In the upper-right corner of any page on ***GitHub***, click your profile photo, then click "Settings"
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/profile-settings.png")
 ```
 
 - In the left sidebar, click "Developer settings"
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/developer-settings.png")
 ```
 
 - In the left sidebar, click "Personal access tokens".
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/personal-access-token.png")
 ```
 
 - Click "Generate new token".
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/generate-new-token.png")
 ```
 
@@ -140,13 +154,17 @@ knitr::include_graphics("img/generate-new-token.png")
 
 - Select extent of permissions you would like to grant this token. To use your token to access repositories from the command line, select the "repo" checkbox.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/new-personal-access-token.png")
 ```
 
 - Scroll to the bottom of the page and click the green "Generate token" button.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/generate-token.png")
 ```
 
@@ -192,7 +210,9 @@ Now, we will begin demonstrating how a VCS works by first setting up and working
 
 - Sign in to ***GitHub*** in a web browser, navigate to the "Repositories" tab on your user dashboard, and press the green "NEW" button.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/create-new-repo.png")
 ```
 
@@ -203,7 +223,9 @@ knitr::include_graphics("img/create-new-repo.png")
 - It is also a good idea to click the "Add a README file" checkbox under "Initialize this repository with:"  so that your repository includes at least one file in it. A README file serves as a nice, introductory landing page for your repo. By creating at least one file in your repo, you will also set a default *branch*, named "main", for 
 - When you are done, click the large green "Create repository" button.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/create-test-repo.png")
 ```
 
@@ -213,13 +235,17 @@ Congratulations! You've just set up your first **GitHub** hosted repository!
 
 - As a first step to working with version control, let's make some edits to the remote "README" file in your repository using the browser-based [**Markdown**](https://en.wikipedia.org/wiki/Markdown) editor included in ***GitHub***. Clicking the pencil icon at the top right of the "README" file will bring up the editor...
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/readme-edit.png")
 ```
 
 - You can then type in edits, using [**Markdown**](https://en.wikipedia.org/wiki/Markdown) styling.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/readme-markdown-editor.png")
 ```
 
@@ -227,7 +253,9 @@ knitr::include_graphics("img/readme-markdown-editor.png")
 
 - When you are done editing, **commit** the changes to your remote "README" file by scrolling to the bottom of the editor window and clicking the "Commit Changes" button. Note that every commit you make to a repository must have some sort of brief, descriptive message associated with it. Here, ***GitHub*** has populated the message field with default text ("Update README.md"), but you can change this and, optionally, add a fuller message as well.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/readme-commit-changes.png")
 ```
 
@@ -239,7 +267,9 @@ Here, we are going to create a new branch of our repository, edit a file in that
 
 - Create a new *branch* of your repository (e.g., "readme-edits") by opening the "branch" popdown menu, typing a new branch name, and then clicking on the "Create branch:" text. This will switch you over to the new branch.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/new-branch.png")
 ```
 
@@ -252,10 +282,14 @@ To merge changes from the new branch back into the `main` branch, we now need to
 - Return to the `main` branch by selecting the link for the repo and then confirm that you are on the `main` branch by selecting it from the branches popdown menu.
 - Then select "Compare & pull request" to initiate a new pull request.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/return-to-top-level.png")
 ```
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/compare-and-pull-request.png")
 ```
 
@@ -265,13 +299,17 @@ knitr::include_graphics("img/compare-and-pull-request.png")
 
 Note that when we shifted over to the `readme-edits` branch, ***GitHub*** switched the the "head" branch from `main` to `readme-edits`.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/branches.png")
 ```
 
 After making these selections, scroll to the bottom of the window... you should see you a *diffs* (for "differences") section that summarizes the differences between the `main` (base) and `compare` (head) versions.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/readme-edits-diffs.png")
 ```
 
@@ -279,7 +317,9 @@ knitr::include_graphics("img/readme-edits-diffs.png")
 
 - Initialize the pull request by scrolling back up and pressing the green "Create pull request" button.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/create-pull-request.png")
 ```
 
@@ -287,11 +327,15 @@ knitr::include_graphics("img/create-pull-request.png")
 
 - Set up and then confirm the merge by pressing the green "Merge pull request" and then "Confirm merge" buttons.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/merge-pull-request.png")
 ```
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/confirm-merge.png")
 ```
 
@@ -299,7 +343,9 @@ knitr::include_graphics("img/confirm-merge.png")
 
 - Once the merge has been completed, you can delete the new branch.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/delete-branch.png")
 ```
 
@@ -321,7 +367,9 @@ There are two ways to connect between remote and local ***git*** repositories, v
 - Using the UNIX and DOS shell command `cd` (for "change directories"), navigate into the folder that you want your cloned repository to be created in. I typically create new repos in a dedicated folder called `Repos/` that I use for development work, which I keep in my main user folder on MacOS (e.g., "\~/Development/Repos").
 - Now open a web browser, go to the landing page for your repository on **GitHub.com**, click the green button that says "Code", then select the "HTTPS" tab and copy the web URL that shows up in the text box by clicking on the tiny clipboard icon.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/clone-with-https.png")
 ```
 
@@ -433,13 +481,17 @@ To https://github.com/difiore/test-repo.git
 
 To confirm that your edits have in fact been pushed up successfully, return to the landing page for your repository on ***GitHub*** in your web browser and hit refresh... you should see that the "README.md" file has been updated with new text!
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/readme-pushed-changes.png")
 ```
 
 And if you click on the "commits" history on the right hand site of message block above the updated README file, you should see one with the message "A commit from my local repo".
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/commits-history.png")
 ```
 
@@ -451,7 +503,9 @@ Similarly, we can make edits to files in a remote repository on ***GitHub*** usi
 
 - In your web browser, navigate to the page for your repository (e.g., "test-repo") and again click on the pencil icon at the top right of the "README" file in a remote repository to bring up the editor.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/readme-edit-again.png")
 ```
 
@@ -511,7 +565,9 @@ If you are interested in using SSH for connecting with ***GitHub***, you can do 
 
 In the "Git/SVN" tab of the **Tools \> Global Options** dialog box, press the button `Create RSA key`, which will create a new code that you will need for using **SSH** to send and receive data from remote servers as an alternative to the somewhat less secure **HTTPS** protocol we have already seen.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/create-rsa-key.png")
 ```
 
@@ -521,7 +577,9 @@ knitr::include_graphics("img/create-rsa-key.png")
 
 From the "Git/SVN" tab of the **Tools \> Global Options** dialog box, press the text link `View public key`, copy the displayed key, and close out of the dialog box.
 
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out_width: "60%"
 knitr::include_graphics("img/view-rsa-key.png")
 ```
 
@@ -531,18 +589,24 @@ knitr::include_graphics("img/view-rsa-key.png")
 
 Go to your ***GitHub*** account online, open your profile/account settings, and then select the "SSH & GPG keys" tab.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/profile-settings.png")
 knitr::include_graphics("img/ssh-and-gpg-keys.png")
 ```
 
 Click "New SSH key", fill out a title for the new key (e.g., "Connect to ***GitHub*** from ***RStudio***"), paste in the public key that you copied from ***RStudio*** (see above), and then click "Add SSH key" at the bottom of the window.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/new-ssh-key.png")
 ```
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/add-ssh-key.png")
 ```
 
@@ -556,7 +620,9 @@ The process is essentially the same as we used above for cloning via HTTPS.
 
 - Open a web browser, go to your repository on **GitHub.com**, click the green button that says "Clone or download" (but now choose "Clone with SSH"), and copy the URL that shows up in the text box.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/clone-with-ssh.png")
 ```
 
@@ -618,13 +684,17 @@ Sometimes, getting ***git*** set up and working properly on Windows machines can
 
 - In the box about "Adjusting your PATH environment" you check the radio button to say "Git from the command line and also from 3rd party software"
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/git4.png")
 ```
 
 - In the box about "Configuring the terminal editor to use with Git Bash" you check the radio box that says "Use MinTTY (the default terminal of MSYS2)"
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/git7.png")
 ```
 
@@ -646,7 +716,9 @@ This is the executable file that is accessible via a PATH environmental variable
 
 Thus, after installing ***git*** and restarting your computer, when you then choose **Tools \> Shell...** or **Tools \> Terminal \> New Terminal** from ***RStudio*** and type `which git` in the shell that opens up, it should be THIS executable which is called and returned. That is, if you access the shell or terminal from ***RStudio*** and type `which git` you should get `/cmd/git`.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/msys-git.png")
 ```
 
@@ -656,7 +728,9 @@ This version of the ***git*** executable is what opens if you directly open the 
 
 After installing ***git***, you **can** access ***Git Bash*** from the Windows start menu (i.e., the menu that pops up from clicking the Windows icon at the bottom left of your Windows desktop). If you select **Git \> Git Bash** from the start menu, a shell window will open up, and if you then type `which git` there, it will return `/mingw64/bin`. Honestly, I have no idea why accessing the ***Git Bash*** shell this way rather than through ***RStudio*** runs a different instance of ***git***!
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/mingw64-git.png")
 ```
 
@@ -690,7 +764,9 @@ We need to log out and log in again or restart Windows to have the PATH environm
 
 Start up ***RStudio*** and check that the path to the ***git*** executable in **Tools \> Global Options \> Git/SVN** is set to `C:\Program Files\Git\bin\git.exe` I think it should be set automatically, but if not, click the "Browse" button next to the text box and find this path and then restart ***RStudio***.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/path-to-git.png")
 ```
 
@@ -700,7 +776,9 @@ knitr::include_graphics("img/path-to-git.png")
 
 In **Tools \> Global Options \> Terminal**, make sure that new terminals are set to open with ***Git Bash*** rather than some other shell. You can set this in the pop down menu "New terminals open with..." There seemed to be an issue that some folks had where new terminal windows were opening at the COMMAND PROMPT, which is not what we want but is easily corrected.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/select-terminal.png")
 ```
 
@@ -713,13 +791,17 @@ Choose **Tools \> Shell...** or **Tools \> Terminal \> New Terminal" and confirm
 - In orange: The name of the directory/repository you are currently in (i.e., your current working directory)
 - The typical **bash** command prompt: `$`
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/msys-git.png")
 ```
 
 > **NOTE:** If your current directory is under version control (e.g., if you are opening a shell for a project that you are already managing with ***git***) then the name of the branch you are on will be listed in in blue parentheses.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/new-shell-branch.png")
 ```
 
@@ -727,7 +809,9 @@ knitr::include_graphics("img/new-shell-branch.png")
 
 Confirm that ***git*** is available by typing `which git`. It *should* return `/cmd/git`
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/msys-git.png")
 ```
 
@@ -749,7 +833,9 @@ Check your configuration by typing the following at the command prompt:
 
 You should get a list of settings that includes at least two settings, `user.name` and `user.email`, that match what you just entered.
 
-```{r echo=FALSE, out.width="75%"}
+```{r}
+#| echo: false
+#| out_width: "75%"
 knitr::include_graphics("img/git-config-setup.png")
 ```
 
@@ -759,13 +845,15 @@ Return to ***RStudio*** and start a new project (**File \> New Project**) from a
 
 Check the box indicating that you want to "Create a git repository", ***RStudio*** should close and reopen and the ***git*** icon and ***git*** tab should now appear in the IDE. Also, if you now open a project that is already under version control (e.g., that you clone from ***GitHub***), then these should also appear.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/icons.png")
 ```
 
 Voíla!!! You should now be ready to go! Try creating a new file in your project and then committing it, as described above.
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

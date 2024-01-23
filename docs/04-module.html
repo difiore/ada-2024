@@ -353,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="module-04" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></h1>
+<div class="quarto-title-block"><div><h1 class="title"><span id="module-04" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Fundamentals of the <strong><em>R</em></strong> Language</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -405,11 +405,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">globalenv</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] "environment"</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>## [1] "environment"</code></pre>
+</details>
 </div>
 </div>
 <p>Objects in <strong><em>R</em></strong> also each have a <em>mode</em> and a <em>base type</em>. These are often closely aligned with and similar to the <em>class</em> of an object, but the three terms refer to slightly different things. If an object has no specific class assigned to it, its class is typically the same as its mode. Mode is a mutually exclusive classification of objects, according to their basic structure. When we coerce an object to another basic structure, we are changing its mode but not necessarily the class.</p>
@@ -481,18 +483,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] "numeric"</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>## [1] "numeric"</code></pre>
+</details>
 </div>
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] "character"</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>## [1] "character"</code></pre>
+</details>
 </div>
 </div>
 <ul>
@@ -500,12 +506,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2"</span>, <span class="dv">2</span>, <span class="st">"zombies"</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] "character"</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>## [1] "character"</code></pre>
+</details>
 </div>
 </div>
 <p>This last case is an example of <em>coercion</em>, which happens automatically and often behind the scenes in <strong><em>R</em></strong>. When you attempt to combine different types of elements in the same vector, they are coerced to all be of the same type - the most restrictive type that can accommodate all of the elements. This takes place in a fixed order: logical → integer → double → character. For example, combining a character and an integer yields a character; combining a logical and a double yields a double.</p>
@@ -639,13 +647,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span><span class="sc">:</span><span class="dv">28</span>  <span class="co"># or x &lt;- c(15, 16, 17...)</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">+</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>##  [1] 16 18 20 22 20 22 24 26 24 26 28 30 28 30</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>##  [1] 16 18 20 22 20 22 24 26 24 26 28 30 28 30</code></pre>
+</details>
 </div>
 </div>
 <ul>
@@ -728,7 +738,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Then, use the <code>hist()</code> function to plot a histogram showing the distribution of these numbers.</p>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(s)  <span class="co"># hist() plots a simple histogram of values for s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -745,18 +755,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 80.03347</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>## [1] 79.91957</code></pre>
+</details>
 </div>
 <details>
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 10.05206</code></pre>
+<details><summary>Show Output</summary>
+<pre class="details" data-summary="Show Output"><code>## [1] 10.09308</code></pre>
+</details>
 </div>
 </div>
 </section>
@@ -807,11 +821,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>In general, the format for a function is as follows: <code>function_name &lt;- function(&lt;arguments&gt;) {&lt;function code&gt;}</code></p>
 <p>You can send your new function to the <strong><em>R</em></strong> console by highlighting it in the editor and hitting <code>⌘-RETURN</code> (Mac) or <code>control-ENTER</code> (PC). This loads the function as an object into the working environment.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-out_width="90%">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/say_hi.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/say_hi.png" class="img-fluid figure-img" width="670"></p>
 </figure>
 </div>
 </div>
@@ -851,11 +865,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> I tend to NOT save my workspace images. You can change the default behavior for this by editing <strong><em>RStudio</em></strong>’s preferences and choosing “Always”, “Never”, or “Ask”.</p>
 </blockquote>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-out_width="60%">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/rdata-prefs.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p><img src="img/rdata-prefs.png" class="img-fluid figure-img" width="617"></p>
 </figure>
 </div>
 </div>
@@ -915,6 +929,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Updating <strong><em>R</em></strong> and packages</li>
 </ul>
 
+
+<!-- -->
 
 </section>
 
@@ -998,6 +1014,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
@@ -1163,7 +1230,403 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Basics of Version Control</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb98" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Fundamentals of the ***R*** Language {#module-04}</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The goal of this module is review important conceptual aspects of the ***R*** language as well as practices for updating ***R*** components of interest.</span></span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## ***R*** Objects</span></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a>Almost everything in ***R*** can be thought of as an *object*, including variables, functions, complex data structures, and environments.</span>
+<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="fu">### Classes, Modes, and Types {.unnumbered}</span></span>
+<span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a>Objects in ***R*** fall into different *classes*. There are a few basic (or *atomic*) classes that pertain to variables: **numeric** (real numbers), **integer** (integer numbers), **character** (for text), **logical** (Boolean values, i.e., **TRUE** or **FALSE**, represented as 1 and 0, respectively), **complex** (for imaginary numbers), and **factor** (for defined levels of categorical variables... we will talk more about factors later on). There are other classes beyond this set of atomic classes relevant to variables. For example, both built-in and user defined functions have the class **function**. You can ask ***R*** to return the class of any object with the `class()` function, and ***R*** objects can have more than one class. You can think of class as being a property of an object that determines how generic functions operate with it.</span>
+<span id="cb98-14"><a href="#cb98-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-15"><a href="#cb98-15" aria-hidden="true" tabindex="-1"></a>Examples:</span>
+<span id="cb98-16"><a href="#cb98-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-19"><a href="#cb98-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-20"><a href="#cb98-20" aria-hidden="true" tabindex="-1"></a><span class="co"># class of a variable</span></span>
+<span id="cb98-21"><a href="#cb98-21" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb98-22"><a href="#cb98-22" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb98-23"><a href="#cb98-23" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"hi there"</span></span>
+<span id="cb98-24"><a href="#cb98-24" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb98-25"><a href="#cb98-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-26"><a href="#cb98-26" aria-hidden="true" tabindex="-1"></a><span class="co"># class of a function</span></span>
+<span id="cb98-27"><a href="#cb98-27" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mean)</span>
+<span id="cb98-28"><a href="#cb98-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-29"><a href="#cb98-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-30"><a href="#cb98-30" aria-hidden="true" tabindex="-1"></a>In ***R***, *environments* are objects as well.</span>
+<span id="cb98-31"><a href="#cb98-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-32"><a href="#cb98-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What is the class of the *global environment*, where we have been binding values to variable names? To check, use <span class="in">`class(globalenv())`</span>.</span>
+<span id="cb98-33"><a href="#cb98-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-36"><a href="#cb98-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-37"><a href="#cb98-37" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb98-38"><a href="#cb98-38" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb98-39"><a href="#cb98-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb98-40"><a href="#cb98-40" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">globalenv</span>())</span>
+<span id="cb98-41"><a href="#cb98-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-42"><a href="#cb98-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-43"><a href="#cb98-43" aria-hidden="true" tabindex="-1"></a>Objects in ***R*** also each have a *mode* and a *base type*. These are often closely aligned with and similar to the *class* of an object, but the three terms refer to slightly different things. If an object has no specific class assigned to it, its class is typically the same as its mode. Mode is a mutually exclusive classification of objects, according to their basic structure. When we coerce an object to another basic structure, we are changing its mode but not necessarily the class.</span>
+<span id="cb98-44"><a href="#cb98-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-47"><a href="#cb98-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-48"><a href="#cb98-48" aria-hidden="true" tabindex="-1"></a><span class="co"># mode of a variable</span></span>
+<span id="cb98-49"><a href="#cb98-49" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb98-50"><a href="#cb98-50" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(x)</span>
+<span id="cb98-51"><a href="#cb98-51" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"hi there"</span></span>
+<span id="cb98-52"><a href="#cb98-52" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(x)</span>
+<span id="cb98-53"><a href="#cb98-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-54"><a href="#cb98-54" aria-hidden="true" tabindex="-1"></a><span class="co"># mode of a function</span></span>
+<span id="cb98-55"><a href="#cb98-55" aria-hidden="true" tabindex="-1"></a><span class="fu">mode</span>(mean)</span>
+<span id="cb98-56"><a href="#cb98-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-57"><a href="#cb98-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-60"><a href="#cb98-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-61"><a href="#cb98-61" aria-hidden="true" tabindex="-1"></a><span class="co"># type of a variable</span></span>
+<span id="cb98-62"><a href="#cb98-62" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb98-63"><a href="#cb98-63" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span>
+<span id="cb98-64"><a href="#cb98-64" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"hi there"</span></span>
+<span id="cb98-65"><a href="#cb98-65" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span>
+<span id="cb98-66"><a href="#cb98-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-67"><a href="#cb98-67" aria-hidden="true" tabindex="-1"></a><span class="co"># type of a function</span></span>
+<span id="cb98-68"><a href="#cb98-68" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(mean)</span>
+<span id="cb98-69"><a href="#cb98-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-70"><a href="#cb98-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-71"><a href="#cb98-71" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** For more details on the difference between the *class*, *mode*, and *base type* of an object, check out the book [*Advanced R, Second Edition*](https://adv-r.hadley.nz/) by Hadley Wickham (RStudio).</span></span>
+<span id="cb98-72"><a href="#cb98-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-73"><a href="#cb98-73" aria-hidden="true" tabindex="-1"></a><span class="fu">### Vectors {.unnumbered}</span></span>
+<span id="cb98-74"><a href="#cb98-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-75"><a href="#cb98-75" aria-hidden="true" tabindex="-1"></a>***R*** also supports a variety of *data structures* for variable objects, the most fundamental of which is the *vector*. Vectors are *variables consisting of one or more values of the same type*, e.g., student's grades on an exam. The *class* of a vector has to be one of the atomic classes described above. A *scalar* variable, such as a constant, is simply a vector with only one value.</span>
+<span id="cb98-76"><a href="#cb98-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-77"><a href="#cb98-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There are lots of ways to create vectors... one of the most common is to use the <span class="in">`c()`</span> or "combine" command:</span>
+<span id="cb98-78"><a href="#cb98-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-81"><a href="#cb98-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-82"><a href="#cb98-82" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">3</span>, <span class="dv">21</span>, <span class="dv">45</span>, <span class="dv">23</span>)</span>
+<span id="cb98-83"><a href="#cb98-83" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-84"><a href="#cb98-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-85"><a href="#cb98-85" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"once"</span>, <span class="st">"upon"</span>, <span class="st">"a"</span>, <span class="st">"time"</span>)</span>
+<span id="cb98-86"><a href="#cb98-86" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb98-87"><a href="#cb98-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-88"><a href="#cb98-88" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="st">"once upon a time"</span></span>
+<span id="cb98-89"><a href="#cb98-89" aria-hidden="true" tabindex="-1"></a>z</span>
+<span id="cb98-90"><a href="#cb98-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-91"><a href="#cb98-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-92"><a href="#cb98-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What is the *class* of the vector **x**? Of **z**? Use the <span class="in">`class()`</span> function to check.</span>
+<span id="cb98-93"><a href="#cb98-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-96"><a href="#cb98-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-97"><a href="#cb98-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb98-98"><a href="#cb98-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb98-99"><a href="#cb98-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb98-100"><a href="#cb98-100" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb98-101"><a href="#cb98-101" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z)</span>
+<span id="cb98-102"><a href="#cb98-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-103"><a href="#cb98-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-104"><a href="#cb98-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What happens if you try the following assignment: <span class="in">`x &lt;- c("2", 2, "zombies")`</span>? What is the class of vector **x** now?</span>
+<span id="cb98-105"><a href="#cb98-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-108"><a href="#cb98-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-109"><a href="#cb98-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb98-110"><a href="#cb98-110" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb98-111"><a href="#cb98-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb98-112"><a href="#cb98-112" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2"</span>, <span class="dv">2</span>, <span class="st">"zombies"</span>)</span>
+<span id="cb98-113"><a href="#cb98-113" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span>
+<span id="cb98-114"><a href="#cb98-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-115"><a href="#cb98-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-116"><a href="#cb98-116" aria-hidden="true" tabindex="-1"></a>This last case is an example of *coercion*, which happens automatically and often behind the scenes in ***R***. When you attempt to combine different types of elements in the same vector, they are coerced to all be of the same type - the most restrictive type that can accommodate all of the elements. This takes place in a fixed order: logical → integer → double → character. For example, combining a character and an integer yields a character; combining a logical and a double yields a double.</span>
+<span id="cb98-117"><a href="#cb98-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-118"><a href="#cb98-118" aria-hidden="true" tabindex="-1"></a>You can also deliberately coerce a vector to be represented as a different base type by using an <span class="in">`as.*()`</span> function, like <span class="in">`as.logical()`</span>, <span class="in">`as.integer()`</span>, <span class="in">`as.double()`</span>, or <span class="in">`as.character()`</span>.</span>
+<span id="cb98-119"><a href="#cb98-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-122"><a href="#cb98-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-123"><a href="#cb98-123" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</span>
+<span id="cb98-124"><a href="#cb98-124" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-125"><a href="#cb98-125" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x)</span>
+<span id="cb98-126"><a href="#cb98-126" aria-hidden="true" tabindex="-1"></a>y</span>
+<span id="cb98-127"><a href="#cb98-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-128"><a href="#cb98-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-129"><a href="#cb98-129" aria-hidden="true" tabindex="-1"></a>Another way to create vectors is to use the sequence operator, <span class="in">`:`</span>, which creates a sequence of values from spanning from the left side of the operator to the right, in increments of 1:</span>
+<span id="cb98-130"><a href="#cb98-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-133"><a href="#cb98-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-134"><a href="#cb98-134" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb98-135"><a href="#cb98-135" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-136"><a href="#cb98-136" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">:</span><span class="dv">1</span></span>
+<span id="cb98-137"><a href="#cb98-137" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-138"><a href="#cb98-138" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">1.3</span><span class="sc">:</span><span class="fl">10.5</span></span>
+<span id="cb98-139"><a href="#cb98-139" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-140"><a href="#cb98-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-141"><a href="#cb98-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-142"><a href="#cb98-142" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Wrapping an assignment in parentheses, as in the code block below, allows simultaneous assignment and printing to the console!</span></span>
+<span id="cb98-143"><a href="#cb98-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-146"><a href="#cb98-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-147"><a href="#cb98-147" aria-hidden="true" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="dv">40</span><span class="sc">:</span><span class="dv">45</span>)</span>
+<span id="cb98-148"><a href="#cb98-148" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-149"><a href="#cb98-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-150"><a href="#cb98-150" aria-hidden="true" tabindex="-1"></a>We can also create more complex sequences using the <span class="in">`seq()`</span> function, which takes several arguments:</span>
+<span id="cb98-151"><a href="#cb98-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-154"><a href="#cb98-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-155"><a href="#cb98-155" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb98-156"><a href="#cb98-156" aria-hidden="true" tabindex="-1"></a><span class="co"># skips every other value</span></span>
+<span id="cb98-157"><a href="#cb98-157" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-158"><a href="#cb98-158" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">3</span>)</span>
+<span id="cb98-159"><a href="#cb98-159" aria-hidden="true" tabindex="-1"></a><span class="co"># creates 3 evenly spaced values</span></span>
+<span id="cb98-160"><a href="#cb98-160" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb98-161"><a href="#cb98-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-162"><a href="#cb98-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-163"><a href="#cb98-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### Attributes and Structure {.unnumbered}</span></span>
+<span id="cb98-164"><a href="#cb98-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-165"><a href="#cb98-165" aria-hidden="true" tabindex="-1"></a>Many objects in ***R*** also have *attributes* associated with them, which we can think of as metadata, or data describing the object. Some attributes are intrinsic to an object. For example, a useful attribute to know about a *vector* object is the number of elements in it, which can be queried using the <span class="in">`length()`</span> command.</span>
+<span id="cb98-166"><a href="#cb98-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-169"><a href="#cb98-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-170"><a href="#cb98-170" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span>
+<span id="cb98-171"><a href="#cb98-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-172"><a href="#cb98-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-173"><a href="#cb98-173" aria-hidden="true" tabindex="-1"></a>We can also get or assign arbitrary attributes to an object using the function <span class="in">`attr()`</span>, which takes two arguments: the object whose attributes are being assigned and the name of the attribute.</span>
+<span id="cb98-174"><a href="#cb98-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-177"><a href="#cb98-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-178"><a href="#cb98-178" aria-hidden="true" tabindex="-1"></a><span class="co"># we can assign arbitary attributes to the vector x</span></span>
+<span id="cb98-179"><a href="#cb98-179" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(x, <span class="st">"date collected"</span>) <span class="ot">&lt;-</span> <span class="st">"2019-01-22"</span></span>
+<span id="cb98-180"><a href="#cb98-180" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(x, <span class="st">"collected by"</span>) <span class="ot">&lt;-</span> <span class="st">"Anthony Di Fiore"</span></span>
+<span id="cb98-181"><a href="#cb98-181" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(x) <span class="co"># returns a list of attributes of x</span></span>
+<span id="cb98-182"><a href="#cb98-182" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">attributes</span>(x)) <span class="co"># the class of a list is "list"</span></span>
+<span id="cb98-183"><a href="#cb98-183" aria-hidden="true" tabindex="-1"></a><span class="co"># a "list" is another R data structure</span></span>
+<span id="cb98-184"><a href="#cb98-184" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(x, <span class="st">"date collected"</span>) <span class="co"># returns the value of the attribute</span></span>
+<span id="cb98-185"><a href="#cb98-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-186"><a href="#cb98-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-187"><a href="#cb98-187" aria-hidden="true" tabindex="-1"></a>Finally, every object in ***R*** also has a *structure*, which can be queried using the <span class="in">`str()`</span> command.</span>
+<span id="cb98-188"><a href="#cb98-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-191"><a href="#cb98-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-192"><a href="#cb98-192" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x) <span class="co"># structure of the variable x</span></span>
+<span id="cb98-193"><a href="#cb98-193" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mean) <span class="co"># struture of the function mean</span></span>
+<span id="cb98-194"><a href="#cb98-194" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">globalenv</span>()) <span class="co"># structure of the global environment</span></span>
+<span id="cb98-195"><a href="#cb98-195" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">attributes</span>(x)) <span class="co"># attribute names are stored as a list</span></span>
+<span id="cb98-196"><a href="#cb98-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-197"><a href="#cb98-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-198"><a href="#cb98-198" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The </span><span class="in">`glimpse()`</span><span class="at"> function from the {dplyr} package also yields information on the structure of an object, sometimes in a more easily-readable format than </span><span class="in">`str()`</span><span class="at">.</span></span>
+<span id="cb98-199"><a href="#cb98-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-200"><a href="#cb98-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE: {.unnumbered}</span></span>
+<span id="cb98-201"><a href="#cb98-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-202"><a href="#cb98-202" aria-hidden="true" tabindex="-1"></a>Try some vector math using the console in ***RStudio***:</span>
+<span id="cb98-203"><a href="#cb98-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-204"><a href="#cb98-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Assign a sequence of numbers from 15 to 28 to a vector, **x**.</span>
+<span id="cb98-205"><a href="#cb98-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-206"><a href="#cb98-206" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** There are at least two different ways to do this!</span></span>
+<span id="cb98-207"><a href="#cb98-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-208"><a href="#cb98-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Then, assign a sequence of numbers from 1 to 4 to a vector, **y**.</span>
+<span id="cb98-209"><a href="#cb98-209" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, add **x** and **y**. What happens?</span>
+<span id="cb98-210"><a href="#cb98-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-213"><a href="#cb98-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-214"><a href="#cb98-214" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb98-215"><a href="#cb98-215" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb98-216"><a href="#cb98-216" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb98-217"><a href="#cb98-217" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb98-218"><a href="#cb98-218" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">15</span><span class="sc">:</span><span class="dv">28</span> <span class="co"># or x &lt;- c(15, 16, 17...)</span></span>
+<span id="cb98-219"><a href="#cb98-219" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb98-220"><a href="#cb98-220" aria-hidden="true" tabindex="-1"></a>(x <span class="sc">+</span> y)</span>
+<span id="cb98-221"><a href="#cb98-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-222"><a href="#cb98-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-223"><a href="#cb98-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the up arrow to recall the last command from history and modify the command to store the result of the addition to a variable, **z**. What kind of object is **z**? Examine it using the `class()` function. What is the length of **z**?</span>
+<span id="cb98-224"><a href="#cb98-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-225"><a href="#cb98-225" aria-hidden="true" tabindex="-1"></a>Now, think carefully about this output... there are two important things going on.</span>
+<span id="cb98-226"><a href="#cb98-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-227"><a href="#cb98-227" aria-hidden="true" tabindex="-1"></a>First, ***R*** has used *vectorized* addition in creating the new variable. The first element of **x** was added to the first element of **y**, the second element of **x** was added to the second element of **y**, etc.</span>
+<span id="cb98-228"><a href="#cb98-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-229"><a href="#cb98-229" aria-hidden="true" tabindex="-1"></a>Second, in performing this new variable assignment, the shorter vector has been *recycled*. Thus, once we get to the fifth element in **x** we start over with the first element in **y**.</span>
+<span id="cb98-230"><a href="#cb98-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-231"><a href="#cb98-231" aria-hidden="true" tabindex="-1"></a>This means we can very easily do things like adding a constant to all of the elements in a vector or multiplying all the elements by a constant.</span>
+<span id="cb98-232"><a href="#cb98-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-235"><a href="#cb98-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-236"><a href="#cb98-236" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb98-237"><a href="#cb98-237" aria-hidden="true" tabindex="-1"></a><span class="co"># note that we can wrap a command in parentheses for simultaneous assignment/operation and printing</span></span>
+<span id="cb98-238"><a href="#cb98-238" aria-hidden="true" tabindex="-1"></a>(z <span class="ot">&lt;-</span> x <span class="sc">+</span> y)</span>
+<span id="cb98-239"><a href="#cb98-239" aria-hidden="true" tabindex="-1"></a>(z <span class="ot">&lt;-</span> x <span class="sc">*</span> y)</span>
+<span id="cb98-240"><a href="#cb98-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-241"><a href="#cb98-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-242"><a href="#cb98-242" aria-hidden="true" tabindex="-1"></a>Many function operations in ***R*** are also vectorized, meaning that if argument of a function is a vector, but the function acts on a single value, then the function will be applied to each value in the vector and will return a vector of the same length where the function has been applied to each element.</span>
+<span id="cb98-243"><a href="#cb98-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-246"><a href="#cb98-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-247"><a href="#cb98-247" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb98-248"><a href="#cb98-248" aria-hidden="true" tabindex="-1"></a>(logx <span class="ot">&lt;-</span> <span class="fu">log</span>(x))</span>
+<span id="cb98-249"><a href="#cb98-249" aria-hidden="true" tabindex="-1"></a>(x2 <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb98-250"><a href="#cb98-250" aria-hidden="true" tabindex="-1"></a>(y <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">3</span>)</span>
+<span id="cb98-251"><a href="#cb98-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-252"><a href="#cb98-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-253"><a href="#cb98-253" aria-hidden="true" tabindex="-1"></a>We can use the {base} ***R*** function <span class="in">`plot()`</span> to do some quick visualizations.</span>
+<span id="cb98-254"><a href="#cb98-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-257"><a href="#cb98-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-258"><a href="#cb98-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 4</span></span>
+<span id="cb98-259"><a href="#cb98-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb98-260"><a href="#cb98-260" aria-hidden="true" tabindex="-1"></a><span class="co"># `plot()` takes values of x and y values as the first two arguments, and the `type="o"` argument superimposes points and lines</span></span>
+<span id="cb98-261"><a href="#cb98-261" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, logx, <span class="at">type =</span> <span class="st">"o"</span>)</span>
+<span id="cb98-262"><a href="#cb98-262" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, x2, <span class="at">type =</span> <span class="st">"o"</span>)</span>
+<span id="cb98-263"><a href="#cb98-263" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"o"</span>)</span>
+<span id="cb98-264"><a href="#cb98-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-265"><a href="#cb98-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-266"><a href="#cb98-266" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE: {.unnumbered}</span></span>
+<span id="cb98-267"><a href="#cb98-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-268"><a href="#cb98-268" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the <span class="in">`rnorm()`</span> function to create a vector, **s** that contains a set of random numbers drawn from a normal distribution with mean 80 and standard deviation 10. Try doing this with n = 10, n = 100, n = 1000, n = 10000.</span>
+<span id="cb98-269"><a href="#cb98-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-270"><a href="#cb98-270" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** Use </span><span class="in">`?rnorm`</span><span class="at"> or </span><span class="in">`help(rnorm)`</span><span class="at"> to access the help documentation on how to use the </span><span class="in">`rnorm()`</span><span class="at"> function.</span></span>
+<span id="cb98-271"><a href="#cb98-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-272"><a href="#cb98-272" aria-hidden="true" tabindex="-1"></a>Then, use the <span class="in">`hist()`</span> function to plot a histogram showing the distribution of these numbers.</span>
+<span id="cb98-273"><a href="#cb98-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-276"><a href="#cb98-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-277"><a href="#cb98-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb98-278"><a href="#cb98-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb98-279"><a href="#cb98-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb98-280"><a href="#cb98-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
+<span id="cb98-281"><a href="#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb98-282"><a href="#cb98-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-283"><a href="#cb98-283" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb98-284"><a href="#cb98-284" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(s) <span class="co"># hist() plots a simple histogram of values for s</span></span>
+<span id="cb98-285"><a href="#cb98-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-286"><a href="#cb98-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-287"><a href="#cb98-287" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the <span class="in">`mean()`</span> and <span class="in">`sd()`</span> functions to calculate the mean and standard deviation of **s**. Here, the whole vector is used as the argument of the function, i.e., the function applies to a set of values not a single value. The function thus returns a vector of length 1.</span>
+<span id="cb98-288"><a href="#cb98-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-291"><a href="#cb98-291" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-292"><a href="#cb98-292" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb98-293"><a href="#cb98-293" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb98-294"><a href="#cb98-294" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb98-295"><a href="#cb98-295" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(s)</span>
+<span id="cb98-296"><a href="#cb98-296" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(s)</span>
+<span id="cb98-297"><a href="#cb98-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-298"><a href="#cb98-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-299"><a href="#cb98-299" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scripts and Functions</span></span>
+<span id="cb98-300"><a href="#cb98-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-301"><a href="#cb98-301" aria-hidden="true" tabindex="-1"></a>As mentioned previously, scripts in ***R*** are simply text files that store an ordered list of commands, which can be used to link together sets of operations to perform complete analyses and show results.</span>
+<span id="cb98-302"><a href="#cb98-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-303"><a href="#cb98-303" aria-hidden="true" tabindex="-1"></a>For example, you could enter the lines below into a text editor and then save the script in a file named "my_script.R" in a folder called <span class="in">`src/`</span> inside your working directory.</span>
+<span id="cb98-304"><a href="#cb98-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-307"><a href="#cb98-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-308"><a href="#cb98-308" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb98-309"><a href="#cb98-309" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb98-310"><a href="#cb98-310" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb98-311"><a href="#cb98-311" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> s <span class="sc">/</span> l</span>
+<span id="cb98-312"><a href="#cb98-312" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(m)</span>
+<span id="cb98-313"><a href="#cb98-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-314"><a href="#cb98-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-315"><a href="#cb98-315" aria-hidden="true" tabindex="-1"></a>If you save a script, you can then use the <span class="in">`source()`</span> function (with the path to the script file of interest as an argument) at the console prompt (or in another script) to read and execute the entire contents of the script file. In ***RStudio*** you may also go to **Code \&gt; Source** to run an entire script, or you can run select lines from within a script by opening the script text file, highlighting the lines of interest, and sending those lines to the console using the "Run" button or the appropriate keyboard shortcut, <span class="in">`⌘-RETURN`</span> (Mac) or <span class="in">`control-R`</span> (PC).</span>
+<span id="cb98-316"><a href="#cb98-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-319"><a href="#cb98-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-320"><a href="#cb98-320" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"src/my_script.R"</span>)</span>
+<span id="cb98-321"><a href="#cb98-321" aria-hidden="true" tabindex="-1"></a><span class="co"># assuming the file was saved with the ".R" extension...</span></span>
+<span id="cb98-322"><a href="#cb98-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-323"><a href="#cb98-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-324"><a href="#cb98-324" aria-hidden="true" tabindex="-1"></a>In an ***R*** script, you might use several lines of code to accomplish a single analysis, but if you want to be able to flexibly perform that analysis with different input, it is good practice to organize portions of your code within a script into user-defined *functions*. A function is a bit of code that performs a specific task. It may take arguments or not, and it may return nothing, a single value, or any ***R*** object (e.g., a vector or a list, which is another data structure will discuss later on). If care is taken to write functions that work under a wide range of circumstances, then they can be reused in many different places. Novel functions are the basis of the thousands of user-designed packages that are what make ***R*** so extensible and powerful.</span>
+<span id="cb98-325"><a href="#cb98-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-326"><a href="#cb98-326" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE: {.unnumbered}</span></span>
+<span id="cb98-327"><a href="#cb98-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-328"><a href="#cb98-328" aria-hidden="true" tabindex="-1"></a>Try writing a function!</span>
+<span id="cb98-329"><a href="#cb98-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-330"><a href="#cb98-330" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Open a new blank document in ***RStudio***</span>
+<span id="cb98-331"><a href="#cb98-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-332"><a href="#cb98-332" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>**File \&gt; New \&gt; R Script**</span>
+<span id="cb98-333"><a href="#cb98-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-334"><a href="#cb98-334" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Type in the code below to create the <span class="in">`say_hi()`</span> function, which adds a name to a greeting:</span>
+<span id="cb98-335"><a href="#cb98-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-338"><a href="#cb98-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-339"><a href="#cb98-339" aria-hidden="true" tabindex="-1"></a><span class="co"># this function takes one argument, `x`, appends the value of that argument to a greeting, and then prints the whole greeting</span></span>
+<span id="cb98-340"><a href="#cb98-340" aria-hidden="true" tabindex="-1"></a>say_hi <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb98-341"><a href="#cb98-341" aria-hidden="true" tabindex="-1"></a>  hi <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Greetings, "</span>, x, <span class="st">"!"</span>, <span class="at">sep =</span> <span class="st">""</span>)</span>
+<span id="cb98-342"><a href="#cb98-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(hi)</span>
+<span id="cb98-343"><a href="#cb98-343" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-344"><a href="#cb98-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-345"><a href="#cb98-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-346"><a href="#cb98-346" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here, the </span><span class="in">`paste()`</span><span class="at"> command allows string concatenation. Alternatively, we could use </span><span class="in">`paste0()`</span><span class="at"> and omit the </span><span class="in">`sep=`</span><span class="at"> argument.</span></span>
+<span id="cb98-347"><a href="#cb98-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-348"><a href="#cb98-348" aria-hidden="true" tabindex="-1"></a>In general, the format for a function is as follows: <span class="in">`function_name &lt;- function(&lt;arguments&gt;) {&lt;function code&gt;}`</span></span>
+<span id="cb98-349"><a href="#cb98-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-350"><a href="#cb98-350" aria-hidden="true" tabindex="-1"></a>You can send your new function to the ***R*** console by highlighting it in the editor and hitting <span class="in">`⌘-RETURN`</span> (Mac) or <span class="in">`control-ENTER`</span> (PC). This loads the function as an object into the working environment.</span>
+<span id="cb98-351"><a href="#cb98-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-354"><a href="#cb98-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-355"><a href="#cb98-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb98-356"><a href="#cb98-356" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "90%"</span></span>
+<span id="cb98-357"><a href="#cb98-357" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/say_hi.png"</span>)</span>
+<span id="cb98-358"><a href="#cb98-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-359"><a href="#cb98-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-360"><a href="#cb98-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Now we can create some test data and call the function. What are the results?</span>
+<span id="cb98-361"><a href="#cb98-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-364"><a href="#cb98-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-365"><a href="#cb98-365" aria-hidden="true" tabindex="-1"></a>name1 <span class="ot">&lt;-</span> <span class="st">"Rick Grimes"</span></span>
+<span id="cb98-366"><a href="#cb98-366" aria-hidden="true" tabindex="-1"></a>name2 <span class="ot">&lt;-</span> <span class="st">"Ruth Bader Ginsburg"</span></span>
+<span id="cb98-367"><a href="#cb98-367" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name1)</span>
+<span id="cb98-368"><a href="#cb98-368" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name2)</span>
+<span id="cb98-369"><a href="#cb98-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-370"><a href="#cb98-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-371"><a href="#cb98-371" aria-hidden="true" tabindex="-1"></a>You can also save the function in a file, e.g., in the <span class="in">`src/`</span> folder inside your working directory, and then <span class="in">`source("&lt;path&gt;")`</span> it in code. Save your function script as "say_hi.R" and then run the following:</span>
+<span id="cb98-372"><a href="#cb98-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-375"><a href="#cb98-375" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-376"><a href="#cb98-376" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"src/say_hi.R"</span>)</span>
+<span id="cb98-377"><a href="#cb98-377" aria-hidden="true" tabindex="-1"></a>name3 <span class="ot">&lt;-</span> <span class="st">"Charles Darwin"</span></span>
+<span id="cb98-378"><a href="#cb98-378" aria-hidden="true" tabindex="-1"></a><span class="fu">say_hi</span>(name3)</span>
+<span id="cb98-379"><a href="#cb98-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-380"><a href="#cb98-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-381"><a href="#cb98-381" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quitting ***R*** and Saving your Work</span></span>
+<span id="cb98-382"><a href="#cb98-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-383"><a href="#cb98-383" aria-hidden="true" tabindex="-1"></a>Working in ***RStudio***, you can save script files (which, again, are just plain text files) using standard dialog boxes.</span>
+<span id="cb98-384"><a href="#cb98-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-385"><a href="#cb98-385" aria-hidden="true" tabindex="-1"></a>When you go to quit ***R*** (by using the `q()` function or by trying to close ***RStudio***), you may be asked whether you want to...</span>
+<span id="cb98-386"><a href="#cb98-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-387"><a href="#cb98-387" aria-hidden="true" tabindex="-1"></a>"Save workspace image to <span class="sc">\&lt;</span>path<span class="sc">\&gt;</span>/.Rdata?", where <span class="sc">\&lt;</span>path<span class="sc">\&gt;</span> is the path to your working directory.</span>
+<span id="cb98-388"><a href="#cb98-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-389"><a href="#cb98-389" aria-hidden="true" tabindex="-1"></a>Saying "Save" will store all of the contents of your workspace in a single *hidden* file, named ".Rdata". The leading period (".") makes this invisible to most operating systems, unless you deliberately make it possible to see hidden files.</span>
+<span id="cb98-390"><a href="#cb98-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-391"><a href="#cb98-391" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** I tend to NOT save my workspace images. You can change the default behavior for this by editing ***RStudio***'s preferences and choosing "Always", "Never", or "Ask".</span></span>
+<span id="cb98-392"><a href="#cb98-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-395"><a href="#cb98-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-396"><a href="#cb98-396" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb98-397"><a href="#cb98-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "60%"</span></span>
+<span id="cb98-398"><a href="#cb98-398" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/rdata-prefs.png"</span>)</span>
+<span id="cb98-399"><a href="#cb98-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-400"><a href="#cb98-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-401"><a href="#cb98-401" aria-hidden="true" tabindex="-1"></a>The next time you start ***R***, the workspace from ".RData" will be loaded again automatically, provided you have not changed your working directory and you have not unchecked "Restore .RData into workspace at startup" in preferences.</span>
+<span id="cb98-402"><a href="#cb98-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-403"><a href="#cb98-403" aria-hidden="true" tabindex="-1"></a>A second hidden file, ".Rhistory", will also be stored in the same directory, which will contain a log of all commands you sent to the console, provided you have not unchecked "Always save history".</span>
+<span id="cb98-404"><a href="#cb98-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-405"><a href="#cb98-405" aria-hidden="true" tabindex="-1"></a><span class="fu">## Updating ***R***</span></span>
+<span id="cb98-406"><a href="#cb98-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-407"><a href="#cb98-407" aria-hidden="true" tabindex="-1"></a>***R*** has been under continuous and active development since its inception in the late 1990s, and several updates are made available each year. These update help to fix bugs, improve speed and computational efficiency, and add new functionality to the software. The following information on how to update ***R*** is based on [**this post from Stack Overflow**](http://stackoverflow.com/questions/13656699/update-r-using-rstudio)</span>
+<span id="cb98-408"><a href="#cb98-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-409"><a href="#cb98-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Step 1: Get the latest version of ***R***</span>
+<span id="cb98-410"><a href="#cb98-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-411"><a href="#cb98-411" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Go to the <span class="co">[</span><span class="ot">**R Project**</span><span class="co">](http://www.r-project.org)</span> website.</span>
+<span id="cb98-412"><a href="#cb98-412" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Click on **CRAN** in the sidebar on the left.</span>
+<span id="cb98-413"><a href="#cb98-413" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Choose the **CRAN Mirror** site that you like.</span>
+<span id="cb98-414"><a href="#cb98-414" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Click on **Download R for...** (choose your operating system).</span>
+<span id="cb98-415"><a href="#cb98-415" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Follow the installation procedures for your system.</span>
+<span id="cb98-416"><a href="#cb98-416" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Restart ***RStudio***.</span>
+<span id="cb98-417"><a href="#cb98-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-418"><a href="#cb98-418" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Step 2: Relocate your packages</span>
+<span id="cb98-419"><a href="#cb98-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-420"><a href="#cb98-420" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>To ensure that your packages work with your shiny new version of ***R***, you need to:</span>
+<span id="cb98-421"><a href="#cb98-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-422"><a href="#cb98-422" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>Move the packages from your old ***R*** installation into the new one.</span>
+<span id="cb98-423"><a href="#cb98-423" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>On MacOS, this typically means moving all library folders from "/Library/Frameworks/R.framework/Versions/3.5/Resources/library" to "/Library/Frameworks/R.framework/Versions/4.3/Resources/library"</span>
+<span id="cb98-424"><a href="#cb98-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-425"><a href="#cb98-425" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** You should replace "3.5" and "4.3" with whatever versions you are upgrading from and to, respectively.</span></span>
+<span id="cb98-426"><a href="#cb98-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-427"><a href="#cb98-427" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>On Windows, this typically means moving all library folders from "C:<span class="sc">\\</span>Program Files<span class="sc">\\</span>R<span class="sc">\\</span>R-3.5<span class="sc">\\</span>library" to "C:<span class="sc">\\</span>Program Files<span class="sc">\\</span>R<span class="sc">\\</span>R-4.3<span class="sc">\\</span>library" (if your packages are installed at the *system* level) or from "C:\\Users\\\&lt;user name\&gt;\\R\\win-library\\3.5\\" to "C:\\Users\\\&lt;user name\&gt;\\R\\win-library\\4.3\\" (if your packages are installed at the *user* level)</span>
+<span id="cb98-428"><a href="#cb98-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-429"><a href="#cb98-429" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** You only need to copy whatever packages are not already in the destination directory, i.e., you do not need to overwrite your new {base} package, etc., with your old one.</span></span>
+<span id="cb98-430"><a href="#cb98-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-431"><a href="#cb98-431" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If those paths do not work for you, try using <span class="in">`installed.packages()`</span> to find the proper path names. These may vary on your system, depending on where you installed ***R***</span>
+<span id="cb98-432"><a href="#cb98-432" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Now you can update your packages by typing <span class="in">`update.packages()`</span> in your ***RStudio*** console, and answering "y" to all of the prompts.</span>
+<span id="cb98-433"><a href="#cb98-433" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, to reassure yourself that you have done everything correctly, type these two commands in the ***RStudio*** console to see what you've got in terms of what version of ***R*** you are running, the number of packages you have installed, and what packages you have loaded:</span>
+<span id="cb98-434"><a href="#cb98-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-435"><a href="#cb98-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb98-436"><a href="#cb98-436" aria-hidden="true" tabindex="-1"></a>version</span>
+<span id="cb98-437"><a href="#cb98-437" aria-hidden="true" tabindex="-1"></a><span class="fu">packageStatus</span>()</span>
+<span id="cb98-438"><a href="#cb98-438" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span>
+<span id="cb98-439"><a href="#cb98-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-440"><a href="#cb98-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-441"><a href="#cb98-441" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb98-442"><a href="#cb98-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-443"><a href="#cb98-443" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb98-444"><a href="#cb98-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-445"><a href="#cb98-445" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Characteristics of ***R*** objects: <span class="in">`class()`</span>, <span class="in">`mode()`</span>, <span class="in">`typeof()`</span>, <span class="in">`str()`</span>, <span class="in">`attributes()`</span>, <span class="in">`dplyr::glimpse()`</span></span>
+<span id="cb98-446"><a href="#cb98-446" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using scripts: <span class="in">`source()`</span></span>
+<span id="cb98-447"><a href="#cb98-447" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>".RData" and ".Rhistory" files</span>
+<span id="cb98-448"><a href="#cb98-448" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Updating ***R*** and packages</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

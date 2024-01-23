@@ -471,7 +471,7 @@ More on the basics of using {googledrive} and its functionality can be found [he
 detach(package:tidyverse)
 ```
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

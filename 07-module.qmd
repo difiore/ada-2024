@@ -169,12 +169,14 @@ x <- m[4, ] # extracts 4th row
 x
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Given the matrix, **m**, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable **x**
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 x <- m[, c(2, 3, 6)]
 x
 ```
@@ -183,6 +185,8 @@ x
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 x <- m[6:8, ]
 x
 ```
@@ -191,6 +195,8 @@ x
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 x <- m[2:6, 2:9]
 x
 ```
@@ -477,13 +483,15 @@ Finally, ***R*** has three special data values that it uses in a variety of situ
 - `Inf` (and `-Inf`) is used when the result of a numerical calculation is too extreme for ***R*** to express
 - `NaN` (for **not a number**) is used when ***R*** cannot express the results of a calculation , e.g., when you try to take the square root of a negative number
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Store the following vector of numbers as a 5 x 3 matrix: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2
 - Be sure to fill the matrix **ROWWISE**
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 m <-
   matrix(
     c(3, 0, 1 , 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2),
@@ -498,6 +506,8 @@ m
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 (d <- as.data.frame(m))
 ```
 
@@ -505,6 +515,8 @@ m
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 (d[,2] <- as.logical(d[,2]))
 ```
 
@@ -512,6 +524,8 @@ m
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 (d[,3] <- as.factor(d[,3]))
 ```
 
@@ -622,7 +636,7 @@ detach(package:tidyverse)
 detach(package:data.table)
 ```
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

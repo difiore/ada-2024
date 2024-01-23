@@ -26,7 +26,9 @@ head(d)
 
 The {dplyr} package, included in the {tidyverse}, provides "a flexible grammar of data manipulation" that makes many of the manipulations that we explore in [**Module 07**](#module-07) and [**Module 09**](#module-09) much easier and muchmore intuitive!
 
-```{r echo=FALSE, out.width="25%"}
+```{r}
+#| echo: false
+#| out-width: "25%"
 knitr::include_graphics("img/dplyr.png")
 ```
 
@@ -36,7 +38,9 @@ Among other functions, {dplyr} introduces a set of *verbs* (`filter()`, `select(
 
 The `filter()` function lets us pull out rows from a data frame that meet a particular criterion or set of criteria:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/filter.png")
 ```
 
@@ -62,7 +66,9 @@ head(s)
 
 The `select()` function lets us pull out only particular columns from a data frame:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/select.png")
 ```
 
@@ -86,7 +92,9 @@ head(s)
 
 The `arrange()` function lets us sort a data frame based on a select variable or set of variables:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/arrange.png")
 ```
 
@@ -128,7 +136,9 @@ head(s$Female_Mass)
 
 The `mutate()` function allows us to add new columns to a data frame:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/mutate.png")
 ```
 
@@ -152,7 +162,9 @@ head(s$Binomial) # or head(s[["Binomial"]])
 
 The {dplyr} package makes it easy to summarize data using more convenient functions than the {base} function `aggregate()`, which we looked at in [**Module 09**](#module-09). The `summarize()` function specifies a list of summary variables that will appear in the output, along with the operations that will be performed on vectors in the data frame to produce those summary variables:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/summarize.png")
 ```
 
@@ -241,7 +253,9 @@ table2
 
 An *inner join* or *equijoin* matches up sets of observations between two tables whenever their keys are equal. The output of an inner join is a new data frame that contains all rows from the left-hand (*x*) and right-hand (*y*) tables where there are matching values in the key column, plus all columns from *x* and *y*. If there are multiple matches between the tables, all combination of the matches are returned. This is represented schematically below:
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/inner_join.png")
 ```
 
@@ -269,7 +283,9 @@ While an inner join keeps only observations that appear in both tables, differen
 
 The following figure shows a schematic representation of these various types of outer joins:
 
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out-width: "60%"
 knitr::include_graphics("img/outer_joins.png")
 ```
 
@@ -307,15 +323,17 @@ The cheatsheet on [Data Transformation with {dplyr}](cheatsheets/data-transforma
 
 One other cool thing about the {dplyr} package is that it provides a convenient way to chain together operations on a data frame using the "forward pipe" operator (`%>%`). The `%>%` operator basically takes what is on the left-hand side (LHS) of the operator and directly applies the function call on the right-hand side (RHS) of the operator to it. That is, it "pipes" what is on the LHS of the operator directly to the first argument of the function on the right. This process allows us to build of chains of successive operations, each one being applied to the outcome of the previous operation in the chain.
 
-```{r echo=FALSE, out.width="25%"}
+```{r}
+#| echo: false
+#| out-width: "25%"
 knitr::include_graphics("img/pipe.png")
 ```
 
-::: {.fold .s .o}
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out-width: "60%"
 knitr::include_graphics("img/MagrittePipe.jpg")
 ```
-:::
 
 **EXAMPLE:**
 
@@ -328,7 +346,7 @@ head(select(d,Scientific_Name, Body_mass_female_mean))
 
 The forward pipe is useful because it allows us to write and follow code from left to right (as when writing in English), instead of right to left with many nested parentheses.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - In **one line of code**, do the following:
 
@@ -340,6 +358,8 @@ The forward pipe is useful because it allows us to write and follow code from le
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 s <- mutate(d, Binomial = paste(Genus, Species, sep = " ")) %>%
   select(Binomial,
          Family,
@@ -455,7 +475,7 @@ detach(package:magrittr)
 detach(package:tidyverse)
 ```
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 

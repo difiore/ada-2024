@@ -56,7 +56,9 @@ with(d, mean(life_expect, na.rm=TRUE))
 
 The tabular data we have worked with thus far has all been presented in a format where each row represents a single case or observation or record, and each column contains a different variable that is scored for each of these observations. Data in this format is referred to as "tidy", and the {tidyverse} set of ***R*** packages (which we have used a bit already) provides many tools for manipulating tabular data in this format.
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out-width: "80%"
 knitr::include_graphics("img/tidydata.png")
 ```
 
@@ -141,7 +143,9 @@ This process has the effect, often, of making long and narrow tables wider, thus
 
 The image below, pulled from a cheatsheet on [Data Wrangling with {dplyr} and {tidyr}](cheatsheets/data-wrangling.pdf), summarizes the basics of these processes for "reshaping" data.
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out-width: "90%"
 knitr::include_graphics("img/reshaping.png")
 ```
 
@@ -153,7 +157,7 @@ For the remainder of this module, all of the example datasets will comprise data
 
 The `summary()` function from {base} ***R*** provides a quick overview of each variable in a data frame. For **numeric** variables, this includes the five-number summary and the mean, as well as a count of `NA` (missing values). For **factors**, it includes a count of each factor.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Load the "Country-Data-2016" dataset into a data frame variable, **d**, and summarize the variables in that data frame. You can load the file any way you want, e.g., load from a local file or access the data straight from ***GitHub***, as in the code below.
 
@@ -178,6 +182,8 @@ names(d)
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 summary(d)
 median(d$area, na.rm=TRUE)
 median(d$population, na.rm=TRUE)
@@ -189,6 +195,8 @@ median(d$population, na.rm=TRUE)
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 d$density <- d$population/d$area
 d <- d[order(d$density, decreasing = TRUE),] # or
 d <- d[order(-d$density),]
@@ -201,6 +209,8 @@ d[1:10,]
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 s <- d[order(-d$population),]
 s <- s[1:20,]
 med_area <- median(s$area, na.rm = TRUE)
@@ -215,6 +225,8 @@ med_pop
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 s <- d[grep(pattern = "^[A-F]", d$country),]
 summary(s)
 ```
@@ -223,6 +235,8 @@ Doing the same thing with {dplyr} verbs (see [**Module 10**](#module-10)) is eas
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 s <- filter(d, grepl(pattern = "^[A-F]", country))
 summary(s)
 ```
@@ -233,6 +247,8 @@ Or, instead of `summary()`, we can use `mean()` with the `na.rm=TRUE` argument..
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 mean(s$population, na.rm = TRUE)
 mean(s$area, na.rm = TRUE)
 ```
@@ -306,7 +322,7 @@ The `boxplot()` function from {base} ***R*** provides a box-and-whiskers visual 
 
 The `barplot()` function is also useful taking a quick look at crude data, with bar height proportional to the value of the variable. The function `dotchart()` provides a similar graphical summary.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Make boxplots, barplots, and dotcharts of the raw population and area data, then `log()` transform the variables and repeat the boxplots.
 
@@ -314,6 +330,8 @@ The `barplot()` function is also useful taking a quick look at crude data, with 
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 par(mfrow = c(1, 2))
 d$log_population <- log(d$population)
 d$log_area <- log(d$area)
@@ -397,12 +415,14 @@ p
 
 The `hist()` function returns a histogram showing the complete empirical distribution of the data in binned categories, which is useful for checking skewwness of the data, symmetry, multi-modality, etc. Setting the argument `freq=FALSE` will scale the Y axis to represent the *proportion* of observations falling into each bin rather than the *count*.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Make histograms of the `log()` transformed population and area data from the "Country-Data-2016" file. Explore what happens if you set `freq=FALSE` versus the default of `freq=TRUE`. Try looking at other variables as well.
 
 ```{r message=FALSE}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 par(mfrow = c(1, 2)) # sets up two panels side by side
 attach(d) # lets us use variable names without specifying the data frame!
 hist(
@@ -429,6 +449,8 @@ hist(
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 hist(
   log(area),
   freq = FALSE,
@@ -465,7 +487,7 @@ detach(d)
 
 The `table()` function can be used to summarize counts and proportions for categorical variables in your dataset.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Using the `table()` function, find what is the most common form of government in the "Country-Data-2016" dataset. How many countries have that form?
 
@@ -473,6 +495,8 @@ The `table()` function can be used to summarize counts and proportions for categ
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 t <- sort(table(d$govt_form), decreasing=TRUE)
 t
 ```
@@ -493,7 +517,7 @@ t
 
 - Multiple boxplots or histograms can be laid out side-by-side or overlaid.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Read in the dataset "KamilarAndCooperData", which contains a host of summary information about 213 primate species.
 
@@ -501,6 +525,8 @@ Spend some time exploring the data on your own and then make boxplots of **log(f
 
 ```{r message=FALSE}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
@@ -513,6 +539,8 @@ library(kableExtra)
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 s <- skim(d) # formats results to a wide table
 # here we make use of the `%>%` operator and {dplyr} verbs... see below
 s %>%
@@ -553,12 +581,14 @@ p
 
 Scatterplots are a natural tool for visualizing two continuous variables and can be made easily with the `plot(x=<variable 1>, y=<variable 2>)` function in {base} graphics (where `<variable 1>` and `<variable 2>` denote the names of the two variables you wish to plot). Transformations of the variables, e.g., `log` or square root (`sqrt()`), may be necessary for effective visualization.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Again using data from the "KamilarAndCooperData" dataset, plot the relationship between female body size and female brain size. Then, play with log transforming the data and plot again.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 par(mfrow=c(1,2)) # sets up two panels side by side
 plot(x = d$Body_mass_female_mean, y = d$Brain_Size_Female_Mean)
 plot(x = log(d$Body_mass_female_mean), y = log(d$Brain_Size_Female_Mean))
@@ -628,12 +658,14 @@ scatterplot(
 detach(package:car)
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 - Build your own bivariate scatterplot of **log(MaxLongevity_m)** by **log(Body_mass_female_mean)** using the "KamilarAndCooperData" dataset.
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 p <- ggplot(data=d, aes(x=log(Body_mass_female_mean),
   y=log(MaxLongevity_m)))
 p <- p + geom_point(na.rm = TRUE)
@@ -643,7 +675,7 @@ p
 
 We can also use either the `pairs()` function from {base} ***R***, the `scatterplotMatrix()` function from the {car} package, or the `pairs.panel()` function from the {psych} package to do multiple scatterplots simulaneously. The `ggpairs()` function from the {GGally} package can also be used, but it is slower.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Select the variables **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **MeanGroupSize**, **WeaningAge_d**, **MaxLongevity_m**, **HomeRange_km2**, and **DayLength_km** from data frame **d** and plot scatterplots of all pairs of variables.
 
@@ -651,6 +683,8 @@ Select the variables **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **Me
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 s <-
   select(d,
     c(
@@ -797,7 +831,7 @@ detach(package:curl)
 detach(package:tidyverse)
 ```
 
-<hr>
+---
 
 ## Concept Review {.unnumbered}
 
