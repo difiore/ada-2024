@@ -36,7 +36,7 @@ First, as we saw in the last module, [**Markdown**](https://en.wikipedia.org/wik
 
 It is important to stress that **Markdown** (".md"), **RMarkdown** (".Rmd") and **Quarto** (".qmd") files ARE JUST PLAIN TEXT files! They are easy to work with, easy to share, easy to edit, easy to put under version control, and robust to changes in proprietary file formats!
 
-As a demonstration of reproducible research workflow and best practices, we are to create a new ***R*** project and corresponding repository that we will track with version control using ***git***. Within that project, we then are going to create an **RMarkdown** document in which you can take notes or practice coding during class today.
+As a demonstration of reproducible research workflow and best practices, we are going to create a new ***R*** project and corresponding repository that we will track with version control using ***git***. Within that project, we then are going to create an **RMarkdown** document in which you can take notes or practice coding during class today.
 
 As we have seen already, ***git***, at its heart, is a command-line tool, but both local (on your computer) and hosted (e.g., on ***GitHub***) ***git*** repositories can be managed using a dedicated ***git*** *client GUI*, such as ***GitHub Desktop***, ***GitUp***, ***GitKraken***, ***SourceTree***, or a host of others. Importantly for us, though, ***RStudio*** is designed to also function as a powerful ***git*** client. We will explore several ways of setting up ***RStudio*** to manage both local and remote copies of a ***git*** repository and of keep them in sync.
 
