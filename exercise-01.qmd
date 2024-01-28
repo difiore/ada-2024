@@ -22,7 +22,7 @@ pwd_outlook <- "Yasuni#1"
 pwd_outlook <- "" # enter your password between the quotation marks
 ```
 
-If you have a Google **Gmail** account (either a personal one or one associated with UT, e.g., a <username>@utexas.edu account) with 2-factor authorization established, you can follow the steps below to create an "app password" that you can use for authentication.
+If you have a Google **Gmail** account (either a personal one or one associated with UT, e.g., a `<username>@utexas.edu` account) with 2-factor authorization established, you can follow the steps below to create an "app password" that you can use for authentication.
 
 - Log into your Google account or your UT Gmail account on a web browser, click on your user icon and choose "Manage your Google Account". For example...
 
