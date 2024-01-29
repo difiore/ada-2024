@@ -6,13 +6,13 @@
 
 ## Preliminaries
 
-- GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".txt" version of "Country-Data-2016", then press the "Edit" button (the pencil icon), highlight all of the text in the editor window, copy it to a text editor of your choice (you can use ***RStudio*** to create a new text file!) and save it locally. Do the same for the ".csv" version.
+- GO TO: <https://github.com/difiore/ada-2024-datasets>, download the ".txt" and ".csv" versions of "Country-Data-2016", and save them locally.
 
 This data set consists of basic statistics (area, current population size, birth rate, death rate, life expectancy, and form of government) for 249 countries taken from [WorldData.info](https://www.worlddata.info) that I have combined with data from the International Union for the Conservation of Nature (IUCN)'s [Red List Summary Statistics](http://www.iucnredlist.org/about/summary-statistics) about the number of threatened animal species by country.
 
-- From the same page, select the ".xlsx" version of "CPDS-1960-2014-reduced", then press "DOWNLOAD" and save it locally. Also download these data in ".txt" and ".csv" formats using the procedure described above.
+- From the same page, download each of the ".txt", ".csv", and ".xlsx" versions of "CPDS-1960-2014-reduced".
 
-This is a version of the **Comparative Political Data Set (CPDS)**, which is "a collection of political and institutional country-level data provided by Prof. Dr. Klaus Armingeon and collaborators at the University of Berne. It consists of annual data for 36 democratic countries for the period of 1960 to 2014 or since their transition to democracy" (Armingeon et al. 2016). The full dataset consists of 300 variables, which I have pared down to a smaller set of economical and population size variables.
+These files contain a version of the **Comparative Political Data Set (CPDS)**, which is "a collection of political and institutional country-level data provided by Prof. Dr. Klaus Armingeon and collaborators at the University of Berne. The dataset consists of annual data for 36 democratic countries for the period of 1960 to 2014 or since their transition to democracy" (Armingeon et al. 2016). The full dataset consists of 300 variables, which I have pared down to a smaller set of economical and population size variables.
 
 > **CITATION:** Armingeon K, Isler C, Knöpfel L, Weisstanner D, and Engler S. 2016. Comparative Political Data Set 1960-2014. Bern: Institute of Political Science, University of Berne.
 
