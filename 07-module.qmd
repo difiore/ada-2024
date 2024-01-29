@@ -6,7 +6,15 @@
 
 ## Preliminaries
 
-- GO TO: <https://github.com/difiore/ada-2022-datasets>, select the "random-people.csv" file, then press the "RAW" button, highlight, and copy the text to a text editor, and save it locally (e.g., on your desktop). ***RStudio***, as we have seen, has a powerful built-in text editor. There are also a number of other excellent text editors that you download for FREE (e.g., [***BBEdit***](https://www.barebones.com/products/bbedit/) for MacOS, [***Notepad++***](https://notepad-plus-plus.org/) for Windows, or [***Atom***](https://atom.io/) or [***Visual Studio Code***](https://code.visualstudio.com/) for either operating system).
+- GO TO: <https://github.com/difiore/ada-2024-datasets>, select the "random-people.csv" file, then press the "Download" button and save the file to your local computer (e.g., on your desktop).
+
+```{r}
+#| echo: false
+#| out_width: "80%"
+knitr::include_graphics("img/download-file.png")
+```
+
+Alternatively, you can press the "Raw" button, highlight, and copy the text to a text editor, and save it. ***RStudio***, as we have seen, has a powerful built-in text editor. There are also a number of other excellent text editors that you download for FREE (e.g., [***BBEdit***](https://www.barebones.com/products/bbedit/) for MacOS, [***Notepad++***](https://notepad-plus-plus.org/) for Windows, or [***Visual Studio Code***](https://code.visualstudio.com/) for either operating system).
 - Install and load these packages in ***R***: [{tidyverse}](https://cran.r-project.org/web/packages/tidyverse/tidyverse.pdf) (which includes {ggplot2}, {dplyr}, {readr}, {tibble}, and {tidyr}, plus others, so they do not need to be installed separately) and [{data.table}](https://cran.r-project.org/web/packages/data.table/data.table.pdf)
 
 ```{r include=FALSE}
