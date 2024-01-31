@@ -2835,563 +2835,565 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb109-311"><a href="#cb109-311" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-312"><a href="#cb109-312" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **CAUTION:** Q1 and Q3 (the equivalent of "numeric.p25" and "numeric.p75") are calculated slightly differently for </span><span class="in">`descr()`</span><span class="at"> and </span><span class="in">`dfSummary()`</span><span class="at"> than for </span><span class="in">`summary()`</span><span class="at"> and </span><span class="in">`skim()`</span><span class="at">!</span></span>
 <span id="cb109-313"><a href="#cb109-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-314"><a href="#cb109-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb109-315"><a href="#cb109-315" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(summarytools)</span>
-<span id="cb109-316"><a href="#cb109-316" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">descr</span>(d, <span class="at">style =</span> <span class="st">"rmarkdown"</span>, <span class="at">transpose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-317"><a href="#cb109-317" aria-hidden="true" tabindex="-1"></a><span class="co"># %&gt;% to view() print nicely formatted table to viewer</span></span>
-<span id="cb109-318"><a href="#cb109-318" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span> summarytools<span class="sc">::</span><span class="fu">view</span>()</span>
-<span id="cb109-319"><a href="#cb109-319" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">dfSummary</span>(d, <span class="at">style =</span> <span class="st">"grid"</span>, <span class="at">plain.ascii =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb109-320"><a href="#cb109-320" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span> summarytools<span class="sc">::</span><span class="fu">view</span>()</span>
-<span id="cb109-321"><a href="#cb109-321" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>summarytools)</span>
-<span id="cb109-322"><a href="#cb109-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-323"><a href="#cb109-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-324"><a href="#cb109-324" aria-hidden="true" tabindex="-1"></a>With <span class="in">`makeDataReport()`</span> from the {dataMaid} package, you can generate a nicely formated report that gets written out to a location of your choice. Again, the output of this code is not shown as it generates a report in an external file.</span>
-<span id="cb109-325"><a href="#cb109-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-326"><a href="#cb109-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb109-327"><a href="#cb109-327" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataMaid)</span>
-<span id="cb109-328"><a href="#cb109-328" aria-hidden="true" tabindex="-1"></a><span class="co"># this code below produces a formated report, with the type of report</span></span>
-<span id="cb109-329"><a href="#cb109-329" aria-hidden="true" tabindex="-1"></a><span class="co"># specified by `output=`</span></span>
-<span id="cb109-330"><a href="#cb109-330" aria-hidden="true" tabindex="-1"></a><span class="fu">makeDataReport</span>(d,</span>
-<span id="cb109-331"><a href="#cb109-331" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">"html"</span>,</span>
-<span id="cb109-332"><a href="#cb109-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"~/Desktop/dataMaid-output.Rmd"</span>,</span>
-<span id="cb109-333"><a href="#cb109-333" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-334"><a href="#cb109-334" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>dataMaid)</span>
-<span id="cb109-335"><a href="#cb109-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-336"><a href="#cb109-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-337"><a href="#cb109-337" aria-hidden="true" tabindex="-1"></a>Additionally, the packages {psych}, {pastecs}, and {Hmisc} also all contain functions for producing variable summaries:</span>
-<span id="cb109-338"><a href="#cb109-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-339"><a href="#cb109-339" aria-hidden="true" tabindex="-1"></a><span class="in">`psych::describe(d)`</span></span>
-<span id="cb109-340"><a href="#cb109-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-341"><a href="#cb109-341" aria-hidden="true" tabindex="-1"></a><span class="in">`pastecs::stat.desc(d)`</span></span>
+<span id="cb109-316"><a href="#cb109-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-317"><a href="#cb109-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb109-318"><a href="#cb109-318" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(summarytools)</span>
+<span id="cb109-319"><a href="#cb109-319" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">descr</span>(d, <span class="at">style =</span> <span class="st">"rmarkdown"</span>, <span class="at">transpose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-320"><a href="#cb109-320" aria-hidden="true" tabindex="-1"></a><span class="co"># %&gt;% to view() print nicely formatted table to viewer</span></span>
+<span id="cb109-321"><a href="#cb109-321" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span> summarytools<span class="sc">::</span><span class="fu">view</span>()</span>
+<span id="cb109-322"><a href="#cb109-322" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">dfSummary</span>(d, <span class="at">style =</span> <span class="st">"grid"</span>, <span class="at">plain.ascii =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb109-323"><a href="#cb109-323" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span> summarytools<span class="sc">::</span><span class="fu">view</span>()</span>
+<span id="cb109-324"><a href="#cb109-324" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>summarytools)</span>
+<span id="cb109-325"><a href="#cb109-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-326"><a href="#cb109-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-327"><a href="#cb109-327" aria-hidden="true" tabindex="-1"></a>With <span class="in">`makeDataReport()`</span> from the {dataMaid} package, you can generate a nicely formated report that gets written out to a location of your choice. Again, the output of this code is not shown as it generates a report in an external file.</span>
+<span id="cb109-328"><a href="#cb109-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-331"><a href="#cb109-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-332"><a href="#cb109-332" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb109-333"><a href="#cb109-333" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dataMaid)</span>
+<span id="cb109-334"><a href="#cb109-334" aria-hidden="true" tabindex="-1"></a><span class="co"># this code below produces a formated report, with the type of report</span></span>
+<span id="cb109-335"><a href="#cb109-335" aria-hidden="true" tabindex="-1"></a><span class="co"># specified by `output=`</span></span>
+<span id="cb109-336"><a href="#cb109-336" aria-hidden="true" tabindex="-1"></a><span class="fu">makeDataReport</span>(d,</span>
+<span id="cb109-337"><a href="#cb109-337" aria-hidden="true" tabindex="-1"></a>  <span class="at">output =</span> <span class="st">"html"</span>,</span>
+<span id="cb109-338"><a href="#cb109-338" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"~/Desktop/dataMaid-output.Rmd"</span>,</span>
+<span id="cb109-339"><a href="#cb109-339" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-340"><a href="#cb109-340" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>dataMaid)</span>
+<span id="cb109-341"><a href="#cb109-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-342"><a href="#cb109-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-343"><a href="#cb109-343" aria-hidden="true" tabindex="-1"></a><span class="in">`Hmisc::describe(d)`</span></span>
+<span id="cb109-343"><a href="#cb109-343" aria-hidden="true" tabindex="-1"></a>Additionally, the packages {psych}, {pastecs}, and {Hmisc} also all contain functions for producing variable summaries:</span>
 <span id="cb109-344"><a href="#cb109-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-345"><a href="#cb109-345" aria-hidden="true" tabindex="-1"></a><span class="fu">### Boxplots, Barplots, and Dotcharts {.unnumbered}</span></span>
+<span id="cb109-345"><a href="#cb109-345" aria-hidden="true" tabindex="-1"></a><span class="in">`psych::describe(d)`</span></span>
 <span id="cb109-346"><a href="#cb109-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-347"><a href="#cb109-347" aria-hidden="true" tabindex="-1"></a>The <span class="in">`boxplot()`</span> function from {base} ***R*** provides a box-and-whiskers visual representation of the five-number summary, sometimes noting outliers that go beyond the bulk of the data. The function balks if you pass it nonnumeric data, so you will want to reference columns of interest specifically using either **double bracket notation** or the **\$** operator.</span>
+<span id="cb109-347"><a href="#cb109-347" aria-hidden="true" tabindex="-1"></a><span class="in">`pastecs::stat.desc(d)`</span></span>
 <span id="cb109-348"><a href="#cb109-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-349"><a href="#cb109-349" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Actually, it is technically not true that </span><span class="in">`boxplot()`</span><span class="at"> always shows you the five-number summary. One of the default arguments for </span><span class="in">`boxplot()`</span><span class="at"> includes </span><span class="in">`range=1.5`</span><span class="at">, which means that the "whiskers" of the boxplot extend to 1.5 times the interquartile range, and then values more extreme than that are indicated as single points. If </span><span class="in">`range=0`</span><span class="at">, then, the "whiskers" extend to the minimum and maximum values of the data.</span></span>
+<span id="cb109-349"><a href="#cb109-349" aria-hidden="true" tabindex="-1"></a><span class="in">`Hmisc::describe(d)`</span></span>
 <span id="cb109-350"><a href="#cb109-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-351"><a href="#cb109-351" aria-hidden="true" tabindex="-1"></a>The <span class="in">`barplot()`</span> function is also useful taking a quick look at crude data, with bar height proportional to the value of the variable. The function <span class="in">`dotchart()`</span> provides a similar graphical summary.</span>
+<span id="cb109-351"><a href="#cb109-351" aria-hidden="true" tabindex="-1"></a><span class="fu">### Boxplots, Barplots, and Dotcharts {.unnumbered}</span></span>
 <span id="cb109-352"><a href="#cb109-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-353"><a href="#cb109-353" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-353"><a href="#cb109-353" aria-hidden="true" tabindex="-1"></a>The <span class="in">`boxplot()`</span> function from {base} ***R*** provides a box-and-whiskers visual representation of the five-number summary, sometimes noting outliers that go beyond the bulk of the data. The function balks if you pass it nonnumeric data, so you will want to reference columns of interest specifically using either **double bracket notation** or the **\$** operator.</span>
 <span id="cb109-354"><a href="#cb109-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-355"><a href="#cb109-355" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make boxplots, barplots, and dotcharts of the raw population and area data, then <span class="in">`log()`</span> transform the variables and repeat the boxplots.</span>
+<span id="cb109-355"><a href="#cb109-355" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Actually, it is technically not true that </span><span class="in">`boxplot()`</span><span class="at"> always shows you the five-number summary. One of the default arguments for </span><span class="in">`boxplot()`</span><span class="at"> includes </span><span class="in">`range=1.5`</span><span class="at">, which means that the "whiskers" of the boxplot extend to 1.5 times the interquartile range, and then values more extreme than that are indicated as single points. If </span><span class="in">`range=0`</span><span class="at">, then, the "whiskers" extend to the minimum and maximum values of the data.</span></span>
 <span id="cb109-356"><a href="#cb109-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-357"><a href="#cb109-357" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The </span><span class="in">`par()`</span><span class="at"> command in the code below lets you set up a grid of panels in which to plot. Here, we set up a 1 row x 2 column grid.</span></span>
+<span id="cb109-357"><a href="#cb109-357" aria-hidden="true" tabindex="-1"></a>The <span class="in">`barplot()`</span> function is also useful taking a quick look at crude data, with bar height proportional to the value of the variable. The function <span class="in">`dotchart()`</span> provides a similar graphical summary.</span>
 <span id="cb109-358"><a href="#cb109-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-361"><a href="#cb109-361" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-362"><a href="#cb109-362" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-363"><a href="#cb109-363" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-364"><a href="#cb109-364" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-365"><a href="#cb109-365" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb109-366"><a href="#cb109-366" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>log_population <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>population)</span>
-<span id="cb109-367"><a href="#cb109-367" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>log_area <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>area)</span>
-<span id="cb109-368"><a href="#cb109-368" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>population, <span class="at">ylab =</span> <span class="st">"Population"</span>)</span>
-<span id="cb109-369"><a href="#cb109-369" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>area, <span class="at">ylab =</span> <span class="st">"Area"</span>)</span>
-<span id="cb109-370"><a href="#cb109-370" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(d<span class="sc">$</span>population, <span class="at">xlab =</span> <span class="st">"Case"</span>, <span class="at">ylab =</span> <span class="st">"Population"</span>)</span>
-<span id="cb109-371"><a href="#cb109-371" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(d<span class="sc">$</span>population, <span class="at">xlab =</span> <span class="st">"Population"</span>, <span class="at">ylab =</span> <span class="st">"Case"</span>)</span>
-<span id="cb109-372"><a href="#cb109-372" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(d<span class="sc">$</span>area, <span class="at">xlab =</span> <span class="st">"Case"</span>, <span class="at">ylab =</span> <span class="st">"Area"</span>)</span>
-<span id="cb109-373"><a href="#cb109-373" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(d<span class="sc">$</span>area, <span class="at">xlab =</span> <span class="st">"Area"</span>, <span class="at">ylab =</span> <span class="st">"Case"</span>)</span>
-<span id="cb109-374"><a href="#cb109-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-375"><a href="#cb109-375" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>log_population, <span class="at">ylab =</span> <span class="st">"log(Population)"</span>)</span>
-<span id="cb109-376"><a href="#cb109-376" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>log_area, <span class="at">ylab =</span> <span class="st">"log(Area)"</span>)</span>
-<span id="cb109-377"><a href="#cb109-377" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-378"><a href="#cb109-378" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-379"><a href="#cb109-379" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting with {ggplot2} {.unnumbered}</span></span>
+<span id="cb109-359"><a href="#cb109-359" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-360"><a href="#cb109-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-361"><a href="#cb109-361" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make boxplots, barplots, and dotcharts of the raw population and area data, then <span class="in">`log()`</span> transform the variables and repeat the boxplots.</span>
+<span id="cb109-362"><a href="#cb109-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-363"><a href="#cb109-363" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The </span><span class="in">`par()`</span><span class="at"> command in the code below lets you set up a grid of panels in which to plot. Here, we set up a 1 row x 2 column grid.</span></span>
+<span id="cb109-364"><a href="#cb109-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-367"><a href="#cb109-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-368"><a href="#cb109-368" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-369"><a href="#cb109-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-370"><a href="#cb109-370" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-371"><a href="#cb109-371" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb109-372"><a href="#cb109-372" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>log_population <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>population)</span>
+<span id="cb109-373"><a href="#cb109-373" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>log_area <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>area)</span>
+<span id="cb109-374"><a href="#cb109-374" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>population, <span class="at">ylab =</span> <span class="st">"Population"</span>)</span>
+<span id="cb109-375"><a href="#cb109-375" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>area, <span class="at">ylab =</span> <span class="st">"Area"</span>)</span>
+<span id="cb109-376"><a href="#cb109-376" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(d<span class="sc">$</span>population, <span class="at">xlab =</span> <span class="st">"Case"</span>, <span class="at">ylab =</span> <span class="st">"Population"</span>)</span>
+<span id="cb109-377"><a href="#cb109-377" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(d<span class="sc">$</span>population, <span class="at">xlab =</span> <span class="st">"Population"</span>, <span class="at">ylab =</span> <span class="st">"Case"</span>)</span>
+<span id="cb109-378"><a href="#cb109-378" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(d<span class="sc">$</span>area, <span class="at">xlab =</span> <span class="st">"Case"</span>, <span class="at">ylab =</span> <span class="st">"Area"</span>)</span>
+<span id="cb109-379"><a href="#cb109-379" aria-hidden="true" tabindex="-1"></a><span class="fu">dotchart</span>(d<span class="sc">$</span>area, <span class="at">xlab =</span> <span class="st">"Area"</span>, <span class="at">ylab =</span> <span class="st">"Case"</span>)</span>
 <span id="cb109-380"><a href="#cb109-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-381"><a href="#cb109-381" aria-hidden="true" tabindex="-1"></a>As an alternative for plotting, we can use the "grammar of graphics" {ggplot2} package:</span>
-<span id="cb109-382"><a href="#cb109-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-383"><a href="#cb109-383" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-384"><a href="#cb109-384" aria-hidden="true" tabindex="-1"></a><span class="co"># first, we use `tidyr::pivot_longer()` to convert our data from wide to long format</span></span>
-<span id="cb109-385"><a href="#cb109-385" aria-hidden="true" tabindex="-1"></a><span class="co"># this is so we can use `facet.grid()`</span></span>
+<span id="cb109-381"><a href="#cb109-381" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>log_population, <span class="at">ylab =</span> <span class="st">"log(Population)"</span>)</span>
+<span id="cb109-382"><a href="#cb109-382" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(d<span class="sc">$</span>log_area, <span class="at">ylab =</span> <span class="st">"log(Area)"</span>)</span>
+<span id="cb109-383"><a href="#cb109-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-384"><a href="#cb109-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-385"><a href="#cb109-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting with {ggplot2} {.unnumbered}</span></span>
 <span id="cb109-386"><a href="#cb109-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-387"><a href="#cb109-387" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment this to look at a different set of variables</span></span>
-<span id="cb109-388"><a href="#cb109-388" aria-hidden="true" tabindex="-1"></a><span class="co"># d_long &lt;- pivot_longer(d, c("log_population","log_area"),</span></span>
-<span id="cb109-389"><a href="#cb109-389" aria-hidden="true" tabindex="-1"></a><span class="co"># names_to="Variable", values_to="Value")</span></span>
-<span id="cb109-390"><a href="#cb109-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-391"><a href="#cb109-391" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment this to look at a different set of variables</span></span>
-<span id="cb109-392"><a href="#cb109-392" aria-hidden="true" tabindex="-1"></a><span class="co"># d_long &lt;- pivot_longer(d, c("mammals","birds","reptiles","fishes"),</span></span>
-<span id="cb109-393"><a href="#cb109-393" aria-hidden="true" tabindex="-1"></a><span class="co"># names_to="Variable", values_to="Value")</span></span>
-<span id="cb109-394"><a href="#cb109-394" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-395"><a href="#cb109-395" aria-hidden="true" tabindex="-1"></a>d_long <span class="ot">&lt;-</span></span>
-<span id="cb109-396"><a href="#cb109-396" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(d,</span>
-<span id="cb109-397"><a href="#cb109-397" aria-hidden="true" tabindex="-1"></a>         <span class="fu">c</span>(<span class="st">"birthrate"</span>, <span class="st">"deathrate"</span>, <span class="st">"life_expect"</span>),</span>
-<span id="cb109-398"><a href="#cb109-398" aria-hidden="true" tabindex="-1"></a>         <span class="at">names_to =</span> <span class="st">"Variable"</span>,</span>
-<span id="cb109-399"><a href="#cb109-399" aria-hidden="true" tabindex="-1"></a>         <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
+<span id="cb109-387"><a href="#cb109-387" aria-hidden="true" tabindex="-1"></a>As an alternative for plotting, we can use the "grammar of graphics" {ggplot2} package:</span>
+<span id="cb109-388"><a href="#cb109-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-389"><a href="#cb109-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-390"><a href="#cb109-390" aria-hidden="true" tabindex="-1"></a><span class="co"># first, we use `tidyr::pivot_longer()` to convert our data from wide to long format</span></span>
+<span id="cb109-391"><a href="#cb109-391" aria-hidden="true" tabindex="-1"></a><span class="co"># this is so we can use `facet.grid()`</span></span>
+<span id="cb109-392"><a href="#cb109-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-393"><a href="#cb109-393" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment this to look at a different set of variables</span></span>
+<span id="cb109-394"><a href="#cb109-394" aria-hidden="true" tabindex="-1"></a><span class="co"># d_long &lt;- pivot_longer(d, c("log_population","log_area"),</span></span>
+<span id="cb109-395"><a href="#cb109-395" aria-hidden="true" tabindex="-1"></a><span class="co"># names_to="Variable", values_to="Value")</span></span>
+<span id="cb109-396"><a href="#cb109-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-397"><a href="#cb109-397" aria-hidden="true" tabindex="-1"></a><span class="co"># uncomment this to look at a different set of variables</span></span>
+<span id="cb109-398"><a href="#cb109-398" aria-hidden="true" tabindex="-1"></a><span class="co"># d_long &lt;- pivot_longer(d, c("mammals","birds","reptiles","fishes"),</span></span>
+<span id="cb109-399"><a href="#cb109-399" aria-hidden="true" tabindex="-1"></a><span class="co"># names_to="Variable", values_to="Value")</span></span>
 <span id="cb109-400"><a href="#cb109-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-401"><a href="#cb109-401" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="dv">0</span>), <span class="at">y =</span> Value)) <span class="sc">+</span></span>
-<span id="cb109-402"><a href="#cb109-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
-<span id="cb109-403"><a href="#cb109-403" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb109-404"><a href="#cb109-404" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb109-405"><a href="#cb109-405" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb109-406"><a href="#cb109-406" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb109-407"><a href="#cb109-407" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb109-408"><a href="#cb109-408" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(</span>
-<span id="cb109-409"><a href="#cb109-409" aria-hidden="true" tabindex="-1"></a>    <span class="at">binaxis =</span> <span class="st">'y'</span>,</span>
-<span id="cb109-410"><a href="#cb109-410" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackdir =</span> <span class="st">'center'</span>,</span>
-<span id="cb109-411"><a href="#cb109-411" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackratio =</span> <span class="fl">0.2</span>,</span>
-<span id="cb109-412"><a href="#cb109-412" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
-<span id="cb109-413"><a href="#cb109-413" aria-hidden="true" tabindex="-1"></a>    <span class="at">dotsize =</span> <span class="fl">0.5</span>,</span>
-<span id="cb109-414"><a href="#cb109-414" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NA</span>,</span>
-<span id="cb109-415"><a href="#cb109-415" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"red"</span>,</span>
-<span id="cb109-416"><a href="#cb109-416" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb109-417"><a href="#cb109-417" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb109-418"><a href="#cb109-418" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> Variable) <span class="sc">+</span></span>
-<span id="cb109-419"><a href="#cb109-419" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">sides =</span> <span class="st">"l"</span>)</span>
-<span id="cb109-420"><a href="#cb109-420" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-421"><a href="#cb109-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-422"><a href="#cb109-422" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="dv">0</span>), <span class="at">y =</span> Value)) <span class="sc">+</span></span>
-<span id="cb109-423"><a href="#cb109-423" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="sc">+</span></span>
-<span id="cb109-424"><a href="#cb109-424" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb109-425"><a href="#cb109-425" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb109-426"><a href="#cb109-426" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb109-427"><a href="#cb109-427" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb109-428"><a href="#cb109-428" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb109-429"><a href="#cb109-429" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(</span>
-<span id="cb109-430"><a href="#cb109-430" aria-hidden="true" tabindex="-1"></a>    <span class="at">binaxis =</span> <span class="st">'y'</span>,</span>
-<span id="cb109-431"><a href="#cb109-431" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackdir =</span> <span class="st">'center'</span>,</span>
-<span id="cb109-432"><a href="#cb109-432" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackratio =</span> <span class="fl">0.2</span>,</span>
-<span id="cb109-433"><a href="#cb109-433" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
-<span id="cb109-434"><a href="#cb109-434" aria-hidden="true" tabindex="-1"></a>    <span class="at">dotsize =</span> <span class="fl">0.5</span>,</span>
-<span id="cb109-435"><a href="#cb109-435" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NA</span>,</span>
-<span id="cb109-436"><a href="#cb109-436" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"red"</span>,</span>
-<span id="cb109-437"><a href="#cb109-437" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb109-438"><a href="#cb109-438" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb109-439"><a href="#cb109-439" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> Variable) <span class="sc">+</span></span>
-<span id="cb109-440"><a href="#cb109-440" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">sides =</span> <span class="st">"l"</span>)</span>
-<span id="cb109-441"><a href="#cb109-441" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-442"><a href="#cb109-442" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-443"><a href="#cb109-443" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-444"><a href="#cb109-444" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histograms {.unnumbered}</span></span>
-<span id="cb109-445"><a href="#cb109-445" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-446"><a href="#cb109-446" aria-hidden="true" tabindex="-1"></a>The <span class="in">`hist()`</span> function returns a histogram showing the complete empirical distribution of the data in binned categories, which is useful for checking skewwness of the data, symmetry, multi-modality, etc. Setting the argument <span class="in">`freq=FALSE`</span> will scale the Y axis to represent the *proportion* of observations falling into each bin rather than the *count*.</span>
-<span id="cb109-447"><a href="#cb109-447" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-448"><a href="#cb109-448" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-401"><a href="#cb109-401" aria-hidden="true" tabindex="-1"></a>d_long <span class="ot">&lt;-</span></span>
+<span id="cb109-402"><a href="#cb109-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(d,</span>
+<span id="cb109-403"><a href="#cb109-403" aria-hidden="true" tabindex="-1"></a>         <span class="fu">c</span>(<span class="st">"birthrate"</span>, <span class="st">"deathrate"</span>, <span class="st">"life_expect"</span>),</span>
+<span id="cb109-404"><a href="#cb109-404" aria-hidden="true" tabindex="-1"></a>         <span class="at">names_to =</span> <span class="st">"Variable"</span>,</span>
+<span id="cb109-405"><a href="#cb109-405" aria-hidden="true" tabindex="-1"></a>         <span class="at">values_to =</span> <span class="st">"Value"</span>)</span>
+<span id="cb109-406"><a href="#cb109-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-407"><a href="#cb109-407" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="dv">0</span>), <span class="at">y =</span> Value)) <span class="sc">+</span></span>
+<span id="cb109-408"><a href="#cb109-408" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb109-409"><a href="#cb109-409" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb109-410"><a href="#cb109-410" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb109-411"><a href="#cb109-411" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb109-412"><a href="#cb109-412" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb109-413"><a href="#cb109-413" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb109-414"><a href="#cb109-414" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(</span>
+<span id="cb109-415"><a href="#cb109-415" aria-hidden="true" tabindex="-1"></a>    <span class="at">binaxis =</span> <span class="st">'y'</span>,</span>
+<span id="cb109-416"><a href="#cb109-416" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackdir =</span> <span class="st">'center'</span>,</span>
+<span id="cb109-417"><a href="#cb109-417" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackratio =</span> <span class="fl">0.2</span>,</span>
+<span id="cb109-418"><a href="#cb109-418" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb109-419"><a href="#cb109-419" aria-hidden="true" tabindex="-1"></a>    <span class="at">dotsize =</span> <span class="fl">0.5</span>,</span>
+<span id="cb109-420"><a href="#cb109-420" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NA</span>,</span>
+<span id="cb109-421"><a href="#cb109-421" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"red"</span>,</span>
+<span id="cb109-422"><a href="#cb109-422" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb109-423"><a href="#cb109-423" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb109-424"><a href="#cb109-424" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> Variable) <span class="sc">+</span></span>
+<span id="cb109-425"><a href="#cb109-425" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">sides =</span> <span class="st">"l"</span>)</span>
+<span id="cb109-426"><a href="#cb109-426" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb109-427"><a href="#cb109-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-428"><a href="#cb109-428" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="dv">0</span>), <span class="at">y =</span> Value)) <span class="sc">+</span></span>
+<span id="cb109-429"><a href="#cb109-429" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="sc">+</span></span>
+<span id="cb109-430"><a href="#cb109-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb109-431"><a href="#cb109-431" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb109-432"><a href="#cb109-432" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb109-433"><a href="#cb109-433" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb109-434"><a href="#cb109-434" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb109-435"><a href="#cb109-435" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(</span>
+<span id="cb109-436"><a href="#cb109-436" aria-hidden="true" tabindex="-1"></a>    <span class="at">binaxis =</span> <span class="st">'y'</span>,</span>
+<span id="cb109-437"><a href="#cb109-437" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackdir =</span> <span class="st">'center'</span>,</span>
+<span id="cb109-438"><a href="#cb109-438" aria-hidden="true" tabindex="-1"></a>    <span class="at">stackratio =</span> <span class="fl">0.2</span>,</span>
+<span id="cb109-439"><a href="#cb109-439" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb109-440"><a href="#cb109-440" aria-hidden="true" tabindex="-1"></a>    <span class="at">dotsize =</span> <span class="fl">0.5</span>,</span>
+<span id="cb109-441"><a href="#cb109-441" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NA</span>,</span>
+<span id="cb109-442"><a href="#cb109-442" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"red"</span>,</span>
+<span id="cb109-443"><a href="#cb109-443" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb109-444"><a href="#cb109-444" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb109-445"><a href="#cb109-445" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> Variable) <span class="sc">+</span></span>
+<span id="cb109-446"><a href="#cb109-446" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">sides =</span> <span class="st">"l"</span>)</span>
+<span id="cb109-447"><a href="#cb109-447" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb109-448"><a href="#cb109-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-449"><a href="#cb109-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-450"><a href="#cb109-450" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make histograms of the <span class="in">`log()`</span> transformed population and area data from the "Country-Data-2016" file. Explore what happens if you set <span class="in">`freq=FALSE`</span> versus the default of <span class="in">`freq=TRUE`</span>. Try looking at other variables as well.</span>
+<span id="cb109-450"><a href="#cb109-450" aria-hidden="true" tabindex="-1"></a><span class="fu">### Histograms {.unnumbered}</span></span>
 <span id="cb109-451"><a href="#cb109-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-452"><a href="#cb109-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-453"><a href="#cb109-453" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-454"><a href="#cb109-454" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-455"><a href="#cb109-455" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-456"><a href="#cb109-456" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># sets up two panels side by side</span></span>
-<span id="cb109-457"><a href="#cb109-457" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(d) <span class="co"># lets us use variable names without specifying the data frame!</span></span>
-<span id="cb109-458"><a href="#cb109-458" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb109-459"><a href="#cb109-459" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(population),</span>
-<span id="cb109-460"><a href="#cb109-460" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb109-461"><a href="#cb109-461" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
-<span id="cb109-462"><a href="#cb109-462" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Plot 1"</span>,</span>
-<span id="cb109-463"><a href="#cb109-463" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(population size)"</span>,</span>
-<span id="cb109-464"><a href="#cb109-464" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
-<span id="cb109-465"><a href="#cb109-465" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
-<span id="cb109-466"><a href="#cb109-466" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-467"><a href="#cb109-467" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb109-468"><a href="#cb109-468" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(area),</span>
-<span id="cb109-469"><a href="#cb109-469" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb109-470"><a href="#cb109-470" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
-<span id="cb109-471"><a href="#cb109-471" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Plot 2"</span>,</span>
-<span id="cb109-472"><a href="#cb109-472" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(area)"</span>,</span>
-<span id="cb109-473"><a href="#cb109-473" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
-<span id="cb109-474"><a href="#cb109-474" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
-<span id="cb109-475"><a href="#cb109-475" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-476"><a href="#cb109-476" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-477"><a href="#cb109-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-478"><a href="#cb109-478" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** You can add lines to your histograms (e.g., to show the mean value for a variable) using the </span><span class="in">`abline()`</span><span class="at"> command, with arguments. For example, to show a single *vertical* line representing the mean log(population size), you would add the argument </span><span class="in">`v=mean(log(area), na.rm=TRUE)`</span><span class="at">. We need to set </span><span class="in">`na.rm`</span><span class="at"> to be TRUE otherwise the </span><span class="in">`mean()`</span><span class="at"> function will not run the way we expect.</span></span>
-<span id="cb109-479"><a href="#cb109-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-482"><a href="#cb109-482" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-483"><a href="#cb109-483" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-484"><a href="#cb109-484" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-485"><a href="#cb109-485" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-486"><a href="#cb109-486" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb109-487"><a href="#cb109-487" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(area),</span>
-<span id="cb109-488"><a href="#cb109-488" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb109-489"><a href="#cb109-489" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
-<span id="cb109-490"><a href="#cb109-490" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Plot 2"</span>,</span>
-<span id="cb109-491"><a href="#cb109-491" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(area)"</span>,</span>
-<span id="cb109-492"><a href="#cb109-492" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
-<span id="cb109-493"><a href="#cb109-493" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
-<span id="cb109-494"><a href="#cb109-494" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-495"><a href="#cb109-495" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">log</span>(area), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb109-496"><a href="#cb109-496" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-497"><a href="#cb109-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-498"><a href="#cb109-498" aria-hidden="true" tabindex="-1"></a><span class="fu">### Density Plots {.unnumbered}</span></span>
-<span id="cb109-499"><a href="#cb109-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-500"><a href="#cb109-500" aria-hidden="true" tabindex="-1"></a>The <span class="in">`density()`</span> function computes a non-parametric estimate of the distribution of a variable, which can be combined with other plots to also yield a graphical view of the distribution of the data. If your data have missing values, then you need to add the argument <span class="in">`na.rm=TRUE`</span> to the <span class="in">`density()`</span> function. To superimpose a <span class="in">`density()`</span> curve on a histogram, you can use the <span class="in">`lines(density())`</span> function.</span>
-<span id="cb109-501"><a href="#cb109-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-502"><a href="#cb109-502" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-503"><a href="#cb109-503" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># set up one panel and redraw the log(population) histogram</span></span>
-<span id="cb109-504"><a href="#cb109-504" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
-<span id="cb109-505"><a href="#cb109-505" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(population),</span>
-<span id="cb109-506"><a href="#cb109-506" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb109-507"><a href="#cb109-507" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
-<span id="cb109-508"><a href="#cb109-508" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Density Plot with Mean"</span>,</span>
-<span id="cb109-509"><a href="#cb109-509" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(population size)"</span>,</span>
-<span id="cb109-510"><a href="#cb109-510" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
-<span id="cb109-511"><a href="#cb109-511" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
-<span id="cb109-512"><a href="#cb109-512" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-513"><a href="#cb109-513" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">log</span>(population), <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb109-514"><a href="#cb109-514" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(population), <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">col =</span> <span class="st">"green"</span>)</span>
-<span id="cb109-515"><a href="#cb109-515" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(d)</span>
-<span id="cb109-516"><a href="#cb109-516" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-517"><a href="#cb109-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-518"><a href="#cb109-518" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tables {.unnumbered}</span></span>
-<span id="cb109-519"><a href="#cb109-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-520"><a href="#cb109-520" aria-hidden="true" tabindex="-1"></a>The <span class="in">`table()`</span> function can be used to summarize counts and proportions for categorical variables in your dataset.</span>
-<span id="cb109-521"><a href="#cb109-521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-522"><a href="#cb109-522" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-452"><a href="#cb109-452" aria-hidden="true" tabindex="-1"></a>The <span class="in">`hist()`</span> function returns a histogram showing the complete empirical distribution of the data in binned categories, which is useful for checking skewwness of the data, symmetry, multi-modality, etc. Setting the argument <span class="in">`freq=FALSE`</span> will scale the Y axis to represent the *proportion* of observations falling into each bin rather than the *count*.</span>
+<span id="cb109-453"><a href="#cb109-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-454"><a href="#cb109-454" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-455"><a href="#cb109-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-456"><a href="#cb109-456" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make histograms of the <span class="in">`log()`</span> transformed population and area data from the "Country-Data-2016" file. Explore what happens if you set <span class="in">`freq=FALSE`</span> versus the default of <span class="in">`freq=TRUE`</span>. Try looking at other variables as well.</span>
+<span id="cb109-457"><a href="#cb109-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-458"><a href="#cb109-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-459"><a href="#cb109-459" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-460"><a href="#cb109-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-461"><a href="#cb109-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-462"><a href="#cb109-462" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># sets up two panels side by side</span></span>
+<span id="cb109-463"><a href="#cb109-463" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(d) <span class="co"># lets us use variable names without specifying the data frame!</span></span>
+<span id="cb109-464"><a href="#cb109-464" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb109-465"><a href="#cb109-465" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(population),</span>
+<span id="cb109-466"><a href="#cb109-466" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb109-467"><a href="#cb109-467" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb109-468"><a href="#cb109-468" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Plot 1"</span>,</span>
+<span id="cb109-469"><a href="#cb109-469" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(population size)"</span>,</span>
+<span id="cb109-470"><a href="#cb109-470" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
+<span id="cb109-471"><a href="#cb109-471" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
+<span id="cb109-472"><a href="#cb109-472" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-473"><a href="#cb109-473" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb109-474"><a href="#cb109-474" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(area),</span>
+<span id="cb109-475"><a href="#cb109-475" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb109-476"><a href="#cb109-476" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb109-477"><a href="#cb109-477" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Plot 2"</span>,</span>
+<span id="cb109-478"><a href="#cb109-478" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(area)"</span>,</span>
+<span id="cb109-479"><a href="#cb109-479" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
+<span id="cb109-480"><a href="#cb109-480" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
+<span id="cb109-481"><a href="#cb109-481" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-482"><a href="#cb109-482" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-483"><a href="#cb109-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-484"><a href="#cb109-484" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** You can add lines to your histograms (e.g., to show the mean value for a variable) using the </span><span class="in">`abline()`</span><span class="at"> command, with arguments. For example, to show a single *vertical* line representing the mean log(population size), you would add the argument </span><span class="in">`v=mean(log(area), na.rm=TRUE)`</span><span class="at">. We need to set </span><span class="in">`na.rm`</span><span class="at"> to be TRUE otherwise the </span><span class="in">`mean()`</span><span class="at"> function will not run the way we expect.</span></span>
+<span id="cb109-485"><a href="#cb109-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-488"><a href="#cb109-488" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-489"><a href="#cb109-489" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-490"><a href="#cb109-490" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-491"><a href="#cb109-491" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-492"><a href="#cb109-492" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb109-493"><a href="#cb109-493" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(area),</span>
+<span id="cb109-494"><a href="#cb109-494" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb109-495"><a href="#cb109-495" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb109-496"><a href="#cb109-496" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Plot 2"</span>,</span>
+<span id="cb109-497"><a href="#cb109-497" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(area)"</span>,</span>
+<span id="cb109-498"><a href="#cb109-498" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
+<span id="cb109-499"><a href="#cb109-499" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
+<span id="cb109-500"><a href="#cb109-500" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-501"><a href="#cb109-501" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">log</span>(area), <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb109-502"><a href="#cb109-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-503"><a href="#cb109-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-504"><a href="#cb109-504" aria-hidden="true" tabindex="-1"></a><span class="fu">### Density Plots {.unnumbered}</span></span>
+<span id="cb109-505"><a href="#cb109-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-506"><a href="#cb109-506" aria-hidden="true" tabindex="-1"></a>The <span class="in">`density()`</span> function computes a non-parametric estimate of the distribution of a variable, which can be combined with other plots to also yield a graphical view of the distribution of the data. If your data have missing values, then you need to add the argument <span class="in">`na.rm=TRUE`</span> to the <span class="in">`density()`</span> function. To superimpose a <span class="in">`density()`</span> curve on a histogram, you can use the <span class="in">`lines(density())`</span> function.</span>
+<span id="cb109-507"><a href="#cb109-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-508"><a href="#cb109-508" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-509"><a href="#cb109-509" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># set up one panel and redraw the log(population) histogram</span></span>
+<span id="cb109-510"><a href="#cb109-510" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb109-511"><a href="#cb109-511" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(population),</span>
+<span id="cb109-512"><a href="#cb109-512" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb109-513"><a href="#cb109-513" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"white"</span>,</span>
+<span id="cb109-514"><a href="#cb109-514" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Density Plot with Mean"</span>,</span>
+<span id="cb109-515"><a href="#cb109-515" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(population size)"</span>,</span>
+<span id="cb109-516"><a href="#cb109-516" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"density"</span>,</span>
+<span id="cb109-517"><a href="#cb109-517" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.2</span>)</span>
+<span id="cb109-518"><a href="#cb109-518" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-519"><a href="#cb109-519" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(<span class="fu">log</span>(population), <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb109-520"><a href="#cb109-520" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(population), <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">col =</span> <span class="st">"green"</span>)</span>
+<span id="cb109-521"><a href="#cb109-521" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(d)</span>
+<span id="cb109-522"><a href="#cb109-522" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-523"><a href="#cb109-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-524"><a href="#cb109-524" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using the <span class="in">`table()`</span> function, find what is the most common form of government in the "Country-Data-2016" dataset. How many countries have that form?</span>
+<span id="cb109-524"><a href="#cb109-524" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tables {.unnumbered}</span></span>
 <span id="cb109-525"><a href="#cb109-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-526"><a href="#cb109-526" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** We can combine </span><span class="in">`table()`</span><span class="at"> with </span><span class="in">`sort()`</span><span class="at"> and the argument </span><span class="in">`decreasing=TRUE`</span><span class="at"> to get the desired answered straight away.</span></span>
+<span id="cb109-526"><a href="#cb109-526" aria-hidden="true" tabindex="-1"></a>The <span class="in">`table()`</span> function can be used to summarize counts and proportions for categorical variables in your dataset.</span>
 <span id="cb109-527"><a href="#cb109-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-530"><a href="#cb109-530" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-531"><a href="#cb109-531" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-532"><a href="#cb109-532" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-533"><a href="#cb109-533" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-534"><a href="#cb109-534" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(d<span class="sc">$</span>govt_form), <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb109-535"><a href="#cb109-535" aria-hidden="true" tabindex="-1"></a>t</span>
-<span id="cb109-536"><a href="#cb109-536" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-537"><a href="#cb109-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-538"><a href="#cb109-538" aria-hidden="true" tabindex="-1"></a>Doing the same thing with {dplyr} verbs (see <span class="co">[</span><span class="ot">**Module 10**</span><span class="co">](#module-10)</span>) provides nicer output...</span>
-<span id="cb109-539"><a href="#cb109-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-542"><a href="#cb109-542" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-543"><a href="#cb109-543" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span></span>
-<span id="cb109-544"><a href="#cb109-544" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(d, govt_form) <span class="sc">%&gt;%</span></span>
-<span id="cb109-545"><a href="#cb109-545" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb109-546"><a href="#cb109-546" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
-<span id="cb109-547"><a href="#cb109-547" aria-hidden="true" tabindex="-1"></a>t</span>
-<span id="cb109-548"><a href="#cb109-548" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-549"><a href="#cb109-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-550"><a href="#cb109-550" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring Multiple Variables</span></span>
-<span id="cb109-551"><a href="#cb109-551" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-552"><a href="#cb109-552" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting Several Variables {.unnumbered}</span></span>
-<span id="cb109-553"><a href="#cb109-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-554"><a href="#cb109-554" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Multiple boxplots or histograms can be laid out side-by-side or overlaid.</span>
+<span id="cb109-528"><a href="#cb109-528" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-529"><a href="#cb109-529" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-530"><a href="#cb109-530" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using the <span class="in">`table()`</span> function, find what is the most common form of government in the "Country-Data-2016" dataset. How many countries have that form?</span>
+<span id="cb109-531"><a href="#cb109-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-532"><a href="#cb109-532" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** We can combine </span><span class="in">`table()`</span><span class="at"> with </span><span class="in">`sort()`</span><span class="at"> and the argument </span><span class="in">`decreasing=TRUE`</span><span class="at"> to get the desired answered straight away.</span></span>
+<span id="cb109-533"><a href="#cb109-533" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-536"><a href="#cb109-536" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-537"><a href="#cb109-537" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-538"><a href="#cb109-538" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-539"><a href="#cb109-539" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-540"><a href="#cb109-540" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">table</span>(d<span class="sc">$</span>govt_form), <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb109-541"><a href="#cb109-541" aria-hidden="true" tabindex="-1"></a>t</span>
+<span id="cb109-542"><a href="#cb109-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-543"><a href="#cb109-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-544"><a href="#cb109-544" aria-hidden="true" tabindex="-1"></a>Doing the same thing with {dplyr} verbs (see <span class="co">[</span><span class="ot">**Module 10**</span><span class="co">](#module-10)</span>) provides nicer output...</span>
+<span id="cb109-545"><a href="#cb109-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-548"><a href="#cb109-548" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-549"><a href="#cb109-549" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span></span>
+<span id="cb109-550"><a href="#cb109-550" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(d, govt_form) <span class="sc">%&gt;%</span></span>
+<span id="cb109-551"><a href="#cb109-551" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb109-552"><a href="#cb109-552" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
+<span id="cb109-553"><a href="#cb109-553" aria-hidden="true" tabindex="-1"></a>t</span>
+<span id="cb109-554"><a href="#cb109-554" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-555"><a href="#cb109-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-556"><a href="#cb109-556" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-556"><a href="#cb109-556" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exploring Multiple Variables</span></span>
 <span id="cb109-557"><a href="#cb109-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-558"><a href="#cb109-558" aria-hidden="true" tabindex="-1"></a>Read in the dataset "KamilarAndCooperData", which contains a host of summary information about 213 primate species.</span>
+<span id="cb109-558"><a href="#cb109-558" aria-hidden="true" tabindex="-1"></a><span class="fu">### Plotting Several Variables {.unnumbered}</span></span>
 <span id="cb109-559"><a href="#cb109-559" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-560"><a href="#cb109-560" aria-hidden="true" tabindex="-1"></a>Spend some time exploring the data on your own and then make boxplots of **log(female body mass) \~ family**. Try doing this with {base} graphics and then look at how we might do in in {ggplot2}, which provides a standard "grammar of graphics" (see the <span class="co">[</span><span class="ot">{ggplot2} documentation</span><span class="co">](http://docs.ggplot2.org/current/)</span>)</span>
+<span id="cb109-560"><a href="#cb109-560" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Multiple boxplots or histograms can be laid out side-by-side or overlaid.</span>
 <span id="cb109-561"><a href="#cb109-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-562"><a href="#cb109-562" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-563"><a href="#cb109-563" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-564"><a href="#cb109-564" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-565"><a href="#cb109-565" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-566"><a href="#cb109-566" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"</span></span>
-<span id="cb109-567"><a href="#cb109-567" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-568"><a href="#cb109-568" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
-<span id="cb109-569"><a href="#cb109-569" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-570"><a href="#cb109-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-571"><a href="#cb109-571" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-572"><a href="#cb109-572" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb109-573"><a href="#cb109-573" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb109-574"><a href="#cb109-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-575"><a href="#cb109-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-578"><a href="#cb109-578" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-579"><a href="#cb109-579" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-580"><a href="#cb109-580" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-581"><a href="#cb109-581" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-582"><a href="#cb109-582" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">skim</span>(d) <span class="co"># formats results to a wide table</span></span>
-<span id="cb109-583"><a href="#cb109-583" aria-hidden="true" tabindex="-1"></a><span class="co"># here we make use of the `%&gt;%` operator and {dplyr} verbs... see below</span></span>
-<span id="cb109-584"><a href="#cb109-584" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span></span>
-<span id="cb109-585"><a href="#cb109-585" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(skim_variable <span class="sc">==</span> <span class="st">"Scientific_Name"</span> <span class="sc">|</span> skim_type <span class="sc">==</span> <span class="st">"numeric"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb109-586"><a href="#cb109-586" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">variable=</span>skim_variable, <span class="at">missing=</span>n_missing, <span class="at">mean=</span>numeric.mean,</span>
-<span id="cb109-587"><a href="#cb109-587" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd=</span>numeric.sd, <span class="at">min=</span>numeric.p0, <span class="at">p25=</span>numeric.p25, <span class="at">median=</span>numeric.p50,</span>
-<span id="cb109-588"><a href="#cb109-588" aria-hidden="true" tabindex="-1"></a>    <span class="at">p75=</span>numeric.p75, <span class="at">max=</span>numeric.p100, <span class="at">hist=</span>numeric.hist) <span class="sc">%&gt;%</span></span>
-<span id="cb109-589"><a href="#cb109-589" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, missing, mean, sd, min, median, max, hist) <span class="sc">%&gt;%</span></span>
-<span id="cb109-590"><a href="#cb109-590" aria-hidden="true" tabindex="-1"></a>  <span class="co"># drop p25 and p75 for purposes of display</span></span>
-<span id="cb109-591"><a href="#cb109-591" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb109-592"><a href="#cb109-592" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb109-593"><a href="#cb109-593" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-594"><a href="#cb109-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-595"><a href="#cb109-595" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-596"><a href="#cb109-596" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>kableExtra)</span>
-<span id="cb109-597"><a href="#cb109-597" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>skimr)</span>
-<span id="cb109-598"><a href="#cb109-598" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-599"><a href="#cb109-599" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-600"><a href="#cb109-600" aria-hidden="true" tabindex="-1"></a>We can also make boxplots summarizing a numerical variable in relation to another categorical variable.</span>
-<span id="cb109-601"><a href="#cb109-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-602"><a href="#cb109-602" aria-hidden="true" tabindex="-1"></a>Plotting using {base} graphics... the <span class="in">`~`</span> operator can be read as "by".</span>
-<span id="cb109-603"><a href="#cb109-603" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-606"><a href="#cb109-606" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-607"><a href="#cb109-607" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log</span>(d<span class="sc">$</span>Body_mass_female_mean)<span class="sc">~</span>d<span class="sc">$</span>Family)</span>
-<span id="cb109-608"><a href="#cb109-608" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-562"><a href="#cb109-562" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-563"><a href="#cb109-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-564"><a href="#cb109-564" aria-hidden="true" tabindex="-1"></a>Read in the dataset "KamilarAndCooperData", which contains a host of summary information about 213 primate species.</span>
+<span id="cb109-565"><a href="#cb109-565" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-566"><a href="#cb109-566" aria-hidden="true" tabindex="-1"></a>Spend some time exploring the data on your own and then make boxplots of **log(female body mass) \~ family**. Try doing this with {base} graphics and then look at how we might do in in {ggplot2}, which provides a standard "grammar of graphics" (see the <span class="co">[</span><span class="ot">{ggplot2} documentation</span><span class="co">](http://docs.ggplot2.org/current/)</span>)</span>
+<span id="cb109-567"><a href="#cb109-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-568"><a href="#cb109-568" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-569"><a href="#cb109-569" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-570"><a href="#cb109-570" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-571"><a href="#cb109-571" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-572"><a href="#cb109-572" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"</span></span>
+<span id="cb109-573"><a href="#cb109-573" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-574"><a href="#cb109-574" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb109-575"><a href="#cb109-575" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-576"><a href="#cb109-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-577"><a href="#cb109-577" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-578"><a href="#cb109-578" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb109-579"><a href="#cb109-579" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb109-580"><a href="#cb109-580" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-581"><a href="#cb109-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-584"><a href="#cb109-584" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-585"><a href="#cb109-585" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-586"><a href="#cb109-586" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-587"><a href="#cb109-587" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-588"><a href="#cb109-588" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">skim</span>(d) <span class="co"># formats results to a wide table</span></span>
+<span id="cb109-589"><a href="#cb109-589" aria-hidden="true" tabindex="-1"></a><span class="co"># here we make use of the `%&gt;%` operator and {dplyr} verbs... see below</span></span>
+<span id="cb109-590"><a href="#cb109-590" aria-hidden="true" tabindex="-1"></a>s <span class="sc">%&gt;%</span></span>
+<span id="cb109-591"><a href="#cb109-591" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(skim_variable <span class="sc">==</span> <span class="st">"Scientific_Name"</span> <span class="sc">|</span> skim_type <span class="sc">==</span> <span class="st">"numeric"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb109-592"><a href="#cb109-592" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">variable=</span>skim_variable, <span class="at">missing=</span>n_missing, <span class="at">mean=</span>numeric.mean,</span>
+<span id="cb109-593"><a href="#cb109-593" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd=</span>numeric.sd, <span class="at">min=</span>numeric.p0, <span class="at">p25=</span>numeric.p25, <span class="at">median=</span>numeric.p50,</span>
+<span id="cb109-594"><a href="#cb109-594" aria-hidden="true" tabindex="-1"></a>    <span class="at">p75=</span>numeric.p75, <span class="at">max=</span>numeric.p100, <span class="at">hist=</span>numeric.hist) <span class="sc">%&gt;%</span></span>
+<span id="cb109-595"><a href="#cb109-595" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable, missing, mean, sd, min, median, max, hist) <span class="sc">%&gt;%</span></span>
+<span id="cb109-596"><a href="#cb109-596" aria-hidden="true" tabindex="-1"></a>  <span class="co"># drop p25 and p75 for purposes of display</span></span>
+<span id="cb109-597"><a href="#cb109-597" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb109-598"><a href="#cb109-598" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">10</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb109-599"><a href="#cb109-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-600"><a href="#cb109-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-601"><a href="#cb109-601" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-602"><a href="#cb109-602" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>kableExtra)</span>
+<span id="cb109-603"><a href="#cb109-603" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>skimr)</span>
+<span id="cb109-604"><a href="#cb109-604" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-605"><a href="#cb109-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-606"><a href="#cb109-606" aria-hidden="true" tabindex="-1"></a>We can also make boxplots summarizing a numerical variable in relation to another categorical variable.</span>
+<span id="cb109-607"><a href="#cb109-607" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-608"><a href="#cb109-608" aria-hidden="true" tabindex="-1"></a>Plotting using {base} graphics... the <span class="in">`~`</span> operator can be read as "by".</span>
 <span id="cb109-609"><a href="#cb109-609" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-610"><a href="#cb109-610" aria-hidden="true" tabindex="-1"></a>Alternatively, plotting using {ggplot2}...</span>
-<span id="cb109-611"><a href="#cb109-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-614"><a href="#cb109-614" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-615"><a href="#cb109-615" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span>Family, <span class="at">y=</span><span class="fu">log</span>(Body_mass_female_mean)))</span>
-<span id="cb109-616"><a href="#cb109-616" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb109-617"><a href="#cb109-617" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>))</span>
-<span id="cb109-618"><a href="#cb109-618" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Female Body Mass)"</span>)</span>
-<span id="cb109-619"><a href="#cb109-619" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-620"><a href="#cb109-620" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-621"><a href="#cb109-621" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-622"><a href="#cb109-622" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bivariate Scatterplots {.unnumbered}</span></span>
-<span id="cb109-623"><a href="#cb109-623" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-624"><a href="#cb109-624" aria-hidden="true" tabindex="-1"></a>Scatterplots are a natural tool for visualizing two continuous variables and can be made easily with the <span class="in">`plot(x=&lt;variable 1&gt;, y=&lt;variable 2&gt;)`</span> function in {base} graphics (where <span class="in">`&lt;variable 1&gt;`</span> and <span class="in">`&lt;variable 2&gt;`</span> denote the names of the two variables you wish to plot). Transformations of the variables, e.g., <span class="in">`log`</span> or square root (<span class="in">`sqrt()`</span>), may be necessary for effective visualization.</span>
-<span id="cb109-625"><a href="#cb109-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-626"><a href="#cb109-626" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-612"><a href="#cb109-612" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-613"><a href="#cb109-613" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log</span>(d<span class="sc">$</span>Body_mass_female_mean)<span class="sc">~</span>d<span class="sc">$</span>Family)</span>
+<span id="cb109-614"><a href="#cb109-614" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-615"><a href="#cb109-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-616"><a href="#cb109-616" aria-hidden="true" tabindex="-1"></a>Alternatively, plotting using {ggplot2}...</span>
+<span id="cb109-617"><a href="#cb109-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-620"><a href="#cb109-620" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-621"><a href="#cb109-621" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span>Family, <span class="at">y=</span><span class="fu">log</span>(Body_mass_female_mean)))</span>
+<span id="cb109-622"><a href="#cb109-622" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb109-623"><a href="#cb109-623" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>))</span>
+<span id="cb109-624"><a href="#cb109-624" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Female Body Mass)"</span>)</span>
+<span id="cb109-625"><a href="#cb109-625" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb109-626"><a href="#cb109-626" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-627"><a href="#cb109-627" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-628"><a href="#cb109-628" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Again using data from the "KamilarAndCooperData" dataset, plot the relationship between female body size and female brain size. Then, play with log transforming the data and plot again.</span>
+<span id="cb109-628"><a href="#cb109-628" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bivariate Scatterplots {.unnumbered}</span></span>
 <span id="cb109-629"><a href="#cb109-629" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-632"><a href="#cb109-632" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-633"><a href="#cb109-633" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-634"><a href="#cb109-634" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-635"><a href="#cb109-635" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-636"><a href="#cb109-636" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># sets up two panels side by side</span></span>
-<span id="cb109-637"><a href="#cb109-637" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> d<span class="sc">$</span>Body_mass_female_mean, <span class="at">y =</span> d<span class="sc">$</span>Brain_Size_Female_Mean)</span>
-<span id="cb109-638"><a href="#cb109-638" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">log</span>(d<span class="sc">$</span>Body_mass_female_mean), <span class="at">y =</span> <span class="fu">log</span>(d<span class="sc">$</span>Brain_Size_Female_Mean))</span>
-<span id="cb109-639"><a href="#cb109-639" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-640"><a href="#cb109-640" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-641"><a href="#cb109-641" aria-hidden="true" tabindex="-1"></a>The grammar for {ggplot2} is a bit more complicated... see if you can follow it in the example below.</span>
-<span id="cb109-642"><a href="#cb109-642" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-645"><a href="#cb109-645" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-646"><a href="#cb109-646" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_female_mean),</span>
-<span id="cb109-647"><a href="#cb109-647" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y=</span><span class="fu">log</span>(Brain_Size_Female_Mean),</span>
-<span id="cb109-648"><a href="#cb109-648" aria-hidden="true" tabindex="-1"></a>                        <span class="at">color =</span> <span class="fu">factor</span>(Family)</span>
-<span id="cb109-649"><a href="#cb109-649" aria-hidden="true" tabindex="-1"></a>                        )) <span class="co"># first, we build a plot object and color points by Family</span></span>
-<span id="cb109-650"><a href="#cb109-650" aria-hidden="true" tabindex="-1"></a><span class="co"># then we modify the axis labels</span></span>
-<span id="cb109-651"><a href="#cb109-651" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"log(Female Body Mass)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Female Brain Size)"</span>)</span>
-<span id="cb109-652"><a href="#cb109-652" aria-hidden="true" tabindex="-1"></a><span class="co"># then we make a scatterplot</span></span>
-<span id="cb109-653"><a href="#cb109-653" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb109-654"><a href="#cb109-654" aria-hidden="true" tabindex="-1"></a><span class="co"># then we modify the legend</span></span>
-<span id="cb109-655"><a href="#cb109-655" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>, <span class="at">legend.title=</span><span class="fu">element_blank</span>())</span>
-<span id="cb109-656"><a href="#cb109-656" aria-hidden="true" tabindex="-1"></a><span class="co"># and, finally, we plot the object</span></span>
-<span id="cb109-657"><a href="#cb109-657" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-658"><a href="#cb109-658" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-659"><a href="#cb109-659" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-660"><a href="#cb109-660" aria-hidden="true" tabindex="-1"></a>We can use the cool package {ggExtra} to add marginal univariate plots to our bivariate scatterplots, too.</span>
-<span id="cb109-661"><a href="#cb109-661" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-664"><a href="#cb109-664" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-665"><a href="#cb109-665" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
-<span id="cb109-666"><a href="#cb109-666" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">"densigram"</span>) <span class="co"># try with other types, too!</span></span>
-<span id="cb109-667"><a href="#cb109-667" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggExtra)</span>
-<span id="cb109-668"><a href="#cb109-668" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-669"><a href="#cb109-669" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-670"><a href="#cb109-670" aria-hidden="true" tabindex="-1"></a>Using {ggplot2}, we can also easily set up a grid for "faceting"" by a grouping variable...</span>
-<span id="cb109-671"><a href="#cb109-671" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-674"><a href="#cb109-674" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-675"><a href="#cb109-675" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> Family, <span class="at">ncol=</span><span class="dv">4</span>) <span class="co"># wrap data "by" family into 4 columns</span></span>
-<span id="cb109-676"><a href="#cb109-676" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)</span>
-<span id="cb109-677"><a href="#cb109-677" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-678"><a href="#cb109-678" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-679"><a href="#cb109-679" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-680"><a href="#cb109-680" aria-hidden="true" tabindex="-1"></a>In {ggplot2} can easily add regression lines to our plot. Here, we add a linear model to each facet.</span>
-<span id="cb109-681"><a href="#cb109-681" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-682"><a href="#cb109-682" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
-<span id="cb109-683"><a href="#cb109-683" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">fullrange=</span><span class="cn">FALSE</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb109-684"><a href="#cb109-684" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-685"><a href="#cb109-685" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-686"><a href="#cb109-686" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-687"><a href="#cb109-687" aria-hidden="true" tabindex="-1"></a>The <span class="in">`scatterplot()`</span> function from the {car} package also produces nice bivariate plots and includes barplots along the margins.</span>
-<span id="cb109-688"><a href="#cb109-688" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-689"><a href="#cb109-689" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-690"><a href="#cb109-690" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb109-630"><a href="#cb109-630" aria-hidden="true" tabindex="-1"></a>Scatterplots are a natural tool for visualizing two continuous variables and can be made easily with the <span class="in">`plot(x=&lt;variable 1&gt;, y=&lt;variable 2&gt;)`</span> function in {base} graphics (where <span class="in">`&lt;variable 1&gt;`</span> and <span class="in">`&lt;variable 2&gt;`</span> denote the names of the two variables you wish to plot). Transformations of the variables, e.g., <span class="in">`log`</span> or square root (<span class="in">`sqrt()`</span>), may be necessary for effective visualization.</span>
+<span id="cb109-631"><a href="#cb109-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-632"><a href="#cb109-632" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-633"><a href="#cb109-633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-634"><a href="#cb109-634" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Again using data from the "KamilarAndCooperData" dataset, plot the relationship between female body size and female brain size. Then, play with log transforming the data and plot again.</span>
+<span id="cb109-635"><a href="#cb109-635" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-638"><a href="#cb109-638" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-639"><a href="#cb109-639" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-640"><a href="#cb109-640" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-641"><a href="#cb109-641" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-642"><a href="#cb109-642" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># sets up two panels side by side</span></span>
+<span id="cb109-643"><a href="#cb109-643" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> d<span class="sc">$</span>Body_mass_female_mean, <span class="at">y =</span> d<span class="sc">$</span>Brain_Size_Female_Mean)</span>
+<span id="cb109-644"><a href="#cb109-644" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">log</span>(d<span class="sc">$</span>Body_mass_female_mean), <span class="at">y =</span> <span class="fu">log</span>(d<span class="sc">$</span>Brain_Size_Female_Mean))</span>
+<span id="cb109-645"><a href="#cb109-645" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-646"><a href="#cb109-646" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-647"><a href="#cb109-647" aria-hidden="true" tabindex="-1"></a>The grammar for {ggplot2} is a bit more complicated... see if you can follow it in the example below.</span>
+<span id="cb109-648"><a href="#cb109-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-651"><a href="#cb109-651" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-652"><a href="#cb109-652" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_female_mean),</span>
+<span id="cb109-653"><a href="#cb109-653" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y=</span><span class="fu">log</span>(Brain_Size_Female_Mean),</span>
+<span id="cb109-654"><a href="#cb109-654" aria-hidden="true" tabindex="-1"></a>                        <span class="at">color =</span> <span class="fu">factor</span>(Family)</span>
+<span id="cb109-655"><a href="#cb109-655" aria-hidden="true" tabindex="-1"></a>                        )) <span class="co"># first, we build a plot object and color points by Family</span></span>
+<span id="cb109-656"><a href="#cb109-656" aria-hidden="true" tabindex="-1"></a><span class="co"># then we modify the axis labels</span></span>
+<span id="cb109-657"><a href="#cb109-657" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"log(Female Body Mass)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Female Brain Size)"</span>)</span>
+<span id="cb109-658"><a href="#cb109-658" aria-hidden="true" tabindex="-1"></a><span class="co"># then we make a scatterplot</span></span>
+<span id="cb109-659"><a href="#cb109-659" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb109-660"><a href="#cb109-660" aria-hidden="true" tabindex="-1"></a><span class="co"># then we modify the legend</span></span>
+<span id="cb109-661"><a href="#cb109-661" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"bottom"</span>, <span class="at">legend.title=</span><span class="fu">element_blank</span>())</span>
+<span id="cb109-662"><a href="#cb109-662" aria-hidden="true" tabindex="-1"></a><span class="co"># and, finally, we plot the object</span></span>
+<span id="cb109-663"><a href="#cb109-663" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb109-664"><a href="#cb109-664" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-665"><a href="#cb109-665" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-666"><a href="#cb109-666" aria-hidden="true" tabindex="-1"></a>We can use the cool package {ggExtra} to add marginal univariate plots to our bivariate scatterplots, too.</span>
+<span id="cb109-667"><a href="#cb109-667" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-670"><a href="#cb109-670" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-671"><a href="#cb109-671" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span>
+<span id="cb109-672"><a href="#cb109-672" aria-hidden="true" tabindex="-1"></a><span class="fu">ggMarginal</span>(p, <span class="at">type =</span> <span class="st">"densigram"</span>) <span class="co"># try with other types, too!</span></span>
+<span id="cb109-673"><a href="#cb109-673" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggExtra)</span>
+<span id="cb109-674"><a href="#cb109-674" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-675"><a href="#cb109-675" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-676"><a href="#cb109-676" aria-hidden="true" tabindex="-1"></a>Using {ggplot2}, we can also easily set up a grid for "faceting"" by a grouping variable...</span>
+<span id="cb109-677"><a href="#cb109-677" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-680"><a href="#cb109-680" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-681"><a href="#cb109-681" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span> Family, <span class="at">ncol=</span><span class="dv">4</span>) <span class="co"># wrap data "by" family into 4 columns</span></span>
+<span id="cb109-682"><a href="#cb109-682" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"none"</span>)</span>
+<span id="cb109-683"><a href="#cb109-683" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb109-684"><a href="#cb109-684" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-685"><a href="#cb109-685" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-686"><a href="#cb109-686" aria-hidden="true" tabindex="-1"></a>In {ggplot2} can easily add regression lines to our plot. Here, we add a linear model to each facet.</span>
+<span id="cb109-687"><a href="#cb109-687" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-688"><a href="#cb109-688" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb109-689"><a href="#cb109-689" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">fullrange=</span><span class="cn">FALSE</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb109-690"><a href="#cb109-690" aria-hidden="true" tabindex="-1"></a>p</span>
 <span id="cb109-691"><a href="#cb109-691" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-692"><a href="#cb109-692" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-695"><a href="#cb109-695" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-696"><a href="#cb109-696" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(</span>
-<span id="cb109-697"><a href="#cb109-697" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
-<span id="cb109-698"><a href="#cb109-698" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(Brain_Size_Female_Mean) <span class="sc">~</span> <span class="fu">log</span>(Body_mass_female_mean),</span>
-<span id="cb109-699"><a href="#cb109-699" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(Female Body Mass"</span>,</span>
-<span id="cb109-700"><a href="#cb109-700" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"log(Female Brain Size"</span>,</span>
-<span id="cb109-701"><a href="#cb109-701" aria-hidden="true" tabindex="-1"></a>  <span class="at">boxplots =</span> <span class="st">"xy"</span>,</span>
-<span id="cb109-702"><a href="#cb109-702" aria-hidden="true" tabindex="-1"></a>  <span class="at">regLine =</span> </span>
-<span id="cb109-703"><a href="#cb109-703" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb109-704"><a href="#cb109-704" aria-hidden="true" tabindex="-1"></a>       <span class="at">method =</span> lm,</span>
-<span id="cb109-705"><a href="#cb109-705" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span>,</span>
-<span id="cb109-706"><a href="#cb109-706" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb109-707"><a href="#cb109-707" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span></span>
-<span id="cb109-708"><a href="#cb109-708" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb109-709"><a href="#cb109-709" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-710"><a href="#cb109-710" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>car)</span>
-<span id="cb109-711"><a href="#cb109-711" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-712"><a href="#cb109-712" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-713"><a href="#cb109-713" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb109-714"><a href="#cb109-714" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-715"><a href="#cb109-715" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Build your own bivariate scatterplot of **log(MaxLongevity_m)** by **log(Body_mass_female_mean)** using the "KamilarAndCooperData" dataset.</span>
-<span id="cb109-716"><a href="#cb109-716" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-719"><a href="#cb109-719" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-720"><a href="#cb109-720" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-721"><a href="#cb109-721" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-722"><a href="#cb109-722" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-723"><a href="#cb109-723" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_female_mean),</span>
-<span id="cb109-724"><a href="#cb109-724" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span><span class="fu">log</span>(MaxLongevity_m)))</span>
-<span id="cb109-725"><a href="#cb109-725" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-726"><a href="#cb109-726" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-727"><a href="#cb109-727" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb109-728"><a href="#cb109-728" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-729"><a href="#cb109-729" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-730"><a href="#cb109-730" aria-hidden="true" tabindex="-1"></a>We can also use either the <span class="in">`pairs()`</span> function from {base} ***R***, the <span class="in">`scatterplotMatrix()`</span> function from the {car} package, or the <span class="in">`pairs.panel()`</span> function from the {psych} package to do multiple scatterplots simulaneously. The <span class="in">`ggpairs()`</span> function from the {GGally} package can also be used, but it is slower.</span>
-<span id="cb109-731"><a href="#cb109-731" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-732"><a href="#cb109-732" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb109-733"><a href="#cb109-733" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-734"><a href="#cb109-734" aria-hidden="true" tabindex="-1"></a>Select the variables **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **MeanGroupSize**, **WeaningAge_d**, **MaxLongevity_m**, **HomeRange_km2**, and **DayLength_km** from data frame **d** and plot scatterplots of all pairs of variables.</span>
+<span id="cb109-693"><a href="#cb109-693" aria-hidden="true" tabindex="-1"></a>The <span class="in">`scatterplot()`</span> function from the {car} package also produces nice bivariate plots and includes barplots along the margins.</span>
+<span id="cb109-694"><a href="#cb109-694" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-695"><a href="#cb109-695" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-696"><a href="#cb109-696" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb109-697"><a href="#cb109-697" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-698"><a href="#cb109-698" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-701"><a href="#cb109-701" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-702"><a href="#cb109-702" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplot</span>(</span>
+<span id="cb109-703"><a href="#cb109-703" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d,</span>
+<span id="cb109-704"><a href="#cb109-704" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(Brain_Size_Female_Mean) <span class="sc">~</span> <span class="fu">log</span>(Body_mass_female_mean),</span>
+<span id="cb109-705"><a href="#cb109-705" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"log(Female Body Mass"</span>,</span>
+<span id="cb109-706"><a href="#cb109-706" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"log(Female Brain Size"</span>,</span>
+<span id="cb109-707"><a href="#cb109-707" aria-hidden="true" tabindex="-1"></a>  <span class="at">boxplots =</span> <span class="st">"xy"</span>,</span>
+<span id="cb109-708"><a href="#cb109-708" aria-hidden="true" tabindex="-1"></a>  <span class="at">regLine =</span> </span>
+<span id="cb109-709"><a href="#cb109-709" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb109-710"><a href="#cb109-710" aria-hidden="true" tabindex="-1"></a>       <span class="at">method =</span> lm,</span>
+<span id="cb109-711"><a href="#cb109-711" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span>,</span>
+<span id="cb109-712"><a href="#cb109-712" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb109-713"><a href="#cb109-713" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span></span>
+<span id="cb109-714"><a href="#cb109-714" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb109-715"><a href="#cb109-715" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-716"><a href="#cb109-716" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>car)</span>
+<span id="cb109-717"><a href="#cb109-717" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-718"><a href="#cb109-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-719"><a href="#cb109-719" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-720"><a href="#cb109-720" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-721"><a href="#cb109-721" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Build your own bivariate scatterplot of **log(MaxLongevity_m)** by **log(Body_mass_female_mean)** using the "KamilarAndCooperData" dataset.</span>
+<span id="cb109-722"><a href="#cb109-722" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-725"><a href="#cb109-725" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-726"><a href="#cb109-726" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-727"><a href="#cb109-727" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-728"><a href="#cb109-728" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-729"><a href="#cb109-729" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_female_mean),</span>
+<span id="cb109-730"><a href="#cb109-730" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span><span class="fu">log</span>(MaxLongevity_m)))</span>
+<span id="cb109-731"><a href="#cb109-731" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-732"><a href="#cb109-732" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-733"><a href="#cb109-733" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb109-734"><a href="#cb109-734" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-735"><a href="#cb109-735" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-736"><a href="#cb109-736" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here we are using the `select()` function from the {dplyr} package, which we cover in more detail in [**Module 10**](#module-10).</span></span>
+<span id="cb109-736"><a href="#cb109-736" aria-hidden="true" tabindex="-1"></a>We can also use either the <span class="in">`pairs()`</span> function from {base} ***R***, the <span class="in">`scatterplotMatrix()`</span> function from the {car} package, or the <span class="in">`pairs.panel()`</span> function from the {psych} package to do multiple scatterplots simulaneously. The <span class="in">`ggpairs()`</span> function from the {GGally} package can also be used, but it is slower.</span>
 <span id="cb109-737"><a href="#cb109-737" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-740"><a href="#cb109-740" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-741"><a href="#cb109-741" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb109-742"><a href="#cb109-742" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb109-743"><a href="#cb109-743" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-744"><a href="#cb109-744" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span></span>
-<span id="cb109-745"><a href="#cb109-745" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(d,</span>
-<span id="cb109-746"><a href="#cb109-746" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(</span>
-<span id="cb109-747"><a href="#cb109-747" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Brain_Size_Female_Mean"</span>,</span>
-<span id="cb109-748"><a href="#cb109-748" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Body_mass_female_mean"</span>,</span>
-<span id="cb109-749"><a href="#cb109-749" aria-hidden="true" tabindex="-1"></a>      <span class="st">"MeanGroupSize"</span>,</span>
-<span id="cb109-750"><a href="#cb109-750" aria-hidden="true" tabindex="-1"></a>      <span class="st">"WeaningAge_d"</span>,</span>
-<span id="cb109-751"><a href="#cb109-751" aria-hidden="true" tabindex="-1"></a>      <span class="st">"MaxLongevity_m"</span>,</span>
-<span id="cb109-752"><a href="#cb109-752" aria-hidden="true" tabindex="-1"></a>      <span class="st">"HomeRange_km2"</span>,</span>
-<span id="cb109-753"><a href="#cb109-753" aria-hidden="true" tabindex="-1"></a>      <span class="st">"DayLength_km"</span></span>
-<span id="cb109-754"><a href="#cb109-754" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb109-755"><a href="#cb109-755" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb109-756"><a href="#cb109-756" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(s[,<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(s)]) <span class="co"># or</span></span>
-<span id="cb109-757"><a href="#cb109-757" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="at">data=</span>s, <span class="sc">~</span>.) <span class="co"># NAs are ignored by default</span></span>
-<span id="cb109-758"><a href="#cb109-758" aria-hidden="true" tabindex="-1"></a><span class="co"># adding argument `upper.panel=NULL` will suppress plots above the diagonal</span></span>
-<span id="cb109-759"><a href="#cb109-759" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-760"><a href="#cb109-760" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-761"><a href="#cb109-761" aria-hidden="true" tabindex="-1"></a>The {car} package function <span class="in">`scatterplotMatrix()`</span> provides a more customizable interface to the <span class="in">`pairs()`</span> function from {base} ***R***. It includes a neat rug plot for each variable.</span>
-<span id="cb109-762"><a href="#cb109-762" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-763"><a href="#cb109-763" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-764"><a href="#cb109-764" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb109-738"><a href="#cb109-738" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb109-739"><a href="#cb109-739" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-740"><a href="#cb109-740" aria-hidden="true" tabindex="-1"></a>Select the variables **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **MeanGroupSize**, **WeaningAge_d**, **MaxLongevity_m**, **HomeRange_km2**, and **DayLength_km** from data frame **d** and plot scatterplots of all pairs of variables.</span>
+<span id="cb109-741"><a href="#cb109-741" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-742"><a href="#cb109-742" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here we are using the `select()` function from the {dplyr} package, which we cover in more detail in [**Module 10**](#module-10).</span></span>
+<span id="cb109-743"><a href="#cb109-743" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-746"><a href="#cb109-746" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-747"><a href="#cb109-747" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb109-748"><a href="#cb109-748" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb109-749"><a href="#cb109-749" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb109-750"><a href="#cb109-750" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span></span>
+<span id="cb109-751"><a href="#cb109-751" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(d,</span>
+<span id="cb109-752"><a href="#cb109-752" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(</span>
+<span id="cb109-753"><a href="#cb109-753" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Brain_Size_Female_Mean"</span>,</span>
+<span id="cb109-754"><a href="#cb109-754" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Body_mass_female_mean"</span>,</span>
+<span id="cb109-755"><a href="#cb109-755" aria-hidden="true" tabindex="-1"></a>      <span class="st">"MeanGroupSize"</span>,</span>
+<span id="cb109-756"><a href="#cb109-756" aria-hidden="true" tabindex="-1"></a>      <span class="st">"WeaningAge_d"</span>,</span>
+<span id="cb109-757"><a href="#cb109-757" aria-hidden="true" tabindex="-1"></a>      <span class="st">"MaxLongevity_m"</span>,</span>
+<span id="cb109-758"><a href="#cb109-758" aria-hidden="true" tabindex="-1"></a>      <span class="st">"HomeRange_km2"</span>,</span>
+<span id="cb109-759"><a href="#cb109-759" aria-hidden="true" tabindex="-1"></a>      <span class="st">"DayLength_km"</span></span>
+<span id="cb109-760"><a href="#cb109-760" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb109-761"><a href="#cb109-761" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb109-762"><a href="#cb109-762" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(s[,<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(s)]) <span class="co"># or</span></span>
+<span id="cb109-763"><a href="#cb109-763" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="at">data=</span>s, <span class="sc">~</span>.) <span class="co"># NAs are ignored by default</span></span>
+<span id="cb109-764"><a href="#cb109-764" aria-hidden="true" tabindex="-1"></a><span class="co"># adding argument `upper.panel=NULL` will suppress plots above the diagonal</span></span>
 <span id="cb109-765"><a href="#cb109-765" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb109-766"><a href="#cb109-766" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-769"><a href="#cb109-769" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-770"><a href="#cb109-770" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(s,</span>
-<span id="cb109-771"><a href="#cb109-771" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb109-772"><a href="#cb109-772" aria-hidden="true" tabindex="-1"></a>  <span class="at">regLine =</span> <span class="fu">list</span>(<span class="at">method =</span> lm, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
-<span id="cb109-773"><a href="#cb109-773" aria-hidden="true" tabindex="-1"></a>  <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb109-774"><a href="#cb109-774" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper.panel =</span> <span class="cn">NULL</span></span>
-<span id="cb109-775"><a href="#cb109-775" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-776"><a href="#cb109-776" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>car)</span>
-<span id="cb109-777"><a href="#cb109-777" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-778"><a href="#cb109-778" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-779"><a href="#cb109-779" aria-hidden="true" tabindex="-1"></a>The {psych} package also makes it easy to construct a scatterplot matrix with customizable output using the <span class="in">`pairs.panel()`</span> function. Here, <span class="in">`method=`</span> specifies the correlation method, <span class="in">`density=`</span> specifies whether to superimpose a density curve on the histogram, and <span class="in">`elipses=`</span> specifies whether to show correlation elipses.</span>
-<span id="cb109-780"><a href="#cb109-780" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-781"><a href="#cb109-781" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-782"><a href="#cb109-782" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb109-783"><a href="#cb109-783" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(s[], </span>
-<span id="cb109-784"><a href="#cb109-784" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb109-785"><a href="#cb109-785" aria-hidden="true" tabindex="-1"></a>  <span class="at">lm =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb109-786"><a href="#cb109-786" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"pearson"</span>,</span>
-<span id="cb109-787"><a href="#cb109-787" aria-hidden="true" tabindex="-1"></a>  <span class="at">hist.col =</span> <span class="st">"#00AFBB"</span>,</span>
-<span id="cb109-788"><a href="#cb109-788" aria-hidden="true" tabindex="-1"></a>  <span class="at">density =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb109-789"><a href="#cb109-789" aria-hidden="true" tabindex="-1"></a>  <span class="at">ellipses =</span> <span class="cn">TRUE</span></span>
-<span id="cb109-790"><a href="#cb109-790" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-791"><a href="#cb109-791" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are ignored by default</span></span>
-<span id="cb109-792"><a href="#cb109-792" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>psych)</span>
-<span id="cb109-793"><a href="#cb109-793" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-794"><a href="#cb109-794" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-795"><a href="#cb109-795" aria-hidden="true" tabindex="-1"></a>The {GGally} package lets us do something similar...</span>
-<span id="cb109-796"><a href="#cb109-796" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-797"><a href="#cb109-797" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
-<span id="cb109-798"><a href="#cb109-798" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
-<span id="cb109-799"><a href="#cb109-799" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(s, <span class="at">columns =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(s)) <span class="co"># NAs produce a warning</span></span>
-<span id="cb109-800"><a href="#cb109-800" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>GGally)</span>
-<span id="cb109-801"><a href="#cb109-801" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-767"><a href="#cb109-767" aria-hidden="true" tabindex="-1"></a>The {car} package function <span class="in">`scatterplotMatrix()`</span> provides a more customizable interface to the <span class="in">`pairs()`</span> function from {base} ***R***. It includes a neat rug plot for each variable.</span>
+<span id="cb109-768"><a href="#cb109-768" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-769"><a href="#cb109-769" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-770"><a href="#cb109-770" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb109-771"><a href="#cb109-771" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-772"><a href="#cb109-772" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-775"><a href="#cb109-775" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-776"><a href="#cb109-776" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(s,</span>
+<span id="cb109-777"><a href="#cb109-777" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb109-778"><a href="#cb109-778" aria-hidden="true" tabindex="-1"></a>  <span class="at">regLine =</span> <span class="fu">list</span>(<span class="at">method =</span> lm, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>),</span>
+<span id="cb109-779"><a href="#cb109-779" aria-hidden="true" tabindex="-1"></a>  <span class="at">ellipse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb109-780"><a href="#cb109-780" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper.panel =</span> <span class="cn">NULL</span></span>
+<span id="cb109-781"><a href="#cb109-781" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-782"><a href="#cb109-782" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>car)</span>
+<span id="cb109-783"><a href="#cb109-783" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-784"><a href="#cb109-784" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-785"><a href="#cb109-785" aria-hidden="true" tabindex="-1"></a>The {psych} package also makes it easy to construct a scatterplot matrix with customizable output using the <span class="in">`pairs.panel()`</span> function. Here, <span class="in">`method=`</span> specifies the correlation method, <span class="in">`density=`</span> specifies whether to superimpose a density curve on the histogram, and <span class="in">`elipses=`</span> specifies whether to show correlation elipses.</span>
+<span id="cb109-786"><a href="#cb109-786" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-787"><a href="#cb109-787" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-788"><a href="#cb109-788" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb109-789"><a href="#cb109-789" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(s[], </span>
+<span id="cb109-790"><a href="#cb109-790" aria-hidden="true" tabindex="-1"></a>  <span class="at">smooth =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb109-791"><a href="#cb109-791" aria-hidden="true" tabindex="-1"></a>  <span class="at">lm =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb109-792"><a href="#cb109-792" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"pearson"</span>,</span>
+<span id="cb109-793"><a href="#cb109-793" aria-hidden="true" tabindex="-1"></a>  <span class="at">hist.col =</span> <span class="st">"#00AFBB"</span>,</span>
+<span id="cb109-794"><a href="#cb109-794" aria-hidden="true" tabindex="-1"></a>  <span class="at">density =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb109-795"><a href="#cb109-795" aria-hidden="true" tabindex="-1"></a>  <span class="at">ellipses =</span> <span class="cn">TRUE</span></span>
+<span id="cb109-796"><a href="#cb109-796" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-797"><a href="#cb109-797" aria-hidden="true" tabindex="-1"></a><span class="co"># NAs are ignored by default</span></span>
+<span id="cb109-798"><a href="#cb109-798" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>psych)</span>
+<span id="cb109-799"><a href="#cb109-799" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-800"><a href="#cb109-800" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-801"><a href="#cb109-801" aria-hidden="true" tabindex="-1"></a>The {GGally} package lets us do something similar...</span>
 <span id="cb109-802"><a href="#cb109-802" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-803"><a href="#cb109-803" aria-hidden="true" tabindex="-1"></a>Finally, we can do a nice correlation plot using the {corrplot} package, where we get a matrix of correlations among variables and a graphical representation of the strength and direction of the bivariate correlation coefficients among them.</span>
-<span id="cb109-804"><a href="#cb109-804" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-805"><a href="#cb109-805" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb109-806"><a href="#cb109-806" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb109-807"><a href="#cb109-807" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">=</span> <span class="fu">cor</span>(s, <span class="at">use=</span><span class="st">"pairwise.complete.obs"</span>)</span>
-<span id="cb109-808"><a href="#cb109-808" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(cor, <span class="at">lower.col =</span> <span class="st">"black"</span>, <span class="at">number.cex =</span> .<span class="dv">7</span>)</span>
-<span id="cb109-809"><a href="#cb109-809" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>corrplot)</span>
-<span id="cb109-810"><a href="#cb109-810" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-811"><a href="#cb109-811" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-812"><a href="#cb109-812" aria-hidden="true" tabindex="-1"></a><span class="fu">## Custom Layouts for Multiple Plots</span></span>
-<span id="cb109-813"><a href="#cb109-813" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-814"><a href="#cb109-814" aria-hidden="true" tabindex="-1"></a>Above, we saw the typical {base} ***R*** method for laying out plots, using the <span class="in">`par()`</span> command with the <span class="in">`mfrow=`</span> argument to set up a grid of panels in which to plot to the current graphics output device. There are, however, several easier ways for combining plots into custom layouts. Three alternatives are provided in the {patchwork}, {cowplot}, and {gridExtra} packages. Each starts by generating plot objects, typically using {ggplot2}. First, we create 3 plot objects using the KamilarAndCooper dataset:</span>
-<span id="cb109-815"><a href="#cb109-815" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-818"><a href="#cb109-818" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-819"><a href="#cb109-819" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_female_mean), </span>
-<span id="cb109-820"><a href="#cb109-820" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span><span class="fu">log</span>(MaxLongevity_m)))</span>
-<span id="cb109-821"><a href="#cb109-821" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-822"><a href="#cb109-822" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-823"><a href="#cb109-823" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"log(Female Body Size)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Lifespan)"</span>)</span>
-<span id="cb109-824"><a href="#cb109-824" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-825"><a href="#cb109-825" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_male_mean),</span>
+<span id="cb109-803"><a href="#cb109-803" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb109-804"><a href="#cb109-804" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb109-805"><a href="#cb109-805" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(s, <span class="at">columns =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(s)) <span class="co"># NAs produce a warning</span></span>
+<span id="cb109-806"><a href="#cb109-806" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>GGally)</span>
+<span id="cb109-807"><a href="#cb109-807" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-808"><a href="#cb109-808" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-809"><a href="#cb109-809" aria-hidden="true" tabindex="-1"></a>Finally, we can do a nice correlation plot using the {corrplot} package, where we get a matrix of correlations among variables and a graphical representation of the strength and direction of the bivariate correlation coefficients among them.</span>
+<span id="cb109-810"><a href="#cb109-810" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-811"><a href="#cb109-811" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
+<span id="cb109-812"><a href="#cb109-812" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb109-813"><a href="#cb109-813" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">=</span> <span class="fu">cor</span>(s, <span class="at">use=</span><span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb109-814"><a href="#cb109-814" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(cor, <span class="at">lower.col =</span> <span class="st">"black"</span>, <span class="at">number.cex =</span> .<span class="dv">7</span>)</span>
+<span id="cb109-815"><a href="#cb109-815" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>corrplot)</span>
+<span id="cb109-816"><a href="#cb109-816" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-817"><a href="#cb109-817" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-818"><a href="#cb109-818" aria-hidden="true" tabindex="-1"></a><span class="fu">## Custom Layouts for Multiple Plots</span></span>
+<span id="cb109-819"><a href="#cb109-819" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-820"><a href="#cb109-820" aria-hidden="true" tabindex="-1"></a>Above, we saw the typical {base} ***R*** method for laying out plots, using the <span class="in">`par()`</span> command with the <span class="in">`mfrow=`</span> argument to set up a grid of panels in which to plot to the current graphics output device. There are, however, several easier ways for combining plots into custom layouts. Three alternatives are provided in the {patchwork}, {cowplot}, and {gridExtra} packages. Each starts by generating plot objects, typically using {ggplot2}. First, we create 3 plot objects using the KamilarAndCooper dataset:</span>
+<span id="cb109-821"><a href="#cb109-821" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-824"><a href="#cb109-824" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-825"><a href="#cb109-825" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_female_mean), </span>
 <span id="cb109-826"><a href="#cb109-826" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span><span class="fu">log</span>(MaxLongevity_m)))</span>
-<span id="cb109-827"><a href="#cb109-827" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-828"><a href="#cb109-828" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-829"><a href="#cb109-829" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"log(Male Body Size)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Lifespan)"</span>)</span>
+<span id="cb109-827"><a href="#cb109-827" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-828"><a href="#cb109-828" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-829"><a href="#cb109-829" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"log(Female Body Size)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Lifespan)"</span>)</span>
 <span id="cb109-830"><a href="#cb109-830" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-831"><a href="#cb109-831" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span>Family, <span class="at">y=</span><span class="fu">log</span>(Body_mass_female_mean)))</span>
-<span id="cb109-832"><a href="#cb109-832" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb109-833"><a href="#cb109-833" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>))</span>
-<span id="cb109-834"><a href="#cb109-834" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Family"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Female Body Mass)"</span>)</span>
-<span id="cb109-835"><a href="#cb109-835" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-831"><a href="#cb109-831" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">log</span>(Body_mass_male_mean),</span>
+<span id="cb109-832"><a href="#cb109-832" aria-hidden="true" tabindex="-1"></a>  <span class="at">y=</span><span class="fu">log</span>(MaxLongevity_m)))</span>
+<span id="cb109-833"><a href="#cb109-833" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-834"><a href="#cb109-834" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-835"><a href="#cb109-835" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> p2 <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"log(Male Body Size)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Lifespan)"</span>)</span>
 <span id="cb109-836"><a href="#cb109-836" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-837"><a href="#cb109-837" aria-hidden="true" tabindex="-1"></a>Once we have these plot objects, we can arrange them in custom ways using these different packages. Some alternative ways of arranging these three plots in 2 rows, with 2 panels in the top row and 1 in the bottom row, are given below...</span>
-<span id="cb109-838"><a href="#cb109-838" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-839"><a href="#cb109-839" aria-hidden="true" tabindex="-1"></a>The {patchwork} package is perhaps the easiest to use!</span>
-<span id="cb109-840"><a href="#cb109-840" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-841"><a href="#cb109-841" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
-<span id="cb109-842"><a href="#cb109-842" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb109-843"><a href="#cb109-843" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">|</span> p2)<span class="sc">/</span>p3 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>)</span>
-<span id="cb109-844"><a href="#cb109-844" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>patchwork)</span>
-<span id="cb109-845"><a href="#cb109-845" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-837"><a href="#cb109-837" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span>Family, <span class="at">y=</span><span class="fu">log</span>(Body_mass_female_mean)))</span>
+<span id="cb109-838"><a href="#cb109-838" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb109-839"><a href="#cb109-839" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">90</span>))</span>
+<span id="cb109-840"><a href="#cb109-840" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> p3 <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Family"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"log(Female Body Mass)"</span>)</span>
+<span id="cb109-841"><a href="#cb109-841" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-842"><a href="#cb109-842" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-843"><a href="#cb109-843" aria-hidden="true" tabindex="-1"></a>Once we have these plot objects, we can arrange them in custom ways using these different packages. Some alternative ways of arranging these three plots in 2 rows, with 2 panels in the top row and 1 in the bottom row, are given below...</span>
+<span id="cb109-844"><a href="#cb109-844" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-845"><a href="#cb109-845" aria-hidden="true" tabindex="-1"></a>The {patchwork} package is perhaps the easiest to use!</span>
 <span id="cb109-846"><a href="#cb109-846" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-847"><a href="#cb109-847" aria-hidden="true" tabindex="-1"></a>We can also use {cowplot}...</span>
-<span id="cb109-848"><a href="#cb109-848" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-849"><a href="#cb109-849" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
-<span id="cb109-850"><a href="#cb109-850" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb109-851"><a href="#cb109-851" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(</span>
-<span id="cb109-852"><a href="#cb109-852" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_grid</span>(</span>
-<span id="cb109-853"><a href="#cb109-853" aria-hidden="true" tabindex="-1"></a>    p1,</span>
-<span id="cb109-854"><a href="#cb109-854" aria-hidden="true" tabindex="-1"></a>    p2,</span>
-<span id="cb109-855"><a href="#cb109-855" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>),</span>
-<span id="cb109-856"><a href="#cb109-856" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_size =</span> <span class="dv">12</span>,</span>
-<span id="cb109-857"><a href="#cb109-857" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">1</span></span>
-<span id="cb109-858"><a href="#cb109-858" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb109-859"><a href="#cb109-859" aria-hidden="true" tabindex="-1"></a>  p3,</span>
-<span id="cb109-860"><a href="#cb109-860" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">''</span>, <span class="st">'C'</span>),</span>
-<span id="cb109-861"><a href="#cb109-861" aria-hidden="true" tabindex="-1"></a>  <span class="at">label_size =</span> <span class="dv">12</span>,</span>
-<span id="cb109-862"><a href="#cb109-862" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span></span>
-<span id="cb109-863"><a href="#cb109-863" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb109-864"><a href="#cb109-864" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
-<span id="cb109-865"><a href="#cb109-865" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-866"><a href="#cb109-866" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-867"><a href="#cb109-867" aria-hidden="true" tabindex="-1"></a>... or {gridExtra}</span>
-<span id="cb109-868"><a href="#cb109-868" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-869"><a href="#cb109-869" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
-<span id="cb109-870"><a href="#cb109-870" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb109-871"><a href="#cb109-871" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(<span class="fu">grid.arrange</span>(p1,p2, <span class="at">nrow=</span><span class="dv">1</span>),p3, <span class="at">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb109-872"><a href="#cb109-872" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>gridExtra)</span>
-<span id="cb109-873"><a href="#cb109-873" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-847"><a href="#cb109-847" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb109-848"><a href="#cb109-848" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb109-849"><a href="#cb109-849" aria-hidden="true" tabindex="-1"></a>(p1 <span class="sc">|</span> p2)<span class="sc">/</span>p3 <span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">'A'</span>)</span>
+<span id="cb109-850"><a href="#cb109-850" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>patchwork)</span>
+<span id="cb109-851"><a href="#cb109-851" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-852"><a href="#cb109-852" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-853"><a href="#cb109-853" aria-hidden="true" tabindex="-1"></a>We can also use {cowplot}...</span>
+<span id="cb109-854"><a href="#cb109-854" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-855"><a href="#cb109-855" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb109-856"><a href="#cb109-856" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb109-857"><a href="#cb109-857" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(</span>
+<span id="cb109-858"><a href="#cb109-858" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_grid</span>(</span>
+<span id="cb109-859"><a href="#cb109-859" aria-hidden="true" tabindex="-1"></a>    p1,</span>
+<span id="cb109-860"><a href="#cb109-860" aria-hidden="true" tabindex="-1"></a>    p2,</span>
+<span id="cb109-861"><a href="#cb109-861" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">'A'</span>, <span class="st">'B'</span>),</span>
+<span id="cb109-862"><a href="#cb109-862" aria-hidden="true" tabindex="-1"></a>    <span class="at">label_size =</span> <span class="dv">12</span>,</span>
+<span id="cb109-863"><a href="#cb109-863" aria-hidden="true" tabindex="-1"></a>    <span class="at">nrow =</span> <span class="dv">1</span></span>
+<span id="cb109-864"><a href="#cb109-864" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb109-865"><a href="#cb109-865" aria-hidden="true" tabindex="-1"></a>  p3,</span>
+<span id="cb109-866"><a href="#cb109-866" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">''</span>, <span class="st">'C'</span>),</span>
+<span id="cb109-867"><a href="#cb109-867" aria-hidden="true" tabindex="-1"></a>  <span class="at">label_size =</span> <span class="dv">12</span>,</span>
+<span id="cb109-868"><a href="#cb109-868" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">2</span></span>
+<span id="cb109-869"><a href="#cb109-869" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-870"><a href="#cb109-870" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
+<span id="cb109-871"><a href="#cb109-871" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-872"><a href="#cb109-872" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-873"><a href="#cb109-873" aria-hidden="true" tabindex="-1"></a>... or {gridExtra}</span>
 <span id="cb109-874"><a href="#cb109-874" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-875"><a href="#cb109-875" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aggregate Statistics</span></span>
-<span id="cb109-876"><a href="#cb109-876" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-877"><a href="#cb109-877" aria-hidden="true" tabindex="-1"></a>To calculate summary statistics for *groups* of observations in a data frame, there are many different approaches. One is to use the `aggregate()` function from the {stats} package (a {base} ***R*** standard package), which provides a quick way to look at summary statistics for sets of observations, though it requires a bit of clunky code. Here, we apply a particular function (`FUN = "mean"`) to mean female body mass, grouped by **Family**.</span>
-<span id="cb109-878"><a href="#cb109-878" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-881"><a href="#cb109-881" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-882"><a href="#cb109-882" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(d<span class="sc">$</span>Body_mass_female_mean<span class="sc">~</span>d<span class="sc">$</span>Family, <span class="at">FUN =</span> <span class="st">"mean"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-883"><a href="#cb109-883" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-875"><a href="#cb109-875" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
+<span id="cb109-876"><a href="#cb109-876" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb109-877"><a href="#cb109-877" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(<span class="fu">grid.arrange</span>(p1,p2, <span class="at">nrow=</span><span class="dv">1</span>),p3, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb109-878"><a href="#cb109-878" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>gridExtra)</span>
+<span id="cb109-879"><a href="#cb109-879" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-880"><a href="#cb109-880" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-881"><a href="#cb109-881" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aggregate Statistics</span></span>
+<span id="cb109-882"><a href="#cb109-882" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-883"><a href="#cb109-883" aria-hidden="true" tabindex="-1"></a>To calculate summary statistics for *groups* of observations in a data frame, there are many different approaches. One is to use the `aggregate()` function from the {stats} package (a {base} ***R*** standard package), which provides a quick way to look at summary statistics for sets of observations, though it requires a bit of clunky code. Here, we apply a particular function (`FUN = "mean"`) to mean female body mass, grouped by **Family**.</span>
 <span id="cb109-884"><a href="#cb109-884" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-885"><a href="#cb109-885" aria-hidden="true" tabindex="-1"></a>Or, alternatively...</span>
-<span id="cb109-886"><a href="#cb109-886" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-889"><a href="#cb109-889" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb109-890"><a href="#cb109-890" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="at">x =</span> d[<span class="st">"Body_mass_female_mean"</span>], <span class="at">by =</span> d[<span class="st">"Family"</span>], <span class="at">FUN =</span> <span class="st">"mean"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb109-891"><a href="#cb109-891" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-887"><a href="#cb109-887" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-888"><a href="#cb109-888" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(d<span class="sc">$</span>Body_mass_female_mean<span class="sc">~</span>d<span class="sc">$</span>Family, <span class="at">FUN =</span> <span class="st">"mean"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-889"><a href="#cb109-889" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-890"><a href="#cb109-890" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-891"><a href="#cb109-891" aria-hidden="true" tabindex="-1"></a>Or, alternatively...</span>
 <span id="cb109-892"><a href="#cb109-892" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-893"><a href="#cb109-893" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb109-894"><a href="#cb109-894" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>curl)</span>
-<span id="cb109-895"><a href="#cb109-895" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb109-896"><a href="#cb109-896" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb109-897"><a href="#cb109-897" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-898"><a href="#cb109-898" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb109-899"><a href="#cb109-899" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-900"><a href="#cb109-900" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb109-901"><a href="#cb109-901" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-902"><a href="#cb109-902" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summary statistics: <span class="in">`summary()`</span>, <span class="in">`skim()`</span></span>
-<span id="cb109-903"><a href="#cb109-903" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Basic plotting: <span class="in">`boxplot()`</span>, <span class="in">`barplot()`</span>, <span class="in">`histogram()`</span></span>
-<span id="cb109-904"><a href="#cb109-904" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Plotting with {ggplot2}: <span class="in">`ggplot(data = , mapping = aes()) + geom() + theme() + ...`</span></span>
-<span id="cb109-905"><a href="#cb109-905" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summarizing by groups: <span class="in">`aggregrate()`</span></span>
-<span id="cb109-906"><a href="#cb109-906" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arranging plots with {patchwork}, {cowplot}, and {gridExtra}</span>
+<span id="cb109-895"><a href="#cb109-895" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb109-896"><a href="#cb109-896" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(<span class="at">x =</span> d[<span class="st">"Body_mass_female_mean"</span>], <span class="at">by =</span> d[<span class="st">"Family"</span>], <span class="at">FUN =</span> <span class="st">"mean"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb109-897"><a href="#cb109-897" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-898"><a href="#cb109-898" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-899"><a href="#cb109-899" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
+<span id="cb109-900"><a href="#cb109-900" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>curl)</span>
+<span id="cb109-901"><a href="#cb109-901" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb109-902"><a href="#cb109-902" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb109-903"><a href="#cb109-903" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-904"><a href="#cb109-904" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb109-905"><a href="#cb109-905" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-906"><a href="#cb109-906" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb109-907"><a href="#cb109-907" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-908"><a href="#cb109-908" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summary statistics: <span class="in">`summary()`</span>, <span class="in">`skim()`</span></span>
+<span id="cb109-909"><a href="#cb109-909" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Basic plotting: <span class="in">`boxplot()`</span>, <span class="in">`barplot()`</span>, <span class="in">`histogram()`</span></span>
+<span id="cb109-910"><a href="#cb109-910" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Plotting with {ggplot2}: <span class="in">`ggplot(data = , mapping = aes()) + geom() + theme() + ...`</span></span>
+<span id="cb109-911"><a href="#cb109-911" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Summarizing by groups: <span class="in">`aggregrate()`</span></span>
+<span id="cb109-912"><a href="#cb109-912" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Arranging plots with {patchwork}, {cowplot}, and {gridExtra}</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -72,7 +72,8 @@ head(add_prefix(my_data, "", "house"))
 
 If we try to run the line below, however, it throws an error because too few (unnamed) arguments are passed to the function for it to be able to disambiguate them:
 
-``` {r eval=FALSE}
+```{r}
+#| eval: false
 head(add_prefix(my_data, "00001-"))
 ```
 

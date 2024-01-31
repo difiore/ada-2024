@@ -283,7 +283,8 @@ With `descr()`, `dfSummary()`, and `view()` from the {summarytools} package, you
 
 > **CAUTION:** Q1 and Q3 (the equivalent of "numeric.p25" and "numeric.p75") are calculated slightly differently for `descr()` and `dfSummary()` than for `summary()` and `skim()`!
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(summarytools)
 s <- descr(d, style = "rmarkdown", transpose = TRUE)
 # %>% to view() print nicely formatted table to viewer
@@ -295,7 +296,8 @@ detach(package:summarytools)
 
 With `makeDataReport()` from the {dataMaid} package, you can generate a nicely formated report that gets written out to a location of your choice. Again, the output of this code is not shown as it generates a report in an external file.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(dataMaid)
 # this code below produces a formated report, with the type of report
 # specified by `output=`

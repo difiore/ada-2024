@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Getting Data into ***R*** {#module-08}
 
 ## Objectives
@@ -47,7 +52,9 @@ Plain text files are, arguably, the very best way to store data (and scripts and
 
 <br>
 
-```{r echo=FALSE, out.width="90%"}
+```{r}
+#| echo: false
+#| out_width: "90%"
 knitr::include_graphics("img/spreadsheets.png")
 ```
 
@@ -57,7 +64,8 @@ knitr::include_graphics("img/spreadsheets.png")
 
 The `file.choose()` command is a useful command for interactive engagement with ***R***. It gives you a familiar operating system-specific dialog box and allows you to select a file. You can use this to specify the path to a locally-stored file. The code below will assign the variable **f** to the full path to the file you choose.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 f <- file.choose()
 ```
 
@@ -155,7 +163,7 @@ head(d)
 
 ### Loading Data from ***Excel*** Files {.unnumbered}
 
-While you should never need to use ***Excel***, sometimes you will no doubt be given a spreadsheet file with some data in it that you want to read in ***R***. There are several packages available that provide functions for loading data into ***R*** from ***Excel*** spreadsheet files: {readxl}, {XLConnect}, {gdata}, and {xlsx}. The first two of these are fast, easy to use, and work well. {gdata} is a bit slower and requires that you have PERL installed somewhere on your computer (which it is likely to be by default). {xlsx} and {XLConnect} both require that you have successfully installed {rJava} on your computer, which can be tricky. {xlsx} also may be slower than the other methods.
+While you should never need to use ***Excel***, sometimes you will no doubt be given a spreadsheet file with some data in it that you want to read in ***R***. There are several packages available that provide functions for loading data into ***R*** from ***Excel*** spreadsheet files: {readxl}, {XLConnect}, and {xlsx}. The first two of these are fast, easy to use, and work well. Both require that you have successfully installed {rJava} on your computer, which both packages import as a dependency. Be warned, sometimes installing {rJava} can be tricky! {xlsx} also may be slower than the other methods, but its `read.xlsx2()` function may improve the speed.
 
 > **NOTE:** You shoud always use `str()` to check if your variables come in as the correct data class!
 
@@ -172,7 +180,8 @@ detach(package:readxl)
 
 #### Using the {XLConnect} package {.unnumbered}
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(XLConnect)
 f <- "data/CPDS-1960-2014-reduced.xlsx"
 d <- readWorksheetFromFile(f, sheet = 1, header = TRUE)
@@ -182,7 +191,8 @@ str(d)
 
 The {XLConnect} package can also write data frames back out to ***Excel*** worksheets. If the file does not exist, it is created. If it does exist, data is cleared and overwritten. The second process is MUCH slower. In the following, I have included a conditional statement (`if(){}`) which will implement the `file.remove()` command here, if needed.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 f <- "output.xlsx"
 if (file.exists(f)) {file.remove(f)}
 writeWorksheetToFile(f, d, sheet = "myData", clearSheets = TRUE)
@@ -191,22 +201,15 @@ detach(package:XLConnect)
 
 For futher information on using {XLConnect} check out [this blog post](http://altons.github.io/r/2015/02/13/quick-intro-to-xlconnect/#worksheet).
 
-#### Using the {gdata} package {.unnumbered}
-
-```{r eval=FALSE}
-library(gdata)
-f <- "data/CPDS-1960-2014-reduced.xlsx"
-d <- read.xls(f, sheet = 1)
-head(d)
-detach(package:gdata)
-```
-
 #### Using the {xlsx} package {.unnumbered}
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(xlsx)
 f <- "data/CPDS-1960-2014-reduced.xlsx"
-d <- read.xls(f, sheet = 1)
+d <- read.xlsx(f, sheetIndex = 1)
+# or pass a named sheet using the argument `sheetIndex=`
+# the function `read.xlsx2()` is an updated alternative from the same package and may run faster
 head(d)
 detach(package:xlsx)
 ```
@@ -219,7 +222,7 @@ We can also use ***R*** as an interface to work with data and files stored on a 
 
 To read ".csv" or ".txt" files directly from ***GitHub***, use the {curl} or {readr} packages.
 
-GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".csv" version of the "CPDS-1960-2014-reduced" file, then press "RAW" and copy the **URL** from the address box of your browser window... this is what you need to use as an argument for the functions below (you will repeat this for the ".txt" version later on)
+GO TO: <https://github.com/difiore/ada-2024-datasets>, select the ".csv" version of the "CPDS-1960-2014-reduced" file, then press "RAW" and copy the **URL** from the address box of your browser window... this is what you need to use as an argument for the functions below (you will repeat this for the ".txt" version later on)
 
 ### Using the {curl} Package {.unnumbered}
 
@@ -229,7 +232,7 @@ For a comma-separated value (".csv") text file...
 
 ```{r warning=FALSE, message=FALSE}
 library(curl)
-f <- curl("https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/CPDS-1960-2014-reduced.csv")
+f <- curl("https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/CPDS-1960-2014-reduced.csv")
 d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 head(d)
 # returns a data frame
@@ -238,7 +241,7 @@ head(d)
 For a tab-delimited (".tsv" or ."txt") text file...
 
 ```{r}
-f <- curl("https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/CPDS-1960-2014-reduced.txt")
+f <- curl("https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/CPDS-1960-2014-reduced.txt")
 d <- read.table(f, header = TRUE, sep="\t", stringsAsFactors = FALSE)
 head(d)
 # returns a data frame
@@ -250,14 +253,14 @@ detach(package:curl)
 Using {readr}, filenames beginning with "<http://>", "<https://>", "<ftp://>", or "fttps://" can be read without having to set up a **curl** connection interface.
 
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/CPDS-1960-2014-reduced.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/CPDS-1960-2014-reduced.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
 # returns a "tibble", a new version of a data frame
 ```
 
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/CPDS-1960-2014-reduced.txt"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/CPDS-1960-2014-reduced.txt"
 d <- read_tsv(f, col_names = TRUE)
 head(d)
 # returns a "tibble", a new version of a data frame
@@ -267,15 +270,18 @@ head(d)
 
 To load data from a ".csv" file located in a *personal* ***Dropbox*** account you can use the {rdrop2} package.
 
-> **NOTE:** The following code block cannot be "knit" to show you the output because it requires an interactive ***R*** environment for `drop_auth()`, `drop_search()`, etc.
+> **NOTE:** The {rdrop2} package has been deprecated because one of the dependencies upon which it relies - {assertive} - and, in turn, many of the dependencies upon which {assertive} relies, have not been maintained for some time. Still, it is possible with some care to install an older versions of {rdrop2} and all of its recursive dependencies from Package Archive Files downloaded from CRAN and thus get it working. It takes some time, but may be worthwhile.
 
-```{r eval=FALSE}
+> Also note that the following code block cannot be rendered to show you the output because it requires an interactive ***R*** environment for `drop_auth()`, `drop_search()`, etc.
+
+```{r}
+#| eval: false
 library(rdrop2)
-drop_auth() # opens a browser dialog box to ask for authorization...
+drop_auth(new_user = TRUE) # opens a browser dialog box to ask for authorization...
 drop_dir() # lists the contents of your dropbox folder
 f <- "CPDS-1960-2014-reduced.csv" # name of the file to read from
 f <- drop_search(query = f, mode = "filename")
-# searches your dropbox directory for file or directory names; this can be slow
+# searches your dropbox directory for file or directory names... this can be slow!
 filenames <- vector()
 for (i in 1:length(f$matches)) {
   filenames <- c(filenames, f$matches[[i]]$metadata$path_display)
@@ -289,8 +295,7 @@ d <-
     sep = ",",
     stringsAsFactors = FALSE
   )
-# here the [1] reads only the first file from filenames
-# modify this to read more than one file
+# here the [1] reads only the first file from filenames, but this can be modified this to read more than one file
 detach(package:rdrop2)
 ```
 
@@ -298,22 +303,42 @@ This same process can be done to load data from other types of delimited files i
 
 You can also read text files from a ***Dropbox*** account (e.g., your own or someone else's) using a *direct link* that can be created for any file. To create this link, you will need to choose to share the file (via the dropdown menu activated by clicking the three dots icon to the right of the filename) and then create and copy the direct link to the file.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 link <- "https://www.dropbox.com/s/hes2loy1x4tikh9/CPDS-1960-2014-reduced.csv?dl=0"
 ```
 
-> **NOTE:** Shared ***Dropbox*** links like this one will take you to a webpage that has the data embedded... to get the raw data you need to change the end of the link from **dl=0** to **dl=1** or **raw=1**. That's what the `gsub()` command in the first line of code below does:
+You can read text files from a ***Dropbox*** account (e.g., your own or someone else's) using *direct link* for the file. To find this link, hover over the filename on ***Dropbox*** and then select "Copy link" and grab the direct link to the file.
 
-```{r eval=FALSE}
+```{r}
+#| echo: false
+#| out_width: "80%"
+knitr::include_graphics("img/copy-link.png")
+```
+
+You can then assign a variable to hold the link, which likely will end in `dl=0`.
+
+```{r}
+#| eval: false
+link <- "https://www.dropbox.com/scl/fi/xyhwpfzhdo42mj840pv2e/CPDS-1960-2014-reduced.csv?rlkey=3r4ck0thhgb3p8t3zwmonund5&dl=0"
+# NOTE: enter your link between quotation marks in lieu of this dummy link!
+```
+
+> **NOTE:** Following a shared ***Dropbox*** link like this one will take you to a webpage that has the data embedded... to get ***R*** to access the raw data, you will need to change the characters at end of the link from `dl=0` to `dl=1` or to `raw=1`. That is what the `gsub()` command in the first line of code below does. Then, you can load data from that file with `read.csv()` or `read_csv()`. This 
+
+```{r}
+#| eval: false
 link <- gsub(pattern = "dl=0", replacement = "dl=1", x = link)
 d <-read.csv(link, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+# or, using {tidyverse}, `d <-read_csv(link, col_names = TRUE)`
 head(d)
 str(d)
 ```
 
 You can also use the `source_data()` function from the {repmis} package ("Miscellaneous Tools for Reproducible Research") to load data from a file on ***Dropbox***. This function detects column types and gives a few more warnings than others if it encounters somthing odd.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(repmis)
 d <- source_data(link, header = TRUE, sep =",")
 # use the same updated link to the raw data as above
@@ -323,59 +348,86 @@ str(d)
 
 ### Accessing Files on ***Box*** {.unnumbered}
 
-You can load tabular data from ***Box*** sites (e.g., ***UT Box***) with {base} ***R*** `read.table()` functions using a *direct link* that someone has shared with you (these links are those that come from the *Shared Link Settings* menu, which is accessed via the gear icon that appears to the right of *Shared Link* after you hit the "Share" button next to a file).
+You can load tabular data from ***Box*** sites (e.g., ***UT Box***) with {base} ***R*** `read.table()` functions using a *direct link* that someone has shared with you. To get such a link, hover over the filename on ***Box*** and click the link button to "Copy Shared Link".
 
-```{r eval=FALSE}
-link <- "https://utexas.box.com/shared/static/rfy8uisdfktd1h4zj24i9uubnhnm577t.csv"
+```{r}
+#| echo: false
+#| out_width: "80%"
+knitr::include_graphics("img/copy-shared-link.png")
+```
+
+In the dialog box that opens, select "Link Settings"...
+
+```{r}
+#| echo: false
+#| out_width: "50%"
+knitr::include_graphics("img/link-settings.png")
+```
+
+... and then copy the direct link, which will include the file type extension for the file. It is important to get the direct link to the file rather than just copying the shared link without the file type extension!
+
+```{r}
+#| echo: false
+#| out_width: "50%"
+knitr::include_graphics("img/copy-direct-link.png")
+```
+
+You can then assign this link to a variable and read data from it using `read.csv()` or `read_csv()`.
+
+```{r}
+#| eval: false
+link <- "https://utexas.box.com/shared/static/gnu54b6qt9e6t1b93ydyevanus7m7frj.csv"
+# NOTE: enter the direct link between quotation marks in lieu of this dummy link!
 d <- read.csv(link, sep = ",", header = TRUE, stringsAsFactors = FALSE)
+# or, using {tidyverse}, `d <-read_csv(link, col_names = TRUE)`
 ```
 
 Or, alternatively, using {repmis}...
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 d <- source_data(link, header = TRUE, sep =",")
 detach(package:repmis)
 ```
 
-### Importing from ***Google Sheets*** {.unnumbered}
+> **NOTE:** The {boxr} package also provides lots of functionality to interact with files on **Box** directly, but setup requires an authentication process that I have not yet been able to get working.
 
-Finally, you can also load data directly from a ***Google Sheets*** spreadsheet into ***R*** using the {googlesheets4} package. Try saving one of the "CPDS-1960-2014-reduced" file as a Google Sheet and then extracting it into ***R*** using the code below.
+### Importing Data from ***Google Sheets*** {.unnumbered}
 
-> **NOTE:** The following code block cannot be "knit" to show you the output because it requires an interactive ***R*** environment for several functions `sheets_find()`, `read_sheet()`, etc. If the package does not take you to a webpage login for ***Google Sheets*** upon running the `sheets_auth()` command, you may need to install the package {httpuv} separately.
+Finally, you can also load data directly from a ***Google Sheets*** spreadsheet into ***R*** using the {googledrive} and {googlesheets4} packages. Try saving one of the "CPDS-1960-2014-reduced" file as a Google Sheet and then extracting it into ***R*** using the code below.
 
-```{r eval=FALSE}
-library(googlesheets4)
-sheets_auth() # opens a browser dialog box to ask for authorization...
-f <- sheets_find() %>% filter(name=="CPDS-1960-2014-reduced")
-# find all Google Sheets and filters for one of interest
-sheets_get(f)
-# gets info on the Google Sheets file selected, including the number and
-# names of the different worksheets within the spreadsheet
-d <- sheets_read(f) # reads data from the first sheet in the spreadsheet
-detach(package:googlesheets4)
-```
+> **NOTE:** The following code block cannot be rendered to show you the output because it requires an interactive ***R*** environment for several functions (e.g., `drive_auth()`).
 
-Or you can use...
-
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(googledrive)
-f <- drive_get("CPDS-1960-2014-reduced") # select a sheet of interest by name
-sheets_get(f)
-d <- sheets_read(f) # reads data from the first sheet in the spreadsheet
+library(googlesheets4)
+drive_auth() # authenticate access to Google Drive
+# usually only needed once
+# opens a web browser and has you sign in
+gs4_auth(token = drive_token()) # apply that authentication to Google Sheets
+f <- gs4_find() %>%
+  filter(name == "CPDS-1960-2014-reduced")
+# first find all Google Sheets in your drive and then filter for one of interest
+gs4_get(f)
+# get info on the Google Sheets file selected, including the number and names of the different worksheets within the spreadsheet
+d <- read_sheet(f)  # read data from the first sheet in the spreadsheet
+detach(package:googlesheets4)
 detach(package:googledrive)
 ```
 
-More on the basics of using {googlesheets4} for more refined data downloading and formatting can be found [here](https://googlesheets4.tidyverse.org/).
+Follow the links below for more information on the basics of using [{googledrive}](https://googledrive.tidyverse.org/) and [{googlesheets4}](https://googlesheets4.tidyverse.org/).
 
 ### Downloading Remote Files {.unnumbered}
 
 #### ***Dropbox*** {.unnumbered}
 
-The {rdrop2} package can also be used to **download** a file from a personal ***Dropbox*** account to your local computer, rather than just connecting to a ***Dropbox*** file to read the data stored there. This should work with any file type.
+The {rdrop2} package, if you are able to install it, can also be used to **download** a file from a personal ***Dropbox*** account to your local computer, rather than just connecting to a ***Dropbox*** file to read the data stored there. This should work with any file type.
 
-> **NOTE:** Again, the following code block cannot be "knit" to show you the output because it requires an interactive ***R*** environment for `drop_search()`, etc.
+> **NOTE:** Again, the following code block cannot be rendered to show you the output because it requires an interactive ***R*** environment for `drop_search()`, etc.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(rdrop2)
 f <- "CPDS-1960-2014-reduced.csv" # name of file to download
 f <- drop_search(query = f, mode = "filename")
@@ -387,24 +439,24 @@ for (i in 1:length(f$matches)) {
   # the [[i]] returns each encountered file with a matching filename
   # and puts them into a vector
 }
+
 drop_download(
   filenames[1],
   local_path = paste0("data", filenames),
   overwrite = TRUE,
   progress = TRUE
 )
-# here the [1] reads only the first encountered file...
-# need to modify this to read more than one file
+# here the [1] reads only the first encountered file... this can be modified this to read more than one file
 
-# this will save the file to a folder called "data" inside the
-# current working directory
+# this function will save the file to a folder called "data" inside the current working directory
 ```
 
 The `progress=TRUE` argument gives you a reassuring progress bar. By default, this argument is set to FALSE.
 
 > **NOTE:** This process also works for other file types, e.g., ***Excel*** files:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 filename <- "CPDS-1960-2014-reduced.xlsx" # name of file to download
 f <- drop_search(filename)
 # searches your dropbox directory for that file or directory name
@@ -433,12 +485,11 @@ detach(package:rdrop2)
 
 The {googledrive} package allows you to interact with a ***Google Drive*** account to search for, download, upload, and manipulate files.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 library(googledrive)
-f <- "CPDS-1960-2014-reduced.csv" # name of the file to download
-drive_auth()
-# usually only needed once, to authorize access
-# opens a web browser and has you sign in
+f <- "CPDS-1960-2014-reduced.xlsx" # name of the file to download
+drive_auth() # authenticate access to Google Drive
 
 # to download the file...
 drive_download(f, path = paste0("data/", f), overwrite = TRUE)
@@ -447,7 +498,7 @@ drive_download(f, path = paste0("data/", f), overwrite = TRUE)
 # current working directory
 
 # to search for a file and get info about it
-files <- drive_find(pattern = f, n_max = 1) #
+files <- drive_find(pattern = f, n_max = 1)
 # this example finds a single file, but this might return a tibble
 
 print(files) # prints a list of files matching the pattern
