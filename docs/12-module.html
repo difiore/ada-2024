@@ -308,6 +308,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Exercise 02</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 03</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -659,14 +665,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pop_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.025842</code></pre>
+<pre><code>## [1] 2.038732</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">sample_var</span>(x))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.026856</code></pre>
+<pre><code>## [1] 2.039752</code></pre>
 </div>
 </div>
 <p>The <code>sdpop()</code> function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.</p>
@@ -674,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(radiant)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sdpop</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.025842</code></pre>
+<pre><code>## [1] 2.038732</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>radiant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -682,7 +688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.026856</code></pre>
+<pre><code>## [1] 2.039752</code></pre>
 </div>
 </div>
 </section>
@@ -693,9 +699,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="unnumbered anchored" data-anchor-id="sampling-distributions">Sampling Distributions</h3>
 <p>Since one of the goals of statistics is to estimate and make inferences about population-level parameters based on characteristics of a sample, it is important that we be able to judge and report just how reliable or unreliable our statistical estimates those population-level parameters are.</p>
 <p>To explore how we do this, let’s start with a population where we KNOW every data point. We will use that first to describe our population empirically. We will then draw samples out of that population and see how well that the samples we draw can be used to describe the population.</p>
-<p>Load the “IMDB-movies.csv” dataset from the <strong>ada-2022-datasets</strong> repository on <strong><em>GitHub</em></strong> as a “tibble”, <strong>d</strong>. This dataset contains data on close to 29,000 movies scraped in early 2020 from the online <a href="https://www.imdb.com/interfaces/">Internet Movie Database</a>, including their year of title, director, year of production, running time, average viewer rating on a 10 point scale, and the number of votes that rating is based on. [Note that in collating this data, I excluded movies with fewer than 1000 votes.] Once we load the data, we will filter the dataset to keep only movies with a <code>startYear</code> from 1999 to 2019, which should leave us with 17,628 movies. We are going to use this dataset as our POPULATION.</p>
+<p>Load the “IMDB-movies.csv” dataset from the <strong>ada-2024-datasets</strong> repository on <strong><em>GitHub</em></strong> as a “tibble”, <strong>d</strong>. This dataset contains data on close to 29,000 movies scraped in early 2020 from the online <a href="https://www.imdb.com/interfaces/">Internet Movie Database</a>, including their year of title, director, year of production, running time, average viewer rating on a 10 point scale, and the number of votes that rating is based on. [Note that in collating this data, I excluded movies with fewer than 1000 votes.] Once we load the data, we will filter the dataset to keep only movies with a <code>startYear</code> from 1999 to 2019, which should leave us with 17,628 movies. We are going to use this dataset as our POPULATION.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/IMDB-movies.csv"</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/IMDB-movies.csv"</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, startYear <span class="sc">%in%</span> <span class="dv">1999</span><span class="sc">:</span><span class="dv">2019</span>)  <span class="co"># the %in% operator is VERY useful!</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1656,10 +1662,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-263"><a href="#cb82-263" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-264"><a href="#cb82-264" aria-hidden="true" tabindex="-1"></a>To explore how we do this, let's start with a population where we KNOW every data point. We will use that first to describe our population empirically. We will then draw samples out of that population and see how well that the samples we draw can be used to describe the population.</span>
 <span id="cb82-265"><a href="#cb82-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-266"><a href="#cb82-266" aria-hidden="true" tabindex="-1"></a>Load the "IMDB-movies.csv" dataset from the **ada-2022-datasets** repository on ***GitHub*** as a "tibble", **d**. This dataset contains data on close to 29,000 movies scraped in early 2020 from the online <span class="co">[</span><span class="ot">Internet Movie Database</span><span class="co">](https://www.imdb.com/interfaces/)</span>, including their year of title, director, year of production, running time, average viewer rating on a 10 point scale, and the number of votes that rating is based on. <span class="co">[</span><span class="ot">Note that in collating this data, I excluded movies with fewer than 1000 votes.</span><span class="co">]</span> Once we load the data, we will filter the dataset to keep only movies with a <span class="in">`startYear`</span> from 1999 to 2019, which should leave us with 17,628 movies. We are going to use this dataset as our POPULATION.</span>
+<span id="cb82-266"><a href="#cb82-266" aria-hidden="true" tabindex="-1"></a>Load the "IMDB-movies.csv" dataset from the **ada-2024-datasets** repository on ***GitHub*** as a "tibble", **d**. This dataset contains data on close to 29,000 movies scraped in early 2020 from the online <span class="co">[</span><span class="ot">Internet Movie Database</span><span class="co">](https://www.imdb.com/interfaces/)</span>, including their year of title, director, year of production, running time, average viewer rating on a 10 point scale, and the number of votes that rating is based on. <span class="co">[</span><span class="ot">Note that in collating this data, I excluded movies with fewer than 1000 votes.</span><span class="co">]</span> Once we load the data, we will filter the dataset to keep only movies with a <span class="in">`startYear`</span> from 1999 to 2019, which should leave us with 17,628 movies. We are going to use this dataset as our POPULATION.</span>
 <span id="cb82-267"><a href="#cb82-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-268"><a href="#cb82-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-269"><a href="#cb82-269" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/IMDB-movies.csv"</span></span>
+<span id="cb82-269"><a href="#cb82-269" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/IMDB-movies.csv"</span></span>
 <span id="cb82-270"><a href="#cb82-270" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb82-271"><a href="#cb82-271" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, startYear <span class="sc">%in%</span> <span class="dv">1999</span><span class="sc">:</span><span class="dv">2019</span>) <span class="co"># the %in% operator is VERY useful!</span></span>
 <span id="cb82-272"><a href="#cb82-272" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>

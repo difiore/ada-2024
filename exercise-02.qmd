@@ -96,7 +96,7 @@ knitr::include_graphics("img/render-qmd.png")
 
 ## Task 2: Begin with a local repo... {.unnumbered}
 
-This is an alternative workflow to that described above, which also works well. It is outlined in more detail in [**Module 6**](#module-06) as "Option 3" under **Connecting a Local Repo to ***GitHub*** **.
+This is an alternative workflow to that described above, which also works well. It is outlined in more detail in [**Module 6**](#module-06) as "Option 3" under **Connecting a Local Repo to** ***GitHub***.
 
 #### Step 1 {.unnumbered}
 

@@ -309,6 +309,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Exercise 02</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 03</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -399,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="preliminaries" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">9.2</span> Preliminaries</h2>
 <ul>
-<li>GO TO: <a href="https://github.com/difiore/ada-2022-datasets" class="uri">https://github.com/difiore/ada-2022-datasets</a>, select the “.csv” version of the “Country-Data-2016” file, then press the “RAW” button, highlight, and copy the text to a text editor and save it locally. Do the same for the “KamilarAndCooperData” file.</li>
+<li>GO TO: <a href="https://github.com/difiore/ada-2024-datasets" class="uri">https://github.com/difiore/ada-2024-datasets</a>, select the “.csv” version of the “Country-Data-2016” file, then press the “RAW” button, highlight, and copy the text to a text editor and save it locally. Do the same for the “KamilarAndCooperData” file.</li>
 <li>Install these packages in <strong><em>R</em></strong>: <a href="https://cran.r-project.org/web/packages/skimr/skimr.pdf">{skimr}</a>, <a href="https://cran.r-project.org/web/packages/summarytools/summarytools.pdf">{summarytools}</a>, <a href="https://cran.r-project.org/web/packages/dataMaid/dataMaid.pdf">{dataMaid}</a>, <a href="https://cran.r-project.org/web/packages/psych/psych.pdf">{psych}</a>, <a href="https://cran.r-project.org/web/packages/pastecs/pastecs.pdf">{pastecs}</a>, <a href="https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf">{Hmisc}</a>, <a href="https://cran.r-project.org/web/packages/ggExtra/ggExtra.pdf">{ggExtra}</a>, <a href="https://cran.r-project.org/web/packages/car/car.pdf">{car}</a>, <a href="https://cran.r-project.org/web/packages/GGally/GGally.pdf">{GGally}</a>, <a href="https://cran.r-project.org/web/packages/corrplot/corrplot.pdf">{corrplot}</a>, <a href="https://cran.r-project.org/web/packages/patchwork/patchwork.pdf">{patchwork}</a>, <a href="https://cran.r-project.org/web/packages/cowplot/cowplot.pdf">{cowplot}</a>, and <a href="https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf">{gridExtra}</a></li>
 <li>Load {curl} and {tidyverse}</li>
 </ul>
@@ -421,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p><strong>EXAMPLE:</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -682,7 +688,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using {base} R</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">curl</span>(<span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">curl</span>(<span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(f, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d)  <span class="co"># I like tibbles!</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -708,7 +714,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ## [13] "mollucs"        "other_inverts"  "plants"         "fungi_protists"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or, using {readr}</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## Rows: 248 Columns: 16
@@ -1526,7 +1532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Show Code</summary>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"</span></span>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -2558,7 +2564,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminaries</span></span>
 <span id="cb109-8"><a href="#cb109-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>GO TO: <span class="ot">&lt;https://github.com/difiore/ada-2022-datasets&gt;</span>, select the ".csv" version of the "Country-Data-2016" file, then press the "RAW" button, highlight, and copy the text to a text editor and save it locally. Do the same for the "KamilarAndCooperData" file.</span>
+<span id="cb109-9"><a href="#cb109-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>GO TO: <span class="ot">&lt;https://github.com/difiore/ada-2024-datasets&gt;</span>, select the ".csv" version of the "Country-Data-2016" file, then press the "RAW" button, highlight, and copy the text to a text editor and save it locally. Do the same for the "KamilarAndCooperData" file.</span>
 <span id="cb109-10"><a href="#cb109-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install these packages in ***R***: <span class="co">[</span><span class="ot">{skimr}</span><span class="co">](https://cran.r-project.org/web/packages/skimr/skimr.pdf)</span>, <span class="co">[</span><span class="ot">{summarytools}</span><span class="co">](https://cran.r-project.org/web/packages/summarytools/summarytools.pdf)</span>, <span class="co">[</span><span class="ot">{dataMaid}</span><span class="co">](https://cran.r-project.org/web/packages/dataMaid/dataMaid.pdf)</span>, <span class="co">[</span><span class="ot">{psych}</span><span class="co">](https://cran.r-project.org/web/packages/psych/psych.pdf)</span>, <span class="co">[</span><span class="ot">{pastecs}</span><span class="co">](https://cran.r-project.org/web/packages/pastecs/pastecs.pdf)</span>, <span class="co">[</span><span class="ot">{Hmisc}</span><span class="co">](https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf)</span>, <span class="co">[</span><span class="ot">{ggExtra}</span><span class="co">](https://cran.r-project.org/web/packages/ggExtra/ggExtra.pdf)</span>, <span class="co">[</span><span class="ot">{car}</span><span class="co">](https://cran.r-project.org/web/packages/car/car.pdf)</span>, <span class="co">[</span><span class="ot">{GGally}</span><span class="co">](https://cran.r-project.org/web/packages/GGally/GGally.pdf)</span>, <span class="co">[</span><span class="ot">{corrplot}</span><span class="co">](https://cran.r-project.org/web/packages/corrplot/corrplot.pdf)</span>, <span class="co">[</span><span class="ot">{patchwork}</span><span class="co">](https://cran.r-project.org/web/packages/patchwork/patchwork.pdf)</span>, <span class="co">[</span><span class="ot">{cowplot}</span><span class="co">](https://cran.r-project.org/web/packages/cowplot/cowplot.pdf)</span>, and <span class="co">[</span><span class="ot">{gridExtra}</span><span class="co">](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)</span></span>
 <span id="cb109-11"><a href="#cb109-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load {curl} and {tidyverse}</span>
 <span id="cb109-12"><a href="#cb109-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -2586,7 +2592,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb109-34"><a href="#cb109-34" aria-hidden="true" tabindex="-1"></a>**EXAMPLE:**</span>
 <span id="cb109-35"><a href="#cb109-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-36"><a href="#cb109-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, message=FALSE}</span></span>
-<span id="cb109-37"><a href="#cb109-37" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"</span></span>
+<span id="cb109-37"><a href="#cb109-37" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"</span></span>
 <span id="cb109-38"><a href="#cb109-38" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb109-39"><a href="#cb109-39" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
 <span id="cb109-40"><a href="#cb109-40" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(d)</span>
@@ -2715,14 +2721,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb109-173"><a href="#cb109-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-176"><a href="#cb109-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb109-177"><a href="#cb109-177" aria-hidden="true" tabindex="-1"></a><span class="co"># using {base} R</span></span>
-<span id="cb109-178"><a href="#cb109-178" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">curl</span>(<span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"</span>)</span>
+<span id="cb109-178"><a href="#cb109-178" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">curl</span>(<span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"</span>)</span>
 <span id="cb109-179"><a href="#cb109-179" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(f, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb109-180"><a href="#cb109-180" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(d) <span class="co"># I like tibbles!</span></span>
 <span id="cb109-181"><a href="#cb109-181" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
 <span id="cb109-182"><a href="#cb109-182" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
 <span id="cb109-183"><a href="#cb109-183" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb109-184"><a href="#cb109-184" aria-hidden="true" tabindex="-1"></a><span class="co"># or, using {readr}</span></span>
-<span id="cb109-185"><a href="#cb109-185" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span><span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"</span></span>
+<span id="cb109-185"><a href="#cb109-185" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span><span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"</span></span>
 <span id="cb109-186"><a href="#cb109-186" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb109-187"><a href="#cb109-187" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
 <span id="cb109-188"><a href="#cb109-188" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
@@ -3081,7 +3087,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb109-569"><a href="#cb109-569" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
 <span id="cb109-570"><a href="#cb109-570" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
 <span id="cb109-571"><a href="#cb109-571" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb109-572"><a href="#cb109-572" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"</span></span>
+<span id="cb109-572"><a href="#cb109-572" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
 <span id="cb109-573"><a href="#cb109-573" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb109-574"><a href="#cb109-574" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
 <span id="cb109-575"><a href="#cb109-575" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>

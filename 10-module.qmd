@@ -17,7 +17,7 @@ library(magrittr)
 ```
 
 ```{r message=FALSE}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE) # creates a "tibble"
 head(d)
 ```

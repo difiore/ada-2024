@@ -6,7 +6,7 @@
 
 ## Preliminaries
 
-- GO TO: <https://github.com/difiore/ada-2022-datasets>, select the ".csv" version of the "Country-Data-2016" file, then press the "RAW" button, highlight, and copy the text to a text editor and save it locally. Do the same for the "KamilarAndCooperData" file.
+- GO TO: <https://github.com/difiore/ada-2024-datasets>, select the ".csv" version of the "Country-Data-2016" file, then press the "RAW" button, highlight, and copy the text to a text editor and save it locally. Do the same for the "KamilarAndCooperData" file.
 - Install these packages in ***R***: [{skimr}](https://cran.r-project.org/web/packages/skimr/skimr.pdf), [{summarytools}](https://cran.r-project.org/web/packages/summarytools/summarytools.pdf), [{dataMaid}](https://cran.r-project.org/web/packages/dataMaid/dataMaid.pdf), [{psych}](https://cran.r-project.org/web/packages/psych/psych.pdf), [{pastecs}](https://cran.r-project.org/web/packages/pastecs/pastecs.pdf), [{Hmisc}](https://cran.r-project.org/web/packages/Hmisc/Hmisc.pdf), [{ggExtra}](https://cran.r-project.org/web/packages/ggExtra/ggExtra.pdf), [{car}](https://cran.r-project.org/web/packages/car/car.pdf), [{GGally}](https://cran.r-project.org/web/packages/GGally/GGally.pdf), [{corrplot}](https://cran.r-project.org/web/packages/corrplot/corrplot.pdf), [{patchwork}](https://cran.r-project.org/web/packages/patchwork/patchwork.pdf), [{cowplot}](https://cran.r-project.org/web/packages/cowplot/cowplot.pdf), and [{gridExtra}](https://cran.r-project.org/web/packages/gridExtra/gridExtra.pdf)
 - Load {curl} and {tidyverse}
 
@@ -34,7 +34,7 @@ Exploratory data analysis (EDA) is typically the first step in any kind of data 
 **EXAMPLE:**
 
 ```{r warning=FALSE, message=FALSE}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"
 d <- read_csv(f, col_names = TRUE)
 names(d)
 attach(d)
@@ -163,14 +163,14 @@ The `summary()` function from {base} ***R*** provides a quick overview of each v
 
 ```{r}
 # using {base} R
-f <- curl("https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv")
+f <- curl("https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv")
 d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 d <- as_tibble(d) # I like tibbles!
 head(d)
 names(d)
 
 # or, using {readr}
-f <-"https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Country-Data-2016.csv"
+f <-"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
 names(d)
@@ -529,7 +529,7 @@ Spend some time exploring the data on your own and then make boxplots of **log(f
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
 ```

@@ -236,7 +236,7 @@ for (i in v){ # here we loop over the elements of v
 It is good form and improves efficiency if we allocate memory to whatever output we may want to generate inside of a loop beforehand. For example, if we want to use a loop to calculate the `median()` across all Platyrrhine primate genera for the female brain size, female body size, and canine dimorphism variables in the Kamilar and Cooper dataset we have used previously, we could do the following:
 
 ```{r message=FALSE}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE) # creates a "tibble"
 s <- filter(d, Family %in% c("Atelidae","Pitheciidae","Cebidae")) %>%
   select(Brain_Size_Female_Mean,Body_mass_female_mean,Canine_Dimorphism)
