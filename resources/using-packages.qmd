@@ -1,7 +1,7 @@
 ---
 title: "Packages"
 format: html
-editor: visual
+editor: source
 editor_options: 
   chunk_output_type: console
 ---
@@ -116,7 +116,7 @@ if (!require("dplyr")) {
 }
 ```
 
-> Note: If the package is not already installed, this snippet will throw a warning that "there is no package called 'packagename'". That is to be expected and is not a cause for concern. If the package is already installed, then no warning will be generated.
+> Note: If the package is not already installed, this snippet will throw a warning that "there is no package called <packagename>". That is to be expected and is not a cause for concern. If the package is already installed, then no warning will be generated.
 
 ## Other Packages for Package Management
 
@@ -294,9 +294,3 @@ filter(mtcars, cyl == 8)
 ```
 
 See <https://conflicted.r-lib.org/index.html> for more details.
-
-## Packages to Install for this Semester
-
-```{r}
-packages <- c("tidyverse", "tidymodels", "pacman")
-```
