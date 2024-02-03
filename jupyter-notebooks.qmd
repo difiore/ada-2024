@@ -1,0 +1,48 @@
+---
+title: "Untitled"
+editor: source
+---
+
+
+
+Step 3: Add Julia to Jupyter Notebook
+In order to add Julia to Jupyter Notebook, you’ll need to type the following command and then press ENTER:
+
+using Pkg
+Then, type this command and press ENTER:
+
+Pkg.add("IJulia")
+
+
+
+Installation
+This package is available on CRAN:
+
+install.packages('IRkernel')
+
+IRkernel::installspec()  # to register the kernel in the current R installation
+
+Per default IRkernel::installspec() will install a kernel with the name “ir” and a display name of “R”. Multiple calls will overwrite the kernel with a kernel spec pointing to the last R interpreter you called that commands from. You can install kernels for multiple versions of R by supplying a name and displayname argument to the installspec() call (You still need to install these packages in all interpreters you want to run as a jupyter kernel!):
+
+You can install the Quarto JupyterLab extension one of two ways:
+
+In the JupyterLab UI: Search for ‘Quarto’ in the Extension Manager and install the jupyterlab-quarto extension. You’ll be prompted to refresh the page when complete.
+
+Screenshot of the Jupyter Lab Extension Manager with 'quarto' typed in the search box, and one Search Result with the name 'jupyterlab-quarto'.
+
+Using pip:
+
+Platform	Commands
+Mac/Linux	
+Terminal
+python3 -m pip install jupyterlab-quarto
+
+Windows	
+Terminal
+py -m pip install jupyterlab-quarto
+
+
+The ideal workflow for authoring Quarto notebooks in JupyterLab is to run the quarto preview command from within a terminal:
+
+Terminal
+quarto preview <notebook-name>.ipynb
