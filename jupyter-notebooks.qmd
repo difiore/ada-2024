@@ -1,28 +1,115 @@
 ---
-title: "Untitled"
-editor: source
+title: JupyterLab
 ---
 
+# Installing ***JupyterLab***
 
+## Browser-Based Version
+Go to [https://jupyter.org/](https://jupyter.org/). Click the "Install" menu and then follow the instructions for installing ***JupyterLab*** (rather than Jupyter Notebooks), using either ***pip***, a Python package manager or ***homebrew***.
 
-Step 3: Add Julia to Jupyter Notebook
-In order to add Julia to Jupyter Notebook, you’ll need to type the following command and then press ENTER:
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/jupyter.png")
+```
 
-using Pkg
-Then, type this command and press ENTER:
+- For the former, run `pip install jupyterlab` at a terminal prompt
+- For the latter, run `brew install jupyterlab` at a terminal prompt
 
-Pkg.add("IJulia")
+To start up ***JuptyerLab***, run `jupyter lab` at a terminal prompt. A browser window will open connecting you to a **localhost** serving the program, usually on port 8888.
 
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/jupyter-browser.png")
+```
 
+From the Launcher, you can start either a new notebook or console session running ***python*** or open a new terminal window or create a new markdown or code file. If you have installed and set them up, you can also start a sessions running ***R*** or ***Julia***.
 
-Installation
-This package is available on CRAN:
+## Desktop Version
 
-install.packages('IRkernel')
+Alternatively, you can install a desktop version of the software, which will enable you to run ***JupyterLab*** as a stand-alone version, rather than in a browser window. To do so, go to the ***GitHub*** page for [jupyterlab-desktop](https://github.com/jupyterlab/jupyterlab-desktop)...
 
-IRkernel::installspec()  # to register the kernel in the current R installation
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/jupyterlab-desktop.png")
+```
 
-Per default IRkernel::installspec() will install a kernel with the name “ir” and a display name of “R”. Multiple calls will overwrite the kernel with a kernel spec pointing to the last R interpreter you called that commands from. You can install kernels for multiple versions of R by supplying a name and displayname argument to the installspec() call (You still need to install these packages in all interpreters you want to run as a jupyter kernel!):
+... scroll down to the installation section, and choose the installer for your operating system.
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/jupyterlab-desktop-installer.png")
+```
+
+Once the software is installed, you should be able to double-click on the software icon to launch it. From the opening screen, you can start a new notebook, a new session, or open a file browser.
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/jupyterlab-desktop-start.png")
+```
+
+## Using ***Jupyter*** with ***R***
+
+First, make sure you have installed [***R***](https://cran.r-project.org/) (and, if you want, [***RStudio***](https://posit.co/download/rstudio-desktop/)).
+
+Then, to add ***R*** to ***JupyterLab***, open ***R*** or ***RStudio*** and install the {IRkernel} package using either the package manager or by typing `install.packages('IRkernel')` at the ***R*** console prompt.
+
+Then run `IRkernel::installspec()` to register a kernel for the current ***R*** installation.
+
+This will install in ***JupyterLab*** a kernel with the name “ir” and a display name of “R”.
+
+> **NOTE**: It is possible install kernels for multiple versions of ***R*** by supplying a `name=` and `displayname=` argument to the `installspec()` command pointing to multiple R interpreters. Subsequent calls to `installspec()` without changing the `name=` argument would overwrite the kernel with a specification pointing to the last ***R*** interpreter that commands were called from. Note that the {IRkernel} package needs to be installed in the package libray for each ***R*** interpreter that you want to connect to ***JupyterLab***.
+
+Options for ***R*** should now appear in the Launcher when you open ***JupyterLab***.
+
+## Using ***JupyterLab*** with ***Julia***
+
+First, go to the home page for the [***Julia***](https://julialang.org/) programming language and select the "Download" menu...
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/julia.png")
+```
+
+... and then either install ***Julia*** from the command line using `curl`...
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/julia-curl.png")
+```
+
+... or download the binary version of the installer for your operating system.
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/julia-binaries.png")
+```
+
+Then, in order to add ***Julia*** to ***JupyterLab***, run `julia` from the terminal prompt or double-click on the software icon to start the program. At the ***Julia*** command prompt...
+
+```{r}
+#| echo: false
+#| out-width: "90%"
+knitr::include_graphics("img/julia-prompt.png")
+```
+
+... enter the following command:
+
+`using Pkg`
+
+Then, add the {IJulia} package using the command:
+
+`Pkg.add("IJulia")`
+
+Options for ***Julia*** should now appear in the Launcher when you open ***JupyterLab***.
+
 
 You can install the Quarto JupyterLab extension one of two ways:
 
@@ -30,7 +117,8 @@ In the JupyterLab UI: Search for ‘Quarto’ in the Extension Manager and insta
 
 Screenshot of the Jupyter Lab Extension Manager with 'quarto' typed in the search box, and one Search Result with the name 'jupyterlab-quarto'.
 
-Using pip:
+
+
 
 Platform	Commands
 Mac/Linux	
@@ -46,3 +134,4 @@ The ideal workflow for authoring Quarto notebooks in JupyterLab is to run the qu
 
 Terminal
 quarto preview <notebook-name>.ipynb
+

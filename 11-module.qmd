@@ -9,7 +9,8 @@
 - Install this package in ***R***: [{sjmisc}](https://cran.r-project.org/web/packages/sjmisc/sjmisc.pdf)
 - Load {tidyverse}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 ```
 
@@ -198,7 +199,8 @@ b <- c("selection","life")
 b %in% a
 ```
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(sjmisc)
 b %nin% a # not membership
 detach(package:sjmisc)
@@ -235,7 +237,8 @@ for (i in v){ # here we loop over the elements of v
 
 It is good form and improves efficiency if we allocate memory to whatever output we may want to generate inside of a loop beforehand. For example, if we want to use a loop to calculate the `median()` across all Platyrrhine primate genera for the female brain size, female body size, and canine dimorphism variables in the Kamilar and Cooper dataset we have used previously, we could do the following:
 
-```{r message=FALSE}
+```{r}
+#| message: false
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE) # creates a "tibble"
 s <- filter(d, Family %in% c("Atelidae","Pitheciidae","Cebidae")) %>%
@@ -344,7 +347,8 @@ class (output) # returns a data frame, unlike any of the `apply()` functions
 output
 ```
 
-```{r include=FALSE}
+```{r}
+# | include: false
 detach(package:tidyverse)
 ```
 

@@ -11,12 +11,14 @@
 - Load {tidyverse}
 - Load in the KamilarAndCooper dataset we used in [**Module 09**](#module-09) as a "tibble" named **d**
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 library(magrittr)
 ```
 
-```{r message=FALSE}
+```{r}
+#| message: false
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE) # creates a "tibble"
 head(d)
