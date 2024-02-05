@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.548">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,15 +96,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -109,12 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-module.html">Part II - Statistics and Inference</a></li><li class="breadcrumb-item"><a href="./12-module.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-module.html">Part II - Statistics and Inference</a></li><li class="breadcrumb-item"><a href="./12-module.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -124,8 +163,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/statistics-hand.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -336,7 +375,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
@@ -369,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12-module.html">Part II - Statistics and Inference</a></li><li class="breadcrumb-item"><a href="./12-module.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title"><span id="module-12" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
@@ -384,7 +423,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="objectives" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="objectives"><span class="header-section-number">12.1</span> Objectives</h2>
@@ -453,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>HINT:</strong> Taking the <span class="math inline">\(n^{th}\)</span> root of a number is equivalent to raising the number to the power of <span class="math inline">\(\frac{1}{n}\)</span></p>
 </blockquote>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">1000</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -466,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="details" data-summary="Show Output"><code>## [1] 13.50559</code></pre>
 </details>
 </div>
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(x)))</span>
@@ -501,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Write a function to calculate the <strong>sum of squares</strong> for a vector.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sum_of_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)</span>
@@ -513,7 +554,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="details" data-summary="Show Output"><code>## [1] 917183.3</code></pre>
 </details>
 </div>
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is equivalent to...</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -567,7 +608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Write a function to calculate the <strong>variance</strong> for a vector of values representing a <em>sample</em> of measurements. Remember this means dividing the sample sum of squares by <span class="math inline">\(n-1\)</span>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sample_var <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>)</span>
@@ -582,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Compare the results of your function to the built-in <strong><em>R</em></strong> function, <code>var()</code>, which calculates sample variance.</p>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -608,7 +649,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -648,7 +689,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -665,14 +706,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pop_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.038732</code></pre>
+<pre><code>## [1] 2.028781</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">sample_var</span>(x))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.039752</code></pre>
+<pre><code>## [1] 2.029796</code></pre>
 </div>
 </div>
 <p>The <code>sdpop()</code> function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.</p>
@@ -680,7 +721,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(radiant)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sdpop</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.038732</code></pre>
+<pre><code>## [1] 2.028781</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>radiant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -688,7 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.039752</code></pre>
+<pre><code>## [1] 2.029796</code></pre>
 </div>
 </div>
 </section>
@@ -725,7 +766,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -734,7 +775,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -770,7 +811,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -778,7 +819,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -874,7 +915,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -985,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="12-module_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="12-module_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1042,7 +1083,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Write your own function to calculate the <strong>standard error of the mean</strong> for a vector of values representing a single sample of observations from a population. You can use either your own function for the sample variance that you created above or the built-in <code>var()</code> function. There are, of course, several ways you could do this. Then, use your new function with <code>summarize()</code> and <code>sample_n()</code> to extract a single sample of size “n=100” from <strong>d</strong> and calculate an estimate of the population SE for that sample size.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)</span>
@@ -1247,10 +1288,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1260,8 +1300,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1274,6 +1323,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1317,6 +1485,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1342,6 +1511,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1403,12 +1598,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./11-module.html" class="pagination-link">
+      <a href="./11-module.html" class="pagination-link  aria-label=" &lt;span="" and="" flow="" control&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Functions and Flow Control</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercise-01.html" class="pagination-link">
+      <a href="./exercise-01.html" class="pagination-link" aria-label="Exercise 01">
         <span class="nav-page-text">Exercise 01</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1425,7 +1620,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load {tidyverse}</span>
 <span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
 <span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Important Terms</span></span>
@@ -1486,7 +1681,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-73"><a href="#cb82-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-74"><a href="#cb82-74" aria-hidden="true" tabindex="-1"></a>What happens if you have <span class="in">`NA`</span>s or zeros or negative numbers in your vector?</span>
 <span id="cb82-75"><a href="#cb82-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-76"><a href="#cb82-76" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** Including an </span><span class="in">`na.rm=TRUE`</span><span class="at"> argument and the function </span><span class="in">`na.omit()`</span><span class="at"> in your function code to ignore data points with </span><span class="kw">&lt;NA&gt;</span><span class="at"> values may help you write more generic functions!</span></span>
+<span id="cb82-76"><a href="#cb82-76" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** Including an </span><span class="in">`na.rm=TRUE`</span><span class="at"> argument and the function </span><span class="in">`na.omit()`</span><span class="at"> in your function code to ignore data points with </span>&lt;NA&gt;<span class="at"> values may help you write more generic functions!</span></span>
 <span id="cb82-77"><a href="#cb82-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-78"><a href="#cb82-78" aria-hidden="true" tabindex="-1"></a><span class="fu">### Measures of Spread {.unnumbered}</span></span>
 <span id="cb82-79"><a href="#cb82-79" aria-hidden="true" tabindex="-1"></a></span>
@@ -1575,11 +1770,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-172"><a href="#cb82-172" aria-hidden="true" tabindex="-1"></a>To visualize this distribution, we can use the <span class="in">`plotDist()`</span> function from the {mosaic} package...</span>
 <span id="cb82-173"><a href="#cb82-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-174"><a href="#cb82-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE, fig.height=3}</span></span>
-<span id="cb82-175"><a href="#cb82-175" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb82-176"><a href="#cb82-176" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span><span class="dv">10</span></span>
-<span id="cb82-177"><a href="#cb82-177" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb82-178"><a href="#cb82-178" aria-hidden="true" tabindex="-1"></a><span class="fu">plotDist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma, <span class="at">xlab=</span><span class="st">"x"</span>, <span class="at">ylab=</span><span class="st">"Frequency"</span>)</span>
-<span id="cb82-179"><a href="#cb82-179" aria-hidden="true" tabindex="-1"></a><span class="co"># `plotDist()` comes from the {mosaic} package and makes it easy to plot a distribution</span></span>
+<span id="cb82-175"><a href="#cb82-175" aria-hidden="true" tabindex="-1"></a><span class="in">library(mosaic)</span></span>
+<span id="cb82-176"><a href="#cb82-176" aria-hidden="true" tabindex="-1"></a><span class="in">mu &lt;-10</span></span>
+<span id="cb82-177"><a href="#cb82-177" aria-hidden="true" tabindex="-1"></a><span class="in">sigma &lt;- 2</span></span>
+<span id="cb82-178"><a href="#cb82-178" aria-hidden="true" tabindex="-1"></a><span class="in">plotDist("norm", mean=mu, sd=sigma, xlab="x", ylab="Frequency")</span></span>
+<span id="cb82-179"><a href="#cb82-179" aria-hidden="true" tabindex="-1"></a><span class="in"># `plotDist()` comes from the {mosaic} package and makes it easy to plot a distribution</span></span>
 <span id="cb82-180"><a href="#cb82-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-181"><a href="#cb82-181" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-182"><a href="#cb82-182" aria-hidden="true" tabindex="-1"></a>In the following code block, we first set up a plot window to hold the results of our simulations and plot a line for the known population variance (i.e., the square of $\sigma$, the standard deviation). We then use nested <span class="in">`for`</span> loops to iterate the process of drawing samples of a specific size, $n$, from the specified distribution. We do this for samples of size $n$ = 5, 10, 15... up to 100, and we draw out 50 replicates of each sample size. Recall from <span class="co">[</span><span class="ot">**Module 11**</span><span class="co">](#module-11)</span> that the structure for <span class="in">`for`</span> loops is:</span>
@@ -1589,41 +1784,41 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-186"><a href="#cb82-186" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
 <span id="cb82-187"><a href="#cb82-187" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-188"><a href="#cb82-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig.height=4}</span></span>
-<span id="cb82-189"><a href="#cb82-189" aria-hidden="true" tabindex="-1"></a><span class="co"># set up plot window</span></span>
-<span id="cb82-190"><a href="#cb82-190" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</span>
-<span id="cb82-191"><a href="#cb82-191" aria-hidden="true" tabindex="-1"></a>     <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>),</span>
-<span id="cb82-192"><a href="#cb82-192" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"n"</span>,</span>
-<span id="cb82-193"><a href="#cb82-193" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Sample Size"</span>,</span>
-<span id="cb82-194"><a href="#cb82-194" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Variance"</span>)</span>
+<span id="cb82-189"><a href="#cb82-189" aria-hidden="true" tabindex="-1"></a><span class="in"># set up plot window</span></span>
+<span id="cb82-190"><a href="#cb82-190" aria-hidden="true" tabindex="-1"></a><span class="in">plot(c(0, 100),</span></span>
+<span id="cb82-191"><a href="#cb82-191" aria-hidden="true" tabindex="-1"></a><span class="in">     c(0, 15),</span></span>
+<span id="cb82-192"><a href="#cb82-192" aria-hidden="true" tabindex="-1"></a><span class="in">     type = "n",</span></span>
+<span id="cb82-193"><a href="#cb82-193" aria-hidden="true" tabindex="-1"></a><span class="in">     xlab = "Sample Size",</span></span>
+<span id="cb82-194"><a href="#cb82-194" aria-hidden="true" tabindex="-1"></a><span class="in">     ylab = "Variance")</span></span>
 <span id="cb82-195"><a href="#cb82-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-196"><a href="#cb82-196" aria-hidden="true" tabindex="-1"></a><span class="co"># add the population variance (= square of population standard deviation) to the plot</span></span>
-<span id="cb82-197"><a href="#cb82-197" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(</span>
-<span id="cb82-198"><a href="#cb82-198" aria-hidden="true" tabindex="-1"></a>  <span class="at">h =</span> <span class="dv">4</span>,</span>
-<span id="cb82-199"><a href="#cb82-199" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"red"</span>,</span>
-<span id="cb82-200"><a href="#cb82-200" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb82-201"><a href="#cb82-201" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">2</span></span>
-<span id="cb82-202"><a href="#cb82-202" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb82-196"><a href="#cb82-196" aria-hidden="true" tabindex="-1"></a><span class="in"># add the population variance (= square of population standard deviation) to the plot</span></span>
+<span id="cb82-197"><a href="#cb82-197" aria-hidden="true" tabindex="-1"></a><span class="in">abline(</span></span>
+<span id="cb82-198"><a href="#cb82-198" aria-hidden="true" tabindex="-1"></a><span class="in">  h = 4,</span></span>
+<span id="cb82-199"><a href="#cb82-199" aria-hidden="true" tabindex="-1"></a><span class="in">  col = "red",</span></span>
+<span id="cb82-200"><a href="#cb82-200" aria-hidden="true" tabindex="-1"></a><span class="in">  lwd = 2,</span></span>
+<span id="cb82-201"><a href="#cb82-201" aria-hidden="true" tabindex="-1"></a><span class="in">  lty = 2</span></span>
+<span id="cb82-202"><a href="#cb82-202" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb82-203"><a href="#cb82-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-204"><a href="#cb82-204" aria-hidden="true" tabindex="-1"></a><span class="co"># run simulations and add results to plot</span></span>
-<span id="cb82-205"><a href="#cb82-205" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb82-206"><a href="#cb82-206" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb82-207"><a href="#cb82-207" aria-hidden="true" tabindex="-1"></a><span class="co"># samples of 5, 10, 15...</span></span>
-<span id="cb82-208"><a href="#cb82-208" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)) {</span>
-<span id="cb82-209"><a href="#cb82-209" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set up a variable, reps, to hold the set of variances calculated for each replicate</span></span>
-<span id="cb82-210"><a href="#cb82-210" aria-hidden="true" tabindex="-1"></a>  reps <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">50</span>)</span>
-<span id="cb82-211"><a href="#cb82-211" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 50 replicates</span></span>
-<span id="cb82-212"><a href="#cb82-212" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) {</span>
-<span id="cb82-213"><a href="#cb82-213" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
-<span id="cb82-214"><a href="#cb82-214" aria-hidden="true" tabindex="-1"></a>    <span class="fu">points</span>(n, <span class="fu">var</span>(x))</span>
-<span id="cb82-215"><a href="#cb82-215" aria-hidden="true" tabindex="-1"></a>    reps[[i]] <span class="ot">=</span> <span class="fu">var</span>(x)</span>
-<span id="cb82-216"><a href="#cb82-216" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this is a common programming motif in R and is more memory and time efficient than another common motif, `reps &lt;- c(reps, var(x))`</span></span>
-<span id="cb82-217"><a href="#cb82-217" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb82-218"><a href="#cb82-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(n,</span>
-<span id="cb82-219"><a href="#cb82-219" aria-hidden="true" tabindex="-1"></a>         <span class="fu">mean</span>(reps),</span>
-<span id="cb82-220"><a href="#cb82-220" aria-hidden="true" tabindex="-1"></a>         <span class="at">bg =</span> <span class="st">"red"</span>,</span>
-<span id="cb82-221"><a href="#cb82-221" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch =</span> <span class="dv">23</span>,</span>
-<span id="cb82-222"><a href="#cb82-222" aria-hidden="true" tabindex="-1"></a>         <span class="at">cex =</span> <span class="dv">2</span>) <span class="co"># plots average</span></span>
-<span id="cb82-223"><a href="#cb82-223" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-204"><a href="#cb82-204" aria-hidden="true" tabindex="-1"></a><span class="in"># run simulations and add results to plot</span></span>
+<span id="cb82-205"><a href="#cb82-205" aria-hidden="true" tabindex="-1"></a><span class="in">mu &lt;- 10</span></span>
+<span id="cb82-206"><a href="#cb82-206" aria-hidden="true" tabindex="-1"></a><span class="in">sigma &lt;- 2</span></span>
+<span id="cb82-207"><a href="#cb82-207" aria-hidden="true" tabindex="-1"></a><span class="in"># samples of 5, 10, 15...</span></span>
+<span id="cb82-208"><a href="#cb82-208" aria-hidden="true" tabindex="-1"></a><span class="in">for (n in seq(from = 5, to = 100, by = 5)) {</span></span>
+<span id="cb82-209"><a href="#cb82-209" aria-hidden="true" tabindex="-1"></a><span class="in">  # set up a variable, reps, to hold the set of variances calculated for each replicate</span></span>
+<span id="cb82-210"><a href="#cb82-210" aria-hidden="true" tabindex="-1"></a><span class="in">  reps &lt;- vector("double", 50)</span></span>
+<span id="cb82-211"><a href="#cb82-211" aria-hidden="true" tabindex="-1"></a><span class="in">  # 50 replicates</span></span>
+<span id="cb82-212"><a href="#cb82-212" aria-hidden="true" tabindex="-1"></a><span class="in">  for (i in 1:50) {</span></span>
+<span id="cb82-213"><a href="#cb82-213" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- rnorm(n, mean = mu, sd = sigma)</span></span>
+<span id="cb82-214"><a href="#cb82-214" aria-hidden="true" tabindex="-1"></a><span class="in">    points(n, var(x))</span></span>
+<span id="cb82-215"><a href="#cb82-215" aria-hidden="true" tabindex="-1"></a><span class="in">    reps[[i]] = var(x)</span></span>
+<span id="cb82-216"><a href="#cb82-216" aria-hidden="true" tabindex="-1"></a><span class="in">    # this is a common programming motif in R and is more memory and time efficient than another common motif, `reps &lt;- c(reps, var(x))`</span></span>
+<span id="cb82-217"><a href="#cb82-217" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb82-218"><a href="#cb82-218" aria-hidden="true" tabindex="-1"></a><span class="in">  points(n,</span></span>
+<span id="cb82-219"><a href="#cb82-219" aria-hidden="true" tabindex="-1"></a><span class="in">         mean(reps),</span></span>
+<span id="cb82-220"><a href="#cb82-220" aria-hidden="true" tabindex="-1"></a><span class="in">         bg = "red",</span></span>
+<span id="cb82-221"><a href="#cb82-221" aria-hidden="true" tabindex="-1"></a><span class="in">         pch = 23,</span></span>
+<span id="cb82-222"><a href="#cb82-222" aria-hidden="true" tabindex="-1"></a><span class="in">         cex = 2) # plots average</span></span>
+<span id="cb82-223"><a href="#cb82-223" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb82-224"><a href="#cb82-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-225"><a href="#cb82-225" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-226"><a href="#cb82-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How does *sample variance* compare to *population variance*? What happens to the sample variances as sample size increases?</span>
@@ -1643,9 +1838,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-242"><a href="#cb82-242" aria-hidden="true" tabindex="-1"></a>The <span class="in">`sdpop()`</span> function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.</span>
 <span id="cb82-243"><a href="#cb82-243" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-244"><a href="#cb82-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-245"><a href="#cb82-245" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(radiant)</span>
-<span id="cb82-246"><a href="#cb82-246" aria-hidden="true" tabindex="-1"></a><span class="fu">sdpop</span>(x)</span>
-<span id="cb82-247"><a href="#cb82-247" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>radiant)</span>
+<span id="cb82-245"><a href="#cb82-245" aria-hidden="true" tabindex="-1"></a><span class="in">library(radiant)</span></span>
+<span id="cb82-246"><a href="#cb82-246" aria-hidden="true" tabindex="-1"></a><span class="in">sdpop(x)</span></span>
+<span id="cb82-247"><a href="#cb82-247" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:radiant)</span></span>
 <span id="cb82-248"><a href="#cb82-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-249"><a href="#cb82-249" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-250"><a href="#cb82-250" aria-hidden="true" tabindex="-1"></a>The built-in ***R*** function <span class="in">`sd()`</span> can be used to calculate the standard deviation of a sample.</span>
@@ -1665,10 +1860,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-266"><a href="#cb82-266" aria-hidden="true" tabindex="-1"></a>Load the "IMDB-movies.csv" dataset from the **ada-2024-datasets** repository on ***GitHub*** as a "tibble", **d**. This dataset contains data on close to 29,000 movies scraped in early 2020 from the online <span class="co">[</span><span class="ot">Internet Movie Database</span><span class="co">](https://www.imdb.com/interfaces/)</span>, including their year of title, director, year of production, running time, average viewer rating on a 10 point scale, and the number of votes that rating is based on. <span class="co">[</span><span class="ot">Note that in collating this data, I excluded movies with fewer than 1000 votes.</span><span class="co">]</span> Once we load the data, we will filter the dataset to keep only movies with a <span class="in">`startYear`</span> from 1999 to 2019, which should leave us with 17,628 movies. We are going to use this dataset as our POPULATION.</span>
 <span id="cb82-267"><a href="#cb82-267" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-268"><a href="#cb82-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-269"><a href="#cb82-269" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/IMDB-movies.csv"</span></span>
-<span id="cb82-270"><a href="#cb82-270" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb82-271"><a href="#cb82-271" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, startYear <span class="sc">%in%</span> <span class="dv">1999</span><span class="sc">:</span><span class="dv">2019</span>) <span class="co"># the %in% operator is VERY useful!</span></span>
-<span id="cb82-272"><a href="#cb82-272" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb82-269"><a href="#cb82-269" aria-hidden="true" tabindex="-1"></a><span class="in">f &lt;- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/IMDB-movies.csv"</span></span>
+<span id="cb82-270"><a href="#cb82-270" aria-hidden="true" tabindex="-1"></a><span class="in">d &lt;- read_csv(f, col_names = TRUE)</span></span>
+<span id="cb82-271"><a href="#cb82-271" aria-hidden="true" tabindex="-1"></a><span class="in">d &lt;- filter(d, startYear %in% 1999:2019) # the %in% operator is VERY useful!</span></span>
+<span id="cb82-272"><a href="#cb82-272" aria-hidden="true" tabindex="-1"></a><span class="in">head(d)</span></span>
 <span id="cb82-273"><a href="#cb82-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-274"><a href="#cb82-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-275"><a href="#cb82-275" aria-hidden="true" tabindex="-1"></a>First, we will do some exploratory data analysis on this dataset using, in part, some functions from the {mosaic} package. {mosaic} makes some kinds of quick exploratory data analysis very fast and easy to do (though we already know how to do lots of what we can do with {mosaic} in other ways)!</span>
@@ -1676,11 +1871,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-277"><a href="#cb82-277" aria-hidden="true" tabindex="-1"></a>Functions in the {mosaic} package have a <span class="in">`data=`</span> argument as well as a <span class="in">`~`</span> argument that specifies which variable of interest from the <span class="in">`data=`</span> argument the function is to be applied to.</span>
 <span id="cb82-278"><a href="#cb82-278" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-279"><a href="#cb82-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE, fig.height=4}</span></span>
-<span id="cb82-280"><a href="#cb82-280" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(averageRating <span class="sc">~</span> startYear, <span class="at">data=</span>d, <span class="at">xlab=</span><span class="st">"Year"</span>, <span class="at">ylab=</span><span class="st">"Average Rating"</span>)</span>
-<span id="cb82-281"><a href="#cb82-281" aria-hidden="true" tabindex="-1"></a><span class="co"># the `histogram()` function from {mosaic} plots neat "augmented" histograms</span></span>
-<span id="cb82-282"><a href="#cb82-282" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span> averageRating, <span class="at">data=</span>d, <span class="at">xlab=</span><span class="st">"Average Rating"</span>)</span>
-<span id="cb82-283"><a href="#cb82-283" aria-hidden="true" tabindex="-1"></a><span class="co"># the `favstats()` function from {mosiac} calculates a variant of the 5-number summary</span></span>
-<span id="cb82-284"><a href="#cb82-284" aria-hidden="true" tabindex="-1"></a>(pop_stats <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span> averageRating, <span class="at">data =</span> d))</span>
+<span id="cb82-280"><a href="#cb82-280" aria-hidden="true" tabindex="-1"></a><span class="in">boxplot(averageRating ~ startYear, data=d, xlab="Year", ylab="Average Rating")</span></span>
+<span id="cb82-281"><a href="#cb82-281" aria-hidden="true" tabindex="-1"></a><span class="in"># the `histogram()` function from {mosaic} plots neat "augmented" histograms</span></span>
+<span id="cb82-282"><a href="#cb82-282" aria-hidden="true" tabindex="-1"></a><span class="in">histogram(~ averageRating, data=d, xlab="Average Rating")</span></span>
+<span id="cb82-283"><a href="#cb82-283" aria-hidden="true" tabindex="-1"></a><span class="in"># the `favstats()` function from {mosiac} calculates a variant of the 5-number summary</span></span>
+<span id="cb82-284"><a href="#cb82-284" aria-hidden="true" tabindex="-1"></a><span class="in">(pop_stats &lt;- favstats(~ averageRating, data = d))</span></span>
 <span id="cb82-285"><a href="#cb82-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-286"><a href="#cb82-286" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-287"><a href="#cb82-287" aria-hidden="true" tabindex="-1"></a>Now, let's draw a single SAMPLE of 100 movies randomly from this population and visualize its average viewer rating. After setting the random number seed (analogous to setting what position we start at in a traditional table of random numbers), run the subsequent lines of code several times and look at how the results differ...</span>
@@ -1692,14 +1887,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-295"><a href="#cb82-295" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-296"><a href="#cb82-296" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-297"><a href="#cb82-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE, fig.height=4}</span></span>
-<span id="cb82-298"><a href="#cb82-298" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb82-299"><a href="#cb82-299" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(d, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
-<span id="cb82-300"><a href="#cb82-300" aria-hidden="true" tabindex="-1"></a><span class="co"># `sample_n()` from {dplyr} selects rows at random from a data frame</span></span>
-<span id="cb82-301"><a href="#cb82-301" aria-hidden="true" tabindex="-1"></a><span class="co"># it's another SUPER useful function</span></span>
-<span id="cb82-302"><a href="#cb82-302" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(s<span class="sc">$</span>startYear)</span>
-<span id="cb82-303"><a href="#cb82-303" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(averageRating <span class="sc">~</span> startYear, <span class="at">data=</span>s, <span class="at">xlab=</span><span class="st">"Year"</span>, <span class="at">ylab=</span><span class="st">"Average Rating"</span>)</span>
-<span id="cb82-304"><a href="#cb82-304" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span> averageRating, <span class="at">data=</span>s, <span class="at">xlab=</span><span class="st">"Average Rating"</span>)</span>
-<span id="cb82-305"><a href="#cb82-305" aria-hidden="true" tabindex="-1"></a>(samp_stats <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span> averageRating, <span class="at">data =</span> s))</span>
+<span id="cb82-298"><a href="#cb82-298" aria-hidden="true" tabindex="-1"></a><span class="in">n &lt;- 100</span></span>
+<span id="cb82-299"><a href="#cb82-299" aria-hidden="true" tabindex="-1"></a><span class="in">s &lt;- sample_n(d, size=n, replace=FALSE)</span></span>
+<span id="cb82-300"><a href="#cb82-300" aria-hidden="true" tabindex="-1"></a><span class="in"># `sample_n()` from {dplyr} selects rows at random from a data frame</span></span>
+<span id="cb82-301"><a href="#cb82-301" aria-hidden="true" tabindex="-1"></a><span class="in"># it's another SUPER useful function</span></span>
+<span id="cb82-302"><a href="#cb82-302" aria-hidden="true" tabindex="-1"></a><span class="in">table(s$startYear)</span></span>
+<span id="cb82-303"><a href="#cb82-303" aria-hidden="true" tabindex="-1"></a><span class="in">boxplot(averageRating ~ startYear, data=s, xlab="Year", ylab="Average Rating")</span></span>
+<span id="cb82-304"><a href="#cb82-304" aria-hidden="true" tabindex="-1"></a><span class="in">histogram(~ averageRating, data=s, xlab="Average Rating")</span></span>
+<span id="cb82-305"><a href="#cb82-305" aria-hidden="true" tabindex="-1"></a><span class="in">(samp_stats &lt;- favstats(~ averageRating, data = s))</span></span>
 <span id="cb82-306"><a href="#cb82-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-307"><a href="#cb82-307" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-308"><a href="#cb82-308" aria-hidden="true" tabindex="-1"></a>Note that each time we select a sample and calculate summary statistics, such as the mean and standard deviation of a sample, we get slightly different results. If we repeat this sampling process multiple times, we can use the results to generate a **distribution** for a particular summary statistic of interest, e.g., for the mean or the median. This process generates what is called a **sampling distribution** for the statistic.</span>
@@ -1711,20 +1906,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-314"><a href="#cb82-314" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Using the {mosaic} Package {.unnumbered}</span></span>
 <span id="cb82-315"><a href="#cb82-315" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-316"><a href="#cb82-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-317"><a href="#cb82-317" aria-hidden="true" tabindex="-1"></a><span class="co"># using `do(reps) *` from {mosaic} to generate a sampling distribution</span></span>
-<span id="cb82-318"><a href="#cb82-318" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb82-319"><a href="#cb82-319" aria-hidden="true" tabindex="-1"></a>samp_dist_mean <span class="ot">&lt;-</span></span>
-<span id="cb82-320"><a href="#cb82-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">mean</span>(<span class="sc">~</span> averageRating, <span class="at">data=</span><span class="fu">sample_n</span>(d, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb82-321"><a href="#cb82-321" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generates a sampling distribution</span></span>
-<span id="cb82-322"><a href="#cb82-322" aria-hidden="true" tabindex="-1"></a>mean_plot <span class="ot">&lt;-</span></span>
-<span id="cb82-323"><a href="#cb82-323" aria-hidden="true" tabindex="-1"></a>  <span class="fu">histogram</span>( <span class="sc">~</span> mean, <span class="at">data =</span> samp_dist_mean,</span>
-<span id="cb82-324"><a href="#cb82-324" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Sampling Distribution for the</span><span class="sc">\n</span><span class="st">Mean of Average Rating"</span>)</span>
-<span id="cb82-325"><a href="#cb82-325" aria-hidden="true" tabindex="-1"></a>samp_dist_median <span class="ot">&lt;-</span></span>
-<span id="cb82-326"><a href="#cb82-326" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">median</span>( <span class="sc">~</span> averageRating, <span class="at">data =</span> <span class="fu">sample_n</span>(d, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">FALSE</span>))</span>
-<span id="cb82-327"><a href="#cb82-327" aria-hidden="true" tabindex="-1"></a>  <span class="co"># generates a sampling distribution</span></span>
-<span id="cb82-328"><a href="#cb82-328" aria-hidden="true" tabindex="-1"></a>median_plot <span class="ot">&lt;-</span></span>
-<span id="cb82-329"><a href="#cb82-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">histogram</span>(<span class="sc">~</span> median, <span class="at">data=</span>samp_dist_median,</span>
-<span id="cb82-330"><a href="#cb82-330" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">"Sampling Distribution for the</span><span class="sc">\n</span><span class="st">Median of Average Rating"</span>)</span>
+<span id="cb82-317"><a href="#cb82-317" aria-hidden="true" tabindex="-1"></a><span class="in"># using `do(reps) *` from {mosaic} to generate a sampling distribution</span></span>
+<span id="cb82-318"><a href="#cb82-318" aria-hidden="true" tabindex="-1"></a><span class="in">reps &lt;- 1000</span></span>
+<span id="cb82-319"><a href="#cb82-319" aria-hidden="true" tabindex="-1"></a><span class="in">samp_dist_mean &lt;-</span></span>
+<span id="cb82-320"><a href="#cb82-320" aria-hidden="true" tabindex="-1"></a><span class="in">  do(reps) * mean(~ averageRating, data=sample_n(d, size = n, replace = FALSE))</span></span>
+<span id="cb82-321"><a href="#cb82-321" aria-hidden="true" tabindex="-1"></a><span class="in">  # generates a sampling distribution</span></span>
+<span id="cb82-322"><a href="#cb82-322" aria-hidden="true" tabindex="-1"></a><span class="in">mean_plot &lt;-</span></span>
+<span id="cb82-323"><a href="#cb82-323" aria-hidden="true" tabindex="-1"></a><span class="in">  histogram( ~ mean, data = samp_dist_mean,</span></span>
+<span id="cb82-324"><a href="#cb82-324" aria-hidden="true" tabindex="-1"></a><span class="in">    xlab = "Sampling Distribution for the\nMean of Average Rating")</span></span>
+<span id="cb82-325"><a href="#cb82-325" aria-hidden="true" tabindex="-1"></a><span class="in">samp_dist_median &lt;-</span></span>
+<span id="cb82-326"><a href="#cb82-326" aria-hidden="true" tabindex="-1"></a><span class="in">  do(reps) * median( ~ averageRating, data = sample_n(d, size=n, replace=FALSE))</span></span>
+<span id="cb82-327"><a href="#cb82-327" aria-hidden="true" tabindex="-1"></a><span class="in">  # generates a sampling distribution</span></span>
+<span id="cb82-328"><a href="#cb82-328" aria-hidden="true" tabindex="-1"></a><span class="in">median_plot &lt;-</span></span>
+<span id="cb82-329"><a href="#cb82-329" aria-hidden="true" tabindex="-1"></a><span class="in">  histogram(~ median, data=samp_dist_median,</span></span>
+<span id="cb82-330"><a href="#cb82-330" aria-hidden="true" tabindex="-1"></a><span class="in">    xlab = "Sampling Distribution for the\nMedian of Average Rating")</span></span>
 <span id="cb82-331"><a href="#cb82-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-332"><a href="#cb82-332" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-333"><a href="#cb82-333" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Using the {purrr} Package {.unnumbered}</span></span>
@@ -1757,9 +1952,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-364"><a href="#cb82-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-365"><a href="#cb82-365" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-366"><a href="#cb82-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig.height=3}</span></span>
-<span id="cb82-367"><a href="#cb82-367" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb82-368"><a href="#cb82-368" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(mean_plot, median_plot, <span class="at">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb82-369"><a href="#cb82-369" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
+<span id="cb82-367"><a href="#cb82-367" aria-hidden="true" tabindex="-1"></a><span class="in">library(cowplot)</span></span>
+<span id="cb82-368"><a href="#cb82-368" aria-hidden="true" tabindex="-1"></a><span class="in">plot_grid(mean_plot, median_plot, ncol=2)</span></span>
+<span id="cb82-369"><a href="#cb82-369" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:cowplot)</span></span>
 <span id="cb82-370"><a href="#cb82-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-371"><a href="#cb82-371" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-372"><a href="#cb82-372" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **IMPORTANT NOTE:** The histograms we plot in the code above are for **sampling distributions** of the statistics in question. They do not represent the distribution of values in any particular sample! This is SUPER IMPORTANT to recognize and keep in mind.</span></span>
@@ -1767,14 +1962,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-374"><a href="#cb82-374" aria-hidden="true" tabindex="-1"></a>The **mean of the sampling distribution** (i.e., the mean of $\bar{x}$) for a particular statistic should be a really good **point estimate** of the population value for that statistic (i.e., $\mu$). Compare the following to confirm this:</span>
 <span id="cb82-375"><a href="#cb82-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-376"><a href="#cb82-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-377"><a href="#cb82-377" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span> mean, <span class="at">data=</span>samp_dist_mean)</span>
-<span id="cb82-378"><a href="#cb82-378" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the estimated population mean calculated as the</span></span>
-<span id="cb82-379"><a href="#cb82-379" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of the sampling distribution of sample means</span></span>
-<span id="cb82-380"><a href="#cb82-380" aria-hidden="true" tabindex="-1"></a>pop_stats<span class="sc">$</span>mean <span class="co"># true population mean</span></span>
-<span id="cb82-381"><a href="#cb82-381" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">~</span> median, <span class="at">data=</span>samp_dist_median)</span>
-<span id="cb82-382"><a href="#cb82-382" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the estimated population median calculated as the</span></span>
-<span id="cb82-383"><a href="#cb82-383" aria-hidden="true" tabindex="-1"></a><span class="co"># mean of the sampling distribution of sample medians</span></span>
-<span id="cb82-384"><a href="#cb82-384" aria-hidden="true" tabindex="-1"></a>pop_stats<span class="sc">$</span>median <span class="co"># true population median</span></span>
+<span id="cb82-377"><a href="#cb82-377" aria-hidden="true" tabindex="-1"></a><span class="in">mean(~ mean, data=samp_dist_mean)</span></span>
+<span id="cb82-378"><a href="#cb82-378" aria-hidden="true" tabindex="-1"></a><span class="in"># this is the estimated population mean calculated as the</span></span>
+<span id="cb82-379"><a href="#cb82-379" aria-hidden="true" tabindex="-1"></a><span class="in"># mean of the sampling distribution of sample means</span></span>
+<span id="cb82-380"><a href="#cb82-380" aria-hidden="true" tabindex="-1"></a><span class="in">pop_stats$mean # true population mean</span></span>
+<span id="cb82-381"><a href="#cb82-381" aria-hidden="true" tabindex="-1"></a><span class="in">mean(~ median, data=samp_dist_median)</span></span>
+<span id="cb82-382"><a href="#cb82-382" aria-hidden="true" tabindex="-1"></a><span class="in"># this is the estimated population median calculated as the</span></span>
+<span id="cb82-383"><a href="#cb82-383" aria-hidden="true" tabindex="-1"></a><span class="in"># mean of the sampling distribution of sample medians</span></span>
+<span id="cb82-384"><a href="#cb82-384" aria-hidden="true" tabindex="-1"></a><span class="in">pop_stats$median # true population median</span></span>
 <span id="cb82-385"><a href="#cb82-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-386"><a href="#cb82-386" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-387"><a href="#cb82-387" aria-hidden="true" tabindex="-1"></a><span class="fu">### Standard Errors {.unnumbered}</span></span>
@@ -1790,20 +1985,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-397"><a href="#cb82-397" aria-hidden="true" tabindex="-1"></a>To estimate the SE from a sampling distribution, we simply take the standard standard deviation of the set of values comprising that distribution. Above, we used the <span class="in">`do() * &lt;function&gt;`</span> construction to generate sampling distributions for the mean and median of average viewer ratings in the "movies.csv" dataset, so all we need to do is pull out the standard deviation of those distributions to estimate the standard error.</span>
 <span id="cb82-398"><a href="#cb82-398" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-399"><a href="#cb82-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-400"><a href="#cb82-400" aria-hidden="true" tabindex="-1"></a>se_mean <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span> mean, <span class="at">data=</span>samp_dist_mean)<span class="sc">$</span>sd</span>
-<span id="cb82-401"><a href="#cb82-401" aria-hidden="true" tabindex="-1"></a><span class="co"># or, se_mean &lt;- sd(samp_dist_mean$mean)</span></span>
-<span id="cb82-402"><a href="#cb82-402" aria-hidden="true" tabindex="-1"></a>(<span class="fu">paste0</span>( <span class="st">"Estimated population mean = "</span>,</span>
-<span id="cb82-403"><a href="#cb82-403" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">favstats</span>(<span class="sc">~</span> mean, <span class="at">data=</span>samp_dist_mean)<span class="sc">$</span>mean,<span class="dv">3</span>),</span>
-<span id="cb82-404"><a href="#cb82-404" aria-hidden="true" tabindex="-1"></a>  <span class="st">" ± "</span>, <span class="fu">round</span>(se_mean,<span class="dv">3</span>),</span>
-<span id="cb82-405"><a href="#cb82-405" aria-hidden="true" tabindex="-1"></a>  <span class="st">" SE based on "</span>, reps, <span class="st">" samples of size "</span>, n))</span>
+<span id="cb82-400"><a href="#cb82-400" aria-hidden="true" tabindex="-1"></a><span class="in">se_mean &lt;- favstats(~ mean, data=samp_dist_mean)$sd</span></span>
+<span id="cb82-401"><a href="#cb82-401" aria-hidden="true" tabindex="-1"></a><span class="in"># or, se_mean &lt;- sd(samp_dist_mean$mean)</span></span>
+<span id="cb82-402"><a href="#cb82-402" aria-hidden="true" tabindex="-1"></a><span class="in">(paste0( "Estimated population mean = ",</span></span>
+<span id="cb82-403"><a href="#cb82-403" aria-hidden="true" tabindex="-1"></a><span class="in">  round(favstats(~ mean, data=samp_dist_mean)$mean,3),</span></span>
+<span id="cb82-404"><a href="#cb82-404" aria-hidden="true" tabindex="-1"></a><span class="in">  " ± ", round(se_mean,3),</span></span>
+<span id="cb82-405"><a href="#cb82-405" aria-hidden="true" tabindex="-1"></a><span class="in">  " SE based on ", reps, " samples of size ", n))</span></span>
 <span id="cb82-406"><a href="#cb82-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-407"><a href="#cb82-407" aria-hidden="true" tabindex="-1"></a>se_median <span class="ot">&lt;-</span> <span class="fu">favstats</span>(<span class="sc">~</span> median, <span class="at">data=</span>samp_dist_median)<span class="sc">$</span>sd</span>
-<span id="cb82-408"><a href="#cb82-408" aria-hidden="true" tabindex="-1"></a><span class="co"># or, se_median &lt;- sd(samp_dist_median$median)</span></span>
+<span id="cb82-407"><a href="#cb82-407" aria-hidden="true" tabindex="-1"></a><span class="in">se_median &lt;- favstats(~ median, data=samp_dist_median)$sd</span></span>
+<span id="cb82-408"><a href="#cb82-408" aria-hidden="true" tabindex="-1"></a><span class="in"># or, se_median &lt;- sd(samp_dist_median$median)</span></span>
 <span id="cb82-409"><a href="#cb82-409" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-410"><a href="#cb82-410" aria-hidden="true" tabindex="-1"></a>(<span class="fu">paste0</span>( <span class="st">"Estimated population median = "</span>,</span>
-<span id="cb82-411"><a href="#cb82-411" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">favstats</span>(<span class="sc">~</span> median, <span class="at">data=</span>samp_dist_median)<span class="sc">$</span>mean, <span class="dv">3</span>),</span>
-<span id="cb82-412"><a href="#cb82-412" aria-hidden="true" tabindex="-1"></a>  <span class="st">" ± "</span>, <span class="fu">round</span>(se_median,<span class="dv">3</span>),</span>
-<span id="cb82-413"><a href="#cb82-413" aria-hidden="true" tabindex="-1"></a>  <span class="st">" SE based on "</span>, reps, <span class="st">" samples of size "</span>, n))</span>
+<span id="cb82-410"><a href="#cb82-410" aria-hidden="true" tabindex="-1"></a><span class="in">(paste0( "Estimated population median = ",</span></span>
+<span id="cb82-411"><a href="#cb82-411" aria-hidden="true" tabindex="-1"></a><span class="in">  round(favstats(~ median, data=samp_dist_median)$mean, 3),</span></span>
+<span id="cb82-412"><a href="#cb82-412" aria-hidden="true" tabindex="-1"></a><span class="in">  " ± ", round(se_median,3),</span></span>
+<span id="cb82-413"><a href="#cb82-413" aria-hidden="true" tabindex="-1"></a><span class="in">  " SE based on ", reps, " samples of size ", n))</span></span>
 <span id="cb82-414"><a href="#cb82-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-415"><a href="#cb82-415" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-416"><a href="#cb82-416" aria-hidden="true" tabindex="-1"></a>As we might expect for any measure of uncertainty or error, the **SE** [1] increases with the variability in a sample (i.e., estimates based on high-variability samples should be more uncertain) and [2] decreases with the size of the sample (i.e., estimates based on larger samples should be less uncertain). The **SE** thus reflects a ratio of variance to sample size.</span>
@@ -1816,34 +2011,34 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-423"><a href="#cb82-423" aria-hidden="true" tabindex="-1"></a>We can explore these two questions with the following code... note that we just take one set of 2000 replicates and then resample from that randomly to explore the impact of different, smaller numbers of replicates:</span>
 <span id="cb82-424"><a href="#cb82-424" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-425"><a href="#cb82-425" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-426"><a href="#cb82-426" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb82-427"><a href="#cb82-427" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"n"</span><span class="ot">=</span><span class="fu">numeric</span>(),</span>
-<span id="cb82-428"><a href="#cb82-428" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mean"</span><span class="ot">=</span><span class="fu">numeric</span>(),</span>
-<span id="cb82-429"><a href="#cb82-429" aria-hidden="true" tabindex="-1"></a>  <span class="st">".index"</span><span class="ot">=</span><span class="fu">numeric</span>())</span>
+<span id="cb82-426"><a href="#cb82-426" aria-hidden="true" tabindex="-1"></a><span class="in">reps &lt;- 2000</span></span>
+<span id="cb82-427"><a href="#cb82-427" aria-hidden="true" tabindex="-1"></a><span class="in">s &lt;- tibble("n"=numeric(),</span></span>
+<span id="cb82-428"><a href="#cb82-428" aria-hidden="true" tabindex="-1"></a><span class="in">  "mean"=numeric(),</span></span>
+<span id="cb82-429"><a href="#cb82-429" aria-hidden="true" tabindex="-1"></a><span class="in">  ".index"=numeric())</span></span>
 <span id="cb82-430"><a href="#cb82-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-431"><a href="#cb82-431" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">20</span>, <span class="at">to=</span><span class="dv">200</span>, <span class="at">by=</span><span class="dv">20</span>)){</span>
-<span id="cb82-432"><a href="#cb82-432" aria-hidden="true" tabindex="-1"></a>  samp_dist <span class="ot">&lt;-</span> {<span class="fu">do</span>(reps) <span class="sc">*</span> <span class="fu">sample_n</span>(d, <span class="at">size=</span>n, <span class="at">replace=</span><span class="cn">FALSE</span>)} <span class="sc">%&gt;%</span></span>
-<span id="cb82-433"><a href="#cb82-433" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(.index) <span class="sc">%&gt;%</span></span>
-<span id="cb82-434"><a href="#cb82-434" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean=</span><span class="fu">mean</span>(averageRating)) <span class="sc">%&gt;%</span></span>
-<span id="cb82-435"><a href="#cb82-435" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">n=</span>n)</span>
-<span id="cb82-436"><a href="#cb82-436" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(s,</span>
-<span id="cb82-437"><a href="#cb82-437" aria-hidden="true" tabindex="-1"></a>       samp_dist)</span>
-<span id="cb82-438"><a href="#cb82-438" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-431"><a href="#cb82-431" aria-hidden="true" tabindex="-1"></a><span class="in">for (n in seq(from=20, to=200, by=20)){</span></span>
+<span id="cb82-432"><a href="#cb82-432" aria-hidden="true" tabindex="-1"></a><span class="in">  samp_dist &lt;- {do(reps) * sample_n(d, size=n, replace=FALSE)} %&gt;%</span></span>
+<span id="cb82-433"><a href="#cb82-433" aria-hidden="true" tabindex="-1"></a><span class="in">    group_by(.index) %&gt;%</span></span>
+<span id="cb82-434"><a href="#cb82-434" aria-hidden="true" tabindex="-1"></a><span class="in">    dplyr::summarise(mean=mean(averageRating)) %&gt;%</span></span>
+<span id="cb82-435"><a href="#cb82-435" aria-hidden="true" tabindex="-1"></a><span class="in">    mutate(n=n)</span></span>
+<span id="cb82-436"><a href="#cb82-436" aria-hidden="true" tabindex="-1"></a><span class="in">    s &lt;- bind_rows(s,</span></span>
+<span id="cb82-437"><a href="#cb82-437" aria-hidden="true" tabindex="-1"></a><span class="in">       samp_dist)</span></span>
+<span id="cb82-438"><a href="#cb82-438" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb82-439"><a href="#cb82-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-440"><a href="#cb82-440" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"n"</span><span class="ot">=</span><span class="fu">numeric</span>(),</span>
-<span id="cb82-441"><a href="#cb82-441" aria-hidden="true" tabindex="-1"></a>  <span class="st">"reps"</span><span class="ot">=</span><span class="fu">numeric</span>(),</span>
-<span id="cb82-442"><a href="#cb82-442" aria-hidden="true" tabindex="-1"></a>  <span class="st">"samp_dist_mean"</span><span class="ot">=</span><span class="fu">numeric</span>(),</span>
-<span id="cb82-443"><a href="#cb82-443" aria-hidden="true" tabindex="-1"></a>  <span class="st">"samp_dist_se"</span><span class="ot">=</span><span class="fu">numeric</span>())</span>
+<span id="cb82-440"><a href="#cb82-440" aria-hidden="true" tabindex="-1"></a><span class="in">output &lt;- tibble("n"=numeric(),</span></span>
+<span id="cb82-441"><a href="#cb82-441" aria-hidden="true" tabindex="-1"></a><span class="in">  "reps"=numeric(),</span></span>
+<span id="cb82-442"><a href="#cb82-442" aria-hidden="true" tabindex="-1"></a><span class="in">  "samp_dist_mean"=numeric(),</span></span>
+<span id="cb82-443"><a href="#cb82-443" aria-hidden="true" tabindex="-1"></a><span class="in">  "samp_dist_se"=numeric())</span></span>
 <span id="cb82-444"><a href="#cb82-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-445"><a href="#cb82-445" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (reps <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">250</span>,<span class="dv">500</span>,<span class="dv">1000</span>,<span class="dv">2000</span>)){</span>
-<span id="cb82-446"><a href="#cb82-446" aria-hidden="true" tabindex="-1"></a>  subsample <span class="ot">&lt;-</span> s <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb82-447"><a href="#cb82-447" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(reps, <span class="at">replace =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb82-448"><a href="#cb82-448" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">samp_dist_mean=</span><span class="fu">mean</span>(mean),</span>
-<span id="cb82-449"><a href="#cb82-449" aria-hidden="true" tabindex="-1"></a>    <span class="at">samp_dist_se=</span><span class="fu">sd</span>(mean)) <span class="sc">%&gt;%</span></span>
-<span id="cb82-450"><a href="#cb82-450" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">reps=</span>reps)</span>
-<span id="cb82-451"><a href="#cb82-451" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(output,</span>
-<span id="cb82-452"><a href="#cb82-452" aria-hidden="true" tabindex="-1"></a>    subsample)</span>
-<span id="cb82-453"><a href="#cb82-453" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-445"><a href="#cb82-445" aria-hidden="true" tabindex="-1"></a><span class="in">for (reps in c(10,25,50,100,250,500,1000,2000)){</span></span>
+<span id="cb82-446"><a href="#cb82-446" aria-hidden="true" tabindex="-1"></a><span class="in">  subsample &lt;- s %&gt;% group_by(n) %&gt;%</span></span>
+<span id="cb82-447"><a href="#cb82-447" aria-hidden="true" tabindex="-1"></a><span class="in">  sample_n(reps, replace = FALSE) %&gt;%</span></span>
+<span id="cb82-448"><a href="#cb82-448" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::summarise(samp_dist_mean=mean(mean),</span></span>
+<span id="cb82-449"><a href="#cb82-449" aria-hidden="true" tabindex="-1"></a><span class="in">    samp_dist_se=sd(mean)) %&gt;%</span></span>
+<span id="cb82-450"><a href="#cb82-450" aria-hidden="true" tabindex="-1"></a><span class="in">    mutate(reps=reps)</span></span>
+<span id="cb82-451"><a href="#cb82-451" aria-hidden="true" tabindex="-1"></a><span class="in">  output &lt;- bind_rows(output,</span></span>
+<span id="cb82-452"><a href="#cb82-452" aria-hidden="true" tabindex="-1"></a><span class="in">    subsample)</span></span>
+<span id="cb82-453"><a href="#cb82-453" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb82-454"><a href="#cb82-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-455"><a href="#cb82-455" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-458"><a href="#cb82-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -1870,9 +2065,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-479"><a href="#cb82-479" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-480"><a href="#cb82-480" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-481"><a href="#cb82-481" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE, fig.height=5}</span></span>
-<span id="cb82-482"><a href="#cb82-482" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb82-483"><a href="#cb82-483" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1, p2, p3, <span class="at">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb82-484"><a href="#cb82-484" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
+<span id="cb82-482"><a href="#cb82-482" aria-hidden="true" tabindex="-1"></a><span class="in">library(cowplot)</span></span>
+<span id="cb82-483"><a href="#cb82-483" aria-hidden="true" tabindex="-1"></a><span class="in">plot_grid(p1, p2, p3, nrow=3)</span></span>
+<span id="cb82-484"><a href="#cb82-484" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:cowplot)</span></span>
 <span id="cb82-485"><a href="#cb82-485" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-486"><a href="#cb82-486" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-487"><a href="#cb82-487" aria-hidden="true" tabindex="-1"></a>Notice that as the number of replicates increases, our estimates of both the mean and SE become less variable, while as the sample size increases, our SE decreases (and our estimate of the mean thus becomes less uncertain), regardless of number of replicates.</span>
@@ -1937,18 +2132,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb82-550"><a href="#cb82-550" aria-hidden="true" tabindex="-1"></a>The package {sciplot} includes the function, <span class="in">`se()`</span>, for calculating standard errors (as do others).</span>
 <span id="cb82-551"><a href="#cb82-551" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-552"><a href="#cb82-552" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE}</span></span>
-<span id="cb82-553"><a href="#cb82-553" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sciplot)</span>
-<span id="cb82-554"><a href="#cb82-554" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(new_sample,</span>
-<span id="cb82-555"><a href="#cb82-555" aria-hidden="true" tabindex="-1"></a>  <span class="at">se4 =</span> sciplot<span class="sc">::</span><span class="fu">se</span>(averageRating)</span>
-<span id="cb82-556"><a href="#cb82-556" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb82-557"><a href="#cb82-557" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sciplot)</span>
+<span id="cb82-553"><a href="#cb82-553" aria-hidden="true" tabindex="-1"></a><span class="in">library(sciplot)</span></span>
+<span id="cb82-554"><a href="#cb82-554" aria-hidden="true" tabindex="-1"></a><span class="in">summarize(new_sample,</span></span>
+<span id="cb82-555"><a href="#cb82-555" aria-hidden="true" tabindex="-1"></a><span class="in">  se4 = sciplot::se(averageRating)</span></span>
+<span id="cb82-556"><a href="#cb82-556" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb82-557"><a href="#cb82-557" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:sciplot)</span></span>
 <span id="cb82-558"><a href="#cb82-558" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-559"><a href="#cb82-559" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-560"><a href="#cb82-560" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb82-561"><a href="#cb82-561" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mosaic)</span>
+<span id="cb82-561"><a href="#cb82-561" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mosaic)</span></span>
 <span id="cb82-562"><a href="#cb82-562" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb82-563"><a href="#cb82-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-564"><a href="#cb82-564" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;hr&gt;</span></span>
+<span id="cb82-564"><a href="#cb82-564" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
 <span id="cb82-565"><a href="#cb82-565" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-566"><a href="#cb82-566" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
 <span id="cb82-567"><a href="#cb82-567" aria-hidden="true" tabindex="-1"></a></span>
@@ -1980,6 +2175,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 

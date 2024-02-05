@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.548">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,12 +96,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
 
 
 <link rel="stylesheet" href="css/style.css">
@@ -107,12 +119,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-01.html">Exercise 01</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-01.html">Exercise 01</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -122,8 +134,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./img/statistics-hand.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
@@ -334,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
@@ -356,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-01.html">Exercise 01</a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Exercise 01</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
@@ -371,7 +383,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="send-emails-programmatically" class="level1 unnumbered">
 <h1 class="unnumbered">Send Emails Programmatically</h1>
@@ -400,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/user-manage-google.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/user-manage-google.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -410,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/user-manage-utexas.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/user-manage-utexas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -422,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/security.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/security.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -432,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/2-step.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/2-step.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -442,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/app-passwords.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/app-passwords.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -454,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/app-name.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/app-name.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -464,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/password.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<p><img src="img/password.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -504,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/install-packages.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="img/install-packages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -963,10 +977,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -976,8 +989,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -990,6 +1012,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1033,6 +1174,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1058,6 +1200,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1119,12 +1287,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./12-module.html" class="pagination-link">
+      <a href="./12-module.html" class="pagination-link  aria-label=" &lt;span="" tendency="" and="" spread&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercise-02.html" class="pagination-link">
+      <a href="./exercise-02.html" class="pagination-link" aria-label="Exercise 02">
         <span class="nav-page-text">Exercise 02</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1146,11 +1314,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>If you have a personal Microsoft **Outlook** email account, set up a variable to hold your password...</span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>pwd_outlook <span class="ot">&lt;-</span> <span class="st">"Yasuni#1"</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="in">pwd_outlook &lt;- "Yasuni#1"</span></span>
 <span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>pwd_outlook <span class="ot">&lt;-</span> <span class="st">""</span> <span class="co"># enter your password between the quotation marks</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="in">pwd_outlook &lt;- "" # enter your password between the quotation marks</span></span>
 <span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>If you have a Google **Gmail** account (either a personal one or one associated with UT, e.g., a <span class="in">`&lt;username&gt;@utexas.edu`</span> account) with 2-factor authorization established, you can follow the steps below to create an "app password" that you can use for authentication.</span>
@@ -1158,42 +1326,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Log into your Google account or your UT Gmail account on a web browser, click on your user icon and choose "Manage your Google Account". For example...</span>
 <span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/user-manage-google.png"</span>)</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/user-manage-google.png")</span></span>
 <span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>... OR ...</span>
 <span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/user-manage-utexas.png"</span>)</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/user-manage-utexas.png")</span></span>
 <span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Select "Security"...</span>
 <span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/security.png"</span>)</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/security.png")</span></span>
 <span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>... and in the window that opens scroll down to the section on "2-Step Verification" and click the arrow at the right.</span>
 <span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/2-step.png"</span>)</span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/2-step.png")</span></span>
 <span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>At this point, you may need to provide information to verify your identity, e.g., by entering a password and/or entering a code you receive from Google. Once in the "Security" section, scroll down to the bottom of the page to the section on "App passwords" and click the "App passwords" button.</span>
 <span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/app-passwords.png"</span>)</span>
+<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/app-passwords.png")</span></span>
 <span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a "new app specific password" by typing a name for the password in the grey field and then click "Create". The name does not matter, but here I have called it "R".</span>
 <span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/app-name.png"</span>)</span>
+<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/app-name.png")</span></span>
 <span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-61"><a href="#cb30-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-62"><a href="#cb30-62" aria-hidden="true" tabindex="-1"></a>Google will create new 16-digit password that you can use in lieu of your actual Google password when sending emails via Gmail in the {emayili} and {blastula} functions below. Copy and save this code in a safe place!</span>
 <span id="cb30-63"><a href="#cb30-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-64"><a href="#cb30-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="90%"}</span></span>
-<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/password.png"</span>)</span>
+<span id="cb30-65"><a href="#cb30-65" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/password.png")</span></span>
 <span id="cb30-66"><a href="#cb30-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-67"><a href="#cb30-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-68"><a href="#cb30-68" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE**: The code will contain spaces between each set of 4 letters... regardless of whether you cut out or include those white spaces, your app password should function just the same.</span></span>
@@ -1201,11 +1369,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-70"><a href="#cb30-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For ease, then set up a variable to hold your app password...</span>
 <span id="cb30-71"><a href="#cb30-71" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-72"><a href="#cb30-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb30-73"><a href="#cb30-73" aria-hidden="true" tabindex="-1"></a>pwd_gmail <span class="ot">&lt;-</span> <span class="st">"oann fncs lzij kdst"</span></span>
+<span id="cb30-73"><a href="#cb30-73" aria-hidden="true" tabindex="-1"></a><span class="in">pwd_gmail &lt;- "oann fncs lzij kdst"</span></span>
 <span id="cb30-74"><a href="#cb30-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-75"><a href="#cb30-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-76"><a href="#cb30-76" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-77"><a href="#cb30-77" aria-hidden="true" tabindex="-1"></a>pwd_gmail <span class="ot">&lt;-</span> <span class="st">""</span> <span class="co"># enter your app password between the quotation marks</span></span>
+<span id="cb30-77"><a href="#cb30-77" aria-hidden="true" tabindex="-1"></a><span class="in">pwd_gmail &lt;- "" # enter your app password between the quotation marks</span></span>
 <span id="cb30-78"><a href="#cb30-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-79"><a href="#cb30-79" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-80"><a href="#cb30-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Version 1: Using the {emayaili} package {.unnumbered}</span></span>
@@ -1221,18 +1389,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-90"><a href="#cb30-90" aria-hidden="true" tabindex="-1"></a>We can do this at the ***R*** console prompt...</span>
 <span id="cb30-91"><a href="#cb30-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-92"><a href="#cb30-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-93"><a href="#cb30-93" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"emayili"</span>)</span>
-<span id="cb30-94"><a href="#cb30-94" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb30-93"><a href="#cb30-93" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("emayili")</span></span>
+<span id="cb30-94"><a href="#cb30-94" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("tidyverse")</span></span>
 <span id="cb30-95"><a href="#cb30-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-96"><a href="#cb30-96" aria-hidden="true" tabindex="-1"></a><span class="co"># or to install both packages together...</span></span>
+<span id="cb30-96"><a href="#cb30-96" aria-hidden="true" tabindex="-1"></a><span class="in"># or to install both packages together...</span></span>
 <span id="cb30-97"><a href="#cb30-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-98"><a href="#cb30-98" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"emayili"</span>, <span class="st">"tidyverse"</span>))</span>
+<span id="cb30-98"><a href="#cb30-98" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages(c("emayili", "tidyverse"))</span></span>
 <span id="cb30-99"><a href="#cb30-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-100"><a href="#cb30-100" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-101"><a href="#cb30-101" aria-hidden="true" tabindex="-1"></a>We can also do this by using the package manager in ***RStudio***.</span>
 <span id="cb30-102"><a href="#cb30-102" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-103"><a href="#cb30-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE, out.width="80%"}</span></span>
-<span id="cb30-104"><a href="#cb30-104" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/install-packages.png"</span>)</span>
+<span id="cb30-104"><a href="#cb30-104" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("img/install-packages.png")</span></span>
 <span id="cb30-105"><a href="#cb30-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-106"><a href="#cb30-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-107"><a href="#cb30-107" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 2 {.unnumbered}</span></span>
@@ -1240,8 +1408,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-109"><a href="#cb30-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load and attach these packages to the search path so you can call functions they contain.</span>
 <span id="cb30-110"><a href="#cb30-110" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-111"><a href="#cb30-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message = FALSE}</span></span>
-<span id="cb30-112"><a href="#cb30-112" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emayili)</span>
-<span id="cb30-113"><a href="#cb30-113" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-112"><a href="#cb30-112" aria-hidden="true" tabindex="-1"></a><span class="in">library(emayili)</span></span>
+<span id="cb30-113"><a href="#cb30-113" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
 <span id="cb30-114"><a href="#cb30-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-115"><a href="#cb30-115" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-116"><a href="#cb30-116" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** We can also use </span><span class="in">`require()`</span><span class="at"> in lieu of </span><span class="in">`library()`</span><span class="at">.</span></span>
@@ -1330,13 +1498,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-211"><a href="#cb30-211" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Send your message by passing it as an argument to the server object. Then, CHECK YOUR EMAIL to confirm that you receive the message.</span>
 <span id="cb30-212"><a href="#cb30-212" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-213"><a href="#cb30-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-214"><a href="#cb30-214" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
-<span id="cb30-215"><a href="#cb30-215" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_gmail</span>(message_gmail, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-214"><a href="#cb30-214" aria-hidden="true" tabindex="-1"></a><span class="in"># send using Google's servers...</span></span>
+<span id="cb30-215"><a href="#cb30-215" aria-hidden="true" tabindex="-1"></a><span class="in">smtp_gmail(message_gmail, verbose = TRUE)</span></span>
 <span id="cb30-216"><a href="#cb30-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-217"><a href="#cb30-217" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsoft's servers...</span></span>
-<span id="cb30-218"><a href="#cb30-218" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_outlook365</span>(message_outlook365, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-217"><a href="#cb30-217" aria-hidden="true" tabindex="-1"></a><span class="in"># send using Microsoft's servers...</span></span>
+<span id="cb30-218"><a href="#cb30-218" aria-hidden="true" tabindex="-1"></a><span class="in">smtp_outlook365(message_outlook365, verbose = TRUE)</span></span>
 <span id="cb30-219"><a href="#cb30-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-220"><a href="#cb30-220" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: setting `verbose = FALSE` (or omitting the argument) will suppress output to the console</span></span>
+<span id="cb30-220"><a href="#cb30-220" aria-hidden="true" tabindex="-1"></a><span class="in"># NOTE: setting `verbose = FALSE` (or omitting the argument) will suppress output to the console</span></span>
 <span id="cb30-221"><a href="#cb30-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-222"><a href="#cb30-222" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-223"><a href="#cb30-223" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Next Steps? {.unnumbered}</span></span>
@@ -1352,7 +1520,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-233"><a href="#cb30-233" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install the {mailR} package.</span>
 <span id="cb30-234"><a href="#cb30-234" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-235"><a href="#cb30-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-236"><a href="#cb30-236" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"mailR"</span>)</span>
+<span id="cb30-236"><a href="#cb30-236" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("mailR")</span></span>
 <span id="cb30-237"><a href="#cb30-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-238"><a href="#cb30-238" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-239"><a href="#cb30-239" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 2 {.unnumbered}</span></span>
@@ -1372,42 +1540,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-255"><a href="#cb30-255" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>If port 587 is used, either the argument <span class="in">`ssl=`</span> or <span class="in">`tls=`</span> should be set to TRUE</span>
 <span id="cb30-256"><a href="#cb30-256" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-257"><a href="#cb30-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-258"><a href="#cb30-258" aria-hidden="true" tabindex="-1"></a><span class="fu">send.mail</span>(</span>
-<span id="cb30-259"><a href="#cb30-259" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-260"><a href="#cb30-260" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-261"><a href="#cb30-261" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {mailR}"</span>,</span>
-<span id="cb30-262"><a href="#cb30-262" aria-hidden="true" tabindex="-1"></a>  <span class="at">body =</span> <span class="st">"Hello! This is a plain text message sent from a Gmail account."</span>,</span>
-<span id="cb30-263"><a href="#cb30-263" aria-hidden="true" tabindex="-1"></a>  <span class="at">smtp =</span> <span class="fu">list</span>(</span>
-<span id="cb30-264"><a href="#cb30-264" aria-hidden="true" tabindex="-1"></a>    <span class="at">host.name =</span> <span class="st">"smtp.gmail.com"</span>,</span>
-<span id="cb30-265"><a href="#cb30-265" aria-hidden="true" tabindex="-1"></a>    <span class="at">port =</span> <span class="dv">587</span>,</span>
-<span id="cb30-266"><a href="#cb30-266" aria-hidden="true" tabindex="-1"></a>    <span class="at">user.name =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-267"><a href="#cb30-267" aria-hidden="true" tabindex="-1"></a>    <span class="at">passwd =</span> pwd_gmail,</span>
-<span id="cb30-268"><a href="#cb30-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">ssl =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-269"><a href="#cb30-269" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb30-270"><a href="#cb30-270" aria-hidden="true" tabindex="-1"></a>  <span class="at">authenticate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-271"><a href="#cb30-271" aria-hidden="true" tabindex="-1"></a>  <span class="at">send =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-272"><a href="#cb30-272" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-258"><a href="#cb30-258" aria-hidden="true" tabindex="-1"></a><span class="in">send.mail(</span></span>
+<span id="cb30-259"><a href="#cb30-259" aria-hidden="true" tabindex="-1"></a><span class="in">  from = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-260"><a href="#cb30-260" aria-hidden="true" tabindex="-1"></a><span class="in">  to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-261"><a href="#cb30-261" aria-hidden="true" tabindex="-1"></a><span class="in">  subject = "Sending a message using {mailR}",</span></span>
+<span id="cb30-262"><a href="#cb30-262" aria-hidden="true" tabindex="-1"></a><span class="in">  body = "Hello! This is a plain text message sent from a Gmail account.",</span></span>
+<span id="cb30-263"><a href="#cb30-263" aria-hidden="true" tabindex="-1"></a><span class="in">  smtp = list(</span></span>
+<span id="cb30-264"><a href="#cb30-264" aria-hidden="true" tabindex="-1"></a><span class="in">    host.name = "smtp.gmail.com",</span></span>
+<span id="cb30-265"><a href="#cb30-265" aria-hidden="true" tabindex="-1"></a><span class="in">    port = 587,</span></span>
+<span id="cb30-266"><a href="#cb30-266" aria-hidden="true" tabindex="-1"></a><span class="in">    user.name = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-267"><a href="#cb30-267" aria-hidden="true" tabindex="-1"></a><span class="in">    passwd = pwd_gmail,</span></span>
+<span id="cb30-268"><a href="#cb30-268" aria-hidden="true" tabindex="-1"></a><span class="in">    ssl = TRUE</span></span>
+<span id="cb30-269"><a href="#cb30-269" aria-hidden="true" tabindex="-1"></a><span class="in">  ),</span></span>
+<span id="cb30-270"><a href="#cb30-270" aria-hidden="true" tabindex="-1"></a><span class="in">  authenticate = TRUE,</span></span>
+<span id="cb30-271"><a href="#cb30-271" aria-hidden="true" tabindex="-1"></a><span class="in">  send = TRUE</span></span>
+<span id="cb30-272"><a href="#cb30-272" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-273"><a href="#cb30-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-274"><a href="#cb30-274" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-275"><a href="#cb30-275" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using Microsoft's Outlook/Office365 server...</span>
 <span id="cb30-276"><a href="#cb30-276" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>To use the Outlook/Office365 server, <span class="in">`port=`</span> should be set to 587 and the argument <span class="in">`tls=`</span> (and not <span class="in">`ssl=`</span>) must be set to TRUE to allow TLS encryption.</span>
 <span id="cb30-277"><a href="#cb30-277" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-278"><a href="#cb30-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-279"><a href="#cb30-279" aria-hidden="true" tabindex="-1"></a><span class="fu">send.mail</span>(</span>
-<span id="cb30-280"><a href="#cb30-280" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-281"><a href="#cb30-281" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-282"><a href="#cb30-282" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {mailR}"</span>,</span>
-<span id="cb30-283"><a href="#cb30-283" aria-hidden="true" tabindex="-1"></a>  <span class="at">body =</span> <span class="st">"Hello! This is a plain text message sent from an Outlook account."</span>,</span>
-<span id="cb30-284"><a href="#cb30-284" aria-hidden="true" tabindex="-1"></a>  <span class="at">smtp =</span> <span class="fu">list</span>(</span>
-<span id="cb30-285"><a href="#cb30-285" aria-hidden="true" tabindex="-1"></a>    <span class="at">host.name =</span> <span class="st">"smtp.office365.com"</span>,</span>
-<span id="cb30-286"><a href="#cb30-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">port =</span> <span class="dv">587</span>,</span>
-<span id="cb30-287"><a href="#cb30-287" aria-hidden="true" tabindex="-1"></a>    <span class="at">user.name =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-288"><a href="#cb30-288" aria-hidden="true" tabindex="-1"></a>    <span class="at">passwd =</span> pwd_outlook,</span>
-<span id="cb30-289"><a href="#cb30-289" aria-hidden="true" tabindex="-1"></a>    <span class="at">tls =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-290"><a href="#cb30-290" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb30-291"><a href="#cb30-291" aria-hidden="true" tabindex="-1"></a>  <span class="at">authenticate =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb30-292"><a href="#cb30-292" aria-hidden="true" tabindex="-1"></a>  <span class="at">send =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-293"><a href="#cb30-293" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-279"><a href="#cb30-279" aria-hidden="true" tabindex="-1"></a><span class="in">send.mail(</span></span>
+<span id="cb30-280"><a href="#cb30-280" aria-hidden="true" tabindex="-1"></a><span class="in">  from = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-281"><a href="#cb30-281" aria-hidden="true" tabindex="-1"></a><span class="in">  to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-282"><a href="#cb30-282" aria-hidden="true" tabindex="-1"></a><span class="in">  subject = "Sending a message using {mailR}",</span></span>
+<span id="cb30-283"><a href="#cb30-283" aria-hidden="true" tabindex="-1"></a><span class="in">  body = "Hello! This is a plain text message sent from an Outlook account.",</span></span>
+<span id="cb30-284"><a href="#cb30-284" aria-hidden="true" tabindex="-1"></a><span class="in">  smtp = list(</span></span>
+<span id="cb30-285"><a href="#cb30-285" aria-hidden="true" tabindex="-1"></a><span class="in">    host.name = "smtp.office365.com",</span></span>
+<span id="cb30-286"><a href="#cb30-286" aria-hidden="true" tabindex="-1"></a><span class="in">    port = 587,</span></span>
+<span id="cb30-287"><a href="#cb30-287" aria-hidden="true" tabindex="-1"></a><span class="in">    user.name = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-288"><a href="#cb30-288" aria-hidden="true" tabindex="-1"></a><span class="in">    passwd = pwd_outlook,</span></span>
+<span id="cb30-289"><a href="#cb30-289" aria-hidden="true" tabindex="-1"></a><span class="in">    tls = TRUE</span></span>
+<span id="cb30-290"><a href="#cb30-290" aria-hidden="true" tabindex="-1"></a><span class="in">  ),</span></span>
+<span id="cb30-291"><a href="#cb30-291" aria-hidden="true" tabindex="-1"></a><span class="in">  authenticate = TRUE,</span></span>
+<span id="cb30-292"><a href="#cb30-292" aria-hidden="true" tabindex="-1"></a><span class="in">  send = TRUE</span></span>
+<span id="cb30-293"><a href="#cb30-293" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-294"><a href="#cb30-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-295"><a href="#cb30-295" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-296"><a href="#cb30-296" aria-hidden="true" tabindex="-1"></a><span class="fu">## Version 3: Using the {blastula} package {.unnumbered}</span></span>
@@ -1421,7 +1589,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-304"><a href="#cb30-304" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install the {blastula} package.</span>
 <span id="cb30-305"><a href="#cb30-305" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-306"><a href="#cb30-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-307"><a href="#cb30-307" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"blastula"</span>)</span>
+<span id="cb30-307"><a href="#cb30-307" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("blastula")</span></span>
 <span id="cb30-308"><a href="#cb30-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-309"><a href="#cb30-309" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-310"><a href="#cb30-310" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 2 {.unnumbered}</span></span>
@@ -1488,19 +1656,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-379"><a href="#cb30-379" aria-hidden="true" tabindex="-1"></a>The following will create a text file (in <span class="in">`JSON`</span> format) in the current working directory that contains default information for your outgoing mail server, e.g., Google's Gmail server (<span class="in">`host = "smtp.gmail.com"`</span>) or Microsoft's Office365 server (<span class="in">`host = "smtp.office365.com"`</span>), along with your email address and your password. When you run the following lines of code, you will be asked to enter your password, which will then be stored in the credentials file. For a Gmail account, you can use the app password you created above. For an Outlook account, use your standard password.</span>
 <span id="cb30-380"><a href="#cb30-380" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-381"><a href="#cb30-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-382"><a href="#cb30-382" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file for a Gmail account</span></span>
-<span id="cb30-383"><a href="#cb30-383" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(</span>
-<span id="cb30-384"><a href="#cb30-384" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"my_gmail_creds"</span>,</span>
-<span id="cb30-385"><a href="#cb30-385" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-386"><a href="#cb30-386" aria-hidden="true" tabindex="-1"></a>  <span class="at">provider =</span> <span class="st">"gmail"</span></span>
-<span id="cb30-387"><a href="#cb30-387" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-382"><a href="#cb30-382" aria-hidden="true" tabindex="-1"></a><span class="in"># credentials file for a Gmail account</span></span>
+<span id="cb30-383"><a href="#cb30-383" aria-hidden="true" tabindex="-1"></a><span class="in">create_smtp_creds_file(</span></span>
+<span id="cb30-384"><a href="#cb30-384" aria-hidden="true" tabindex="-1"></a><span class="in">  file = "my_gmail_creds",</span></span>
+<span id="cb30-385"><a href="#cb30-385" aria-hidden="true" tabindex="-1"></a><span class="in">  user = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-386"><a href="#cb30-386" aria-hidden="true" tabindex="-1"></a><span class="in">  provider = "gmail"</span></span>
+<span id="cb30-387"><a href="#cb30-387" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-388"><a href="#cb30-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-389"><a href="#cb30-389" aria-hidden="true" tabindex="-1"></a><span class="co"># credentials file for an Outlook account</span></span>
-<span id="cb30-390"><a href="#cb30-390" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_file</span>(</span>
-<span id="cb30-391"><a href="#cb30-391" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"my_outlook_creds"</span>,</span>
-<span id="cb30-392"><a href="#cb30-392" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-393"><a href="#cb30-393" aria-hidden="true" tabindex="-1"></a>  <span class="at">provider =</span> <span class="st">"office365"</span></span>
-<span id="cb30-394"><a href="#cb30-394" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-389"><a href="#cb30-389" aria-hidden="true" tabindex="-1"></a><span class="in"># credentials file for an Outlook account</span></span>
+<span id="cb30-390"><a href="#cb30-390" aria-hidden="true" tabindex="-1"></a><span class="in">create_smtp_creds_file(</span></span>
+<span id="cb30-391"><a href="#cb30-391" aria-hidden="true" tabindex="-1"></a><span class="in">  file = "my_outlook_creds",</span></span>
+<span id="cb30-392"><a href="#cb30-392" aria-hidden="true" tabindex="-1"></a><span class="in">  user = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-393"><a href="#cb30-393" aria-hidden="true" tabindex="-1"></a><span class="in">  provider = "office365"</span></span>
+<span id="cb30-394"><a href="#cb30-394" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-395"><a href="#cb30-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-396"><a href="#cb30-396" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-397"><a href="#cb30-397" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE**: If you omit the </span><span class="in">`provider=`</span><span class="at"> argument, you should then pass </span><span class="in">`host=`</span><span class="at">, </span><span class="in">`port=`</span><span class="at">, and </span><span class="in">`use_ssl=`</span><span class="at"> arguments yourself to the </span><span class="in">`create_smtp_creds_file()`</span><span class="at"> function. The </span><span class="in">`use_ssl=`</span><span class="at"> argument allows the use of STARTTLS, which initiates secured (encrypted) TLS or SSL connection, which many email servers require.</span></span>
@@ -1510,21 +1678,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-401"><a href="#cb30-401" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Send the message via STMP using a credentials file.</span>
 <span id="cb30-402"><a href="#cb30-402" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-403"><a href="#cb30-403" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-404"><a href="#cb30-404" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
-<span id="cb30-405"><a href="#cb30-405" aria-hidden="true" tabindex="-1"></a><span class="fu">smtp_send</span>(<span class="at">email =</span> message,</span>
-<span id="cb30-406"><a href="#cb30-406" aria-hidden="true" tabindex="-1"></a>  <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-407"><a href="#cb30-407" aria-hidden="true" tabindex="-1"></a>  <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-408"><a href="#cb30-408" aria-hidden="true" tabindex="-1"></a>  <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and a credentials file"</span>,</span>
-<span id="cb30-409"><a href="#cb30-409" aria-hidden="true" tabindex="-1"></a>  <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="at">file =</span> <span class="st">"my_gmail_creds"</span>)</span>
-<span id="cb30-410"><a href="#cb30-410" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-404"><a href="#cb30-404" aria-hidden="true" tabindex="-1"></a><span class="in"># send using Google's servers...</span></span>
+<span id="cb30-405"><a href="#cb30-405" aria-hidden="true" tabindex="-1"></a><span class="in">smtp_send(email = message,</span></span>
+<span id="cb30-406"><a href="#cb30-406" aria-hidden="true" tabindex="-1"></a><span class="in">  from = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-407"><a href="#cb30-407" aria-hidden="true" tabindex="-1"></a><span class="in">  to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-408"><a href="#cb30-408" aria-hidden="true" tabindex="-1"></a><span class="in">  subject = "Sending a message using {blastula} and a credentials file",</span></span>
+<span id="cb30-409"><a href="#cb30-409" aria-hidden="true" tabindex="-1"></a><span class="in">  credentials = creds_file(file = "my_gmail_creds")</span></span>
+<span id="cb30-410"><a href="#cb30-410" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-411"><a href="#cb30-411" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-412"><a href="#cb30-412" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsofts's servers, using the %&gt;% operator and different credentials file...</span></span>
-<span id="cb30-413"><a href="#cb30-413" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span> <span class="fu">smtp_send</span>(</span>
-<span id="cb30-414"><a href="#cb30-414" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-415"><a href="#cb30-415" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-416"><a href="#cb30-416" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and a credentials file"</span>,</span>
-<span id="cb30-417"><a href="#cb30-417" aria-hidden="true" tabindex="-1"></a>    <span class="at">credentials =</span> <span class="fu">creds_file</span>(<span class="at">file =</span> <span class="st">"my_outlook_creds"</span>)</span>
-<span id="cb30-418"><a href="#cb30-418" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-412"><a href="#cb30-412" aria-hidden="true" tabindex="-1"></a><span class="in"># send using Microsofts's servers, using the %&gt;% operator and different credentials file...</span></span>
+<span id="cb30-413"><a href="#cb30-413" aria-hidden="true" tabindex="-1"></a><span class="in">message %&gt;% smtp_send(</span></span>
+<span id="cb30-414"><a href="#cb30-414" aria-hidden="true" tabindex="-1"></a><span class="in">    from = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-415"><a href="#cb30-415" aria-hidden="true" tabindex="-1"></a><span class="in">    to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-416"><a href="#cb30-416" aria-hidden="true" tabindex="-1"></a><span class="in">    subject = "Sending a message using {blastula} and a credentials file",</span></span>
+<span id="cb30-417"><a href="#cb30-417" aria-hidden="true" tabindex="-1"></a><span class="in">    credentials = creds_file(file = "my_outlook_creds")</span></span>
+<span id="cb30-418"><a href="#cb30-418" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-419"><a href="#cb30-419" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-420"><a href="#cb30-420" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-421"><a href="#cb30-421" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 6 {.unnumbered}</span></span>
@@ -1534,28 +1702,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-425"><a href="#cb30-425" aria-hidden="true" tabindex="-1"></a>The following will prompt us for our password to send the message:</span>
 <span id="cb30-426"><a href="#cb30-426" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-427"><a href="#cb30-427" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-428"><a href="#cb30-428" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Google's servers...</span></span>
-<span id="cb30-429"><a href="#cb30-429" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span> <span class="fu">smtp_send</span>(</span>
-<span id="cb30-430"><a href="#cb30-430" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-431"><a href="#cb30-431" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-432"><a href="#cb30-432" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and entering credentials manually"</span>,</span>
-<span id="cb30-433"><a href="#cb30-433" aria-hidden="true" tabindex="-1"></a>    <span class="at">credentials =</span> <span class="fu">creds</span>(</span>
-<span id="cb30-434"><a href="#cb30-434" aria-hidden="true" tabindex="-1"></a>      <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-435"><a href="#cb30-435" aria-hidden="true" tabindex="-1"></a>      <span class="at">provider =</span> <span class="st">"gmail"</span></span>
-<span id="cb30-436"><a href="#cb30-436" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb30-437"><a href="#cb30-437" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-428"><a href="#cb30-428" aria-hidden="true" tabindex="-1"></a><span class="in"># send using Google's servers...</span></span>
+<span id="cb30-429"><a href="#cb30-429" aria-hidden="true" tabindex="-1"></a><span class="in">message %&gt;% smtp_send(</span></span>
+<span id="cb30-430"><a href="#cb30-430" aria-hidden="true" tabindex="-1"></a><span class="in">    from = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-431"><a href="#cb30-431" aria-hidden="true" tabindex="-1"></a><span class="in">    to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-432"><a href="#cb30-432" aria-hidden="true" tabindex="-1"></a><span class="in">    subject = "Sending a message using {blastula} and entering credentials manually",</span></span>
+<span id="cb30-433"><a href="#cb30-433" aria-hidden="true" tabindex="-1"></a><span class="in">    credentials = creds(</span></span>
+<span id="cb30-434"><a href="#cb30-434" aria-hidden="true" tabindex="-1"></a><span class="in">      user = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-435"><a href="#cb30-435" aria-hidden="true" tabindex="-1"></a><span class="in">      provider = "gmail"</span></span>
+<span id="cb30-436"><a href="#cb30-436" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb30-437"><a href="#cb30-437" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb30-438"><a href="#cb30-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-439"><a href="#cb30-439" aria-hidden="true" tabindex="-1"></a><span class="co"># send using Microsoft's servers...</span></span>
-<span id="cb30-440"><a href="#cb30-440" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span> <span class="fu">smtp_send</span>(</span>
-<span id="cb30-441"><a href="#cb30-441" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-442"><a href="#cb30-442" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-443"><a href="#cb30-443" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and entering credentials manually"</span>,</span>
-<span id="cb30-444"><a href="#cb30-444" aria-hidden="true" tabindex="-1"></a>    <span class="at">credentials =</span> <span class="fu">creds</span>(</span>
-<span id="cb30-445"><a href="#cb30-445" aria-hidden="true" tabindex="-1"></a>      <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-446"><a href="#cb30-446" aria-hidden="true" tabindex="-1"></a>      <span class="at">provider =</span> <span class="st">"office365"</span>,</span>
-<span id="cb30-447"><a href="#cb30-447" aria-hidden="true" tabindex="-1"></a>      <span class="at">use_ssl =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-448"><a href="#cb30-448" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb30-449"><a href="#cb30-449" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-439"><a href="#cb30-439" aria-hidden="true" tabindex="-1"></a><span class="in"># send using Microsoft's servers...</span></span>
+<span id="cb30-440"><a href="#cb30-440" aria-hidden="true" tabindex="-1"></a><span class="in">message %&gt;% smtp_send(</span></span>
+<span id="cb30-441"><a href="#cb30-441" aria-hidden="true" tabindex="-1"></a><span class="in">    from = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-442"><a href="#cb30-442" aria-hidden="true" tabindex="-1"></a><span class="in">    to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-443"><a href="#cb30-443" aria-hidden="true" tabindex="-1"></a><span class="in">    subject = "Sending a message using {blastula} and entering credentials manually",</span></span>
+<span id="cb30-444"><a href="#cb30-444" aria-hidden="true" tabindex="-1"></a><span class="in">    credentials = creds(</span></span>
+<span id="cb30-445"><a href="#cb30-445" aria-hidden="true" tabindex="-1"></a><span class="in">      user = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-446"><a href="#cb30-446" aria-hidden="true" tabindex="-1"></a><span class="in">      provider = "office365",</span></span>
+<span id="cb30-447"><a href="#cb30-447" aria-hidden="true" tabindex="-1"></a><span class="in">      use_ssl = TRUE</span></span>
+<span id="cb30-448"><a href="#cb30-448" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb30-449"><a href="#cb30-449" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb30-450"><a href="#cb30-450" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-451"><a href="#cb30-451" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-452"><a href="#cb30-452" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Next Steps? {.unnumbered}</span></span>
@@ -1567,7 +1735,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-458"><a href="#cb30-458" aria-hidden="true" tabindex="-1"></a>Finally, it is a bit more complicated, but note that we can also use the {keyring} package along with {blastula} to set up a credentials "key" in our computer's keychain and refer to that to specify our credentials for sending a message. When you create the keys, you will be asked to provide your password.</span>
 <span id="cb30-459"><a href="#cb30-459" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-460"><a href="#cb30-460" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval = FALSE}</span></span>
-<span id="cb30-461"><a href="#cb30-461" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"keyring"</span>)</span>
+<span id="cb30-461"><a href="#cb30-461" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("keyring")</span></span>
 <span id="cb30-462"><a href="#cb30-462" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-463"><a href="#cb30-463" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-466"><a href="#cb30-466" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -1575,65 +1743,66 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-468"><a href="#cb30-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-469"><a href="#cb30-469" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-470"><a href="#cb30-470" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-471"><a href="#cb30-471" aria-hidden="true" tabindex="-1"></a><span class="co"># create Gmail key with a user-specified name, `id=`</span></span>
-<span id="cb30-472"><a href="#cb30-472" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_key</span>(</span>
-<span id="cb30-473"><a href="#cb30-473" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"my_gmail_key"</span>,</span>
-<span id="cb30-474"><a href="#cb30-474" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-475"><a href="#cb30-475" aria-hidden="true" tabindex="-1"></a>  <span class="at">provider =</span> <span class="st">"gmail"</span>,</span>
-<span id="cb30-476"><a href="#cb30-476" aria-hidden="true" tabindex="-1"></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span> <span class="co"># this argument is only needed if you have an existing key</span></span>
-<span id="cb30-477"><a href="#cb30-477" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-471"><a href="#cb30-471" aria-hidden="true" tabindex="-1"></a><span class="in"># create Gmail key with a user-specified name, `id=`</span></span>
+<span id="cb30-472"><a href="#cb30-472" aria-hidden="true" tabindex="-1"></a><span class="in">create_smtp_creds_key(</span></span>
+<span id="cb30-473"><a href="#cb30-473" aria-hidden="true" tabindex="-1"></a><span class="in">  id = "my_gmail_key",</span></span>
+<span id="cb30-474"><a href="#cb30-474" aria-hidden="true" tabindex="-1"></a><span class="in">  user = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-475"><a href="#cb30-475" aria-hidden="true" tabindex="-1"></a><span class="in">  provider = "gmail",</span></span>
+<span id="cb30-476"><a href="#cb30-476" aria-hidden="true" tabindex="-1"></a><span class="in">  overwrite = TRUE # this argument is only needed if you have an existing key</span></span>
+<span id="cb30-477"><a href="#cb30-477" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-478"><a href="#cb30-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-479"><a href="#cb30-479" aria-hidden="true" tabindex="-1"></a><span class="co"># create Outlook key with a user-specified name, `id=`</span></span>
-<span id="cb30-480"><a href="#cb30-480" aria-hidden="true" tabindex="-1"></a><span class="fu">create_smtp_creds_key</span>(</span>
-<span id="cb30-481"><a href="#cb30-481" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"my_outlook_key"</span>,</span>
-<span id="cb30-482"><a href="#cb30-482" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-483"><a href="#cb30-483" aria-hidden="true" tabindex="-1"></a>  <span class="at">provider =</span> <span class="st">"office365"</span>,</span>
-<span id="cb30-484"><a href="#cb30-484" aria-hidden="true" tabindex="-1"></a>  <span class="at">overwrite =</span> <span class="cn">TRUE</span></span>
-<span id="cb30-485"><a href="#cb30-485" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-479"><a href="#cb30-479" aria-hidden="true" tabindex="-1"></a><span class="in"># create Outlook key with a user-specified name, `id=`</span></span>
+<span id="cb30-480"><a href="#cb30-480" aria-hidden="true" tabindex="-1"></a><span class="in">create_smtp_creds_key(</span></span>
+<span id="cb30-481"><a href="#cb30-481" aria-hidden="true" tabindex="-1"></a><span class="in">  id = "my_outlook_key",</span></span>
+<span id="cb30-482"><a href="#cb30-482" aria-hidden="true" tabindex="-1"></a><span class="in">  user = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-483"><a href="#cb30-483" aria-hidden="true" tabindex="-1"></a><span class="in">  provider = "office365",</span></span>
+<span id="cb30-484"><a href="#cb30-484" aria-hidden="true" tabindex="-1"></a><span class="in">  overwrite = TRUE</span></span>
+<span id="cb30-485"><a href="#cb30-485" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb30-486"><a href="#cb30-486" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-487"><a href="#cb30-487" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-488"><a href="#cb30-488" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-489"><a href="#cb30-489" aria-hidden="true" tabindex="-1"></a><span class="co"># View all keys</span></span>
-<span id="cb30-490"><a href="#cb30-490" aria-hidden="true" tabindex="-1"></a><span class="fu">view_credential_keys</span>()</span>
+<span id="cb30-489"><a href="#cb30-489" aria-hidden="true" tabindex="-1"></a><span class="in"># View all keys</span></span>
+<span id="cb30-490"><a href="#cb30-490" aria-hidden="true" tabindex="-1"></a><span class="in">view_credential_keys()</span></span>
 <span id="cb30-491"><a href="#cb30-491" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-492"><a href="#cb30-492" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-493"><a href="#cb30-493" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-494"><a href="#cb30-494" aria-hidden="true" tabindex="-1"></a><span class="co"># send a message with credentials from a keychain using Google's servers...</span></span>
-<span id="cb30-495"><a href="#cb30-495" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
-<span id="cb30-496"><a href="#cb30-496" aria-hidden="true" tabindex="-1"></a>  <span class="fu">smtp_send</span>(</span>
-<span id="cb30-497"><a href="#cb30-497" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="st">"anthony.difiore@utexas.edu"</span>,</span>
-<span id="cb30-498"><a href="#cb30-498" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-499"><a href="#cb30-499" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and credentials from a keychain"</span>,</span>
-<span id="cb30-500"><a href="#cb30-500" aria-hidden="true" tabindex="-1"></a>    <span class="at">credentials =</span> <span class="fu">creds_key</span>(<span class="at">id =</span> <span class="st">"my_gmail_key"</span>)</span>
-<span id="cb30-501"><a href="#cb30-501" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-494"><a href="#cb30-494" aria-hidden="true" tabindex="-1"></a><span class="in"># send a message with credentials from a keychain using Google's servers...</span></span>
+<span id="cb30-495"><a href="#cb30-495" aria-hidden="true" tabindex="-1"></a><span class="in">message %&gt;%</span></span>
+<span id="cb30-496"><a href="#cb30-496" aria-hidden="true" tabindex="-1"></a><span class="in">  smtp_send(</span></span>
+<span id="cb30-497"><a href="#cb30-497" aria-hidden="true" tabindex="-1"></a><span class="in">    from = "anthony.difiore@utexas.edu",</span></span>
+<span id="cb30-498"><a href="#cb30-498" aria-hidden="true" tabindex="-1"></a><span class="in">    to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-499"><a href="#cb30-499" aria-hidden="true" tabindex="-1"></a><span class="in">    subject = "Sending a message using {blastula} and credentials from a keychain",</span></span>
+<span id="cb30-500"><a href="#cb30-500" aria-hidden="true" tabindex="-1"></a><span class="in">    credentials = creds_key(id = "my_gmail_key")</span></span>
+<span id="cb30-501"><a href="#cb30-501" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb30-502"><a href="#cb30-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-503"><a href="#cb30-503" aria-hidden="true" tabindex="-1"></a><span class="co"># send a message with credentials from a keychain using Microsoft's servers...</span></span>
-<span id="cb30-504"><a href="#cb30-504" aria-hidden="true" tabindex="-1"></a>message <span class="sc">%&gt;%</span></span>
-<span id="cb30-505"><a href="#cb30-505" aria-hidden="true" tabindex="-1"></a>  <span class="fu">smtp_send</span>(</span>
-<span id="cb30-506"><a href="#cb30-506" aria-hidden="true" tabindex="-1"></a>    <span class="at">from =</span> <span class="st">"anthony.difiore@outlook.com"</span>,</span>
-<span id="cb30-507"><a href="#cb30-507" aria-hidden="true" tabindex="-1"></a>    <span class="at">to =</span> <span class="st">"anthony.difiore@gmail.com"</span>,</span>
-<span id="cb30-508"><a href="#cb30-508" aria-hidden="true" tabindex="-1"></a>    <span class="at">subject =</span> <span class="st">"Sending a message using {blastula} and and credentials from a keychain"</span>,</span>
-<span id="cb30-509"><a href="#cb30-509" aria-hidden="true" tabindex="-1"></a>    <span class="at">credentials =</span> <span class="fu">creds_key</span>(<span class="at">id =</span> <span class="st">"my_outlook_key"</span>)</span>
-<span id="cb30-510"><a href="#cb30-510" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb30-503"><a href="#cb30-503" aria-hidden="true" tabindex="-1"></a><span class="in"># send a message with credentials from a keychain using Microsoft's servers...</span></span>
+<span id="cb30-504"><a href="#cb30-504" aria-hidden="true" tabindex="-1"></a><span class="in">message %&gt;%</span></span>
+<span id="cb30-505"><a href="#cb30-505" aria-hidden="true" tabindex="-1"></a><span class="in">  smtp_send(</span></span>
+<span id="cb30-506"><a href="#cb30-506" aria-hidden="true" tabindex="-1"></a><span class="in">    from = "anthony.difiore@outlook.com",</span></span>
+<span id="cb30-507"><a href="#cb30-507" aria-hidden="true" tabindex="-1"></a><span class="in">    to = "anthony.difiore@gmail.com",</span></span>
+<span id="cb30-508"><a href="#cb30-508" aria-hidden="true" tabindex="-1"></a><span class="in">    subject = "Sending a message using {blastula} and and credentials from a keychain",</span></span>
+<span id="cb30-509"><a href="#cb30-509" aria-hidden="true" tabindex="-1"></a><span class="in">    credentials = creds_key(id = "my_outlook_key")</span></span>
+<span id="cb30-510"><a href="#cb30-510" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb30-511"><a href="#cb30-511" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-512"><a href="#cb30-512" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-513"><a href="#cb30-513" aria-hidden="true" tabindex="-1"></a><span class="fu">## Clean-Up Steps {.unnumbered}</span></span>
 <span id="cb30-514"><a href="#cb30-514" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-515"><a href="#cb30-515" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb30-516"><a href="#cb30-516" aria-hidden="true" tabindex="-1"></a><span class="co"># delete all keys</span></span>
-<span id="cb30-517"><a href="#cb30-517" aria-hidden="true" tabindex="-1"></a><span class="fu">delete_all_credential_keys</span>()</span>
+<span id="cb30-516"><a href="#cb30-516" aria-hidden="true" tabindex="-1"></a><span class="in"># delete all keys</span></span>
+<span id="cb30-517"><a href="#cb30-517" aria-hidden="true" tabindex="-1"></a><span class="in">delete_all_credential_keys()</span></span>
 <span id="cb30-518"><a href="#cb30-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb30-519"><a href="#cb30-519" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-520"><a href="#cb30-520" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb30-521"><a href="#cb30-521" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>emayili)</span>
-<span id="cb30-522"><a href="#cb30-522" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb30-523"><a href="#cb30-523" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>blastula)</span>
-<span id="cb30-524"><a href="#cb30-524" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>keyring)</span>
-<span id="cb30-525"><a href="#cb30-525" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mailR)</span>
+<span id="cb30-521"><a href="#cb30-521" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:emayili)</span></span>
+<span id="cb30-522"><a href="#cb30-522" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:tidyverse)</span></span>
+<span id="cb30-523"><a href="#cb30-523" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:blastula)</span></span>
+<span id="cb30-524"><a href="#cb30-524" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:keyring)</span></span>
+<span id="cb30-525"><a href="#cb30-525" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mailR)</span></span>
 <span id="cb30-526"><a href="#cb30-526" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
+
 
 
 
