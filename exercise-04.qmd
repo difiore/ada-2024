@@ -1,6 +1,4 @@
----
-title: "Exercise 04"
----
+# Exercise 04 {.unnumbered}
 
 # Program a Word Game {.unnumbered}
 
