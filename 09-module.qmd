@@ -828,7 +828,8 @@ Or, alternatively...
 aggregate(x = d["Body_mass_female_mean"], by = d["Family"], FUN = "mean", na.rm = TRUE)
 ```
 
-```{r include=FALSE}
+```{r}
+# | include: false
 detach(package:curl)
 detach(package:tidyverse)
 ```

@@ -518,7 +518,8 @@ detach(package:googledrive)
 
 More on the basics of using {googledrive} and its functionality can be found [here](https://googledrive.tidyverse.org/).
 
-```{r include=FALSE}
+```{r}
+# | include: false
 detach(package:tidyverse)
 ```
 

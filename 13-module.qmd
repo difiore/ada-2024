@@ -43,8 +43,11 @@ manipulate(
 
 Write your own function, `roll()`, to simulate rolling a die where you pass the number of rolls as an argument (`nrolls=`) with a default value of 1. Then, use your function to simulate rolling two dice a total 1000 times and take the sum of the rolls. Plot a histogram of those results. What happens if you roll each die 100 times? 10,000 times?
 
-::: {.fold .s .o}
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 roll <- function(nrolls=1) {sample(1:6, nrolls, replace = TRUE)} # function with default of 1 roll
 nrolls <- 1000
 two_dice <- roll(nrolls) + roll(nrolls)
@@ -55,7 +58,6 @@ histogram(two_dice,
   xlab = "Sum of Rolls",
   ylab = "Probability")
 ```
-:::
 
 ## Rules of Probability
 
@@ -226,7 +228,8 @@ To be a valid *PMF*, a function $f(x)$ must satisfy the following conditions:
 
 #### **EXAMPLE:** Flipping a Fair Coin {.unnumbered}
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 outcomes <- c("heads", "tails")
 prob <- c(1 / 2, 1 / 2)
 barplot(
@@ -252,7 +255,8 @@ barplot(
 
 #### **EXAMPLE:** Rolling a Fair Die {.unnumbered}
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 outcomes <- c(1,2,3,4,5,6)
 prob <- c(1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6)
 barplot(
@@ -295,7 +299,8 @@ $$f(x) = x^{\alpha-1}(1-x)^{\beta-1}$$
 
 We can explore the beta distribution using the {manipulate} package by entering the code below. With the domain of $x$ restricted to [0, 1], and with $\alpha$ initially set to 2 and $\beta$ initially set to 1, we see the PDF for the beta distribution is triangular. Try playing with different values for $\alpha$ and $\beta$. The `dbeta()` function provides the value of the function at the specified values of **x**.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 manipulate(
   ggplot(data = data.frame(x = c(0, 1)), aes(x)) + stat_function(
     fun = dbeta,
@@ -490,7 +495,8 @@ We can also use the built in function `pbinom()` to return the value of the **cu
 
 So, for example, the chances of observing exactly 0, 1, 2, 3, ... 6 rolls of "1" on 6 rolls of a die are...
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 probset <- dbinom(x = 0:6, size = 6, prob = 1 / 6)
 # x is number of successes, size is number of trials
 barplot(
@@ -604,7 +610,8 @@ Note that for the Poisson Distribution the mean and the variance are the same!
 
 Let's use ***R*** and the {moasic} package to look at the probability mass functions for different values of $\lambda$:
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 l <- 3.5
 p1 <-
   plotDist(
@@ -637,7 +644,8 @@ plot_grid(p1, p2, p3, nrow = 1)
 
 As we did for other distributions, we can also use the built in `p` function for the Poisson distribution, `ppois()`, to return the value of the **cumulative distribution function**, i.e., the probability of observing up to and including a specific number of events in the given interval.
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 l <- 3.5
 p1 <-
   plotDist(
@@ -696,7 +704,8 @@ $$\sigma_x^2 = \frac{(b-a)^2}{12}$$
 
 Let's plot a uniform distribution across a given range, from $a$ = 4 to $b$ = 8...
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 a <- 4
 b <- 8
 x <- seq(from=a-1, to=b+1, by=0.01)   
@@ -714,7 +723,8 @@ plot(
 
 Note that for the uniform distribution, the *cumulative density function* increases linearly over the given interval.
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 plot(
   x,
   punif(q = x, min = a, max = b),
@@ -731,8 +741,10 @@ plot(
 
 Simulate a sample of 10,000 random numbers from a uniform distribution in the interval between $a$ = 6 and $b$ = 8. Calculate the mean and variance of this simulated sample and compare it to the expectation for these parameters.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 a <- 6
 b <- 8
 nums <- runif(n=10000, min=a, max=b)
@@ -741,7 +753,6 @@ nums <- runif(n=10000, min=a, max=b)
 (expected_mean <- (a+b)/2)
 (expected_variance <- ((b-a)^2)/12)
 ```
-:::
 
 #### The Normal Distribution {.unnumbered}
 
@@ -751,7 +762,8 @@ For the normal distribution, two parameters, $\mu$ and $\sigma$, are used to des
 
 The code below allows us to visualize and play around with a normal distribution. First, try maniupulating $\mu$ and $\sigma$.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 manipulate(
   ggplot(data = data.frame(x = c(mu - 6 * sigma, mu + 6 * sigma)), aes(x)) +
     stat_function(
@@ -801,7 +813,9 @@ In the code above, this is what we are doing when we play interactively with $n\
 
 > **NOTE:** Regardless of the specific values of $\mu$ and $\sigma$, about 95% of the normal distribution falls within 2 standard deviations of the mean, and about 68% of the distribution falls within 1 standard deviation. Check this out by playing with the $n\_sigma$ slider.
 
-```{r echo=FALSE, out.width="80%"}
+```{r}
+#| echo: false
+#| out_width: "80%"
 knitr::include_graphics("img/normal_distribution.png")
 ```
 
@@ -822,8 +836,11 @@ qnorm(0.025, mean = 5, sd = 3, lower.tail=TRUE)
 -   Calculate the mean, variance, and standard deviation for your sample of random numbers.
 -   Plot a histogram of your random numbers.
 
-::: {.fold .s .o}
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 n <- 1000
 mu <- 3.5
 sigma <- 4
@@ -843,11 +860,11 @@ histogram(v,
   center = mu
 )
 ```
-:::
 
 We can easily plot the density and cumulative probability functions for this normal distribution using the `plotDist()` function from the {mosaic} package:
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 pdf <- plotDist("norm", mean = mu, sd = sigma, xlab="X", ylab="Density")
 cdf <- plotDist("norm", mean = mu, sd = sigma, kind="cdf",
   xlab="X", ylab= "Cumulative Probability")
@@ -862,7 +879,8 @@ If we do this for the random variables we just generated, this **should** be app
 
 To quickly do a Q-Q plot, call the two ***R*** functions `qqnorm()` and `qqline()` using the vector of data you want to examine as an argument.
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 qqnorm(v, main = "QQ Plot - Random Normal Variable")
 qqline(v, col = "gray")
 ```
@@ -895,7 +913,8 @@ observed_q <- quantile(v, ppoints(v)) # finds quantiles in our actual data
 
 -   Step 4: Plot these quantiles against one another:
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 plot(
   theoretical_q,
   observed_q,
@@ -909,8 +928,11 @@ plot(
 
 What happens if you simulate fewer observations in your vectors? Try with **n = 100**.
 
-::: {.fold .s .o}
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 n <- 100
 mu <- 3.5
 sigma <- 4
@@ -919,25 +941,27 @@ qqnorm(v,main="QQ Plot - Random Normal Variable")
 qqline(v,col="gray")
 # with fewer simulated points, line isn't quite as good a fit
 ```
-:::
 
 What happens if you simulate observations from a *different* distribution?
 
-::: {.fold .s .o}
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 n <- 1000
 v <- rbeta(n, shape1 = 1.3, shape2 = 2)
 qqnorm(v,main="QQ Plot - Random Beta Variable")
 qqline(v,col="gray")
 # with a different distribution, Q-Q plot isn't linear!
 ```
-:::
 
 #### The "Standard Normal" Distribution {.unnumbered}
 
 Any normal distribution with mean $\mu$ and standard deviation $\sigma$ can be converted into what is called the **standard normal** distribution, where the mean is 0 and the standard deviation is 1. This is done by subtracting the mean from all observations and dividing these differences by the standard deviation. The resultant values are referred to a *Z* scores, and they reflect the number of standard deviations an observation is from the mean.
 
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
 mu <- 5
 sigma <- 8
 # simulate from a normal distribution with mean 5 and SD 8
@@ -967,15 +991,17 @@ Let's imagine a population of 1 million zombies whose age at zombification is ch
 
 Create a variable **x** that describes this population and calculate the mean and standard deviation of the age at zombification.
 
-::: {.fold .s .o}
-```{r fig.height=3}
+```{r}
+#| fig.height: 3
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 set.seed(1)
 x <- rnorm(1000000, 25, 5)
 histogram(x, type="density")
 (mu <- mean(x)) # population mean
 (sigma <- sqrt(sum((x - mean(x))^2)/length(x))) # population SD
 ```
-:::
 
 > **NOTE:** We **do not** use the `sd()` function as this would divide by `length(x)-1`. Check that out using `sd(x)`
 
@@ -989,8 +1015,10 @@ Now, suppose we now **sample** from the zombie population by trapping sets of zo
 
 Create a loop to sample the zombie population 5000 times with samples of size 10 and store these results in a list, **s**.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 k <- 5000 # number of samples
 n <- 10 # size of each sample
 s <- list() # create a dummy variable to hold each sample
@@ -1001,7 +1029,6 @@ for (i in 1:k){
 }
 head(s, 1) # an example of one sample of 10 ages
 ```
-:::
 
 For each of these samples, we can then calculate a mean age, which is a statistic describing each sample. **That statistic itself is a random variable with a mean and distribution!** As we saw in [**Module 12**](#module-12), this is known as a *sampling distribution*.
 
@@ -1009,8 +1036,10 @@ For each of these samples, we can then calculate a mean age, which is a statisti
 
 Create a loop to calculate the mean of each of your 5000 samples and store the result in a vector, **m**.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 m <- vector(length=k) # create a dummy variable to hold the mean of each sample
 # here the dummy variable can be a vector and we can preallocate its length
 for (i in 1:k){
@@ -1018,7 +1047,6 @@ for (i in 1:k){
 }
 head(m)
 ```
-:::
 
 So, how does the sampling distribution of mean ages compare to the population distribution of ages? The mean of the two is pretty close to the same! The sampling distribution mean, which is an average of the set of sample averages, is an unbiased estimator for the population mean.
 
@@ -1078,8 +1106,10 @@ Now, let's take a closer look at our samples of zombies that we extracted from t
 
 Calculate a vector of standard error estimates based on the 5000 samples of zombies you have drawn from your population and then plot a histogram of the distribution of these standard errors. That is, for each sample, estimate the standard error of the sample ($\frac{s}{\sqrt{n}}$). How does the mean of this set of standard errors compare to the standard error estimated from the population variance? How does it compare to the standard error calculated from the standard deviation of the sampling distribution?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 sample_sd <- vector(length=k) # create a dummy variable to hold the SD of each sample
 for (i in 1:k){
 	sample_sd[[i]] <- sd(s[[i]]) # a vector of SDs for each sample
@@ -1145,7 +1175,6 @@ mean(sample_se) # which is almost equal to...
 pop_se # which is almost equal to...
 sampling_dist_se
 ```
-:::
 
 Thus, the *standard error* calculated from an individual sample can be used as an *estimator* for the **standard deviation of the sampling distribution**. This is useful, since it means that, if our sample is large enough, we do not have to repeatedly sample from the population to get an estimate of the sampling distribution - we can instead estimate it directly using our data!
 
@@ -1153,7 +1182,8 @@ Note that as our sample size increases, the *standard error* calculated from the
 
 Despite their similarities, the standard error of the mean estimated for a given sample and the standard deviation of that sample tell us different things. The *standard error* is an estimate of how far a given sample mean is likely to be from the population mean - it is a measure of uncertainty. The *standard deviation* of a sample is a measure of the degree to which individual values within a sample differ from the mean for that sample.
 
-```{r include=FALSE}
+```{r}
+# | include: false
 detach(package:cowplot)
 detach(package:manipulate)
 detach(package:mosaic)
@@ -1176,7 +1206,3 @@ detach(package:tidyverse)
     -   (**population standard deviation**, or $\sigma$) $\div$ $\sqrt{n}$
     -   ≈ **standard deviation of the sampling distribution** for a large set of samples of size $n$
     -   ≈ (**standard deviation of a single sample of size** $n$, or $s$) $\div$ $\sqrt{n}$
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```

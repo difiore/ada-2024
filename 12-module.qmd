@@ -159,7 +159,9 @@ We will explore this, and at the same time practice a bit about **loops** in ***
 
 To visualize this distribution, we can use the `plotDist()` function from the {mosaic} package...
 
-```{r message=FALSE, fig.height=3}
+```{r}
+#| message: false
+#| fig.height: 3
 library(mosaic)
 mu <-10
 sigma <- 2
@@ -173,7 +175,8 @@ In the following code block, we first set up a plot window to hold the results o
       <code to execute>
     }
 
-```{r fig.height=4}
+```{r}
+#| fig.height: 4
 # set up plot window
 plot(c(0, 100),
      c(0, 15),
@@ -260,7 +263,9 @@ First, we will do some exploratory data analysis on this dataset using, in part,
 
 Functions in the {mosaic} package have a `data=` argument as well as a `~` argument that specifies which variable of interest from the `data=` argument the function is to be applied to.
 
-```{r message=FALSE, fig.height=4}
+```{r}
+#| message: false
+#| fig.height: 4
 boxplot(averageRating ~ startYear, data=d, xlab="Year", ylab="Average Rating")
 # the `histogram()` function from {mosaic} plots neat "augmented" histograms
 histogram(~ averageRating, data=d, xlab="Average Rating")
@@ -276,7 +281,9 @@ Now, let's draw a single SAMPLE of 100 movies randomly from this population and 
 set.seed(1)
 ```
 
-```{r message=FALSE, fig.height=4}
+```{r}
+#| message: false
+#| fig.height: 4
 n <- 100
 s <- sample_n(d, size=n, replace=FALSE)
 # `sample_n()` from {dplyr} selects rows at random from a data frame
@@ -341,7 +348,9 @@ mean_plot_alt2 <-
   xlab = "Sampling Distribution for the\nMean of Average Rating")
 ```
 
-```{r fig.height=3}
+```{r}
+#| message: false
+#| fig.height: 3
 library(cowplot)
 plot_grid(mean_plot, median_plot, ncol=2)
 detach(package:cowplot)
@@ -454,7 +463,9 @@ p3 <- ggplot(data = output, aes(x = n)) +
   ylim(5.8, 6.7)
 ```
 
-```{r message=FALSE, fig.height=5}
+```{r}
+#| message: false
+#| fig.height: 5
 library(cowplot)
 plot_grid(p1, p2, p3, nrow=3)
 detach(package:cowplot)
@@ -529,7 +540,8 @@ summarize(new_sample,
 detach(package:sciplot)
 ```
 
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:mosaic)
 ```
 

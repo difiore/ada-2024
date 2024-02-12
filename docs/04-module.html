@@ -295,6 +295,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Central Tendency and Spread</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability and Distributions</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -730,14 +736,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can use the {base} <strong><em>R</em></strong> function <code>plot()</code> to do some quick visualizations.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-out_width="80%">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># `plot()` takes values of x and y values as the first two arguments, and the</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co"># `type='o'` argument superimposes points and lines</span></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, logx, <span class="at">type =</span> <span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -745,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -753,7 +759,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -768,7 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>HINT:</strong> Use <code>?rnorm</code> or <code>help(rnorm)</code> to access the help documentation on how to use the <code>rnorm()</code> function.</p>
 </blockquote>
 <p>Then, use the <code>hist()</code> function to plot a histogram showing the distribution of these numbers.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell" data-layout-align="center" data-out_width="80%">
 <details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
@@ -777,7 +783,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -792,7 +798,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 79.83654</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 79.97478</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -801,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 9.949588</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 9.960429</code></pre>
 </details>
 </div>
 </div>
@@ -1639,7 +1645,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-254"><a href="#cb98-254" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-257"><a href="#cb98-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb98-258"><a href="#cb98-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 4</span></span>
-<span id="cb98-259"><a href="#cb98-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb98-259"><a href="#cb98-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "80%"</span></span>
 <span id="cb98-260"><a href="#cb98-260" aria-hidden="true" tabindex="-1"></a><span class="co"># `plot()` takes values of x and y values as the first two arguments, and the `type="o"` argument superimposes points and lines</span></span>
 <span id="cb98-261"><a href="#cb98-261" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, logx, <span class="at">type =</span> <span class="st">"o"</span>)</span>
 <span id="cb98-262"><a href="#cb98-262" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, x2, <span class="at">type =</span> <span class="st">"o"</span>)</span>
@@ -1659,7 +1665,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-278"><a href="#cb98-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
 <span id="cb98-279"><a href="#cb98-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
 <span id="cb98-280"><a href="#cb98-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
-<span id="cb98-281"><a href="#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
+<span id="cb98-281"><a href="#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "80%"</span></span>
 <span id="cb98-282"><a href="#cb98-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-283"><a href="#cb98-283" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
 <span id="cb98-284"><a href="#cb98-284" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(s) <span class="co"># hist() plots a simple histogram of values for s</span></span>

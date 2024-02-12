@@ -30,7 +30,7 @@ The {dplyr} package, included in the {tidyverse}, provides "a flexible grammar o
 
 ```{r}
 #| echo: false
-#| out-width: "25%"
+#| out_width: "25%"
 knitr::include_graphics("img/dplyr.png")
 ```
 
@@ -42,7 +42,7 @@ The `filter()` function lets us pull out rows from a data frame that meet a part
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/filter.png")
 ```
 
@@ -70,7 +70,7 @@ The `select()` function lets us pull out only particular columns from a data fra
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/select.png")
 ```
 
@@ -96,7 +96,7 @@ The `arrange()` function lets us sort a data frame based on a select variable or
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/arrange.png")
 ```
 
@@ -140,7 +140,7 @@ The `mutate()` function allows us to add new columns to a data frame:
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/mutate.png")
 ```
 
@@ -166,7 +166,7 @@ The {dplyr} package makes it easy to summarize data using more convenient functi
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/summarize.png")
 ```
 
@@ -257,7 +257,7 @@ An *inner join* or *equijoin* matches up sets of observations between two tables
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/inner_join.png")
 ```
 
@@ -287,7 +287,7 @@ The following figure shows a schematic representation of these various types of 
 
 ```{r}
 #| echo: false
-#| out-width: "60%"
+#| out_width: "60%"
 knitr::include_graphics("img/outer_joins.png")
 ```
 
@@ -327,13 +327,13 @@ One other cool thing about the {dplyr} package is that it provides a convenient 
 
 ```{r}
 #| echo: false
-#| out-width: "25%"
+#| out_width: "25%"
 knitr::include_graphics("img/pipe.png")
 ```
 
 ```{r}
 #| echo: false
-#| out-width: "60%"
+#| out_width: "60%"
 knitr::include_graphics("img/MagrittePipe.jpg")
 ```
 
@@ -472,7 +472,8 @@ detach(package:tidylog)
 s <- tidylog::filter(d, Family == "Hominidae" & Mass_Dimorphism > 2)
 ```
 
-```{r include=FALSE}
+```{r}
+# | include: false
 detach(package:magrittr)
 detach(package:tidyverse)
 ```

@@ -220,7 +220,7 @@ We can use the {base} ***R*** function `plot()` to do some quick visualizations.
 
 ```{r}
 #| fig.height: 4
-#| out-width: "80%"
+#| out_width: "80%"
 # `plot()` takes values of x and y values as the first two arguments, and the `type="o"` argument superimposes points and lines
 plot(x, logx, type = "o")
 plot(x, x2, type = "o")
@@ -240,7 +240,7 @@ Then, use the `hist()` function to plot a histogram showing the distribution of 
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
 #| fig-align: center
-#| out-width: "80%"
+#| out_width: "80%"
 
 s <- rnorm(n = 10000, mean = 80, sd = 10)
 hist(s) # hist() plots a simple histogram of values for s

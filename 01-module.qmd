@@ -1,8 +1,3 @@
----
-include-in-header:
-  text: <script type="text/javascript" src="src/hide_output.js"></script>
----
-
 # Getting Started with ***R*** {#module-01}
 
 ## Objectives
@@ -40,7 +35,7 @@ We are going to introduce several of these ways of working with ***R***, but the
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/install-R.png")
 ```
 
@@ -48,7 +43,7 @@ knitr::include_graphics("img/install-R.png")
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/install-XQuartz.png")
 ```
 
@@ -60,7 +55,7 @@ Also, note that you can also run ***R*** in a terminal shell (MacOS or Unix) or 
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/R-console-Mac.png")
 ```
 
@@ -68,7 +63,7 @@ knitr::include_graphics("img/R-console-Mac.png")
 
 ```{r}
 #| echo: false
-#| out-width: "80%"
+#| out_width: "80%"
 knitr::include_graphics("img/RGui-windows.png")
 ```
 

@@ -639,7 +639,8 @@ df <- data.frame(a=1:4, c=1:2)
 df
 ```
 
-```{r include=FALSE}
+```{r}
+# | include: false
 detach(package:tidyverse)
 detach(package:data.table)
 ```
