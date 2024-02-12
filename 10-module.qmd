@@ -26,11 +26,11 @@ head(d)
 
 ## Data Wrangling Using {dplyr}
 
-The {dplyr} package, included in the {tidyverse}, provides "a flexible grammar of data manipulation" that makes many of the manipulations that we explore in [**Module 07**](#module-07) and [**Module 09**](#module-09) much easier and muchmore intuitive!
+The {dplyr} package, included in the {tidyverse}, provides "a flexible grammar of data manipulation" that makes many of the manipulations that we explore in [**Module 07**](#module-07) and [**Module 09**](#module-09) much easier and much more intuitive!
 
 ```{r}
 #| echo: false
-#| out_width: "25%"
+#| out-width: "25%"
 knitr::include_graphics("img/dplyr.png")
 ```
 
@@ -333,7 +333,7 @@ knitr::include_graphics("img/pipe.png")
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out_width: "25%"
 knitr::include_graphics("img/MagrittePipe.jpg")
 ```
 
@@ -407,7 +407,8 @@ s
 
 Normally, when we use the forward pipe operator, the LHS of the operator is passed to the first argument of the function on the RHS. Thus, the following are all equivalent:
 
-```{r warning=FALSE}
+```{r}
+#| warning: false
 s <- filter(d, Genus == "Alouatta")
 s <- d %>% filter(Genus == "Alouatta")
 d %>% filter(Genus == "Alouatta") -> s

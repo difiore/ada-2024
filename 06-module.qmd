@@ -10,7 +10,7 @@ As a first step, if you haven't done so already in [**Module 02**](#module-02), 
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/r-global-options.png")
 ```
 
@@ -78,7 +78,7 @@ You will need to specify a repository name (with no spaces), whether it is a pub
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-project-version-control.png")
 ```
 
@@ -86,7 +86,7 @@ knitr::include_graphics("img/new-project-version-control.png")
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-project-from-git.png")
 ```
 
@@ -96,7 +96,7 @@ You can choose what parent folder to clone the repository into using the "Create
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/clone-git-repo.png")
 ```
 
@@ -108,7 +108,7 @@ You should now also see a "Git" tab in the upper right pane of the ***RStudio***
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/new-test-repo.png")
 ```
 
@@ -120,7 +120,7 @@ The process also works the same if you set up an empty repo on ***GitHub***, in 
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/empty-repo.png")
 ```
 
@@ -134,7 +134,7 @@ Here, grabbing the URL from the "Quick setup" section and using that to set up a
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-project-new-directory.png")
 ```
 
@@ -142,13 +142,13 @@ knitr::include_graphics("img/new-project-new-directory.png")
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-project-type.png")
 ```
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-project-create-new.png")
 ```
 
@@ -165,7 +165,7 @@ If you have an existing directory on your local computer that is already under *
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-project-existing-directory.png")
 ```
 
@@ -177,13 +177,13 @@ If you create a new project for a directory that was *not* already under version
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/project-options.png")
 ```
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/switch-to-git.png")
 ```
 
@@ -224,7 +224,7 @@ From within ***RStudio***, you can now add or edit files to the project, locally
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/create-test-repo-2.png")
 ```
 
@@ -234,7 +234,7 @@ knitr::include_graphics("img/create-test-repo-2.png")
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/new-remote-branch.png")
 ```
 
@@ -248,7 +248,7 @@ knitr::include_graphics("img/new-remote-branch.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/create-test-repo-2.png")
 ```
 
@@ -258,7 +258,7 @@ knitr::include_graphics("img/create-test-repo-2.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/setup-test-repo.png")
 ```
 
@@ -317,7 +317,7 @@ After being staged, the status of the files should turn to a green `A` (for "add
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/review-changes.png")
 ```
 
@@ -327,7 +327,7 @@ A window will pop up confirming what you have just done, which you can then clos
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/successful-commit.png")
 ```
 
@@ -339,7 +339,7 @@ If you now select the *History* tab in the "Review Changes" window, you can see 
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/push.png")
 ```
 
@@ -347,7 +347,7 @@ You should see a dialog box like the following indicating success:
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/successful-push.png")
 ```
 
@@ -357,7 +357,7 @@ Finally, you can confirm that the local changes were indeed sent up to the remot
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/commit-from-RStudio.png")
 ```
 

@@ -1,6 +1,6 @@
 ```{r}
 #| echo: FALSE
-#| out.width: 500px
+#| out-width: 500px
 knitr::include_graphics("img/confounding_variables_2x.png")
 ```
 

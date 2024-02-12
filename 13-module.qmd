@@ -9,7 +9,8 @@
 -   Install and load this package in ***R***: [{manipulate}](https://cran.r-project.org/web/packages/manipulate/manipulate.pdf)
 -   Load {tidyverse}, {mosaic}, and {cowplot}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 library(mosaic)
 library(cowplot)
@@ -26,7 +27,8 @@ Probabilities for events or collections of events necessarily vary between zero 
 
 We will use the {manipulate} package and the `sample()` function to explore the effects of sample size on estimates of the probability of different outcomes of the a process of rolling a (fair, unbiased) die. The {manipulate} package allows us to create an interactive plot that lets us dynamically change something about the values being plotted. We will set up a simulation where the probability of each possible outcome of the process of rolling a die one time ("1", "2",..., "6") is 1 in 6, but our estimate of the probability of each possible outcome will change with sample size. In the code below, we use the powerful `sample()` function, which takes several arguments - a set of elements to sample from (`x=`), the number of elements to draw (`size=`), and whether or not to draw with replacement (`replace=`). After typing in and running the code below, play with the slider to change the number of die rolls being simulated.
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 outcomes <- c(1,2,3,4,5,6)
 manipulate(
   histogram(sample(x = outcomes, size = n, replace = TRUE),
@@ -44,7 +46,7 @@ manipulate(
 Write your own function, `roll()`, to simulate rolling a die where you pass the number of rolls as an argument (`nrolls=`) with a default value of 1. Then, use your function to simulate rolling two dice a total 1000 times and take the sum of the rolls. Plot a histogram of those results. What happens if you roll each die 100 times? 10,000 times?
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
@@ -229,7 +231,7 @@ To be a valid *PMF*, a function $f(x)$ must satisfy the following conditions:
 #### **EXAMPLE:** Flipping a Fair Coin {.unnumbered}
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 outcomes <- c("heads", "tails")
 prob <- c(1 / 2, 1 / 2)
 barplot(
@@ -256,7 +258,7 @@ barplot(
 #### **EXAMPLE:** Rolling a Fair Die {.unnumbered}
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 outcomes <- c(1,2,3,4,5,6)
 prob <- c(1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 6)
 barplot(
@@ -496,7 +498,7 @@ We can also use the built in function `pbinom()` to return the value of the **cu
 So, for example, the chances of observing exactly 0, 1, 2, 3, ... 6 rolls of "1" on 6 rolls of a die are...
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 probset <- dbinom(x = 0:6, size = 6, prob = 1 / 6)
 # x is number of successes, size is number of trials
 barplot(
@@ -611,7 +613,7 @@ Note that for the Poisson Distribution the mean and the variance are the same!
 Let's use ***R*** and the {moasic} package to look at the probability mass functions for different values of $\lambda$:
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 l <- 3.5
 p1 <-
   plotDist(
@@ -645,7 +647,7 @@ plot_grid(p1, p2, p3, nrow = 1)
 As we did for other distributions, we can also use the built in `p` function for the Poisson distribution, `ppois()`, to return the value of the **cumulative distribution function**, i.e., the probability of observing up to and including a specific number of events in the given interval.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 l <- 3.5
 p1 <-
   plotDist(
@@ -705,7 +707,7 @@ $$\sigma_x^2 = \frac{(b-a)^2}{12}$$
 Let's plot a uniform distribution across a given range, from $a$ = 4 to $b$ = 8...
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 a <- 4
 b <- 8
 x <- seq(from=a-1, to=b+1, by=0.01)   
@@ -724,11 +726,11 @@ plot(
 Note that for the uniform distribution, the *cumulative density function* increases linearly over the given interval.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
+# punif() is the cumulative probability density up to a given x
 plot(
   x,
   punif(q = x, min = a, max = b),
-  # punif() is the cumulative probability density up to a given x
   ylim = c(0, 1.1),
   type = "l",
   xlab = "x",
@@ -837,7 +839,7 @@ qnorm(0.025, mean = 5, sd = 3, lower.tail=TRUE)
 -   Plot a histogram of your random numbers.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
@@ -864,7 +866,7 @@ histogram(v,
 We can easily plot the density and cumulative probability functions for this normal distribution using the `plotDist()` function from the {mosaic} package:
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 pdf <- plotDist("norm", mean = mu, sd = sigma, xlab="X", ylab="Density")
 cdf <- plotDist("norm", mean = mu, sd = sigma, kind="cdf",
   xlab="X", ylab= "Cumulative Probability")
@@ -880,7 +882,7 @@ If we do this for the random variables we just generated, this **should** be app
 To quickly do a Q-Q plot, call the two ***R*** functions `qqnorm()` and `qqline()` using the vector of data you want to examine as an argument.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 qqnorm(v, main = "QQ Plot - Random Normal Variable")
 qqline(v, col = "gray")
 ```
@@ -914,7 +916,7 @@ observed_q <- quantile(v, ppoints(v)) # finds quantiles in our actual data
 -   Step 4: Plot these quantiles against one another:
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 plot(
   theoretical_q,
   observed_q,
@@ -929,7 +931,7 @@ plot(
 What happens if you simulate fewer observations in your vectors? Try with **n = 100**.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
@@ -945,7 +947,7 @@ qqline(v,col="gray")
 What happens if you simulate observations from a *different* distribution?
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
@@ -961,7 +963,7 @@ qqline(v,col="gray")
 Any normal distribution with mean $\mu$ and standard deviation $\sigma$ can be converted into what is called the **standard normal** distribution, where the mean is 0 and the standard deviation is 1. This is done by subtracting the mean from all observations and dividing these differences by the standard deviation. The resultant values are referred to a *Z* scores, and they reflect the number of standard deviations an observation is from the mean.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 mu <- 5
 sigma <- 8
 # simulate from a normal distribution with mean 5 and SD 8
@@ -992,7 +994,7 @@ Let's imagine a population of 1 million zombies whose age at zombification is ch
 Create a variable **x** that describes this population and calculate the mean and standard deviation of the age at zombification.
 
 ```{r}
-#| fig.height: 3
+#| fig-height: 3
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'

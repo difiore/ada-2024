@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # Getting Data into ***R*** {#module-08}
 
 ## Objectives
@@ -26,7 +21,8 @@ These files contain a version of the **Comparative Political Data Set (CPDS)**, 
 
 > **NOTE:** Some of these packages (e.g., {XLConnect}, {xlsx}) require that your computer has a Java Runtime Environment (JRE) installed. A JRE is a bundle of software contaiing an interpreter and compiler for **Java** code, which is used to implement some of the functionality in the package. If your computer does not already have a JRE installed, you will need to also install one before being able to use these packages. You can download a JRE from Oracle's [Java website](https://www.java.com/en/).
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 ```
 
@@ -54,7 +50,7 @@ Plain text files are, arguably, the very best way to store data (and scripts and
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/spreadsheets.png")
 ```
 
@@ -129,7 +125,9 @@ The {readr} package, which is loaded as part of {tidyverse} provides easy altern
 
 > **NOTE:** There are variants of the main `read_<type>()` function for different types of files, e.g., tab-separated values (`read_tsv()`), comma-separated values (`read_csv()`), those with some other delimiter (`read_delim()`). A few common delimiters that might be used in text files are commas (`,`), tabs (`\t`), semicolons (`;`), and end-of-line characters, e.g., "new lines" (`\n`) or "carriage returns" (`\r`).
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 f <- "data/CPDS-1960-2014-reduced.txt"
 d <- read_tsv(f, col_names = TRUE) # for tab-separated value files
 head(d)
@@ -141,7 +139,9 @@ class(d)
 
 Or, alternatively...
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 d <- read_delim(f, delim = "\n", col_names = TRUE)
 # for generic delimited files, where the delimiter is a tab ("\t")
 head(d)
@@ -230,7 +230,9 @@ The {curl} package lets us open connection across the internet to read data from
 
 For a comma-separated value (".csv") text file...
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(curl)
 f <- curl("https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/CPDS-1960-2014-reduced.csv")
 d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
@@ -312,7 +314,7 @@ You can read text files from a ***Dropbox*** account (e.g., your own or someone 
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/copy-link.png")
 ```
 
@@ -352,7 +354,7 @@ You can load tabular data from ***Box*** sites (e.g., ***UT Box***) with {base} 
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/copy-shared-link.png")
 ```
 
@@ -360,7 +362,7 @@ In the dialog box that opens, select "Link Settings"...
 
 ```{r}
 #| echo: false
-#| out_width: "50%"
+#| out-width: "50%"
 knitr::include_graphics("img/link-settings.png")
 ```
 
@@ -368,7 +370,7 @@ knitr::include_graphics("img/link-settings.png")
 
 ```{r}
 #| echo: false
-#| out_width: "50%"
+#| out-width: "50%"
 knitr::include_graphics("img/copy-direct-link.png")
 ```
 

@@ -9,7 +9,8 @@
 - Install these packages in ***R***: [{mosiac}](https://cran.r-project.org/web/packages/mosaic/mosaic), [{radiant}](https://cran.r-project.org/web/packages/radiant/radiant.pdf), [{sciplot}](https://cran.r-project.org/web/packages/sciplot/sciplot.pdf), and [{infer}](https://cran.r-project.org/web/packages/infer/infer.pdf)
 - Load {tidyverse}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 ```
 
@@ -161,7 +162,7 @@ To visualize this distribution, we can use the `plotDist()` function from the {m
 
 ```{r}
 #| message: false
-#| fig.height: 3
+#| fig-height: 3
 library(mosaic)
 mu <-10
 sigma <- 2
@@ -176,7 +177,7 @@ In the following code block, we first set up a plot window to hold the results o
     }
 
 ```{r}
-#| fig.height: 4
+#| fig-height: 4
 # set up plot window
 plot(c(0, 100),
      c(0, 15),
@@ -230,7 +231,8 @@ sample_sd(x)
 
 The `sdpop()` function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(radiant)
 sdpop(x)
 detach(package:radiant)
@@ -252,7 +254,8 @@ To explore how we do this, let's start with a population where we KNOW every dat
 
 Load the "IMDB-movies.csv" dataset from the **ada-2024-datasets** repository on ***GitHub*** as a "tibble", **d**. This dataset contains data on close to 29,000 movies scraped in early 2020 from the online [Internet Movie Database](https://www.imdb.com/interfaces/), including their year of title, director, year of production, running time, average viewer rating on a 10 point scale, and the number of votes that rating is based on. [Note that in collating this data, I excluded movies with fewer than 1000 votes.] Once we load the data, we will filter the dataset to keep only movies with a `startYear` from 1999 to 2019, which should leave us with 17,628 movies. We are going to use this dataset as our POPULATION.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/IMDB-movies.csv"
 d <- read_csv(f, col_names = TRUE)
 d <- filter(d, startYear %in% 1999:2019) # the %in% operator is VERY useful!
@@ -265,7 +268,7 @@ Functions in the {mosaic} package have a `data=` argument as well as a `~` argum
 
 ```{r}
 #| message: false
-#| fig.height: 4
+#| fig-height: 4
 boxplot(averageRating ~ startYear, data=d, xlab="Year", ylab="Average Rating")
 # the `histogram()` function from {mosaic} plots neat "augmented" histograms
 histogram(~ averageRating, data=d, xlab="Average Rating")
@@ -283,7 +286,7 @@ set.seed(1)
 
 ```{r}
 #| message: false
-#| fig.height: 4
+#| fig-height: 4
 n <- 100
 s <- sample_n(d, size=n, replace=FALSE)
 # `sample_n()` from {dplyr} selects rows at random from a data frame
@@ -302,7 +305,8 @@ This process of *simulating* samples drawn from a population and then generating
 
 #### Using the {mosaic} Package {.unnumbered}
 
-```{r message=FALSE}
+```{r}
+#| message: false
 # using `do(reps) *` from {mosaic} to generate a sampling distribution
 reps <- 1000
 samp_dist_mean <-
@@ -350,7 +354,7 @@ mean_plot_alt2 <-
 
 ```{r}
 #| message: false
-#| fig.height: 3
+#| fig-height: 4
 library(cowplot)
 plot_grid(mean_plot, median_plot, ncol=2)
 detach(package:cowplot)
@@ -360,7 +364,8 @@ detach(package:cowplot)
 
 The **mean of the sampling distribution** (i.e., the mean of $\bar{x}$) for a particular statistic should be a really good **point estimate** of the population value for that statistic (i.e., $\mu$). Compare the following to confirm this:
 
-```{r message=FALSE}
+```{r}
+#| message: false
 mean(~ mean, data=samp_dist_mean)
 # this is the estimated population mean calculated as the
 # mean of the sampling distribution of sample means
@@ -383,7 +388,8 @@ The **SE** is, in effect, the *average deviation* between statistic values calcu
 
 To estimate the SE from a sampling distribution, we simply take the standard standard deviation of the set of values comprising that distribution. Above, we used the `do() * <function>` construction to generate sampling distributions for the mean and median of average viewer ratings in the "movies.csv" dataset, so all we need to do is pull out the standard deviation of those distributions to estimate the standard error.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 se_mean <- favstats(~ mean, data=samp_dist_mean)$sd
 # or, se_mean <- sd(samp_dist_mean$mean)
 (paste0( "Estimated population mean = ",
@@ -409,7 +415,8 @@ As we might expect for any measure of uncertainty or error, the **SE** [1] incre
 
 We can explore these two questions with the following code... note that we just take one set of 2000 replicates and then resample from that randomly to explore the impact of different, smaller numbers of replicates:
 
-```{r message=FALSE}
+```{r}
+#| message: false
 reps <- 2000
 s <- tibble("n"=numeric(),
   "mean"=numeric(),
@@ -465,7 +472,7 @@ p3 <- ggplot(data = output, aes(x = n)) +
 
 ```{r}
 #| message: false
-#| fig.height: 5
+#| fig-height: 5
 library(cowplot)
 plot_grid(p1, p2, p3, nrow=3)
 detach(package:cowplot)
@@ -532,7 +539,8 @@ summarize(
 
 The package {sciplot} includes the function, `se()`, for calculating standard errors (as do others).
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(sciplot)
 summarize(new_sample,
   se4 = sciplot::se(averageRating)

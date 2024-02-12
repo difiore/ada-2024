@@ -35,7 +35,7 @@ We are going to introduce several of these ways of working with ***R***, but the
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/install-R.png")
 ```
 
@@ -43,7 +43,7 @@ knitr::include_graphics("img/install-R.png")
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/install-XQuartz.png")
 ```
 
@@ -55,7 +55,7 @@ Also, note that you can also run ***R*** in a terminal shell (MacOS or Unix) or 
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/R-console-Mac.png")
 ```
 
@@ -63,7 +63,7 @@ knitr::include_graphics("img/R-console-Mac.png")
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/RGui-windows.png")
 ```
 

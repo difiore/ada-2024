@@ -33,7 +33,9 @@ Exploratory data analysis (EDA) is typically the first step in any kind of data 
 
 **EXAMPLE:**
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Country-Data-2016.csv"
 d <- read_csv(f, col_names = TRUE)
 names(d)
@@ -257,7 +259,8 @@ There are a number of other packages and associated functions we might also use 
 
 For example, with the `skim()` function from {skimr}, you can get for numeric variables a count of observations, the number of missing observations, the mean and standard deviation, and the five-number summary. The `select()`, `kable()` and `kable_styling()` functions will format the output nicely!
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(skimr)
 library(kableExtra)
 ```
@@ -352,7 +355,8 @@ boxplot(d$log_area, ylab = "log(Area)")
 
 As an alternative for plotting, we can use the "grammar of graphics" {ggplot2} package:
 
-```{r message=FALSE}
+```{r}
+#| message: false
 # first, we use `tidyr::pivot_longer()` to convert our data from wide to long format
 # this is so we can use `facet.grid()`
 
@@ -421,7 +425,8 @@ The `hist()` function returns a histogram showing the complete empirical distrib
 
 - Make histograms of the `log()` transformed population and area data from the "Country-Data-2016" file. Explore what happens if you set `freq=FALSE` versus the default of `freq=TRUE`. Try looking at other variables as well.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
@@ -469,7 +474,8 @@ abline(v = mean(log(area), na.rm = TRUE))
 
 The `density()` function computes a non-parametric estimate of the distribution of a variable, which can be combined with other plots to also yield a graphical view of the distribution of the data. If your data have missing values, then you need to add the argument `na.rm=TRUE` to the `density()` function. To superimpose a `density()` curve on a histogram, you can use the `lines(density())` function.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 par(mfrow = c(1, 1)) # set up one panel and redraw the log(population) histogram
 hist(
   log(population),
@@ -525,7 +531,8 @@ Read in the dataset "KamilarAndCooperData", which contains a host of summary inf
 
 Spend some time exploring the data on your own and then make boxplots of **log(female body mass) \~ family**. Try doing this with {base} graphics and then look at how we might do in in {ggplot2}, which provides a standard "grammar of graphics" (see the [{ggplot2} documentation](http://docs.ggplot2.org/current/))
 
-```{r message=FALSE}
+```{r}
+#| message: false
 #| code-fold: true
 #| code-summary: "Show Code"
 #| attr.output: '.details summary="Show Output"'
@@ -534,7 +541,8 @@ d <- read_csv(f, col_names = TRUE)
 head(d)
 ```
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(skimr)
 library(kableExtra)
 ```
@@ -556,7 +564,8 @@ s %>%
   kable_styling(font_size = 10, full_width = FALSE)
 ```
 
-```{r message=FALSE}
+```{r}
+#| message: false
 detach(package:kableExtra)
 detach(package:skimr)
 ```
@@ -631,14 +640,17 @@ p
 
 In {ggplot2} can easily add regression lines to our plot. Here, we add a linear model to each facet.
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 p <- p + geom_smooth(method="lm", fullrange=FALSE, na.rm=TRUE)
 p
 ```
 
 The `scatterplot()` function from the {car} package also produces nice bivariate plots and includes barplots along the margins.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(car)
 ```
 
@@ -706,7 +718,8 @@ pairs(data=s, ~.) # NAs are ignored by default
 
 The {car} package function `scatterplotMatrix()` provides a more customizable interface to the `pairs()` function from {base} ***R***. It includes a neat rug plot for each variable.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(car)
 ```
 
@@ -722,7 +735,8 @@ detach(package:car)
 
 The {psych} package also makes it easy to construct a scatterplot matrix with customizable output using the `pairs.panel()` function. Here, `method=` specifies the correlation method, `density=` specifies whether to superimpose a density curve on the histogram, and `elipses=` specifies whether to show correlation elipses.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(psych)
 pairs.panels(s[], 
   smooth = FALSE,
@@ -738,7 +752,9 @@ detach(package:psych)
 
 The {GGally} package lets us do something similar...
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(GGally)
 ggpairs(s, columns = 1:ncol(s)) # NAs produce a warning
 detach(package:GGally)
@@ -746,7 +762,8 @@ detach(package:GGally)
 
 Finally, we can do a nice correlation plot using the {corrplot} package, where we get a matrix of correlations among variables and a graphical representation of the strength and direction of the bivariate correlation coefficients among them.
 
-```{r message=FALSE}
+```{r}
+#| message: false
 library(corrplot)
 cor = cor(s, use="pairwise.complete.obs")
 corrplot.mixed(cor, lower.col = "black", number.cex = .7)
@@ -780,7 +797,9 @@ Once we have these plot objects, we can arrange them in custom ways using these 
 
 The {patchwork} package is perhaps the easiest to use!
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(patchwork)
 (p1 | p2)/p3 + plot_annotation(tag_levels = 'A')
 detach(package:patchwork)
@@ -788,7 +807,9 @@ detach(package:patchwork)
 
 We can also use {cowplot}...
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(cowplot)
 plot_grid(
   plot_grid(
@@ -808,7 +829,9 @@ detach(package:cowplot)
 
 ... or {gridExtra}
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(gridExtra)
 grid.arrange(grid.arrange(p1,p2, nrow=1),p3, nrow=2)
 detach(package:gridExtra)

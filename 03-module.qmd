@@ -20,7 +20,7 @@ If a package is loaded that has a function with the same name as one in a previo
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/search-path-2.png")
 ```
 
@@ -73,7 +73,7 @@ However, functions from different packages with the same name can be called expl
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/install-dialog.png")
 ```
 
@@ -99,7 +99,7 @@ Note that *installing* packages simply places them into a standard location on y
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/load-tidyverse.png")
 ```
 
@@ -127,7 +127,7 @@ In ***RStudio***, you can also see a list of all loaded packages by clicking the
 
 ```{r}
 #| echo: false
-#| out_width: "50%"
+#| out-width: "50%"
 knitr::include_graphics("img/loaded-packages.png")
 ```
 
@@ -136,7 +136,7 @@ knitr::include_graphics("img/loaded-packages.png")
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/update-packages.png")
 ```
 
@@ -144,7 +144,7 @@ knitr::include_graphics("img/update-packages.png")
 
 ```{r}
 #| echo: false
-#| out_width: "50%"
+#| out-width: "50%"
 knitr::include_graphics("img/remove-tidyverse.png")
 ```
 

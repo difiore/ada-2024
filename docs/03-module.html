@@ -417,11 +417,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>From the console prompt, packages can be installed into <strong><em>R</em></strong> (using the <code>install.packages()</code> function, with the name of the package in parentheses) and then loaded (using the <code>require()</code> or <code>library()</code> functions), which then gives the user access to the functions contained therein. Both <strong><em>RStudio</em></strong> and the base <strong><em>R</em></strong> GUIs for MacOS and Windows have built-in package managers that allow you to search for and install packages.</p>
 <p>Each package includes a <em>namespace</em> associated with the functions contained therein, and those functions are loaded into their own, separate <strong><em>R</em></strong> <em>environments</em>, distinct from the global environment, where the variables we assigned values to in <a href="01-module.html"><strong>Module 01</strong></a> were created. An <em>environment</em> can be thought of as a collection of objects (functions, variables etc.) associated either globally, with the <strong><em>R</em></strong> interpreter (the “R_GlobalEnv”) or with a particular package and its namespace. In <strong><em>RStudio</em></strong>, you can see all of the objects associated with a particular environment in the <strong>Environment</strong> tab.</p>
 <p>If a package is loaded that has a function with the same name as one in a previously loaded package or in base <strong><em>R</em></strong>, then the older function will be <em>masked</em> and the newer will be used if called by a user. This is because whenever an object is referenced in a command, the <strong><em>R</em></strong> interpreter searches for that object in various loaded environments in a particular order and operates on the first one it encounters. The global environment is searched first, followed by the environments associated with each loaded package in <em>reverse chronological order</em> of when they are loaded and ending with the base <strong><em>R</em></strong> environment.</p>
-<div class="cell" data-layout-align="center" data-out_width="75%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/search-path-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
+<p><img src="img/search-path-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -476,11 +476,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Type the name of the package you want to install in the text field in the middle of the dialog box (code completion will list available packages that match what you are typing as you type). You can install multiple packages at the same time by separating them with a space or comma.</li>
 <li>Make sure the “Install dependencies” checkbox is selected… this will automatically check whether other packages that are referenced in the package you want to install are already installed and, if not, will install them as well.</li>
 </ul>
-<div class="cell" data-layout-align="center" data-out_width="60%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/install-dialog.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="403"></p>
+<p><img src="img/install-dialog.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -511,11 +511,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>You can load a package interactively in <strong><em>RStudio</em></strong> by clicking the checkbox next to the package name in the <em>Packages</em> tab.</li>
 </ul>
-<div class="cell" data-layout-align="center" data-out_width="60%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/load-tidyverse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="471"></p>
+<p><img src="img/load-tidyverse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -547,11 +547,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>NOTE:</strong> In the example above, the <code>.packages()</code> function is wrapped in parentheses to immediately print the result of the function.</p>
 </blockquote>
 <p>In <strong><em>RStudio</em></strong>, you can also see a list of all loaded packages by clicking the down arrow next to “Global Environment” in the <em>Environment</em> tab.</p>
-<div class="cell" data-layout-align="center" data-out_width="50%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/loaded-packages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="372"></p>
+<p><img src="img/loaded-packages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </div>
@@ -560,11 +560,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The command <code>detach(package:&lt;package name&gt;)</code>, where “package name”, <strong>not</strong> in quotes, is the name of the package you want to unload, will unload a currently loaded package from memory. You can also do this interactively in <strong><em>RStudio</em></strong> by unchecking the box next to the package name in the <em>Packages</em> tab.</li>
 <li>To update your installed packages to the latest version, you can use the function <code>update.packages()</code>. Using <strong><em>RStudio</em></strong>, you can also select “Update” from the <em>Packages</em> tab to get an interactive dialog box showing you what updates are available from <strong>CRAN</strong> and letting you install them.</li>
 </ul>
-<div class="cell" data-layout-align="center" data-out_width="60%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/update-packages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="470"></p>
+<p><img src="img/update-packages.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -572,11 +572,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>To remove installed packages from your <strong><em>R</em></strong> installation, you can use the function <code>remove.packages()</code> or click the small “x” to the right of the package name in the <strong><em>RStudio</em></strong> packages tab.</li>
 </ul>
-<div class="cell" data-layout-align="center" data-out_width="50%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/remove-tidyverse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="471"></p>
+<p><img src="img/remove-tidyverse.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </div>
@@ -1073,7 +1073,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "75%"</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "75%"</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/search-path-2.png"</span>)</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
@@ -1126,7 +1126,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "60%"</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "60%"</span></span>
 <span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/install-dialog.png"</span>)</span>
 <span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
@@ -1152,7 +1152,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "60%"</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "60%"</span></span>
 <span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/load-tidyverse.png"</span>)</span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
@@ -1180,7 +1180,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "50%"</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "50%"</span></span>
 <span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/loaded-packages.png"</span>)</span>
 <span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
@@ -1189,7 +1189,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "60%"</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "60%"</span></span>
 <span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/update-packages.png"</span>)</span>
 <span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
@@ -1197,7 +1197,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "50%"</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "50%"</span></span>
 <span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/remove-tidyverse.png"</span>)</span>
 <span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>

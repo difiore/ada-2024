@@ -26,7 +26,7 @@ One of the most popular and frequently used VCSs is ***git***.
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/install-git.png")
 ```
 
@@ -51,7 +51,7 @@ The ***git*** software we just installed is strictly a command-line tool and is 
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/github.png")
 ```
 
@@ -75,7 +75,8 @@ The command...
 
 Alternatively, you can set things up from within ***R***, rather than using a shell window, as follows:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # uncomment the following line, if needed, to install the {usethis} package
 # install.packages("usethis")
 
@@ -102,7 +103,7 @@ Make sure your email address is verified in ***GitHub***. You probably will have
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/profile-settings.png")
 ```
 
@@ -120,7 +121,7 @@ Generate a new PAT.
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/profile-settings.png")
 ```
 
@@ -128,7 +129,7 @@ knitr::include_graphics("img/profile-settings.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/developer-settings.png")
 ```
 
@@ -136,7 +137,7 @@ knitr::include_graphics("img/developer-settings.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/personal-access-token.png")
 ```
 
@@ -144,7 +145,7 @@ knitr::include_graphics("img/personal-access-token.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/generate-new-token.png")
 ```
 
@@ -156,7 +157,7 @@ knitr::include_graphics("img/generate-new-token.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/new-personal-access-token.png")
 ```
 
@@ -164,7 +165,7 @@ knitr::include_graphics("img/new-personal-access-token.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/generate-token.png")
 ```
 
@@ -212,7 +213,7 @@ Now, we will begin demonstrating how a VCS works by first setting up and working
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/create-new-repo.png")
 ```
 
@@ -227,7 +228,7 @@ knitr::include_graphics("img/create-new-repo.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/create-test-repo.png")
 ```
 
@@ -239,7 +240,7 @@ Congratulations! You've just set up your first **GitHub** hosted repository!
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/readme-edit.png")
 ```
 
@@ -247,7 +248,7 @@ knitr::include_graphics("img/readme-edit.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/readme-markdown-editor.png")
 ```
 
@@ -257,7 +258,7 @@ knitr::include_graphics("img/readme-markdown-editor.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/readme-commit-changes.png")
 ```
 
@@ -271,7 +272,7 @@ Here, we are going to create a new branch of our repository, edit a file in that
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/new-branch.png")
 ```
 
@@ -286,12 +287,12 @@ To merge changes from the new branch back into the `main` branch, we now need to
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/return-to-top-level.png")
 ```
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/compare-and-pull-request.png")
 ```
 
@@ -303,7 +304,7 @@ knitr::include_graphics("img/compare-and-pull-request.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/branches.png")
 ```
 
@@ -311,7 +312,7 @@ After making these selections, scroll to the bottom of the window... there you s
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/readme-edits-diffs.png")
 ```
 
@@ -321,7 +322,7 @@ knitr::include_graphics("img/readme-edits-diffs.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/create-pull-request.png")
 ```
 
@@ -331,13 +332,13 @@ knitr::include_graphics("img/create-pull-request.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/merge-pull-request.png")
 ```
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/confirm-merge.png")
 ```
 
@@ -347,7 +348,7 @@ knitr::include_graphics("img/confirm-merge.png")
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/delete-branch.png")
 ```
 
@@ -371,7 +372,7 @@ There are two ways to connect between remote and local ***git*** repositories, v
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/clone-with-https.png")
 ```
 
@@ -485,7 +486,7 @@ To confirm that your edits have in fact been pushed up successfully, return to t
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/readme-pushed-changes.png")
 ```
 
@@ -493,7 +494,7 @@ And if you click on the "commits" history on the right hand site of message bloc
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/commits-history.png")
 ```
 
@@ -507,7 +508,7 @@ Similarly, we can make edits to files in a remote repository on ***GitHub*** usi
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/readme-edit-again.png")
 ```
 
@@ -569,7 +570,7 @@ In the "Git/SVN" tab of the **Tools \> Global Options** dialog box, press the bu
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/create-rsa-key.png")
 ```
 
@@ -581,7 +582,7 @@ From the "Git/SVN" tab of the **Tools \> Global Options** dialog box, press the 
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/view-rsa-key.png")
 ```
 
@@ -593,7 +594,7 @@ Go to your ***GitHub*** account online, open your profile/account settings, and 
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/profile-settings.png")
 knitr::include_graphics("img/ssh-and-gpg-keys.png")
 ```
@@ -602,13 +603,13 @@ Click "New SSH key", fill out a title for the new key (e.g., "Connect to ***GitH
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/new-ssh-key.png")
 ```
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/add-ssh-key.png")
 ```
 
@@ -624,7 +625,7 @@ The process is essentially the same as we used above for cloning via HTTPS.
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/clone-with-ssh.png")
 ```
 
@@ -688,7 +689,7 @@ Sometimes, getting ***git*** set up and working properly on Windows machines can
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/git4.png")
 ```
 
@@ -696,7 +697,7 @@ knitr::include_graphics("img/git4.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/git7.png")
 ```
 
@@ -720,7 +721,7 @@ Thus, after installing ***git*** and restarting your computer, when you then cho
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/msys-git.png")
 ```
 
@@ -732,7 +733,7 @@ After installing ***git***, you **can** access ***Git Bash*** from the Windows s
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/mingw64-git.png")
 ```
 
@@ -768,7 +769,7 @@ Start up ***RStudio*** and check that the path to the ***git*** executable in **
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/path-to-git.png")
 ```
 
@@ -780,7 +781,7 @@ In **Tools \> Global Options \> Terminal**, make sure that new terminals are set
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/select-terminal.png")
 ```
 
@@ -795,7 +796,7 @@ Choose **Tools \> Shell...** or **Tools \> Terminal \> New Terminal" and confirm
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/msys-git.png")
 ```
 
@@ -803,7 +804,7 @@ knitr::include_graphics("img/msys-git.png")
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/new-shell-branch.png")
 ```
 
@@ -813,7 +814,7 @@ Confirm that ***git*** is available by typing `which git`. It *should* return `/
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/msys-git.png")
 ```
 
@@ -837,7 +838,7 @@ You should get a list of settings that includes at least two settings, `user.nam
 
 ```{r}
 #| echo: false
-#| out_width: "75%"
+#| out-width: "75%"
 knitr::include_graphics("img/git-config-setup.png")
 ```
 
@@ -849,7 +850,7 @@ Check the box indicating that you want to "Create a git repository", ***RStudio*
 
 ```{r}
 #| echo: false
-#| out_width: "90%"
+#| out-width: "90%"
 knitr::include_graphics("img/icons.png")
 ```
 

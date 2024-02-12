@@ -12,7 +12,7 @@ Apart from the GUIs included in the MacOS and Windows installations of ***R***, 
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/install-RStudio.png")
 ```
 
@@ -22,7 +22,7 @@ The workspace that you see is divided into four separate panes (**Source** and *
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/RStudio.png")
 ```
 
@@ -42,7 +42,7 @@ An alternative (though likely slower!) way to use ***R*** and ***RStudio*** is t
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/rstudio-cloud.png")
 ```
 
@@ -50,7 +50,7 @@ You can use a ***Facebook*** or ***GitHub*** account to sign up (I recommend the
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/rstudio-cloud-signin.png")
 ```
 
@@ -58,7 +58,7 @@ Once you are signed up, or if you have already done so, you can use your account
 
 ```{r}
 #| echo: false
-#| out_width: "80%"
+#| out-width: "80%"
 knitr::include_graphics("img/rstudio-cloud-landing.png")
 ```
 
@@ -68,7 +68,7 @@ There, if you create a `New Project`, you will set up a new ***R*** project with
 
 ```{r}
 #| echo: false
-#| out_width: "95%"
+#| out-width: "95%"
 knitr::include_graphics("img/rstudio-cloud-new-project.png")
 ```
 
@@ -80,7 +80,7 @@ In the *General* section, I recommend the settings shown below, particularly abo
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/preferences-general.png")
 ```
 
@@ -88,7 +88,7 @@ Feel free to organize the rest of your setup as you would like. For example, you
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/preferences-other.png")
 ```
 
@@ -96,7 +96,7 @@ Finally, if you have already installed ***git*** on your computer, go to the *Gi
 
 ```{r}
 #| echo: false
-#| out_width: "60%"
+#| out-width: "60%"
 knitr::include_graphics("img/git-svn.png")
 ```
 

@@ -736,14 +736,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can use the {base} <strong><em>R</em></strong> function <code>plot()</code> to do some quick visualizations.</p>
-<div class="cell" data-layout-align="center" data-out_width="80%">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># `plot()` takes values of x and y values as the first two arguments, and the</span></span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="co"># `type='o'` argument superimposes points and lines</span></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, logx, <span class="at">type =</span> <span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -751,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -759,7 +759,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-18-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -774,7 +774,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>HINT:</strong> Use <code>?rnorm</code> or <code>help(rnorm)</code> to access the help documentation on how to use the <code>rnorm()</code> function.</p>
 </blockquote>
 <p>Then, use the <code>hist()</code> function to plot a histogram showing the distribution of these numbers.</p>
-<div class="cell" data-layout-align="center" data-out_width="80%">
+<div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
@@ -783,7 +783,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="04-module_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="04-module_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -798,7 +798,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 79.97478</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 79.97154</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -807,7 +807,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 9.960429</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 9.92559</code></pre>
 </details>
 </div>
 </div>
@@ -859,11 +859,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 <p>In general, the format for a function is as follows: <code>function_name &lt;- function(&lt;arguments&gt;) {&lt;function code&gt;}</code></p>
 <p>You can send your new function to the <strong><em>R</em></strong> console by highlighting it in the editor and hitting <code>⌘-RETURN</code> (Mac) or <code>control-ENTER</code> (PC). This loads the function as an object into the working environment.</p>
-<div class="cell" data-layout-align="center" data-out_width="90%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/say_hi.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="670"></p>
+<p><img src="img/say_hi.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
 </div>
@@ -903,11 +903,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> I tend to NOT save my workspace images. You can change the default behavior for this by editing <strong><em>RStudio</em></strong>’s preferences and choosing “Always”, “Never”, or “Ask”.</p>
 </blockquote>
-<div class="cell" data-layout-align="center" data-out_width="60%">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/rdata-prefs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="617"></p>
+<p><img src="img/rdata-prefs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -1644,8 +1644,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-253"><a href="#cb98-253" aria-hidden="true" tabindex="-1"></a>We can use the {base} ***R*** function <span class="in">`plot()`</span> to do some quick visualizations.</span>
 <span id="cb98-254"><a href="#cb98-254" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-257"><a href="#cb98-257" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb98-258"><a href="#cb98-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.height: 4</span></span>
-<span id="cb98-259"><a href="#cb98-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "80%"</span></span>
+<span id="cb98-258"><a href="#cb98-258" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb98-259"><a href="#cb98-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
 <span id="cb98-260"><a href="#cb98-260" aria-hidden="true" tabindex="-1"></a><span class="co"># `plot()` takes values of x and y values as the first two arguments, and the `type="o"` argument superimposes points and lines</span></span>
 <span id="cb98-261"><a href="#cb98-261" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, logx, <span class="at">type =</span> <span class="st">"o"</span>)</span>
 <span id="cb98-262"><a href="#cb98-262" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, x2, <span class="at">type =</span> <span class="st">"o"</span>)</span>
@@ -1665,7 +1665,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-278"><a href="#cb98-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
 <span id="cb98-279"><a href="#cb98-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
 <span id="cb98-280"><a href="#cb98-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-align: center</span></span>
-<span id="cb98-281"><a href="#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "80%"</span></span>
+<span id="cb98-281"><a href="#cb98-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "80%"</span></span>
 <span id="cb98-282"><a href="#cb98-282" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-283"><a href="#cb98-283" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
 <span id="cb98-284"><a href="#cb98-284" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(s) <span class="co"># hist() plots a simple histogram of values for s</span></span>
@@ -1730,7 +1730,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-351"><a href="#cb98-351" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-354"><a href="#cb98-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb98-355"><a href="#cb98-355" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb98-356"><a href="#cb98-356" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "90%"</span></span>
+<span id="cb98-356"><a href="#cb98-356" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
 <span id="cb98-357"><a href="#cb98-357" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/say_hi.png"</span>)</span>
 <span id="cb98-358"><a href="#cb98-358" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb98-359"><a href="#cb98-359" aria-hidden="true" tabindex="-1"></a></span>
@@ -1765,7 +1765,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-392"><a href="#cb98-392" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-395"><a href="#cb98-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb98-396"><a href="#cb98-396" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb98-397"><a href="#cb98-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| out_width: "60%"</span></span>
+<span id="cb98-397"><a href="#cb98-397" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "60%"</span></span>
 <span id="cb98-398"><a href="#cb98-398" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/rdata-prefs.png"</span>)</span>
 <span id="cb98-399"><a href="#cb98-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb98-400"><a href="#cb98-400" aria-hidden="true" tabindex="-1"></a></span>
@@ -1803,20 +1803,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb98-432"><a href="#cb98-432" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Now you can update your packages by typing <span class="in">`update.packages()`</span> in your ***RStudio*** console, and answering "y" to all of the prompts.</span>
 <span id="cb98-433"><a href="#cb98-433" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, to reassure yourself that you have done everything correctly, type these two commands in the ***RStudio*** console to see what you've got in terms of what version of ***R*** you are running, the number of packages you have installed, and what packages you have loaded:</span>
 <span id="cb98-434"><a href="#cb98-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-435"><a href="#cb98-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb98-436"><a href="#cb98-436" aria-hidden="true" tabindex="-1"></a><span class="in">version</span></span>
-<span id="cb98-437"><a href="#cb98-437" aria-hidden="true" tabindex="-1"></a><span class="in">packageStatus()</span></span>
-<span id="cb98-438"><a href="#cb98-438" aria-hidden="true" tabindex="-1"></a><span class="in">(.packages())</span></span>
-<span id="cb98-439"><a href="#cb98-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb98-440"><a href="#cb98-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-441"><a href="#cb98-441" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb98-442"><a href="#cb98-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-443"><a href="#cb98-443" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb98-444"><a href="#cb98-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-445"><a href="#cb98-445" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Characteristics of ***R*** objects: <span class="in">`class()`</span>, <span class="in">`mode()`</span>, <span class="in">`typeof()`</span>, <span class="in">`str()`</span>, <span class="in">`attributes()`</span>, <span class="in">`dplyr::glimpse()`</span></span>
-<span id="cb98-446"><a href="#cb98-446" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using scripts: <span class="in">`source()`</span></span>
-<span id="cb98-447"><a href="#cb98-447" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>".RData" and ".Rhistory" files</span>
-<span id="cb98-448"><a href="#cb98-448" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Updating ***R*** and packages</span>
+<span id="cb98-437"><a href="#cb98-437" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb98-438"><a href="#cb98-438" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb98-439"><a href="#cb98-439" aria-hidden="true" tabindex="-1"></a>version</span>
+<span id="cb98-440"><a href="#cb98-440" aria-hidden="true" tabindex="-1"></a><span class="fu">packageStatus</span>()</span>
+<span id="cb98-441"><a href="#cb98-441" aria-hidden="true" tabindex="-1"></a>(<span class="fu">.packages</span>())</span>
+<span id="cb98-442"><a href="#cb98-442" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb98-443"><a href="#cb98-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-444"><a href="#cb98-444" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb98-445"><a href="#cb98-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-446"><a href="#cb98-446" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb98-447"><a href="#cb98-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-448"><a href="#cb98-448" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Characteristics of ***R*** objects: <span class="in">`class()`</span>, <span class="in">`mode()`</span>, <span class="in">`typeof()`</span>, <span class="in">`str()`</span>, <span class="in">`attributes()`</span>, <span class="in">`dplyr::glimpse()`</span></span>
+<span id="cb98-449"><a href="#cb98-449" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using scripts: <span class="in">`source()`</span></span>
+<span id="cb98-450"><a href="#cb98-450" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>".RData" and ".Rhistory" files</span>
+<span id="cb98-451"><a href="#cb98-451" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Updating ***R*** and packages</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
