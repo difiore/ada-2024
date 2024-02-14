@@ -42,7 +42,7 @@ book:
       chapters:
       - 12-module.qmd
       - 13-module.qmd
-      # - 14-module.qmd
+      - 14-module.qmd
       # - 15-module.qmd
       # - 16-module.qmd
       # - 17-module.qmd

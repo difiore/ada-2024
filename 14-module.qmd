@@ -9,7 +9,8 @@
 -   Install and load this package in ***R***: [{boot}](https://cran.r-project.org/web/packages/manipulate/boot.pdf)
 -   Load {tidyverse}, {manipulate}, and {mosaic}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 library(manipulate)
 library(mosaic)
@@ -111,7 +112,8 @@ Finally, we could also characterize the central CI% of the sampling distribution
 
 The following code will let us interactively visualize CIs around an estimate of a mean with a normal sampling distribution.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 manipulate(
   ggplot(data = data.frame(
     x = c(sampling_dist_mean - 4 * sampling_dist_sd,
@@ -176,7 +178,8 @@ Imagine we have some event that occurs in a population according to some probabi
 
 Now let's imagine taking a bunch of random samples of size 10 from this population. We will take 1000 random samples of this size, calculate the average of each sample, and plot a histogram of those averages... it will be close to normal, and the standard deviation of those averages - i.e., the SD of the sampling distribution - should be roughly equal to the estimated standard error, i.e., the square root of (expected variance / sample size). Recall that for a Poisson distribution that $\lambda$ is the expected variance, so the estimated standard error is simply the $\sqrt{\lambda/n}$
 
-```{r fig.height=3}
+```{r}
+#| fig-height: 3
 lambda <- 14
 n <- 10
 (se <- sqrt(lambda/n))
@@ -214,7 +217,8 @@ qqline(x)
 
 Let's now do the same for samples of size 1000. We see that the mean of the sampling distribution stays essentially the same, the distribution is still normal, but the standard deviation - the spread - of the sampling distribution is lower.
 
-```{r fig.height=3}
+```{r}
+#| fig-height: 3
 lambda <- 14
 n <- 1000
 (se <- sqrt(lambda/n))
@@ -253,7 +257,8 @@ Note that the sampling distribution gets narrower as the sample size increases.
 
 We can convert the sampling distribution to a standard normal by subtracting off the mean of the distribution and dividing by the standard deviation and then plotting a histogram of those values along with a normal curve.
 
-```{r fig.height=3}
+```{r}
+#| fig-height: 3
 par(mfrow=c(1,2))
 hist(
   x,
@@ -273,7 +278,8 @@ Pretty normal looking, right?
 
 Here's an example of the CLT in action using the `sum()` of our random variables instead of the `mean()` as the statistic of interest ...
 
-```{r fig.height=3}
+```{r}
+#| fig-height: 3
 lambda <- 14
 n <- 1000
 par(mfrow=c(1,3))
@@ -309,7 +315,8 @@ Again, pretty normal looking!
 
 Trying this for an intial beta rather than Poisson distribution...
 
-```{r fig.height=3}
+```{r}
+#| fig-height: 3
 alpha <- 1.1
 beta <- 2.9
 n <- 1000
@@ -542,7 +549,8 @@ Below, we use the `sample()` function to sample, **with replacement**, bootstrap
 
 > **NOTE:** If we wanted to sample rows from a data frame instead of items from a vector, we could use the {dplyr} functions `sample_n()` or `slice_sample()`.
 
-```{r fig.keep="last"}
+```{r}
+#| fig-keep: last
 n_boot <- 10000
 boot <- vector(length=n_boot) # set up a dummy variable to hold our simulations
 n <- length(s)
@@ -627,7 +635,8 @@ hist(boot$mean,
 
 Alternatively, can use the `rep_sample_n()` function from the {infer} package to perform boostrapping. This function takes a data frame as an argument and randomly samples from that data frame a specified number of times (defined by the "size=" argument) to produce a large data object consisting of samples for each replicate and a column data that indicates which replicate each sample datum comes from. To use `rep_sample_n()`, we need to first convert our original sample vector **s** into a data frame. We can then use `group_by()` and `summarize()` from {dplyr} to generate a bootstrap sampling distribution, as we did above.
 
-```{r warning=FALSE}
+```{r}
+#| warning: false
 library(infer)
 boot <- as.data.frame(s) %>%
   rep_sample_n(size = length(s), replace = TRUE, reps = n_boot) %>% group_by(replicate) %>%
@@ -645,7 +654,9 @@ We can also use the fast and versatile {boot} package to do bootstrapping for an
 
 For this approach, we define a custom function that we will use to generate the statistic we are interested in that we will then calculate for each bootstrapped sample:
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(boot)
 # here, the `stat()` function we define calculates the mean value of a bootstrap sample
 #   taken with replacement from a vector of interest passed into `data`
@@ -660,7 +671,8 @@ stat <- function(data, indices) {
 
 Then, we run the `boot()` function passing in the data to be resampled from ("data="), the statistic we want to calculate ("statistic="), and the number of bootstrap replicates (or "resamples") we want using the argument "R=".
 
-```{r fig.keep="last"}
+```{r}
+#| fig-keep: last
 boot <- boot(data = s, statistic = stat, R = n_boot) # stype="i" by default
 # the object returned includes a table, `t`, of `stat`s results from each
 #   bootstrap
@@ -668,7 +680,8 @@ boot <- boot(data = s, statistic = stat, R = n_boot) # stype="i" by default
 
 Again, it is interesting to plot the bootstrap sampling distibution and compare methods for calculating CIs.
 
-```{r fig.keep="last"}
+```{r}
+#| fig-keep: last
 # Visualizing the results and comparing methods for calculating CIs
 # 
 hist(boot$t, breaks = 25,
@@ -697,7 +710,9 @@ text(x = upper_boot - 0.125, y = 700, "upper CI - bootstrap",
 
 We can also use the `boot.ci()` function from the {boot} package to calculate CIs for using various methods, although the available methods do not include exactly the one we most want, i.e., the quantile method. Instead, all the options for `boot.ci()` generate equi-tailed CIs based on presumed theoretical shapes for the sampling distribution. The "basic" and "percent" intervals are the closest to the empirical quantile method.
 
-```{r fig.keep="last", warning=FALSE}
+```{r}
+#| fig-keep: last
+#| warning: false
 hist(boot$t, breaks = 25,
      ylim = c(0, 1500),
      xlab = "Mean",
@@ -720,7 +735,8 @@ These alternative CIs are all very close to one another and are close to what we
 -   How does the CI calculated by bootstrap simulation compare to that calculated based on assuming a normal or $t$ distribution?
 -   How does the width of the CI change with decreasing or increasing $n$ (the number of observations drawn from your sample with replacement)? For example, if we set $n$ at 5? At 50? At 500?
 
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:infer)
 detach(package:boot)
 detach(package:manipulate)
