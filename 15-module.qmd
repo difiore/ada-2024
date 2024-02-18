@@ -21,11 +21,13 @@ library(mosaic)
 
 ## Null and Alternative Hypotheses
 
-```{r out.extra='style="width: 200px; padding-top: 10px; padding-left: 20px; padding-right: 20px; padding-bottom: 10px" align="right"'}
+<div style = "float:right; padding-top: 10px; padding-left: 20px; padding-right: 20px; padding-bottom: 10px">
+```{r}
 #| echo: false
-#| out-width: "40%" 
+#| out-width: 150px 
 knitr::include_graphics("img/null_hypothesis.png")
 ```
+</div>
 
 Classical hypothesis testing typically involves formally stating a claim - the **null hypothesis** - which is then followed up by statistical evaluation of the null versus an **alternative hypothesis**. The null hypothesis is interpreted as a baseline hypothesis and is the claim that is presumed to be true. That claim is typically that a particular value of a population parameter estimated by a sample statistic we have calculated is *consistent with a particular null expectation*. The alternative hypothesis is the conjecture that we are testing, usually that the sample statistic is inconsistent with a null expectation.
 
@@ -90,7 +92,7 @@ Let's do an example where we try to evaluate whether the mean of a single set of
 
 Suppose we have a vector describing the adult weights of vervet monkeys trapped in South Africa during the 2015 trapping season. We have the sense they are heavier than vervets we trapped in previous years, which averaged 5.0 kilograms. We calculate the mean of our sample of trapped vervets and then need to decide whether that mean is significantly greater than our expectation based on prior information.
 
-```{r out.extra="border-style: solid; border-width: 2px"}
+```{r}
 #| echo: false
 #| out-width: "70%"
 knitr::include_graphics("img/vervets.jpg")
@@ -317,7 +319,7 @@ ci
 
 Adult lowland woolly monkeys are reported to have an average body weight of 7.2 kilograms. You are working with an isolated population of woolly monkeys from the Colombian Andes that you think may be a different species from lowland form, and you collect a sample of 15 weights of from adult individuals at that site. From your sample, you calculate a mean of 6.43 kilograms and a standard deviation of 0.98 kilograms. Perform a hypothesis test to evaluate whether body weights in your population are different from the reported average for lowland woolly monkeys by setting up a "two-tailed" hypothesis, carrying out the analysis, and interpreting the **p value** (assume the significance level is $\alpha$ = 0.05).
 
-```{r out.extra="border-style: solid; border-width: 2px"}
+```{r}
 #| echo: false
 #| out-width: "70%"
 knitr::include_graphics("img/woolly.jpg")
@@ -434,7 +436,7 @@ where:
 
 Let's do an example. Load in a file of black-and-white colobus weights and examine the `str()` of the file.
 
-```{r out.extra="border-style: solid; border-width: 2px"}
+```{r}
 #| echo: false
 #| out-width: "70%"
 knitr::include_graphics("img/bwcolobus.jpg")
@@ -700,8 +702,9 @@ where:
 
 A neotropical ornithological working in the western Amazon deploys 30 mist nets in a 100 ha grid.
 
-```{r out.width="70%", out.extra="border-style: solid; border-width: 2px"}
+```{r}
 #| echo: false
+#| out-width: "70%"
 knitr::include_graphics("img/birdnet.jpg")
 ```
 
@@ -789,7 +792,7 @@ where:
 
 A biologist studying two species of tropical bats captures females of both species in a mist net over the course of a week of nightly netting. For each species, the researcher records whether females is lactating or not.
 
-```{r out.extra="border-style: solid; border-width: 2px"}
+```{r}
 #| echo: false
 #| out-width: "70%"
 knitr::include_graphics("img/batnet.jpg")
