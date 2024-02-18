@@ -878,11 +878,11 @@ window.Quarto = {
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>spade <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(card <span class="sc">&lt;=</span> <span class="dv">13</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>(exp_spade <span class="ot">&lt;-</span> <span class="fu">sum</span>(spade)<span class="sc">/</span>reps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.25019</code></pre>
+<pre><code>## [1] 0.25133</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(exp_var_spade <span class="ot">&lt;-</span> <span class="fu">var</span>(spade))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.1875968</code></pre>
+<pre><code>## [1] 0.1881651</code></pre>
 </div>
 </div>
 <section id="the-binomial-distribution" class="level4 unnumbered">
@@ -1042,22 +1042,22 @@ window.Quarto = {
 <span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="co"># all 'ones' in 6 rolls</span></span>
 <span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(all_ones)<span class="sc">/</span>reps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.4e-05</code></pre>
+<pre><code>## [1] 2.4e-05</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># three 'ones' in 6 rolls</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(three_ones)<span class="sc">/</span>reps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.053657</code></pre>
+<pre><code>## [1] 0.053714</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected # 'ones' in 6 rolls</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(count_ones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.999037</code></pre>
+<pre><code>## [1] 1.000556</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance in expected # 'ones' across rolls</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((count_ones <span class="sc">-</span> <span class="fu">mean</span>(count_ones))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(count_ones))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.8343261</code></pre>
+<pre><code>## [1] 0.8321737</code></pre>
 </div>
 </div>
 <section id="the-poisson-distribution" class="level4 unnumbered">
@@ -1165,7 +1165,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 6.998097</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 7.007538</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -1174,7 +1174,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 0.3299207</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 0.3344625</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -3330,18 +3330,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb130-1296"><a href="#cb130-1296" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb130-1297"><a href="#cb130-1297" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
 <span id="cb130-1298"><a href="#cb130-1298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-1299"><a href="#cb130-1299" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Useful ***R*** functions for distributions: <span class="in">`r`</span> (random value generation), <span class="in">`d`</span> (point density), <span class="in">`p`</span> (cumulative probability distribution), <span class="in">`q`</span> (quantile)</span>
+<span id="cb130-1299"><a href="#cb130-1299" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Useful ***R*** functions for distributions: <span class="in">`r`</span> (random value generation), <span class="in">`d`</span> (point density), <span class="in">`p`</span> (cumulative probability distribution), <span class="in">`q`</span> (quantile)</span>
 <span id="cb130-1300"><a href="#cb130-1300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-1301"><a href="#cb130-1301" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Useful distributions:</span>
+<span id="cb130-1301"><a href="#cb130-1301" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Useful distributions:</span>
 <span id="cb130-1302"><a href="#cb130-1302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-1303"><a href="#cb130-1303" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>PMFs for discrete random variables - Bernoulli, Binomial, Poisson</span>
-<span id="cb130-1304"><a href="#cb130-1304" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>PDFs for continuous random variables - Beta, Uniform, Normal and Standard Normal</span>
+<span id="cb130-1303"><a href="#cb130-1303" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>PMFs for discrete random variables - Bernoulli, Binomial, Poisson</span>
+<span id="cb130-1304"><a href="#cb130-1304" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>PDFs for continuous random variables - Beta, Uniform, Normal and Standard Normal</span>
 <span id="cb130-1305"><a href="#cb130-1305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-1306"><a href="#cb130-1306" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Standard error of the mean for a sample of size $n$:</span>
+<span id="cb130-1306"><a href="#cb130-1306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Standard error of the mean for a sample of size $n$:</span>
 <span id="cb130-1307"><a href="#cb130-1307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-1308"><a href="#cb130-1308" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>(**population standard deviation**, or $\sigma$) $\div$ $\sqrt{n}$</span>
-<span id="cb130-1309"><a href="#cb130-1309" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>≈ **standard deviation of the sampling distribution** for a large set of samples of size $n$</span>
-<span id="cb130-1310"><a href="#cb130-1310" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>≈ (**standard deviation of a single sample of size** $n$, or $s$) $\div$ $\sqrt{n}$</span>
+<span id="cb130-1308"><a href="#cb130-1308" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>(**population standard deviation**, or $\sigma$) $\div$ $\sqrt{n}$</span>
+<span id="cb130-1309"><a href="#cb130-1309" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>≈ **standard deviation of the sampling distribution** for a large set of samples of size $n$</span>
+<span id="cb130-1310"><a href="#cb130-1310" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>≈ (**standard deviation of a single sample of size** $n$, or $s$) $\div$ $\sqrt{n}$</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

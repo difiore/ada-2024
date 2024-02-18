@@ -559,26 +559,26 @@ detach(package:mosaic)
 
 - $\mu, \bar{x}$ = population mean, sample mean
 
-    - $\bar{x}$ is an estimator for $\mu$
+  - $\bar{x}$ is an estimator for $\mu$
 
 - $\sigma^2, s^2$ = population variance, sample variance
 
 - $\sigma, s$ = population standard deviation, sample standard deviation
 
-    - $s$ is an estimator for $\sigma$
+  - $s$ is an estimator for $\sigma$
 
 - Sample variance and standard deviation: `var()`, `sd()`
 
-    - These are measures of the variation/spread in a **sample**
+  - These are measures of the variation/spread in a **sample**
 
 - Sampling distributions and standard errors
 
-    - Mean of the sampling distribution of $\bar{x}$ is an estimate of $\mu$
+  - Mean of the sampling distribution of $\bar{x}$ is an estimate of $\mu$
 
-    - Standard deviation of the sampling distribution of $\bar{x}$ = $\frac{\sigma}{\sqrt{n}}$ = standard error
+  - Standard deviation of the sampling distribution of $\bar{x}$ = $\frac{\sigma}{\sqrt{n}}$ = standard error
 
-        - This is a measure of the variation/spread in a **sample statistic**
+      - This is a measure of the variation/spread in a **sample statistic**
 
-    - Standard errors: `sciplot::se()`
+  - Standard errors: `sciplot::se()`
 
 - Using the `sample_n()` function from {dplyr} and `do() * <function>` construction from {mosaic} to generate sampling distributions

@@ -6,8 +6,8 @@
 
 ## Preliminaries
 
--   Install and load this package in ***R***: [{manipulate}](https://cran.r-project.org/web/packages/manipulate/manipulate.pdf)
--   Load {tidyverse}, {mosaic}, and {cowplot}
+- Install and load this package in ***R***: [{manipulate}](https://cran.r-project.org/web/packages/manipulate/manipulate.pdf)
+- Load {tidyverse}, {mosaic}, and {cowplot}
 
 ```{r}
 #| include: false
@@ -41,7 +41,7 @@ manipulate(
 )
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Write your own function, `roll()`, to simulate rolling a die where you pass the number of rolls as an argument (`nrolls=`) with a default value of 1. Then, use your function to simulate rolling two dice a total 1000 times and take the sum of the rolls. Plot a histogram of those results. What happens if you roll each die 100 times? 10,000 times?
 
@@ -97,45 +97,45 @@ $$Pr (A \vert B) = Pr (A \cap B) \div Pr (B)$$
 >
 > If event $A$ and $B$ are *not independent*, then $$Pr (A \vert B) ≠ Pr (A)$$
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 You have a deck of 52 cards... Ace to 10 plus 3 face cards in each suit. You draw a card at random.
 
--   What is the probability that you draw a *face card*?
+- What is the probability that you draw a *face card*?
 
 > $Pr (face\ card)$
 >
-> -   12 of 52 cards = 0.2307692
+> - 12 of 52 cards = 0.2307692
 
--   What is the probability that you draw a *King*?
+- What is the probability that you draw a *King*?
 
 > $Pr(King)$
 >
-> -   3 of 52 cards = 0.05769231
+> - 3 of 52 cards = 0.05769231
 
--   What is the probability that you draw a *spade*?
+- What is the probability that you draw a *spade*?
 
 > $Pr(spade)$
 >
-> -   13 of 52 cards = 0.25
+> - 13 of 52 cards = 0.25
 
--   What is the probability that you draw a *spade* given that you draw a *face card*? (CONDITIONAL, INDEPENDENT EVENTS)
+- What is the probability that you draw a *spade* given that you draw a *face card*? (CONDITIONAL, INDEPENDENT EVENTS)
 
 > Intuitively...
 >
-> -   3 of 12 cards = 0.25
+> - 3 of 12 cards = 0.25
 >
 > Formally...
 >
 > $Pr(spade \vert face\ card) = Pr(spade) \times Pr(face\ card) \div Pr(face\ card)$
 >
-> -   (13 of 52) $\times$ (12 of 52) $\div$ (12 of 52) = 0.25
+> - (13 of 52) $\times$ (12 of 52) $\div$ (12 of 52) = 0.25
 
--   What is the probability that you draw a *King* given that you draw a *face card*? (CONDITIONAL, NOT INDEPENDENT EVENTS)
+- What is the probability that you draw a *King* given that you draw a *face card*? (CONDITIONAL, NOT INDEPENDENT EVENTS)
 
 > Intuitively...
 >
-> -   4 of 12 cards = 0.3333333
+> - 4 of 12 cards = 0.3333333
 >
 > Formally...
 >
@@ -143,13 +143,13 @@ You have a deck of 52 cards... Ace to 10 plus 3 face cards in each suit. You dra
 >
 > $Pr(face\ card \vert King) \times Pr(King) \div Pr(face\ card)$
 >
-> -   1 $\times$ (4 of 52) $\div$ (12 of 52) = 0.3333333
+> - 1 $\times$ (4 of 52) $\div$ (12 of 52) = 0.3333333
 
--   What is the probability that you draw a card that is both from a *red* suit (hearts or diamonds) and a *face card*? (INTERSECTION, INDEPENDENT EVENTS)
+- What is the probability that you draw a card that is both from a *red* suit (hearts or diamonds) and a *face card*? (INTERSECTION, INDEPENDENT EVENTS)
 
 > Intuitively...
 >
-> -   6 of 52 cards = 0.1153846
+> - 6 of 52 cards = 0.1153846
 >
 > Formally...
 >
@@ -161,21 +161,21 @@ You have a deck of 52 cards... Ace to 10 plus 3 face cards in each suit. You dra
 >
 > $Pr (red)$
 >
-> -   26 of 52 cards = 0.5
+> - 26 of 52 cards = 0.5
 >
 > $Pr (face\ card)$
 >
-> -   12 of 52 cards = 0.2307692
+> - 12 of 52 cards = 0.2307692
 >
 > so...
 >
-> -   [(26 of 52) $\times$ (12 of 52)] $\div$ (12 of 52) $\times$ (12 of 52) = 0.1153846
+> - [(26 of 52) $\times$ (12 of 52)] $\div$ (12 of 52) $\times$ (12 of 52) = 0.1153846
 
--   What is the probability that you draw a card that is either a *club* or *not a face card*? (UNION, NOT INDEPENDENT EVENTS)
+- What is the probability that you draw a card that is either a *club* or *not a face card*? (UNION, NOT INDEPENDENT EVENTS)
 
 > Intuitively...
 >
-> -   (13 club cards $+$ 40 not face cards $-$ 10 club cards that are not face cards) of 52 cards = 43 of 52 cards = 0.8269231
+> - (13 club cards $+$ 40 not face cards $-$ 10 club cards that are not face cards) of 52 cards = 43 of 52 cards = 0.8269231
 >
 > Formally...
 >
@@ -189,19 +189,19 @@ You have a deck of 52 cards... Ace to 10 plus 3 face cards in each suit. You dra
 >
 > $Pr (club)$
 >
-> -   13 of 52 cards = 0.25
+> - 13 of 52 cards = 0.25
 >
 > $Pr (not\ a\ face\ card)$
 >
-> -   40 of 52 cards = 0.7692308
+> - 40 of 52 cards = 0.7692308
 >
 > $Pr (club \vert not\ a\ face\ card)$
 >
-> -   10 of 40 = 0.25
+> - 10 of 40 = 0.25
 >
 > so...
 >
-> -   (13 of 52) $+$ (40 of 52) $-$ [(10 of 40) $\times$ (40 of 52)] = 0.8269231
+> - (13 of 52) $+$ (40 of 52) $-$ [(10 of 40) $\times$ (40 of 52)] = 0.8269231
 
 ## Random Variables
 
@@ -209,8 +209,8 @@ A **random variable** is a variable whose outcomes are assumed to arise by chanc
 
 Random variables come in two varieties:
 
--   **Discrete Random Variables** are random variables that can assume only a countable number of discrete possibilities (e.g., counts of outcomes in a particular category, e.g., rolls of a die). We can assign a probability to each possible outcome.
--   **Continuous Random Variables** are random variables that can assume any real number value within a given range (e.g., measurements of body weight, number of offspring, linear dimensions, etc.). We cannot assign a specific probability to each possible outcome value as the set of possible outcomes is (theoretically) infinite, but we can assign probabilites to intervals of outcome values.
+- **Discrete Random Variables** are random variables that can assume only a countable number of discrete possibilities (e.g., counts of outcomes in a particular category, e.g., rolls of a die). We can assign a probability to each possible outcome.
+- **Continuous Random Variables** are random variables that can assume any real number value within a given range (e.g., measurements of body weight, number of offspring, linear dimensions, etc.). We cannot assign a specific probability to each possible outcome value as the set of possible outcomes is (theoretically) infinite, but we can assign probabilites to intervals of outcome values.
 
 With these basics in mind, we can define a few more terms:
 
@@ -361,10 +361,10 @@ $$S(x) = Pr (X \gt x) = 1 - Pr (X \leq x) = 1 - F(x)$$
 
 **TL/DR:** ***R*** has four built-in functions that can be applied to a variety of standard and well understood statistical distributions:
 
--   `r` - the *random generation* function, which draws a random variable from the given distribution.
--   `d` - the *density* function, PMF or PDF, which describes the distribution of values for the function across the range of $x$ values: $f(x)$.
--   `p` - the *cumulative distribution* function, CDF, which gives the cumulative probability for all values from $-\infty$ to $x$ for a given distribution: $F(x)$ = *Pr* $(X$ $\leq$ $x)$.
--   `q` - the *quantile* function, which is the converse of `p`: the value of $x$ at which the CDF has the value $q$, i.e., $F(x_q) = q$.
+- `r` - the *random generation* function, which draws a random variable from the given distribution.
+- `d` - the *density* function, PMF or PDF, which describes the distribution of values for the function across the range of $x$ values: $f(x)$.
+- `p` - the *cumulative distribution* function, CDF, which gives the cumulative probability for all values from $-\infty$ to $x$ for a given distribution: $F(x)$ = *Pr* $(X$ $\leq$ $x)$.
+- `q` - the *quantile* function, which is the converse of `p`: the value of $x$ at which the CDF has the value $q$, i.e., $F(x_q) = q$.
 
 Note the relationship between the `p` and `q` functions:
 
@@ -425,7 +425,7 @@ where x = {0 or 1}
 
 For this distribution, the expectation and variance across a large set of trials would be: $\mu_X = p$ and $\sigma_X^2 = p(1-p)$
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Using the Bernoulli distribution, calculate the expectation for drawing a *spade* from a deck of cards? What is the variance in this expectation across a large number of draws?
 
@@ -467,11 +467,11 @@ $$\sigma_X^2 = np(1-p)$$
 
 Recall, $\mu_X$ = expected *number of successes* in $n$ trials. Where $n$ = 1, the binomial distribution simplifies to the Bernoulli distribution.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
--   What is the chance of getting a "1" on each of six consecutive rolls of a die? Recall that rolling a "1" = a success, while rolling something other than a "1" is not a success.
--   What about of getting exactly three "1"s (i.e., 3 successes).
--   What is the expected number of "1"s to occur in six consecutive rolls (i.e., what is the expected number of successes) and the variance around that expectation?
+- What is the chance of getting a "1" on each of six consecutive rolls of a die? Recall that rolling a "1" = a success, while rolling something other than a "1" is not a success.
+- What about of getting exactly three "1"s (i.e., 3 successes).
+- What is the expected number of "1"s to occur in six consecutive rolls (i.e., what is the expected number of successes) and the variance around that expectation?
 
 ```{r}
 n <- 6 # number of trials
@@ -739,7 +739,7 @@ plot(
 )
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Simulate a sample of 10,000 random numbers from a uniform distribution in the interval between $a$ = 6 and $b$ = 8. Calculate the mean and variance of this simulated sample and compare it to the expectation for these parameters.
 
@@ -829,14 +829,14 @@ qnorm(0.025, mean = 5, sd = 3, lower.tail=TRUE)
 # this would give us the value of x for the upper.tail of the distribution
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
--   Create a vector, **v**, containing **n** random numbers selected from a normal distribution with mean $\mu$ and standard deviation $\sigma$. Use 1000 for **n**, 3.5 for $\mu$, and 4 for $\sigma$.
+- Create a vector, **v**, containing **n** random numbers selected from a normal distribution with mean $\mu$ and standard deviation $\sigma$. Use 1000 for **n**, 3.5 for $\mu$, and 4 for $\sigma$.
 
 > **HINT:** Such a function exists! `rnorm()`. We also call `set.seed()` before `rnorm()` so that each time this function is run, it returns the same sequence of random numbers until the seed is reset.
 
--   Calculate the mean, variance, and standard deviation for your sample of random numbers.
--   Plot a histogram of your random numbers.
+- Calculate the mean, variance, and standard deviation for your sample of random numbers.
+- Plot a histogram of your random numbers.
 
 ```{r}
 #| fig-height: 3
@@ -889,7 +889,7 @@ qqline(v, col = "gray")
 
 This is the same as doing the following:
 
--   Step 1: Generate a sequence of probability points in the interval from 0 to 1 equivalent in length to vector **v**:
+- Step 1: Generate a sequence of probability points in the interval from 0 to 1 equivalent in length to vector **v**:
 
 ```{r}
 p <- ppoints(length(v))
@@ -899,7 +899,7 @@ head(p)
 tail(p)
 ```
 
--   Step 2: Calculate the theoretical quantiles for this set of probabilities based on the distribution you want to compare to (in this case, the normal distribution):
+- Step 2: Calculate the theoretical quantiles for this set of probabilities based on the distribution you want to compare to (in this case, the normal distribution):
 
 ```{r}
 theoretical_q <- qnorm(p)
@@ -907,13 +907,13 @@ theoretical_q <- qnorm(p)
 # (in this case, the standard normal)
 ```
 
--   Step 3: Calculate the quantiles for your set of observed data for the same number of points:
+- Step 3: Calculate the quantiles for your set of observed data for the same number of points:
 
 ```{r}
 observed_q <- quantile(v, ppoints(v)) # finds quantiles in our actual data
 ```
 
--   Step 4: Plot these quantiles against one another:
+- Step 4: Plot these quantiles against one another:
 
 ```{r}
 #| fig-height: 3
@@ -926,7 +926,7 @@ plot(
 )
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 What happens if you simulate fewer observations in your vectors? Try with **n = 100**.
 
@@ -987,7 +987,7 @@ However, the important thing for us to know is that we can get *unbiased estimat
 
 <img src="img/pvz-zombie1.png" align="right" width="100px"/>
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Let's imagine a population of 1 million zombies whose age at zombification is characterized by a normal distribution with a mean of 25 years and a standard deviation of 5 years.
 
@@ -1013,7 +1013,7 @@ sd(x)
 
 Now, suppose we now **sample** from the zombie population by trapping sets of zombies and determining the mean age at zombification in each set. We sample *without replacement* from the original population for each set...
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Create a loop to sample the zombie population 5000 times with samples of size 10 and store these results in a list, **s**.
 
@@ -1034,7 +1034,7 @@ head(s, 1) # an example of one sample of 10 ages
 
 For each of these samples, we can then calculate a mean age, which is a statistic describing each sample. **That statistic itself is a random variable with a mean and distribution!** As we saw in [**Module 12**](#module-12), this is known as a *sampling distribution*.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Create a loop to calculate the mean of each of your 5000 samples and store the result in a vector, **m**.
 
@@ -1104,7 +1104,7 @@ Again, what we have just calculated is the *mean of the sampling distribution*, 
 
 Now, let's take a closer look at our samples of zombies that we extracted from the population of zombies...
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Calculate a vector of standard error estimates based on the 5000 samples of zombies you have drawn from your population and then plot a histogram of the distribution of these standard errors. That is, for each sample, estimate the standard error of the sample ($\frac{s}{\sqrt{n}}$). How does the mean of this set of standard errors compare to the standard error estimated from the population variance? How does it compare to the standard error calculated from the standard deviation of the sampling distribution?
 
@@ -1196,15 +1196,15 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Useful ***R*** functions for distributions: `r` (random value generation), `d` (point density), `p` (cumulative probability distribution), `q` (quantile)
+- Useful ***R*** functions for distributions: `r` (random value generation), `d` (point density), `p` (cumulative probability distribution), `q` (quantile)
 
--   Useful distributions:
+- Useful distributions:
 
-    -   PMFs for discrete random variables - Bernoulli, Binomial, Poisson
-    -   PDFs for continuous random variables - Beta, Uniform, Normal and Standard Normal
+  - PMFs for discrete random variables - Bernoulli, Binomial, Poisson
+  - PDFs for continuous random variables - Beta, Uniform, Normal and Standard Normal
 
--   Standard error of the mean for a sample of size $n$:
+- Standard error of the mean for a sample of size $n$:
 
-    -   (**population standard deviation**, or $\sigma$) $\div$ $\sqrt{n}$
-    -   ≈ **standard deviation of the sampling distribution** for a large set of samples of size $n$
-    -   ≈ (**standard deviation of a single sample of size** $n$, or $s$) $\div$ $\sqrt{n}$
+  - (**population standard deviation**, or $\sigma$) $\div$ $\sqrt{n}$
+  - ≈ **standard deviation of the sampling distribution** for a large set of samples of size $n$
+  - ≈ (**standard deviation of a single sample of size** $n$, or $s$) $\div$ $\sqrt{n}$

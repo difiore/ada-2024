@@ -724,14 +724,14 @@ window.Quarto = {
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pop_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.994863</code></pre>
+<pre><code>## [1] 1.970395</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">sample_var</span>(x))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.995861</code></pre>
+<pre><code>## [1] 1.971381</code></pre>
 </div>
 </div>
 <p>The <code>sdpop()</code> function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.</p>
@@ -739,7 +739,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(radiant)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sdpop</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.994863</code></pre>
+<pre><code>## [1] 1.970395</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>radiant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -747,7 +747,7 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.995861</code></pre>
+<pre><code>## [1] 1.971381</code></pre>
 </div>
 </div>
 </section>
@@ -2173,27 +2173,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb78-617"><a href="#cb78-617" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-618"><a href="#cb78-618" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\mu, \bar{x}$ = population mean, sample mean</span>
 <span id="cb78-619"><a href="#cb78-619" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-620"><a href="#cb78-620" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>$\bar{x}$ is an estimator for $\mu$</span>
+<span id="cb78-620"><a href="#cb78-620" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>$\bar{x}$ is an estimator for $\mu$</span>
 <span id="cb78-621"><a href="#cb78-621" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-622"><a href="#cb78-622" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\sigma^2, s^2$ = population variance, sample variance</span>
 <span id="cb78-623"><a href="#cb78-623" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-624"><a href="#cb78-624" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\sigma, s$ = population standard deviation, sample standard deviation</span>
 <span id="cb78-625"><a href="#cb78-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-626"><a href="#cb78-626" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>$s$ is an estimator for $\sigma$</span>
+<span id="cb78-626"><a href="#cb78-626" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>$s$ is an estimator for $\sigma$</span>
 <span id="cb78-627"><a href="#cb78-627" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-628"><a href="#cb78-628" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sample variance and standard deviation: <span class="in">`var()`</span>, <span class="in">`sd()`</span></span>
 <span id="cb78-629"><a href="#cb78-629" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-630"><a href="#cb78-630" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>These are measures of the variation/spread in a **sample**</span>
+<span id="cb78-630"><a href="#cb78-630" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>These are measures of the variation/spread in a **sample**</span>
 <span id="cb78-631"><a href="#cb78-631" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-632"><a href="#cb78-632" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sampling distributions and standard errors</span>
 <span id="cb78-633"><a href="#cb78-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-634"><a href="#cb78-634" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Mean of the sampling distribution of $\bar{x}$ is an estimate of $\mu$</span>
+<span id="cb78-634"><a href="#cb78-634" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Mean of the sampling distribution of $\bar{x}$ is an estimate of $\mu$</span>
 <span id="cb78-635"><a href="#cb78-635" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-636"><a href="#cb78-636" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Standard deviation of the sampling distribution of $\bar{x}$ = $\frac{\sigma}{\sqrt{n}}$ = standard error</span>
+<span id="cb78-636"><a href="#cb78-636" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Standard deviation of the sampling distribution of $\bar{x}$ = $\frac{\sigma}{\sqrt{n}}$ = standard error</span>
 <span id="cb78-637"><a href="#cb78-637" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-638"><a href="#cb78-638" aria-hidden="true" tabindex="-1"></a><span class="ss">        - </span>This is a measure of the variation/spread in a **sample statistic**</span>
+<span id="cb78-638"><a href="#cb78-638" aria-hidden="true" tabindex="-1"></a><span class="ss">      - </span>This is a measure of the variation/spread in a **sample statistic**</span>
 <span id="cb78-639"><a href="#cb78-639" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-640"><a href="#cb78-640" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Standard errors: <span class="in">`sciplot::se()`</span></span>
+<span id="cb78-640"><a href="#cb78-640" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Standard errors: <span class="in">`sciplot::se()`</span></span>
 <span id="cb78-641"><a href="#cb78-641" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-642"><a href="#cb78-642" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using the <span class="in">`sample_n()`</span> function from {dplyr} and <span class="in">`do() * &lt;function&gt;`</span> construction from {mosaic} to generate sampling distributions</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

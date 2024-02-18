@@ -6,8 +6,8 @@
 
 ## Preliminaries
 
--   Install and load this package in ***R***: [{boot}](https://cran.r-project.org/web/packages/manipulate/boot.pdf)
--   Load {tidyverse}, {manipulate}, and {mosaic}
+- Install and load this package in ***R***: [{boot}](https://cran.r-project.org/web/packages/manipulate/boot.pdf)
+- Load {tidyverse}, {manipulate}, and {mosaic}
 
 ```{r}
 #| include: false
@@ -163,8 +163,8 @@ manipulate(
 
 There are two ways that CIs are generally interpreted:
 
--   Based on the given data (with a particular mean, variance, and sample size), we are $X$% confident that the true mean of the population lies between the lower and upper bounds.
--   The mean of a repeated sample of the same size drawn from this same underlying distribution is expected to fall into the given interval $X$% of the time.
+- Based on the given data (with a particular mean, variance, and sample size), we are $X$% confident that the true mean of the population lies between the lower and upper bounds.
+- The mean of a repeated sample of the same size drawn from this same underlying distribution is expected to fall into the given interval $X$% of the time.
 
 ## The Central Limit Theorem
 
@@ -194,23 +194,22 @@ hist(
 )
 x <- vector(length=1000) # dummy variable to hold sample means
 for (i in 1:1000){
-	x[[i]] <- mean(rpois(n=n, lambda=lambda))
+  x[[i]] <- mean(rpois(n=n, lambda=lambda))
 }
 hist(
   x,
+  # the breaks argument, as noted here, makes 20 bins
   breaks = seq(
     from = min(x),
     to = max(x),
     length.out = 20
   ),
-  # the breaks argument, as noted here, makes 20 bins
   probability = TRUE,
   xlab = "Mean x",
   main = "Sampling Distribution"
 )
 (se <- sd(x))
-# the estimated SE, here based on the standard deviation of the
-# actual sampling distribution
+# the estimated SE, here based on the standard deviation of the actual sampling distribution
 qqnorm(x)
 qqline(x)
 ```
@@ -222,8 +221,7 @@ Let's now do the same for samples of size 1000. We see that the mean of the samp
 lambda <- 14
 n <- 1000
 (se <- sqrt(lambda/n))
-# the estimated SE, here, based on an estimate of the population variance
-# if available
+# the estimated SE, here, based on an estimate of the population variance if available
 par(mfrow=c(1,3))
 hist(
   rpois(10000, lambda = lambda) ,
@@ -247,8 +245,7 @@ hist(
   main = "Sampling Distribution"
 )
 (se <- sd(x))
-# the estimated SE, here based on the standard deviation of the
-# actual sampling distribution
+# the estimated SE, here based on the standard deviation of the actual sampling distribution
 qqnorm(x)
 qqline(x)
 ```
@@ -351,8 +348,8 @@ Once again, the sampling distribution is normal, even though the original distri
 
 [1] The CLT states that, regardless of the underlying probability distribution of a population of **independent, identically distributed** ($iid$) random variables, the distribution of a statistic (e.g., means, or sums or standard deviations, etc...) for samples drawn from that underlying distribution:
 
--   will be approximately normal,
--   will be centered at the population mean for the statistic, and - will have a standard deviation roughly equal to the standard error of the mean for the statistic.
+- will be approximately normal,
+- will be centered at the population mean for the statistic, and - will have a standard deviation roughly equal to the standard error of the mean for the statistic.
 
 Additionally, it suggests that variables that are expected to be the sum of multiple independent processes (e.g., measurement errors) will also have distributions that are nearly normal.
 
@@ -374,7 +371,7 @@ As for the mean of a continuous random variable, the expected sampling distribut
 
 > **NOTE:** The approximation of normality for the sampling distribution of proportion of successes holds true only if both $n\times\pi$ and $n\times(1-\pi)$ are greater than roughly 5, so we should always check this when working with proportion data!
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Suppose a polling group in the United States is interested in the proportion of voting-age citizens in their state that already know they will vote for Bernie Sanders in the upcoming presidential election. The group obtains a "yes"" or "no" answer from 1000 randomly selected individuals. Of these individuals, 856 say they know they'll vote for Sanders How would we characterize the mean and variability associated with this proportion?
 
@@ -730,10 +727,10 @@ abline(v = ci$normal[3], col = "black", lwd = 2)
 
 These alternative CIs are all very close to one another and are close to what we calculated using the `quantile()` approach!
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
--   How does the CI calculated by bootstrap simulation compare to that calculated based on assuming a normal or $t$ distribution?
--   How does the width of the CI change with decreasing or increasing $n$ (the number of observations drawn from your sample with replacement)? For example, if we set $n$ at 5? At 50? At 500?
+- How does the CI calculated by bootstrap simulation compare to that calculated based on assuming a normal or $t$ distribution?
+- How does the width of the CI change with decreasing or increasing $n$ (the number of observations drawn from your sample with replacement)? For example, if we set $n$ at 5? At 50? At 500?
 
 ```{r}
 #| include: false
@@ -748,8 +745,8 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   We can generate confidence intervals around a statistic (e.g., a mean) estimated from a sample as:
+- We can generate confidence intervals around a statistic (e.g., a mean) estimated from a sample as:
 
-    -   *mean* $±$ *critical value* (i.e., the relevant quantile for the standardized version of a particular theoretical sampling distribution such as the normal or Student's $t$) $\times$ *standard error* in the statistic, which is typically estimated as the standard deviation of a sample divided by the square root of the sample size, or $\frac{s}{\sqrt{n}}$
+  - *mean* $±$ *critical value* (i.e., the relevant quantile for the standardized version of a particular theoretical sampling distribution such as the normal or Student's $t$) $\times$ *standard error* in the statistic, which is typically estimated as the standard deviation of a sample divided by the square root of the sample size, or $\frac{s}{\sqrt{n}}$
 
--   Bootstrapping allows us to estimate confidence intervals by simulation from a sample, without assuming a particular shape for the sampling distribution
+- Bootstrapping allows us to estimate confidence intervals by simulation from a sample, without assuming a particular shape for the sampling distribution

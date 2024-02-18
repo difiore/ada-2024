@@ -28,13 +28,13 @@ Create a new **RMarkdown** or **Quarto** document called "EDA-challenge.Rmd" wit
 
 > **HINT:** You will need to calculate the latter for each species from the size of its home range! For the purposes of this assignment, presume that the home range is a circle and use the formula for the area of a circle: $AREA = \pi \times r^2$. The variable *pi* (note, without parentheses) will return the value of $\pi$ as a constant built-in to ***R***, and the function `sqrt()` can be used to calculate the square root ($\sqrt{}$)
 
-4. Plot the relationship between day range length and time spent moving, for these primate species *overall* and *by family*. Do species that spend more time moving travel farther overall? How about within any particular primate family? Should you transform either of these variables?
+4. Plot the relationship between day range length (y axis) and time spent moving (x axis), for these primate species *overall* and *by family* (i.e., a different plot for each family, e.g., by using faceting: `+ facet_wrap()`). Do species that spend more time moving travel farther overall? How about within any particular primate family? Should you transform either of these variables?
 
-5. Plot the relationship between day range length and time group size, *overall* and *by family*. Do species that live in larger groups travel farther overall? How about within any particular primate family? Should you transform either of these variables?
+5. Plot the relationship between day range length (y axis) and group size (x axis), *overall* and *by family*. Do species that live in larger groups travel farther overall? How about within any particular primate family? Should you transform either of these variables?
 
-6. Plot the relationship between body size dimorphism and canine size dimorphism *overall* and *by family*. Do taxa with greater size dimorphism also show greater canine dimorphism?
+6. Plot the relationship between canine size dimorphism (y axis) and body size dimorphism (x axis) *overall* and *by family*. Do taxa with greater size dimorphism also show greater canine dimorphism?
 
-7. Create a new variable named **diet_strategy** that is "frugivore" if fruits make up >50% of the diet, "folivore" if leaves make up >50% of the diet, and "omnnivore" if neither of these is true. Then, do boxplots of group size for species with different dietary strategies. Do frugivores live in larger groups than folivores?
+7. Create a new variable named **diet_strategy** that is "frugivore" if fruits make up >50% of the diet, "folivore" if leaves make up >50% of the diet, and "omnnivore" if diet data are available, but neither of these is true (i.e., these values are not `NA`). Then, do boxplots of group size for species with different dietary strategies. Do frugivores live in larger groups than folivores?
 
 > **HINT:** To create this new variable, try combining `mutate()` with `ifelse()` or `case_when()` statements... check out the notes on "Conditional Expressions" in [**Module 11**](#module-11). Take a peak at the code snippet below if you get stuck!
 
@@ -43,7 +43,14 @@ Create a new **RMarkdown** or **Quarto** document called "EDA-challenge.Rmd" wit
 mutate(d, "diet" = ifelse(
   Fruit >= 50,
   "frugivore",
-  ifelse(Leaves >= 50, "folivore", "omnivore")
+  ifelse(
+    Leaves >= 50,
+    "folivore", 
+    ifelse(
+      Fruit < 50 & Leaves < 50,
+      "omnivore",
+      NA
+    ))
 ))
 
 mutate(
@@ -51,7 +58,8 @@ mutate(
   "diet" = case_when(
     Fruit >= 50 ~ "frugivore",
     Leaves >= 50 ~ "folivore",
-    Fruit < 50 & Leaves < 50 ~ "omnivore"
+    Fruit < 50 & Leaves < 50 ~ "omnivore",
+    TRUE ~ NA
   )
 )
 ```
