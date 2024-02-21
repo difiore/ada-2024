@@ -1,4 +1,4 @@
-# Hypothesis Testing via Permutation {#module-16}
+# Using Permutation Tests {#module-16}
 
 ## Objectives
 
