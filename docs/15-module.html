@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./exercise-01.html" rel="next">
+<link href="./16-module.html" rel="next">
 <link href="./14-module.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -340,6 +340,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./15-module.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Classical Hypothesis Testing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Hypothesis Testing via Permutation</span></span></a>
   </div>
 </li>
       </ul>
@@ -1395,12 +1401,12 @@ window.Quarto = {
 <span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
 <span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.5114</code></pre>
+<pre><code>## [1] 0.5056</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.1639418</code></pre>
+<pre><code>## [1] 0.1628962</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pi)<span class="sc">/</span>n)</span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>se  <span class="co"># the SE is an estimate of the SD of the sampling distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1421,12 +1427,12 @@ window.Quarto = {
 <span id="cb103-9"><a href="#cb103-9" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
 <span id="cb103-10"><a href="#cb103-10" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.1986</code></pre>
+<pre><code>## [1] 0.1968</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.1302113</code></pre>
+<pre><code>## [1] 0.1231459</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pi <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> pi)<span class="sc">/</span>n)</span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>se  <span class="co"># the SE is an estimate of the SD of the sampling distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1459,7 +1465,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>She monitors the nets on one morning and records whether or not a she captures any birds in the net (i.e., a “success” or “failure” for every net during a netting session). The following vector summarizes her netting results:</p>
+<p>She monitors the nets on one morning and records whether or not she captures any birds in the net (i.e., a “success” or “failure” for every net during a netting session). The following vector summarizes her netting results:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2143,8 +2149,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercise-01.html" class="pagination-link" aria-label="Exercise 01">
-        <span class="nav-page-text">Exercise 01</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./16-module.html" class="pagination-link" aria-label="<span class='chapter-number'>16</span>&nbsp; <span class='chapter-title'>Hypothesis Testing via Permutation</span>">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Hypothesis Testing via Permutation</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -2858,7 +2864,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb139-794"><a href="#cb139-794" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/birdnet.jpg"</span>)</span>
 <span id="cb139-795"><a href="#cb139-795" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb139-796"><a href="#cb139-796" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-797"><a href="#cb139-797" aria-hidden="true" tabindex="-1"></a>She monitors the nets on one morning and records whether or not a she captures any birds in the net (i.e., a "success" or "failure" for every net during a netting session). The following vector summarizes her netting results:</span>
+<span id="cb139-797"><a href="#cb139-797" aria-hidden="true" tabindex="-1"></a>She monitors the nets on one morning and records whether or not she captures any birds in the net (i.e., a "success" or "failure" for every net during a netting session). The following vector summarizes her netting results:</span>
 <span id="cb139-798"><a href="#cb139-798" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb139-801"><a href="#cb139-801" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb139-802"><a href="#cb139-802" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>

@@ -342,6 +342,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Classical Hypothesis Testing</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Hypothesis Testing via Permutation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -747,14 +753,14 @@ window.Quarto = {
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pop_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.983964</code></pre>
+<pre><code>## [1] 1.949899</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sample_sd <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">sample_var</span>(x))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.984956</code></pre>
+<pre><code>## [1] 1.950875</code></pre>
 </div>
 </div>
 <p>The <code>sdpop()</code> function from the {radiant} package can be used to calculate the standard deviation for a completely sampled population.</p>
@@ -762,7 +768,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(radiant)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sdpop</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.983964</code></pre>
+<pre><code>## [1] 1.949899</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>radiant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -770,7 +776,7 @@ window.Quarto = {
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.984956</code></pre>
+<pre><code>## [1] 1.950875</code></pre>
 </div>
 </div>
 </section>
@@ -872,7 +878,7 @@ window.Quarto = {
 </div>
 <p>Note that each time we select a sample and calculate summary statistics, such as the mean and standard deviation of a sample, we get slightly different results. If we repeat this sampling process multiple times, we can use the results to generate a <strong>distribution</strong> for a particular summary statistic of interest, e.g., for the mean or the median. This process generates what is called a <strong>sampling distribution</strong> for the statistic.</p>
 <p>The code below allows us to generate a sampling distribution virtually. The <code>do() *</code> construction from {mosaic}, in combination with one of the {mosaic} package’s aggregating functions (e.g., <code>mean()</code>, <code>median()</code>, etc.), can be used to repeat sampling from the population a user-specified number of times, calculate a summary statistic, and then bundle the results into a vector all in the same line. [Of course, we could also write a loop to do the same thing… and there are other ways we could do this as well (see examples below).]</p>
-<p>This process of <em>simulating</em> samples drawn from a population and then generating statistics on the basis of each of our virtual samples is a very powerful tool that we will apply over and over again as we talk about statistical inference. This process is the basis for bootstrapping confidence intervals (see <a href="14-module.html"><strong>Module 14</strong></a>) and for conducting randomization/permutation tests (see <a href="packages.html#module-16"><strong>Module 16</strong></a>.</p>
+<p>This process of <em>simulating</em> samples drawn from a population and then generating statistics on the basis of each of our virtual samples is a very powerful tool that we will apply over and over again as we talk about statistical inference. This process is the basis for bootstrapping confidence intervals (see <a href="14-module.html"><strong>Module 14</strong></a>) and for conducting randomization/permutation tests (see <a href="16-module.html"><strong>Module 16</strong></a>.</p>
 <section id="using-the-mosaic-package" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="using-the-mosaic-package">Using the {mosaic} Package</h4>
 <div class="cell" data-layout-align="center">

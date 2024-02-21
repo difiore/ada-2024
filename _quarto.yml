@@ -44,7 +44,7 @@ book:
       - 13-module.qmd
       - 14-module.qmd
       - 15-module.qmd
-      # - 16-module.qmd
+      - 16-module.qmd
       # - 17-module.qmd
       # - 18-module.qmd
       # - 19-module.qmd

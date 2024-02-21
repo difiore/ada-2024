@@ -708,7 +708,7 @@ A neotropical ornithological working in the western Amazon deploys 30 mist nets 
 knitr::include_graphics("img/birdnet.jpg")
 ```
 
-She monitors the nets on one morning and records whether or not a she captures any birds in the net (i.e., a "success" or "failure" for every net during a netting session). The following vector summarizes her netting results:
+She monitors the nets on one morning and records whether or not she captures any birds in the net (i.e., a "success" or "failure" for every net during a netting session). The following vector summarizes her netting results:
 
 ```{r}
 v <- c(0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,1,1,0,0,1,1,1,0,1,1,0,1,0,1,1)
