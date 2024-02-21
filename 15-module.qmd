@@ -301,7 +301,7 @@ Note that the `t.test()` function to also calculates $t$- distribution based CIs
 
 ```{r}
 alpha <- 0.05
-ci <- c(m - qt(1 - alpha / 2, df = n - 1) * se, Inf) # lower bound calculated by hand
+ci <- c(m - qt(1 - alpha, df = n - 1) * se, Inf) # lower bound calculated by hand... note we do not divide alpha by 2
 ci
 ```
 

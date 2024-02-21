@@ -2,13 +2,14 @@
 title: "Data Analysis Replication Assignment"
 author: "Your Name"
 date: "Date"
-editor: source
+output:
+    html_document
 ---
 
-```{r setup}
-#| include: false
-# These are some {knitr} options I typically use to format my **Quarto** documents in a consistent way. You should feel free to alter these or use other "chunk options" as you see fit!
-# Sometimes, for example, you might want to suppress warnings or messages, and that behavior can be set for specific code chunks individually at the start of the code chunk.
+```{r setup, include=FALSE}
+# These are some {knitr} options I typically use to format my **RMarkdown** documents in a consistent way. You should feel free to alter these or use other "chunk options" as
+# you see fit!
+# Sometimes, for example, you might want to suppress warnings or messages, and that behavior can be set for specific code chunks individually in the chunk header, e.g., ```{r warning = FALSE, echo = FALSE}
 knitr::opts_chunk$set(
   eval = TRUE, # run code in code chunks
   echo = TRUE, # render output of code chunks

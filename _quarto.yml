@@ -74,7 +74,9 @@ book:
       # - exercise-10-solution.qmd
       # - exercise-11.qmd
       # - exercise-11-solution.qmd
-      # - data-analysis-replication-assignment.qmd
+    - part: "Assignments"
+      chapters:
+      - data-analysis-replication-assignment.qmd
       # - data-analysis-replication-assignment-rubric.qmd
       # - data-analysis-replication-assignment-template.qmd
       # - custom-package-and-vignette-assignment.qmd
