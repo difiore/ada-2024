@@ -22,7 +22,7 @@ library(reticulate)
 
 > **NOTE:** Recent versions of the MacOS, Windows, and Linux operating systems typically include a ***Python*** installation by default, but that may not be an up-to-date version and the included package manager may not be comprehensive. Thus, for most users, it is worthwhile to download and install an updated version of ***Python*** along with a software system for managing ***Python*** libraries and environments.
 
-[***Anaconda***](https://www.anaconda.com/distribution/) is one such such system; it is a comprehensive, open-source distribution for ***Python*** (as well as other scientific computing software, including ***R***, and ***RStudio***, and ***Jupyter*** notebooks), and it provides an easy way to get an up-to-date version of ***Python*** installed. Binary ***Anaconda*** installers are available for most computer operating systems, including MacOS, Windows, and Linux. Running the installer basically installs a command-line package manager, ***conda***, for all of these different pieces of software, as well as a graphical version of that manager and software launcher, named ***Anaconda-Navigator***. Unless you specify otherwise, the current distribution of ***Anaconda*** should install (on MacOS) to a directory called `~/opt/anaconda3` at the root of your user folder.
+[***Anaconda***](https://www.anaconda.com/distribution/) is one such such system; it is a comprehensive, open-source distribution for ***Python*** (as well as other scientific computing software, including ***R***, and ***RStudio***, and ***Jupyter*** notebooks), and it provides an easy way to get an up-to-date version of ***Python*** installed. Binary ***Anaconda*** installers are available for most computer operating systems, including MacOS, Windows, and Linux. Running the installer basically installs a command-line package manager, ***conda***, for all of these different pieces of software, as well as a graphical version of that manager and software launcher, named ***Anaconda-Navigator***. Unless you specify otherwise, the current distribution of ***Anaconda*** should install (on MacOS) to a directory called `~/anaconda3` at the root of your user folder.
 
 Alternatively, you can download and install a pared-down version of ***Anaconda*** called [***Miniconda***](https://docs.conda.io/en/latest/miniconda.html), which consists of just the ***conda*** package manager, ***Python***, and a limited set of additional packages. You can download and install ***Miniconda*** yourself from this URL, in which case it should install to this directory on MacOS: `~/opt/miniconda3`.
 
@@ -109,7 +109,7 @@ After ***R*** restarts, reload {reticulate}, then call `py_config()` to verify t
 
 Note that specification of the ***Python*** interpreter in this manner is "sticky". That is, if an interpreter is specified in *Global Options*, then that takes precedence over assigning an interpreter with `use_python()` or by assigning an environment (see below). That is, if you specify a version of ***Python*** to use in *Global Options*, you will not be able change to a different interpreter or specify what environment to use via code.
 
-If we do not use *Global Options* or *Preferences* to specify an interpreter, we can instead directly suggest what ***Python*** interpreter that {reticulate} should use from ***R*** by calling the `use_python()` function with the path to the interpreter as an argument. For example, as noted above, the current ***Anaconda*** distribution typically installs its own version of ***Python*** at "~/opt/anaconda3/bin/python", thus we could specify that we want {reticulate} to bind to that version as follows:
+If we do not use *Global Options* or *Preferences* to specify an interpreter, we can instead directly suggest what ***Python*** interpreter that {reticulate} should use from ***R*** by calling the `use_python()` function with the path to the interpreter as an argument. For example, as noted above, the current ***Anaconda*** distribution typically installs its own version of ***Python*** at "~/anaconda3/bin/python", thus we could specify that we want {reticulate} to bind to that version as follows:
 
 ```{r}
 #| eval: false
@@ -246,7 +246,7 @@ It is possible to also run all of these **conda** functions at the command promp
 
 The [**conda** documentation](https://docs.conda.io/projects/conda/en/latest/index.html) provides further details on how to use the **conda** package and environment management system that is central to the ***Anaconda*** and ***Miniconda*** distributions.
 
-#### Virtual" Environments {.unnumbered}
+#### "Virtual" Environments {.unnumbered}
 
 As noted above, {reticulate} actually supports using two different ***Python*** environment flavors: **conda*"** environments (as we set up above) and "virtual" environments. The former are stored inside of a directory called `envs/` that sits within a particular **conda** installation. The latter type of environments are typically stored in a hidden directory called `.virtualenvs/` at the root of your user folder.
 
@@ -330,7 +330,7 @@ More detail on each of these approaches, and examples, are given below.
 
 ### ***Python*** Code Chunks {.unnumbered}
 
-The following example ***Python*** code chunk, which can be included in an ".Rmd" document, imports the zombie apocalypse survivors datafile from **GitHub** and plots a linear model of height~age and a boxplot of height\~gender. Note that the chunk type is `{python}` not `{r}`!
+The following example ***Python*** code chunk, which can be included in an ".Rmd" document, imports the zombie apocalypse survivors datafile from **GitHub** and plots a linear model of height~age and a boxplot of height~gender. Note that the chunk type is `{python}` not `{r}`!
 
 ```{python}
 # This is a Python code chunk
@@ -342,14 +342,18 @@ z = pandas.read_csv(f)
 print(z.head())
 z = z[['gender', 'height', 'weight', 'age', 'major']]
 # create a plot using the python seaborn module
-seaborn.pairplot(
+p = seaborn.pairplot(
   data = z,
   hue = 'gender',
   kind = 'scatter',
   plot_kws = dict(alpha = 0.2)
 )
 # plot the active plot object
-matplotlib.pyplot.show()
+matplotlib.pyplot.show(p)
+matplotlib.pyplot.clf()
+p = seaborn.boxplot(x="gender", y="height", data=z)
+# plot the active plot object
+matplotlib.pyplot.show(p)
 # type `exit` at the Python prompt to exit the REPL
 exit
 ```
@@ -377,14 +381,14 @@ Because there is sometimes some awkwardness with using the {matplotlib} ***Pytho
 import matplotlib
 r.p
 # plot the active plot object created with the R code above
-matplotlib.pyplot.show()
+matplotlib.pyplot.show(p)
 # type `exit` at the Python prompt to exit the REPL
 exit
 ```
 
 ### Sourcing a ***Python*** Script {.unnumbered}
 
-We can use the `source_python()` function in ***R*** to source a ***Python*** script the same way we would source() an ***R*** script. We give the function the path to the file to load in and run as an argument. This process assumes the ".py" script is stored in a directory called `src/` located in the current working directory. The script loads in the zombie apocalypse survivors dataset from **GitHub** and then plots a boxplot of weight\~gender.
+We can use the `source_python()` function in ***R*** to source a ***Python*** script the same way we would source() an ***R*** script. We give the function the path to the file to load in and run as an argument. This process assumes the ".py" script is stored in a directory called `src/` located in the current working directory. The script loads in the zombie apocalypse survivors dataset from **GitHub** and then plots a boxplot of weight~gender.
 
 ```{r}
 f <- "python_script.py"
@@ -397,7 +401,7 @@ As above, we switch to a {python} chunk to print out the figures created...
 import matplotlib
 r.p
 # plot the active plot object created with the sourced python code
-matplotlib.pyplot.show()
+matplotlib.pyplot.show(p)
 # type `exit` at the Python prompt to exit the REPL
 exit
 ```
