@@ -53,9 +53,11 @@ book:
       # - 22-module.qmd
       # - 23-module.qmd
       # - 24-module.qmd
+    - part: "Part III - Miscellany"
+      chapters:
       # - 25-r-packages.qmd
       # - 26-shiny.qmd
-      # - 27-python-from-R.qmd
+      - 27-python-from-R.qmd
     - part: "Exercises"
       chapters:
       - exercise-01.qmd

@@ -1,20 +1,22 @@
 ---
-title: "Using ***Python*** from ***R***"
+output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
-
 # Using ***Python*** from ***R*** {#using-python}
 
 ## Objectives {.unnumbered}
 
-> In this module, we look at how to integrate ***R*** with the ***Python*** programming language.
+> In this module, we look at how to integrate ***Python*** code and functions into ***R***.
 
 ## Preliminaries {.unnumbered}
 
--   Install and load this package in ***R***: [{reticulate}](https://cran.r-project.org/web/packages/reticulate/reticulate.pdf)
--   Load {tidyverse} and {broom}
--   Make sure you have a working ***Python*** installation on your computer *and* a package manager for ***Python***
+- Install and load this package in ***R***: [{reticulate}](https://cran.r-project.org/web/packages/reticulate/reticulate.pdf)
+- Load {tidyverse} and {broom}
+- Make sure you have a working ***Python*** installation on your computer *and* a package manager for ***Python***
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(reticulate)
 ```
 
@@ -24,7 +26,7 @@ library(reticulate)
 
 Alternatively, you can download and install a pared-down version of ***Anaconda*** called [***Miniconda***](https://docs.conda.io/en/latest/miniconda.html), which consists of just the ***conda*** package manager, ***Python***, and a limited set of additional packages. You can download and install ***Miniconda*** yourself from this URL, in which case it should install to this directory on MacOS: `~/opt/miniconda3`.
 
-> **NOTE**: There is no need to install both ***Anaconda*** and ***Miniconda***... choose one or the other! Both will write a series of PATH configuration lines to your shell profile, and, if you do install both, the latter one to be installed will overwrite the PATH details of the former in the shell script.
+> **NOTE**: There is no need to install both ***Anaconda*** and ***Miniconda***... choose one or the other! Both will write a series of PATH configuration lines to your shell profile, and, if you do install both, the latter one to be installed will overwrite the PATH details of the former in your default shell profile.
 
 Finally, you can download and install ***Miniconda*** from within {reticulate}. In fact, when you first run a function from `library(reticulate)`, you may see a prompt asking if you want to install ***Miniconda***...
 
@@ -35,7 +37,8 @@ Finally, you can download and install ***Miniconda*** from within {reticulate}. 
 
 If so, you can answer "Y" and let the installation run. In doing so, the installer will create a directory at the base of your user folder called `~/Library/r-miniconda` with a **conda** installation in it. If you are not prompted to install ***Miniconda***, you can install it manually using the {reticulate} command `install_miniconda()`.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 install_miniconda()
 ```
 
@@ -47,10 +50,10 @@ One of the wonderful things about ***R*** is that it offers interoperability wit
 
 With {reticulate}, we can call ***Python*** code from ***R*** in several ways:
 
--   By including ***Python*** code chunks within an **R Markdown** document
--   By importing ***Python*** modules into ***R*** and accessing their functions
--   By sourcing entire ***Python*** scripts (".py" files)
--   By using ***Python*** interactively within an ***R*** session
+- By including ***Python*** code chunks within an **R Markdown** document
+- By importing ***Python*** modules into ***R*** and accessing their functions
+- By sourcing entire ***Python*** scripts (".py" files)
+- By using ***Python*** interactively within an ***R*** session
 
 We can also use {reticulate} to convert between ***R*** and ***Python*** objects (e.g., between ***R*** and ***Python*** {pandas} data frames).
 
@@ -58,13 +61,14 @@ We can also use {reticulate} to convert between ***R*** and ***Python*** objects
 
 ### Configuring ***Python*** {.unnumbered}
 
-Many computers may have several different iterations of ***Python*** installed in different places. Upon loading {reticulate} and first calling the ***Python*** function `import()`, either directly or implicitly , ***R*** tries to find and "attach" to one of these versions. To control the process, it is recommended that you specify or build a desired ***Python*** and then pass this suggested instance to {reticulate}. Restarting ***R*** will unbind an instance and allow you to specify a different one.
+Many computers may have several different iterations of ***Python*** installed in different places. Upon loading {reticulate} and first calling the ***Python*** function `import`, either directly or implicitly , ***R*** tries to find and "attach" to one of these versions. To control the process, it is recommended that you specify or build a desired ***Python*** version and then pass this suggested instance to {reticulate}. Restarting ***R*** will unbind an instance and allow you to specify a different one.
 
-The ***R*** commands `Sys.which("python")` and `Sys.which("python3")` will return the path to the current versions of ***Python*** (for pre-version 3 installations) and ***Python3***, respectively that ***R*** has bound. Unless you specify a ***Python*** instance from a particular "environment" (see below), these will usually be "/usr/bin/python" and "/usr/bin/python3" or "/usr/local/bin/python" and "/usr/local/bin/python3". [Sometimes, the path returned by these functions is actually a *symlink*, a kind of pointer, to the actual executable file.]
+The ***R*** commands `Sys.which("python")` and `Sys.which("python3")` will return the path to the current version of ***Python*** (for pre-version 3 installations) and ***Python3***, respectively that ***R*** has bound. Unless you specify a ***Python*** instance from a particular "environment" (see below), these will usually be "/usr/bin/python" and "/usr/bin/python3" or "/usr/local/bin/python" and "/usr/local/bin/python3". [Sometimes, the path returned by these functions is actually a *symlink*, a kind of pointer, to the actual executable file.]
 
-> **NOTE**: If your computer does not have an older, pre-3.0 version of ***Python*** installed, `Sys.which("python")` may return a blank path.
+> **NOTE**: If your computer does not have an older, pre-3.0 version of ***Python*** installed, `Sys.which("python")` may return a blank path or the path to a 3.0 version of ***Python***.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 Sys.which("python")
 Sys.which("python3")
 ```
@@ -77,51 +81,61 @@ py_config()
 
 You can specify or change the instance of ***Python*** that {reticulate} uses via the ***RStudio*** IDE by going either the *Preferences* (MacOS) or *Global Options* (MacOS or PC) dialog box and selecting the *Python* section...
 
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out-width: "60%"
 #knitr::include_graphics("img/python")
 ```
 
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out-width: "60%"
 #knitr::include_graphics("img/python-details")
 ```
 
-... and then choosing the desired ***Python*** interpreter from the dialog boxes. ***RStudio*** will try to highlight all available ***Python*** interpreters for you, either ones installed in the system (e.g., distributed with MacOS) or ones associated with different "environments" (see below) that you create. You can also type the path to the version of the ***Python*** interpreter you wish to using directly into the dialog box. After you click, "Apply" you will be prompted to restart ***R*** to allow {reticulate} be able to rebind to a different interpreter.
+... and then choosing the desired ***Python*** interpreter from the dialog boxes. ***RStudio*** will try to highlight all available ***Python*** interpreters for you, either ones installed in the system (e.g., distributed with MacOS) or ones associated with different virtual or conda "environments" (see below) that you have created. You can also type the path to the version of the ***Python*** interpreter you wish to using directly into the dialog box. After you click, "Apply" you will be prompted to restart ***R*** to allow {reticulate} be able to rebind to a different interpreter.
 
-```{r echo=FALSE, out.width="60%"}
+```{r}
+#| echo: false
+#| out-width: "60%"
 #knitr::include_graphics("img/interpreter")
 ```
 
-After ***R*** restarts, reloading {reticulate}, then call `py_config()` to verify that {reticulate} is connected to the desired ***Python*** executable.
+After ***R*** restarts, reload {reticulate}, then call `py_config()` to verify that {reticulate} is connected to the desired ***Python*** executable.
 
 > **NOTE:** After changing the bound version of ***Python*** in this manner and running py_config(), the last line of the output should read as follows:
 >
-> NOTE: Python version was forced by RETICULATE_PYTHON
+> NOTE: Python version was forced by use_python() function
 
 Note that specification of the ***Python*** interpreter in this manner is "sticky". That is, if an interpreter is specified in *Global Options*, then that takes precedence over assigning an interpreter with `use_python()` or by assigning an environment (see below). That is, if you specify a version of ***Python*** to use in *Global Options*, you will not be able change to a different interpreter or specify what environment to use via code.
 
 If we do not use *Global Options* or *Preferences* to specify an interpreter, we can instead directly suggest what ***Python*** interpreter that {reticulate} should use from ***R*** by calling the `use_python()` function with the path to the interpreter as an argument. For example, as noted above, the current ***Anaconda*** distribution typically installs its own version of ***Python*** at "~/opt/anaconda3/bin/python", thus we could specify that we want {reticulate} to bind to that version as follows:
 
-```{r eval=FALSE}
-use_python("~/opt/anaconda3/bin/python", required=TRUE)
+```{r}
+#| eval: false
+use_python("~/anaconda3/bin/python", required=TRUE)
 py_config() # confirm our selection
 ```
 
 Similarly, as described above, the ***Miniconda*** version of the **conda** package manager installed from within {reticulate} places its version of ***Python*** inside a user's `Library` directory, at 
 "~/Library/r-miniconda/bin/python". We can set {reticulate} to bind that version using the following code:
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 use_python("~/Library/r-miniconda/bin/python", required=TRUE)
 py_config() # confirm our selection
 ```
 
 However, it is important to remember that if you want to modify the particular instance of ***Python*** that {reticulate} should to attach to, it is necessary to first RESTART ***R***, which you can do either in ***RStudio*** (by choosing that option from the **Session** menu) or by using the function `.rs.restartR()` at a command prompt), then load {reticulate} again, and then run the `use_python()` function. After doing this, you can run `py_config()` again to confirm that the ***Python*** configuration has indeed changed as desired, and you can check with `Sys.which("python")` or `Sys.which("python3")` to confirm what instance of ***Python*** is attached. For example...
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 .rs.restartR()
 library(reticulate)
 ```
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 use_python("~/Library/r-miniconda/bin/python", required = TRUE)
 py_config() # confirm our selection
 Sys.which("python3")
@@ -155,11 +169,12 @@ After running this command, you should see two or three environments listed, dep
 
 You can set up other new environments by running the function `conda_create()` and specifying a different environment name as an argument.
 
-> **NOTE:** By default, if no environments have yet been defined, the `conda_create()` function creates one named "r-reticulate". This is what the ***Miniconda*** installer ran behind the scenes to create the default "r-reticulate" environment. But we can also provide an alternative name within the particular active **conda** installation. 
+> **NOTE:** By default, if no environments have yet been defined, the `conda_create()` function creates one named "r-reticulate". This is what the ***Miniconda*** installer ran behind the scenes to create the default "r-reticulate" environment. But we can also provide an alternative name within the particular active **conda** installation.
 
 When you create a new environment with `conda_create()`, it will be set up inside of the `envs/` directory in which our **conda** installation resides (again, if using ***Miniconda***, this should be within the `~/Library/r-miniconda/` directory. Environments created with this function will include a default suite of ***Python*** packages that {reticulate} will have access to. They will also be associated with the particular instance of ***Python*** that is currently bound to {reticulate}, unless we specify otherwise using the "python_version=" argument.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 # create a new **conda** environment named "my-environment"
 conda_create("my-environment")
 conda_list()
@@ -167,7 +182,8 @@ conda_list()
 
 The {reticulate} function `conda_remove()` will delete a particular **conda** environment.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 conda_remove("my-environment")
 conda_list()
 ```
@@ -178,12 +194,14 @@ If we have more than one **conda** environment set up on our machines, perhaps w
 
 As for `use_python()`, the way to force use of a non-default environment is to restart ***R***, load {reticulate}, and run the function `use_miniconda()` (or, equivalently, `use_condaenv()`) as below, after which running `py_config()` should confirm the configuration.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 .rs.restartR()
 library(reticulate)
 ```
 
 ```{r}
+#| eval: false
 use_miniconda(condaenv = "r-reticulate", required = TRUE)
 # or use_condaenv(condaenv = "r-reticulate", required = TRUE)
 py_config()
@@ -200,7 +218,7 @@ It is possible to also run all of these **conda** functions at the command promp
     # OR
     $ conda env list
 
-> **NOTE:** Doing this from the command line shows an asterisk next to an environment called "base" that is a default environment that was created when we first installed ***Anaconda*** (as opposed to ***Miniconda***) and is associated with your base **conda** installation. This is typically at the path: "~/opt/anaconda3" in current ***Anaconda*** installations.
+> **NOTE:** Doing this from the command line shows an asterisk next to an environment called "base" that is a default environment that was created when we first installed ***Anaconda*** (as opposed to ***Miniconda***) and is associated with your base **conda** installation. This is typically at the path: "~/anaconda3" in current ***Anaconda*** installations.
 
     # to create a conda environment
     $ conda create --name my-environment
@@ -234,7 +252,8 @@ As noted above, {reticulate} actually supports using two different ***Python*** 
 
 To create and use "virtual" rather than **conda** environments with {reticulate}, the commands are very similar. Unless otherwise specified, the environment created will be bound to the ***Python*** interpreter associated with the current {reticulate} and ***R*** session.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 virtualenv_create(envname = "r-reticulate")
 virtualenv_create(envname = "my-environment")
 virtualenv_list()
@@ -244,7 +263,8 @@ use_virtualenv(virtualenv = "r-reticulate")
 
 Once we have bound {reticulate} to a particular **conda** or "virtual" environment, we can check/confirm how our setup is configured by running `py_config()`.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 py_config()
 ```
 
@@ -290,19 +310,19 @@ You can also use standard shell installation utilities at a terminal prompt (e.g
 
 As mentioned in the introduction above, there are multiple ways to integrate ***Python*** code into your ***R*** projects and workflow. You can...
 
--   Include ***Python*** code chunks in **R Markdown** documents
+- Include ***Python*** code chunks in **R Markdown** documents
 
     **R Markdown** now includes a language engine that supports bi-directional communication between ***R*** and Python (***R*** chunks can access Python objects and vice-versa).
 
--   Import ***Python*** modules to access their functions directly from ***R***
+- Import ***Python*** modules to access their functions directly from ***R***
 
     The `import()` function from {reticulate} enables you to import any Python module and call its functions directly from R.
 
--   Source a ***Python*** script from ***R***
+- Source a ***Python*** script from ***R***
 
     The `source_python()` function from {reticulate} enables you to source a Python script the same way you would `source()` an ***R*** script. Python functions and objects defined within the script become directly available to the ***R*** session.
 
--   Use a ***Python*** REPL ("Read-Eval-Print Loop")
+- Use a ***Python*** REPL ("Read-Eval-Print Loop")
 
     The `repl_python()` function embeds an interactive Python console within ***R*** that you can use interactively, as you would the ***R*** console. Objects you create within Python are available to your ***R*** session, and vice-versa.
 
@@ -310,14 +330,14 @@ More detail on each of these approaches, and examples, are given below.
 
 ### ***Python*** Code Chunks {.unnumbered}
 
-The following example ***Python*** code chunk, which can be included in an ".Rmd" document, imports the zombie apocalypse survivors datafile from **GitHub** and plots a linear model of height~age and a boxplot of height~gender. Note that the chunk type is `{python}` not `{r}`!
+The following example ***Python*** code chunk, which can be included in an ".Rmd" document, imports the zombie apocalypse survivors datafile from **GitHub** and plots a linear model of height~age and a boxplot of height\~gender. Note that the chunk type is `{python}` not `{r}`!
 
 ```{python}
 # This is a Python code chunk
 import pandas
 import seaborn
 import matplotlib
-f = "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/zombies.csv"
+f = "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
 z = pandas.read_csv(f)
 print(z.head())
 z = z[['gender', 'height', 'weight', 'age', 'major']]
@@ -344,7 +364,7 @@ Imported ***Python*** modules also support code completion and inline help, agai
 pandas <- import("pandas")
 seaborn <- import("seaborn")
 matplotlib <- import("matplotlib")
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/zombies.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
 z <- pandas$read_csv(f)
 head(z)
 # create a plot using the python seaborn module
@@ -386,7 +406,8 @@ exit
 
 Finally, if you want to work with ***Python*** interactively, you can call the `repl_python()` function from ***R***, which provides a ***Python*** REPL ("Read--Eval--Print Loop") session embedded within your ***R*** session.
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 repl_python()
 ```
 
@@ -418,7 +439,7 @@ Here, we run a {python} chunk and load in a familiar data file from over the web
 
 ```{python}
 import pandas
-f = "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/woollydata.csv"
+f = "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/woollydata.csv"
 d = pandas.read_csv(f)
 print(d.head())
 exit
@@ -426,12 +447,13 @@ exit
 
 ... then we run an {r} chunk that accesses and uses the ***Python*** object created in the chunk above, after which we load a different data set from the web and run a linear model on it using ***R***...
 
-```{r message = FALSE}
+```{r}
+#| message: false
 library(tidyverse)
 library(broom)
 head(py$d)
 boxplot(py$d$success ~ py$d$rank, xlab = "Rank", ylab = "Success")
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/master/zombies.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/master/zombies.csv"
 z <- read_csv(f, col_names = TRUE)
 head(z)
 m <- lm(data=z, height~weight)
@@ -461,8 +483,4 @@ detach(package:reticulate)
 
 ```{r include=FALSE}
 knitr::clean_cache(TRUE)
-```
-
-```{=html}
-<script src="src/hide_output.js"></script>
 ```
