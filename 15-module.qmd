@@ -652,8 +652,8 @@ pi <- 0.5
 x <- NULL
 n <- 10
 for (i in 1:1000){
-	x[i] <- mean(sample(pop,size=n,replace=FALSE))
-	# taking the mean of a bunch of 0s and 1s yields the proportion of 1s!
+  x[i] <- mean(sample(pop,size=n,replace=FALSE))
+  # taking the mean of a bunch of 0s and 1s yields the proportion of 1s!
 }
 m <- mean(x)
 m

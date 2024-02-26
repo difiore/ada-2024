@@ -1,7 +1,3 @@
----
-title: "Module 17"
----
-
 # Error, Power, and Effect Size {#module-17}
 
 ## Objectives
@@ -10,9 +6,10 @@ title: "Module 17"
 
 ## Preliminaries
 
--   Load {tidyverse} and {manipulate}
+- Load {tidyverse} and {manipulate}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 library(manipulate)
 ```
@@ -32,7 +29,9 @@ Let's return to the concepts of **error** and **power**. Recall that Type I erro
 
 Because of how we define $\alpha$, the chance probability of falsely rejecting $H_0$ when $H_0$ is actually true, we would expect to find some "significant" results if we run enough independent hypothesis tests. For example, if we set $\alpha$ at 0.05, we would expect to find one "significant" result in roughly every 20 tests we run, just by chance. The relation of $\alpha$ to the distribution of a variable under a null hypothesis ($\mu$ = $\mu_0$) versus an alternative hypothesis (e.g., $\mu$ \> $\mu_0$) is shown in the figure below (this example is for an upper one-tailed test). It should be clear that we can reduce the chance of Type I error by decreasing $\alpha$ (shifting the critical value to the right in the $H_0$ distribution). Type I error will also be reduced as the means get further apart or as the standard deviation of the distributions shrinks.
 
-```{r echo=FALSE, out.width="70%"}
+```{r}
+#| echo: false
+#| out-width: "70%"
 knitr::include_graphics("img/typeI.png")
 ```
 
@@ -180,7 +179,7 @@ eI <- typeI(mu0=10, sigma=4, n=1000, alternative="two.tailed",
   alpha=0.05)
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 How does the Type I error rate change with $n$? With $\sigma$? With $\alpha$?
 
@@ -208,9 +207,9 @@ Many statisticians consider the **Bonferroni** correction to be an overly conser
 
 One common alternative is the **Benjamini & Hochberg** correction, which is less conservative. It attempts to control for the "false discovery rate", which is different than the "family-wise error rate". Here, we aim to limit the number of false "discoveries" (i.e., incorrect rejections of the null hypothesis) out of a set of discoveries (i.e., out of the set of results where we would reject the null hypothesis) to $\alpha$.
 
--   Calculate $p$ values for all tests
--   Order $p$ values from smallest to largest (from $p_1$ to $p_m$)
--   Call any $p$ value where $p_i ≤ \alpha \times i/m$ significant
+- Calculate $p$ values for all tests
+- Order $p$ values from smallest to largest (from $p_1$ to $p_m$)
+- Call any $p$ value where $p_i ≤ \alpha \times i/m$ significant
 
 ```{r}
 alpha <- 0.05
@@ -240,7 +239,9 @@ sig # first 5 adjusted p values are less alpha
 
 By reducing the $\alpha$ level we use as our criterion for statistical significance, we can reduce the chance of committing a Type I error (i.e., of incorrectly rejecting a true null hypothesis)... but doing so directly increases our chance of committing a Type II error (i.e., of incorrectly ***failing*** to reject a false null). The shaded area in the figure below, $\beta$, is the probability of incorrectly failing to reject the null...
 
-```{r echo=FALSE, out.width="70%"}
+```{r}
+#| echo: false
+#| out-width: "70%"
 knitr::include_graphics("img/typeII.png")
 ```
 
@@ -370,7 +371,7 @@ typeII <- function(mu0, muA, sigma, n, alternative = "two.tailed",
 }
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Explore this function using different values of $\mu_0$, $\sigma$, $n$, and different types of one- and two-tailed tests.
 
@@ -386,9 +387,9 @@ eII <- typeII(mu0 = 0, muA = 0.5, sigma = 1, n = 30,
 # Ha ≠ H0
 ```
 
--   What happens if you increase $\sigma$ keeping other values constant?
--   What happens if you reduce $n$ or increase $n$?
--   What happens if you increase the difference between $\mu_A$ and $\mu_0$?
+- What happens if you increase $\sigma$ keeping other values constant?
+- What happens if you reduce $n$ or increase $n$?
+- What happens if you increase the difference between $\mu_A$ and $\mu_0$?
 
 ## Power and Effect Size
 
@@ -530,7 +531,8 @@ power.plot <- function(mu0, muA, n, sigma, alpha,
 }
 ```
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 manipulate(
   power.plot(mu0, muA, n, sigma, alpha, alternative),
   mu0 = slider(-10, 10, step = 0.1, initial = 0),
@@ -544,7 +546,7 @@ manipulate(
 
 In most cases, since we are dealing with limited samples from a population, we will want to use the t rather than the normal distribution as the basis for making our power evaluations. The `power.t.test()` function lets us easily implement power calculations based on the t distribution, and the results of using it should be very similar to those we found above by simulation. The `power.t.test()` function takes as possible arguments the sample size, `n=` ($n$), the difference, `delta=` ($\delta$) between group means, the standard deviation of the differences between means (`sd=`, $\sigma$), the significance level (`sig.level=`, $\alpha$), the test `type=` ("two.sample", "one.sample", or "paired"), the `alternative=` test to run ("two.sided", "one.sided"), and the `desired_power=` ($1-\beta$). Power, $n$, or the difference between means is left as null and the other arguments are specified. The function then calculates the missing argument.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Using the code below, which graphs the Type II error rate ($\beta$) and power ($1-\beta$) for T tests (using the `power.t.test()` function), explore the effects of changing $\alpha$, within sample variability ($\sigma$), and the difference between sample means (i.e., $\mu_0$ and $\mu_A$ for a one sample test (or, equivalently, $\mu_1$ and $\mu_2$ for a two sample test). The plot shows the effect size, given the difference between the means, (i.e., $\vert(\mu_0 - \mu_A)\vert/\sigma$) and marks the sample size ($n$) needed to achieve a power of 0.8.
 
@@ -587,7 +589,8 @@ power.test <- function(mu0, muA, sigma, alpha = 0.05,
 }
 ```
 
-```{r eval=FALSE}
+```{r}
+#| eval: false
 manipulate(power.test(mu0, muA, sigma, alpha, desired_power,
   type, alternative),
     mu0=slider(-10,10,initial=3,step=1),
@@ -599,7 +602,8 @@ manipulate(power.test(mu0, muA, sigma, alpha, desired_power,
     type=picker("two.sample","one.sample","paired"))
 ```
 
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:manipulate)
 detach(package:tidyverse)
 ```
@@ -608,11 +612,7 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Classical null hypothesis significance testing tries to minimize the rate of type I error ($\alpha$, i.e., the probability of incorrectly rejecting a null hypothesis when it's correct)
--   When we try to reduce the rate of type I error (e.g., by decreasing $\alpha$), all else being equal, we increase the rate of type II error ($\beta$, i.e., the probability of incorrectly failing to reject the null hypothesis when it's wrong)
--   The **power** of a statistical test, $1-\beta$, is our ability to correctly reject the null hypothesis when it is false
--   Power depends on the difference between sample means, the standard deviation in the population the sample is drawn from, and the sample size
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Classical null hypothesis significance testing tries to minimize the rate of type I error ($\alpha$, i.e., the probability of incorrectly rejecting a null hypothesis when it's correct)
+- When we try to reduce the rate of type I error (e.g., by decreasing $\alpha$), all else being equal, we increase the rate of type II error ($\beta$, i.e., the probability of incorrectly failing to reject the null hypothesis when it's wrong)
+- The **power** of a statistical test, $1-\beta$, is our ability to correctly reject the null hypothesis when it is false
+- Power depends on the difference between sample means, the standard deviation in the population the sample is drawn from, and the sample size
