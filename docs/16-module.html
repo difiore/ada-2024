@@ -415,7 +415,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Generate Sampling Distributions and CIs</span></a>
+ <span class="menu-text">Exercise 05</span></a>
   </div>
 </li>
       </ul>
@@ -563,12 +563,12 @@ window.Quarto = {
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the two.sided p value</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span> <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff)))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0218</code></pre>
+<pre><code>## [1] 0.0198</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(permuted_diff) <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0218</code></pre>
+<pre><code>## [1] 0.0198</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or add 1 to both numerator and denominator to avoid p = 0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -614,7 +614,7 @@ window.Quarto = {
 ## [1] 5
 ## 
 ## $p.value
-## [1] 0.0248</code></pre>
+## [1] 0.0212</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>jmuOutlier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -698,8 +698,11 @@ window.Quarto = {
 </div>
 <p>To test whether this difference is significant by permutation, we would generate a permutation distribution consistent with a null hypothesis of <em>no difference in weight between the sexes</em> by simulation, where, for each simulation, we permute the sex assigned to each observation and then calculate the difference (female - male) between the sexes in each permuted set. We then calculate the p value associated with getting a difference between male and female mean weights as or more extreme than the one we observed. [We again calculate this as a “two-sided” probability, i.e., we are testing the <span class="math inline">\(H_A\)</span> that…</p>
 <p><span class="math inline">\(mean(female) - mean(male) ≠ 0\)</span></p>
-<p>rather than <span class="math inline">\(mean(female) - mean(male) &gt; 0\)</span></p>
-<p>or <span class="math inline">\(mean(female) - mean(male) &lt; 0\)</span>, both of which would be “one-sided” tests.]</p>
+<p>rather than…</p>
+<p><span class="math inline">\(mean(female) - mean(male) &gt; 0\)</span></p>
+<p>or…</p>
+<p><span class="math inline">\(mean(female) - mean(male) &lt; 0\)</span></p>
+<p>both of which would be “one-sided” tests.]</p>
 <p>Lastly, we visualize the approximate permutation distribution and superimpose our observed difference in weights between males and females.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co"># number of permutation simulations</span></span>
@@ -1864,480 +1867,486 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb62-209"><a href="#cb62-209" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-210"><a href="#cb62-210" aria-hidden="true" tabindex="-1"></a>$mean(female) - mean(male) ≠ 0$</span>
 <span id="cb62-211"><a href="#cb62-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-212"><a href="#cb62-212" aria-hidden="true" tabindex="-1"></a>rather than $mean(female) - mean(male) &gt; 0$</span>
+<span id="cb62-212"><a href="#cb62-212" aria-hidden="true" tabindex="-1"></a>rather than...</span>
 <span id="cb62-213"><a href="#cb62-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-214"><a href="#cb62-214" aria-hidden="true" tabindex="-1"></a>or $mean(female) - mean(male) &lt; 0$, both of which would be "one-sided" tests.]</span>
+<span id="cb62-214"><a href="#cb62-214" aria-hidden="true" tabindex="-1"></a>$mean(female) - mean(male) &gt; 0$</span>
 <span id="cb62-215"><a href="#cb62-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-216"><a href="#cb62-216" aria-hidden="true" tabindex="-1"></a>Lastly, we visualize the approximate permutation distribution and superimpose our observed difference in weights between males and females.</span>
+<span id="cb62-216"><a href="#cb62-216" aria-hidden="true" tabindex="-1"></a>or...</span>
 <span id="cb62-217"><a href="#cb62-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-220"><a href="#cb62-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-221"><a href="#cb62-221" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># number of permutation simulations</span></span>
-<span id="cb62-222"><a href="#cb62-222" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dummy vector to hold results for each permutation</span></span>
-<span id="cb62-223"><a href="#cb62-223" aria-hidden="true" tabindex="-1"></a>permuted_diff <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length=</span>n)</span>
-<span id="cb62-224"><a href="#cb62-224" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> d</span>
-<span id="cb62-225"><a href="#cb62-225" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nperm) {</span>
-<span id="cb62-226"><a href="#cb62-226" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scramble the sex vector</span></span>
-<span id="cb62-227"><a href="#cb62-227" aria-hidden="true" tabindex="-1"></a>  <span class="co"># `sample()` with a vector as an argument yields a random</span></span>
-<span id="cb62-228"><a href="#cb62-228" aria-hidden="true" tabindex="-1"></a>  <span class="co"># permutation of the vector</span></span>
-<span id="cb62-229"><a href="#cb62-229" aria-hidden="true" tabindex="-1"></a>  test_data<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">sample</span>(test_data<span class="sc">$</span>sex)</span>
-<span id="cb62-230"><a href="#cb62-230" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> test_data[test_data<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"female"</span>,]<span class="sc">$</span>weight</span>
-<span id="cb62-231"><a href="#cb62-231" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> test_data[test_data<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"male"</span>,]<span class="sc">$</span>weight</span>
-<span id="cb62-232"><a href="#cb62-232" aria-hidden="true" tabindex="-1"></a>  permuted_diff[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">mean</span>(y)</span>
-<span id="cb62-233"><a href="#cb62-233" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb62-234"><a href="#cb62-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-235"><a href="#cb62-235" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span></span>
-<span id="cb62-236"><a href="#cb62-236" aria-hidden="true" tabindex="-1"></a>         <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff))) <span class="sc">/</span> nperm)</span>
-<span id="cb62-237"><a href="#cb62-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-238"><a href="#cb62-238" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
-<span id="cb62-239"><a href="#cb62-239" aria-hidden="true" tabindex="-1"></a>  permuted_diff,</span>
-<span id="cb62-240"><a href="#cb62-240" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
-<span id="cb62-241"><a href="#cb62-241" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">""</span>,</span>
-<span id="cb62-242"><a href="#cb62-242" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
-<span id="cb62-243"><a href="#cb62-243" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
-<span id="cb62-244"><a href="#cb62-244" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.75</span>, <span class="fl">1.75</span>)</span>
-<span id="cb62-245"><a href="#cb62-245" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-246"><a href="#cb62-246" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>actual_diff, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
-<span id="cb62-247"><a href="#cb62-247" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
-<span id="cb62-248"><a href="#cb62-248" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> actual_diff,</span>
-<span id="cb62-249"><a href="#cb62-249" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
-<span id="cb62-250"><a href="#cb62-250" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
-<span id="cb62-251"><a href="#cb62-251" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
-<span id="cb62-252"><a href="#cb62-252" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
-<span id="cb62-253"><a href="#cb62-253" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
-<span id="cb62-254"><a href="#cb62-254" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb62-255"><a href="#cb62-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-256"><a href="#cb62-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-257"><a href="#cb62-257" aria-hidden="true" tabindex="-1"></a>The same <span class="in">`perm.test()`</span> function from {jmuOutlier} that we used above for a 1-sample permutation test also allows for 2-sample tests.</span>
-<span id="cb62-258"><a href="#cb62-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-261"><a href="#cb62-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-262"><a href="#cb62-262" aria-hidden="true" tabindex="-1"></a><span class="co"># library(jmuOutlier)</span></span>
-<span id="cb62-263"><a href="#cb62-263" aria-hidden="true" tabindex="-1"></a><span class="co"># x &lt;- d[d$sex=="female",]$weight</span></span>
-<span id="cb62-264"><a href="#cb62-264" aria-hidden="true" tabindex="-1"></a><span class="co"># y &lt;- d[d$sex=="male",]$weight</span></span>
-<span id="cb62-265"><a href="#cb62-265" aria-hidden="true" tabindex="-1"></a><span class="co"># mu &lt;- 0 # expected difference between means under null</span></span>
-<span id="cb62-266"><a href="#cb62-266" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(x, y, alternative = "two.sided", mu = mu, plot = TRUE, num.sim = nperm)</span></span>
-<span id="cb62-267"><a href="#cb62-267" aria-hidden="true" tabindex="-1"></a><span class="co"># abline(v=actual_diff)</span></span>
-<span id="cb62-268"><a href="#cb62-268" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(x, y, alternative = "two.sided", mu = mu, plot = FALSE, num.sim = nperm)</span></span>
-<span id="cb62-269"><a href="#cb62-269" aria-hidden="true" tabindex="-1"></a><span class="co"># detach(package:jmuOutlier)</span></span>
-<span id="cb62-270"><a href="#cb62-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-271"><a href="#cb62-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-272"><a href="#cb62-272" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** In this example, the vertical line showing our actual difference in means is off-scale on the left-hand side of the plot!</span></span>
-<span id="cb62-273"><a href="#cb62-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-274"><a href="#cb62-274" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`independence_test()`</span> from the {coin} package conducts the same kind of 2-sample test with a simpler construction that does not require us specifying two vectors to compare...</span>
-<span id="cb62-275"><a href="#cb62-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-278"><a href="#cb62-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-279"><a href="#cb62-279" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(coin)</span>
-<span id="cb62-280"><a href="#cb62-280" aria-hidden="true" tabindex="-1"></a><span class="fu">independence_test</span>(</span>
-<span id="cb62-281"><a href="#cb62-281" aria-hidden="true" tabindex="-1"></a>  weight <span class="sc">~</span> <span class="fu">as.factor</span>(sex),</span>
-<span id="cb62-282"><a href="#cb62-282" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
-<span id="cb62-283"><a href="#cb62-283" aria-hidden="true" tabindex="-1"></a>  <span class="at">distribution =</span> <span class="st">"approximate"</span>,</span>
-<span id="cb62-284"><a href="#cb62-284" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d</span>
-<span id="cb62-285"><a href="#cb62-285" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-286"><a href="#cb62-286" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>coin)</span>
-<span id="cb62-287"><a href="#cb62-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-288"><a href="#cb62-288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-289"><a href="#cb62-289" aria-hidden="true" tabindex="-1"></a>Finally, we can also write our own generic 2-sample permutation function that allows us to compare custom test statistics. Here, we first define a function for our test statistic, <span class="in">`mean_diff()`</span>, i.e., a difference of means, and then define a function for the test.</span>
-<span id="cb62-290"><a href="#cb62-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-293"><a href="#cb62-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-294"><a href="#cb62-294" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
-<span id="cb62-295"><a href="#cb62-295" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: true</span></span>
-<span id="cb62-296"><a href="#cb62-296" aria-hidden="true" tabindex="-1"></a>perm2samp <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm=</span><span class="dv">10000</span>,</span>
-<span id="cb62-297"><a href="#cb62-297" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative=</span><span class="fu">c</span>(<span class="st">"two.sided"</span>,<span class="st">"less"</span>,<span class="st">"greater"</span>)){</span>
-<span id="cb62-298"><a href="#cb62-298" aria-hidden="true" tabindex="-1"></a>  <span class="co"># can modify function by adding alternative `stat=`</span></span>
-<span id="cb62-299"><a href="#cb62-299" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (stat<span class="sc">==</span><span class="st">"mean_diff"</span>){</span>
-<span id="cb62-300"><a href="#cb62-300" aria-hidden="true" tabindex="-1"></a>      myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">mean</span>(y)}</span>
-<span id="cb62-301"><a href="#cb62-301" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb62-302"><a href="#cb62-302" aria-hidden="true" tabindex="-1"></a>    test_stat <span class="ot">&lt;-</span> <span class="fu">myfun</span>(x,y)  </span>
-<span id="cb62-303"><a href="#cb62-303" aria-hidden="true" tabindex="-1"></a>    test_data <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y) <span class="co"># puts two vectors of samples together</span></span>
-<span id="cb62-304"><a href="#cb62-304" aria-hidden="true" tabindex="-1"></a>    perm_stat <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length=</span>nperm)</span>
-<span id="cb62-305"><a href="#cb62-305" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nperm){</span>
-<span id="cb62-306"><a href="#cb62-306" aria-hidden="true" tabindex="-1"></a>      indexes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">length</span>(test_data), <span class="fu">length</span>(x), <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb62-307"><a href="#cb62-307" aria-hidden="true" tabindex="-1"></a>      <span class="co"># the row above generates a randomized vector of indices that is the length</span></span>
-<span id="cb62-308"><a href="#cb62-308" aria-hidden="true" tabindex="-1"></a>      <span class="co"># of the x sample... this is equivalent to permuting which group the x sample</span></span>
-<span id="cb62-309"><a href="#cb62-309" aria-hidden="true" tabindex="-1"></a>      <span class="co"># belongs to</span></span>
-<span id="cb62-310"><a href="#cb62-310" aria-hidden="true" tabindex="-1"></a>      s1 <span class="ot">&lt;-</span> test_data[indexes]</span>
-<span id="cb62-311"><a href="#cb62-311" aria-hidden="true" tabindex="-1"></a>      s2 <span class="ot">&lt;-</span> test_data[<span class="sc">-</span>indexes]</span>
-<span id="cb62-312"><a href="#cb62-312" aria-hidden="true" tabindex="-1"></a>      perm_stat[[i]] <span class="ot">&lt;-</span> <span class="fu">myfun</span>(s1,s2)</span>
-<span id="cb62-313"><a href="#cb62-313" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb62-314"><a href="#cb62-314" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(alternative[<span class="dv">1</span>]<span class="sc">==</span><span class="st">"less"</span>){</span>
-<span id="cb62-315"><a href="#cb62-315" aria-hidden="true" tabindex="-1"></a>      p_perm <span class="ot">&lt;-</span> <span class="fu">sum</span>(perm_stat <span class="sc">&lt;=</span> test_stat) <span class="sc">/</span> nperm</span>
-<span id="cb62-316"><a href="#cb62-316" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span>(alternative[<span class="dv">1</span>]<span class="sc">==</span><span class="st">"greater"</span>){</span>
-<span id="cb62-317"><a href="#cb62-317" aria-hidden="true" tabindex="-1"></a>          p_perm <span class="ot">&lt;-</span> <span class="fu">sum</span>(perm_stat <span class="sc">&gt;=</span> test_stat) <span class="sc">/</span> nperm</span>
-<span id="cb62-318"><a href="#cb62-318" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
-<span id="cb62-319"><a href="#cb62-319" aria-hidden="true" tabindex="-1"></a>          p_perm <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(perm_stat) <span class="sc">&gt;=</span> <span class="fu">abs</span>(test_stat)) <span class="sc">/</span> nperm</span>
-<span id="cb62-320"><a href="#cb62-320" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb62-321"><a href="#cb62-321" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(<span class="at">test_stat=</span>test_stat, <span class="at">perm_stat=</span>perm_stat, <span class="at">p_perm=</span>p_perm, <span class="at">type=</span>alternative[<span class="dv">1</span>])</span>
-<span id="cb62-322"><a href="#cb62-322" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb62-323"><a href="#cb62-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-324"><a href="#cb62-324" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> d[d<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"female"</span>,]<span class="sc">$</span>weight</span>
-<span id="cb62-325"><a href="#cb62-325" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> d[d<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"male"</span>,]<span class="sc">$</span>weight</span>
-<span id="cb62-326"><a href="#cb62-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-327"><a href="#cb62-327" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">perm2samp</span>(x, y, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
-<span id="cb62-328"><a href="#cb62-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-329"><a href="#cb62-329" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
-<span id="cb62-330"><a href="#cb62-330" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>perm_stat,</span>
-<span id="cb62-331"><a href="#cb62-331" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
-<span id="cb62-332"><a href="#cb62-332" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
-<span id="cb62-333"><a href="#cb62-333" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
-<span id="cb62-334"><a href="#cb62-334" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb62-335"><a href="#cb62-335" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"less"</span> <span class="sc">|</span></span>
-<span id="cb62-336"><a href="#cb62-336" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"greater"</span>,</span>
-<span id="cb62-337"><a href="#cb62-337" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
-<span id="cb62-338"><a href="#cb62-338" aria-hidden="true" tabindex="-1"></a>      <span class="st">"One-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution "</span>,</span>
-<span id="cb62-339"><a href="#cb62-339" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type,</span>
-<span id="cb62-340"><a href="#cb62-340" aria-hidden="true" tabindex="-1"></a>      <span class="st">" than test stat = "</span>,</span>
-<span id="cb62-341"><a href="#cb62-341" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
-<span id="cb62-342"><a href="#cb62-342" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb62-218"><a href="#cb62-218" aria-hidden="true" tabindex="-1"></a>$mean(female) - mean(male) &lt; 0$</span>
+<span id="cb62-219"><a href="#cb62-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-220"><a href="#cb62-220" aria-hidden="true" tabindex="-1"></a>both of which would be "one-sided" tests.]</span>
+<span id="cb62-221"><a href="#cb62-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-222"><a href="#cb62-222" aria-hidden="true" tabindex="-1"></a>Lastly, we visualize the approximate permutation distribution and superimpose our observed difference in weights between males and females.</span>
+<span id="cb62-223"><a href="#cb62-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-226"><a href="#cb62-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-227"><a href="#cb62-227" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># number of permutation simulations</span></span>
+<span id="cb62-228"><a href="#cb62-228" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dummy vector to hold results for each permutation</span></span>
+<span id="cb62-229"><a href="#cb62-229" aria-hidden="true" tabindex="-1"></a>permuted_diff <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length=</span>n)</span>
+<span id="cb62-230"><a href="#cb62-230" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> d</span>
+<span id="cb62-231"><a href="#cb62-231" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nperm) {</span>
+<span id="cb62-232"><a href="#cb62-232" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scramble the sex vector</span></span>
+<span id="cb62-233"><a href="#cb62-233" aria-hidden="true" tabindex="-1"></a>  <span class="co"># `sample()` with a vector as an argument yields a random</span></span>
+<span id="cb62-234"><a href="#cb62-234" aria-hidden="true" tabindex="-1"></a>  <span class="co"># permutation of the vector</span></span>
+<span id="cb62-235"><a href="#cb62-235" aria-hidden="true" tabindex="-1"></a>  test_data<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">sample</span>(test_data<span class="sc">$</span>sex)</span>
+<span id="cb62-236"><a href="#cb62-236" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> test_data[test_data<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"female"</span>,]<span class="sc">$</span>weight</span>
+<span id="cb62-237"><a href="#cb62-237" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> test_data[test_data<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"male"</span>,]<span class="sc">$</span>weight</span>
+<span id="cb62-238"><a href="#cb62-238" aria-hidden="true" tabindex="-1"></a>  permuted_diff[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb62-239"><a href="#cb62-239" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-240"><a href="#cb62-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-241"><a href="#cb62-241" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span></span>
+<span id="cb62-242"><a href="#cb62-242" aria-hidden="true" tabindex="-1"></a>         <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff))) <span class="sc">/</span> nperm)</span>
+<span id="cb62-243"><a href="#cb62-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-244"><a href="#cb62-244" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
+<span id="cb62-245"><a href="#cb62-245" aria-hidden="true" tabindex="-1"></a>  permuted_diff,</span>
+<span id="cb62-246"><a href="#cb62-246" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
+<span id="cb62-247"><a href="#cb62-247" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">""</span>,</span>
+<span id="cb62-248"><a href="#cb62-248" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
+<span id="cb62-249"><a href="#cb62-249" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
+<span id="cb62-250"><a href="#cb62-250" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.75</span>, <span class="fl">1.75</span>)</span>
+<span id="cb62-251"><a href="#cb62-251" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-252"><a href="#cb62-252" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>actual_diff, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
+<span id="cb62-253"><a href="#cb62-253" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
+<span id="cb62-254"><a href="#cb62-254" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> actual_diff,</span>
+<span id="cb62-255"><a href="#cb62-255" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
+<span id="cb62-256"><a href="#cb62-256" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
+<span id="cb62-257"><a href="#cb62-257" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
+<span id="cb62-258"><a href="#cb62-258" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
+<span id="cb62-259"><a href="#cb62-259" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
+<span id="cb62-260"><a href="#cb62-260" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb62-261"><a href="#cb62-261" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-262"><a href="#cb62-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-263"><a href="#cb62-263" aria-hidden="true" tabindex="-1"></a>The same <span class="in">`perm.test()`</span> function from {jmuOutlier} that we used above for a 1-sample permutation test also allows for 2-sample tests.</span>
+<span id="cb62-264"><a href="#cb62-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-267"><a href="#cb62-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-268"><a href="#cb62-268" aria-hidden="true" tabindex="-1"></a><span class="co"># library(jmuOutlier)</span></span>
+<span id="cb62-269"><a href="#cb62-269" aria-hidden="true" tabindex="-1"></a><span class="co"># x &lt;- d[d$sex=="female",]$weight</span></span>
+<span id="cb62-270"><a href="#cb62-270" aria-hidden="true" tabindex="-1"></a><span class="co"># y &lt;- d[d$sex=="male",]$weight</span></span>
+<span id="cb62-271"><a href="#cb62-271" aria-hidden="true" tabindex="-1"></a><span class="co"># mu &lt;- 0 # expected difference between means under null</span></span>
+<span id="cb62-272"><a href="#cb62-272" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(x, y, alternative = "two.sided", mu = mu, plot = TRUE, num.sim = nperm)</span></span>
+<span id="cb62-273"><a href="#cb62-273" aria-hidden="true" tabindex="-1"></a><span class="co"># abline(v=actual_diff)</span></span>
+<span id="cb62-274"><a href="#cb62-274" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(x, y, alternative = "two.sided", mu = mu, plot = FALSE, num.sim = nperm)</span></span>
+<span id="cb62-275"><a href="#cb62-275" aria-hidden="true" tabindex="-1"></a><span class="co"># detach(package:jmuOutlier)</span></span>
+<span id="cb62-276"><a href="#cb62-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-277"><a href="#cb62-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-278"><a href="#cb62-278" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** In this example, the vertical line showing our actual difference in means is off-scale on the left-hand side of the plot!</span></span>
+<span id="cb62-279"><a href="#cb62-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-280"><a href="#cb62-280" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`independence_test()`</span> from the {coin} package conducts the same kind of 2-sample test with a simpler construction that does not require us specifying two vectors to compare...</span>
+<span id="cb62-281"><a href="#cb62-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-284"><a href="#cb62-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-285"><a href="#cb62-285" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(coin)</span>
+<span id="cb62-286"><a href="#cb62-286" aria-hidden="true" tabindex="-1"></a><span class="fu">independence_test</span>(</span>
+<span id="cb62-287"><a href="#cb62-287" aria-hidden="true" tabindex="-1"></a>  weight <span class="sc">~</span> <span class="fu">as.factor</span>(sex),</span>
+<span id="cb62-288"><a href="#cb62-288" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"two.sided"</span>,</span>
+<span id="cb62-289"><a href="#cb62-289" aria-hidden="true" tabindex="-1"></a>  <span class="at">distribution =</span> <span class="st">"approximate"</span>,</span>
+<span id="cb62-290"><a href="#cb62-290" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> d</span>
+<span id="cb62-291"><a href="#cb62-291" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-292"><a href="#cb62-292" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>coin)</span>
+<span id="cb62-293"><a href="#cb62-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-294"><a href="#cb62-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-295"><a href="#cb62-295" aria-hidden="true" tabindex="-1"></a>Finally, we can also write our own generic 2-sample permutation function that allows us to compare custom test statistics. Here, we first define a function for our test statistic, <span class="in">`mean_diff()`</span>, i.e., a difference of means, and then define a function for the test.</span>
+<span id="cb62-296"><a href="#cb62-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-299"><a href="#cb62-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-300"><a href="#cb62-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
+<span id="cb62-301"><a href="#cb62-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: true</span></span>
+<span id="cb62-302"><a href="#cb62-302" aria-hidden="true" tabindex="-1"></a>perm2samp <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm=</span><span class="dv">10000</span>,</span>
+<span id="cb62-303"><a href="#cb62-303" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative=</span><span class="fu">c</span>(<span class="st">"two.sided"</span>,<span class="st">"less"</span>,<span class="st">"greater"</span>)){</span>
+<span id="cb62-304"><a href="#cb62-304" aria-hidden="true" tabindex="-1"></a>  <span class="co"># can modify function by adding alternative `stat=`</span></span>
+<span id="cb62-305"><a href="#cb62-305" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (stat<span class="sc">==</span><span class="st">"mean_diff"</span>){</span>
+<span id="cb62-306"><a href="#cb62-306" aria-hidden="true" tabindex="-1"></a>      myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y){<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">mean</span>(y)}</span>
+<span id="cb62-307"><a href="#cb62-307" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb62-308"><a href="#cb62-308" aria-hidden="true" tabindex="-1"></a>    test_stat <span class="ot">&lt;-</span> <span class="fu">myfun</span>(x,y)  </span>
+<span id="cb62-309"><a href="#cb62-309" aria-hidden="true" tabindex="-1"></a>    test_data <span class="ot">&lt;-</span> <span class="fu">c</span>(x,y) <span class="co"># puts two vectors of samples together</span></span>
+<span id="cb62-310"><a href="#cb62-310" aria-hidden="true" tabindex="-1"></a>    perm_stat <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length=</span>nperm)</span>
+<span id="cb62-311"><a href="#cb62-311" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nperm){</span>
+<span id="cb62-312"><a href="#cb62-312" aria-hidden="true" tabindex="-1"></a>      indexes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">length</span>(test_data), <span class="fu">length</span>(x), <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb62-313"><a href="#cb62-313" aria-hidden="true" tabindex="-1"></a>      <span class="co"># the row above generates a randomized vector of indices that is the length</span></span>
+<span id="cb62-314"><a href="#cb62-314" aria-hidden="true" tabindex="-1"></a>      <span class="co"># of the x sample... this is equivalent to permuting which group the x sample</span></span>
+<span id="cb62-315"><a href="#cb62-315" aria-hidden="true" tabindex="-1"></a>      <span class="co"># belongs to</span></span>
+<span id="cb62-316"><a href="#cb62-316" aria-hidden="true" tabindex="-1"></a>      s1 <span class="ot">&lt;-</span> test_data[indexes]</span>
+<span id="cb62-317"><a href="#cb62-317" aria-hidden="true" tabindex="-1"></a>      s2 <span class="ot">&lt;-</span> test_data[<span class="sc">-</span>indexes]</span>
+<span id="cb62-318"><a href="#cb62-318" aria-hidden="true" tabindex="-1"></a>      perm_stat[[i]] <span class="ot">&lt;-</span> <span class="fu">myfun</span>(s1,s2)</span>
+<span id="cb62-319"><a href="#cb62-319" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb62-320"><a href="#cb62-320" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(alternative[<span class="dv">1</span>]<span class="sc">==</span><span class="st">"less"</span>){</span>
+<span id="cb62-321"><a href="#cb62-321" aria-hidden="true" tabindex="-1"></a>      p_perm <span class="ot">&lt;-</span> <span class="fu">sum</span>(perm_stat <span class="sc">&lt;=</span> test_stat) <span class="sc">/</span> nperm</span>
+<span id="cb62-322"><a href="#cb62-322" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> <span class="cf">if</span>(alternative[<span class="dv">1</span>]<span class="sc">==</span><span class="st">"greater"</span>){</span>
+<span id="cb62-323"><a href="#cb62-323" aria-hidden="true" tabindex="-1"></a>          p_perm <span class="ot">&lt;-</span> <span class="fu">sum</span>(perm_stat <span class="sc">&gt;=</span> test_stat) <span class="sc">/</span> nperm</span>
+<span id="cb62-324"><a href="#cb62-324" aria-hidden="true" tabindex="-1"></a>        } <span class="cf">else</span> {</span>
+<span id="cb62-325"><a href="#cb62-325" aria-hidden="true" tabindex="-1"></a>          p_perm <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(perm_stat) <span class="sc">&gt;=</span> <span class="fu">abs</span>(test_stat)) <span class="sc">/</span> nperm</span>
+<span id="cb62-326"><a href="#cb62-326" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb62-327"><a href="#cb62-327" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(<span class="at">test_stat=</span>test_stat, <span class="at">perm_stat=</span>perm_stat, <span class="at">p_perm=</span>p_perm, <span class="at">type=</span>alternative[<span class="dv">1</span>])</span>
+<span id="cb62-328"><a href="#cb62-328" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb62-329"><a href="#cb62-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-330"><a href="#cb62-330" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> d[d<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"female"</span>,]<span class="sc">$</span>weight</span>
+<span id="cb62-331"><a href="#cb62-331" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> d[d<span class="sc">$</span>sex<span class="sc">==</span><span class="st">"male"</span>,]<span class="sc">$</span>weight</span>
+<span id="cb62-332"><a href="#cb62-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-333"><a href="#cb62-333" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">perm2samp</span>(x, y, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm =</span> <span class="dv">10000</span>)</span>
+<span id="cb62-334"><a href="#cb62-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-335"><a href="#cb62-335" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
+<span id="cb62-336"><a href="#cb62-336" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>perm_stat,</span>
+<span id="cb62-337"><a href="#cb62-337" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
+<span id="cb62-338"><a href="#cb62-338" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
+<span id="cb62-339"><a href="#cb62-339" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
+<span id="cb62-340"><a href="#cb62-340" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb62-341"><a href="#cb62-341" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"less"</span> <span class="sc">|</span></span>
+<span id="cb62-342"><a href="#cb62-342" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"greater"</span>,</span>
 <span id="cb62-343"><a href="#cb62-343" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
-<span id="cb62-344"><a href="#cb62-344" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Two-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution more extreme than test stat = "</span>,</span>
-<span id="cb62-345"><a href="#cb62-345" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
-<span id="cb62-346"><a href="#cb62-346" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb62-347"><a href="#cb62-347" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb62-348"><a href="#cb62-348" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.75</span>, <span class="fl">1.75</span>)</span>
-<span id="cb62-349"><a href="#cb62-349" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-350"><a href="#cb62-350" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>output<span class="sc">$</span>test_stat, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
-<span id="cb62-351"><a href="#cb62-351" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (output<span class="sc">$</span>type<span class="sc">==</span><span class="st">"two.sided"</span>) {</span>
-<span id="cb62-352"><a href="#cb62-352" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ladd</span>(<span class="fu">panel.abline</span>(</span>
-<span id="cb62-353"><a href="#cb62-353" aria-hidden="true" tabindex="-1"></a>    <span class="at">v =</span> <span class="sc">-</span>output<span class="sc">$</span>test_stat,</span>
-<span id="cb62-354"><a href="#cb62-354" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">3</span>,</span>
-<span id="cb62-355"><a href="#cb62-355" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb62-356"><a href="#cb62-356" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span></span>
-<span id="cb62-357"><a href="#cb62-357" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb62-358"><a href="#cb62-358" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb62-359"><a href="#cb62-359" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(</span>
-<span id="cb62-360"><a href="#cb62-360" aria-hidden="true" tabindex="-1"></a>  <span class="fu">panel.text</span>(</span>
-<span id="cb62-361"><a href="#cb62-361" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> output<span class="sc">$</span>test_stat,</span>
-<span id="cb62-362"><a href="#cb62-362" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
-<span id="cb62-363"><a href="#cb62-363" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Test Statistic"</span>,</span>
-<span id="cb62-364"><a href="#cb62-364" aria-hidden="true" tabindex="-1"></a>    <span class="at">srt =</span> <span class="dv">90</span>,</span>
-<span id="cb62-365"><a href="#cb62-365" aria-hidden="true" tabindex="-1"></a>    <span class="at">pos =</span> <span class="dv">4</span>,</span>
-<span id="cb62-366"><a href="#cb62-366" aria-hidden="true" tabindex="-1"></a>    <span class="at">offset =</span> <span class="dv">1</span></span>
-<span id="cb62-367"><a href="#cb62-367" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb62-368"><a href="#cb62-368" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-369"><a href="#cb62-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-370"><a href="#cb62-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-371"><a href="#cb62-371" aria-hidden="true" tabindex="-1"></a>Here's a graphical version of what we are doing...</span>
-<span id="cb62-372"><a href="#cb62-372" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-375"><a href="#cb62-375" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-376"><a href="#cb62-376" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb62-377"><a href="#cb62-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
-<span id="cb62-378"><a href="#cb62-378" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/2-sample-perm-test.png"</span>)</span>
-<span id="cb62-379"><a href="#cb62-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-380"><a href="#cb62-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-381"><a href="#cb62-381" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with Proportions</span></span>
-<span id="cb62-382"><a href="#cb62-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-383"><a href="#cb62-383" aria-hidden="true" tabindex="-1"></a>We can take the same permutation/randomization approach and use the same 1- and 2-sample tests with proportion data.</span>
-<span id="cb62-384"><a href="#cb62-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-385"><a href="#cb62-385" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">**Module 15**</span><span class="co">](#module-15)</span>, we looked at a set of data on captures of birds in 30 nets on a morning of mist netting (i.e., a "success" or "failure" for every net during a netting session) and tested whether the proportion of "successes" was lower than the expectation of 80% was lower than in previous years. The code below lets us do this using a 1-sample randomization test.</span>
+<span id="cb62-344"><a href="#cb62-344" aria-hidden="true" tabindex="-1"></a>      <span class="st">"One-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution "</span>,</span>
+<span id="cb62-345"><a href="#cb62-345" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type,</span>
+<span id="cb62-346"><a href="#cb62-346" aria-hidden="true" tabindex="-1"></a>      <span class="st">" than test stat = "</span>,</span>
+<span id="cb62-347"><a href="#cb62-347" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
+<span id="cb62-348"><a href="#cb62-348" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb62-349"><a href="#cb62-349" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb62-350"><a href="#cb62-350" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Two-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution more extreme than test stat = "</span>,</span>
+<span id="cb62-351"><a href="#cb62-351" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
+<span id="cb62-352"><a href="#cb62-352" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb62-353"><a href="#cb62-353" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb62-354"><a href="#cb62-354" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.75</span>, <span class="fl">1.75</span>)</span>
+<span id="cb62-355"><a href="#cb62-355" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-356"><a href="#cb62-356" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>output<span class="sc">$</span>test_stat, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
+<span id="cb62-357"><a href="#cb62-357" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (output<span class="sc">$</span>type<span class="sc">==</span><span class="st">"two.sided"</span>) {</span>
+<span id="cb62-358"><a href="#cb62-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ladd</span>(<span class="fu">panel.abline</span>(</span>
+<span id="cb62-359"><a href="#cb62-359" aria-hidden="true" tabindex="-1"></a>    <span class="at">v =</span> <span class="sc">-</span>output<span class="sc">$</span>test_stat,</span>
+<span id="cb62-360"><a href="#cb62-360" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">3</span>,</span>
+<span id="cb62-361"><a href="#cb62-361" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb62-362"><a href="#cb62-362" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span></span>
+<span id="cb62-363"><a href="#cb62-363" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb62-364"><a href="#cb62-364" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-365"><a href="#cb62-365" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(</span>
+<span id="cb62-366"><a href="#cb62-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">panel.text</span>(</span>
+<span id="cb62-367"><a href="#cb62-367" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> output<span class="sc">$</span>test_stat,</span>
+<span id="cb62-368"><a href="#cb62-368" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
+<span id="cb62-369"><a href="#cb62-369" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Test Statistic"</span>,</span>
+<span id="cb62-370"><a href="#cb62-370" aria-hidden="true" tabindex="-1"></a>    <span class="at">srt =</span> <span class="dv">90</span>,</span>
+<span id="cb62-371"><a href="#cb62-371" aria-hidden="true" tabindex="-1"></a>    <span class="at">pos =</span> <span class="dv">4</span>,</span>
+<span id="cb62-372"><a href="#cb62-372" aria-hidden="true" tabindex="-1"></a>    <span class="at">offset =</span> <span class="dv">1</span></span>
+<span id="cb62-373"><a href="#cb62-373" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb62-374"><a href="#cb62-374" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-375"><a href="#cb62-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-376"><a href="#cb62-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-377"><a href="#cb62-377" aria-hidden="true" tabindex="-1"></a>Here's a graphical version of what we are doing...</span>
+<span id="cb62-378"><a href="#cb62-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-381"><a href="#cb62-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-382"><a href="#cb62-382" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb62-383"><a href="#cb62-383" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb62-384"><a href="#cb62-384" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/2-sample-perm-test.png"</span>)</span>
+<span id="cb62-385"><a href="#cb62-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb62-386"><a href="#cb62-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-389"><a href="#cb62-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-390"><a href="#cb62-390" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
-<span id="cb62-391"><a href="#cb62-391" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb62-392"><a href="#cb62-392" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb62-393"><a href="#cb62-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-394"><a href="#cb62-394" aria-hidden="true" tabindex="-1"></a><span class="co"># using {jmuOutlier}</span></span>
-<span id="cb62-395"><a href="#cb62-395" aria-hidden="true" tabindex="-1"></a><span class="co"># library(jmuOutlier)</span></span>
-<span id="cb62-396"><a href="#cb62-396" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(v, alternative="less", mu=0.8, plot=FALSE, num.sim = nperm)</span></span>
-<span id="cb62-397"><a href="#cb62-397" aria-hidden="true" tabindex="-1"></a><span class="co"># detach(package:jmuOutlier)</span></span>
-<span id="cb62-398"><a href="#cb62-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-399"><a href="#cb62-399" aria-hidden="true" tabindex="-1"></a><span class="co"># using our custom function</span></span>
-<span id="cb62-400"><a href="#cb62-400" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">perm1samp</span>(v, <span class="at">stat=</span><span class="st">"mean"</span>, <span class="at">mu=</span><span class="fl">0.8</span>, <span class="at">alternative=</span><span class="st">"less"</span>, <span class="at">nperm=</span>nperm)</span>
-<span id="cb62-401"><a href="#cb62-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-402"><a href="#cb62-402" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
-<span id="cb62-403"><a href="#cb62-403" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>perm_stat,</span>
-<span id="cb62-404"><a href="#cb62-404" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
-<span id="cb62-405"><a href="#cb62-405" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
-<span id="cb62-406"><a href="#cb62-406" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
-<span id="cb62-407"><a href="#cb62-407" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb62-408"><a href="#cb62-408" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"less"</span> <span class="sc">|</span></span>
-<span id="cb62-409"><a href="#cb62-409" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"greater"</span>,</span>
-<span id="cb62-410"><a href="#cb62-410" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
-<span id="cb62-411"><a href="#cb62-411" aria-hidden="true" tabindex="-1"></a>      <span class="st">"One-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution "</span>,</span>
-<span id="cb62-412"><a href="#cb62-412" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type,</span>
-<span id="cb62-413"><a href="#cb62-413" aria-hidden="true" tabindex="-1"></a>      <span class="st">" than test stat = "</span>,</span>
-<span id="cb62-414"><a href="#cb62-414" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
-<span id="cb62-415"><a href="#cb62-415" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb62-387"><a href="#cb62-387" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with Proportions</span></span>
+<span id="cb62-388"><a href="#cb62-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-389"><a href="#cb62-389" aria-hidden="true" tabindex="-1"></a>We can take the same permutation/randomization approach and use the same 1- and 2-sample tests with proportion data.</span>
+<span id="cb62-390"><a href="#cb62-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-391"><a href="#cb62-391" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">**Module 15**</span><span class="co">](#module-15)</span>, we looked at a set of data on captures of birds in 30 nets on a morning of mist netting (i.e., a "success" or "failure" for every net during a netting session) and tested whether the proportion of "successes" was lower than the expectation of 80% was lower than in previous years. The code below lets us do this using a 1-sample randomization test.</span>
+<span id="cb62-392"><a href="#cb62-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-395"><a href="#cb62-395" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-396"><a href="#cb62-396" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
+<span id="cb62-397"><a href="#cb62-397" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb62-398"><a href="#cb62-398" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb62-399"><a href="#cb62-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-400"><a href="#cb62-400" aria-hidden="true" tabindex="-1"></a><span class="co"># using {jmuOutlier}</span></span>
+<span id="cb62-401"><a href="#cb62-401" aria-hidden="true" tabindex="-1"></a><span class="co"># library(jmuOutlier)</span></span>
+<span id="cb62-402"><a href="#cb62-402" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(v, alternative="less", mu=0.8, plot=FALSE, num.sim = nperm)</span></span>
+<span id="cb62-403"><a href="#cb62-403" aria-hidden="true" tabindex="-1"></a><span class="co"># detach(package:jmuOutlier)</span></span>
+<span id="cb62-404"><a href="#cb62-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-405"><a href="#cb62-405" aria-hidden="true" tabindex="-1"></a><span class="co"># using our custom function</span></span>
+<span id="cb62-406"><a href="#cb62-406" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">perm1samp</span>(v, <span class="at">stat=</span><span class="st">"mean"</span>, <span class="at">mu=</span><span class="fl">0.8</span>, <span class="at">alternative=</span><span class="st">"less"</span>, <span class="at">nperm=</span>nperm)</span>
+<span id="cb62-407"><a href="#cb62-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-408"><a href="#cb62-408" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
+<span id="cb62-409"><a href="#cb62-409" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>perm_stat,</span>
+<span id="cb62-410"><a href="#cb62-410" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
+<span id="cb62-411"><a href="#cb62-411" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
+<span id="cb62-412"><a href="#cb62-412" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
+<span id="cb62-413"><a href="#cb62-413" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb62-414"><a href="#cb62-414" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"less"</span> <span class="sc">|</span></span>
+<span id="cb62-415"><a href="#cb62-415" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"greater"</span>,</span>
 <span id="cb62-416"><a href="#cb62-416" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
-<span id="cb62-417"><a href="#cb62-417" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Two-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution more extreme than test stat = "</span>,</span>
-<span id="cb62-418"><a href="#cb62-418" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
-<span id="cb62-419"><a href="#cb62-419" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb62-420"><a href="#cb62-420" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb62-421"><a href="#cb62-421" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-422"><a href="#cb62-422" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>( <span class="at">v =</span> output<span class="sc">$</span>test_stat, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>))</span>
-<span id="cb62-423"><a href="#cb62-423" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"two.sided"</span>) {</span>
-<span id="cb62-424"><a href="#cb62-424" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ladd</span>(<span class="fu">panel.abline</span>(</span>
-<span id="cb62-425"><a href="#cb62-425" aria-hidden="true" tabindex="-1"></a>    <span class="at">v =</span> <span class="sc">-</span>output<span class="sc">$</span>test_stat,</span>
-<span id="cb62-426"><a href="#cb62-426" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">3</span>,</span>
-<span id="cb62-427"><a href="#cb62-427" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb62-428"><a href="#cb62-428" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span></span>
-<span id="cb62-429"><a href="#cb62-429" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb62-430"><a href="#cb62-430" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb62-431"><a href="#cb62-431" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
-<span id="cb62-432"><a href="#cb62-432" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> output<span class="sc">$</span>test_stat,</span>
-<span id="cb62-433"><a href="#cb62-433" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
-<span id="cb62-434"><a href="#cb62-434" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
-<span id="cb62-435"><a href="#cb62-435" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
-<span id="cb62-436"><a href="#cb62-436" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
-<span id="cb62-437"><a href="#cb62-437" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
-<span id="cb62-438"><a href="#cb62-438" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb62-439"><a href="#cb62-439" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-440"><a href="#cb62-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-441"><a href="#cb62-441" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">**Module 15**</span><span class="co">](#module-15)</span>, we also compared data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, the record indicates whether a captured female was lactating (1) or not (0), and we wanted to test whether this proportion differed between species. We can do this with a 2-sample randomization test.</span>
-<span id="cb62-442"><a href="#cb62-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-445"><a href="#cb62-445" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-446"><a href="#cb62-446" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
-<span id="cb62-447"><a href="#cb62-447" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb62-448"><a href="#cb62-448" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb62-449"><a href="#cb62-449" aria-hidden="true" tabindex="-1"></a>(actual_diff <span class="ot">&lt;-</span> <span class="fu">mean</span>(species1)<span class="sc">-</span><span class="fu">mean</span>(species2))</span>
-<span id="cb62-450"><a href="#cb62-450" aria-hidden="true" tabindex="-1"></a><span class="co"># this calculates a difference in proportions</span></span>
-<span id="cb62-451"><a href="#cb62-451" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb62-452"><a href="#cb62-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-453"><a href="#cb62-453" aria-hidden="true" tabindex="-1"></a><span class="co"># using {jmuOutlier}</span></span>
-<span id="cb62-454"><a href="#cb62-454" aria-hidden="true" tabindex="-1"></a><span class="co"># library(jmuOutlier)</span></span>
-<span id="cb62-455"><a href="#cb62-455" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(species1, species2, alternative = "two.sided", plot=FALSE, num.sim = nperm)</span></span>
-<span id="cb62-456"><a href="#cb62-456" aria-hidden="true" tabindex="-1"></a><span class="co"># detach(package:jmuOutlier)</span></span>
-<span id="cb62-457"><a href="#cb62-457" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-458"><a href="#cb62-458" aria-hidden="true" tabindex="-1"></a><span class="co"># using our custom function</span></span>
-<span id="cb62-459"><a href="#cb62-459" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">perm2samp</span>(species1, species2, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm=</span>nperm)</span>
-<span id="cb62-460"><a href="#cb62-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-461"><a href="#cb62-461" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
-<span id="cb62-462"><a href="#cb62-462" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>perm_stat,</span>
-<span id="cb62-463"><a href="#cb62-463" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
-<span id="cb62-464"><a href="#cb62-464" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
-<span id="cb62-465"><a href="#cb62-465" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
-<span id="cb62-466"><a href="#cb62-466" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb62-467"><a href="#cb62-467" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"less"</span> <span class="sc">|</span></span>
-<span id="cb62-468"><a href="#cb62-468" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"greater"</span>,</span>
-<span id="cb62-469"><a href="#cb62-469" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
-<span id="cb62-470"><a href="#cb62-470" aria-hidden="true" tabindex="-1"></a>      <span class="st">"One-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution "</span>,</span>
-<span id="cb62-471"><a href="#cb62-471" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type,</span>
-<span id="cb62-472"><a href="#cb62-472" aria-hidden="true" tabindex="-1"></a>      <span class="st">" than test stat = "</span>,</span>
-<span id="cb62-473"><a href="#cb62-473" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
-<span id="cb62-474"><a href="#cb62-474" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb62-417"><a href="#cb62-417" aria-hidden="true" tabindex="-1"></a>      <span class="st">"One-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution "</span>,</span>
+<span id="cb62-418"><a href="#cb62-418" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type,</span>
+<span id="cb62-419"><a href="#cb62-419" aria-hidden="true" tabindex="-1"></a>      <span class="st">" than test stat = "</span>,</span>
+<span id="cb62-420"><a href="#cb62-420" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
+<span id="cb62-421"><a href="#cb62-421" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb62-422"><a href="#cb62-422" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb62-423"><a href="#cb62-423" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Two-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution more extreme than test stat = "</span>,</span>
+<span id="cb62-424"><a href="#cb62-424" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
+<span id="cb62-425"><a href="#cb62-425" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb62-426"><a href="#cb62-426" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb62-427"><a href="#cb62-427" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-428"><a href="#cb62-428" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>( <span class="at">v =</span> output<span class="sc">$</span>test_stat, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>))</span>
+<span id="cb62-429"><a href="#cb62-429" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"two.sided"</span>) {</span>
+<span id="cb62-430"><a href="#cb62-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ladd</span>(<span class="fu">panel.abline</span>(</span>
+<span id="cb62-431"><a href="#cb62-431" aria-hidden="true" tabindex="-1"></a>    <span class="at">v =</span> <span class="sc">-</span>output<span class="sc">$</span>test_stat,</span>
+<span id="cb62-432"><a href="#cb62-432" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">3</span>,</span>
+<span id="cb62-433"><a href="#cb62-433" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb62-434"><a href="#cb62-434" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span></span>
+<span id="cb62-435"><a href="#cb62-435" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb62-436"><a href="#cb62-436" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-437"><a href="#cb62-437" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
+<span id="cb62-438"><a href="#cb62-438" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> output<span class="sc">$</span>test_stat,</span>
+<span id="cb62-439"><a href="#cb62-439" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
+<span id="cb62-440"><a href="#cb62-440" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
+<span id="cb62-441"><a href="#cb62-441" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
+<span id="cb62-442"><a href="#cb62-442" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
+<span id="cb62-443"><a href="#cb62-443" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
+<span id="cb62-444"><a href="#cb62-444" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb62-445"><a href="#cb62-445" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-446"><a href="#cb62-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-447"><a href="#cb62-447" aria-hidden="true" tabindex="-1"></a>In <span class="co">[</span><span class="ot">**Module 15**</span><span class="co">](#module-15)</span>, we also compared data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, the record indicates whether a captured female was lactating (1) or not (0), and we wanted to test whether this proportion differed between species. We can do this with a 2-sample randomization test.</span>
+<span id="cb62-448"><a href="#cb62-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-451"><a href="#cb62-451" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-452"><a href="#cb62-452" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
+<span id="cb62-453"><a href="#cb62-453" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb62-454"><a href="#cb62-454" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb62-455"><a href="#cb62-455" aria-hidden="true" tabindex="-1"></a>(actual_diff <span class="ot">&lt;-</span> <span class="fu">mean</span>(species1)<span class="sc">-</span><span class="fu">mean</span>(species2))</span>
+<span id="cb62-456"><a href="#cb62-456" aria-hidden="true" tabindex="-1"></a><span class="co"># this calculates a difference in proportions</span></span>
+<span id="cb62-457"><a href="#cb62-457" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb62-458"><a href="#cb62-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-459"><a href="#cb62-459" aria-hidden="true" tabindex="-1"></a><span class="co"># using {jmuOutlier}</span></span>
+<span id="cb62-460"><a href="#cb62-460" aria-hidden="true" tabindex="-1"></a><span class="co"># library(jmuOutlier)</span></span>
+<span id="cb62-461"><a href="#cb62-461" aria-hidden="true" tabindex="-1"></a><span class="co"># perm.test(species1, species2, alternative = "two.sided", plot=FALSE, num.sim = nperm)</span></span>
+<span id="cb62-462"><a href="#cb62-462" aria-hidden="true" tabindex="-1"></a><span class="co"># detach(package:jmuOutlier)</span></span>
+<span id="cb62-463"><a href="#cb62-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-464"><a href="#cb62-464" aria-hidden="true" tabindex="-1"></a><span class="co"># using our custom function</span></span>
+<span id="cb62-465"><a href="#cb62-465" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">perm2samp</span>(species1, species2, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm=</span>nperm)</span>
+<span id="cb62-466"><a href="#cb62-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-467"><a href="#cb62-467" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
+<span id="cb62-468"><a href="#cb62-468" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>perm_stat,</span>
+<span id="cb62-469"><a href="#cb62-469" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
+<span id="cb62-470"><a href="#cb62-470" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
+<span id="cb62-471"><a href="#cb62-471" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>,</span>
+<span id="cb62-472"><a href="#cb62-472" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb62-473"><a href="#cb62-473" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"less"</span> <span class="sc">|</span></span>
+<span id="cb62-474"><a href="#cb62-474" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type <span class="sc">==</span> <span class="st">"greater"</span>,</span>
 <span id="cb62-475"><a href="#cb62-475" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
-<span id="cb62-476"><a href="#cb62-476" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Two-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution more extreme than test stat = "</span>,</span>
-<span id="cb62-477"><a href="#cb62-477" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
-<span id="cb62-478"><a href="#cb62-478" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb62-479"><a href="#cb62-479" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb62-480"><a href="#cb62-480" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb62-481"><a href="#cb62-481" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>output<span class="sc">$</span>test_stat, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
-<span id="cb62-482"><a href="#cb62-482" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (output<span class="sc">$</span>type<span class="sc">==</span><span class="st">"two.sided"</span>) {</span>
-<span id="cb62-483"><a href="#cb62-483" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ladd</span>(<span class="fu">panel.abline</span>(</span>
-<span id="cb62-484"><a href="#cb62-484" aria-hidden="true" tabindex="-1"></a>    <span class="at">v =</span> <span class="sc">-</span>output<span class="sc">$</span>test_stat,</span>
-<span id="cb62-485"><a href="#cb62-485" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">3</span>,</span>
-<span id="cb62-486"><a href="#cb62-486" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb62-487"><a href="#cb62-487" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span></span>
-<span id="cb62-488"><a href="#cb62-488" aria-hidden="true" tabindex="-1"></a>  ))</span>
-<span id="cb62-489"><a href="#cb62-489" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb62-490"><a href="#cb62-490" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
-<span id="cb62-491"><a href="#cb62-491" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> output<span class="sc">$</span>test_stat,</span>
-<span id="cb62-492"><a href="#cb62-492" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
-<span id="cb62-493"><a href="#cb62-493" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
-<span id="cb62-494"><a href="#cb62-494" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
-<span id="cb62-495"><a href="#cb62-495" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
-<span id="cb62-496"><a href="#cb62-496" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
-<span id="cb62-497"><a href="#cb62-497" aria-hidden="true" tabindex="-1"></a>))</span>
-<span id="cb62-498"><a href="#cb62-498" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-499"><a href="#cb62-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-500"><a href="#cb62-500" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The p values associated with these permutation/randomization based tests on proportions are not so close to those using the `prop.test()` function for the same data that we ran in [**Module 15**](#module-15). This is because </span><span class="in">`prop.test()`</span><span class="at"> is calculating the p value associated with our test statistic presuming that the distribution of sampling proportions is roughly normal, whereas this test is calculating p values by counting the proportion of simulations!</span></span>
-<span id="cb62-501"><a href="#cb62-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-502"><a href="#cb62-502" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using the {infer} Package</span></span>
-<span id="cb62-503"><a href="#cb62-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-504"><a href="#cb62-504" aria-hidden="true" tabindex="-1"></a>The {infer} package offers a convenient set of functions and a standard workflow for using permutation methods for hypothesis testing, whether we are dealing with means, differences between means, proportions, or differences in proportions.</span>
+<span id="cb62-476"><a href="#cb62-476" aria-hidden="true" tabindex="-1"></a>      <span class="st">"One-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution "</span>,</span>
+<span id="cb62-477"><a href="#cb62-477" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>type,</span>
+<span id="cb62-478"><a href="#cb62-478" aria-hidden="true" tabindex="-1"></a>      <span class="st">" than test stat = "</span>,</span>
+<span id="cb62-479"><a href="#cb62-479" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
+<span id="cb62-480"><a href="#cb62-480" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb62-481"><a href="#cb62-481" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
+<span id="cb62-482"><a href="#cb62-482" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Two-Sided Test</span><span class="sc">\n</span><span class="st">Proportion of distribution more extreme than test stat = "</span>,</span>
+<span id="cb62-483"><a href="#cb62-483" aria-hidden="true" tabindex="-1"></a>      output<span class="sc">$</span>p_perm</span>
+<span id="cb62-484"><a href="#cb62-484" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb62-485"><a href="#cb62-485" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb62-486"><a href="#cb62-486" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb62-487"><a href="#cb62-487" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>output<span class="sc">$</span>test_stat, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
+<span id="cb62-488"><a href="#cb62-488" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (output<span class="sc">$</span>type<span class="sc">==</span><span class="st">"two.sided"</span>) {</span>
+<span id="cb62-489"><a href="#cb62-489" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ladd</span>(<span class="fu">panel.abline</span>(</span>
+<span id="cb62-490"><a href="#cb62-490" aria-hidden="true" tabindex="-1"></a>    <span class="at">v =</span> <span class="sc">-</span>output<span class="sc">$</span>test_stat,</span>
+<span id="cb62-491"><a href="#cb62-491" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">3</span>,</span>
+<span id="cb62-492"><a href="#cb62-492" aria-hidden="true" tabindex="-1"></a>    <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb62-493"><a href="#cb62-493" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">"red"</span></span>
+<span id="cb62-494"><a href="#cb62-494" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb62-495"><a href="#cb62-495" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb62-496"><a href="#cb62-496" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
+<span id="cb62-497"><a href="#cb62-497" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> output<span class="sc">$</span>test_stat,</span>
+<span id="cb62-498"><a href="#cb62-498" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
+<span id="cb62-499"><a href="#cb62-499" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
+<span id="cb62-500"><a href="#cb62-500" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
+<span id="cb62-501"><a href="#cb62-501" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
+<span id="cb62-502"><a href="#cb62-502" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
+<span id="cb62-503"><a href="#cb62-503" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb62-504"><a href="#cb62-504" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb62-505"><a href="#cb62-505" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-508"><a href="#cb62-508" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-509"><a href="#cb62-509" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb62-510"><a href="#cb62-510" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
-<span id="cb62-511"><a href="#cb62-511" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/infer.png"</span>)</span>
-<span id="cb62-512"><a href="#cb62-512" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-513"><a href="#cb62-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-514"><a href="#cb62-514" aria-hidden="true" tabindex="-1"></a>The {infer} package includes a set of functions that allow us to easily generate shuffled or permuted datasets and then conduct hypothesis testing with these datasets just as we have done above. We will explore how we do this with the {infer} package using the black-and-white colobus weight data we used above.</span>
-<span id="cb62-515"><a href="#cb62-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-516"><a href="#cb62-516" aria-hidden="true" tabindex="-1"></a>We first read in our data and load the {infer} package:</span>
-<span id="cb62-517"><a href="#cb62-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-520"><a href="#cb62-520" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-521"><a href="#cb62-521" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb62-522"><a href="#cb62-522" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/colobus-weights.csv"</span></span>
-<span id="cb62-523"><a href="#cb62-523" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names=</span><span class="cn">TRUE</span>)</span>
-<span id="cb62-524"><a href="#cb62-524" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
-<span id="cb62-525"><a href="#cb62-525" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-526"><a href="#cb62-526" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-527"><a href="#cb62-527" aria-hidden="true" tabindex="-1"></a>Then, we use the function <span class="in">`specify()`</span> to indicate the variables we are interested in. The <span class="in">`specify()`</span> function takes an argument of <span class="in">`formula=`</span> response\~explanatory. If we are working with proportion data, we also need to provide an argument for what value of the explanatory variable counts as a success, using <span class="in">`success=`</span>, but that is not the case for our colobus weight data, where our response variable is numeric, not binary.</span>
-<span id="cb62-528"><a href="#cb62-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-531"><a href="#cb62-531" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-532"><a href="#cb62-532" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">specify</span>(<span class="at">formula =</span> weight<span class="sc">~</span>sex)</span>
-<span id="cb62-533"><a href="#cb62-533" aria-hidden="true" tabindex="-1"></a><span class="co"># this does not change the data frame but adds some meta data</span></span>
-<span id="cb62-534"><a href="#cb62-534" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
-<span id="cb62-535"><a href="#cb62-535" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-536"><a href="#cb62-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-537"><a href="#cb62-537" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`hypothesize()`</span> is then used to declare the null hypothesis we wish to test. We use the argument <span class="in">`null="point"`</span> if we are doing a test of a single mean (<span class="in">`mu=`</span>) or proportion (<span class="in">`p=`</span>) or <span class="in">`null="independence"`</span> if we are doing a test of the independence of two variables (i.e., a two-sample test).</span>
-<span id="cb62-538"><a href="#cb62-538" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-541"><a href="#cb62-541" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-542"><a href="#cb62-542" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>)</span>
-<span id="cb62-543"><a href="#cb62-543" aria-hidden="true" tabindex="-1"></a><span class="co"># again, this does not change the data frame but adds some meta data</span></span>
-<span id="cb62-544"><a href="#cb62-544" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
-<span id="cb62-545"><a href="#cb62-545" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-546"><a href="#cb62-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-547"><a href="#cb62-547" aria-hidden="true" tabindex="-1"></a>We then use the <span class="in">`generate()`</span> function to generate replicates of "shuffled" or "permuted" data under the assumption that the null hypothesis is true. That is, we generating datasets from which we then derived a null distribution for our statistic of interest.</span>
-<span id="cb62-548"><a href="#cb62-548" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-551"><a href="#cb62-551" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-552"><a href="#cb62-552" aria-hidden="true" tabindex="-1"></a>d_permutations <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">generate</span>(<span class="at">reps=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"permute"</span>)</span>
-<span id="cb62-553"><a href="#cb62-553" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(d)</span>
-<span id="cb62-554"><a href="#cb62-554" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(d_permutations)</span>
-<span id="cb62-555"><a href="#cb62-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-556"><a href="#cb62-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-557"><a href="#cb62-557" aria-hidden="true" tabindex="-1"></a>Next, we use <span class="in">`calculate()`</span> to calculate summary statistics of interest for each replicate. We can calculate a variety of different statistics, including the mean ("mean"), proportion ("prop"), difference in means ("diff in means"), difference in proportions ("diff in props"), and others. This step generates a null distribution for our summary statistic. For differences in means or proportions, we need to also include an argument specifying the order of the levels of the explanatory variable for subtraction.</span>
-<span id="cb62-558"><a href="#cb62-558" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-561"><a href="#cb62-561" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-562"><a href="#cb62-562" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d_permutations <span class="sc">%&gt;%</span></span>
-<span id="cb62-563"><a href="#cb62-563" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"male"</span>,<span class="st">"female"</span>))</span>
-<span id="cb62-564"><a href="#cb62-564" aria-hidden="true" tabindex="-1"></a><span class="co"># to subtract female weight from male weight</span></span>
-<span id="cb62-565"><a href="#cb62-565" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-566"><a href="#cb62-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-567"><a href="#cb62-567" aria-hidden="true" tabindex="-1"></a>We can then use the function <span class="in">`visualize()`</span> to examine the null distribution (alternatively, we can use <span class="in">`histogram()`</span>, in which case we then need to specify the variable <span class="in">`name="stat"`</span>)</span>
-<span id="cb62-568"><a href="#cb62-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-571"><a href="#cb62-571" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-572"><a href="#cb62-572" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">20</span>)</span>
-<span id="cb62-573"><a href="#cb62-573" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(null_distribution<span class="sc">$</span>stat, <span class="at">nint=</span><span class="dv">20</span>)</span>
-<span id="cb62-574"><a href="#cb62-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-575"><a href="#cb62-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-576"><a href="#cb62-576" aria-hidden="true" tabindex="-1"></a>So, now we have a null or permutation distribution for the test statistic... then, we can also use {infer} package functions to easily calculate hte observed summary statistic that we want to compare to this null distribution by simply leaving out the <span class="in">`hypothesize()`</span> and <span class="in">`generate()`</span> steps.</span>
-<span id="cb62-577"><a href="#cb62-577" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-580"><a href="#cb62-580" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-581"><a href="#cb62-581" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-582"><a href="#cb62-582" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(weight <span class="sc">~</span> sex) <span class="sc">%&gt;%</span></span>
-<span id="cb62-583"><a href="#cb62-583" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>))</span>
-<span id="cb62-584"><a href="#cb62-584" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-585"><a href="#cb62-585" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-586"><a href="#cb62-586" aria-hidden="true" tabindex="-1"></a>We can plot this observed test statistic atop the null distribution using the <span class="in">`shade_p_value()`</span> function, which has two arguments: a value for <span class="in">`obs_stat=`</span> and a <span class="in">`direction=`</span> ("left, "right", or "both") corresponding to two different one-tailed or a two-tailed alternative hypothesis.</span>
-<span id="cb62-587"><a href="#cb62-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-590"><a href="#cb62-590" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-591"><a href="#cb62-591" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb62-592"><a href="#cb62-592" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb62-593"><a href="#cb62-593" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-594"><a href="#cb62-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-595"><a href="#cb62-595" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This is not very interesting because the observed statistic is way outside of the null distribution!</span></span>
-<span id="cb62-596"><a href="#cb62-596" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-597"><a href="#cb62-597" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`get_p_value()`</span> with arguments of the null distribution, the observed statistic, and the direction will give us the p value generated by permutation.</span>
-<span id="cb62-598"><a href="#cb62-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-601"><a href="#cb62-601" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-602"><a href="#cb62-602" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution,observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb62-603"><a href="#cb62-603" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-506"><a href="#cb62-506" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The p values associated with these permutation/randomization based tests on proportions are not so close to those using the `prop.test()` function for the same data that we ran in [**Module 15**](#module-15). This is because </span><span class="in">`prop.test()`</span><span class="at"> is calculating the p value associated with our test statistic presuming that the distribution of sampling proportions is roughly normal, whereas this test is calculating p values by counting the proportion of simulations!</span></span>
+<span id="cb62-507"><a href="#cb62-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-508"><a href="#cb62-508" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using the {infer} Package</span></span>
+<span id="cb62-509"><a href="#cb62-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-510"><a href="#cb62-510" aria-hidden="true" tabindex="-1"></a>The {infer} package offers a convenient set of functions and a standard workflow for using permutation methods for hypothesis testing, whether we are dealing with means, differences between means, proportions, or differences in proportions.</span>
+<span id="cb62-511"><a href="#cb62-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-514"><a href="#cb62-514" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-515"><a href="#cb62-515" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb62-516"><a href="#cb62-516" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb62-517"><a href="#cb62-517" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/infer.png"</span>)</span>
+<span id="cb62-518"><a href="#cb62-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-519"><a href="#cb62-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-520"><a href="#cb62-520" aria-hidden="true" tabindex="-1"></a>The {infer} package includes a set of functions that allow us to easily generate shuffled or permuted datasets and then conduct hypothesis testing with these datasets just as we have done above. We will explore how we do this with the {infer} package using the black-and-white colobus weight data we used above.</span>
+<span id="cb62-521"><a href="#cb62-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-522"><a href="#cb62-522" aria-hidden="true" tabindex="-1"></a>We first read in our data and load the {infer} package:</span>
+<span id="cb62-523"><a href="#cb62-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-526"><a href="#cb62-526" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-527"><a href="#cb62-527" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb62-528"><a href="#cb62-528" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/colobus-weights.csv"</span></span>
+<span id="cb62-529"><a href="#cb62-529" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names=</span><span class="cn">TRUE</span>)</span>
+<span id="cb62-530"><a href="#cb62-530" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer)</span>
+<span id="cb62-531"><a href="#cb62-531" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-532"><a href="#cb62-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-533"><a href="#cb62-533" aria-hidden="true" tabindex="-1"></a>Then, we use the function <span class="in">`specify()`</span> to indicate the variables we are interested in. The <span class="in">`specify()`</span> function takes an argument of <span class="in">`formula=`</span> response\~explanatory. If we are working with proportion data, we also need to provide an argument for what value of the explanatory variable counts as a success, using <span class="in">`success=`</span>, but that is not the case for our colobus weight data, where our response variable is numeric, not binary.</span>
+<span id="cb62-534"><a href="#cb62-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-537"><a href="#cb62-537" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-538"><a href="#cb62-538" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">specify</span>(<span class="at">formula =</span> weight<span class="sc">~</span>sex)</span>
+<span id="cb62-539"><a href="#cb62-539" aria-hidden="true" tabindex="-1"></a><span class="co"># this does not change the data frame but adds some meta data</span></span>
+<span id="cb62-540"><a href="#cb62-540" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb62-541"><a href="#cb62-541" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-542"><a href="#cb62-542" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-543"><a href="#cb62-543" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`hypothesize()`</span> is then used to declare the null hypothesis we wish to test. We use the argument <span class="in">`null="point"`</span> if we are doing a test of a single mean (<span class="in">`mu=`</span>) or proportion (<span class="in">`p=`</span>) or <span class="in">`null="independence"`</span> if we are doing a test of the independence of two variables (i.e., a two-sample test).</span>
+<span id="cb62-544"><a href="#cb62-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-547"><a href="#cb62-547" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-548"><a href="#cb62-548" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>)</span>
+<span id="cb62-549"><a href="#cb62-549" aria-hidden="true" tabindex="-1"></a><span class="co"># again, this does not change the data frame but adds some meta data</span></span>
+<span id="cb62-550"><a href="#cb62-550" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb62-551"><a href="#cb62-551" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-552"><a href="#cb62-552" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-553"><a href="#cb62-553" aria-hidden="true" tabindex="-1"></a>We then use the <span class="in">`generate()`</span> function to generate replicates of "shuffled" or "permuted" data under the assumption that the null hypothesis is true. That is, we generating datasets from which we then derived a null distribution for our statistic of interest.</span>
+<span id="cb62-554"><a href="#cb62-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-557"><a href="#cb62-557" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-558"><a href="#cb62-558" aria-hidden="true" tabindex="-1"></a>d_permutations <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span> <span class="fu">generate</span>(<span class="at">reps=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"permute"</span>)</span>
+<span id="cb62-559"><a href="#cb62-559" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(d)</span>
+<span id="cb62-560"><a href="#cb62-560" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(d_permutations)</span>
+<span id="cb62-561"><a href="#cb62-561" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-562"><a href="#cb62-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-563"><a href="#cb62-563" aria-hidden="true" tabindex="-1"></a>Next, we use <span class="in">`calculate()`</span> to calculate summary statistics of interest for each replicate. We can calculate a variety of different statistics, including the mean ("mean"), proportion ("prop"), difference in means ("diff in means"), difference in proportions ("diff in props"), and others. This step generates a null distribution for our summary statistic. For differences in means or proportions, we need to also include an argument specifying the order of the levels of the explanatory variable for subtraction.</span>
+<span id="cb62-564"><a href="#cb62-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-567"><a href="#cb62-567" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-568"><a href="#cb62-568" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d_permutations <span class="sc">%&gt;%</span></span>
+<span id="cb62-569"><a href="#cb62-569" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"male"</span>,<span class="st">"female"</span>))</span>
+<span id="cb62-570"><a href="#cb62-570" aria-hidden="true" tabindex="-1"></a><span class="co"># to subtract female weight from male weight</span></span>
+<span id="cb62-571"><a href="#cb62-571" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-572"><a href="#cb62-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-573"><a href="#cb62-573" aria-hidden="true" tabindex="-1"></a>We can then use the function <span class="in">`visualize()`</span> to examine the null distribution (alternatively, we can use <span class="in">`histogram()`</span>, in which case we then need to specify the variable <span class="in">`name="stat"`</span>)</span>
+<span id="cb62-574"><a href="#cb62-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-577"><a href="#cb62-577" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-578"><a href="#cb62-578" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">20</span>)</span>
+<span id="cb62-579"><a href="#cb62-579" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(null_distribution<span class="sc">$</span>stat, <span class="at">nint=</span><span class="dv">20</span>)</span>
+<span id="cb62-580"><a href="#cb62-580" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-581"><a href="#cb62-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-582"><a href="#cb62-582" aria-hidden="true" tabindex="-1"></a>So, now we have a null or permutation distribution for the test statistic... then, we can also use {infer} package functions to easily calculate hte observed summary statistic that we want to compare to this null distribution by simply leaving out the <span class="in">`hypothesize()`</span> and <span class="in">`generate()`</span> steps.</span>
+<span id="cb62-583"><a href="#cb62-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-586"><a href="#cb62-586" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-587"><a href="#cb62-587" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-588"><a href="#cb62-588" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(weight <span class="sc">~</span> sex) <span class="sc">%&gt;%</span></span>
+<span id="cb62-589"><a href="#cb62-589" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>))</span>
+<span id="cb62-590"><a href="#cb62-590" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-591"><a href="#cb62-591" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-592"><a href="#cb62-592" aria-hidden="true" tabindex="-1"></a>We can plot this observed test statistic atop the null distribution using the <span class="in">`shade_p_value()`</span> function, which has two arguments: a value for <span class="in">`obs_stat=`</span> and a <span class="in">`direction=`</span> ("left, "right", or "both") corresponding to two different one-tailed or a two-tailed alternative hypothesis.</span>
+<span id="cb62-593"><a href="#cb62-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-596"><a href="#cb62-596" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-597"><a href="#cb62-597" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb62-598"><a href="#cb62-598" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb62-599"><a href="#cb62-599" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-600"><a href="#cb62-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-601"><a href="#cb62-601" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This is not very interesting because the observed statistic is way outside of the null distribution!</span></span>
+<span id="cb62-602"><a href="#cb62-602" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-603"><a href="#cb62-603" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`get_p_value()`</span> with arguments of the null distribution, the observed statistic, and the direction will give us the p value generated by permutation.</span>
 <span id="cb62-604"><a href="#cb62-604" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-605"><a href="#cb62-605" aria-hidden="true" tabindex="-1"></a>As an additional example of this approach, let's consider the vervet trapping data from above once again. Recall that we want to evaluate whether vervet monkeys trapped during the 2015 trapping season differed in weight from the expectation based on previous years, which was 5.0 kg. How do we do this using the {infer} workflow?</span>
-<span id="cb62-606"><a href="#cb62-606" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-609"><a href="#cb62-609" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-610"><a href="#cb62-610" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb62-611"><a href="#cb62-611" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/vervet-weights.csv"</span></span>
-<span id="cb62-612"><a href="#cb62-612" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names=</span><span class="cn">TRUE</span>)</span>
-<span id="cb62-613"><a href="#cb62-613" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb62-614"><a href="#cb62-614" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span> <span class="co"># here we specify just a response not a formula</span></span>
-<span id="cb62-615"><a href="#cb62-615" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"point"</span>, <span class="at">mu =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="co"># here we are comparing a sample to an expectation</span></span>
-<span id="cb62-616"><a href="#cb62-616" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-617"><a href="#cb62-617" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that here type="bootstrap"! This is actually doing something a little</span></span>
-<span id="cb62-618"><a href="#cb62-618" aria-hidden="true" tabindex="-1"></a>  <span class="co"># different than we did above... it is sampling *with replacement* from our</span></span>
-<span id="cb62-619"><a href="#cb62-619" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set of weights  rather than randomly permuting the sign of the difference</span></span>
-<span id="cb62-620"><a href="#cb62-620" aria-hidden="true" tabindex="-1"></a>  <span class="co"># of each value from the mean! (Here, the number of observations sampled is</span></span>
-<span id="cb62-621"><a href="#cb62-621" aria-hidden="true" tabindex="-1"></a>  <span class="co"># equal to the original number of observations)</span></span>
-<span id="cb62-622"><a href="#cb62-622" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"mean"</span>)</span>
-<span id="cb62-623"><a href="#cb62-623" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-624"><a href="#cb62-624" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb62-625"><a href="#cb62-625" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span></span>
-<span id="cb62-626"><a href="#cb62-626" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"mean"</span>)</span>
-<span id="cb62-627"><a href="#cb62-627" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-628"><a href="#cb62-628" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb62-629"><a href="#cb62-629" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb62-630"><a href="#cb62-630" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-631"><a href="#cb62-631" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution,observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb62-632"><a href="#cb62-632" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-607"><a href="#cb62-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-608"><a href="#cb62-608" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution,observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb62-609"><a href="#cb62-609" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-610"><a href="#cb62-610" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-611"><a href="#cb62-611" aria-hidden="true" tabindex="-1"></a>As an additional example of this approach, let's consider the vervet trapping data from above once again. Recall that we want to evaluate whether vervet monkeys trapped during the 2015 trapping season differed in weight from the expectation based on previous years, which was 5.0 kg. How do we do this using the {infer} workflow?</span>
+<span id="cb62-612"><a href="#cb62-612" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-615"><a href="#cb62-615" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-616"><a href="#cb62-616" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb62-617"><a href="#cb62-617" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/vervet-weights.csv"</span></span>
+<span id="cb62-618"><a href="#cb62-618" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names=</span><span class="cn">TRUE</span>)</span>
+<span id="cb62-619"><a href="#cb62-619" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb62-620"><a href="#cb62-620" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span> <span class="co"># here we specify just a response not a formula</span></span>
+<span id="cb62-621"><a href="#cb62-621" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"point"</span>, <span class="at">mu =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="co"># here we are comparing a sample to an expectation</span></span>
+<span id="cb62-622"><a href="#cb62-622" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-623"><a href="#cb62-623" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that here type="bootstrap"! This is actually doing something a little</span></span>
+<span id="cb62-624"><a href="#cb62-624" aria-hidden="true" tabindex="-1"></a>  <span class="co"># different than we did above... it is sampling *with replacement* from our</span></span>
+<span id="cb62-625"><a href="#cb62-625" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set of weights  rather than randomly permuting the sign of the difference</span></span>
+<span id="cb62-626"><a href="#cb62-626" aria-hidden="true" tabindex="-1"></a>  <span class="co"># of each value from the mean! (Here, the number of observations sampled is</span></span>
+<span id="cb62-627"><a href="#cb62-627" aria-hidden="true" tabindex="-1"></a>  <span class="co"># equal to the original number of observations)</span></span>
+<span id="cb62-628"><a href="#cb62-628" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"mean"</span>)</span>
+<span id="cb62-629"><a href="#cb62-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-630"><a href="#cb62-630" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb62-631"><a href="#cb62-631" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span></span>
+<span id="cb62-632"><a href="#cb62-632" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"mean"</span>)</span>
 <span id="cb62-633"><a href="#cb62-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-634"><a href="#cb62-634" aria-hidden="true" tabindex="-1"></a>Note that this p value is pretty similar to that returned by <span class="in">`jmuOutlier::perm.test()`</span> and by our custom <span class="in">`perm1samp()`</span> function, though as noted above, those use slightly different permutation processes.</span>
-<span id="cb62-635"><a href="#cb62-635" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-636"><a href="#cb62-636" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE: {.unnumbered}</span></span>
-<span id="cb62-637"><a href="#cb62-637" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-638"><a href="#cb62-638" aria-hidden="true" tabindex="-1"></a>As a final example of this approach, we will again examine data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, remember that the record indicates whether a captured female was lactating (1) or not (0).</span>
+<span id="cb62-634"><a href="#cb62-634" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb62-635"><a href="#cb62-635" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb62-636"><a href="#cb62-636" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-637"><a href="#cb62-637" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution,observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb62-638"><a href="#cb62-638" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb62-639"><a href="#cb62-639" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-642"><a href="#cb62-642" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-643"><a href="#cb62-643" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: last</span></span>
-<span id="cb62-644"><a href="#cb62-644" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb62-645"><a href="#cb62-645" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb62-646"><a href="#cb62-646" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-647"><a href="#cb62-647" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-648"><a href="#cb62-648" aria-hidden="true" tabindex="-1"></a>First, we need to massage this data into the correct shape:</span>
-<span id="cb62-649"><a href="#cb62-649" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-652"><a href="#cb62-652" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-653"><a href="#cb62-653" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species1"</span>, <span class="at">lactating=</span>species1)</span>
-<span id="cb62-654"><a href="#cb62-654" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species2"</span>, <span class="at">lactating=</span>species2)</span>
-<span id="cb62-655"><a href="#cb62-655" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(s1,s2)</span>
-<span id="cb62-656"><a href="#cb62-656" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>lactating <span class="ot">&lt;-</span> <span class="fu">factor</span>(d<span class="sc">$</span>lactating)</span>
-<span id="cb62-657"><a href="#cb62-657" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-658"><a href="#cb62-658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-659"><a href="#cb62-659" aria-hidden="true" tabindex="-1"></a>Now, use the {infer} workflow to test whether the proportion of lactating females among the captured bats differs between species.</span>
-<span id="cb62-660"><a href="#cb62-660" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-663"><a href="#cb62-663" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-664"><a href="#cb62-664" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb62-665"><a href="#cb62-665" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb62-666"><a href="#cb62-666" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb62-667"><a href="#cb62-667" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb62-668"><a href="#cb62-668" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-669"><a href="#cb62-669" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"independence"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-670"><a href="#cb62-670" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"permute"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-671"><a href="#cb62-671" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
-<span id="cb62-672"><a href="#cb62-672" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-673"><a href="#cb62-673" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This runs a LOT slower than our custom permutation function for</span></span>
-<span id="cb62-674"><a href="#cb62-674" aria-hidden="true" tabindex="-1"></a><span class="co"># the same number of reps!</span></span>
-<span id="cb62-675"><a href="#cb62-675" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">20</span>)</span>
-<span id="cb62-676"><a href="#cb62-676" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-677"><a href="#cb62-677" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb62-678"><a href="#cb62-678" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb62-679"><a href="#cb62-679" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
-<span id="cb62-680"><a href="#cb62-680" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-681"><a href="#cb62-681" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb62-682"><a href="#cb62-682" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb62-683"><a href="#cb62-683" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-684"><a href="#cb62-684" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution, observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb62-685"><a href="#cb62-685" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
-<span id="cb62-686"><a href="#cb62-686" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-687"><a href="#cb62-687" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-688"><a href="#cb62-688" aria-hidden="true" tabindex="-1"></a>This p value is similar to that returned by our custom permutation test!</span>
+<span id="cb62-640"><a href="#cb62-640" aria-hidden="true" tabindex="-1"></a>Note that this p value is pretty similar to that returned by <span class="in">`jmuOutlier::perm.test()`</span> and by our custom <span class="in">`perm1samp()`</span> function, though as noted above, those use slightly different permutation processes.</span>
+<span id="cb62-641"><a href="#cb62-641" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-642"><a href="#cb62-642" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE: {.unnumbered}</span></span>
+<span id="cb62-643"><a href="#cb62-643" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-644"><a href="#cb62-644" aria-hidden="true" tabindex="-1"></a>As a final example of this approach, we will again examine data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, remember that the record indicates whether a captured female was lactating (1) or not (0).</span>
+<span id="cb62-645"><a href="#cb62-645" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-648"><a href="#cb62-648" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-649"><a href="#cb62-649" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: last</span></span>
+<span id="cb62-650"><a href="#cb62-650" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb62-651"><a href="#cb62-651" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb62-652"><a href="#cb62-652" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-653"><a href="#cb62-653" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-654"><a href="#cb62-654" aria-hidden="true" tabindex="-1"></a>First, we need to massage this data into the correct shape:</span>
+<span id="cb62-655"><a href="#cb62-655" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-658"><a href="#cb62-658" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-659"><a href="#cb62-659" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species1"</span>, <span class="at">lactating=</span>species1)</span>
+<span id="cb62-660"><a href="#cb62-660" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species2"</span>, <span class="at">lactating=</span>species2)</span>
+<span id="cb62-661"><a href="#cb62-661" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(s1,s2)</span>
+<span id="cb62-662"><a href="#cb62-662" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>lactating <span class="ot">&lt;-</span> <span class="fu">factor</span>(d<span class="sc">$</span>lactating)</span>
+<span id="cb62-663"><a href="#cb62-663" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-664"><a href="#cb62-664" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-665"><a href="#cb62-665" aria-hidden="true" tabindex="-1"></a>Now, use the {infer} workflow to test whether the proportion of lactating females among the captured bats differs between species.</span>
+<span id="cb62-666"><a href="#cb62-666" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-669"><a href="#cb62-669" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-670"><a href="#cb62-670" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb62-671"><a href="#cb62-671" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb62-672"><a href="#cb62-672" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb62-673"><a href="#cb62-673" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb62-674"><a href="#cb62-674" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-675"><a href="#cb62-675" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"independence"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-676"><a href="#cb62-676" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"permute"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-677"><a href="#cb62-677" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
+<span id="cb62-678"><a href="#cb62-678" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-679"><a href="#cb62-679" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This runs a LOT slower than our custom permutation function for</span></span>
+<span id="cb62-680"><a href="#cb62-680" aria-hidden="true" tabindex="-1"></a><span class="co"># the same number of reps!</span></span>
+<span id="cb62-681"><a href="#cb62-681" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">20</span>)</span>
+<span id="cb62-682"><a href="#cb62-682" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-683"><a href="#cb62-683" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb62-684"><a href="#cb62-684" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb62-685"><a href="#cb62-685" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
+<span id="cb62-686"><a href="#cb62-686" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-687"><a href="#cb62-687" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb62-688"><a href="#cb62-688" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
 <span id="cb62-689"><a href="#cb62-689" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-690"><a href="#cb62-690" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advantages of Permutation Tests</span></span>
-<span id="cb62-691"><a href="#cb62-691" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-692"><a href="#cb62-692" aria-hidden="true" tabindex="-1"></a>Some of the key advantages of permutation tests include the following:</span>
+<span id="cb62-690"><a href="#cb62-690" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution, observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb62-691"><a href="#cb62-691" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
+<span id="cb62-692"><a href="#cb62-692" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb62-693"><a href="#cb62-693" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-694"><a href="#cb62-694" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are "distribution-free" - i.e., they do not make any assumptions about the distribution of the underlying data</span>
-<span id="cb62-695"><a href="#cb62-695" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There is no presumption of random sampling from some imaginary hypothetical population</span>
-<span id="cb62-696"><a href="#cb62-696" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Unlike some other nonparametric tests, they do not depend on large sample sizes for their validity</span>
-<span id="cb62-697"><a href="#cb62-697" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Many common nonparametric tests **are** permutation tests, just carried out on RANKS</span>
-<span id="cb62-698"><a href="#cb62-698" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They can be used with many kinds of data (nominal, ordinal, interval/ratio)</span>
-<span id="cb62-699"><a href="#cb62-699" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are relatively straightforward to conduct and interpret</span>
-<span id="cb62-700"><a href="#cb62-700" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-701"><a href="#cb62-701" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb62-702"><a href="#cb62-702" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mosaic)</span></span>
-<span id="cb62-703"><a href="#cb62-703" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:tidyverse)</span></span>
-<span id="cb62-704"><a href="#cb62-704" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb62-705"><a href="#cb62-705" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-706"><a href="#cb62-706" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
-<span id="cb62-707"><a href="#cb62-707" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-708"><a href="#cb62-708" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb62-709"><a href="#cb62-709" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-710"><a href="#cb62-710" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Permutation/randomization tests involve these steps:</span>
+<span id="cb62-694"><a href="#cb62-694" aria-hidden="true" tabindex="-1"></a>This p value is similar to that returned by our custom permutation test!</span>
+<span id="cb62-695"><a href="#cb62-695" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-696"><a href="#cb62-696" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advantages of Permutation Tests</span></span>
+<span id="cb62-697"><a href="#cb62-697" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-698"><a href="#cb62-698" aria-hidden="true" tabindex="-1"></a>Some of the key advantages of permutation tests include the following:</span>
+<span id="cb62-699"><a href="#cb62-699" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-700"><a href="#cb62-700" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are "distribution-free" - i.e., they do not make any assumptions about the distribution of the underlying data</span>
+<span id="cb62-701"><a href="#cb62-701" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There is no presumption of random sampling from some imaginary hypothetical population</span>
+<span id="cb62-702"><a href="#cb62-702" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Unlike some other nonparametric tests, they do not depend on large sample sizes for their validity</span>
+<span id="cb62-703"><a href="#cb62-703" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Many common nonparametric tests **are** permutation tests, just carried out on RANKS</span>
+<span id="cb62-704"><a href="#cb62-704" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They can be used with many kinds of data (nominal, ordinal, interval/ratio)</span>
+<span id="cb62-705"><a href="#cb62-705" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are relatively straightforward to conduct and interpret</span>
+<span id="cb62-706"><a href="#cb62-706" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-707"><a href="#cb62-707" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
+<span id="cb62-708"><a href="#cb62-708" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mosaic)</span></span>
+<span id="cb62-709"><a href="#cb62-709" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:tidyverse)</span></span>
+<span id="cb62-710"><a href="#cb62-710" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb62-711"><a href="#cb62-711" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-712"><a href="#cb62-712" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Compute a sample statistic of your choice (mean, median, proportion, etc.) using the set of original observations</span>
-<span id="cb62-713"><a href="#cb62-713" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Rearrange attributes of the original observations in all or a very large number of random possible permutations, computing the test statistic each time, to yield a permutation or null distribution for the test statistic under the null hypothesis</span>
-<span id="cb62-714"><a href="#cb62-714" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Look at the value of the sample statistic relative to the permutation distribution</span>
-<span id="cb62-715"><a href="#cb62-715" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Based on the permutation distribution, calculate the probability of seeing a sample statistic as high or higher than that observed, i.e., the portion of the permutation distribution that equals or exceed the value of the sample statistic... this is the permutation test p value</span>
-<span id="cb62-716"><a href="#cb62-716" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-717"><a href="#cb62-717" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`jmuOutlier::perm.test()`</span>, <span class="in">`coin::indepedence_test()`</span>, or write your own!</span>
-<span id="cb62-718"><a href="#cb62-718" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-719"><a href="#cb62-719" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>{infer} workflow</span>
-<span id="cb62-720"><a href="#cb62-720" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-721"><a href="#cb62-721" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This permutation-based approach to statistical inference is consistent with the philosophy promoted by statistician Allen Downey that, "There is really only test", and that at all statistical tests are based on the same framework. Note that this is still a form of null hypothesis significance testing, or NHST!</span></span>
+<span id="cb62-712"><a href="#cb62-712" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
+<span id="cb62-713"><a href="#cb62-713" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-714"><a href="#cb62-714" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb62-715"><a href="#cb62-715" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-716"><a href="#cb62-716" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Permutation/randomization tests involve these steps:</span>
+<span id="cb62-717"><a href="#cb62-717" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-718"><a href="#cb62-718" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Compute a sample statistic of your choice (mean, median, proportion, etc.) using the set of original observations</span>
+<span id="cb62-719"><a href="#cb62-719" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Rearrange attributes of the original observations in all or a very large number of random possible permutations, computing the test statistic each time, to yield a permutation or null distribution for the test statistic under the null hypothesis</span>
+<span id="cb62-720"><a href="#cb62-720" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Look at the value of the sample statistic relative to the permutation distribution</span>
+<span id="cb62-721"><a href="#cb62-721" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Based on the permutation distribution, calculate the probability of seeing a sample statistic as high or higher than that observed, i.e., the portion of the permutation distribution that equals or exceed the value of the sample statistic... this is the permutation test p value</span>
 <span id="cb62-722"><a href="#cb62-722" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-725"><a href="#cb62-725" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb62-726"><a href="#cb62-726" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb62-727"><a href="#cb62-727" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
-<span id="cb62-728"><a href="#cb62-728" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/downey.png"</span>)</span>
-<span id="cb62-729"><a href="#cb62-729" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb62-723"><a href="#cb62-723" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`jmuOutlier::perm.test()`</span>, <span class="in">`coin::indepedence_test()`</span>, or write your own!</span>
+<span id="cb62-724"><a href="#cb62-724" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-725"><a href="#cb62-725" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>{infer} workflow</span>
+<span id="cb62-726"><a href="#cb62-726" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-727"><a href="#cb62-727" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This permutation-based approach to statistical inference is consistent with the philosophy promoted by statistician Allen Downey that, "There is really only test", and that at all statistical tests are based on the same framework. Note that this is still a form of null hypothesis significance testing, or NHST!</span></span>
+<span id="cb62-728"><a href="#cb62-728" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-731"><a href="#cb62-731" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb62-732"><a href="#cb62-732" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb62-733"><a href="#cb62-733" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb62-734"><a href="#cb62-734" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/downey.png"</span>)</span>
+<span id="cb62-735"><a href="#cb62-735" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

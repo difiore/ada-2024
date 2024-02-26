@@ -197,9 +197,15 @@ To test whether this difference is significant by permutation, we would generate
 
 $mean(female) - mean(male) ≠ 0$
 
-rather than $mean(female) - mean(male) > 0$
+rather than...
 
-or $mean(female) - mean(male) < 0$, both of which would be "one-sided" tests.]
+$mean(female) - mean(male) > 0$
+
+or...
+
+$mean(female) - mean(male) < 0$
+
+both of which would be "one-sided" tests.]
 
 Lastly, we visualize the approximate permutation distribution and superimpose our observed difference in weights between males and females.
 
