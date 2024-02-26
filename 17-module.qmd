@@ -376,15 +376,17 @@ typeII <- function(mu0, muA, sigma, n, alternative = "two.tailed",
 Explore this function using different values of $\mu_0$, $\sigma$, $n$, and different types of one- and two-tailed tests.
 
 ```{r}
+# Ha < H0
 eII <- typeII(mu0 = 5, muA = 2, sigma = 4, n = 18,
   alternative="less")
-# Ha < H0
+
+# Ha ≠ H0
 eII <- typeII(mu0 = 5, muA = 7, sigma = 2, n = 15,
   alternative="two.tailed")
-# Ha ≠ H0
+
+# Ha > H0
 eII <- typeII(mu0 = 0, muA = 0.5, sigma = 1, n = 30,
   alternative="greater", alpha=0.01)
-# Ha ≠ H0
 ```
 
 - What happens if you increase $\sigma$ keeping other values constant?

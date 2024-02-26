@@ -334,7 +334,7 @@ m <- lm(data = d, height ~ weight)
 summary(m)
 ```
 
-One of the outputs for the model, seen in the 2nd to last line in the output above, is the "R-squared" value, or the **coefficient of determination**, which is a summary of the total amount of variation in the **y** variable that is explained by the **x** variable. In our regression, \~69% of the variation in zombie height is explained by zombie weight.
+One of the outputs for the model, seen in the 2nd to last line in the output above, is the "R-squared" value, or the **coefficient of determination**, which is a summary of the total amount of variation in the **y** variable that is explained by the **x** variable. In our regression, ~69% of the variation in zombie height is explained by zombie weight.
 
 Another output is the **standard error** of the estimate of each regression coefficient, along with a corresponding **t value** and **p value**. Recall that t statistics are calculated as the difference between an observed and expected value divided by a standard error. The p value comes from evaluating the magnitude of the t statistic against a t distribution with **n-2** degrees of freedom. That is, we can calculate p values mathematically for our statistics (the regression slope and intercept) if the sampling distribution of these statistics conform to a t distribution.
 
@@ -401,7 +401,7 @@ CI
 
 #### Significance of Coefficients by Permutation {.unnumbered}
 
-As we saw in [**Module 16**](#module-16), the {infer} package offers a convenient set of functions and a standard workflow for using permutation methods for statistical hypothesis testing, rather than relying on mathematical assumptions. In that module, we considered whether means, differences between means, proportions, or differences in proportions differed from what we would expect under a particular null hypothesis... and we can apply the same workflow to evaluating regression coefficients! The permutation approach lets us relax the **normality** condition of the **LINE** assumptions for linear regression. To demonstrate this process, we will run the same model of height \~ weight using the zombie apocalypse survivors dataset that we ran above:
+As we saw in [**Module 16**](#module-16), the {infer} package offers a convenient set of functions and a standard workflow for using permutation methods for statistical hypothesis testing, rather than relying on mathematical assumptions. In that module, we considered whether means, differences between means, proportions, or differences in proportions differed from what we would expect under a particular null hypothesis... and we can apply the same workflow to evaluating regression coefficients! The permutation approach lets us relax the **normality** condition of the **LINE** assumptions for linear regression. To demonstrate this process, we will run the same model of **height** ~ **weight** using the zombie apocalypse survivors dataset that we ran above:
 
 First, we run the model and pull out $\beta_1$, the regression slope, and its estimated standard error:
 
@@ -739,23 +739,23 @@ df <- augment(m, newdata=data.frame(age=v), se_fit=TRUE) %>%
 
 plot(data=d, height ~ age)
 lines(x=df$age,y=df$.fitted, col="black")
-lines(x=df$age,y=df$c.lwr, col="blue")
-lines(x=df$age,y=df$c.upr, col="blue")
-lines(x=df$age,y=df$p.lwr, col="red")
-lines(x=df$age,y=df$p.upr, col="red")
+lines(x=df$age,y=df$c.lower, col="blue")
+lines(x=df$age,y=df$c.upper, col="blue")
+lines(x=df$age,y=df$p.lower, col="red")
+lines(x=df$age,y=df$p.upper, col="red")
 
 # or
 g1 <- ggplot(data = d, aes(x = age, y = height))
 g1 <- g1 + geom_point(alpha = 0.5)
 g1 <- g1 + geom_line(data = df, aes(x = age, y = .fitted),
   color = "black", lwd = 1)
-g1 <- g1 + geom_line(data = df, aes(x = age, y = c.lwr),
+g1 <- g1 + geom_line(data = df, aes(x = age, y = c.lower),
   color = "blue")
-g1 <- g1 + geom_line(data = df, aes(x = age, y = c.upr),
+g1 <- g1 + geom_line(data = df, aes(x = age, y = c.upper),
   color = "blue")
-g1 <- g1 + geom_line(data = df, aes(x = age, y = p.lwr),
+g1 <- g1 + geom_line(data = df, aes(x = age, y = p.lower),
   color = "red")
-g1 <- g1 + geom_line(data = df, aes(x = age, y = p.upr),
+g1 <- g1 + geom_line(data = df, aes(x = age, y = p.upper),
   color = "red")
 g1
 
@@ -767,14 +767,14 @@ g2 <- ggplot() +
     lwd = 1) +
   # add a ribbon layer
   geom_ribbon(
-    data = df, aes(x = age, ymin = c.lower, ymax = c.upr),
+    data = df, aes(x = age, ymin = c.lower, ymax = c.upper),
     # ... with transparency set to 0.2
     alpha = 0.2, 
     # ... and fill color blue
     fill = "blue"
   ) +
   geom_ribbon(
-    data = df, aes(x = age, ymin = p.lower, ymax = p.upr),
+    data = df, aes(x = age, ymin = p.lower, ymax = p.upper),
     # ... with transparency set to 0.2
     alpha = 0.2, 
     # ... and fill color red
@@ -782,7 +782,6 @@ g2 <- ggplot() +
   )
 g2
 ```
-:::
 
 We can use a one-liner in {ggplot} to plot the CIs, too...
 
@@ -797,7 +796,7 @@ Again, in these plots, the CI band shows where the mean height ($\hat{h}$) is ex
 
 ### CHALLENGE {.unnumbered}
 
-For the same regression model in the challenge above, use bootstrapping with 1000 replicates to generate a quantile-based 95% CI around the estimate of the slope of the relationship. Plot the regression lines associated with each of your first 20 replicates atop a bivariate scatterplot of **height**\~**age**.
+For the same regression model in the challenge above, use bootstrapping with 1000 replicates to generate a quantile-based 95% CI around the estimate of the slope of the relationship. Plot the regression lines associated with each of your first 20 replicates atop a bivariate scatterplot of **height** ~ **age**.
 
 ```{r}
 #| code-fold: true

@@ -193,7 +193,15 @@ y <- d[d$sex=="male",]$weight
 (actual_diff <- mean(x) - mean(y))
 ```
 
-To test whether this difference is significant by permutation, we would generate a permutation distribution consistent with a null hypothesis of *no difference in weight between the sexes* by simulation, where, for each simulation, we permute the sex assigned to each observation and then calculate the difference (female - male) between the sexes in each permuted set. We then calculate the p value associated with getting a difference between male and female mean weights as or more extreme than the one we observed. [We again calculate this as a "two-sided" probability, i.e., we are testing the $H_A$ that $mean(female) - mean(male) ≠ 0$ rather than $mean(female) - mean(male) > 0$ or $mean(female) - mean(male) < 0$, which would be "one-sided" tests. Lastly, we visualize the approximate permutation distribution and superimpose our observed difference in weights between males and females.
+To test whether this difference is significant by permutation, we would generate a permutation distribution consistent with a null hypothesis of *no difference in weight between the sexes* by simulation, where, for each simulation, we permute the sex assigned to each observation and then calculate the difference (female - male) between the sexes in each permuted set. We then calculate the p value associated with getting a difference between male and female mean weights as or more extreme than the one we observed. [We again calculate this as a "two-sided" probability, i.e., we are testing the $H_A$ that...
+
+$mean(female) - mean(male) ≠ 0$
+
+rather than $mean(female) - mean(male) > 0$
+
+or $mean(female) - mean(male) < 0$, both of which would be "one-sided" tests.]
+
+Lastly, we visualize the approximate permutation distribution and superimpose our observed difference in weights between males and females.
 
 ```{r}
 nperm <- 10000 # number of permutation simulations
