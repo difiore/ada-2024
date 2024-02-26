@@ -4,13 +4,13 @@
 
 ## Learning Objectives {.unnumbered}
 
--   Integrating an ***RStudio*** project, a local ***git*** repository, and a **GitHub** remote repository
--   Performing basic exploratory data analyses and visualization
--   Using {dplyr} and the pipe operator (`%>%` or `\>`) for data wrangling
+- Integrating an ***RStudio*** project, a local ***git*** repository, and a **GitHub** remote repository
+- Performing basic exploratory data analyses and visualization
+- Using {dplyr} and the pipe operator (`%>%` or `\>`) for data wrangling
 
 #### Preliminaries {.unnumbered}
 
--   Set up a new ***GitHub*** repo in your ***GitHub*** workspace called "exercise-03" and clone that down your computer as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful.
+- Set up a new ***GitHub*** repo in your ***GitHub*** workspace called "exercise-03" and clone that down your computer as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful.
 
 - Load the "data-wrangling.csv" dataset from [**this URL**](https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/data-wrangling.csv) as a tabular data structure named **d** and look at the variables it contains, which are a subset of those in the Kamilar and Cooper dataset on primate ecology, behavior, and life history that we have used previously.
 
@@ -88,8 +88,8 @@ mutate(
 
 Load in a dataset of your own and write ***R*** code to do the following:
 
--   Create and print a vector of the variable names in your dataset
--   Count the total number of rows (observations) in your dataset
--   For each *numeric* variable, calculate the number of observations, the mean and standard deviation, and the five-number summary
--   Make box-and-whiskers plots for each numerical variable
--   For each *categorical variable*, generate a table of counts/proportions of alternative variable values
+- Create and print a vector of the variable names in your dataset
+- Count the total number of rows (observations) in your dataset
+- For each *numeric* variable, calculate the number of observations, the mean and standard deviation, and the five-number summary
+- Make box-and-whiskers plots for each numerical variable
+- For each *categorical variable*, generate a table of counts/proportions of alternative variable values

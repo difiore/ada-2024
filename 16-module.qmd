@@ -82,7 +82,7 @@ histogram(
 ladd(panel.abline(v=actual_diff, lty=3, lwd=2))
 ladd(panel.text(
   x = actual_diff,
-  y = nperm * 0.08, # this is only used to arrange where label gets placed
+  y = nperm * 0.08,
   "Test Statistic",
   srt = 90,
   pos = 4,

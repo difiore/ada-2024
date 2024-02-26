@@ -412,6 +412,12 @@ window.Quarto = {
  <span class="menu-text">Exercise 04</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Generate Sampling Distributions and CIs</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -545,42 +551,31 @@ window.Quarto = {
 </blockquote>
 <p>Below, we do 10,000 permutations where we randomly shuffle the sign of each individual observation’s difference from the expected mean under the null hypothesis. We then compare the observed difference between the mean of our sample and the expected mean to this distribution and calculate the p value associated with getting a difference as or more extreme than we observed. Lastly, we plot the approximate permutation distribution we generated and superimpose our observed difference as the test statistic.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># number of permutation simulations</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>permuted_diff <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length=</span>n) <span class="co"># set up a dummy vector to hold results for each permutation</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nperm <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co"># number of permutation simulations</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>permuted_diff <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">length =</span> n)  <span class="co"># set up a dummy vector to hold results for each permutation</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nperm) {</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># now we scramble the sign of individual observed - expected weights, and then take mean</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    permuted_diff[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>),<span class="fu">length</span>(x), <span class="at">replace=</span><span class="cn">TRUE</span>) <span class="sc">*</span> <span class="fu">abs</span>(x<span class="sc">-</span>mu))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the two.sided p value</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>         <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff))) <span class="sc">/</span> nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># now we scramble the sign of individual observed - expected weights, and</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># then take mean</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    permuted_diff[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="fu">length</span>(x), <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="fu">abs</span>(x <span class="sc">-</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        mu))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the two.sided p value</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span> <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff)))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0197</code></pre>
+<pre><code>## [1] 0.0218</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(permuted_diff) <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">/</span> nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(permuted_diff) <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0197</code></pre>
+<pre><code>## [1] 0.0218</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or add 1 to both numerator and denominator to avoid p = 0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  permuted_diff,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"count"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">""</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"# Permutations"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>actual_diff, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> actual_diff,</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>, <span class="co"># this is only used to arrange where label gets placed</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">offset =</span> <span class="dv">1</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(permuted_diff, <span class="at">type =</span> <span class="st">"count"</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"# Permutations"</span>, <span class="at">main =</span> <span class="st">"Histogram of Permutation Distribution"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v =</span> actual_diff, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">lwd =</span> <span class="dv">2</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(<span class="at">x =</span> actual_diff, <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>, <span class="st">"Test Statistic"</span>, <span class="at">srt =</span> <span class="dv">90</span>, <span class="at">pos =</span> <span class="dv">4</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">offset =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -619,7 +614,7 @@ window.Quarto = {
 ## [1] 5
 ## 
 ## $p.value
-## [1] 0.0212</code></pre>
+## [1] 0.0248</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>jmuOutlier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1754,7 +1749,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb62-88"><a href="#cb62-88" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.abline</span>(<span class="at">v=</span>actual_diff, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">lwd=</span><span class="dv">2</span>))</span>
 <span id="cb62-89"><a href="#cb62-89" aria-hidden="true" tabindex="-1"></a><span class="fu">ladd</span>(<span class="fu">panel.text</span>(</span>
 <span id="cb62-90"><a href="#cb62-90" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> actual_diff,</span>
-<span id="cb62-91"><a href="#cb62-91" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>, <span class="co"># this is only used to arrange where label gets placed</span></span>
+<span id="cb62-91"><a href="#cb62-91" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> nperm <span class="sc">*</span> <span class="fl">0.08</span>,</span>
 <span id="cb62-92"><a href="#cb62-92" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Test Statistic"</span>,</span>
 <span id="cb62-93"><a href="#cb62-93" aria-hidden="true" tabindex="-1"></a>  <span class="at">srt =</span> <span class="dv">90</span>,</span>
 <span id="cb62-94"><a href="#cb62-94" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">4</span>,</span>
