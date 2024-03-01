@@ -615,8 +615,8 @@ window.Quarto = {
 <li>Use {ggplot} and make scatterplots of height and weight in relation to age (i.e., use age as the <span class="math inline">\(x\)</span> variable), using different colored points for males versus females. Do these variables seem to be related? In what way?</li>
 </ul>
 </section>
-<section id="step-4-2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-4-2">Step 4</h4>
+<section id="step-5-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-5-1">Step 5</h4>
 <ul>
 <li>Using histograms and Q-Q plots, check whether each of the quantitative variables seem to be drawn from a normal distribution. Which seem to be and which do not?</li>
 </ul>
@@ -624,26 +624,26 @@ window.Quarto = {
 <p><strong>HINT:</strong> Not all are drawn from a normal distribution! For those that are not, can you determine what common distribution they are drawn from?</p>
 </blockquote>
 </section>
-<section id="step-5-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-5-1">Step 5</h4>
-<ul>
-<li>Now use the <code>sample_n()</code> or <code>slice_sample()</code> function from {dplyr} to sample ONE subset of 50 zombie apocalypse survivors (without replacement) from this population and calculate the mean and sample standard deviation for each variable. Also estimate the standard error for each variable based on this one sample and use that to construct a theoretical 95% confidence interval for each mean. You can use either the standard normal <em>or</em> a Student’s t distribution to derive the critical values needed to calculate the lower and upper limits of the CI.</li>
-</ul>
-</section>
 <section id="step-6-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-6-1">Step 6</h4>
 <ul>
-<li>Then draw another 199 random samples of 50 zombie apocalypse survivors out of the population and calculate the mean for each of the these samples. Together with the first sample you drew out, you now have a set of 200 means for each variable (each of which is based on 50 observations), which constitutes a sampling distribution for each variable. What are the means and standard deviations of the <strong>sampling distribution</strong> for each variable? How do the standard deviations of the sampling distribution for each variable compare to the standard errors estimated from your first sample of size 50?</li>
+<li>Now use the <code>sample_n()</code> or <code>slice_sample()</code> function from {dplyr} to sample ONE subset of 50 zombie apocalypse survivors (without replacement) from this population and calculate the mean and sample standard deviation for each variable. Also estimate the standard error for each variable based on this one sample and use that to construct a theoretical 95% confidence interval for each mean. You can use either the standard normal <em>or</em> a Student’s t distribution to derive the critical values needed to calculate the lower and upper limits of the CI.</li>
 </ul>
 </section>
 <section id="step-7-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-7-1">Step 7</h4>
 <ul>
-<li>Plot the sampling distributions for each variable mean. What do they look like? Are they normally distributed? What about for those variables that you concluded were not originally drawn from a normal distribution?</li>
+<li>Then draw another 199 random samples of 50 zombie apocalypse survivors out of the population and calculate the mean for each of the these samples. Together with the first sample you drew out, you now have a set of 200 means for each variable (each of which is based on 50 observations), which constitutes a sampling distribution for each variable. What are the means and standard deviations of the <strong>sampling distribution</strong> for each variable? How do the standard deviations of the sampling distribution for each variable compare to the standard errors estimated from your first sample of size 50?</li>
 </ul>
 </section>
 <section id="step-8-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="step-8-1">Step 8</h4>
+<ul>
+<li>Plot the sampling distributions for each variable mean. What do they look like? Are they normally distributed? What about for those variables that you concluded were not originally drawn from a normal distribution?</li>
+</ul>
+</section>
+<section id="step-9-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-9-1">Step 9</h4>
 <ul>
 <li>Construct a 95% confidence interval for each mean <strong>directly from the sampling distribution</strong> of sample means using the central 95% that distribution (i.e., by setting the lower and upper CI bounds to 2.5% and 97.5% of the way through that distribution).</li>
 </ul>
@@ -655,8 +655,8 @@ window.Quarto = {
 <p><strong>NOTE:</strong> Remember, too, that the standard deviation of the sampling distribution is the standard error. You <em>could</em> use this value to derive yet another estimate for the 95% CI as the shape of the sampling distribution should be normal.</p>
 </blockquote>
 </section>
-<section id="step-9-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-9-1">Step 9</h4>
+<section id="step-10-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="step-10-1">Step 10</h4>
 <ul>
 <li>Finally, use bootstrapping to generate a 95% confidence interval for each variable mean <strong>by resampling 1000 samples, with replacement, from your original sample</strong> (i.e., by setting the lower and upper CI bounds to 2.5% and 97.5% of the way through the sampling distribution generated by bootstrapping).</li>
 </ul>
@@ -1203,25 +1203,25 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use {ggplot} and make scatterplots of height and weight in relation to age (i.e., use age as the $x$ variable), using different colored points for males versus females. Do these variables seem to be related? In what way?</span>
 <span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 4 {.unnumbered}</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 5 {.unnumbered}</span></span>
 <span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using histograms and Q-Q plots, check whether each of the quantitative variables seem to be drawn from a normal distribution. Which seem to be and which do not?</span>
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** Not all are drawn from a normal distribution! For those that are not, can you determine what common distribution they are drawn from?</span></span>
 <span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 5 {.unnumbered}</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 6 {.unnumbered}</span></span>
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Now use the <span class="in">`sample_n()`</span> or <span class="in">`slice_sample()`</span> function from {dplyr} to sample ONE subset of 50 zombie apocalypse survivors (without replacement) from this population and calculate the mean and sample standard deviation for each variable. Also estimate the standard error for each variable based on this one sample and use that to construct a theoretical 95% confidence interval for each mean. You can use either the standard normal *or* a Student's t distribution to derive the critical values needed to calculate the lower and upper limits of the CI.</span>
 <span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 6 {.unnumbered}</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 7 {.unnumbered}</span></span>
 <span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Then draw another 199 random samples of 50 zombie apocalypse survivors out of the population and calculate the mean for each of the these samples. Together with the first sample you drew out, you now have a set of 200 means for each variable (each of which is based on 50 observations), which constitutes a sampling distribution for each variable. What are the means and standard deviations of the **sampling distribution** for each variable? How do the standard deviations of the sampling distribution for each variable compare to the standard errors estimated from your first sample of size 50?</span>
 <span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 7 {.unnumbered}</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 8 {.unnumbered}</span></span>
 <span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Plot the sampling distributions for each variable mean. What do they look like? Are they normally distributed? What about for those variables that you concluded were not originally drawn from a normal distribution?</span>
 <span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 8 {.unnumbered}</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 9 {.unnumbered}</span></span>
 <span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construct a 95% confidence interval for each mean **directly from the sampling distribution** of sample means using the central 95% that distribution (i.e., by setting the lower and upper CI bounds to 2.5% and 97.5% of the way through that distribution).</span>
 <span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT**: You will want to use the </span><span class="in">`quantile()`</span><span class="at"> function for this!</span></span>
@@ -1230,7 +1230,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Remember, too, that the standard deviation of the sampling distribution is the standard error. You *could* use this value to derive yet another estimate for the 95% CI as the shape of the sampling distribution should be normal.</span></span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 9 {.unnumbered}</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 10 {.unnumbered}</span></span>
 <span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, use bootstrapping to generate a 95% confidence interval for each variable mean **by resampling 1000 samples, with replacement, from your original sample** (i.e., by setting the lower and upper CI bounds to 2.5% and 97.5% of the way through the sampling distribution generated by bootstrapping).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
