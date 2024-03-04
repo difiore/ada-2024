@@ -443,6 +443,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#solution" id="toc-solution" class="nav-link active" data-scroll-target="#solution">• Solution</a>
   <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#playing-the-game" id="toc-playing-the-game" class="nav-link" data-scroll-target="#playing-the-game">Playing the Game</a></li>
   <li><a href="#alternative-functions-without-graphic-output" id="toc-alternative-functions-without-graphic-output" class="nav-link" data-scroll-target="#alternative-functions-without-graphic-output">Alternative Functions without Graphic Output</a></li>
   </ul></li>
   </ul>
@@ -472,14 +474,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="solution" class="level1 unnumbered">
 <h1 class="unnumbered">• Solution</h1>
-<p>Use the <code>Show Code</code> button to peak at one solution to each of the four functions. Note that needed libraries are specified with the <code>require()</code> at the top of each function. You could use <code>library()</code> as an alternative. You could also have these loaded in the global environment, but these would not be as “portable” across users and systems. Each of these functions includes some commented out <code>print()</code> and/or <code>glimpse()</code> statements that are useful for viewing intermediate values for debugging.</p>
+<p>Use the <code>Show Code</code> button to peek at one solution to each of the four functions. Note that needed libraries are specified with the <code>require()</code> at the top of each function. You could use <code>library()</code> as an alternative. You could also have these loaded in the global environment, but these would not be as “portable” across users and systems. Each of these functions includes some commented out <code>print()</code> and/or <code>glimpse()</code> statements that are useful for viewing intermediate values for debugging.</p>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> The <code>play_wordle()</code> and <code>evaluate_guess()</code> functions include an additional argument, “output_type”, that lets the user specify whether they would like to see simple text output or formatted (“graphic”) output, which is made possible by using the {huxtable} library. A substantial chunk of the <code>play_wordle()</code> and <code>evaluate_guess()</code> functions are devoted to producing this graphic output and are not necessary.</p>
 </blockquote>
-<section id="functions" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="functions">Functions</h4>
-<section id="load_dictionary" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="load_dictionary"><code>load_dictionary()</code></h5>
+<section id="functions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="functions">Functions</h3>
+<section id="load_dictionary" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="load_dictionary"><code>load_dictionary()</code></h4>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Show Code</summary>
@@ -495,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="pick_solution" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="pick_solution"><code>pick_solution()</code></h5>
+<section id="pick_solution" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="pick_solution"><code>pick_solution()</code></h4>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Show Code</summary>
@@ -512,8 +514,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="play_wordle" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="play_wordle"><code>play_wordle()</code></h5>
+<section id="play_wordle" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="play_wordle"><code>play_wordle()</code></h4>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Show Code</summary>
@@ -627,8 +629,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="evaluate_guess" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="evaluate_guess"><code>evaluate_guess()</code></h5>
+<section id="evaluate_guess" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="evaluate_guess"><code>evaluate_guess()</code></h4>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Show Code</summary>
@@ -698,10 +700,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="playing-the-game" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="playing-the-game">Playing the Game</h4>
-<section id="create-dictionaries" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="create-dictionaries">Create Dictionaries</h5>
+<section id="playing-the-game" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="playing-the-game">Playing the Game</h3>
+<section id="create-dictionaries" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="create-dictionaries">Create Dictionaries</h4>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>f_solution_list <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/google-10000-english-usa-no-swears.txt"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>f_valid_list <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/collins-scrabble-words-2019.txt"</span></span>
@@ -710,14 +712,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>solution_list <span class="ot">&lt;-</span> <span class="fu">load_dictionary</span>(f_solution_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="winnow-solution-words-to-set-of-valid-words" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="winnow-solution-words-to-set-of-valid-words">Winnow Solution Words to Set of Valid Words</h5>
+<section id="winnow-solution-words-to-set-of-valid-words" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="winnow-solution-words-to-set-of-valid-words">Winnow Solution Words to Set of Valid Words</h4>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>solution_list <span class="ot">&lt;-</span> <span class="fu">intersect</span>(solution_list, valid_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="game-play-and-output" class="level5 unnumbered">
-<h5 class="unnumbered anchored" data-anchor-id="game-play-and-output">Game Play and Output</h5>
+<section id="game-play-and-output" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="game-play-and-output">Game Play and Output</h4>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>solution <span class="ot">&lt;-</span> <span class="fu">pick_solution</span>(solution_list, <span class="at">word_length =</span> <span class="dv">5</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>game <span class="ot">&lt;-</span> <span class="fu">play_wordle</span>(solution, valid_list, <span class="at">num_guesses =</span> <span class="dv">6</span>, <span class="at">output =</span> <span class="st">"graphic"</span>)</span>
@@ -728,6 +730,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="alternative-functions-without-graphic-output" class="level3">
 <h3 class="anchored" data-anchor-id="alternative-functions-without-graphic-output">Alternative Functions without Graphic Output</h3>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>play_wordle <span class="ot">&lt;-</span> <span class="cf">function</span>(solution, valid_list, <span class="at">num_guesses =</span> <span class="dv">6</span>) {</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(tidyverse)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(sjmisc)</span>
@@ -837,6 +841,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(text_result)</span>
 <span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
@@ -1307,13 +1312,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># • Solution {.unnumbered}</span></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>Use the <span class="in">`Show Code`</span> button to peak at one solution to each of the four functions. Note that needed libraries are specified with the <span class="in">`require()`</span> at the top of each function. You could use <span class="in">`library()`</span> as an alternative. You could also have these loaded in the global environment, but these would not be as "portable" across users and systems. Each of these functions includes some commented out <span class="in">`print()`</span> and/or <span class="in">`glimpse()`</span> statements that are useful for viewing intermediate values for debugging.</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>Use the <span class="in">`Show Code`</span> button to peek at one solution to each of the four functions. Note that needed libraries are specified with the <span class="in">`require()`</span> at the top of each function. You could use <span class="in">`library()`</span> as an alternative. You could also have these loaded in the global environment, but these would not be as "portable" across users and systems. Each of these functions includes some commented out <span class="in">`print()`</span> and/or <span class="in">`glimpse()`</span> statements that are useful for viewing intermediate values for debugging.</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The </span><span class="in">`play_wordle()`</span><span class="at"> and </span><span class="in">`evaluate_guess()`</span><span class="at"> functions include an additional argument, "output_type", that lets the user specify whether they would like to see simple text output or formatted ("graphic") output, which is made possible by using the {huxtable} library. A substantial chunk of the </span><span class="in">`play_wordle()`</span><span class="at"> and </span><span class="in">`evaluate_guess()`</span><span class="at"> functions are devoted to producing this graphic output and are not necessary.</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Functions {.unnumbered}</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### Functions {.unnumbered}</span></span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">##### `load_dictionary()` {.unnumbered}</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `load_dictionary()` {.unnumbered}</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
@@ -1328,7 +1333,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">##### `pick_solution()` {.unnumbered}</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `pick_solution()` {.unnumbered}</span></span>
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
@@ -1344,7 +1349,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="fu">##### `play_wordle()` {.unnumbered}</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `play_wordle()` {.unnumbered}</span></span>
 <span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
@@ -1444,7 +1449,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="fu">##### `evaluate_guess()` {.unnumbered}</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a><span class="fu">#### `evaluate_guess()` {.unnumbered}</span></span>
 <span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
@@ -1509,9 +1514,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Playing the Game {.unnumbered}</span></span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a><span class="fu">### Playing the Game {.unnumbered}</span></span>
 <span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Create Dictionaries {.unnumbered}</span></span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Create Dictionaries {.unnumbered}</span></span>
 <span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{r create-dictionaries}</span></span>
 <span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a><span class="in">#| message: false</span></span>
 <span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a><span class="in">f_solution_list &lt;- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/google-10000-english-usa-no-swears.txt"</span></span>
@@ -1521,13 +1526,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a><span class="in">solution_list &lt;- load_dictionary(f_solution_list)</span></span>
 <span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Winnow Solution Words to Set of Valid Words {.unnumbered}</span></span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Winnow Solution Words to Set of Valid Words {.unnumbered}</span></span>
 <span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r narrow-list}</span></span>
 <span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a><span class="in">solution_list &lt;- intersect(solution_list,valid_list)</span></span>
 <span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Game Play and Output {.unnumbered}</span></span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Game Play and Output {.unnumbered}</span></span>
 <span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a><span class="in">```{r clear-console}</span></span>
 <span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
@@ -1545,116 +1550,118 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb9-257"><a href="#cb9-257" aria-hidden="true" tabindex="-1"></a><span class="fu">### Alternative Functions without Graphic Output</span></span>
 <span id="cb9-258"><a href="#cb9-258" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-261"><a href="#cb9-261" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a>play_wordle <span class="ot">&lt;-</span> <span class="cf">function</span>(solution, valid_list, <span class="at">num_guesses =</span> <span class="dv">6</span>) {</span>
-<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(tidyverse)</span>
-<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sjmisc)</span>
-<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a>  word_length <span class="ot">&lt;-</span> <span class="fu">length</span>(solution)</span>
-<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"You have "</span>, num_guesses, <span class="st">" chances to guess a word of length "</span>, word_length))</span>
-<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>  letters_left <span class="ot">&lt;-</span> LETTERS <span class="co"># a built-in set of capital letters</span></span>
-<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>  guess_history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">nrow =</span> num_guesses, <span class="at">ncol =</span> word_length))</span>
-<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a>  result_history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">nrow =</span> num_guesses, <span class="at">ncol =</span> word_length))</span>
-<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_guesses) {</span>
-<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>    <span class="co"># display "keyboard"</span></span>
-<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"Letters left: "</span>, letters_left), <span class="at">collapse =</span> <span class="st">" "</span>))</span>
-<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>    <span class="co"># read in guess and confirm length and validity</span></span>
-<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>    guess <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="fu">paste0</span>(<span class="st">"Enter guess "</span>, i, <span class="st">": "</span>)) <span class="sc">%&gt;%</span> <span class="fu">toupper</span>()</span>
-<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="fu">nchar</span>(guess) <span class="sc">!=</span> word_length) {</span>
-<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>      guess <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="fu">paste0</span>(<span class="st">"Guess must have "</span>, word_length, <span class="st">" characters. Enter guess "</span>, i, <span class="st">" again : "</span> )) <span class="sc">%&gt;%</span> <span class="fu">toupper</span>()</span>
-<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (guess <span class="sc">%nin%</span> valid_list){</span>
-<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a>      guess <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="fu">paste0</span>(<span class="st">"Hmm, that word is not in my dictionary of valid words. Enter guess "</span>, i, <span class="st">" again: "</span>)) <span class="sc">%&gt;%</span> <span class="fu">toupper</span>()</span>
-<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a>    guess <span class="ot">&lt;-</span> <span class="fu">str_split</span>(guess, <span class="st">""</span>)[[<span class="dv">1</span>]]</span>
-<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(guess) # check output</span></span>
-<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a>    <span class="co"># evaluate guess</span></span>
-<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">evaluate_guess</span>(guess, solution)</span>
-<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update keyboard</span></span>
-<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a>    letters_left <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(letters_left, guess)</span>
-<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print results</span></span>
-<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a>    guess_history[i,] <span class="ot">&lt;-</span> guess</span>
-<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a>    result_history[i,] <span class="ot">&lt;-</span> result</span>
-<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">all</span>(result <span class="sc">==</span> <span class="st">"*"</span>)) {</span>
-<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a>      guess_history <span class="ot">&lt;-</span> guess_history <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a>      result_history <span class="ot">&lt;-</span> result_history <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"You won in "</span>, i, <span class="st">" guesses!"</span>))</span>
-<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a>      guess_history <span class="ot">&lt;-</span> guess_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"guess"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a>      result_history <span class="ot">&lt;-</span> result_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"result"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a>      history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a>        <span class="at">guess =</span> guess_history,</span>
-<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a>        <span class="at">result =</span> result_history)</span>
-<span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(history)</span>
-<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="fu">invisible</span>(history))</span>
-<span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>        history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb9-307"><a href="#cb9-307" aria-hidden="true" tabindex="-1"></a>          <span class="at">guess =</span> <span class="fu">paste0</span>(guess, <span class="at">collapse =</span> <span class="st">""</span>),</span>
-<span id="cb9-308"><a href="#cb9-308" aria-hidden="true" tabindex="-1"></a>          <span class="at">result =</span> <span class="fu">paste0</span>(result, <span class="at">collapse =</span> <span class="st">""</span>))</span>
-<span id="cb9-309"><a href="#cb9-309" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(history)</span>
-<span id="cb9-310"><a href="#cb9-310" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb9-311"><a href="#cb9-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-312"><a href="#cb9-312" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-313"><a href="#cb9-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Sorry, you lost! Solution was "</span>, <span class="fu">paste0</span>(solution, <span class="at">collapse =</span> <span class="st">""</span>)))</span>
-<span id="cb9-314"><a href="#cb9-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-315"><a href="#cb9-315" aria-hidden="true" tabindex="-1"></a>  guess_history <span class="ot">&lt;-</span> guess_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"guess"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-316"><a href="#cb9-316" aria-hidden="true" tabindex="-1"></a>  result_history <span class="ot">&lt;-</span> result_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"result"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-317"><a href="#cb9-317" aria-hidden="true" tabindex="-1"></a>  history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">guess =</span> guess_history,</span>
-<span id="cb9-318"><a href="#cb9-318" aria-hidden="true" tabindex="-1"></a>      <span class="at">result =</span> result_history)</span>
-<span id="cb9-319"><a href="#cb9-319" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(history)</span>
-<span id="cb9-320"><a href="#cb9-320" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(history))</span>
-<span id="cb9-321"><a href="#cb9-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-322"><a href="#cb9-322" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-262"><a href="#cb9-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb9-263"><a href="#cb9-263" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb9-264"><a href="#cb9-264" aria-hidden="true" tabindex="-1"></a>play_wordle <span class="ot">&lt;-</span> <span class="cf">function</span>(solution, valid_list, <span class="at">num_guesses =</span> <span class="dv">6</span>) {</span>
+<span id="cb9-265"><a href="#cb9-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(tidyverse)</span>
+<span id="cb9-266"><a href="#cb9-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(sjmisc)</span>
+<span id="cb9-267"><a href="#cb9-267" aria-hidden="true" tabindex="-1"></a>  word_length <span class="ot">&lt;-</span> <span class="fu">length</span>(solution)</span>
+<span id="cb9-268"><a href="#cb9-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"You have "</span>, num_guesses, <span class="st">" chances to guess a word of length "</span>, word_length))</span>
+<span id="cb9-269"><a href="#cb9-269" aria-hidden="true" tabindex="-1"></a>  letters_left <span class="ot">&lt;-</span> LETTERS <span class="co"># a built-in set of capital letters</span></span>
+<span id="cb9-270"><a href="#cb9-270" aria-hidden="true" tabindex="-1"></a>  guess_history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">nrow =</span> num_guesses, <span class="at">ncol =</span> word_length))</span>
+<span id="cb9-271"><a href="#cb9-271" aria-hidden="true" tabindex="-1"></a>  result_history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="at">nrow =</span> num_guesses, <span class="at">ncol =</span> word_length))</span>
+<span id="cb9-272"><a href="#cb9-272" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_guesses) {</span>
+<span id="cb9-273"><a href="#cb9-273" aria-hidden="true" tabindex="-1"></a>    <span class="co"># display "keyboard"</span></span>
+<span id="cb9-274"><a href="#cb9-274" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"Letters left: "</span>, letters_left), <span class="at">collapse =</span> <span class="st">" "</span>))</span>
+<span id="cb9-275"><a href="#cb9-275" aria-hidden="true" tabindex="-1"></a>    <span class="co"># read in guess and confirm length and validity</span></span>
+<span id="cb9-276"><a href="#cb9-276" aria-hidden="true" tabindex="-1"></a>    guess <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="fu">paste0</span>(<span class="st">"Enter guess "</span>, i, <span class="st">": "</span>)) <span class="sc">%&gt;%</span> <span class="fu">toupper</span>()</span>
+<span id="cb9-277"><a href="#cb9-277" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="fu">nchar</span>(guess) <span class="sc">!=</span> word_length) {</span>
+<span id="cb9-278"><a href="#cb9-278" aria-hidden="true" tabindex="-1"></a>      guess <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="fu">paste0</span>(<span class="st">"Guess must have "</span>, word_length, <span class="st">" characters. Enter guess "</span>, i, <span class="st">" again : "</span> )) <span class="sc">%&gt;%</span> <span class="fu">toupper</span>()</span>
+<span id="cb9-279"><a href="#cb9-279" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-280"><a href="#cb9-280" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (guess <span class="sc">%nin%</span> valid_list){</span>
+<span id="cb9-281"><a href="#cb9-281" aria-hidden="true" tabindex="-1"></a>      guess <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="fu">paste0</span>(<span class="st">"Hmm, that word is not in my dictionary of valid words. Enter guess "</span>, i, <span class="st">" again: "</span>)) <span class="sc">%&gt;%</span> <span class="fu">toupper</span>()</span>
+<span id="cb9-282"><a href="#cb9-282" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-283"><a href="#cb9-283" aria-hidden="true" tabindex="-1"></a>    guess <span class="ot">&lt;-</span> <span class="fu">str_split</span>(guess, <span class="st">""</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb9-284"><a href="#cb9-284" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(guess) # check output</span></span>
+<span id="cb9-285"><a href="#cb9-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-286"><a href="#cb9-286" aria-hidden="true" tabindex="-1"></a>    <span class="co"># evaluate guess</span></span>
+<span id="cb9-287"><a href="#cb9-287" aria-hidden="true" tabindex="-1"></a>    result <span class="ot">&lt;-</span> <span class="fu">evaluate_guess</span>(guess, solution)</span>
+<span id="cb9-288"><a href="#cb9-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-289"><a href="#cb9-289" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update keyboard</span></span>
+<span id="cb9-290"><a href="#cb9-290" aria-hidden="true" tabindex="-1"></a>    letters_left <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(letters_left, guess)</span>
+<span id="cb9-291"><a href="#cb9-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-292"><a href="#cb9-292" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print results</span></span>
+<span id="cb9-293"><a href="#cb9-293" aria-hidden="true" tabindex="-1"></a>    guess_history[i,] <span class="ot">&lt;-</span> guess</span>
+<span id="cb9-294"><a href="#cb9-294" aria-hidden="true" tabindex="-1"></a>    result_history[i,] <span class="ot">&lt;-</span> result</span>
+<span id="cb9-295"><a href="#cb9-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-296"><a href="#cb9-296" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">all</span>(result <span class="sc">==</span> <span class="st">"*"</span>)) {</span>
+<span id="cb9-297"><a href="#cb9-297" aria-hidden="true" tabindex="-1"></a>      guess_history <span class="ot">&lt;-</span> guess_history <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb9-298"><a href="#cb9-298" aria-hidden="true" tabindex="-1"></a>      result_history <span class="ot">&lt;-</span> result_history <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb9-299"><a href="#cb9-299" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"You won in "</span>, i, <span class="st">" guesses!"</span>))</span>
+<span id="cb9-300"><a href="#cb9-300" aria-hidden="true" tabindex="-1"></a>      guess_history <span class="ot">&lt;-</span> guess_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"guess"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-301"><a href="#cb9-301" aria-hidden="true" tabindex="-1"></a>      result_history <span class="ot">&lt;-</span> result_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"result"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-302"><a href="#cb9-302" aria-hidden="true" tabindex="-1"></a>      history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-303"><a href="#cb9-303" aria-hidden="true" tabindex="-1"></a>        <span class="at">guess =</span> guess_history,</span>
+<span id="cb9-304"><a href="#cb9-304" aria-hidden="true" tabindex="-1"></a>        <span class="at">result =</span> result_history)</span>
+<span id="cb9-305"><a href="#cb9-305" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(history)</span>
+<span id="cb9-306"><a href="#cb9-306" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(<span class="fu">invisible</span>(history))</span>
+<span id="cb9-307"><a href="#cb9-307" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb9-308"><a href="#cb9-308" aria-hidden="true" tabindex="-1"></a>        history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-309"><a href="#cb9-309" aria-hidden="true" tabindex="-1"></a>          <span class="at">guess =</span> <span class="fu">paste0</span>(guess, <span class="at">collapse =</span> <span class="st">""</span>),</span>
+<span id="cb9-310"><a href="#cb9-310" aria-hidden="true" tabindex="-1"></a>          <span class="at">result =</span> <span class="fu">paste0</span>(result, <span class="at">collapse =</span> <span class="st">""</span>))</span>
+<span id="cb9-311"><a href="#cb9-311" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(history)</span>
+<span id="cb9-312"><a href="#cb9-312" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-313"><a href="#cb9-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-314"><a href="#cb9-314" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-315"><a href="#cb9-315" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"Sorry, you lost! Solution was "</span>, <span class="fu">paste0</span>(solution, <span class="at">collapse =</span> <span class="st">""</span>)))</span>
+<span id="cb9-316"><a href="#cb9-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-317"><a href="#cb9-317" aria-hidden="true" tabindex="-1"></a>  guess_history <span class="ot">&lt;-</span> guess_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"guess"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-318"><a href="#cb9-318" aria-hidden="true" tabindex="-1"></a>  result_history <span class="ot">&lt;-</span> result_history <span class="sc">%&gt;%</span> <span class="fu">unite</span>(<span class="fu">everything</span>(), <span class="at">sep=</span><span class="st">""</span>, <span class="at">col=</span><span class="st">"result"</span>, <span class="at">remove=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-319"><a href="#cb9-319" aria-hidden="true" tabindex="-1"></a>  history <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">guess =</span> guess_history,</span>
+<span id="cb9-320"><a href="#cb9-320" aria-hidden="true" tabindex="-1"></a>      <span class="at">result =</span> result_history)</span>
+<span id="cb9-321"><a href="#cb9-321" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(history)</span>
+<span id="cb9-322"><a href="#cb9-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">invisible</span>(history))</span>
 <span id="cb9-323"><a href="#cb9-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-324"><a href="#cb9-324" aria-hidden="true" tabindex="-1"></a>evaluate_guess <span class="ot">&lt;-</span> <span class="cf">function</span>(guess, solution) {</span>
-<span id="cb9-325"><a href="#cb9-325" aria-hidden="true" tabindex="-1"></a>  word_length <span class="ot">&lt;-</span> <span class="fu">length</span>(solution)</span>
-<span id="cb9-326"><a href="#cb9-326" aria-hidden="true" tabindex="-1"></a>  text_result <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"-"</span>, word_length)</span>
-<span id="cb9-327"><a href="#cb9-327" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the next lines are an ugly hack to deal with repeat letters...</span></span>
-<span id="cb9-328"><a href="#cb9-328" aria-hidden="true" tabindex="-1"></a>  <span class="co"># we first find the number of times letters in the guess appear in the solution because we will need to clear "extra" ones away</span></span>
-<span id="cb9-329"><a href="#cb9-329" aria-hidden="true" tabindex="-1"></a>  guess_count <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">letter =</span> guess) <span class="sc">%&gt;%</span></span>
-<span id="cb9-330"><a href="#cb9-330" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(letter) <span class="sc">%&gt;%</span></span>
-<span id="cb9-331"><a href="#cb9-331" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n_in_guess =</span> <span class="fu">n</span>())</span>
-<span id="cb9-332"><a href="#cb9-332" aria-hidden="true" tabindex="-1"></a>  solution_count <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">letter =</span> solution) <span class="sc">%&gt;%</span></span>
-<span id="cb9-333"><a href="#cb9-333" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(letter) <span class="sc">%&gt;%</span></span>
-<span id="cb9-334"><a href="#cb9-334" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n_in_solution =</span> <span class="fu">n</span>())</span>
-<span id="cb9-335"><a href="#cb9-335" aria-hidden="true" tabindex="-1"></a>  counts <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(</span>
-<span id="cb9-336"><a href="#cb9-336" aria-hidden="true" tabindex="-1"></a>    guess_count,</span>
-<span id="cb9-337"><a href="#cb9-337" aria-hidden="true" tabindex="-1"></a>    solution_count, <span class="at">by =</span> <span class="st">"letter"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-338"><a href="#cb9-338" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">to_clear =</span> n_in_guess <span class="sc">-</span> n_in_solution) <span class="sc">%&gt;%</span></span>
-<span id="cb9-339"><a href="#cb9-339" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(to_clear <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-340"><a href="#cb9-340" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(letter, to_clear)</span>
-<span id="cb9-341"><a href="#cb9-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>word_length){</span>
-<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a>    <span class="co"># these `case_when()` lines are the workhorse of the function...</span></span>
-<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a>    <span class="co"># they find if each letter in the guess appears in the solution and if it in the right place</span></span>
-<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a>    text_result[i] <span class="ot">&lt;-</span></span>
-<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span> (</span>
-<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a>        guess[i] <span class="sc">%in%</span> solution <span class="sc">&amp;</span> guess[i] <span class="sc">==</span> solution[i] <span class="sc">~</span> <span class="st">"*"</span>,</span>
-<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a>        guess[i] <span class="sc">%in%</span> solution <span class="sc">&amp;</span> guess[i] <span class="sc">!=</span> solution[i] <span class="sc">~</span> <span class="st">"+"</span>,</span>
-<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a>        guess[i] <span class="sc">%nin%</span> solution <span class="sc">~</span> <span class="st">"-"</span></span>
-<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this `for()` loop then cycles through cases where the guess contains more of a particular letter than the solution and clears away the correct number of matches that are in in the solution but in the wrong position</span></span>
-<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> counts<span class="sc">$</span>letter) {</span>
-<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (guess[i] <span class="sc">==</span> j <span class="sc">&amp;</span></span>
-<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>          text_result[i] <span class="sc">!=</span> <span class="st">"*"</span> <span class="sc">&amp;</span></span>
-<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>          counts[counts<span class="sc">$</span>letter<span class="sc">==</span>j,]<span class="sc">$</span>to_clear <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>        text_result[i] <span class="ot">&lt;-</span> <span class="st">"-"</span></span>
-<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>        counts[counts<span class="sc">$</span>letter<span class="sc">==</span>j,]<span class="sc">$</span>to_clear <span class="ot">&lt;-</span></span>
-<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>          counts[counts<span class="sc">$</span>letter<span class="sc">==</span>j,]<span class="sc">$</span>to_clear <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(text_result)</span>
-<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-368"><a href="#cb9-368" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>huxtable)</span>
-<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sjmisc)</span>
-<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-324"><a href="#cb9-324" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-325"><a href="#cb9-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-326"><a href="#cb9-326" aria-hidden="true" tabindex="-1"></a>evaluate_guess <span class="ot">&lt;-</span> <span class="cf">function</span>(guess, solution) {</span>
+<span id="cb9-327"><a href="#cb9-327" aria-hidden="true" tabindex="-1"></a>  word_length <span class="ot">&lt;-</span> <span class="fu">length</span>(solution)</span>
+<span id="cb9-328"><a href="#cb9-328" aria-hidden="true" tabindex="-1"></a>  text_result <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"-"</span>, word_length)</span>
+<span id="cb9-329"><a href="#cb9-329" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the next lines are an ugly hack to deal with repeat letters...</span></span>
+<span id="cb9-330"><a href="#cb9-330" aria-hidden="true" tabindex="-1"></a>  <span class="co"># we first find the number of times letters in the guess appear in the solution because we will need to clear "extra" ones away</span></span>
+<span id="cb9-331"><a href="#cb9-331" aria-hidden="true" tabindex="-1"></a>  guess_count <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">letter =</span> guess) <span class="sc">%&gt;%</span></span>
+<span id="cb9-332"><a href="#cb9-332" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(letter) <span class="sc">%&gt;%</span></span>
+<span id="cb9-333"><a href="#cb9-333" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n_in_guess =</span> <span class="fu">n</span>())</span>
+<span id="cb9-334"><a href="#cb9-334" aria-hidden="true" tabindex="-1"></a>  solution_count <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">letter =</span> solution) <span class="sc">%&gt;%</span></span>
+<span id="cb9-335"><a href="#cb9-335" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(letter) <span class="sc">%&gt;%</span></span>
+<span id="cb9-336"><a href="#cb9-336" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n_in_solution =</span> <span class="fu">n</span>())</span>
+<span id="cb9-337"><a href="#cb9-337" aria-hidden="true" tabindex="-1"></a>  counts <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(</span>
+<span id="cb9-338"><a href="#cb9-338" aria-hidden="true" tabindex="-1"></a>    guess_count,</span>
+<span id="cb9-339"><a href="#cb9-339" aria-hidden="true" tabindex="-1"></a>    solution_count, <span class="at">by =</span> <span class="st">"letter"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-340"><a href="#cb9-340" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">to_clear =</span> n_in_guess <span class="sc">-</span> n_in_solution) <span class="sc">%&gt;%</span></span>
+<span id="cb9-341"><a href="#cb9-341" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(to_clear <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(letter, to_clear)</span>
+<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>word_length){</span>
+<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a>    <span class="co"># these `case_when()` lines are the workhorse of the function...</span></span>
+<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a>    <span class="co"># they find if each letter in the guess appears in the solution and if it in the right place</span></span>
+<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a>    text_result[i] <span class="ot">&lt;-</span></span>
+<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a>      <span class="fu">case_when</span> (</span>
+<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a>        guess[i] <span class="sc">%in%</span> solution <span class="sc">&amp;</span> guess[i] <span class="sc">==</span> solution[i] <span class="sc">~</span> <span class="st">"*"</span>,</span>
+<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a>        guess[i] <span class="sc">%in%</span> solution <span class="sc">&amp;</span> guess[i] <span class="sc">!=</span> solution[i] <span class="sc">~</span> <span class="st">"+"</span>,</span>
+<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a>        guess[i] <span class="sc">%nin%</span> solution <span class="sc">~</span> <span class="st">"-"</span></span>
+<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>    <span class="co"># this `for()` loop then cycles through cases where the guess contains more of a particular letter than the solution and clears away the correct number of matches that are in in the solution but in the wrong position</span></span>
+<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> counts<span class="sc">$</span>letter) {</span>
+<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (guess[i] <span class="sc">==</span> j <span class="sc">&amp;</span></span>
+<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>          text_result[i] <span class="sc">!=</span> <span class="st">"*"</span> <span class="sc">&amp;</span></span>
+<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a>          counts[counts<span class="sc">$</span>letter<span class="sc">==</span>j,]<span class="sc">$</span>to_clear <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>        text_result[i] <span class="ot">&lt;-</span> <span class="st">"-"</span></span>
+<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>        counts[counts<span class="sc">$</span>letter<span class="sc">==</span>j,]<span class="sc">$</span>to_clear <span class="ot">&lt;-</span></span>
+<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>          counts[counts<span class="sc">$</span>letter<span class="sc">==</span>j,]<span class="sc">$</span>to_clear <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(text_result)</span>
+<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>huxtable)</span>
+<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sjmisc)</span>
+<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb9-375"><a href="#cb9-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

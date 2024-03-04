@@ -9,13 +9,13 @@ library(huxtable)
 
 # • Solution {.unnumbered}
 
-Use the `Show Code` button to peak at one solution to each of the four functions. Note that needed libraries are specified with the `require()` at the top of each function. You could use `library()` as an alternative. You could also have these loaded in the global environment, but these would not be as "portable" across users and systems. Each of these functions includes some commented out `print()` and/or `glimpse()` statements that are useful for viewing intermediate values for debugging.
+Use the `Show Code` button to peek at one solution to each of the four functions. Note that needed libraries are specified with the `require()` at the top of each function. You could use `library()` as an alternative. You could also have these loaded in the global environment, but these would not be as "portable" across users and systems. Each of these functions includes some commented out `print()` and/or `glimpse()` statements that are useful for viewing intermediate values for debugging.
 
 > **NOTE:** The `play_wordle()` and `evaluate_guess()` functions include an additional argument, "output_type", that lets the user specify whether they would like to see simple text output or formatted ("graphic") output, which is made possible by using the {huxtable} library. A substantial chunk of the `play_wordle()` and `evaluate_guess()` functions are devoted to producing this graphic output and are not necessary.
 
-#### Functions {.unnumbered}
+### Functions {.unnumbered}
 
-##### `load_dictionary()` {.unnumbered}
+#### `load_dictionary()` {.unnumbered}
 
 ```{r}
 #| code-fold: true
@@ -30,7 +30,7 @@ load_dictionary <- function(filename){
 }
 ```
 
-##### `pick_solution()` {.unnumbered}
+#### `pick_solution()` {.unnumbered}
 
 ```{r}
 #| code-fold: true
@@ -46,7 +46,7 @@ pick_solution <- function(dictionary, word_length = 5) {
 }
 ```
 
-##### `play_wordle()` {.unnumbered}
+#### `play_wordle()` {.unnumbered}
 
 ```{r}
 #| code-fold: true
@@ -146,7 +146,7 @@ play_wordle <- function(solution, valid_list, num_guesses = 6, output_type = "te
 }
 ```
 
-##### `evaluate_guess()` {.unnumbered}
+#### `evaluate_guess()` {.unnumbered}
 
 ```{r}
 #| code-fold: true
@@ -211,9 +211,9 @@ evaluate_guess <- function(guess, solution, output_type) {
 }
 ```
 
-#### Playing the Game {.unnumbered}
+### Playing the Game {.unnumbered}
 
-##### Create Dictionaries {.unnumbered}
+#### Create Dictionaries {.unnumbered}
 ```{r create-dictionaries}
 #| message: false
 f_solution_list <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/google-10000-english-usa-no-swears.txt"
@@ -223,13 +223,13 @@ valid_list <- load_dictionary(f_valid_list)
 solution_list <- load_dictionary(f_solution_list)
 ```
 
-##### Winnow Solution Words to Set of Valid Words {.unnumbered}
+#### Winnow Solution Words to Set of Valid Words {.unnumbered}
 
 ```{r narrow-list}
 solution_list <- intersect(solution_list,valid_list)
 ```
 
-##### Game Play and Output {.unnumbered}
+#### Game Play and Output {.unnumbered}
 
 ```{r clear-console}
 #| include: false
@@ -247,6 +247,8 @@ quick_html(game) # prints results as html
 ### Alternative Functions without Graphic Output
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
 play_wordle <- function(solution, valid_list, num_guesses = 6) {
   require(tidyverse)
   require(sjmisc)
