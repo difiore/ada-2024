@@ -360,6 +360,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Linear Modeling</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Elements of Regression Analysis</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -374,7 +380,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./27-python-from-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Using <strong><em>Python</em></strong> from <strong><em>R</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Using <strong><em>Python</em></strong> from <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -422,6 +428,30 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./exercise-05.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 05</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice Simulation-Based Inference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-07-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 07 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore Distributions and the CLT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice Simple Linear Regression</span></a>
   </div>
 </li>
       </ul>
@@ -569,12 +599,12 @@ window.Quarto = {
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the two.sided p value</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span> <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff)))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0216</code></pre>
+<pre><code>## [1] 0.0237</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(permuted_diff) <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0216</code></pre>
+<pre><code>## [1] 0.0237</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or add 1 to both numerator and denominator to avoid p = 0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -620,7 +650,7 @@ window.Quarto = {
 ## [1] 5
 ## 
 ## $p.value
-## [1] 0.0221</code></pre>
+## [1] 0.0219</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>jmuOutlier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1111,7 +1141,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.012</code></pre>
+## 1   0.014</code></pre>
 </div>
 </div>
 <p>Note that this p value is pretty similar to that returned by <code>jmuOutlier::perm.test()</code> and by our custom <code>perm1samp()</code> function, though as noted above, those use slightly different permutation processes.</p>
@@ -1180,7 +1210,7 @@ window.Quarto = {
 <pre class="details" data-summary="Show Output"><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.454</code></pre>
+## 1   0.378</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -1795,7 +1825,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb65-115"><a href="#cb65-115" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-118"><a href="#cb65-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb65-119"><a href="#cb65-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
-<span id="cb65-120"><a href="#cb65-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: true</span></span>
+<span id="cb65-120"><a href="#cb65-120" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: false</span></span>
 <span id="cb65-121"><a href="#cb65-121" aria-hidden="true" tabindex="-1"></a>perm1samp <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">stat=</span><span class="st">"mean"</span>, <span class="at">mu=</span><span class="dv">0</span>, <span class="at">nperm=</span><span class="dv">10000</span>,</span>
 <span id="cb65-122"><a href="#cb65-122" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative=</span><span class="fu">c</span>(<span class="st">"two.sided"</span>,<span class="st">"less"</span>,<span class="st">"greater"</span>)){</span>
 <span id="cb65-123"><a href="#cb65-123" aria-hidden="true" tabindex="-1"></a>  <span class="co"># can modify function by adding alternative `stat=`</span></span>
@@ -1966,7 +1996,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb65-296"><a href="#cb65-296" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb65-299"><a href="#cb65-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb65-300"><a href="#cb65-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: "last"</span></span>
-<span id="cb65-301"><a href="#cb65-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: true</span></span>
+<span id="cb65-301"><a href="#cb65-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: false</span></span>
 <span id="cb65-302"><a href="#cb65-302" aria-hidden="true" tabindex="-1"></a>perm2samp <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, <span class="at">stat=</span><span class="st">"mean_diff"</span>, <span class="at">nperm=</span><span class="dv">10000</span>,</span>
 <span id="cb65-303"><a href="#cb65-303" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative=</span><span class="fu">c</span>(<span class="st">"two.sided"</span>,<span class="st">"less"</span>,<span class="st">"greater"</span>)){</span>
 <span id="cb65-304"><a href="#cb65-304" aria-hidden="true" tabindex="-1"></a>  <span class="co"># can modify function by adding alternative `stat=`</span></span>

@@ -1,7 +1,8 @@
 ---
-title: "Exercise 08"
+output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
-
 # Explore Distributions and the CLT {.unnumbered}
 
 ## Learning Objectives {.unnumbered}
@@ -102,6 +103,7 @@ $$\bar{x} = \mu$$
 * The standard deviation of the sampling distribution will be equal to the standard deviation of the population distribution divided by the square root of the sample size. This is the **standard error**.
 
 $$s = \frac{\sigma}{\sqrt{n}}$$
+
 ```{r}
 # sample size
 n <- 10

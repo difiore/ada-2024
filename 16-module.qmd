@@ -107,7 +107,7 @@ We can also write our own custom function to perform the same kind of 1-sample p
 
 ```{r}
 #| fig-keep: "last"
-#| cache: true
+#| cache: false
 perm1samp <- function(x, stat="mean", mu=0, nperm=10000,
   alternative=c("two.sided","less","greater")){
   # can modify function by adding alternative `stat=`
@@ -278,7 +278,7 @@ Finally, we can also write our own generic 2-sample permutation function that al
 
 ```{r}
 #| fig-keep: "last"
-#| cache: true
+#| cache: false
 perm2samp <- function(x, y, stat="mean_diff", nperm=10000,
   alternative=c("two.sided","less","greater")){
   # can modify function by adding alternative `stat=`

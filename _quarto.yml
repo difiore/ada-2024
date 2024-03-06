@@ -47,7 +47,7 @@ book:
       - 16-module.qmd
       - 17-module.qmd
       - 18-module.qmd
-      # - 19-module.qmd
+      - 19-module.qmd
       # - 20-module.qmd
       # - 21-module.qmd
       # - 22-module.qmd
@@ -67,10 +67,10 @@ book:
       - exercise-04-solution.qmd
       - exercise-05.qmd
       # - exercise-05-solution.qmd
-      # - exercise-07.qmd
-      # - exercise-07-solution.qmd
-      # - exercise-08.qmd
-      # - exercise-09.qmd
+      - exercise-07.qmd
+      - exercise-07-solution.qmd
+      - exercise-08.qmd
+      - exercise-09.qmd
       # - exercise-09-solution.qmd
       # - exercise-10.qmd
       # - exercise-10-solution.qmd

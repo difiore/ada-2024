@@ -360,6 +360,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Introduction to Linear Modeling</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Elements of Regression Analysis</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -374,7 +380,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./27-python-from-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Using <strong><em>Python</em></strong> from <strong><em>R</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Using <strong><em>Python</em></strong> from <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -422,6 +428,30 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./exercise-05.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 05</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice Simulation-Based Inference</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-07-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 07 Solution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Explore Distributions and the CLT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Practice Simple Linear Regression</span></a>
   </div>
 </li>
       </ul>
@@ -948,11 +978,11 @@ window.Quarto = {
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>spade <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(card <span class="sc">&lt;=</span> <span class="dv">13</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>(exp_spade <span class="ot">&lt;-</span> <span class="fu">sum</span>(spade)<span class="sc">/</span>reps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.24805</code></pre>
+<pre><code>## [1] 0.25169</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(exp_var_spade <span class="ot">&lt;-</span> <span class="fu">var</span>(spade))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.1865231</code></pre>
+<pre><code>## [1] 0.188344</code></pre>
 </div>
 </div>
 <section id="the-binomial-distribution" class="level4 unnumbered">
@@ -1112,22 +1142,22 @@ window.Quarto = {
 <span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="co"># all 'ones' in 6 rolls</span></span>
 <span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(all_ones)<span class="sc">/</span>reps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.6e-05</code></pre>
+<pre><code>## [1] 1.5e-05</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># three 'ones' in 6 rolls</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(three_ones)<span class="sc">/</span>reps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.053715</code></pre>
+<pre><code>## [1] 0.053823</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected # 'ones' in 6 rolls</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(count_ones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.000658</code></pre>
+<pre><code>## [1] 0.999573</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance in expected # 'ones' across rolls</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((count_ones <span class="sc">-</span> <span class="fu">mean</span>(count_ones))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(count_ones))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.8333236</code></pre>
+<pre><code>## [1] 0.8339468</code></pre>
 </div>
 </div>
 <section id="the-poisson-distribution" class="level4 unnumbered">
@@ -1235,7 +1265,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 7.00707</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 6.995423</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -1244,7 +1274,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 0.3332119</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 0.3321642</code></pre>
 </details>
 </div>
 <details class="code-fold">
