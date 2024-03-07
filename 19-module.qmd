@@ -229,7 +229,7 @@ Calculate the residuals from the regression of zombie apocalypse survivor height
 
 ```{r}
 #| code-fold: true
-#| fig-height: 4
+#| code-summary: "Show Code"
 m <- lm(data = d, height ~ weight)
 e <- m$residuals
 plot(x = d$weight, y = e)
@@ -242,6 +242,7 @@ Now, plot a histogram of your residuals... ideally they are normally distributed
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
 #| fig-height: 3
 histogram(e, xlim = c(-4 * sd(e), 4 * sd(e)), breaks = 20, main = "Histogram of Residuals")
 ```
@@ -341,6 +342,7 @@ ggplot(data = d, aes(x = FemaleBodyMass, y = WeaningAge)) +
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
 # by hand
 beta1 <- cor(d$FemaleBodyMass, d$WeaningAge) * (sd(d$WeaningAge) / sd(d$FemaleBodyMass))
 beta1
@@ -379,6 +381,7 @@ summary.aov(m)
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
 #| fig-height: 4
 residuals <- m$residuals
 plot(residuals ~ d$FemaleBodyMass, xlab = "Female Body Mass", ylab = "Residuals")
@@ -389,6 +392,7 @@ hist(residuals, breaks = 20, main = "Histogram of Residuals")
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
 par(mfrow = c(2, 2))
 plot(m)
 ```
@@ -397,6 +401,7 @@ Again, based on examination of the residuals and the results of Shapiro-Wilks te
 
 ```{r}
 #| code-fold: true
+#| code-summary: "Show Code"
 #| fig-width: 4
 par(mfrow = c(1, 1))
 qqnorm(m$residuals)

@@ -1,8 +1,5 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
+# Exercise 08 {.unnumbered}
+
 # Explore Distributions and the CLT {.unnumbered}
 
 ## Learning Objectives {.unnumbered}
@@ -11,7 +8,9 @@ editor_options:
 - Sampling from distributions that are distinctly non-normal and generating summary statistics
 - Visualizing sampling distributions to see the Central Limit Theorem in action
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 library(tidyverse)
 library(infer) # for rep_sample_n()
 library(ggformula) # for gf_ functions
@@ -56,9 +55,7 @@ nbinom2 <- gf_dist("nbinom", size=10, prob=0.5, xlim = c(0,20))
 nbinom3 <- gf_dist("nbinom", size=15, prob=0.5, xlim = c(0,20))
 
 # note that in the code above, we could instead use the `plotDist()` function from {mosaic}
-# this example uses `gf_dist()` simply to create .gg (ggplot) objects rather
-# than .trellis (lattice) objects, which makes visualizing the plots together
-# using {cowplot} look better
+# this example uses `gf_dist()` simply to create .gg (ggplot) objects rather than .trellis (lattice) objects, which makes visualizing the plots together using {cowplot} look better
 
 row1 <- plot_grid(norm1, norm2, norm3, nrow=1) +
   draw_plot_label(label = "Normal", fontface = "bold", size=12, hjust=0, vjust=-0.5)
@@ -100,6 +97,7 @@ Additionally, the CLT also states that the sampling distribution should have the
 * The mean of the sampling distribution will be equal to the mean of the population distribution.
 
 $$\bar{x} = \mu$$
+
 * The standard deviation of the sampling distribution will be equal to the standard deviation of the population distribution divided by the square root of the sample size. This is the **standard error**.
 
 $$s = \frac{\sigma}{\sqrt{n}}$$
@@ -294,7 +292,8 @@ plot4 <- plot4 %>%
 plot4
 ```
 
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:kableExtra)
 detach(package:mosaic)
 detach(package:cowplot)

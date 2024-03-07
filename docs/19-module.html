@@ -433,25 +433,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Simulation-Based Inference</span></a>
+ <span class="menu-text">Exercise 07</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-07-solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 07 Solution</span></span></a>
+ <span class="menu-text">Exercise 04 Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-08.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Explore Distributions and the CLT</span></a>
+ <span class="menu-text">Exercise 08</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Simple Linear Regression</span></a>
+ <span class="menu-text">Exercise 09</span></a>
   </div>
 </li>
       </ul>
@@ -926,7 +926,7 @@ window.Quarto = {
 <p>Calculate the residuals from the regression of zombie apocalypse survivor height on weight and plot these in relation to weight (as the <strong>x</strong> variable). There are lots of ways to do this quickly.</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, height <span class="sc">~</span> weight)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> m<span class="sc">$</span>residuals</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> d<span class="sc">$</span>weight, <span class="at">y =</span> e)</span>
@@ -945,7 +945,7 @@ window.Quarto = {
 <p>Now, plot a histogram of your residuals… ideally they are normally distributed!</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(e, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span> <span class="sc">*</span> <span class="fu">sd</span>(e), <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sd</span>(e)), <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"Histogram of Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -1097,7 +1097,7 @@ window.Quarto = {
 </ul>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># by hand</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(d<span class="sc">$</span>FemaleBodyMass, d<span class="sc">$</span>WeaningAge) <span class="sc">*</span> (<span class="fu">sd</span>(d<span class="sc">$</span>WeaningAge)<span class="sc">/</span><span class="fu">sd</span>(d<span class="sc">$</span>FemaleBodyMass))</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>beta1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1106,7 +1106,7 @@ window.Quarto = {
 <pre><code>## [1] 0.02012737</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>WeaningAge) <span class="sc">-</span> beta1 <span class="sc">*</span> <span class="fu">mean</span>(d<span class="sc">$</span>FemaleBodyMass)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>beta0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1114,7 +1114,7 @@ window.Quarto = {
 <pre><code>## [1] 201.634</code></pre>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># using lm()</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, WeaningAge <span class="sc">~</span> FemaleBodyMass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1161,7 +1161,7 @@ window.Quarto = {
 </ul>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> m<span class="sc">$</span>residuals</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(residuals <span class="sc">~</span> d<span class="sc">$</span>FemaleBodyMass, <span class="at">xlab =</span> <span class="st">"Female Body Mass"</span>, <span class="at">ylab =</span> <span class="st">"Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1173,7 +1173,7 @@ window.Quarto = {
 </div>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"Histogram of Residuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
@@ -1189,7 +1189,7 @@ window.Quarto = {
 </ul>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1204,7 +1204,7 @@ window.Quarto = {
 <p>Again, based on examination of the residuals and the results of Shapiro-Wilks test, does it look like your model has good fit?</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m<span class="sc">$</span>residuals)</span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m<span class="sc">$</span>residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1217,7 +1217,7 @@ window.Quarto = {
 </div>
 </div>
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -2127,7 +2127,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb96-261"><a href="#cb96-261" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-264"><a href="#cb96-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb96-265"><a href="#cb96-265" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb96-266"><a href="#cb96-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb96-266"><a href="#cb96-266" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
 <span id="cb96-267"><a href="#cb96-267" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, height <span class="sc">~</span> weight)</span>
 <span id="cb96-268"><a href="#cb96-268" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> m<span class="sc">$</span>residuals</span>
 <span id="cb96-269"><a href="#cb96-269" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> d<span class="sc">$</span>weight, <span class="at">y =</span> e)</span>
@@ -2140,280 +2140,285 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb96-276"><a href="#cb96-276" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-279"><a href="#cb96-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb96-280"><a href="#cb96-280" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb96-281"><a href="#cb96-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
-<span id="cb96-282"><a href="#cb96-282" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(e, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span> <span class="sc">*</span> <span class="fu">sd</span>(e), <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sd</span>(e)), <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"Histogram of Residuals"</span>)</span>
-<span id="cb96-283"><a href="#cb96-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-284"><a href="#cb96-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-285"><a href="#cb96-285" aria-hidden="true" tabindex="-1"></a>An additional way to quickly examine your residuals is to use the <span class="in">`plot()`</span> function with your model as an argument. This prints out four plots that each tell you something.</span>
-<span id="cb96-286"><a href="#cb96-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-289"><a href="#cb96-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-290"><a href="#cb96-290" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb96-291"><a href="#cb96-291" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span>
-<span id="cb96-292"><a href="#cb96-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-293"><a href="#cb96-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-294"><a href="#cb96-294" aria-hidden="true" tabindex="-1"></a>The first (top left) plot of "Residuals vs Fitted" values of **y** should, like the plot residuals versus **x**, not show any structure. We hope to see equally spread residuals around a horizontal line without distinct patterns.</span>
-<span id="cb96-295"><a href="#cb96-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-296"><a href="#cb96-296" aria-hidden="true" tabindex="-1"></a>The second (top right) plot is "Normal Q-Q" plot of theoretical quantiles versus standardized quantiles for the residual values. These should fall on roughly a straight line if the residuals are normally distributed.</span>
-<span id="cb96-297"><a href="#cb96-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-298"><a href="#cb96-298" aria-hidden="true" tabindex="-1"></a>The third (bottom left) plot ("Scale-Location") is similar to the first, but graphs the square root of the standardized residuals versus fitted values of **y** and shows whether or the magnitude of residuals differs across the fitted values of **y**. Again, it is good if you see a horizontal line with equally spread points rather than a decrease or increase in spread across the range of fitted **y**s, which would indicate that the error variance increases or decreases across the relationship between **y** and **x** in your model.</span>
-<span id="cb96-299"><a href="#cb96-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-300"><a href="#cb96-300" aria-hidden="true" tabindex="-1"></a>The fourth (bottom right) plot ("Residuals vs. Leverage") highlights whether there are any particular observations with disproportionate influence on the model. In particular, we look to see if there are cases that fall in the upper or lower right portion of the plot.</span>
-<span id="cb96-301"><a href="#cb96-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-302"><a href="#cb96-302" aria-hidden="true" tabindex="-1"></a>We can also do a QQ plot of our residuals...</span>
-<span id="cb96-303"><a href="#cb96-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-306"><a href="#cb96-306" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-307"><a href="#cb96-307" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb96-308"><a href="#cb96-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
-<span id="cb96-309"><a href="#cb96-309" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m<span class="sc">$</span>residuals)</span>
-<span id="cb96-310"><a href="#cb96-310" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m<span class="sc">$</span>residuals)</span>
-<span id="cb96-311"><a href="#cb96-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-312"><a href="#cb96-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-313"><a href="#cb96-313" aria-hidden="true" tabindex="-1"></a>Perhaps more helpful QQ plots can be found in the {car} and {ggpubr} package. The functions <span class="in">`qqPlot()`</span> and <span class="in">`ggqqplot()`</span> provides a trend line and confidence intervals that allow us to see exactly which points make the sample fall outside of normality (if any). Let's take a look:</span>
-<span id="cb96-314"><a href="#cb96-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-317"><a href="#cb96-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-318"><a href="#cb96-318" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb96-319"><a href="#cb96-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
-<span id="cb96-320"><a href="#cb96-320" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(m, <span class="at">distribution =</span> <span class="st">"norm"</span>, <span class="at">id =</span> <span class="cn">FALSE</span>) <span class="co"># qqPlot from {car}</span></span>
-<span id="cb96-321"><a href="#cb96-321" aria-hidden="true" tabindex="-1"></a><span class="co"># `id=FALSE` means that outlier observations will not be labelled</span></span>
-<span id="cb96-322"><a href="#cb96-322" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
-<span id="cb96-323"><a href="#cb96-323" aria-hidden="true" tabindex="-1"></a><span class="fu">ggqqplot</span>(m<span class="sc">$</span>residuals)</span>
-<span id="cb96-324"><a href="#cb96-324" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggpubr)</span>
-<span id="cb96-325"><a href="#cb96-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-326"><a href="#cb96-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-327"><a href="#cb96-327" aria-hidden="true" tabindex="-1"></a>Finally, there are a number of tests for normality that we can run within the ***R*** framework and using other packages. A **Shapiro-Wilk Normality Test** is perhaps the most widely used, where a low p value would indicate deviation from normality (technically, a measure of how far the trend line of the residuals deviates from the Q-Q plot line).</span>
-<span id="cb96-328"><a href="#cb96-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-331"><a href="#cb96-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-332"><a href="#cb96-332" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span>
-<span id="cb96-333"><a href="#cb96-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-334"><a href="#cb96-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-335"><a href="#cb96-335" aria-hidden="true" tabindex="-1"></a>As you can see, although there are some points at the higher quantiles that suggest non-normality, the Shapiro-Wilk test suggests that it is not quite non-normal, so our use of parametric statistics should be okay.</span>
-<span id="cb96-336"><a href="#cb96-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-337"><a href="#cb96-337" aria-hidden="true" tabindex="-1"></a>Some other popular tests for normality, and the cases in which they are best used, are listed below:</span>
-<span id="cb96-338"><a href="#cb96-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-339"><a href="#cb96-339" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Anderson-Darling test** from the {nortest} package</span>
-<span id="cb96-340"><a href="#cb96-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-341"><a href="#cb96-341" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Very popular, not quite as powerful as Shapiro-Wilk</span>
-<span id="cb96-342"><a href="#cb96-342" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Best used when $n$ ≥ 8</span>
-<span id="cb96-343"><a href="#cb96-343" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`nortest:: ad.test()`</span></span>
-<span id="cb96-344"><a href="#cb96-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-345"><a href="#cb96-345" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Martinez-Iglewicz test** from the {PoweR} package</span>
-<span id="cb96-346"><a href="#cb96-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-347"><a href="#cb96-347" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Tests for dispersion from the median</span>
-<span id="cb96-348"><a href="#cb96-348" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Very powerful for heavy-tailed distributions</span>
-<span id="cb96-349"><a href="#cb96-349" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Best with small sample sizes ($n$ ≥ 3)</span>
-<span id="cb96-350"><a href="#cb96-350" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`PoweR::stat0032.MartinezIglewicz()`</span></span>
-<span id="cb96-351"><a href="#cb96-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-352"><a href="#cb96-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Kolmogorov-Smirnov test** (with Lilliefors adjustment) from the {nortest} package</span>
-<span id="cb96-353"><a href="#cb96-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-354"><a href="#cb96-354" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Not as good as Anderson-Darling, but historically popular</span>
-<span id="cb96-355"><a href="#cb96-355" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Requires that $n$ ≥ 4.</span>
-<span id="cb96-356"><a href="#cb96-356" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`nortest::lillie.test()`</span></span>
-<span id="cb96-357"><a href="#cb96-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-358"><a href="#cb96-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**D-Agostino Omnibus test** (based on assessment of skew and kurtosis) from the {fBasics} package</span>
-<span id="cb96-359"><a href="#cb96-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-360"><a href="#cb96-360" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Robust against identical values in distribution</span>
-<span id="cb96-361"><a href="#cb96-361" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Skewness test requires $n$ ≥ 8</span>
-<span id="cb96-362"><a href="#cb96-362" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Kurtosis test requires $n$ ≥ 20</span>
-<span id="cb96-363"><a href="#cb96-363" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`fBasics::dagoTest()`</span></span>
-<span id="cb96-364"><a href="#cb96-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-365"><a href="#cb96-365" aria-hidden="true" tabindex="-1"></a>For a good discussion/demonstration of the relative power of each of these tests (meaning the probability that the test will correctly reject the null hypothesis) at different sample sizes, check out <span class="co">[</span><span class="ot">this link</span><span class="co">](https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/PASS/Normality_Tests-Simulation.pdf)</span> or <span class="co">[</span><span class="ot">this pdf</span><span class="co">](img/Normality_Tests-Simulation.pdf)</span>, especially the tables on pages 670-8 and 670-9 and the plots on 670-10. This can help you better understand which test is best for a given sample size, and how much faith to put in these tests given your sample!</span>
-<span id="cb96-366"><a href="#cb96-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-367"><a href="#cb96-367" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb96-368"><a href="#cb96-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-369"><a href="#cb96-369" aria-hidden="true" tabindex="-1"></a>Load in the "KamilarAndCooper.csv" dataset and develop a linear model to look at the relationship between "weaning age" and "female body mass". You will probably need to look at the data and variable names again to find the appropriate variables to examine.</span>
-<span id="cb96-370"><a href="#cb96-370" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-373"><a href="#cb96-373" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-374"><a href="#cb96-374" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb96-375"><a href="#cb96-375" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
-<span id="cb96-376"><a href="#cb96-376" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb96-377"><a href="#cb96-377" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
-<span id="cb96-378"><a href="#cb96-378" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">select</span>(d, <span class="at">WeaningAge =</span> <span class="st">"WeaningAge_d"</span>,</span>
-<span id="cb96-379"><a href="#cb96-379" aria-hidden="true" tabindex="-1"></a>  <span class="at">FemaleBodyMass =</span> <span class="st">"Body_mass_female_mean"</span>)</span>
-<span id="cb96-380"><a href="#cb96-380" aria-hidden="true" tabindex="-1"></a><span class="co"># keep select columns</span></span>
-<span id="cb96-381"><a href="#cb96-381" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(d) <span class="co"># get rid of NAs</span></span>
-<span id="cb96-382"><a href="#cb96-382" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> FemaleBodyMass, <span class="at">y =</span> WeaningAge)) <span class="sc">+</span></span>
-<span id="cb96-383"><a href="#cb96-383" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
-<span id="cb96-384"><a href="#cb96-384" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-385"><a href="#cb96-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-386"><a href="#cb96-386" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using the procedures outlined above and in <span class="co">[</span><span class="ot">**Module 18**</span><span class="co">](#module-18)</span>, calculate estimates of $\beta_0$ and $\beta_1$ by hand and by using the <span class="in">`lm()`</span> function. Are the regression coefficients estimated under a simple linear model statistically significantly different from zero?</span>
-<span id="cb96-387"><a href="#cb96-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-390"><a href="#cb96-390" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-391"><a href="#cb96-391" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb96-392"><a href="#cb96-392" aria-hidden="true" tabindex="-1"></a><span class="co"># by hand</span></span>
-<span id="cb96-393"><a href="#cb96-393" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(d<span class="sc">$</span>FemaleBodyMass, d<span class="sc">$</span>WeaningAge) <span class="sc">*</span> (<span class="fu">sd</span>(d<span class="sc">$</span>WeaningAge) <span class="sc">/</span> <span class="fu">sd</span>(d<span class="sc">$</span>FemaleBodyMass))</span>
-<span id="cb96-394"><a href="#cb96-394" aria-hidden="true" tabindex="-1"></a>beta1</span>
-<span id="cb96-395"><a href="#cb96-395" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>WeaningAge) <span class="sc">-</span> beta1 <span class="sc">*</span> <span class="fu">mean</span>(d<span class="sc">$</span>FemaleBodyMass)</span>
-<span id="cb96-396"><a href="#cb96-396" aria-hidden="true" tabindex="-1"></a>beta0</span>
-<span id="cb96-397"><a href="#cb96-397" aria-hidden="true" tabindex="-1"></a><span class="co"># using lm()</span></span>
-<span id="cb96-398"><a href="#cb96-398" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, WeaningAge <span class="sc">~</span> FemaleBodyMass)</span>
-<span id="cb96-399"><a href="#cb96-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-400"><a href="#cb96-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-401"><a href="#cb96-401" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construct an ANOVA table by hand and compare your values to the results of running <span class="in">`lm()`</span> and then looking at <span class="in">`summary.aov(lm())`</span>.</span>
+<span id="cb96-281"><a href="#cb96-281" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb96-282"><a href="#cb96-282" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
+<span id="cb96-283"><a href="#cb96-283" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(e, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span> <span class="sc">*</span> <span class="fu">sd</span>(e), <span class="dv">4</span> <span class="sc">*</span> <span class="fu">sd</span>(e)), <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"Histogram of Residuals"</span>)</span>
+<span id="cb96-284"><a href="#cb96-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-285"><a href="#cb96-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-286"><a href="#cb96-286" aria-hidden="true" tabindex="-1"></a>An additional way to quickly examine your residuals is to use the <span class="in">`plot()`</span> function with your model as an argument. This prints out four plots that each tell you something.</span>
+<span id="cb96-287"><a href="#cb96-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-290"><a href="#cb96-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-291"><a href="#cb96-291" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb96-292"><a href="#cb96-292" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span>
+<span id="cb96-293"><a href="#cb96-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-294"><a href="#cb96-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-295"><a href="#cb96-295" aria-hidden="true" tabindex="-1"></a>The first (top left) plot of "Residuals vs Fitted" values of **y** should, like the plot residuals versus **x**, not show any structure. We hope to see equally spread residuals around a horizontal line without distinct patterns.</span>
+<span id="cb96-296"><a href="#cb96-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-297"><a href="#cb96-297" aria-hidden="true" tabindex="-1"></a>The second (top right) plot is "Normal Q-Q" plot of theoretical quantiles versus standardized quantiles for the residual values. These should fall on roughly a straight line if the residuals are normally distributed.</span>
+<span id="cb96-298"><a href="#cb96-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-299"><a href="#cb96-299" aria-hidden="true" tabindex="-1"></a>The third (bottom left) plot ("Scale-Location") is similar to the first, but graphs the square root of the standardized residuals versus fitted values of **y** and shows whether or the magnitude of residuals differs across the fitted values of **y**. Again, it is good if you see a horizontal line with equally spread points rather than a decrease or increase in spread across the range of fitted **y**s, which would indicate that the error variance increases or decreases across the relationship between **y** and **x** in your model.</span>
+<span id="cb96-300"><a href="#cb96-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-301"><a href="#cb96-301" aria-hidden="true" tabindex="-1"></a>The fourth (bottom right) plot ("Residuals vs. Leverage") highlights whether there are any particular observations with disproportionate influence on the model. In particular, we look to see if there are cases that fall in the upper or lower right portion of the plot.</span>
+<span id="cb96-302"><a href="#cb96-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-303"><a href="#cb96-303" aria-hidden="true" tabindex="-1"></a>We can also do a QQ plot of our residuals...</span>
+<span id="cb96-304"><a href="#cb96-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-307"><a href="#cb96-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-308"><a href="#cb96-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb96-309"><a href="#cb96-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb96-310"><a href="#cb96-310" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m<span class="sc">$</span>residuals)</span>
+<span id="cb96-311"><a href="#cb96-311" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m<span class="sc">$</span>residuals)</span>
+<span id="cb96-312"><a href="#cb96-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-313"><a href="#cb96-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-314"><a href="#cb96-314" aria-hidden="true" tabindex="-1"></a>Perhaps more helpful QQ plots can be found in the {car} and {ggpubr} package. The functions <span class="in">`qqPlot()`</span> and <span class="in">`ggqqplot()`</span> provides a trend line and confidence intervals that allow us to see exactly which points make the sample fall outside of normality (if any). Let's take a look:</span>
+<span id="cb96-315"><a href="#cb96-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-318"><a href="#cb96-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-319"><a href="#cb96-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb96-320"><a href="#cb96-320" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb96-321"><a href="#cb96-321" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(m, <span class="at">distribution =</span> <span class="st">"norm"</span>, <span class="at">id =</span> <span class="cn">FALSE</span>) <span class="co"># qqPlot from {car}</span></span>
+<span id="cb96-322"><a href="#cb96-322" aria-hidden="true" tabindex="-1"></a><span class="co"># `id=FALSE` means that outlier observations will not be labelled</span></span>
+<span id="cb96-323"><a href="#cb96-323" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb96-324"><a href="#cb96-324" aria-hidden="true" tabindex="-1"></a><span class="fu">ggqqplot</span>(m<span class="sc">$</span>residuals)</span>
+<span id="cb96-325"><a href="#cb96-325" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggpubr)</span>
+<span id="cb96-326"><a href="#cb96-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-327"><a href="#cb96-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-328"><a href="#cb96-328" aria-hidden="true" tabindex="-1"></a>Finally, there are a number of tests for normality that we can run within the ***R*** framework and using other packages. A **Shapiro-Wilk Normality Test** is perhaps the most widely used, where a low p value would indicate deviation from normality (technically, a measure of how far the trend line of the residuals deviates from the Q-Q plot line).</span>
+<span id="cb96-329"><a href="#cb96-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-332"><a href="#cb96-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-333"><a href="#cb96-333" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span>
+<span id="cb96-334"><a href="#cb96-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-335"><a href="#cb96-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-336"><a href="#cb96-336" aria-hidden="true" tabindex="-1"></a>As you can see, although there are some points at the higher quantiles that suggest non-normality, the Shapiro-Wilk test suggests that it is not quite non-normal, so our use of parametric statistics should be okay.</span>
+<span id="cb96-337"><a href="#cb96-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-338"><a href="#cb96-338" aria-hidden="true" tabindex="-1"></a>Some other popular tests for normality, and the cases in which they are best used, are listed below:</span>
+<span id="cb96-339"><a href="#cb96-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-340"><a href="#cb96-340" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Anderson-Darling test** from the {nortest} package</span>
+<span id="cb96-341"><a href="#cb96-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-342"><a href="#cb96-342" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Very popular, not quite as powerful as Shapiro-Wilk</span>
+<span id="cb96-343"><a href="#cb96-343" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Best used when $n$ ≥ 8</span>
+<span id="cb96-344"><a href="#cb96-344" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`nortest:: ad.test()`</span></span>
+<span id="cb96-345"><a href="#cb96-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-346"><a href="#cb96-346" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Martinez-Iglewicz test** from the {PoweR} package</span>
+<span id="cb96-347"><a href="#cb96-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-348"><a href="#cb96-348" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Tests for dispersion from the median</span>
+<span id="cb96-349"><a href="#cb96-349" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Very powerful for heavy-tailed distributions</span>
+<span id="cb96-350"><a href="#cb96-350" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Best with small sample sizes ($n$ ≥ 3)</span>
+<span id="cb96-351"><a href="#cb96-351" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`PoweR::stat0032.MartinezIglewicz()`</span></span>
+<span id="cb96-352"><a href="#cb96-352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-353"><a href="#cb96-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Kolmogorov-Smirnov test** (with Lilliefors adjustment) from the {nortest} package</span>
+<span id="cb96-354"><a href="#cb96-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-355"><a href="#cb96-355" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Not as good as Anderson-Darling, but historically popular</span>
+<span id="cb96-356"><a href="#cb96-356" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Requires that $n$ ≥ 4.</span>
+<span id="cb96-357"><a href="#cb96-357" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`nortest::lillie.test()`</span></span>
+<span id="cb96-358"><a href="#cb96-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-359"><a href="#cb96-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**D-Agostino Omnibus test** (based on assessment of skew and kurtosis) from the {fBasics} package</span>
+<span id="cb96-360"><a href="#cb96-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-361"><a href="#cb96-361" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Robust against identical values in distribution</span>
+<span id="cb96-362"><a href="#cb96-362" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Skewness test requires $n$ ≥ 8</span>
+<span id="cb96-363"><a href="#cb96-363" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Kurtosis test requires $n$ ≥ 20</span>
+<span id="cb96-364"><a href="#cb96-364" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span><span class="in">`fBasics::dagoTest()`</span></span>
+<span id="cb96-365"><a href="#cb96-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-366"><a href="#cb96-366" aria-hidden="true" tabindex="-1"></a>For a good discussion/demonstration of the relative power of each of these tests (meaning the probability that the test will correctly reject the null hypothesis) at different sample sizes, check out <span class="co">[</span><span class="ot">this link</span><span class="co">](https://ncss-wpengine.netdna-ssl.com/wp-content/themes/ncss/pdf/Procedures/PASS/Normality_Tests-Simulation.pdf)</span> or <span class="co">[</span><span class="ot">this pdf</span><span class="co">](img/Normality_Tests-Simulation.pdf)</span>, especially the tables on pages 670-8 and 670-9 and the plots on 670-10. This can help you better understand which test is best for a given sample size, and how much faith to put in these tests given your sample!</span>
+<span id="cb96-367"><a href="#cb96-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-368"><a href="#cb96-368" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb96-369"><a href="#cb96-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-370"><a href="#cb96-370" aria-hidden="true" tabindex="-1"></a>Load in the "KamilarAndCooper.csv" dataset and develop a linear model to look at the relationship between "weaning age" and "female body mass". You will probably need to look at the data and variable names again to find the appropriate variables to examine.</span>
+<span id="cb96-371"><a href="#cb96-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-374"><a href="#cb96-374" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-375"><a href="#cb96-375" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb96-376"><a href="#cb96-376" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
+<span id="cb96-377"><a href="#cb96-377" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb96-378"><a href="#cb96-378" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
+<span id="cb96-379"><a href="#cb96-379" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">select</span>(d, <span class="at">WeaningAge =</span> <span class="st">"WeaningAge_d"</span>,</span>
+<span id="cb96-380"><a href="#cb96-380" aria-hidden="true" tabindex="-1"></a>  <span class="at">FemaleBodyMass =</span> <span class="st">"Body_mass_female_mean"</span>)</span>
+<span id="cb96-381"><a href="#cb96-381" aria-hidden="true" tabindex="-1"></a><span class="co"># keep select columns</span></span>
+<span id="cb96-382"><a href="#cb96-382" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(d) <span class="co"># get rid of NAs</span></span>
+<span id="cb96-383"><a href="#cb96-383" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> FemaleBodyMass, <span class="at">y =</span> WeaningAge)) <span class="sc">+</span></span>
+<span id="cb96-384"><a href="#cb96-384" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb96-385"><a href="#cb96-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-386"><a href="#cb96-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-387"><a href="#cb96-387" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using the procedures outlined above and in <span class="co">[</span><span class="ot">**Module 18**</span><span class="co">](#module-18)</span>, calculate estimates of $\beta_0$ and $\beta_1$ by hand and by using the <span class="in">`lm()`</span> function. Are the regression coefficients estimated under a simple linear model statistically significantly different from zero?</span>
+<span id="cb96-388"><a href="#cb96-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-391"><a href="#cb96-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-392"><a href="#cb96-392" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb96-393"><a href="#cb96-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb96-394"><a href="#cb96-394" aria-hidden="true" tabindex="-1"></a><span class="co"># by hand</span></span>
+<span id="cb96-395"><a href="#cb96-395" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(d<span class="sc">$</span>FemaleBodyMass, d<span class="sc">$</span>WeaningAge) <span class="sc">*</span> (<span class="fu">sd</span>(d<span class="sc">$</span>WeaningAge) <span class="sc">/</span> <span class="fu">sd</span>(d<span class="sc">$</span>FemaleBodyMass))</span>
+<span id="cb96-396"><a href="#cb96-396" aria-hidden="true" tabindex="-1"></a>beta1</span>
+<span id="cb96-397"><a href="#cb96-397" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>WeaningAge) <span class="sc">-</span> beta1 <span class="sc">*</span> <span class="fu">mean</span>(d<span class="sc">$</span>FemaleBodyMass)</span>
+<span id="cb96-398"><a href="#cb96-398" aria-hidden="true" tabindex="-1"></a>beta0</span>
+<span id="cb96-399"><a href="#cb96-399" aria-hidden="true" tabindex="-1"></a><span class="co"># using lm()</span></span>
+<span id="cb96-400"><a href="#cb96-400" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, WeaningAge <span class="sc">~</span> FemaleBodyMass)</span>
+<span id="cb96-401"><a href="#cb96-401" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb96-402"><a href="#cb96-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-405"><a href="#cb96-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-406"><a href="#cb96-406" aria-hidden="true" tabindex="-1"></a><span class="co"># by hand</span></span>
-<span id="cb96-407"><a href="#cb96-407" aria-hidden="true" tabindex="-1"></a>SSY <span class="ot">&lt;-</span> <span class="fu">sum</span>((m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge <span class="sc">-</span> <span class="fu">mean</span>(m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge)) <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb96-408"><a href="#cb96-408" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">sum</span>((m<span class="sc">$</span>fitted.values <span class="sc">-</span> <span class="fu">mean</span>(m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge)) <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb96-409"><a href="#cb96-409" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> <span class="fu">sum</span>((m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge <span class="sc">-</span> m<span class="sc">$</span>fitted.values) <span class="sc">^</span> <span class="dv">2</span>)</span>
-<span id="cb96-410"><a href="#cb96-410" aria-hidden="true" tabindex="-1"></a>DFR <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb96-411"><a href="#cb96-411" aria-hidden="true" tabindex="-1"></a>DFE <span class="ot">&lt;-</span> <span class="fu">nrow</span>(d) <span class="sc">-</span> DFR <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb96-412"><a href="#cb96-412" aria-hidden="true" tabindex="-1"></a>DFY <span class="ot">&lt;-</span> <span class="fu">nrow</span>(d) <span class="sc">-</span> DFR</span>
-<span id="cb96-413"><a href="#cb96-413" aria-hidden="true" tabindex="-1"></a>MSR <span class="ot">&lt;-</span> SSR<span class="sc">/</span>DFR</span>
-<span id="cb96-414"><a href="#cb96-414" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> SSE<span class="sc">/</span>DFE</span>
-<span id="cb96-415"><a href="#cb96-415" aria-hidden="true" tabindex="-1"></a>MSY <span class="ot">&lt;-</span> SSY<span class="sc">/</span>DFY</span>
-<span id="cb96-416"><a href="#cb96-416" aria-hidden="true" tabindex="-1"></a>fratio <span class="ot">&lt;-</span> MSR<span class="sc">/</span>MSE</span>
-<span id="cb96-417"><a href="#cb96-417" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pf</span>(<span class="at">q=</span>fratio,<span class="at">df1=</span>DFR,<span class="at">df2=</span>DFE)</span>
-<span id="cb96-418"><a href="#cb96-418" aria-hidden="true" tabindex="-1"></a>(aov_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Source"</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">"Regression"</span>,<span class="st">"Error"</span>,<span class="st">"Total"</span>),</span>
-<span id="cb96-419"><a href="#cb96-419" aria-hidden="true" tabindex="-1"></a>  <span class="st">"df"</span><span class="ot">=</span><span class="fu">c</span>(DFR,DFE,DFY), <span class="st">"Sum Sq"</span><span class="ot">=</span><span class="fu">c</span>(SSR,SSE,SSY),</span>
-<span id="cb96-420"><a href="#cb96-420" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Mean Sq"</span><span class="ot">=</span><span class="fu">c</span>(MSR,MSE,MSY),</span>
-<span id="cb96-421"><a href="#cb96-421" aria-hidden="true" tabindex="-1"></a>  <span class="st">"F value"</span><span class="ot">=</span><span class="fu">c</span>(fratio,<span class="cn">NA</span>,<span class="cn">NA</span>),</span>
-<span id="cb96-422"><a href="#cb96-422" aria-hidden="true" tabindex="-1"></a>  <span class="st">"p"</span><span class="ot">=</span><span class="fu">c</span>(p,<span class="cn">NA</span>,<span class="cn">NA</span>)))</span>
-<span id="cb96-423"><a href="#cb96-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-424"><a href="#cb96-424" aria-hidden="true" tabindex="-1"></a><span class="co"># using summary.aov()</span></span>
-<span id="cb96-425"><a href="#cb96-425" aria-hidden="true" tabindex="-1"></a><span class="fu">summary.aov</span>(m)</span>
-<span id="cb96-426"><a href="#cb96-426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-427"><a href="#cb96-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-428"><a href="#cb96-428" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Generate the residuals for your linear model, plot them in relation to female body mass, and make a histogram of the residuals. Do they appear to be normally distributed?</span>
+<span id="cb96-403"><a href="#cb96-403" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construct an ANOVA table by hand and compare your values to the results of running <span class="in">`lm()`</span> and then looking at <span class="in">`summary.aov(lm())`</span>.</span>
+<span id="cb96-404"><a href="#cb96-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-407"><a href="#cb96-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-408"><a href="#cb96-408" aria-hidden="true" tabindex="-1"></a><span class="co"># by hand</span></span>
+<span id="cb96-409"><a href="#cb96-409" aria-hidden="true" tabindex="-1"></a>SSY <span class="ot">&lt;-</span> <span class="fu">sum</span>((m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge <span class="sc">-</span> <span class="fu">mean</span>(m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge)) <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb96-410"><a href="#cb96-410" aria-hidden="true" tabindex="-1"></a>SSR <span class="ot">&lt;-</span> <span class="fu">sum</span>((m<span class="sc">$</span>fitted.values <span class="sc">-</span> <span class="fu">mean</span>(m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge)) <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb96-411"><a href="#cb96-411" aria-hidden="true" tabindex="-1"></a>SSE <span class="ot">&lt;-</span> <span class="fu">sum</span>((m<span class="sc">$</span>model<span class="sc">$</span>WeaningAge <span class="sc">-</span> m<span class="sc">$</span>fitted.values) <span class="sc">^</span> <span class="dv">2</span>)</span>
+<span id="cb96-412"><a href="#cb96-412" aria-hidden="true" tabindex="-1"></a>DFR <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb96-413"><a href="#cb96-413" aria-hidden="true" tabindex="-1"></a>DFE <span class="ot">&lt;-</span> <span class="fu">nrow</span>(d) <span class="sc">-</span> DFR <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb96-414"><a href="#cb96-414" aria-hidden="true" tabindex="-1"></a>DFY <span class="ot">&lt;-</span> <span class="fu">nrow</span>(d) <span class="sc">-</span> DFR</span>
+<span id="cb96-415"><a href="#cb96-415" aria-hidden="true" tabindex="-1"></a>MSR <span class="ot">&lt;-</span> SSR<span class="sc">/</span>DFR</span>
+<span id="cb96-416"><a href="#cb96-416" aria-hidden="true" tabindex="-1"></a>MSE <span class="ot">&lt;-</span> SSE<span class="sc">/</span>DFE</span>
+<span id="cb96-417"><a href="#cb96-417" aria-hidden="true" tabindex="-1"></a>MSY <span class="ot">&lt;-</span> SSY<span class="sc">/</span>DFY</span>
+<span id="cb96-418"><a href="#cb96-418" aria-hidden="true" tabindex="-1"></a>fratio <span class="ot">&lt;-</span> MSR<span class="sc">/</span>MSE</span>
+<span id="cb96-419"><a href="#cb96-419" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">pf</span>(<span class="at">q=</span>fratio,<span class="at">df1=</span>DFR,<span class="at">df2=</span>DFE)</span>
+<span id="cb96-420"><a href="#cb96-420" aria-hidden="true" tabindex="-1"></a>(aov_table <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="st">"Source"</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">"Regression"</span>,<span class="st">"Error"</span>,<span class="st">"Total"</span>),</span>
+<span id="cb96-421"><a href="#cb96-421" aria-hidden="true" tabindex="-1"></a>  <span class="st">"df"</span><span class="ot">=</span><span class="fu">c</span>(DFR,DFE,DFY), <span class="st">"Sum Sq"</span><span class="ot">=</span><span class="fu">c</span>(SSR,SSE,SSY),</span>
+<span id="cb96-422"><a href="#cb96-422" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Mean Sq"</span><span class="ot">=</span><span class="fu">c</span>(MSR,MSE,MSY),</span>
+<span id="cb96-423"><a href="#cb96-423" aria-hidden="true" tabindex="-1"></a>  <span class="st">"F value"</span><span class="ot">=</span><span class="fu">c</span>(fratio,<span class="cn">NA</span>,<span class="cn">NA</span>),</span>
+<span id="cb96-424"><a href="#cb96-424" aria-hidden="true" tabindex="-1"></a>  <span class="st">"p"</span><span class="ot">=</span><span class="fu">c</span>(p,<span class="cn">NA</span>,<span class="cn">NA</span>)))</span>
+<span id="cb96-425"><a href="#cb96-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-426"><a href="#cb96-426" aria-hidden="true" tabindex="-1"></a><span class="co"># using summary.aov()</span></span>
+<span id="cb96-427"><a href="#cb96-427" aria-hidden="true" tabindex="-1"></a><span class="fu">summary.aov</span>(m)</span>
+<span id="cb96-428"><a href="#cb96-428" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb96-429"><a href="#cb96-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-432"><a href="#cb96-432" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-433"><a href="#cb96-433" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb96-434"><a href="#cb96-434" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
-<span id="cb96-435"><a href="#cb96-435" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> m<span class="sc">$</span>residuals</span>
-<span id="cb96-436"><a href="#cb96-436" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(residuals <span class="sc">~</span> d<span class="sc">$</span>FemaleBodyMass, <span class="at">xlab =</span> <span class="st">"Female Body Mass"</span>, <span class="at">ylab =</span> <span class="st">"Residuals"</span>)</span>
-<span id="cb96-437"><a href="#cb96-437" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"Histogram of Residuals"</span>)</span>
-<span id="cb96-438"><a href="#cb96-438" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-439"><a href="#cb96-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-440"><a href="#cb96-440" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Run the <span class="in">`plot()`</span> command on the result of <span class="in">`lm()`</span> and examine the 4 plots produced.</span>
-<span id="cb96-441"><a href="#cb96-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-444"><a href="#cb96-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-445"><a href="#cb96-445" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb96-446"><a href="#cb96-446" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb96-447"><a href="#cb96-447" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span>
-<span id="cb96-448"><a href="#cb96-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-449"><a href="#cb96-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-450"><a href="#cb96-450" aria-hidden="true" tabindex="-1"></a>Again, based on examination of the residuals and the results of Shapiro-Wilks test, does it look like your model has good fit?</span>
-<span id="cb96-451"><a href="#cb96-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-454"><a href="#cb96-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-455"><a href="#cb96-455" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb96-456"><a href="#cb96-456" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 4</span></span>
-<span id="cb96-457"><a href="#cb96-457" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb96-458"><a href="#cb96-458" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m<span class="sc">$</span>residuals)</span>
-<span id="cb96-459"><a href="#cb96-459" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m<span class="sc">$</span>residuals)</span>
-<span id="cb96-460"><a href="#cb96-460" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span>
-<span id="cb96-461"><a href="#cb96-461" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-462"><a href="#cb96-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-463"><a href="#cb96-463" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Transformations</span></span>
-<span id="cb96-464"><a href="#cb96-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-465"><a href="#cb96-465" aria-hidden="true" tabindex="-1"></a>Recall, again, that for linear regression modeling to be appropriate, two important conditions need to be met: <span class="co">[</span><span class="ot">1</span><span class="co">]</span> our variables (and the error variance in our variables) should be approximately **normally distributed** and [2] there should be **homogeneity of variance** ("homoscedasticity") in our response variable around the range of our predictor variable.</span>
-<span id="cb96-466"><a href="#cb96-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-467"><a href="#cb96-467" aria-hidden="true" tabindex="-1"></a>In many cases, these conditions may not be met... for example, the continuous metric data we have may not, in fact, be normally distributed. Nonetheless, we can sometimes apply some kind of mathematical transformation to our data to change their distribution to more closely approximate the normal.</span>
-<span id="cb96-468"><a href="#cb96-468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-469"><a href="#cb96-469" aria-hidden="true" tabindex="-1"></a>The logarithmic or "log" transformation (where we take the log value of each data point) is often applied to positive numeric variables with heavy skew to dramatically reduce the overall range of the data and bring extreme observations closer to a measure of centrality. The logarithm for a number is the power to which you must raise a base value (e.g., $e$, the natural log) in order to obtain that number. This is an example of a "power transformation", other examples of which include the square root transformation and the reciprocal (or multiplicative inverse) transformation.</span>
-<span id="cb96-470"><a href="#cb96-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-471"><a href="#cb96-471" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb96-472"><a href="#cb96-472" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-473"><a href="#cb96-473" aria-hidden="true" tabindex="-1"></a>Return to the original "KamilarAndCooper.csv" dataset you were looking at above, <span class="in">`log()`</span> transform both of your variables, and then run a simple, bivariate linear model.</span>
-<span id="cb96-474"><a href="#cb96-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-475"><a href="#cb96-475" aria-hidden="true" tabindex="-1"></a>Do you notice a difference between these results and those obtained using untransformed variables?</span>
-<span id="cb96-476"><a href="#cb96-476" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-479"><a href="#cb96-479" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-480"><a href="#cb96-480" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb96-481"><a href="#cb96-481" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
-<span id="cb96-482"><a href="#cb96-482" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f,<span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb96-483"><a href="#cb96-483" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
-<span id="cb96-484"><a href="#cb96-484" aria-hidden="true" tabindex="-1"></a><span class="co"># keep select columns</span></span>
-<span id="cb96-485"><a href="#cb96-485" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">select</span>(d, <span class="at">WeaningAge=</span><span class="st">"WeaningAge_d"</span>,</span>
-<span id="cb96-486"><a href="#cb96-486" aria-hidden="true" tabindex="-1"></a>  <span class="at">FemaleBodyMass=</span><span class="st">"Body_mass_female_mean"</span>)</span>
-<span id="cb96-487"><a href="#cb96-487" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(d) <span class="co"># get rid of NAs</span></span>
-<span id="cb96-488"><a href="#cb96-488" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>logWeaningAge <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>WeaningAge)</span>
-<span id="cb96-489"><a href="#cb96-489" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>logFemaleBodyMass <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>FemaleBodyMass)</span>
-<span id="cb96-490"><a href="#cb96-490" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>d,<span class="fu">aes</span>(<span class="at">x=</span>logFemaleBodyMass, <span class="at">y=</span>logWeaningAge)) <span class="sc">+</span></span>
-<span id="cb96-491"><a href="#cb96-491" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>)</span>
-<span id="cb96-492"><a href="#cb96-492" aria-hidden="true" tabindex="-1"></a><span class="co"># or plot(data=d, logWeaningAge ~ logFemaleBodyMass)</span></span>
-<span id="cb96-493"><a href="#cb96-493" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, logWeaningAge <span class="sc">~</span> logFemaleBodyMass)</span>
-<span id="cb96-494"><a href="#cb96-494" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span>
-<span id="cb96-495"><a href="#cb96-495" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb96-496"><a href="#cb96-496" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span>
-<span id="cb96-497"><a href="#cb96-497" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb96-498"><a href="#cb96-498" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(m<span class="sc">$</span>residuals) <span class="do">## qqPlot from {car}</span></span>
-<span id="cb96-499"><a href="#cb96-499" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span>
-<span id="cb96-500"><a href="#cb96-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-501"><a href="#cb96-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-502"><a href="#cb96-502" aria-hidden="true" tabindex="-1"></a>The following chart and graphs shows some other common numerical transformations that are often useful for changing a variable's distribution to more closely approximate the normal.</span>
-<span id="cb96-503"><a href="#cb96-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-506"><a href="#cb96-506" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-507"><a href="#cb96-507" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb96-508"><a href="#cb96-508" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
-<span id="cb96-509"><a href="#cb96-509" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/transformations.png"</span>)</span>
-<span id="cb96-510"><a href="#cb96-510" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-511"><a href="#cb96-511" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-514"><a href="#cb96-514" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-515"><a href="#cb96-515" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
-<span id="cb96-516"><a href="#cb96-516" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb96-517"><a href="#cb96-517" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb96-518"><a href="#cb96-518" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb96-519"><a href="#cb96-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-520"><a href="#cb96-520" aria-hidden="true" tabindex="-1"></a><span class="co"># LOG X</span></span>
-<span id="cb96-521"><a href="#cb96-521" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">100</span>, <span class="at">length.out=</span><span class="dv">1000</span>)</span>
-<span id="cb96-522"><a href="#cb96-522" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">+</span> b <span class="sc">*</span> <span class="fu">log</span>(x)</span>
-<span id="cb96-523"><a href="#cb96-523" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
-<span id="cb96-524"><a href="#cb96-524" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(x),y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"log(x)"</span>)</span>
-<span id="cb96-525"><a href="#cb96-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-526"><a href="#cb96-526" aria-hidden="true" tabindex="-1"></a><span class="co"># LOG Y - a log transformation for the response variable is useful</span></span>
-<span id="cb96-527"><a href="#cb96-527" aria-hidden="true" tabindex="-1"></a><span class="co"># when the variance in the explanatory variable is not consistent</span></span>
-<span id="cb96-528"><a href="#cb96-528" aria-hidden="true" tabindex="-1"></a><span class="co"># across the range of explanatory variable values</span></span>
-<span id="cb96-529"><a href="#cb96-529" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">10</span>, <span class="at">length.out=</span><span class="dv">1000</span>)</span>
-<span id="cb96-530"><a href="#cb96-530" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">exp</span>(a <span class="sc">+</span> b <span class="sc">*</span>x)</span>
-<span id="cb96-531"><a href="#cb96-531" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
-<span id="cb96-532"><a href="#cb96-532" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="fu">log</span>(y), <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"log(y)"</span>)</span>
-<span id="cb96-533"><a href="#cb96-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-534"><a href="#cb96-534" aria-hidden="true" tabindex="-1"></a><span class="co"># ASYMPTOTIC</span></span>
-<span id="cb96-535"><a href="#cb96-535" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">100</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
-<span id="cb96-536"><a href="#cb96-536" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> (a <span class="sc">*</span> x) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> b<span class="sc">*</span>x)</span>
-<span id="cb96-537"><a href="#cb96-537" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
-<span id="cb96-538"><a href="#cb96-538" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">/</span>x, y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"1/x"</span>)</span>
-<span id="cb96-539"><a href="#cb96-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-540"><a href="#cb96-540" aria-hidden="true" tabindex="-1"></a><span class="co"># RECIPROCAL</span></span>
-<span id="cb96-541"><a href="#cb96-541" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">100</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
-<span id="cb96-542"><a href="#cb96-542" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">+</span> b<span class="sc">/</span>x</span>
-<span id="cb96-543"><a href="#cb96-543" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
-<span id="cb96-544"><a href="#cb96-544" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">/</span>x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"1/x"</span>)</span>
-<span id="cb96-545"><a href="#cb96-545" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-546"><a href="#cb96-546" aria-hidden="true" tabindex="-1"></a><span class="co"># POWER - a power transformation for the explanatory variable is useful</span></span>
-<span id="cb96-547"><a href="#cb96-547" aria-hidden="true" tabindex="-1"></a><span class="co"># # if there is a curvilinear relationship between the explanatory</span></span>
-<span id="cb96-548"><a href="#cb96-548" aria-hidden="true" tabindex="-1"></a><span class="co"># variable and the response variable</span></span>
-<span id="cb96-549"><a href="#cb96-549" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">100</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
-<span id="cb96-550"><a href="#cb96-550" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">*</span> x<span class="sc">^</span>b</span>
-<span id="cb96-551"><a href="#cb96-551" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
-<span id="cb96-552"><a href="#cb96-552" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x<span class="sc">^</span>b, y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"x^b"</span>)</span>
-<span id="cb96-553"><a href="#cb96-553" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-554"><a href="#cb96-554" aria-hidden="true" tabindex="-1"></a><span class="co"># EXPONENTIAL</span></span>
-<span id="cb96-555"><a href="#cb96-555" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
-<span id="cb96-556"><a href="#cb96-556" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">*</span> <span class="fu">exp</span>(b<span class="sc">*</span>x)</span>
-<span id="cb96-557"><a href="#cb96-557" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
-<span id="cb96-558"><a href="#cb96-558" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="fu">log</span>(y), <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"log(y)"</span>)</span>
-<span id="cb96-559"><a href="#cb96-559" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-560"><a href="#cb96-560" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-561"><a href="#cb96-561" aria-hidden="true" tabindex="-1"></a>Applying a function to transform a complete dataset is the most common way of attempting to squeeze your data into matching a normal distribution so that you can use parametric statistics. This is a very common practice, and much has been written on this topic, including its drawbacks.</span>
-<span id="cb96-562"><a href="#cb96-562" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-563"><a href="#cb96-563" aria-hidden="true" tabindex="-1"></a>For a good discussion on common transformations, see ***R in Action*** Chapter 8.5 ("Corrective Measures"), and please do note the section titled **A caution concerning transformations**. When trying out transformations, keep your normalization tests handy so that you can retest the transformed data and see if the transformation achieved its intended purpose.</span>
-<span id="cb96-564"><a href="#cb96-564" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-567"><a href="#cb96-567" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb96-568"><a href="#cb96-568" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb96-569"><a href="#cb96-569" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mosaic)</span>
-<span id="cb96-570"><a href="#cb96-570" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>broom)</span>
-<span id="cb96-571"><a href="#cb96-571" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>car)</span>
-<span id="cb96-572"><a href="#cb96-572" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb96-573"><a href="#cb96-573" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb96-574"><a href="#cb96-574" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-575"><a href="#cb96-575" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
-<span id="cb96-576"><a href="#cb96-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-577"><a href="#cb96-577" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb96-578"><a href="#cb96-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-579"><a href="#cb96-579" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Regression analysis partitions the variance in a response variable into components associated with the various predictor variables plus an "error" component, or residual</span>
-<span id="cb96-580"><a href="#cb96-580" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The significance of the overall regression model, and of individual predictors, is evaluated by comparing F ratios (the ratio of the variance explained by the predictor to the unexplained variance) against an F distribution, taking into account the number of degrees of freedom in each</span>
-<span id="cb96-581"><a href="#cb96-581" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>After running a model, we need to confirm that key assumptions for linear regression are met, including that residuals are normally distributed and observations show homogeneity of variance across the range of predictor values</span>
-<span id="cb96-582"><a href="#cb96-582" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If these assumptions are not met, data transformation of the raw variables may sometimes be helpful</span>
+<span id="cb96-430"><a href="#cb96-430" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Generate the residuals for your linear model, plot them in relation to female body mass, and make a histogram of the residuals. Do they appear to be normally distributed?</span>
+<span id="cb96-431"><a href="#cb96-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-434"><a href="#cb96-434" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-435"><a href="#cb96-435" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb96-436"><a href="#cb96-436" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb96-437"><a href="#cb96-437" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4</span></span>
+<span id="cb96-438"><a href="#cb96-438" aria-hidden="true" tabindex="-1"></a>residuals <span class="ot">&lt;-</span> m<span class="sc">$</span>residuals</span>
+<span id="cb96-439"><a href="#cb96-439" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(residuals <span class="sc">~</span> d<span class="sc">$</span>FemaleBodyMass, <span class="at">xlab =</span> <span class="st">"Female Body Mass"</span>, <span class="at">ylab =</span> <span class="st">"Residuals"</span>)</span>
+<span id="cb96-440"><a href="#cb96-440" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(residuals, <span class="at">breaks =</span> <span class="dv">20</span>, <span class="at">main =</span> <span class="st">"Histogram of Residuals"</span>)</span>
+<span id="cb96-441"><a href="#cb96-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-442"><a href="#cb96-442" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-443"><a href="#cb96-443" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Run the <span class="in">`plot()`</span> command on the result of <span class="in">`lm()`</span> and examine the 4 plots produced.</span>
+<span id="cb96-444"><a href="#cb96-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-447"><a href="#cb96-447" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-448"><a href="#cb96-448" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb96-449"><a href="#cb96-449" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb96-450"><a href="#cb96-450" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb96-451"><a href="#cb96-451" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span>
+<span id="cb96-452"><a href="#cb96-452" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-453"><a href="#cb96-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-454"><a href="#cb96-454" aria-hidden="true" tabindex="-1"></a>Again, based on examination of the residuals and the results of Shapiro-Wilks test, does it look like your model has good fit?</span>
+<span id="cb96-455"><a href="#cb96-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-458"><a href="#cb96-458" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-459"><a href="#cb96-459" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb96-460"><a href="#cb96-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb96-461"><a href="#cb96-461" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 4</span></span>
+<span id="cb96-462"><a href="#cb96-462" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb96-463"><a href="#cb96-463" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(m<span class="sc">$</span>residuals)</span>
+<span id="cb96-464"><a href="#cb96-464" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(m<span class="sc">$</span>residuals)</span>
+<span id="cb96-465"><a href="#cb96-465" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span>
+<span id="cb96-466"><a href="#cb96-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-467"><a href="#cb96-467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-468"><a href="#cb96-468" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Transformations</span></span>
+<span id="cb96-469"><a href="#cb96-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-470"><a href="#cb96-470" aria-hidden="true" tabindex="-1"></a>Recall, again, that for linear regression modeling to be appropriate, two important conditions need to be met: <span class="co">[</span><span class="ot">1</span><span class="co">]</span> our variables (and the error variance in our variables) should be approximately **normally distributed** and [2] there should be **homogeneity of variance** ("homoscedasticity") in our response variable around the range of our predictor variable.</span>
+<span id="cb96-471"><a href="#cb96-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-472"><a href="#cb96-472" aria-hidden="true" tabindex="-1"></a>In many cases, these conditions may not be met... for example, the continuous metric data we have may not, in fact, be normally distributed. Nonetheless, we can sometimes apply some kind of mathematical transformation to our data to change their distribution to more closely approximate the normal.</span>
+<span id="cb96-473"><a href="#cb96-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-474"><a href="#cb96-474" aria-hidden="true" tabindex="-1"></a>The logarithmic or "log" transformation (where we take the log value of each data point) is often applied to positive numeric variables with heavy skew to dramatically reduce the overall range of the data and bring extreme observations closer to a measure of centrality. The logarithm for a number is the power to which you must raise a base value (e.g., $e$, the natural log) in order to obtain that number. This is an example of a "power transformation", other examples of which include the square root transformation and the reciprocal (or multiplicative inverse) transformation.</span>
+<span id="cb96-475"><a href="#cb96-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-476"><a href="#cb96-476" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb96-477"><a href="#cb96-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-478"><a href="#cb96-478" aria-hidden="true" tabindex="-1"></a>Return to the original "KamilarAndCooper.csv" dataset you were looking at above, <span class="in">`log()`</span> transform both of your variables, and then run a simple, bivariate linear model.</span>
+<span id="cb96-479"><a href="#cb96-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-480"><a href="#cb96-480" aria-hidden="true" tabindex="-1"></a>Do you notice a difference between these results and those obtained using untransformed variables?</span>
+<span id="cb96-481"><a href="#cb96-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-484"><a href="#cb96-484" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-485"><a href="#cb96-485" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb96-486"><a href="#cb96-486" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
+<span id="cb96-487"><a href="#cb96-487" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f,<span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb96-488"><a href="#cb96-488" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(d)</span>
+<span id="cb96-489"><a href="#cb96-489" aria-hidden="true" tabindex="-1"></a><span class="co"># keep select columns</span></span>
+<span id="cb96-490"><a href="#cb96-490" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">select</span>(d, <span class="at">WeaningAge=</span><span class="st">"WeaningAge_d"</span>,</span>
+<span id="cb96-491"><a href="#cb96-491" aria-hidden="true" tabindex="-1"></a>  <span class="at">FemaleBodyMass=</span><span class="st">"Body_mass_female_mean"</span>)</span>
+<span id="cb96-492"><a href="#cb96-492" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(d) <span class="co"># get rid of NAs</span></span>
+<span id="cb96-493"><a href="#cb96-493" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>logWeaningAge <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>WeaningAge)</span>
+<span id="cb96-494"><a href="#cb96-494" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>logFemaleBodyMass <span class="ot">&lt;-</span> <span class="fu">log</span>(d<span class="sc">$</span>FemaleBodyMass)</span>
+<span id="cb96-495"><a href="#cb96-495" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>d,<span class="fu">aes</span>(<span class="at">x=</span>logFemaleBodyMass, <span class="at">y=</span>logWeaningAge)) <span class="sc">+</span></span>
+<span id="cb96-496"><a href="#cb96-496" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">"lm"</span>)</span>
+<span id="cb96-497"><a href="#cb96-497" aria-hidden="true" tabindex="-1"></a><span class="co"># or plot(data=d, logWeaningAge ~ logFemaleBodyMass)</span></span>
+<span id="cb96-498"><a href="#cb96-498" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> d, logWeaningAge <span class="sc">~</span> logFemaleBodyMass)</span>
+<span id="cb96-499"><a href="#cb96-499" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m)</span>
+<span id="cb96-500"><a href="#cb96-500" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb96-501"><a href="#cb96-501" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m)</span>
+<span id="cb96-502"><a href="#cb96-502" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb96-503"><a href="#cb96-503" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(m<span class="sc">$</span>residuals) <span class="do">## qqPlot from {car}</span></span>
+<span id="cb96-504"><a href="#cb96-504" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(m<span class="sc">$</span>residuals))</span>
+<span id="cb96-505"><a href="#cb96-505" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-506"><a href="#cb96-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-507"><a href="#cb96-507" aria-hidden="true" tabindex="-1"></a>The following chart and graphs shows some other common numerical transformations that are often useful for changing a variable's distribution to more closely approximate the normal.</span>
+<span id="cb96-508"><a href="#cb96-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-511"><a href="#cb96-511" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-512"><a href="#cb96-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-513"><a href="#cb96-513" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "70%"</span></span>
+<span id="cb96-514"><a href="#cb96-514" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/transformations.png"</span>)</span>
+<span id="cb96-515"><a href="#cb96-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-516"><a href="#cb96-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-519"><a href="#cb96-519" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-520"><a href="#cb96-520" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 3</span></span>
+<span id="cb96-521"><a href="#cb96-521" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb96-522"><a href="#cb96-522" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb96-523"><a href="#cb96-523" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb96-524"><a href="#cb96-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-525"><a href="#cb96-525" aria-hidden="true" tabindex="-1"></a><span class="co"># LOG X</span></span>
+<span id="cb96-526"><a href="#cb96-526" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">100</span>, <span class="at">length.out=</span><span class="dv">1000</span>)</span>
+<span id="cb96-527"><a href="#cb96-527" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">+</span> b <span class="sc">*</span> <span class="fu">log</span>(x)</span>
+<span id="cb96-528"><a href="#cb96-528" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
+<span id="cb96-529"><a href="#cb96-529" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(x),y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"log(x)"</span>)</span>
+<span id="cb96-530"><a href="#cb96-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-531"><a href="#cb96-531" aria-hidden="true" tabindex="-1"></a><span class="co"># LOG Y - a log transformation for the response variable is useful</span></span>
+<span id="cb96-532"><a href="#cb96-532" aria-hidden="true" tabindex="-1"></a><span class="co"># when the variance in the explanatory variable is not consistent</span></span>
+<span id="cb96-533"><a href="#cb96-533" aria-hidden="true" tabindex="-1"></a><span class="co"># across the range of explanatory variable values</span></span>
+<span id="cb96-534"><a href="#cb96-534" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="dv">10</span>, <span class="at">length.out=</span><span class="dv">1000</span>)</span>
+<span id="cb96-535"><a href="#cb96-535" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">exp</span>(a <span class="sc">+</span> b <span class="sc">*</span>x)</span>
+<span id="cb96-536"><a href="#cb96-536" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
+<span id="cb96-537"><a href="#cb96-537" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="fu">log</span>(y), <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"log(y)"</span>)</span>
+<span id="cb96-538"><a href="#cb96-538" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-539"><a href="#cb96-539" aria-hidden="true" tabindex="-1"></a><span class="co"># ASYMPTOTIC</span></span>
+<span id="cb96-540"><a href="#cb96-540" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">100</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
+<span id="cb96-541"><a href="#cb96-541" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> (a <span class="sc">*</span> x) <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> b<span class="sc">*</span>x)</span>
+<span id="cb96-542"><a href="#cb96-542" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
+<span id="cb96-543"><a href="#cb96-543" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">/</span>x, y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"1/x"</span>)</span>
+<span id="cb96-544"><a href="#cb96-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-545"><a href="#cb96-545" aria-hidden="true" tabindex="-1"></a><span class="co"># RECIPROCAL</span></span>
+<span id="cb96-546"><a href="#cb96-546" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">100</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
+<span id="cb96-547"><a href="#cb96-547" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">+</span> b<span class="sc">/</span>x</span>
+<span id="cb96-548"><a href="#cb96-548" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
+<span id="cb96-549"><a href="#cb96-549" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">/</span>x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"1/x"</span>)</span>
+<span id="cb96-550"><a href="#cb96-550" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-551"><a href="#cb96-551" aria-hidden="true" tabindex="-1"></a><span class="co"># POWER - a power transformation for the explanatory variable is useful</span></span>
+<span id="cb96-552"><a href="#cb96-552" aria-hidden="true" tabindex="-1"></a><span class="co"># # if there is a curvilinear relationship between the explanatory</span></span>
+<span id="cb96-553"><a href="#cb96-553" aria-hidden="true" tabindex="-1"></a><span class="co"># variable and the response variable</span></span>
+<span id="cb96-554"><a href="#cb96-554" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">100</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
+<span id="cb96-555"><a href="#cb96-555" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">*</span> x<span class="sc">^</span>b</span>
+<span id="cb96-556"><a href="#cb96-556" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
+<span id="cb96-557"><a href="#cb96-557" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x<span class="sc">^</span>b, y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"x^b"</span>)</span>
+<span id="cb96-558"><a href="#cb96-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-559"><a href="#cb96-559" aria-hidden="true" tabindex="-1"></a><span class="co"># EXPONENTIAL</span></span>
+<span id="cb96-560"><a href="#cb96-560" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>,<span class="at">to=</span><span class="dv">10</span>,<span class="at">length.out=</span><span class="dv">100</span>)</span>
+<span id="cb96-561"><a href="#cb96-561" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> a <span class="sc">*</span> <span class="fu">exp</span>(b<span class="sc">*</span>x)</span>
+<span id="cb96-562"><a href="#cb96-562" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"untransformed"</span>)</span>
+<span id="cb96-563"><a href="#cb96-563" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,<span class="fu">log</span>(y), <span class="at">type=</span><span class="st">"l"</span>,<span class="at">main=</span><span class="st">"log(y)"</span>)</span>
+<span id="cb96-564"><a href="#cb96-564" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-565"><a href="#cb96-565" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-566"><a href="#cb96-566" aria-hidden="true" tabindex="-1"></a>Applying a function to transform a complete dataset is the most common way of attempting to squeeze your data into matching a normal distribution so that you can use parametric statistics. This is a very common practice, and much has been written on this topic, including its drawbacks.</span>
+<span id="cb96-567"><a href="#cb96-567" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-568"><a href="#cb96-568" aria-hidden="true" tabindex="-1"></a>For a good discussion on common transformations, see ***R in Action*** Chapter 8.5 ("Corrective Measures"), and please do note the section titled **A caution concerning transformations**. When trying out transformations, keep your normalization tests handy so that you can retest the transformed data and see if the transformation achieved its intended purpose.</span>
+<span id="cb96-569"><a href="#cb96-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-572"><a href="#cb96-572" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-573"><a href="#cb96-573" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb96-574"><a href="#cb96-574" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mosaic)</span>
+<span id="cb96-575"><a href="#cb96-575" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>broom)</span>
+<span id="cb96-576"><a href="#cb96-576" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>car)</span>
+<span id="cb96-577"><a href="#cb96-577" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb96-578"><a href="#cb96-578" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-579"><a href="#cb96-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-580"><a href="#cb96-580" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
+<span id="cb96-581"><a href="#cb96-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-582"><a href="#cb96-582" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb96-583"><a href="#cb96-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-584"><a href="#cb96-584" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Regression analysis partitions the variance in a response variable into components associated with the various predictor variables plus an "error" component, or residual</span>
+<span id="cb96-585"><a href="#cb96-585" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The significance of the overall regression model, and of individual predictors, is evaluated by comparing F ratios (the ratio of the variance explained by the predictor to the unexplained variance) against an F distribution, taking into account the number of degrees of freedom in each</span>
+<span id="cb96-586"><a href="#cb96-586" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>After running a model, we need to confirm that key assumptions for linear regression are met, including that residuals are normally distributed and observations show homogeneity of variance across the range of predictor values</span>
+<span id="cb96-587"><a href="#cb96-587" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>If these assumptions are not met, data transformation of the raw variables may sometimes be helpful</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

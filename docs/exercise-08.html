@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applied Data Analysis - Explore Distributions and the CLT</title>
+<title>Applied Data Analysis - Exercise 08</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-08.html">Explore Distributions and the CLT</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-08.html">Exercise 08</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -435,25 +435,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-07.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Simulation-Based Inference</span></a>
+ <span class="menu-text">Exercise 07</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-07-solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 07 Solution</span></span></a>
+ <span class="menu-text">Exercise 04 Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-08.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Explore Distributions and the CLT</span></a>
+ <span class="menu-text">Exercise 08</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-09.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice Simple Linear Regression</span></a>
+ <span class="menu-text">Exercise 09</span></a>
   </div>
 </li>
       </ul>
@@ -502,19 +502,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#explore-distributions-and-the-clt" id="toc-explore-distributions-and-the-clt" class="nav-link active" data-scroll-target="#explore-distributions-and-the-clt">Explore Distributions and the CLT</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#plotting-distributions" id="toc-plotting-distributions" class="nav-link" data-scroll-target="#plotting-distributions">Plotting Distributions</a></li>
   <li><a href="#sampling-distributions-and-the-clt" id="toc-sampling-distributions-and-the-clt" class="nav-link" data-scroll-target="#sampling-distributions-and-the-clt">Sampling Distributions and the CLT</a></li>
   <li><a href="#generating-cis-around-a-statistic" id="toc-generating-cis-around-a-statistic" class="nav-link" data-scroll-target="#generating-cis-around-a-statistic">Generating CIs around a Statistic</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-08.html">Explore Distributions and the CLT</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./exercise-01.html">Exercises</a></li><li class="breadcrumb-item"><a href="./exercise-08.html">Exercise 08</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Explore Distributions and the CLT</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Exercise 08</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -531,6 +534,8 @@ window.Quarto = {
 </header>
 
 
+<section id="explore-distributions-and-the-clt" class="level1 unnumbered">
+<h1 class="unnumbered">Explore Distributions and the CLT</h1>
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ul>
@@ -636,7 +641,10 @@ window.Quarto = {
 <ul>
 <li>The mean of the sampling distribution will be equal to the mean of the population distribution.</li>
 </ul>
-<p><span class="math display">\[\bar{x} = \mu\]</span> * The standard deviation of the sampling distribution will be equal to the standard deviation of the population distribution divided by the square root of the sample size. This is the <strong>standard error</strong>.</p>
+<p><span class="math display">\[\bar{x} = \mu\]</span></p>
+<ul>
+<li>The standard deviation of the sampling distribution will be equal to the standard deviation of the population distribution divided by the square root of the sample size. This is the <strong>standard error</strong>.</li>
+</ul>
 <p><span class="math display">\[s = \frac{\sigma}{\sqrt{n}}\]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample size</span></span>
@@ -771,7 +779,7 @@ window.Quarto = {
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">2</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 2.290246</code></pre>
+<pre><code>## [1] 2.059848</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># close to, but not the same, as the population mean</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(x))</span>
@@ -842,23 +850,23 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">ci.boot.quantiles</td>
-<td style="text-align: right;">1.753</td>
-<td style="text-align: right;">2.839</td>
+<td style="text-align: right;">1.650</td>
+<td style="text-align: right;">2.473</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ci.boot.theory</td>
-<td style="text-align: right;">1.743</td>
-<td style="text-align: right;">2.837</td>
+<td style="text-align: right;">1.646</td>
+<td style="text-align: right;">2.473</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">ci.norm.theory</td>
-<td style="text-align: right;">1.715</td>
-<td style="text-align: right;">2.865</td>
+<td style="text-align: right;">1.627</td>
+<td style="text-align: right;">2.492</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ci.t.theory</td>
-<td style="text-align: right;">1.626</td>
-<td style="text-align: right;">2.954</td>
+<td style="text-align: right;">1.561</td>
+<td style="text-align: right;">2.559</td>
 </tr>
 </tbody>
 </table>
@@ -883,6 +891,7 @@ window.Quarto = {
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1326,118 +1335,116 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./exercise-07-solution.html" class="pagination-link  aria-label=" &lt;span="" 07="" solution&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 07 Solution</span></span>
+      <a href="./exercise-07-solution.html" class="pagination-link  aria-label=" exercise="" 04="" solution"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exercise 04 Solution</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./exercise-09.html" class="pagination-link" aria-label="Practice Simple Linear Regression">
-        <span class="nav-page-text">Practice Simple Linear Regression</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./exercise-09.html" class="pagination-link" aria-label="Exercise 09">
+        <span class="nav-page-text">Exercise 09</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">editor_options:</span><span class="co"> </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">  chunk_output_type: console</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Explore Distributions and the CLT {.unnumbered}</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learning Objectives {.unnumbered}</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Plotting various mathematical distributions</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sampling from distributions that are distinctly non-normal and generating summary statistics</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Visualizing sampling distributions to see the Central Limit Theorem in action</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r message=FALSE, warning=FALSE}</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="in">library(infer) # for rep_sample_n()</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggformula) # for gf_ functions</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="in">library(cowplot) # for plot_grid()</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="in">library(mosaic) # for do() * &lt;function&gt;</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(kableExtra) # for kable_styling()</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>Classic probability and statistical theory - and many parametric statistical tests - assume that the distributions of variables of interest (either things we measure/record about our subjects of study or sample statistics we derived from those measurements) follow certain well-characterized mathematical distributions. For example, when we imagine rolling an unbiased die, we typically assume that we have an equal (i.e., uniform) chance of seeing any given number come up, and when we imagine sampling any particular metric trait from a population, we typically assume that the distribution of that trait in a nature population follows a normal, or Gaussian, distribution (e.g., height). Likewise, we expect or assume that other well-characterized mathematical distributions are appropriate models for the outcomes of other sampling processes. The shape of any of these distributions is governed entirely by a function and one or more tuning parameters for that function.</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plotting Distributions {.unnumbered}</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>Below is some code we can use to plot some example distributions and visualize how the shape of those distributions changes with different parameter values...</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co"># some continuous distributions - normal, beta, uniform, F, and Chi Square...</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>norm1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>norm2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span><span class="dv">30</span>, <span class="at">sd=</span><span class="dv">15</span>)</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>norm3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">15</span>)</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">'beta'</span>, <span class="at">shape1=</span><span class="dv">1</span>, <span class="at">shape2=</span><span class="dv">10</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>))</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>beta2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">'beta'</span>, <span class="at">shape1=</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">10</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>))</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>beta3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">'beta'</span>, <span class="at">shape1=</span><span class="dv">3</span>, <span class="at">shape2=</span><span class="dv">1</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>))</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>unif1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"unif"</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">2</span>) </span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>unif2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"unif"</span>, <span class="at">min=</span><span class="dv">10</span>, <span class="at">max=</span><span class="dv">25</span>)</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>unif3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"unif"</span>, <span class="at">min=</span><span class="dv">130</span>, <span class="at">max=</span><span class="dv">240</span>)</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"f"</span>, <span class="at">df1=</span><span class="dv">4</span>, <span class="at">df2=</span><span class="dv">15</span>)</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"f"</span>, <span class="at">df1=</span><span class="dv">4</span>, <span class="at">df2=</span><span class="dv">99</span>)</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"f"</span>, <span class="at">df1=</span><span class="dv">30</span>, <span class="at">df2=</span><span class="dv">199</span>)</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>chisq1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"chisq"</span>, <span class="at">df=</span><span class="dv">2</span>)</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>chisq2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"chisq"</span>, <span class="at">df=</span><span class="dv">3</span>)</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>chisq3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"chisq"</span>, <span class="at">df=</span><span class="dv">20</span>)</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="co"># some discrete distributions - Poisson,binomial, negative binomial...</span></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>pois1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda=</span><span class="dv">3</span>)</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>pois2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda=</span><span class="dv">10</span>)</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>pois3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda=</span><span class="dv">35</span>)</span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>binom1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>binom2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>binom3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">prob=</span><span class="fl">0.1</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>nbinom1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"nbinom"</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>nbinom2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"nbinom"</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>nbinom3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"nbinom"</span>, <span class="at">size=</span><span class="dv">15</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="co"># note that in the code above, we could instead use the `plotDist()` function from {mosaic}</span></span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="co"># this example uses `gf_dist()` simply to create .gg (ggplot) objects rather</span></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="co"># than .trellis (lattice) objects, which makes visualizing the plots together</span></span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="co"># using {cowplot} look better</span></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(norm1, norm2, norm3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Normal"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>row2 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(beta1, beta2, beta3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Beta"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>row3 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(unif1, unif2, unif3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Uniform"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>row4 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(chisq1, chisq2, chisq3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Chi Sq"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>row5 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(f1, f2, f3, <span class="at">nrow =</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"F"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>blank <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">theme_nothing</span>() <span class="co"># this is just for spacing at the top of the plot</span></span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(blank, row1, row2, row3, row4, row5, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>plot1</span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(pois1, pois2, pois3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Poisson"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>row2 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(binom1, binom2, binom3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Binomial"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>row3 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(nbinom1, nbinom2, nbinom3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Negative Binomial"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>blank <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">theme_nothing</span>() <span class="co"># this is just for spacing at the top of the plot</span></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(blank, row1, row2, row3, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>plot2</span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sampling Distributions and the CLT {.unnumbered}</span></span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>Below are some examples of <span class="co">[</span><span class="ot">1</span><span class="co">]</span> drawing random sets of observations from several of these distributions, <span class="co">[</span><span class="ot">2</span><span class="co">]</span> calculating summary statistics (e.g., means) for each sample, and <span class="co">[</span><span class="ot">3</span><span class="co">]</span> repeating this process multiple times to generate sampling distributions for these summary statistics. Each of the first three snippets of code below first draws and plots a single sample of size **n** from a particular distribution, plots a histogram of that sample, and superimposes the distribution is is drawn from (black curve) and the mean of the sample (red line). The last two snippets do the same, but instead plots selected quantile values as example of alternative summary statistics. These are the left-hand plots in the resulting 10-panel figure.</span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a>Each snippet also then draws **reps** separate samples from the same distributions, calculates the same summary statistics and the plots the resultant sampling distributions of those statistic with a superimposed normal distribution, demonstrating the Central Limit Theorem (CLT). These are the right-hand plots in the resulting 10-panel figure.</span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>As a refresher, recall that CLT states that the sampling distribution of a sample mean (and many other sample statistics) is approximately normal if the sample size is large enough, even if the population distribution that the sample is drawn from is not normal.</span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>Additionally, the CLT also states that the sampling distribution should have the following properties:</span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The mean of the sampling distribution will be equal to the mean of the population distribution.</span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>$$\bar{x} = \mu$$</span>
+<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Exercise 08 {.unnumbered}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu"># Explore Distributions and the CLT {.unnumbered}</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learning Objectives {.unnumbered}</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Plotting various mathematical distributions</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Sampling from distributions that are distinctly non-normal and generating summary statistics</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Visualizing sampling distributions to see the Central Limit Theorem in action</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(infer) <span class="co"># for rep_sample_n()</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula) <span class="co"># for gf_ functions</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot) <span class="co"># for plot_grid()</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic) <span class="co"># for do() * &lt;function&gt;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra) <span class="co"># for kable_styling()</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>Classic probability and statistical theory - and many parametric statistical tests - assume that the distributions of variables of interest (either things we measure/record about our subjects of study or sample statistics we derived from those measurements) follow certain well-characterized mathematical distributions. For example, when we imagine rolling an unbiased die, we typically assume that we have an equal (i.e., uniform) chance of seeing any given number come up, and when we imagine sampling any particular metric trait from a population, we typically assume that the distribution of that trait in a nature population follows a normal, or Gaussian, distribution (e.g., height). Likewise, we expect or assume that other well-characterized mathematical distributions are appropriate models for the outcomes of other sampling processes. The shape of any of these distributions is governed entirely by a function and one or more tuning parameters for that function.</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plotting Distributions {.unnumbered}</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>Below is some code we can use to plot some example distributions and visualize how the shape of those distributions changes with different parameter values...</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co"># some continuous distributions - normal, beta, uniform, F, and Chi Square...</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>norm1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>norm2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span><span class="dv">30</span>, <span class="at">sd=</span><span class="dv">15</span>)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>norm3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"norm"</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">15</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">'beta'</span>, <span class="at">shape1=</span><span class="dv">1</span>, <span class="at">shape2=</span><span class="dv">10</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>))</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>beta2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">'beta'</span>, <span class="at">shape1=</span><span class="dv">2</span>, <span class="at">shape2=</span><span class="dv">10</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>))</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>beta3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">'beta'</span>, <span class="at">shape1=</span><span class="dv">3</span>, <span class="at">shape2=</span><span class="dv">1</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>))</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>unif1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"unif"</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">2</span>) </span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>unif2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"unif"</span>, <span class="at">min=</span><span class="dv">10</span>, <span class="at">max=</span><span class="dv">25</span>)</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>unif3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"unif"</span>, <span class="at">min=</span><span class="dv">130</span>, <span class="at">max=</span><span class="dv">240</span>)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"f"</span>, <span class="at">df1=</span><span class="dv">4</span>, <span class="at">df2=</span><span class="dv">15</span>)</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"f"</span>, <span class="at">df1=</span><span class="dv">4</span>, <span class="at">df2=</span><span class="dv">99</span>)</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>f3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"f"</span>, <span class="at">df1=</span><span class="dv">30</span>, <span class="at">df2=</span><span class="dv">199</span>)</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>chisq1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"chisq"</span>, <span class="at">df=</span><span class="dv">2</span>)</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>chisq2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"chisq"</span>, <span class="at">df=</span><span class="dv">3</span>)</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>chisq3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"chisq"</span>, <span class="at">df=</span><span class="dv">20</span>)</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="co"># some discrete distributions - Poisson,binomial, negative binomial...</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>pois1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda=</span><span class="dv">3</span>)</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>pois2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda=</span><span class="dv">10</span>)</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>pois3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"pois"</span>, <span class="at">lambda=</span><span class="dv">35</span>)</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>binom1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>))</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>binom2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>binom3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"binom"</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">prob=</span><span class="fl">0.1</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>nbinom1 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"nbinom"</span>, <span class="at">size=</span><span class="dv">5</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>nbinom2 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"nbinom"</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>nbinom3 <span class="ot">&lt;-</span> <span class="fu">gf_dist</span>(<span class="st">"nbinom"</span>, <span class="at">size=</span><span class="dv">15</span>, <span class="at">prob=</span><span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="co"># note that in the code above, we could instead use the `plotDist()` function from {mosaic}</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="co"># this example uses `gf_dist()` simply to create .gg (ggplot) objects rather than .trellis (lattice) objects, which makes visualizing the plots together using {cowplot} look better</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(norm1, norm2, norm3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Normal"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>row2 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(beta1, beta2, beta3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Beta"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>row3 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(unif1, unif2, unif3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Uniform"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>row4 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(chisq1, chisq2, chisq3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Chi Sq"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>row5 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(f1, f2, f3, <span class="at">nrow =</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"F"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>blank <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">theme_nothing</span>() <span class="co"># this is just for spacing at the top of the plot</span></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(blank, row1, row2, row3, row4, row5, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>plot1</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>row1 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(pois1, pois2, pois3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Poisson"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>row2 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(binom1, binom2, binom3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Binomial"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>row3 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(nbinom1, nbinom2, nbinom3, <span class="at">nrow=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">draw_plot_label</span>(<span class="at">label =</span> <span class="st">"Negative Binomial"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>, <span class="at">hjust=</span><span class="dv">0</span>, <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>)</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>blank <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">theme_nothing</span>() <span class="co"># this is just for spacing at the top of the plot</span></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(blank, row1, row2, row3, <span class="at">nrow =</span> <span class="dv">4</span>, <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.25</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>plot2</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sampling Distributions and the CLT {.unnumbered}</span></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a>Below are some examples of <span class="co">[</span><span class="ot">1</span><span class="co">]</span> drawing random sets of observations from several of these distributions, <span class="co">[</span><span class="ot">2</span><span class="co">]</span> calculating summary statistics (e.g., means) for each sample, and <span class="co">[</span><span class="ot">3</span><span class="co">]</span> repeating this process multiple times to generate sampling distributions for these summary statistics. Each of the first three snippets of code below first draws and plots a single sample of size **n** from a particular distribution, plots a histogram of that sample, and superimposes the distribution is is drawn from (black curve) and the mean of the sample (red line). The last two snippets do the same, but instead plots selected quantile values as example of alternative summary statistics. These are the left-hand plots in the resulting 10-panel figure.</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a>Each snippet also then draws **reps** separate samples from the same distributions, calculates the same summary statistics and the plots the resultant sampling distributions of those statistic with a superimposed normal distribution, demonstrating the Central Limit Theorem (CLT). These are the right-hand plots in the resulting 10-panel figure.</span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>As a refresher, recall that CLT states that the sampling distribution of a sample mean (and many other sample statistics) is approximately normal if the sample size is large enough, even if the population distribution that the sample is drawn from is not normal.</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>Additionally, the CLT also states that the sampling distribution should have the following properties:</span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The mean of the sampling distribution will be equal to the mean of the population distribution.</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a>$$\bar{x} = \mu$$</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>The standard deviation of the sampling distribution will be equal to the standard deviation of the population distribution divided by the square root of the sample size. This is the **standard error**.</span>
 <span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>$$s = \frac{\sigma}{\sqrt{n}}$$</span>
@@ -1632,14 +1639,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a>plot4</span>
 <span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:kableExtra)</span></span>
-<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mosaic)</span></span>
-<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:cowplot)</span></span>
-<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:ggformula)</span></span>
-<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:infer)</span></span>
-<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:tidyverse)</span></span>
-<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>kableExtra)</span>
+<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mosaic)</span>
+<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
+<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggformula)</span>
+<span id="cb10-311"><a href="#cb10-311" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
+<span id="cb10-312"><a href="#cb10-312" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb10-313"><a href="#cb10-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

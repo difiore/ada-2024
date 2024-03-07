@@ -1,3 +1,5 @@
+# Exercise 09 {.unnumbered}
+
 # Practice Simple Linear Regression {.unnumbered}
 
 ## Learning Objectives {.unnumbered}
@@ -50,8 +52,8 @@
 
 #### Step 7 {.unnumbered}
 
-- Use a permutation approach with 1000 permutations to generate a null sampling distribution for the slope coefficient. What is it that you need to permute? What is the p value associated with your original slope coefficient? You can use either the percentile method (i.e., using quantiles from the actual permutation-based null sampling distribution) or a theory-based method (i.e., using the standard deviation of the permutation-based null sampling distribution as the estimate of the standard error), or both, to calculate this p value.
+- Use a permutation approach with 1000 permutations to generate a null sampling distribution for the **slope coefficient**. What is it that you need to permute? What is the p value associated with your original slope coefficient? You can use either the percentile method (i.e., using quantiles from the actual permutation-based null sampling distribution) or a theory-based method (i.e., using the standard deviation of the permutation-based null sampling distribution as the estimate of the standard error, along with a normal or t distribution), or both, to calculate this p value.
 
 #### Step 8 {.unnumbered}
 
-- Use bootstrapping to generate a 95% CI for your estimate of the slope coefficient using both the percentile method and the theory-based method (i.e., based on the standard deviation of the bootstrapped sampling distribution). Do these CIs suggest that your slope coefficient is different from zero?
+- Use bootstrapping to generate a 95% CI for your estimate of the slope coefficient using both the percentile method and the theory-based method (i.e., using on the standard deviation of the bootstrapped sampling distribution as an estimate of the standard error). Do these CIs suggest that your slope coefficient is different from zero?

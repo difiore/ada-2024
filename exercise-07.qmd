@@ -1,3 +1,5 @@
+# Exercise 07 {.unnumbered}
+
 # Practice Simulation-Based Inference {.unnumbered}
 
 ## Learning Objectives {.unnumbered}
