@@ -1,7 +1,3 @@
----
-title: "Module 21"
----
-
 # Multiple Regression and ANCOVA {#module-21}
 
 ## Objectives
@@ -10,10 +6,11 @@ title: "Module 21"
 
 ## Preliminaries
 
--   Install this package in ***R***: [{jtools}](https://cran.r-project.org/web/packages/jtools/jtools.pdf)
--   Load {tidyverse}, {broom}, {car}, and {gridExtra}
+- Install this package in ***R***: [{jtools}](https://cran.r-project.org/web/packages/jtools/jtools.pdf)
+- Load {tidyverse}, {broom}, {car}, and {gridExtra}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 library(broom)
 library(car)
@@ -68,8 +65,8 @@ v <- NULL
 mu <- c(15,40,5,23) # vector of variable means
 s <- c(5,20,4,15) # vector of variable SDs
 for (i in 1:k){
-	v <- rnorm(n,mu[i],s[i])
-	original <- cbind(original,v)
+  v <- rnorm(n,mu[i],s[i])
+  original <- cbind(original,v)
 }
 original <- as.data.frame(original)
 names(original) = c("Y","X1","X2","X3")
@@ -137,17 +134,19 @@ We now have our own dataframe, **df**, comprising correlated random variables in
 
 Let's explore this dataset, first with single and then with multivariate regression.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Start off by making three bivariate scatterplots in {ggplot2} using the dataframe of three predictor variables (**X1**, **X2**, and **X3**) and one response variable (**Y**) that we generated above (or download it from f \<- "<https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/multiple_regression.csv>")
 
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/multiple_regression.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/multiple_regression.csv"
 df <- read_csv(f, col_names = TRUE)
 ```
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 g1 <- ggplot(data=df, aes(x = X1, y = Y)) + geom_point() +
   geom_smooth(method="lm", formula=y~x)
 g2 <- ggplot(data=df, aes(x = X2, y = Y)) + geom_point() +
@@ -156,12 +155,13 @@ g3 <- ggplot(data=df, aes(x = X3, y = Y)) + geom_point() +
   geom_smooth(method="lm", formula=y~x)
 grid.arrange(g1, g2, g3, ncol=3)
 ```
-:::
 
 Then, using simple linear regression as implemented with `lm()`, how does the response variable (**Y**) vary with each predictor variable (**X1**, **X2**, **X3**)? Are the $\beta_1$ coefficients for each bivariate significant? How much of the variation in **Y** does each predictor explain in a simple bivariate linear model?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 m1 <- lm(data = df, formula = Y ~ X1)
 summary(m1)
 m2 <- lm(data = df, formula = Y ~ X2)
@@ -169,7 +169,6 @@ summary(m2)
 m3 <- lm(data = df, formula = Y ~ X3)
 summary(m3)
 ```
-:::
 
 In simple linear regression, **Y** has a significant, positive relationship with **X1**, a signficant negative relationship with **X2**, and no significant bivariate relationship with **X3**.
 
@@ -185,14 +184,15 @@ summary(m)
 
 Next, let's check if our residuals are random normal...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 plot(fitted(m), residuals(m))
 hist(residuals(m))
 qqnorm(residuals(m))
 qqline(residuals(m))
 ```
-:::
 
 What does this output tell us? First off, the results of the omnibus F test tells us that the overall model is significant; using these three variables, we explain signficantly more of the variation in the response variable, **Y**, than we would using a model with just an intercept, i.e., just that $Y$ = mean($Y$).
 
@@ -223,19 +223,20 @@ Second, looking at `summary()` we see that the $\beta$ coefficient for each of o
 
 Third, we can interpret our $\beta$ coefficients as we did in simple linear regression... for each change of one unit in a particular predictor variable (holding the other predictors constant), our predicted value of the response variable changes $\beta$ units.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Load up the "zombies.csv" dataset with the characteristics of zombie apocalypse survivors again and run a linear model of height as a function of both weight and age. Is the overall model significant? Are both predictor variables significant when the other is controlled for?
 
-::: {.fold .s .o}
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/zombies.csv"
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
 z <- read_csv(f, col_names = TRUE)
 head(z)
 m <- lm(data = z, height ~ weight + age)
 summary(m)
 ```
-:::
 
 ## ANCOVA
 
@@ -243,8 +244,10 @@ summary(m)
 
 We can use the same linear modeling approach to do **analysis of covariance**, or ANCOVA, where we have a continuous response variable and a combination of continuous and categorical predictor variables. Let's return to the "zombies.csv" dataset and now include one continuous and one categorical variable in our model... we want to predict height as a function of **age** (a continuous variable) and **gender** (a categorical variable), and we want to use Type II regression (because we have an unbalanced design). What is our model formula?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 z$gender <- factor(z$gender)
 m <- lm(data = z, formula = height ~ gender + age)
 summary(m)
@@ -255,14 +258,13 @@ hist(residuals(m))
 qqnorm(residuals(m))
 qqline(residuals(m))
 ```
-:::
 
 How do we interpret these results?
 
--   The omnibus F test is significant
--   Both predictors are significant
--   Height is related to age when sex is controlled for
--   Controlling for age, being **male** adds ~4 inches to predicted height when compared to being female.
+- The omnibus F test is significant
+- Both predictors are significant
+- Height is related to age when sex is controlled for
+- Controlling for age, being **male** adds ~4 inches to predicted height when compared to being female.
 
 #### Visualizing a Parallel Slopes Model {.unnumbered}
 
@@ -345,7 +347,7 @@ One common reason for fitting a regression model is to then use that model to pr
 
 The `predict()` allows us to determine these intervals for individual responses for a given combination of predictor variables. `predict()` takes as arguments a model object, new values for the predictor(s) to be plugged into the model, an interval type ("confidence" or "prediction"), and a confidence level (e.g., "0.95").
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Let's return to our model of height as a function of age and gender:
 
@@ -353,25 +355,27 @@ Let's return to our model of height as a function of age and gender:
 m <- lm(height ~ age + gender, data = z)
 ```
 
--   What is the predicted mean height, in inches, for 29-year old males who have survived the zombie apocalypse? What is the 95% confidence interval around this predicted mean height?
+- What is the predicted mean height, in inches, for 29-year old males who have survived the zombie apocalypse? What is the 95% confidence interval around this predicted mean height?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 ci <- predict(m, newdata = data.frame(age = 29, gender = "Male"),
   interval = "confidence", level = 0.95)
 ci
 ```
-:::
 
--   What is the 95% prediction interval for the *individual* heights of 29-year old male zombie apocalypse survivors?
+- What is the 95% prediction interval for the *individual* heights of 29-year old male zombie apocalypse survivors?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 pi <- predict(m, newdata=data.frame(age = 29, gender = "Male"),
   interval="prediction",level=0.95)
 pi
 ```
-:::
 
 In general, the width of a confidence interval for $\hat{y}$ increases as the value of our predictor variables moves away from the center of their distribution. Also, although both are intervals are centered at $\hat{y}$, the predicted mean value of the response variable for the given (combination of) predictor(s), the prediction interval is invariably wider than the confidence interval. This makes intuitive sense, since the prediction interval encapsulates the possibility for individual values of **Y** to fluctuate away from the predicted mean value, while the confidence interval describes uncertainty in estimates of the predicted mean value. That is, the estimate of the mean of a variable is expected to be less uncertain than estimates of individual variable values, because the mean is already a statistic that summarizes a set of values.
 
@@ -436,8 +440,10 @@ Using formula notation, it is easy for us to consider interactions between predi
 
 What are the formula and results for a linear model of height as a function of age and sex plus the interaction of age and sex?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 m <- lm(data = z, height ~ age + gender + age:gender)
 summary(m)
 # or
@@ -445,7 +451,6 @@ m <- lm(data = z, height ~ age * gender)
 summary(m)
 coefficients(m)
 ```
-:::
 
 Here, when we allow an interaction, there is no main effect of gender, but there is an interaction effect of gender and age.
 
@@ -471,29 +476,32 @@ p2 <- ggplot(data=z,aes(x=age, y=height)) +
 p2
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
--   Load in the "KamilarAndCooper.csv"" dataset we have used previously
--   Reduce the dataset to the following variables: **Family**, **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **MeanGroupSize**, **DayLength_km**, **HomeRange_km2**, and **Move** and assign **Family** to be a factor.
+- Load in the "KamilarAndCooper.csv"" dataset we have used previously
+- Reduce the dataset to the following variables: **Family**, **Brain_Size_Female_Mean**, **Body_mass_female_mean**, **MeanGroupSize**, **DayLength_km**, **HomeRange_km2**, and **Move** and assign **Family** to be a factor.
 
-::: {.fold .s .o}
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/KamilarAndCooperData.csv"
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"
 d <- read_csv(f, col_names = TRUE)
 d$Family <- factor(d$Family)
 head(d)
 d <- select(d, Brain_Size_Female_Mean, Family, Body_mass_female_mean,
   MeanGroupSize, DayLength_km, HomeRange_km2, Move)
 ```
-:::
 
--   Fit a **Model I** least squares multiple linear regression model using log(**HomeRange_km2**) as the response variable and log(**Body_mass_female_mean**), log(**Brain_Size_Female_Mean**), **MeanGroupSize**, and **Move** as predictor variables, and view a model summary.
--   Look at and interpret the estimated regression coefficients for the fitted model and interpret. Are any of them statistically significant? What can you infer about the relationship between the response and predictors?
--   Report and interpret the coefficient of determination and the outcome of the omnibus F test.
--   Examine the residuals... are they normally distributed?
+- Fit a **Model I** least squares multiple linear regression model using log(**HomeRange_km2**) as the response variable and log(**Body_mass_female_mean**), log(**Brain_Size_Female_Mean**), **MeanGroupSize**, and **Move** as predictor variables, and view a model summary.
+- Look at and interpret the estimated regression coefficients for the fitted model and interpret. Are any of them statistically significant? What can you infer about the relationship between the response and predictors?
+- Report and interpret the coefficient of determination and the outcome of the omnibus F test.
+- Examine the residuals... are they normally distributed?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 m <- lm(data = d, log(HomeRange_km2) ~ log(Body_mass_female_mean) +
   log(Brain_Size_Female_Mean) + MeanGroupSize + Move)
 summary(m)
@@ -501,12 +509,13 @@ plot(m$residuals)
 qqnorm(m$residuals)
 shapiro.test(m$residuals)
 ```
-:::
 
--   What happens if you remove the $Move$ term?
+- What happens if you remove the $Move$ term?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
+#| code-summary: "Show Code"
+#| attr.output: '.details summary="Show Output"'
 m <- lm(data=d, log(HomeRange_km2)~log(Body_mass_female_mean) +
   log(Brain_Size_Female_Mean)+ MeanGroupSize)
 summary(m)
@@ -514,17 +523,18 @@ plot(m$residuals)
 qqnorm(m$residuals)
 shapiro.test(m$residuals) # no significant deviation from normal
 ```
-:::
 
 ## Visualizing Model Results
 
 We have already seen lots of ways to view linear modeling results, e.g., by using the `summary()`, `glance()`, and `tidy()` functions with model objects as arguments. The {jtools} package provides some interesting additional functions for summarizing and visualizing regression models results.
 
--   The `summ()` function is an alternative to `summary()` that provides a concise table of a model and its results. It can be used with standard `lm()` simple linear regression results (as we work with in this module) as well as with `glm()` and `lmer()` results (for generalized linear modeling and mixed effects modeling, respectively), as we cover in [**Module 23**](#module-23) and [**Module 24**](#module-24).
--   The `effect_plot()` function can be used to plot the relationship between (one of) the predictor variables and the response variable while holding the others constant. The function contains lots of possible arguments for customizing the plot, e.g., for specifying whether and what types of interval can be plotted.
--   The `plot_summs()` function can be used to nicely visualize coefficient estimates and CI values around those terms, including visualizing multiple models on the same plot.
+- The `summ()` function is an alternative to `summary()` that provides a concise table of a model and its results. It can be used with standard `lm()` simple linear regression results (as we work with in this module) as well as with `glm()` and `lmer()` results (for generalized linear modeling and mixed effects modeling, respectively), as we cover in [**Module 23**](#module-23) and [**Module 24**](#module-24).
+- The `effect_plot()` function can be used to plot the relationship between (one of) the predictor variables and the response variable while holding the others constant. The function contains lots of possible arguments for customizing the plot, e.g., for specifying whether and what types of interval can be plotted.
+- The `plot_summs()` function can be used to nicely visualize coefficient estimates and CI values around those terms, including visualizing multiple models on the same plot.
 
-```{r message=FALSE, fig.width=4}
+```{r}
+#| message: false
+#| fig-width: 4
 library(jtools)
 m1 <- lm(data = z,
   height ~ age + weight + gender + zombies_killed)
@@ -560,7 +570,8 @@ plot_summs(m1, m2, m3, m4, m5, plot.distributions = TRUE, rescale.distributions 
 detach(package:jtools)
 ```
 
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:gridExtra)
 detach(package:car)
 detach(package:broom)
@@ -571,10 +582,6 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Multiple regression and ANCOVA are further extensions of simple linear regression/ANOVA to cases where we have more than one predictor variable
--   "Multiple regression" refers to where we have 2 or more continuous predictor variables
--   "ANCOVA" refers to cases where we have one or more continuous predictor variables and one or more categorical predictor variables
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- Multiple regression and ANCOVA are further extensions of simple linear regression/ANOVA to cases where we have more than one predictor variable
+- "Multiple regression" refers to where we have 2 or more continuous predictor variables
+- "ANCOVA" refers to cases where we have one or more continuous predictor variables and one or more categorical predictor variables
