@@ -136,7 +136,7 @@ Let's explore this dataset, first with single and then with multivariate regress
 
 ### CHALLENGE {.unnumbered}
 
-Start off by making three bivariate scatterplots in {ggplot2} using the dataframe of three predictor variables (**X1**, **X2**, and **X3**) and one response variable (**Y**) that we generated above (or download it from f \<- "<https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/multiple_regression.csv>")
+Start off by making three bivariate scatterplots in {ggplot2} using the dataframe of three predictor variables (**X1**, **X2**, and **X3**) and one response variable (**Y**) that we generated above (or download it from "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/multiple_regression.csv")
 
 ```{r}
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/multiple_regression.csv"
