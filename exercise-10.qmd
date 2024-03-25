@@ -31,7 +31,7 @@
 
 #### Step 5 {.unnumbered}
 
-- Generate QQ plots for all three linear models. Based on visual inspection of these plots, do the residual appear to deviate from being normally distributed?
+- Generate Q-Q plots for all three linear models. Based on visual inspection of these plots, do the residual appear to deviate from being normally distributed?
 
 #### Step 6 {.unnumbered}
 

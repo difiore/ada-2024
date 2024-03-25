@@ -1,7 +1,3 @@
----
-title: "Exercise 11"
----
-
 # Practice ANOVA {.unnumbered}
 
 ## Learning Objectives {.unnumbered}
@@ -11,8 +7,8 @@ title: "Exercise 11"
 
 #### Preliminaries {.unnumbered}
 
--   Set up a new ***GitHub*** repo in your ***GitHub*** workspace named "exercise-11" and clone that down to your computer as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful.
--   Using the {tidyverse} `read_csv()` function, load the "AVONETdataset1.csv" dataset from [this URL](https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/AVONETdataset1.csv) as a "tibble" named **d**. This is a recently published dataset that compiles morphological measurements and information on various ecological variables and geographic range data for more than 11,000 species of birds.
+- Set up a new ***GitHub*** repo in your ***GitHub*** workspace named "exercise-11" and clone that down to your computer as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful.
+- Using the {tidyverse} `read_csv()` function, load the "AVONETdataset1.csv" dataset from [this URL](https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/AVONETdataset1.csv) as a "tibble" named **d**. As discussed in class, this is a recently published dataset that compiles morphological measurements and information on various ecological variables and geographic range data for more than 11,000 species of birds.
 
 > **Data source**:
 >
@@ -75,7 +71,7 @@ title: "Exercise 11"
 
 #### Step 5 {.unnumbered}
 
-- Run a two-factor model to look at the association between relative beak length and both **Primary.Lifestyle** and **Trophic.Level** among the passariforms. Based on the model output, what would you conclude about how relative beak length is related to these two variables?
+- Run a two-factor model to look at the association between relative beak length and both **Primary.Lifestyle** and **Trophic.Level** among the passeriforms. Based on the model output, what would you conclude about how relative beak length is related to these two variables?
 
 #### Step 6 {.unnumbered}
 
