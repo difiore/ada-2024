@@ -475,19 +475,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Check Assumptions of Regression</span></a>
+ <span class="menu-text">Exercise 10</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-10-solution.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 10 Solution</span></span></a>
+ <span class="menu-text">Exercise 10 Solution</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exercise-11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Practice ANOVA</span></a>
+ <span class="menu-text">Exercise 11</span></a>
   </div>
 </li>
       </ul>
@@ -958,7 +958,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.234</code></pre>
+## 1   0.248</code></pre>
 </div>
 </div>
 <p>Note that, for these data, the p value estimated through simulated based inference is very similar to that calculated paramterically based on mathematical theory. This is not always the case!</p>
@@ -972,7 +972,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.234</code></pre>
+## 1   0.248</code></pre>
 </div>
 </div>
 <p>Alternatively, the {permuco} package introduces the <code>aovperm()</code> and <code>lmperm()</code> functions as analogs for <code>aov()</code> and <code>lm()</code> for analysis of variance and simple linear regression, where p values are calculated by permutation.</p>
@@ -984,7 +984,7 @@ window.Quarto = {
 <pre><code>## Anova Table
 ## Resampling test using freedman_lane to handle nuisance variables and 5000 permutations.
 ##                 SS  df     F parametric P(&gt;F) resampled P(&gt;F)
-## occupation   12.85   3 1.403           0.2403            0.24
+## occupation   12.85   3 1.403           0.2403          0.2366
 ## Residuals  3041.08 996</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m.aovperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1007,9 +1007,9 @@ window.Quarto = {
 ## occupationother        0.10424    0.13496  0.7724           4.401e-01
 ##                       resampled Pr(&lt;t) resampled Pr(&gt;t) resampled Pr(&gt;|t|)
 ## (Intercept)                                                               
-## occupationengineering           0.9806           0.0196             0.0376
-## occupationlogistics             0.7218           0.2784             0.5548
-## occupationother                 0.7792           0.2210             0.4440</code></pre>
+## occupationengineering           0.9788           0.0214             0.0412
+## occupationlogistics             0.7266           0.2736             0.5580
+## occupationother                 0.7846           0.2156             0.4340</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>permuco)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1025,7 +1025,7 @@ window.Quarto = {
 ## 
 ## data:  zombies_killed by
 ##   occupation (natural science, engineering, logistics, other)
-## chi-squared = 4.2048, p-value = 0.2421</code></pre>
+## chi-squared = 4.2048, p-value = 0.237</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>coin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

@@ -1,6 +1,4 @@
----
-title: "Exercise 10 Solution"
----
+# Exercise 10 Solution {.unnumbered}
 
 # • Solution {.unnumbered}
 
