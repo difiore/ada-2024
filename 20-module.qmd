@@ -84,7 +84,7 @@ p
 
 We can extend this approach to the case where we have more than two categories for a variable... in this case we need to dummy code our factor variable into multiple binary variables. ***R*** takes care of this for us automatically, but it is good to recognize the procedure.
 
-Let's explore this by re-coding the variable **major*"** into four levels. We can first use the `unique()` or `levels()` function to list all of the different majors in our dataset. The latter does this alphabetically.
+Let's explore this by re-coding the variable **major** into four levels. We can first use the `unique()` or `levels()` function to list all of the different majors in our dataset. The latter does this alphabetically.
 
 ```{r}
 unique(z$major)

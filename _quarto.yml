@@ -50,7 +50,7 @@ book:
       - 19-module.qmd
       - 20-module.qmd
       - 21-module.qmd
-      # - 22-module.qmd
+      - 22-module.qmd
       # - 23-module.qmd
       # - 24-module.qmd
     - part: "Part III - Miscellany"

@@ -691,7 +691,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We can extend this approach to the case where we have more than two categories for a variable… in this case we need to dummy code our factor variable into multiple binary variables. <strong><em>R</em></strong> takes care of this for us automatically, but it is good to recognize the procedure.</p>
-<p>Let’s explore this by re-coding the variable **major*“** into four levels. We can first use the <code>unique()</code> or <code>levels()</code> function to list all of the different majors in our dataset. The latter does this alphabetically.</p>
+<p>Let’s explore this by re-coding the variable <strong>major</strong> into four levels. We can first use the <code>unique()</code> or <code>levels()</code> function to list all of the different majors in our dataset. The latter does this alphabetically.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(z<span class="sc">$</span>major)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -934,7 +934,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.214</code></pre>
+## 1   0.246</code></pre>
 </div>
 </div>
 <p>Note that, for these data, the p value estimated through simulated based inference is very similar to that calculated paramterically based on mathematical theory. This is not always the case!</p>
@@ -948,7 +948,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.214</code></pre>
+## 1   0.246</code></pre>
 </div>
 </div>
 <p>Alternatively, the {permuco} package introduces the <code>aovperm()</code> and <code>lmperm()</code> functions as analogs for <code>aov()</code> and <code>lm()</code> for analysis of variance and simple linear regression, where p values are calculated by permutation.</p>
@@ -960,7 +960,7 @@ window.Quarto = {
 <pre><code>## Anova Table
 ## Resampling test using freedman_lane to handle nuisance variables and 5000 permutations.
 ##                 SS  df     F parametric P(&gt;F) resampled P(&gt;F)
-## occupation   12.85   3 1.403           0.2403            0.25
+## occupation   12.85   3 1.403           0.2403          0.2394
 ## Residuals  3041.08 996</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m.aovperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -983,9 +983,9 @@ window.Quarto = {
 ## occupationother        0.10424    0.13496  0.7724           4.401e-01
 ##                       resampled Pr(&lt;t) resampled Pr(&gt;t) resampled Pr(&gt;|t|)
 ## (Intercept)                                                               
-## occupationengineering           0.9792           0.0210             0.0398
-## occupationlogistics             0.7296           0.2706             0.5552
-## occupationother                 0.7850           0.2152             0.4394</code></pre>
+## occupationengineering           0.9774           0.0228             0.0408
+## occupationlogistics             0.7136           0.2866             0.5466
+## occupationother                 0.7672           0.2330             0.4428</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>permuco)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1001,7 +1001,7 @@ window.Quarto = {
 ## 
 ## data:  zombies_killed by
 ##   occupation (natural science, engineering, logistics, other)
-## chi-squared = 4.2048, p-value = 0.2368</code></pre>
+## chi-squared = 4.2048, p-value = 0.2416</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>coin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2472,7 +2472,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb177-100"><a href="#cb177-100" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb177-101"><a href="#cb177-101" aria-hidden="true" tabindex="-1"></a>We can extend this approach to the case where we have more than two categories for a variable... in this case we need to dummy code our factor variable into multiple binary variables. ***R*** takes care of this for us automatically, but it is good to recognize the procedure.</span>
 <span id="cb177-102"><a href="#cb177-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-103"><a href="#cb177-103" aria-hidden="true" tabindex="-1"></a>Let's explore this by re-coding the variable **major*"** into four levels. We can first use the <span class="in">`unique()`</span> or <span class="in">`levels()`</span> function to list all of the different majors in our dataset. The latter does this alphabetically.</span>
+<span id="cb177-103"><a href="#cb177-103" aria-hidden="true" tabindex="-1"></a>Let's explore this by re-coding the variable **major** into four levels. We can first use the <span class="in">`unique()`</span> or <span class="in">`levels()`</span> function to list all of the different majors in our dataset. The latter does this alphabetically.</span>
 <span id="cb177-104"><a href="#cb177-104" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb177-107"><a href="#cb177-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb177-108"><a href="#cb177-108" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(z<span class="sc">$</span>major)</span>

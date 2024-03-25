@@ -1,7 +1,3 @@
----
-title: "Module 22"
----
-
 # Model Selection in Linear Regression {#module-22}
 
 ## Overview
@@ -10,10 +6,11 @@ The purpose of a model selection process in a regression analysis is to sort thr
 
 ## Preliminaries
 
--   Install these packages in ***R***: [{MASS}](https://cran.r-project.org/web/packages/MASS/MASS.pdf), [{AICcmodavg}](https://cran.r-project.org/web/packages/AICcmodavg/AICcmodavg.pdf), and [{MuMIn}](https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf)
--   Load {tidyverse}
+- Install these packages in ***R***: [{MASS}](https://cran.r-project.org/web/packages/MASS/MASS.pdf), [{AICcmodavg}](https://cran.r-project.org/web/packages/AICcmodavg/AICcmodavg.pdf), and [{MuMIn}](https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf)
+- Load {tidyverse}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 ```
 
@@ -31,15 +28,15 @@ $$F = \frac{(R^2_{full}-R^2_{reduced})(n-q-1)}{(1-R^2_{full})(q-p)}$$
 
 where:
 
--   The $R^2$ values are the coefficients of determination of the full model and the nested "reduced" model
--   $n$ is the number of observations in the data set
--   $p$ is the number of predictor terms in the nested (reduced) model
--   $q$ is the number of predictor terms in the full model
+- The $R^2$ values are the coefficients of determination of the full model and the nested "reduced" model
+- $n$ is the number of observations in the data set
+- $p$ is the number of predictor terms in the nested (reduced) model
+- $q$ is the number of predictor terms in the full model
 
 After we calculate this F statistic, we compare it to an $F$ distribution with "df1 = q-p" and "df2 = n-q" to derive a p value. The `lm()` function will do this for us automatically, but we can also do it by hand.
 
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ADA-datasets/master/zombies.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
 z <- read_csv(f, col_names = TRUE)
 z$gender <- factor(z$gender)
 m1 <- lm(data = z, height ~ age * gender) # full model
@@ -52,8 +49,7 @@ Once we have fitted the full and three nested models, we can carry out partial F
 
 ```{r}
 anova(m2, m1, test = "F")
-# compares the reduced model without interactions (m2) to the full model
-# with interactions (m1)
+# compares the reduced model without interactions (m2) to the full model with interactions (m1)
 ```
 
 We can also calculate the F statistic by hand and compare it to the $F$ distribution.
@@ -75,7 +71,7 @@ In these cases, each comparison shows that the more complex model indeed results
 
 ## Forward Selection
 
-Forward selection starts with an intercept-only model and then tests which of the predictor variables best improves the goodness-of-fit. Then the model is updated by adding that term and tests which of the remaining predictors would further and best improve the fit. The process continues until there are not any other terms that could be added to improve the fit more. The R functions `add1()` and `update()`, respectively, perform the series of tests and update your fitted regression model. Setting the "test=" argument to "F" includes the partial F statistic value and its significance. The ".\~." part of the "scope=" argument means, basically, "what is already there", while the remainder of the "scope=" argument is the list of additional variables you might add for the fullest possible model.
+Forward selection starts with an intercept-only model and then tests which of the predictor variables best improves the goodness-of-fit. Then the model is updated by adding that term and tests which of the remaining predictors would further and best improve the fit. The process continues until there are not any other terms that could be added to improve the fit more. The R functions `add1()` and `update()`, respectively, perform the series of tests and update your fitted regression model. Setting the "test=" argument to "F" includes the partial F statistic value and its significance. The ". ~ ." part of the "scope=" argument means, basically, "what is already there", while the remainder of the "scope=" argument is the list of additional variables you might add for the fullest possible model.
 
 ```{r}
 m0 <- lm(data = z, height ~ 1)
@@ -176,46 +172,31 @@ library(MuMIn)
 m <- lm(data = z,
   height ~ age + weight + zombies_killed + years_of_education,
   na.action = "na.fail")
-# here, we need to change the "na.action" argument from the
-#   default of "na.omit" to "na.fail" to prevent `dredge()` from
-#   trying to fit submodels with different data sets than the
-#   global model if there are missing values
-# alternatively, we could set that option globally for our R
-#   session before running the global model by using
-#   `options(na.action = na.fail)` and then omitting the
-#   `na.action=` argument from our call to `lm()`
+# here, we need to change the "na.action" argument from the default of "na.omit" to "na.fail" to prevent `dredge()` from trying to fit submodels with different data sets than the global model if there are missing values
+# alternatively, we could set that option globally for our R session before running the global model by using `options(na.action = na.fail)` and then omitting the `na.action=` argument from our call to `lm()`
 # options()$na.action shows the current na.action option
 
 # we then run `dredge()` to explore a set of submodels
-#   the `m.lim=` argument is optional and sets lower and upper
-#   limits on the number of terms to include
-#   the `beta=` argument specifies whether or not and how to
-#   standardize the beta coefficients; "none" is the default
+#   - the `m.lim=` argument is optional and sets lower and upper limits on the number of terms to include
+#   - the `beta=` argument specifies whether or not and how to standardize the beta coefficients; "none" is the default
 m.set <- dredge(m, beta = "none", m.lim = c(0, 4))
 (res <- get.models(m.set, subset=TRUE))
 coef(m.set) # returns a table of coefficients from each model
 ```
 
- Averaging coefficients across sets of models...
+Averaging coefficients across sets of models...
  
 ```{r}
 # summarizing models with delta.aicc < 4
-#   here, we need to set the argument `fit=TRUE` because
-#   `dredge()` does not store the model results
+#   - here, we need to set the argument `fit=TRUE` because `dredge()` does not store the model results
 (m.avg <- summary(model.avg(m.set,
   subset = delta < 4, fit = TRUE)))
-# and getting confidence intervals for the average coefficient
-#   estimates across models...
+# and getting confidence intervals for the average coefficient estimates across models...
 confint(m.avg)
 
-# NOTE: The ‘subset’ (or ‘conditional’) average only averages
-#   over models where the term appears. The ‘full’ average assumes
-#   that a term is included in every model but the estimate and
-#   standard error are set to zero in models where the term is not
-#   included
+# NOTE: The ‘subset’ (or ‘conditional’) average only average over models where the term appears. The ‘full’ average assumes that a term is included in every model but the estimate and standard error are set to zero in models where the term is not included
 
-# summarizing models as a 95% confidence set, i.e., for cumulative
-#   AIC weights up to 95%
+# summarizing models as a 95% confidence set, i.e., for cumulative AIC weights up to 95%
 
 (m.avg <- summary(model.avg(m.set, subset =
   cumsum(weight) <= .95, fit = TRUE)))
@@ -225,7 +206,8 @@ detach(package:MuMIn)
 
 Note that, again, the two key predictors of zombie apocalypse survivor's **height** are **age** and **weight**, and the best models include both of these terms!
 
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:tidyverse)
 ```
 
@@ -233,7 +215,7 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   Model selection is an iterative process, done as part of a regression analysis, where we sort through our explanatory variables and alternative models involving those variables to discern which are best able to account for variation in the response variable
--   There are various criteria for evaluating alternative models, but all rely on comparing the "explanatory value" of more complex models versus less complex models
--   Forward selection evaluates whether adding a variable or interaction among variables to a less complex model increases the explanatory value of the model significantly
--   Backwards selection evaluates whether removing a variable or interaction among variables from a more complex model results in a significant loss of explanatory power
+- Model selection is an iterative process, done as part of a regression analysis, where we sort through our explanatory variables and alternative models involving those variables to discern which are best able to account for variation in the response variable
+- There are various criteria for evaluating alternative models, but all rely on comparing the "explanatory value" of more complex models versus less complex models
+- Forward selection evaluates whether adding a variable or interaction among variables to a less complex model increases the explanatory value of the model significantly
+- Backwards selection evaluates whether removing a variable or interaction among variables from a more complex model results in a significant loss of explanatory power
