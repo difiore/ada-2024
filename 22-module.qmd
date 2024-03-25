@@ -1,4 +1,4 @@
-# Model Selection {#module-22}
+# Model Selection in Linear Regression {#module-22}
 
 ## Overview
 
