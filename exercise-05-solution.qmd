@@ -595,7 +595,7 @@ ci_quant <- function(x, level = 0.95){
 
 samp_dist_CI <- dplyr::summarise(samp_dist, across(
   .cols = everything(),
-  .fns =  ~ ci_quant(., 0.05)))
+  .fns =  ~ ci_quant(., level = 0.95)))
 
 samp_dist_summary <- bind_cols(samp_dist_summary, t(samp_dist_CI))
 
@@ -621,7 +621,7 @@ kable(compare_CIs, digits = 3) |>
 
 - Finally, use bootstrapping to generate a 95% confidence interval for each variable mean **by bootstrapping 1000 samples, with replacement, from your original sample**.
 
-> **NOTE:** This was already done in Step 6, where we ran the custom `CI_boot()` function, and the results are included in the table above.
+> **NOTE:** This was already done in Step 6, where we ran the custom `CI_boot()` function, and the results are included in the **Samp 1 CI boot** column in table above.
 
 The CI based on the sampling distribution generated via **resampling** is comparable to those based on the first sample using parametric estimates from a normal and t distribution as well as that based on bootstrapping using just the first sample for all of the normally distributed variables (age, height, weight). Even for the Poisson-distributed variables (zombies killed, years of education), the lower and upper bounds for the sampling distribution-based CIs are pretty comparable to those estimated from the first sample by either parametric methods or from bootstrap estimation.
 

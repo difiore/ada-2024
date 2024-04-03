@@ -1708,7 +1708,7 @@ window.Quarto = {
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>samp_dist_CI <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(samp_dist, <span class="fu">across</span>(<span class="at">.cols =</span> <span class="fu">everything</span>(), <span class="at">.fns =</span> <span class="sc">~</span><span class="fu">ci_quant</span>(.,</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.05</span>)))</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="fl">0.95</span>)))</span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>samp_dist_summary <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(samp_dist_summary, <span class="fu">t</span>(samp_dist_CI))</span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
@@ -1731,31 +1731,31 @@ window.Quarto = {
 <td style="text-align: left;">Height</td>
 <td style="text-align: right;">67.559</td>
 <td style="text-align: right;">0.551</td>
-<td style="text-align: left;">[67.51-67.561]</td>
+<td style="text-align: left;">[66.503-68.626]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Weight</td>
 <td style="text-align: right;">143.747</td>
 <td style="text-align: right;">2.371</td>
-<td style="text-align: left;">[143.79-143.944]</td>
+<td style="text-align: left;">[139.071-148.556]</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Age</td>
 <td style="text-align: right;">20.039</td>
 <td style="text-align: right;">0.381</td>
-<td style="text-align: left;">[19.984-20.031]</td>
+<td style="text-align: left;">[19.412-20.828]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Kills</td>
 <td style="text-align: right;">3.016</td>
 <td style="text-align: right;">0.233</td>
-<td style="text-align: left;">[3-3.04]</td>
+<td style="text-align: left;">[2.579-3.443]</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Years of Ed</td>
 <td style="text-align: right;">2.996</td>
 <td style="text-align: right;">0.240</td>
-<td style="text-align: left;">[2.96-2.99]</td>
+<td style="text-align: left;">[2.479-3.481]</td>
 </tr>
 </tbody>
 </table>
@@ -1790,35 +1790,35 @@ window.Quarto = {
 <td style="text-align: left;">[66.088-68.516]</td>
 <td style="text-align: left;">[66.057-68.546]</td>
 <td style="text-align: left;">[66.072-68.535]</td>
-<td style="text-align: left;">[67.51-67.561]</td>
+<td style="text-align: left;">[66.503-68.626]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Weight</td>
 <td style="text-align: left;">[137.699-149.234]</td>
 <td style="text-align: left;">[137.553-149.38]</td>
 <td style="text-align: left;">[137.759-148.981]</td>
-<td style="text-align: left;">[143.79-143.944]</td>
+<td style="text-align: left;">[139.071-148.556]</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Age</td>
 <td style="text-align: left;">[19.227-20.948]</td>
 <td style="text-align: left;">[19.205-20.97]</td>
 <td style="text-align: left;">[19.298-20.924]</td>
-<td style="text-align: left;">[19.984-20.031]</td>
+<td style="text-align: left;">[19.412-20.828]</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Kills</td>
 <td style="text-align: left;">[2.567-3.593]</td>
 <td style="text-align: left;">[2.554-3.606]</td>
 <td style="text-align: left;">[2.62-3.62]</td>
-<td style="text-align: left;">[3-3.04]</td>
+<td style="text-align: left;">[2.579-3.443]</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Years of Ed</td>
 <td style="text-align: left;">[2.606-3.474]</td>
 <td style="text-align: left;">[2.595-3.485]</td>
 <td style="text-align: left;">[2.639-3.46]</td>
-<td style="text-align: left;">[2.96-2.99]</td>
+<td style="text-align: left;">[2.479-3.481]</td>
 </tr>
 </tbody>
 </table>
@@ -1833,7 +1833,7 @@ window.Quarto = {
 <li>Finally, use bootstrapping to generate a 95% confidence interval for each variable mean <strong>by bootstrapping 1000 samples, with replacement, from your original sample</strong>.</li>
 </ul>
 <blockquote class="blockquote">
-<p><strong>NOTE:</strong> This was already done in Step 6, where we ran the custom <code>CI_boot()</code> function, and the results are included in the table above.</p>
+<p><strong>NOTE:</strong> This was already done in Step 6, where we ran the custom <code>CI_boot()</code> function, and the results are included in the <strong>Samp 1 CI boot</strong> column in table above.</p>
 </blockquote>
 <p>The CI based on the sampling distribution generated via <strong>resampling</strong> is comparable to those based on the first sample using parametric estimates from a normal and t distribution as well as that based on bootstrapping using just the first sample for all of the normally distributed variables (age, height, weight). Even for the Poisson-distributed variables (zombies killed, years of education), the lower and upper bounds for the sampling distribution-based CIs are pretty comparable to those estimated from the first sample by either parametric methods or from bootstrap estimation.</p>
 
@@ -2892,7 +2892,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb33-645"><a href="#cb33-645" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-646"><a href="#cb33-646" aria-hidden="true" tabindex="-1"></a>samp_dist_CI <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(samp_dist, <span class="fu">across</span>(</span>
 <span id="cb33-647"><a href="#cb33-647" aria-hidden="true" tabindex="-1"></a>  <span class="at">.cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb33-648"><a href="#cb33-648" aria-hidden="true" tabindex="-1"></a>  <span class="at">.fns =</span>  <span class="sc">~</span> <span class="fu">ci_quant</span>(., <span class="fl">0.05</span>)))</span>
+<span id="cb33-648"><a href="#cb33-648" aria-hidden="true" tabindex="-1"></a>  <span class="at">.fns =</span>  <span class="sc">~</span> <span class="fu">ci_quant</span>(., <span class="at">level =</span> <span class="fl">0.95</span>)))</span>
 <span id="cb33-649"><a href="#cb33-649" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-650"><a href="#cb33-650" aria-hidden="true" tabindex="-1"></a>samp_dist_summary <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(samp_dist_summary, <span class="fu">t</span>(samp_dist_CI))</span>
 <span id="cb33-651"><a href="#cb33-651" aria-hidden="true" tabindex="-1"></a></span>
@@ -2918,7 +2918,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb33-673"><a href="#cb33-673" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-674"><a href="#cb33-674" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, use bootstrapping to generate a 95% confidence interval for each variable mean **by bootstrapping 1000 samples, with replacement, from your original sample**.</span>
 <span id="cb33-675"><a href="#cb33-675" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-676"><a href="#cb33-676" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This was already done in Step 6, where we ran the custom </span><span class="in">`CI_boot()`</span><span class="at"> function, and the results are included in the table above.</span></span>
+<span id="cb33-676"><a href="#cb33-676" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This was already done in Step 6, where we ran the custom `CI_boot()` function, and the results are included in the **Samp 1 CI boot** column in table above.</span></span>
 <span id="cb33-677"><a href="#cb33-677" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-678"><a href="#cb33-678" aria-hidden="true" tabindex="-1"></a>The CI based on the sampling distribution generated via **resampling** is comparable to those based on the first sample using parametric estimates from a normal and t distribution as well as that based on bootstrapping using just the first sample for all of the normally distributed variables (age, height, weight). Even for the Poisson-distributed variables (zombies killed, years of education), the lower and upper bounds for the sampling distribution-based CIs are pretty comparable to those estimated from the first sample by either parametric methods or from bootstrap estimation.</span>
 <span id="cb33-679"><a href="#cb33-679" aria-hidden="true" tabindex="-1"></a></span>
