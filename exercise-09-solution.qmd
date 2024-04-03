@@ -4,20 +4,24 @@
 
 Using the {tidyverse} `read_csv()` function, load the "Street_et_al_2017.csv" dataset as a "tibble" named **d**.
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(tidyverse)
 library(broom)
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Street_et_al_2017.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Street_et_al_2017.csv"
 d <- read_csv(f, col_names = TRUE)
 ```
 
 Do a quick exploratory data analysis where you generate the five-number summary (median, minimum and maximum and 1st and 3rd quartile values), plus mean and standard deviation, for each quantitative variable.
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(skimr)
 library(kableExtra)
-skim(d) %>%
-  kable() %>%
+skim(d) |>
+  kable() |>
   kable_styling(font_size = 10, full_width = FALSE)
 detach(package:kableExtra)
 detach(package:skimr)
@@ -25,7 +29,9 @@ detach(package:skimr)
 
 From this dataset, plot brain size (**ECV**) as a function of social group size (**Group_size**), longevity (**Longevity**), juvenile period length (**Weaning**), and reproductive lifespan (**Repro_lifespan**).
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(cowplot)
 p1 <- ggplot(data = d, aes(x=Group_size, y=ECV)) + geom_point()
 p2 <- ggplot(data = d, aes(x=Longevity, y=ECV)) + geom_point()
@@ -37,9 +43,9 @@ plot_grid(p1, p2, p3, p4, nrow = 2)
 Derive by hand the ordinary least squares regression coefficients $\beta1$ and $\beta0$ for ECV as a function of social group size.
 
 ```{r}
-d_mod <- d %>% filter(!is.na(ECV) & !is.na(Group_size))
+d_mod <- d |> filter(!is.na(ECV) & !is.na(Group_size))
 # or
-d_mod <- d %>% drop_na(ECV, Group_size)
+d_mod <- d |> drop_na(ECV, Group_size)
 
 (b1 <- cor(d_mod$ECV, d_mod$Group_size) * sd(d_mod$ECV)/sd(d_mod$Group_size))
 (b0 <- mean(d_mod$ECV) - b1 * mean(d_mod$Group_size))
@@ -49,8 +55,8 @@ Confirm that you get the same results using the `lm()` function.
 
 ```{r}
 m <- lm(ECV ~ Group_size, data = d)
-results <- m %>%
-  summary() %>%
+results <- m |>
+  summary() |>
   tidy()
 results
 ```
@@ -58,20 +64,20 @@ results
 Repeat the analysis above for three different major radiations of primates - "catarrhines", "platyrrhines", and "strepsirhines") separately.
 
 ```{r}
-platyrrhini <- d_mod %>% filter(Taxonomic_group == "Platyrrhini")
-catarrhini <- d_mod %>% filter(Taxonomic_group == "Catarrhini")
-strepsirhini <- d_mod %>% filter(Taxonomic_group == "Strepsirhini")
+platyrrhini <- d_mod |> filter(Taxonomic_group == "Platyrrhini")
+catarrhini <- d_mod |> filter(Taxonomic_group == "Catarrhini")
+strepsirhini <- d_mod |> filter(Taxonomic_group == "Strepsirhini")
 
-(platyrrhini_results <- lm(ECV ~ Group_size, data = platyrrhini) %>%
-  summary() %>%
+(platyrrhini_results <- lm(ECV ~ Group_size, data = platyrrhini) |>
+  summary() |>
   tidy())
 
-(catarrhini_results <- lm(ECV ~ Group_size, data = catarrhini) %>%
-  summary() %>%
+(catarrhini_results <- lm(ECV ~ Group_size, data = catarrhini) |>
+  summary() |>
   tidy())
 
-(strepsirhini_results <- lm(ECV ~ Group_size, data = strepsirhini) %>%
-  summary() %>%
+(strepsirhini_results <- lm(ECV ~ Group_size, data = strepsirhini) |>
+  summary() |>
   tidy())
 ```
 
@@ -103,7 +109,6 @@ residuals <- d_mod$ECV - (b0 + b1 * d_mod$Group_size)
 
 # calculate p values...
 # first, we need t statistics...
-# 
 t_b1 = b1/SE_b1
 t_b0 = b0/SE_b0
 
@@ -117,14 +122,16 @@ p_b0 <- 2 * pt(abs(t_b0), df = df, lower.tail = FALSE)
 Also extract this same information from the results of running the `lm()` function. Compare the hand-calculated output above to that pulled from the model result object, **m**.
 
 ```{r}
-(results <- m %>%
-  summary() %>%
+(results <- m |>
+  summary() |>
   tidy(conf.int = TRUE, conf.level = 1 - alpha))
 ```
 
 Then, use a permutation approach with 1000 permutations to generate a null sampling distribution for the slope coefficient.
 
-```{r warning=FALSE, message=FALSE}
+```{r}
+#| warning: false
+#| message: false
 library(mosaic)
 library(infer)
 # using a loop to get a permutation distribution for slope
@@ -133,9 +140,9 @@ perm <- vector(length = nperm)
 perm.sample <- d_mod
 for (i in 1:nperm){
   perm.sample$Group_size <- sample(perm.sample$Group_size)
-  result <- lm(ECV ~ Group_size, data = perm.sample) %>%
-    tidy() %>%
-    filter(term == "Group_size") %>%
+  result <- lm(ECV ~ Group_size, data = perm.sample) |>
+    tidy() |>
+    filter(term == "Group_size") |>
     pull(estimate)
   perm[[i]] <- result
 }
@@ -145,13 +152,13 @@ ladd(panel.abline(v = b1, lty = 3, lwd = 2))
 perm.se <- sd(perm)
 
 # or, using the {infer} workflow...
-perm <- d_mod %>%
+perm <- d_mod |>
   # specify model
-  specify(ECV ~ Group_size) %>%
+  specify(ECV ~ Group_size) |>
   # use a null hypothesis of independence
-  hypothesize(null = "independence") %>%
+  hypothesize(null = "independence") |>
   # generate permutation replicates
-  generate(reps = nperm, type = "permute") %>%
+  generate(reps = nperm, type = "permute") |>
   # calculate the slope statistic
   calculate(stat = "slope")
 
@@ -163,9 +170,9 @@ perm.se <- sd(perm$stat)
 What is the p value associated with your original slope coefficient? You can use either the percentile method (i.e., using quantiles from actual permutation-based null sampling distribution) or a theory-based method (i.e., using the standard deviation of the permutation-based null sampling distribution as the estimate of the standard error), or both, to calculate this p value.
 
 ```{r}
-(p.percentile <- perm %>% 
-  mutate(test = abs(stat) >= abs(b1)) %>%
-  summarize(p = mean(test)) %>%
+(p.percentile <- perm |> 
+  mutate(test = abs(stat) >= abs(b1)) |>
+  summarize(p = mean(test)) |>
   pull(p))
 # p value taken directly from the permutation distribution
 # i.e., how many of the slope estimates from permuted
@@ -173,7 +180,7 @@ What is the p value associated with your original slope coefficient? You can use
 # here, absolute value is used to make this a 2-tailed test
 
 # or, using the {infer} package...
-(p.percentile <- perm %>% get_p_value(obs_stat = b1, direction="two_sided"))
+(p.percentile <- perm |> get_p_value(obs_stat = b1, direction="two_sided"))
 
 (p.theory <- 2 * pt(abs(b1)/perm.se, df = df, lower.tail = FALSE))
 # the t statistic used in `pt()` to calculate the p values is
@@ -194,9 +201,9 @@ nboot <- 1000
 boot <- vector(length = nboot)
 for (i in 1:nboot){
   boot.sample <- sample_n(d_mod, nrow(d_mod), replace = TRUE)
-  result <- lm(ECV ~ Group_size, data = boot.sample) %>%
-    tidy() %>%
-    filter(term == "Group_size") %>%
+  result <- lm(ECV ~ Group_size, data = boot.sample) |>
+    tidy() |>
+    filter(term == "Group_size") |>
     pull(estimate)
   boot[[i]] <- result
 }
@@ -207,11 +214,11 @@ CI.theory <- b1 + c(-1, 1) * qt(p.upper, df = df) * sd(boot)
 ladd(panel.abline(v = CI.theory, lty = 3, lwd = 2, col = "blue"))
 
 # or, using the {infer} workflow...
-boot.slope <- d_mod %>%
+boot.slope <- d_mod |>
   # specify model
-  specify(ECV ~ Group_size) %>%
+  specify(ECV ~ Group_size) |>
   # generate bootstrap replicates
-  generate(reps = 1000, type = "bootstrap") %>%
+  generate(reps = 1000, type = "bootstrap") |>
   # calculate the slope statistic
   calculate(stat = "slope")
 

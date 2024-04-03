@@ -1,7 +1,3 @@
----
-title: "Module 24"
----
-
 # Mixed Effects or Multilevel Modeling {#module-24}
 
 ## Objectives
@@ -10,10 +6,11 @@ title: "Module 24"
 
 ## Preliminaries
 
--   Install and load this package in ***R***: [{lme4}](https://cran.r-project.org/web/packages/lme4/lme4.pdf)
--   Load {tidyverse}
+- Install and load this package in ***R***: [{lme4}](https://cran.r-project.org/web/packages/lme4/lme4.pdf)
+- Load {tidyverse}
 
-```{r include=FALSE}
+```{r}
+#| include: false
 library(tidyverse)
 library(lme4)
 ```
@@ -30,16 +27,16 @@ However, if our observational data were to consist of repeated observations of t
 
 So-called **mixed models**, then, are those that include BOTH fixed and random effects. Including random effects in addition to fixed effects in our models has several ramifications:
 
--   Using random effects broadens the scope of inference. That is, we can use statistical methods to infer something about the population from which the levels of the random factor have been drawn.
--   Using random effects naturally incorporates dependence in the model and helps us account for pseudoreplication in our dataset. Observations that share the same level of the random effects are explicitly modeled as being correlated. This makes mixed effect modeling very useful for dealing with time series data, spatially correlated data, or situations where we have repeated observations/measures from the same subjects or sampling unit.
--   Using random factors often gives more accurate parameter estimates.
--   Incorporating random factors, however, does require the use of more sophisticated estimation and fitting methods.
+- Using random effects broadens the scope of inference. That is, we can use statistical methods to infer something about the population from which the levels of the random factor have been drawn.
+- Using random effects naturally incorporates dependence in the model and helps us account for pseudoreplication in our dataset. Observations that share the same level of the random effects are explicitly modeled as being correlated. This makes mixed effect modeling very useful for dealing with time series data, spatially correlated data, or situations where we have repeated observations/measures from the same subjects or sampling unit.
+- Using random factors often gives more accurate parameter estimates.
+- Incorporating random factors, however, does require the use of more sophisticated estimation and fitting methods.
 
 Not surprisingly, there several different varieties of mixed modeling approaches, which are supported in a variety of different packages in ***R***:
 
--   Standard or general **Linear Mixed Models (LMM)**, analogous to standard or general linear regression - used when we are dealing with normally distributed variables and error structures.
--   **Generalized Linear Mixed Models (GLMM)**, analogous to generalized linear regresseion - used when we are dealing with various other variable types and error structure (e.g., binary, proportion, or count data).
--   **Nonlinear Mixed Models (NLMM)**, analogous to nonlinear regression - used if we are dealing with situations where our response variable is best modeled by a nonlinear combination of predictor variables.
+- Standard or general **Linear Mixed Models (LMM)**, analogous to standard or general linear regression - used when we are dealing with normally distributed variables and error structures.
+- **Generalized Linear Mixed Models (GLMM)**, analogous to generalized linear regresseion - used when we are dealing with various other variable types and error structure (e.g., binary, proportion, or count data).
+- **Nonlinear Mixed Models (NLMM)**, analogous to nonlinear regression - used if we are dealing with situations where our response variable is best modeled by a nonlinear combination of predictor variables.
 
 > **NOTE:** We have not talked at all in this course about general or generalized NONLINEAR modeling, but it is worth knowing that such approaches are also possible. NONLINEAR modeling is where our regression equation is a **nonlinear** function of the model parameters.
 
@@ -64,38 +61,36 @@ In a mixed model, by contrast, we add one or more random effects to our fixed ef
 Let's explore these idea using some actual data. First, load in the dataset "chimpgrooming.csv" and do some exploratory data analysis:
 
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/chimpgrooming.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/chimpgrooming.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
 summary(d)
 ```
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Plot grooming received duration in relation to subject ID...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 (p <- ggplot(data=d, aes(x=subject, y=duration)) +
    geom_boxplot() + xlab("subject") +
    theme(axis.text.x = element_text(angle = 90)))
 ```
-:::
 
 Now plot grooming received in relation to reproductive condition...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 (p <- ggplot(data = d, aes(x = reprocondition, y = duration)) +
   geom_boxplot() + xlab("reproductive condition") +
   theme(axis.text.x = element_text(angle = 90)))
 ```
-:::
 
 Now plot grooming received in relation to reproductive condition *and* parity...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 (p <- ggplot(data = d, aes(x = reprocondition, y = duration,
   fill=factor(parity))) + geom_boxplot() +
   xlab("reproductive condition") +
@@ -110,14 +105,13 @@ Now plot grooming received in relation to reproductive condition *and* parity...
   labs(fill = "repro\ncondition") +
   theme(axis.text.x = element_text(angle = 90)))
 ```
-:::
 
 From these plots, we can see lots of [a] individual variation in how much grooming is received, [b] variation in response to reproductive condition, [c] limited variation due to parity, and [d] variation in response to this combination of fixed effects.
 
 Finally, plot grooming received into relation to both a fixed effect (reprocondition) and a random effect (subject)...
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 (p <- ggplot(data = d, aes(x = reprocondition, y = duration,
   fill = factor(subject))) +
   geom_boxplot() +
@@ -134,7 +128,6 @@ Finally, plot grooming received into relation to both a fixed effect (reprocondi
   labs(fill = "repro\ncondition") +
   theme(axis.text.x = element_text(angle = 90)))
 ```
-:::
 
 What patterns do you see? There is, again, lots of apparent variation!
 
@@ -208,7 +201,9 @@ summary(reduced)
 
 We then perform the likelihood ratio test using the `anova()` function or the `lrtest()` function from {lmtest}.
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 anova(reduced, full, test = "Chisq")
 library(lmtest)
 lrtest(reduced, full)
@@ -217,35 +212,33 @@ detach(package:lmtest)
 
 These results tell us that the model containing both **reproductive condition** and **parity** as *fixed* effects fits the data better than a model lacking **reproductive condition** and containing only **parity** as a *fixed* effect, while accounting for **subject** as a *random* effect.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Now, compare a model containing **reproductive condition** and **parity** to one containing just **reproductive condition**.
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 full <- lmer(data = d, duration ~ reprocondition + parity +
   (1|subject), REML=FALSE)
 reduced <- lmer(data=d, duration~reprocondition +
   (1|subject), REML=FALSE)
 anova(reduced, full, test = "Chisq")
 ```
-:::
 
 Based on this result, including **parity** as well as **reproductive condition** as fixed effects also significantly improves the fit of our model.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Construct a model that includes an interaction of **reproductive condition** and **parity** and compare it to a model without the interaction term. Is the interaction of these two fixed effects significant?
 
-::: {.fold .s .o}
 ```{r}
+#| code-fold: true
 full <- lmer(data = d, duration ~ reprocondition * parity +
   (1 | subject), REML = FALSE)
 reduced <- lmer(data = d, duration ~ reprocondition + parity +
   (1 | subject), REML=FALSE)
 anova(reduced, full, test = "Chisq")
 ```
-:::
 
 In this case, adding the interaction of **reproductive condition** and **parity** does not significantly improve the explanatory power of the model.
 
@@ -255,7 +248,9 @@ In the exercise above, we included only estimation of a separate INTERCEPT for e
 
 $$grooming\ duration \sim reproductive\ condition + parity\ +$$ $$(1 + reproductive\ condition|subject) + (1 + parity|subject) + \epsilon$$
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 lme <- lmer(data = d, duration ~ reprocondition + parity +
   (1 + reprocondition | subject) + (1 + parity | subject),
   REML = FALSE)
@@ -274,7 +269,9 @@ coefficients(lme)
 
 To then get p values associated with each of the fixed factors, we can use likelihood ratio tests...
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 # random factors only
 null <- lmer(data = d, duration ~ (1 + reprocondition | subject) +
   (1 + parity | subject), REML = FALSE)
@@ -307,7 +304,9 @@ For a long time, the appropriateness of our mixed models was assessed as above -
 
 The `aictab()` function from {AICcmodavg} neatly prints out tables with AIC, Delta AIC, and log-likelihood values, along with AIC "weights".
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 library(AICcmodavg)
 (aic_table <- aictab( list(full, minusRC, minusP, null),
   modnames = c("full", "minusRC", "minusP", "null")))
@@ -332,30 +331,32 @@ Here, note that the full model containing both *reproductive condition* and *par
 
 Using likelihood ratio tests and AIC values for evaluating and expressing how well a particular model fits a dataset both have some critical limitations:
 
--   While AIC provides an estimate of the *relative* fit of various models, it does not say anything about the absolute fit
--   AIC does not address the amount of variance in a response variable explained by a model
--   AIC is not comparable across datasets, and so fit is not generalizable
+- While AIC provides an estimate of the *relative* fit of various models, it does not say anything about the absolute fit
+- AIC does not address the amount of variance in a response variable explained by a model
+- AIC is not comparable across datasets, and so fit is not generalizable
 
-Recently, Nakagawa & Schielzeth (2013) and Nakagawa et al. (2017) published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models - and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.
+Nakagawa & Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models - and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.
 
 > See:
 >
-> -   Nakagawa, S., & Schielzeth, H. (2013). A general and simple method for obtaining R2 from generalized linear mixed-effects models. *Methods in Ecology and Evolution*, 4, 133--142.
+> - Nakagawa, S., & Schielzeth, H. (2013). A general and simple method for obtaining R2 from generalized linear mixed-effects models. *Methods in Ecology and Evolution*, 4, 133--142.
 >
-> -   Nakagawa, S., Johnson, P. C. D., & Schielzeth, H. (2017). The coefficient of determination R2 and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. *Journal of the Royal Society Interface*, 14, article 20170213.
+> - Nakagawa, S., Johnson, P. C. D., & Schielzeth, H. (2017). The coefficient of determination R2 and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. *Journal of the Royal Society Interface*, 14, article 20170213.
 
 In these papers, two measures are proposed for characterizing the amount of "variance explained" in for mixed effects models:
 
--   $Marginal\ R2GLMM(m)^2$ is the amount of variance explained on the latent (or link) scale rather than the original scale. We can interpret this as a measure of the variance explained by only the fixed effects.
--   $Conditional\ R2GLMM(c)^2$ is the amount of variance explained by both fixed and random effects, i.e., by the entire model.
+- $Marginal\ R2GLMM(m)^2$ is the amount of variance explained on the latent (or link) scale rather than the original scale. We can interpret this as a measure of the variance explained by only the fixed effects.
+- $Conditional\ R2GLMM(c)^2$ is the amount of variance explained by both fixed and random effects, i.e., by the entire model.
 
 There is an easy way to calculate these two R2GLMM values in ***R*** using the `r.squaredGLMM()` function in the package {MuMIn}.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? How much more of the total variance is explained by the random effects than by the fixed effects alone?
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 aic_table # re-print the AIC table
 library(MuMIn)
 r.squaredGLMM(full)
@@ -367,22 +368,21 @@ detach(package:MuMIn)
 
 Just as we extended our standard linear modeling approach to include non-normally distributed response variables/error structures, so too can we extend our mixed effects modeling to such situations. This is referred to as **generalized linear mixed modeling, or GLMM**. There are several ***R*** packages we can use to do this under either a maximum likelihood (e.g., {lme4}, {glmmML}, the no-longer-maintained {glmmboot}) or Bayesian (e.g., {MCMCglmm}, {glmmTMB}, {brms}) framework. The methods for generating maximum likelihood and Bayesian parameter estimates under GLMMs are more complicated, but conceptually, the process is an extension of what we have talked about already. Below, we explore such a scenario.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 Boden-Parry et al. (2020) studied the effect of food type and abundance on the begging and food sharing behavior of otters in captivity.
 
 ```{r}
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/Bowden-ParryOtterdata.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Bowden-ParryOtterdata.csv"
 d <- read_csv(f, col_names = TRUE)
 head(d)
 library(glmmML)
 ```
 
-
 Bowden-Parry, M.; Postma, E.; and Boogert, N.J. (2020). Effects of food type and abundance on begging and sharing in Asian small-clawed otters (*Aonyx cinereus*). *PeerJ* 8: e10369.
 
-
-```{r include=FALSE}
+```{r}
+#| include: false
 detach(package:glmmML)
 detach(package:lme4)
 detach(package:tidyverse)
@@ -392,16 +392,8 @@ detach(package:tidyverse)
 
 ## Concept Review {.unnumbered}
 
--   "Mixed" modeling extends general and generalized linear modeling to consider cases where we have additional "random" factors that are another source of possible variation in our response variable
-
--   The approach allows us to estimate either different intercepts or different slopes *and* intercepts for each level of the random factor
-
--   As in generalized linear modeling, likelihood ratio tests and information criteria approaches can be used to compare the explanatory power of different models
-
--   Though we do not address it in this class, regression modeling can be extended further to consider NONLINEAR relationships among predictor variables
-
-    -   The ***R*** packages {lme4} and {nlme} provide functions for performing for "nonlinear mixed effects modeling"
-
-```{=html}
-<script src="src/hide_output.js"></script>
-```
+- "Mixed" modeling extends general and generalized linear modeling to consider cases where we have additional "random" factors that are another source of possible variation in our response variable
+- The approach allows us to estimate either different intercepts or different slopes *and* intercepts for each level of the random factor
+- As in generalized linear modeling, likelihood ratio tests and information criteria approaches can be used to compare the explanatory power of different models
+- Though we do not address it in this class, regression modeling can be extended further to consider NONLINEAR relationships among predictor variables
+    - The ***R*** packages {lme4} and {nlme} provide functions for performing for "nonlinear mixed effects modeling"

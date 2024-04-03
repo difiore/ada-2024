@@ -51,8 +51,8 @@ book:
       - 20-module.qmd
       - 21-module.qmd
       - 22-module.qmd
-      # - 23-module.qmd
-      # - 24-module.qmd
+      - 23-module.qmd
+      - 24-module.qmd
     - part: "Part III - Miscellany"
       chapters:
       # - 25-r-packages.qmd
@@ -66,7 +66,7 @@ book:
       - exercise-04.qmd
       - exercise-04-solution.qmd
       - exercise-05.qmd
-      # - exercise-05-solution.qmd
+      - exercise-05-solution.qmd
       - exercise-07.qmd
       - exercise-07-solution.qmd
       - exercise-08.qmd

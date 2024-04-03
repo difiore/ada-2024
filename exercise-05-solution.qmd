@@ -1,18 +1,17 @@
----
-title: "Exercise 05 Solution"
----
+# Exercise 05 Solution {.unnumbered}
 
 # • Solution {.unnumbered}
 
 ## Challenge 1 {.unnumbered}
 
--   Using the {tidyverse} `read_csv()` function, load the "IMDB-movies.csv" dataset from [this URL](https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/IMDB-movies.csv) as a "tibble" named **d**
-
-```{r include=FALSE}
+```{r}
+#| include: false
 options(dplyr.summarise.inform = FALSE) # to suppress extraneous messages
 ```
 
-```{r message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 library(tidyverse)
 library(mosaic) # for do() *
 library(infer)
@@ -20,24 +19,33 @@ library(ggpubr) # for ggqqplot()
 library(cowplot) # for arranging plots
 library(kableExtra) # for kable_styling()
 
+# define a function for calculating the population sd of a variable
 sd_pop <- function(x, na.rm = TRUE) {
   # adding an argument for na.rm makes the function more robust
   if (na.rm == TRUE) {
     x <- x[!is.na(x)]
   }
   sqrt(sum((x - mean(x))^2)/(length(x)))
-  # define a function for calculating the population sd of a variable
 }
+```
 
+#### Step 1 {.unnumbered}
+
+- Using the {tidyverse} `read_csv()` function, load the "IMDB-movies.csv" dataset from [this URL](https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/IMDB-movies.csv) as a "tibble" named **d**.
+
+```{r}
 f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/IMDB-movies.csv"
 d <- read_csv(f, col_names = TRUE)
 ```
 
-- Use a one-line statement to filter the dataset to include just movies from 1920 to 1979 and movies that are between 1 and 3 hours long (**runtimeMinutes** \>= 60 and **runtimeMinutes** \<= 180), and add a new column that codes the **startYear** into a new variable, **decade**
+#### Step 2 {.unnumbered}
 
-```{r message=FALSE}
-d <- d %>% filter(runtimeMinutes >= 60 & runtimeMinutes <= 180 &
-     startYear %in% 1920:1979) %>%
+- Use a one-line statement to filter the dataset to include just movies from 1920 to 1979 and movies that are between 1 and 3 hours long (**runtimeMinutes** >= 60 and **runtimeMinutes** <= 180), and add a new column that codes the **startYear** into a new variable, **decade**.
+
+```{r}
+#| message: false
+d <- d |> filter(runtimeMinutes >= 60 & runtimeMinutes <= 180 &
+     startYear %in% 1920:1979) |>
        mutate(decade=case_when(
           startYear %in% 1920:1929 ~ "20s",
           startYear %in% 1930:1939 ~ "30s",
@@ -49,7 +57,9 @@ d <- d %>% filter(runtimeMinutes >= 60 & runtimeMinutes <= 180 &
 nrow(d)
 ```
 
--   Use {ggplot2} (which is part of {tidyverse}) to plot histograms of the distribution of **runtimeMinutes** for each decade.
+#### Step 3 {.unnumbered}
+
+- Use {ggplot2} (which is part of {tidyverse}) to plot histograms of the distribution of **runtimeMinutes** for each decade.
 
 ```{r}
 (p <- ggplot(data=d, aes(x=runtimeMinutes)) +
@@ -60,68 +70,74 @@ nrow(d)
   facet_wrap(~ decade)
 ```
 
--   Use a one-line statement to calculate the population mean and population standard deviation in **runtimeMinutes** for each decade and save the results in a new dataframe called **results**.
+#### Step 4 {.unnumbered}
+
+- Use a one-line statement to calculate the population mean and population standard deviation in **runtimeMinutes** for each decade and save the results in a new dataframe called **results**.
 
 ```{r}
-results <- d %>% group_by(decade) %>%
+results <- d |> group_by(decade) |>
   dplyr::summarise(pop_n = n(),
     pop_mean = mean(runtimeMinutes, na.rm = TRUE),
     pop_sd =sd_pop(runtimeMinutes, na.rm = TRUE))
     # user-defined function
     # or use `sdpop()` from {radiant}
 
-kable(results, digits = 3) %>%
+kable(results, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   Draw a single sample of 100 movies, without replacement, from each decade and calculate the single sample mean and single sample standard deviation in **runtimeMinutes** for each decades.
--   Calculate for each decade the standard error around your estimate of the population mean **runtimeMinutes** based on the standard deviation and sample size (n=100 movies) of your single sample.
+#### Step 5 and 6 {.unnumbered}
+
+- Draw a single sample of 100 movies, without replacement, from each decade and calculate the single sample mean and single sample standard deviation in **runtimeMinutes** for each decades.
+
+- Calculate for each decade the standard error around your estimate of the population mean **runtimeMinutes** based on the standard deviation and sample size (n=100 movies) of your single sample.
 
 ```{r}
 n <- 100
 set.seed(1)
-s <- d %>% group_by(decade) %>% 
-  sample_n(n, replace=FALSE) %>%
+s <- d |> group_by(decade) |>
+  sample_n(n, replace=FALSE) |>
   # or use `slice_sample()` instead of `sample_n()`
-  # if we use `slice_sample()`, we need to pass it either the number
-  # of rows ("n=") or the proportion of rows ("p=") as an argument
-  # i.e., `sample_n(n=n, replace=FALSE)`
+  # if we use `slice_sample()`, we need to pass it either the number of rows ("n=") or the proportion of rows ("p=") as an argument, i.e., `slice_sample(n=100, replace=FALSE)`
   dplyr::summarise(samp_size = n(),
     samp_1_mean=mean(runtimeMinutes, na.rm = TRUE),
     samp_1_sd=sd(runtimeMinutes, na.rm = TRUE),
-    samp_1_se=sd(runtimeMinutes, na.rm = TRUE)/sqrt(n))
+    samp_1_se=sd(runtimeMinutes, na.rm = TRUE)/sqrt(samp_size))
 
-kable(s, digits = 3) %>%
+kable(s, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   Compare these estimates to the actual population mean **runtimeMinutes** for each decade and to the calculated SE in the population mean for samples of size 100 based on the population standard deviation for each decade.
+#### Step 7 {.unnumbered}
+
+- Compare these estimates to the actual population mean **runtimeMinutes** for each decade and to the calculated SE in the population mean for samples of size 100 based on the population standard deviation for each decade.
 
 ```{r}
-results <- inner_join(s, results, by = "decade") %>%
+results <- inner_join(s, results, by = "decade") |>
   mutate(pop_se = pop_sd/sqrt(n))
 
-kable(results, digits = 3) %>%
+kable(results, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   Generate a *sampling distribution* of mean **runtimeMinutes** for each decade by [a] drawing 1000 samples of 100 movies from each decade and, for each sample, [b] calculating the mean **runtimeMinutes** and the standard deviation in **runtimeMinutes** for each decade.
+#### Step 8 and 9 {.unnumbered}
 
-```{r message=FALSE}
+- Generate a *sampling distribution* of mean **runtimeMinutes** for each decade by [a] drawing 1000 samples of 100 movies from each decade and, for each sample, [b] calculating the mean **runtimeMinutes** and the standard deviation in **runtimeMinutes** for each decade.
+
+```{r}
+#| message: false
 n <- 100
 reps <- 1000
 # using {mosaic}
-s <- {do(reps) * sample_n(group_by(d, decade), n, replace=FALSE)} %>% 
-  # `do(rep) *` needs to be wrapped in braces in order to introduce the
-  # variable ".index" that we need to then pass as an argument to `group_by()`
-  group_by(decade, .index) %>%
+s <- {do(reps) * sample_n(group_by(d, decade), n, replace=FALSE)} |>
+  # `do(rep) *` needs to be wrapped in braces in order to introduce the variable ".index" that we need to then pass as an argument to `group_by()`
+  group_by(decade, .index) |>
   summarise(avg_runtimeMinutes = mean(runtimeMinutes, na.rm = TRUE), sd_runtimeMinutes = sd(runtimeMinutes, na.rm = TRUE))
 
 # or...
 # using {purrr}
-s <- rerun(reps, mean(runtimeMinutes ~ decade,
-    data=sample_n(group_by(d, decade), size=n, replace=FALSE))) %>%
-    bind_rows() %>%
+s <- map(1:reps, ~ mean(runtimeMinutes ~ decade, data = sample_n(group_by(d, decade), size = n, replace = FALSE))) |>
+    bind_rows() |>
     pivot_longer(cols = everything(), names_to = "decade", values_to = "avg_runtimeMinutes")
 
 # or... (and this runs fastest)
@@ -129,11 +145,13 @@ s <- rerun(reps, mean(runtimeMinutes ~ decade,
 s <- tibble("decade"= character(), "replicate" = numeric(), "avg_runtimeMinutes"=numeric(), "sd_runtimeMinutes"=numeric())
 
 for(i in unique(d$decade)){
-  df <- d %>% filter(decade == i) %>% 
-    rep_sample_n(size=n, reps=reps, replace=FALSE) %>% 
-    group_by(replicate) %>%
-    summarize(avg_runtimeMinutes=mean(runtimeMinutes, na.rm=TRUE),
-              sd_runtimeMinutes=sd(runtimeMinutes, na.rm=TRUE)) %>%
+  df <- d |>
+    filter(decade == i) |> 
+    rep_sample_n(size=n, reps=reps, replace=FALSE) |> 
+    group_by(replicate) |>
+    summarize(
+      avg_runtimeMinutes=mean(runtimeMinutes, na.rm=TRUE),
+      sd_runtimeMinutes=sd(runtimeMinutes, na.rm=TRUE)) |>
     mutate("decade" = i)
   s <- bind_rows(s,df)
 }
@@ -149,18 +167,20 @@ for(i in unique(d$decade)){
 # now, distributions are not obviously different from NORMAL :)
 ```
 
--   Finally, compare the standard error in **runtimeMinutes** for samples of size 100 from each decade [1] as estimated from your first sample of 100 movies, [2] as calculated from the known *population* standard deviations for each decade, and [3] as estimated from the sampling distribution of sample means for each decade.
+#### Step 10 {.unnumbered}
+
+- Finally, compare the standard error in **runtimeMinutes** for samples of size 100 from each decade [1] as estimated from your first sample of 100 movies, [2] as calculated from the known *population* standard deviations for each decade, and [3] as estimated from the sampling distribution of sample means for each decade.
 
 ```{r}
-samp_dist_stats <- s %>%
-  group_by(decade) %>%
+samp_dist_stats <- s |>
+  group_by(decade) |>
   summarize(samp_dist_mean=mean(avg_runtimeMinutes),
   samp_dist_sd=sd(avg_runtimeMinutes))
 
-comparison <- inner_join(results, samp_dist_stats, by = "decade") %>%
-  select(decade, pop_se, samp_1_se, samp_dist_sd)
+comparison <- inner_join(results, samp_dist_stats, by = "decade") |>
+  dplyr::select(decade, pop_se, samp_1_se, samp_dist_sd)
 
-kable(comparison, digits = 3) %>%
+kable(comparison, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
@@ -168,36 +188,39 @@ These different estimates of the SE are all pretty close to one another, except 
 
 ## Challenge 2 {.unnumbered}
 
-Using the {tidyverse} `read_csv()` function, load the "zombies.csv" dataset from [this URL](https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/zombies.csv) as a "tibble" named **z**. This dataset includes the first and last name and gender of the entire population of 1000 people who have survived the zombie apocalypse and are now ekeing out an existence somewhere on the Gulf Coast, along with several other variables (height, weight, age, number of years of education, number of zombies they have killed, and college major). 
+#### Step 1 {.unnumbered}
+- Using the {tidyverse} `read_csv()` function, load the "zombies.csv" dataset from [this URL](https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv) as a "tibble" named **z**. This dataset includes the first and last name and gender of the entire population of 1000 people who have survived the zombie apocalypse and are now ekeing out an existence somewhere on the Gulf Coast, along with several other variables (height, weight, age, number of years of education, number of zombies they have killed, and college major).
 
-```{r message=FALSE}
+```{r}
+#| message: false
 n <- 50 # set sample size
 alpha <- 0.05 # set alpha
 
-f <- "https://raw.githubusercontent.com/difiore/ada-2022-datasets/main/zombies.csv"
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
 d <- read_csv(f, col_names = TRUE)
 
-survivors <- select(d, "gender", "height", "weight", "age",
-  "zombies_killed", "years_of_education")
+survivors <- dplyr::select(d, "gender", "height", "weight", "age", "zombies_killed", "years_of_education")
 
-kable(head(survivors), digits = 3) %>%
+kable(head(survivors), digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   Calculate the *population* mean and standard deviation for each quantitative random variable in the dataset (height, weight, age, number of zombies killed, and years of education).
+#### Step 2 {.unnumbered}
+
+- Calculate the *population* mean and standard deviation for each quantitative random variable in the dataset (height, weight, age, number of zombies killed, and years of education).
 
 ```{r}
-pop_means <- dplyr::summarise(survivors, mean(height),
-  mean(weight),  mean(age), mean(zombies_killed),
-  mean(years_of_education)) # {dplyr} rocks!
+#| message: false
+pop_means <- dplyr::summarise(survivors, mean(height), mean(weight),  mean(age), mean(zombies_killed), mean(years_of_education)) # {dplyr} rocks!
 
-pop_sds <- dplyr::summarise(survivors, sd_pop(height),
-  sd_pop(weight), sd_pop(age), sd_pop(zombies_killed),
-  sd_pop(years_of_education)) # {dplyr} rocks!
+pop_sds <- dplyr::summarise(survivors, sd_pop(height), sd_pop(weight), sd_pop(age), sd_pop(zombies_killed), sd_pop(years_of_education)) # {dplyr} rocks!
 
 # or, using `sdpop()` from {radiant}
-# pop_SDs <- dplyr::summarise(survivors, sdpop(height),
-#   sdpop(weight), sdpop(age), sdpop(zombies_killed),
+# pop_SDs <- dplyr::summarise(survivors,
+#   sdpop(height),
+#   sdpop(weight),
+#   sdpop(age),
+#   sdpop(zombies_killed),
 #   sdpop(years_of_education))
 
 # ALTERNATIVELY...
@@ -213,44 +236,48 @@ pop_sds <- dplyr::summarise(survivors, sd_pop(height),
 #   .funs are applied across the set of .cols
 
 # [a]
-pop_means_a <- survivors %>%
+pop_means_a <- survivors |>
   dplyr::summarise(across(
     c(height, weight, age, zombies_killed, years_of_education),
     mean))
 
 # [b]
-pop_means_b <- survivors %>%
+pop_means_b <- survivors |>
   dplyr::summarise(across(
     c(height, weight, age, zombies_killed, years_of_education),
     ~ mean(.)))
 
 # [c]
-pop_means_c <- survivors %>%
+pop_means_c <- survivors |>
   dplyr::summarise(across(
     c(height, weight, age, zombies_killed, years_of_education),
     list(mean=mean)))
 
 # [d]
-pop_means_d <- survivors %>%
+pop_means_d <- survivors |>
   dplyr::summarise(across(
     c(height, weight, age, zombies_killed, years_of_education),
     list(~ mean(.))))
 
 pop_ses <- pop_sds/sqrt(n) # not needed yet, but will be later
 
-pop_summary <- data.frame(Var=c("Ht", "Wt", "Age", "Kills", "YrsEd"),
-  Mean=t(pop_means), SD=t(pop_sds))
 # make a pretty table by transposing the 1-row dataframes above
+variables <- c("Height", "Weight", "Age", "Kills", "Years of Ed")
 
-rownames(pop_summary) <- NULL
+pop_summary <- bind_cols(variables, t(pop_means), t(pop_sds))
 
-kable(pop_summary, digits = 3) %>%
+names(pop_summary) <- c("variable", "pop_mean", "pop_sd")
+
+kable(pop_summary, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   Use {ggplot} and make boxplots of each of these variables by gender.
+#### Step 3 {.unnumbered}
 
-```{r message=FALSE}
+- Use {ggplot} and make boxplots of each of these variables by gender.
+
+```{r}
+#| message: false
 p1 <- ggplot(data=survivors,aes(x=gender, y=height))
 p1 <- p1 + geom_boxplot(aes(colour=factor(gender)))
 p1 <- p1 + theme(legend.position="none")
@@ -268,7 +295,8 @@ p5 <- p5 + geom_boxplot(aes(colour=factor(gender)))
 p5 <- p5 + theme(legend.position="none")
 ```
 
-```{r fig.height = 4}
+```{r}
+#| fig-height: 4
 plot_grid(p1, p2, p3, p4, p5, nrow = 2)
 
 # or...
@@ -285,9 +313,12 @@ plot_grid(p1, p2, p3, p4, p5, nrow = 2)
 #   theme(legend.position = "none"))
 ```
 
--   Use {ggplot} and make scatterplots of height and weight in relation to age (i.e., use age as the $x$ variable), using different colored points for males versus females. Do these variables seem to be related? In what way?
+#### Step 4 {.unnumbered}
 
-```{r fig.height=3}
+- Use {ggplot} and make scatterplots of height and weight in relation to age (i.e., use age as the $x$ variable), using different colored points for males versus females. Do these variables seem to be related? In what way?
+
+```{r}
+#| fig-height: 3
 p1 <- ggplot(data = survivors,
   aes(x = age, y = height, colour = factor(gender))) +
   geom_point() +
@@ -298,13 +329,16 @@ p2 <- ggplot(data = survivors,
   theme(legend.position = "bottom", legend.title = element_blank())
 ```
 
-```{r fig.height=4}
+```{r}
+#| fig-height: 4
 plot_grid(p1, p2, nrow = 1)
 ```
 
 Both seem to be positive linear functions of age.
 
--   Using histograms and Q-Q plots, check whether the quantitative variables seem to be drawn from a normal distribution.
+#### Step 5 {.unnumbered}
+
+- Using histograms and Q-Q plots, check whether the quantitative variables seem to be drawn from a normal distribution.
 
 ```{r}
 # plot the distributions
@@ -325,51 +359,59 @@ p9 <- ggplot(data = survivors, aes(x=years_of_education)) +
 p10 <- ggqqplot(data = survivors, x="years_of_education")
 ```
 
-```{r fig.height = 4}
+```{r}
+#| fig-height: 4
 plot_grid(p1, p3, p5, p2, p4, p6, nrow = 2)
 plot_grid(p7, p9, p8, p10, nrow = 2)
 ```
 
 The first three are seemingly drawn from normal distributions, but not the latter two. These are discrete variables, and they seem to be drawn from the Poisson distribution.
 
--   Now use the `sample_n()` function from {dplyr} to sample ONE subset of 50 zombie apocalypse survivors (without replacement) from this population and calculate the mean and sample standard deviation for each variable. Also estimate the standard error for each variable based on this sample and use that to construct a 95% confidence interval for each mean. You can use either the standard normal *or* a Student's t distribution to derive the critical values needed to calculate the lower and upper limits of the CI. [As an additional alternative, you could estimate a CI by bootstrap resampling from that first sample as well.]
+#### Step 6 {.unnumbered}
+
+- Now use the `sample_n()` or `slice_sample()` function from {dplyr} to sample ONE subset of 50 zombie apocalypse survivors (without replacement) from this population and calculate the mean and sample standard deviation for each variable. Also estimate the standard error for each variable based on this sample and use that to construct a 95% confidence interval for each mean. You can use either the standard normal *or* a Student's t distribution to derive the critical values needed to calculate the lower and upper limits of the CI. [As an additional alternative, you could estimate a CI by bootstrap resampling from that first sample as well.]
 
 First, we create some functions for SEs and CIs
 
-```{r warning=FALSE}
-SE <- function(x, type="normal") {
+```{r}
+#| warning: false
+#| message: false
+se <- function(x, type="normal") {
   if (type=="normal"){
-    SE <- sd(x)/sqrt(length(x))
+    se <- sd(x)/sqrt(length(x))
   }
   if (type=="poisson"){
-    SE <- sqrt(mean(x)/length(x))
+    se <- sqrt(mean(x)/length(x))
     # mean(x) is estimate of lambda
   }
-  return(SE)
+  return(se)
 }
 
-CI_norm <- function(x, alpha = 0.05) {
-  CI <- mean(x) + c(-1,1) * qnorm(1 - alpha/2) * SE(x)
+ci_norm <- function(x, alpha = 0.05) {
+  ci <- (mean(x) + c(-1,1) * qnorm(1 - alpha/2) * se(x)) |> round(3)
   # confidence interval based on normal distribution
-  names(CI) <- c("CI norm L","CI norm U")
-  return(CI)
+  ci <- paste0("[", ci[1], "-", ci[2], "]")
+  names(ci) <- "CI"
+  return(ci)
 }
 
-CI_t <- function(x, alpha = 0.05) {
-  CI <- mean(x) + c(-1,1) * qt(1 - alpha/2, length(x) - 1) * SE(x)
+ci_t <- function(x, alpha = 0.05) {
+  ci <- (mean(x) + c(-1,1) * qt(1 - alpha/2, length(x) - 1) * se(x)) |> round(3)
   # confidence interval based on t distribution
-  names(CI) <- c("CI t L","CI t U")
-  return(CI)
+  ci <- paste0("[", ci[1], "-", ci[2], "]")
+  names(ci) <- "CI"
+  return(ci)
 }
 
-CI_boot <- function(x, alpha = 0.05) {
+ci_boot <- function(x, alpha = 0.05, n_boot = 1000) {
   boot <- NULL
-  for (i in 1:1000) {
+  for (i in 1:n_boot) {
     boot[i] <- mean(sample(x, length(x), replace = TRUE))
   }
-  CI <- quantile(boot, c(alpha/2, 1-alpha/2))
-  names(CI) <- c("CI boot L","CI boot U") 
-  return(CI)
+  ci <- quantile(boot, c(alpha/2, 1-alpha/2)) |> round(3)
+  ci <- paste0("[", ci[1], "-", ci[2], "]")
+  names(ci) <- "CI"
+  return(ci)
 }
 ```
 
@@ -378,124 +420,128 @@ Then, we get a sample of size n from survivors and calculate statistics...
 ```{r}
 set.seed(1) # setting the seed makes the random draws the sample across runs of code
 n <- 50
-s <- sample_n(survivors, size = n, replace = FALSE)
+s <- survivors |> sample_n(size = n, replace = FALSE)
+# or... `s <- survivors |> slice_sample(n = n, replace = FALSE)`
 # head(s) # uncomment to show start of first sample of size n
 
-samp_1_means <- s %>% dplyr::summarise(across(
+samp_1_means <- s |> dplyr::summarise(across(
   .cols = c(height, weight, age, zombies_killed, years_of_education),
   .fns = ~ mean(.)))
 
-samp_1_SDs <- s %>% dplyr::summarise(across(
+samp_1_SDs <- s |> dplyr::summarise(across(
   .cols = c(height, weight, age, zombies_killed, years_of_education),
   .fns = ~ sd(.)))
 
-samp_1_SEs <- s %>% dplyr::summarise(across(
+samp_1_SEs <- s |> dplyr::summarise(across(
     .cols = c(height, weight, age),
-    .fns = ~ SE(., type = "normal")),
+    .fns = ~ se(., type = "normal")),
   across(
     .cols = c(zombies_killed, years_of_education),
-    .fns = ~ SE(., type = "poisson")))
+    .fns = ~ se(., type = "poisson")))
 
-samp_1_CI_norm <- s %>%
-dplyr::summarise(across(
-  .cols = c(height, weight, age, zombies_killed, years_of_education),
-  .fns = ~ CI_norm(.)))
 # create a tibble of CIs based on normal distribution
-
-samp_1_CI_t <- s %>% dplyr::summarise(across(
+samp_1_CI_norm <- s |>
+  dplyr::summarise(across(
     .cols = c(height, weight, age, zombies_killed, years_of_education),
-    .fns = ~ CI_t(.)))
+    .fns = ~ ci_norm(.)))
+
 # create a tibble of CIs based on t distribution
-
-samp_1_CI_boot <- s %>% dplyr::summarise(across(
+samp_1_CI_t <- s |>
+  dplyr::summarise(across(
     .cols = c(height, weight, age, zombies_killed, years_of_education),
-    .fns = ~ CI_boot(.)))
+    .fns = ~ ci_t(.)))
+
 # create a tibble of CIs based on bootstrapping
+samp_1_CI_boot <- s |>
+  dplyr::summarise(across(
+    .cols = c(height, weight, age, zombies_killed, years_of_education),
+    .fns = ~ ci_boot(., n_boot = 1000)))
 
 # make a pretty table
-samp_1_summary <- as_tibble(t(bind_rows(samp_1_means, samp_1_SDs,
-  samp_1_SEs, samp_1_CI_norm, samp_1_CI_t, samp_1_CI_boot)),
-  .name_repair = "minimal")
-names(samp_1_summary) <- c("Samp 1 Mean", "Samp 1 SD",
-  "Samp 1 SE", "Samp 1 CI norm L", "Samp 1 CI norm U",
-  "Samp 1 CI t L", "Samp 1 CI t U",
-  "Samp 1 CI boot L", "Samp 1 CI boot U")
-variables <- tibble(Variable = c("Height", "Weight", "Age", "Kills", "Years of Ed"))
+samp_1_stats <- bind_rows(samp_1_means, samp_1_SDs, samp_1_SEs)
+samp_1_CIs <- bind_rows(samp_1_CI_norm, samp_1_CI_t, samp_1_CI_boot)
 
-samp_1_summary <- bind_cols(variables, samp_1_summary)
+samp_1_summary <- bind_cols(variables, t(samp_1_stats), t(samp_1_CIs))
+names(samp_1_summary) <- c("Variable", "Samp 1 mean", "Samp 1 SD", "Samp 1 SE", "Samp 1 CI norm", "Samp 1 CI t", "Samp 1 CI boot")
 
-kable(samp_1_summary, digits = 3) %>%
+kable(samp_1_summary, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   Then draw another 199 random samples of 50 zombie apocalypse survivors out of the population and calculate the mean for each of the these samples. Together with the first sample you drew out, you now have a set of 200 means for each variable (each based on 50 observations), which constitutes a sampling distribution for each variable. What are the means and standard deviations of the **sampling distribution** for each variable?
+#### Step 7 {.unnumbered}
 
-```{r message=FALSE,}
+- Then draw another 199 random samples of 50 zombie apocalypse survivors out of the population and calculate the mean for each of the these samples. Together with the first sample you drew out, you now have a set of 200 means for each variable (each based on 50 observations), which constitutes a sampling distribution for each variable. What are the means and standard deviations of the **sampling distribution** for each variable?
+
+```{r}
+#| message: false
 k <- 199 # additional # of sample sets
 # using {mosaic}
 additional_samples <- do(k) *
   sample_n(survivors, size= n, replace = FALSE)
-s <- mutate(s, .row = 1:n, .index = k + 1)
+  # or `slice_sample(survivors, n = n, replace = FALSE)`
+  # each row will have a single individual (with n = 50 rows per sample) and the .index column contains the replicate number
+
+# now, add a .row and .index column to our original sample
+s <- s |> mutate(.row = 1:n, .index = k + 1)
+
+# and bind the additional + original samples into a single data frame
 all_s <- bind_rows(additional_samples, s)
 
-samp_dist <- all_s %>%
-  group_by(.index) %>%
+samp_dist <- all_s |>
+  group_by(.index) |>
   dplyr::summarise(across(
     .cols = c(height, weight, age, zombies_killed, years_of_education),
-    .fns = ~ mean(.))) %>%
-  select(-.index)
+    .fns = ~ mean(.))) |>
+  dplyr::select(-.index)
 
-samp_SEs <- all_s %>%
-  group_by(.index) %>%
+samp_SEs <- all_s |>
+  group_by(.index) |>
   dplyr::summarise(across(
     .cols = c(height, weight, age),
-    .fns = ~ SE(., type = "normal")),
+    .fns = ~ se(., type = "normal")),
   across(
     .cols = c(`zombies_killed`, `years_of_education`),
-    .fns = ~ SE(., type = "poisson"))) %>%
-  select(-.index)
+    .fns = ~ se(., type = "poisson"))) |>
+  dplyr::select(-.index)
 
 # head(sampling_distribution) # uncomment to show start of sampling distributions
 
-samp_dist_means <- samp_dist %>%  dplyr::summarise(across(
+samp_dist_means <- samp_dist |>  dplyr::summarise(across(
   .cols = everything(),
   .fns = ~ mean(.)))
 
-samp_dist_SDs <- samp_dist %>%  dplyr::summarise(across(
+samp_dist_SDs <- samp_dist |>  dplyr::summarise(across(
   .cols = everything(),
   .fns = ~ sd(.)))
 
 # make a pretty table
-samp_dist_summary <- as_tibble(t(bind_rows(samp_dist_means,
-  samp_dist_SDs)),
-  .name_repair = "minimal")
-names(samp_dist_summary) <- c("Samp Dist Mean", "Samp Dist SD")
-variables <- tibble(Variable = c("Height", "Weight", "Age", "Kills", "Years of Ed"))
+variables <- c("Height", "Weight", "Age", "Kills", "Years of Ed")
+samp_dist_summary <- bind_cols(variables, t(samp_dist_means), t(samp_dist_SDs))
+names(samp_dist_summary) <- c("Variable", "Samp Dist mean", "Samp Dist SD")
 
-samp_dist_summary <- bind_cols(variables, samp_dist_summary)
-
-kable(samp_dist_summary, digits = 3) %>%
+kable(samp_dist_summary, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   How do the standard deviations of the sampling distribution for each variable compare to the standard errors estimated from your first sample of size 50?
+- How do the standard deviations of the sampling distribution for each variable compare to the standard errors estimated from your first sample of size 50?
 
 ```{r}
-samp_SE_means <- samp_SEs %>%  dplyr::summarise(across(
+samp_SE_means <- samp_SEs |>  dplyr::summarise(across(
   .cols = everything(),
   .fns = ~ mean(.)))
 
+# again, make a pretty table
 compare_SEs <- tibble(
   "Variable" = c("Height", "Weight", "Age", "Kills", "Years of Ed"),
-  "Samp Dist Mean"= samp_dist_summary$`Samp Dist Mean`,
-  "Samp Dist SD"=samp_dist_summary$`Samp Dist SD`,
-  "SE est from Pop SD"=t(pop_sds/sqrt(n)),
-  "SE est from Samp 1"= samp_1_summary$`Samp 1 SE`,
-  "Mean SEs Across Samples"=t(samp_SE_means))
-# again, make a pretty table by transposing the 1-row dataframes above
-rownames(compare_SEs) <- NULL # get rid of nownames to make table pretty
+  "samp_dist_mean" = samp_dist_summary$samp_dist_mean,
+  "**Samp Dist SD**" = samp_dist_summary$samp_dist_sd,
+  "SE from Pop SD" = t(pop_sds/sqrt(n)) |> round(3),
+  "**Samp 1 SE**" = samp_1_summary$samp_1_se,
+  "Mean SE across Samples" = t(samp_SE_means) |> round(3)
+  ) 
+rownames(compare_SEs) <- NULL # get rid of rownames to make table pretty
 
-kable(compare_SEs, digits = 3) %>%
+kable(compare_SEs, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
@@ -503,7 +549,9 @@ These should all be about the same! As the size of each of the k samples increas
 
 > **NOTE:** The columns in this table with asterisks ("**") are those that you were specifically asked to compare.
 
--   What do sampling distributions for each variable mean look like? Are they normally distributed? What about for those variables that you concluded were not originally drawn from a normal distribution?
+#### Step 8 {.unnumbered}
+
+- Plot the sampling distributions for each variable mean. What do they look like? Are they normally distributed? What about for those variables that you concluded were not originally drawn from a normal distribution?
 
 ```{r}
 # plot the distributions
@@ -531,42 +579,54 @@ plot_grid(p7, p9, p8, p10, nrow = 2)
 
 These all look pretty normally distributed, even for those variables that were not drawn from a normal distribution initially! This becomes even more apparent if we set k to a higher number, e.g., 1000.
 
--   Finally, construct a 95% confidence interval for each mean **directly from the sampling distribution** of sample means using the central 95% that distribution (i.e., by setting the lower and upper CI bounds to 2.5% and 97.5% of the way through that distribution).
+#### Step 9 {.unnumbered}
+
+- Construct a 95% confidence interval for each mean **directly from the sampling distribution** of sample means using the central 95% that distribution.
 
 ```{r}
-# Here, we use the `quantile()` function...
-samp_dist_CI_L <- dplyr::summarise(samp_dist, across(
+#| message: false
+# Here, we use the `quantile()` function... first create a function to pull out CI
+ci_quant <- function(x, level = 0.95){
+  ci <- quantile(x, c((1-level)/2, 1 - (1-level)/2)) |> round(3)
+  ci <- paste0("[", ci[1], "-", ci[2], "]")
+  names(ci) <- "CI"
+  return(ci)
+}
+
+samp_dist_CI <- dplyr::summarise(samp_dist, across(
   .cols = everything(),
-  .fns =  ~ quantile(., alpha/2)))
+  .fns =  ~ ci_quant(., 0.05)))
 
-samp_dist_CI_U <- dplyr::summarise(samp_dist, across(
-  .cols = everything(),
-  .fns = ~ quantile(., 1-alpha/2)))
+samp_dist_summary <- bind_cols(samp_dist_summary, t(samp_dist_CI))
 
-samp_dist_summary_w_CI <- bind_cols(samp_dist_summary, t(samp_dist_CI_L), t(samp_dist_CI_U), .name_repair = "minimal")
+names(samp_dist_summary) <- c("Variable", "Samp Dist Mean", "Samp Dist SD", "Samp Dist CI")
 
-names(samp_dist_summary_w_CI) <- c("Variable", "Samp Dist Mean", "Samp Dist SD", "Samp Dist CI L", "Samp Dist CI U")
-
-kable(samp_dist_summary_w_CI, digits = 3) %>%
+kable(samp_dist_summary, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
--   How do the various 95% CIs you estimated compare to one another (i.e., the CIs based on one sample and the corresponding sample standard deviation versus the CI based on simulation where you created a sampling distribution across 200 samples)?
+- How do the various 95% CIs you estimated compare to one another (i.e., the CIs based on one sample and the corresponding sample standard deviation versus the CI based on simulation where you created a sampling distribution across 200 samples)?
 
 ```{r}
 # CIs from Sample 1
-compare_CIs <- select(samp_1_summary,
-  -c(`Samp 1 Mean`, `Samp 1 SD`, `Samp 1 SE`)) %>%
-  bind_cols(`Samp Dist CI L` = samp_dist_summary_w_CI$`Samp Dist CI L`,
-    `Samp Dist CI U` = samp_dist_summary_w_CI$`Samp Dist CI U`)
+compare_CIs <- dplyr::select(samp_1_summary,
+  -c("Samp 1 mean", "Samp 1 SD", "Samp 1 SE")) |>
+  bind_cols("Samp Dist CI" = samp_dist_summary$`Samp Dist CI`)
 
-kable(compare_CIs, digits = 3) %>%
+kable(compare_CIs, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
 ```
 
-The CI based on the sampling distribution generated via **resampling** is comparable to those based on your first sample using parametric estimates from a normal and t distribution as well as that based on bootstraping using just the first sample all of for the normally distributed variables (age, height, weight). Even for the Poisson-distributed variables (zombies killed, years of education), the lower and upper bounds for the sampling distribution-based CIs are pretty comparable to those estimated from the first sample by either parametric methods or from bootstrap estimation.
+#### Step 10 {.unnumbered}
 
-```{r include=FALSE}
+- Finally, use bootstrapping to generate a 95% confidence interval for each variable mean **by bootstrapping 1000 samples, with replacement, from your original sample**.
+
+> **NOTE:** This was already done in Step 6, where we ran the custom `CI_boot()` function, and the results are included in the table above.
+
+The CI based on the sampling distribution generated via **resampling** is comparable to those based on the first sample using parametric estimates from a normal and t distribution as well as that based on bootstrapping using just the first sample for all of the normally distributed variables (age, height, weight). Even for the Poisson-distributed variables (zombies killed, years of education), the lower and upper bounds for the sampling distribution-based CIs are pretty comparable to those estimated from the first sample by either parametric methods or from bootstrap estimation.
+
+```{r}
+#| include: false
 detach(package:kableExtra)
 detach(package:infer)
 detach(package:ggpubr)

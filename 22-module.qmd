@@ -164,7 +164,7 @@ We get a few types of output that allow us to directly compare the relative fit 
 
 #### Automated Subset Selection and Model Averaging using {MuMIn} {.unnumbered}
 
-An alternative approach to model selection using AIC is provided by using the function `dredge()` in the {MuMIn} package, which explores subsets of a given global model in an automated way. With `dredge()`, we first run a global model that includes all of the terms we want to consider and then we run `dredge()` to fit subsets of that model without having to specify explicitly which submodels we want to run. The `dredge()` function returns a model selection table with models ranked in order of increasing AICc (i.e., lowest, or "best", first).
+An alternative approach to model selection using AIC is provided by using the function `dredge()` in the {MuMIn} package, which explores subsets of a given global model in an automated way. With `dredge()`, we first run a global model that includes all of the terms we want to consider and then we run `dredge()` to fit subsets of that model without having to specify explicitly which submodels we want to run. The `dredge()` function returns a "model selection" table with models ranked in order of increasing AICc (i.e., lowest, or "best", first).
 
 ```{r}
 library(MuMIn)
@@ -174,40 +174,58 @@ m <- lm(data = z,
   na.action = "na.fail")
 # here, we need to change the "na.action" argument from the default of "na.omit" to "na.fail" to prevent `dredge()` from trying to fit submodels with different data sets than the global model if there are missing values
 # alternatively, we could set that option globally for our R session before running the global model by using `options(na.action = na.fail)` and then omitting the `na.action=` argument from our call to `lm()`
+# we could also filter our dataset to only include rows where none of the variables of interest have missing data using, e.g., `drop_na()`
 # options()$na.action shows the current na.action option
 
 # we then run `dredge()` to explore a set of submodels
 #   - the `m.lim=` argument is optional and sets lower and upper limits on the number of terms to include
 #   - the `beta=` argument specifies whether or not and how to standardize the beta coefficients; "none" is the default
-m.set <- dredge(m, beta = "none", m.lim = c(0, 4))
-(res <- get.models(m.set, subset=TRUE))
-coef(m.set) # returns a table of coefficients from each model
+mods <- dredge(m, beta = "none", m.lim = c(0, 4))
+class(mods)
+(mods.list <- get.models(mods, subset=TRUE))
+coef(mods) # returns a table of coefficients from each model
 ```
 
-Averaging coefficients across sets of models...
- 
+### Averaging Coefficients across Sets of Models
+
+The code below averages beta coefficients for the set of models with **delta.aicc** < 4. Here, we also need to set the argument `fit=TRUE` because `dredge()` does not actually store the model results. The `model.avg()` function returns a "summary.averaging" object.
+
 ```{r}
-# summarizing models with delta.aicc < 4
-#   - here, we need to set the argument `fit=TRUE` because `dredge()` does not store the model results
-(m.avg <- summary(model.avg(m.set,
+(mods.avg <- summary(model.avg(mods,
   subset = delta < 4, fit = TRUE)))
-# and getting confidence intervals for the average coefficient estimates across models...
-confint(m.avg)
-
-# NOTE: The ‘subset’ (or ‘conditional’) average only average over models where the term appears. The ‘full’ average assumes that a term is included in every model but the estimate and standard error are set to zero in models where the term is not included
-
-# summarizing models as a 95% confidence set, i.e., for cumulative AIC weights up to 95%
-
-(m.avg <- summary(model.avg(m.set, subset =
-  cumsum(weight) <= .95, fit = TRUE)))
-confint(m.avg)
-detach(package:MuMIn)
+class(mods.avg)
 ```
 
-Note that, again, the two key predictors of zombie apocalypse survivor's **height** are **age** and **weight**, and the best models include both of these terms!
+We can use the `confint()` function to confidence intervals for the averaged coefficient estimates across models...
+
+```{r}
+confint(mods.avg)
+```
+
+> NOTE: The ‘subset’ (or ‘conditional’) average reported is only averaging over models where the term appears. The ‘full’ average reported assumes that a term is included in every model, but the estimate and standard error are set to zero in models where the term is not included.
+
+The code below summarizes models as a 95% confidence set, i.e., for cumulative AIC weights up to 95%:
+
+```{r}
+(mods.avg <- summary(model.avg(mods, subset =
+  cumsum(weight) <= .95, fit = TRUE)))
+confint(mods.avg)
+```
+
+With the {MuMIn} package loaded, we can use the `plot()` function to make a plot of averaged model coefficients, similar to `plot_summs()` from {jtools}.
+
+```{r}
+plot(mods.avg, full = TRUE, intercept = FALSE)
+plot(mods.avg, full = FALSE, intercept = FALSE)
+```
+
+> NOTE: Omitting the `intercept=` argument or setting it to `TRUE` will include the $\beta0$ coefficient. When `full=TRUE`, coefficient averaging is done over all models in the selected set (for models where a particular parameter does not appear, the corresponding coefficient and its variance are set to zero). When `full=FALSE`, coefficient averaging is done only over models in the selected set where the parameter appears.
+
+Note that, here again, the two key predictors of zombie apocalypse survivor's **height** are **age** and **weight**, and the best models include both of these terms!
 
 ```{r}
 #| include: false
+detach(package:MuMIn)
 detach(package:tidyverse)
 ```
 
