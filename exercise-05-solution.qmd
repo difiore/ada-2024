@@ -375,7 +375,6 @@ First, we create some functions for SEs and CIs
 
 ```{r}
 #| warning: false
-#| message: false
 se <- function(x, type="normal") {
   if (type=="normal"){
     se <- sd(x)/sqrt(length(x))
@@ -418,6 +417,7 @@ ci_boot <- function(x, alpha = 0.05, n_boot = 1000) {
 Then, we get a sample of size n from survivors and calculate statistics...
 
 ```{r}
+#| message: false
 set.seed(1) # setting the seed makes the random draws the sample across runs of code
 n <- 50
 s <- survivors |> sample_n(size = n, replace = FALSE)
@@ -533,10 +533,10 @@ samp_SE_means <- samp_SEs |>  dplyr::summarise(across(
 # again, make a pretty table
 compare_SEs <- tibble(
   "Variable" = c("Height", "Weight", "Age", "Kills", "Years of Ed"),
-  "samp_dist_mean" = samp_dist_summary$samp_dist_mean,
-  "**Samp Dist SD**" = samp_dist_summary$samp_dist_sd,
+  "samp_dist_mean" = samp_dist_summary$`Samp Dist mean`,
+  "**Samp Dist SD**" = samp_dist_summary$`Samp Dist SD`,
   "SE from Pop SD" = t(pop_sds/sqrt(n)) |> round(3),
-  "**Samp 1 SE**" = samp_1_summary$samp_1_se,
+  "**Samp 1 SE**" = samp_1_summary$`Samp 1 SE`,
   "Mean SE across Samples" = t(samp_SE_means) |> round(3)
   ) 
 rownames(compare_SEs) <- NULL # get rid of rownames to make table pretty
@@ -599,7 +599,7 @@ samp_dist_CI <- dplyr::summarise(samp_dist, across(
 
 samp_dist_summary <- bind_cols(samp_dist_summary, t(samp_dist_CI))
 
-names(samp_dist_summary) <- c("Variable", "Samp Dist Mean", "Samp Dist SD", "Samp Dist CI")
+names(samp_dist_summary) <- c("Variable", "Samp Dist mean", "Samp Dist SD", "Samp Dist CI")
 
 kable(samp_dist_summary, digits = 3) |>
   kable_styling(font_size = 12, full_width = FALSE)
