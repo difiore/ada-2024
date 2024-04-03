@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Model Selection in Regression {#module-22}
 
 ## Overview
@@ -71,24 +76,31 @@ In these cases, each comparison shows that the more complex model indeed results
 
 ## Forward Selection
 
-Forward selection starts with an intercept-only model and then tests which of the predictor variables best improves the goodness-of-fit. Then the model is updated by adding that term and tests which of the remaining predictors would further and best improve the fit. The process continues until there are not any other terms that could be added to improve the fit more. The R functions `add1()` and `update()`, respectively, perform the series of tests and update your fitted regression model. Setting the "test=" argument to "F" includes the partial F statistic value and its significance. The ". ~ ." part of the "scope=" argument means, basically, "what is already there", while the remainder of the "scope=" argument is the list of additional variables you might add for the fullest possible model.
+Forward selection starts with an intercept-only model and then tests which of the predictor variables best improves the goodness-of-fit. Then the model is updated by adding that term and tests which of the remaining predictors would further and best improve the fit. The process continues until there are not any other terms that could be added to improve the fit more. The ***R*** functions `add1()` and `update()`, respectively, perform the series of tests and update your fitted regression model. Setting the "test=" argument in `add1()` to "F" includes the partial F statistic value and its significance. The ".~." part of the "scope=" argument means, basically, "what is already there", while the remainder of the "scope=" argument is the list of additional variables you might add for the fullest possible model.
 
 ```{r}
 m0 <- lm(data = z, height ~ 1)
 summary(m0)
-add1(m0, scope = . ~ . + age + weight + zombies_killed +
-  years_of_education, test = "F")
-m1 <- update(m0, formula = . ~ . + weight)
-summary(m1)
-add1(m1, scope = . ~ .++age + weight + zombies_killed +
-  years_of_education, test = "F")
-m2 <- update(m1, formula = . ~ . + age)
-summary(m2)
-add1(m2, scope = . ~ . + age + weight + zombies_killed +
-  years_of_education, test = "F")
+add1(m0, scope = .~. + age + weight + zombies_killed + years_of_education, test = "F")
 ```
 
-After we add weight and age, no other variable improves the fit of the model significantly, so the final, best model in this case is **m2**.
+Looking at the output of `add1()`, we see that adding **weight**, **age**, or **years_of_education** all would add explanatory power to our model, but **weight** is associated with the highest new F statistic and the lowest new RSS, so we should update our model by adding it as a new predictor. We do this with the `update()` function, passing it the old model and a "formula=" argument of ".~." (what is already there) "+ weight" (the new predictor).
+
+```{r}
+m1 <- update(m0, formula = .~. + weight)
+summary(m1)
+```
+
+We then repeat this process until adding additional predictors no longer improves the explanatory power of the model.
+
+```{r}
+add1(m1, scope = .~. + age + weight + zombies_killed + years_of_education, test = "F")
+m2 <- update(m1, formula = .~. + age)
+summary(m2)
+add1(m2, scope = .~. + age + weight + zombies_killed + years_of_education, test = "F")
+```
+
+After we add **weight** and **age**, no other variable improves the fit of the model significantly, so the final, best model in this case is **m2**.
 
 ```{r}
 summary(m2)
@@ -103,10 +115,15 @@ m0 <- lm(data = z, height ~ age + weight + zombies_killed +
   years_of_education)
 summary(m0)
 drop1(m0, test = "F")
-m1 <- update(m0, . ~ . - years_of_education)
+```
+
+Here, removing either **weight** or **age** would result in a significant loss of explanatory power for our model, while removing either **zombies_killed** or **years_of_education** would not. The latter variable is associated with the lowest F value and lowest increase in RSS, so we update our model by removing it. We then run the `drop1()` function on the new, updated model and remove the next variable whose loss does not significantly reduce the explanatory power of the model. We continue doing this until removing any additional predictors results in a significantly worse model.
+
+```{r}
+m1 <- update(m0, .~. - years_of_education)
 summary(m1)
 drop1(m1, test = "F")
-m2 <- update(m1, . ~ . - zombies_killed)
+m2 <- update(m1, .~. - zombies_killed)
 summary(m2)
 drop1(m2, test = "F")
 ```
@@ -136,6 +153,7 @@ library(MASS)
 # start with full model...
 m <- lm(data = z, height ~ age + weight + zombies_killed + years_of_education)
 (s <- stepAIC(m, scope = . ~ ., direction = "both"))
+summary(s)
 # ... or start with minimal model
 m <- lm(data = z, height ~ 1)
 (s <- stepAIC(m, scope = ~ . + age + weight + zombies_killed +
@@ -144,7 +162,7 @@ summary(s)
 detach(package:MASS)
 ```
 
-Note that the `stepAIC()` function has converged (using AIC, in this case) on the same best model we found above through forward and backwards selection by hand - i.e., the model with just age and weight as predictor variables that we retain after our process of model selection.
+Note that the `stepAIC()` function, whether we start with the full model more with a null model, has converged (using AIC, in this case) on the same best model we found above through forward and backwards selection by hand - i.e., the model with just **age** and **weight** retained as predictor variables after our process of model selection.
 
 Finally, there's a very helpful model selection package called {AICcmodavg}. You may have noticed the extra "c" in AICc... this is a "corrected" version of AIC that can account for small sample sizes (helpful for most of us in anthropology and biology). It is derived from AIC using the following equation (which you do not need to know!):
 
@@ -152,7 +170,7 @@ $$AIC_c = AIC + \frac{2K^2 + 2K}{n-K-1}$$
 
 where $n$ is sample size and $K$ is the number of parameters in the model. This is, essentially, a version of AIC with greater penalties for models with more parameters. Since the values for AICc and AIC converge as sample size increases, it has been argued that AICc should be the default model testing criterion rather than AIC.
 
-What makes this wrapper especially useful is that the output very clearly compares AIC values for different models in a way often asked for in publications. Let's take a look using our already-defined models.
+What makes this wrapper especially useful is that the table output of the function very clearly compares AIC values for different models in a way often asked for in publications. Let's take a look using our already-defined models.
 
 ```{r}
 library(AICcmodavg)
@@ -182,13 +200,23 @@ m <- lm(data = z,
 #   - the `beta=` argument specifies whether or not and how to standardize the beta coefficients; "none" is the default
 mods <- dredge(m, beta = "none", m.lim = c(0, 4))
 class(mods)
+```
+
+The `dredge()` function returns a "model.selection" object summarizing all of the models that were tested. The `get.models()` function can be used to return a list of these models.
+
+```{r}
 (mods.list <- get.models(mods, subset=TRUE))
-coef(mods) # returns a table of coefficients from each model
+```
+
+Running the `coef()` function on the output of `dredge()` returns a table of coefficients from each model, where the rowname is the number of the corresponding model in the "model.selection" object.
+
+```{r}
+coef(mods)
 ```
 
 ### Averaging Coefficients across Sets of Models
 
-The code below averages beta coefficients for the set of models with **delta.aicc** < 4. Here, we also need to set the argument `fit=TRUE` because `dredge()` does not actually store the model results. The `model.avg()` function returns a "summary.averaging" object.
+The code below averages beta coefficients for the set of models with **Delta AICc** < 4. Here, we also need to set the argument `fit=TRUE` because `dredge()` does not actually store the model results. The `model.avg()` function returns a "summary.averaging" object.
 
 ```{r}
 (mods.avg <- summary(model.avg(mods,
@@ -204,11 +232,10 @@ confint(mods.avg)
 
 > NOTE: The ‘subset’ (or ‘conditional’) average reported is only averaging over models where the term appears. The ‘full’ average reported assumes that a term is included in every model, but the estimate and standard error are set to zero in models where the term is not included.
 
-The code below summarizes models as a 95% confidence set, i.e., for cumulative AIC weights up to 95%:
+The code below averages beta coefficients for models in the 95% confidence set, i.e., for cumulative AIC weights up to 95%:
 
 ```{r}
-(mods.avg <- summary(model.avg(mods, subset =
-  cumsum(weight) <= .95, fit = TRUE)))
+(mods.avg <- summary(model.avg(mods, subset = cumsum(weight) <= 0.95, fit = TRUE)))
 confint(mods.avg)
 ```
 
