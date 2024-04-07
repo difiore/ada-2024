@@ -177,7 +177,7 @@ SEbeta1
 
 The standard error of the intercept, $\beta_0$, is calculated as:
 
-$$SE_{\beta_0} = \sqrt{\frac{MSE \times \sum{x^2}}{n \times SSX}}$$
+$$SE_{\beta_0} = \sqrt{\frac{MSE \times \sum{x^2}}{n \times SSX}} = SE_{\beta_1} \times \sqrt{\frac{\sum{x^2}}{n}} $$
 
 ```{r}
 SEbeta0 <- sqrt((MSE * sum(m$model$weight ^ 2)) / (1000 * SSX))

@@ -916,7 +916,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The standard error of the intercept, <span class="math inline">\(\beta_0\)</span>, is calculated as:</p>
-<p><span class="math display">\[SE_{\beta_0} = \sqrt{\frac{MSE \times \sum{x^2}}{n \times SSX}}\]</span></p>
+<p><span class="math display">\[SE_{\beta_0} = \sqrt{\frac{MSE \times \sum{x^2}}{n \times SSX}} = SE_{\beta_1} \times \sqrt{\frac{\sum{x^2}}{n}} \]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>SEbeta0 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((MSE <span class="sc">*</span> <span class="fu">sum</span>(m<span class="sc">$</span>model<span class="sc">$</span>weight<span class="sc">^</span><span class="dv">2</span>))<span class="sc">/</span>(<span class="dv">1000</span> <span class="sc">*</span> SSX))</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>SEbeta0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2141,7 +2141,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb96-201"><a href="#cb96-201" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-202"><a href="#cb96-202" aria-hidden="true" tabindex="-1"></a>The standard error of the intercept, $\beta_0$, is calculated as:</span>
 <span id="cb96-203"><a href="#cb96-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb96-204"><a href="#cb96-204" aria-hidden="true" tabindex="-1"></a>$$SE_{\beta_0} = \sqrt{\frac{MSE \times \sum{x^2}}{n \times SSX}}$$</span>
+<span id="cb96-204"><a href="#cb96-204" aria-hidden="true" tabindex="-1"></a>$$SE_{\beta_0} = \sqrt{\frac{MSE \times \sum{x^2}}{n \times SSX}} = SE_{\beta_1} \times \sqrt{\frac{\sum{x^2}}{n}} $$</span>
 <span id="cb96-205"><a href="#cb96-205" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-208"><a href="#cb96-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb96-209"><a href="#cb96-209" aria-hidden="true" tabindex="-1"></a>SEbeta0 <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((MSE <span class="sc">*</span> <span class="fu">sum</span>(m<span class="sc">$</span>model<span class="sc">$</span>weight <span class="sc">^</span> <span class="dv">2</span>)) <span class="sc">/</span> (<span class="dv">1000</span> <span class="sc">*</span> SSX))</span>

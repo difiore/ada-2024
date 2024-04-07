@@ -540,7 +540,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#program-a-word-game" id="toc-program-a-word-game" class="nav-link active" data-scroll-target="#program-a-word-game">Program a Word Game</a>
   <ul class="collapse">
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#wordle-puzzle-challenge" id="toc-wordle-puzzle-challenge" class="nav-link" data-scroll-target="#wordle-puzzle-challenge"><strong>Wordle</strong> Puzzle Challenge</a></li>
+  <li><a href="#wordle-puzzle-challenge" id="toc-wordle-puzzle-challenge" class="nav-link" data-scroll-target="#wordle-puzzle-challenge"><strong>Wordle</strong> Puzzle Challenge</a>
+  <ul class="collapse">
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link" data-scroll-target="#preliminaries">Preliminaries</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#step-1" id="toc-step-1" class="nav-link" data-scroll-target="#step-1">Step 1</a></li>
+  <li><a href="#step-2" id="toc-step-2" class="nav-link" data-scroll-target="#step-2">Step 2</a></li>
+  <li><a href="#step-3" id="toc-step-3" class="nav-link" data-scroll-target="#step-3">Step 3</a></li>
+  <li><a href="#step-4" id="toc-step-4" class="nav-link" data-scroll-target="#step-4">Step 4</a></li>
+  <li><a href="#optional-next-steps" id="toc-optional-next-steps" class="nav-link" data-scroll-target="#optional-next-steps">Optional Next Steps?</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -588,8 +597,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The rules of <strong>Wordle</strong> are simple: A player has SIX tries to guess a 5-letter word that has been selected at random from a list of possible words. Guesses need to be valid 5-letter words. After each guess, a player receives feedback about how close their guess was to the word, which provides information they can use to try to solve the puzzle. This feedback lets you know whether each letter your guess is either [1] <em>in the solution word and in the correct spot</em>, [2] <em>in the solution word but in the wrong position</em>, or [3] <em>not in the solution word</em>. In app/browser versions of <strong>Wordle</strong>, this feedback is provided visually using colors, but that need not be the case.</p>
 <p>This week’s programming exercise is to work with a partner to get as far along as you can writing <strong><em>R</em></strong> code that allows you to play <strong>Wordle</strong> to your heart’s content using <strong><em>R</em></strong>/<strong><em>RStudio</em></strong>!</p>
 <p>The assignment and steps below were inspired by <a href="https://statisticaloddsandends.wordpress.com/2022/01/18/playing-wordle-in-r/">this fun blog post</a>… but before you reference it or other online sites, try to tackle this coding exercise on your own.</p>
-<section id="preliminaries" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="preliminaries">Preliminaries</h4>
+<section id="preliminaries" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="preliminaries">Preliminaries</h3>
 <ul>
 <li><p>Set up a new <strong><em>GitHub</em></strong> repo in you or your partner’s <strong><em>GitHub</em></strong> workspace named “exercise-04” and clone that down to both of your computers as a new <strong><em>RStudio</em></strong> project. The instructions outlined as <strong>Method 1</strong> in <a href="06-module.html"><strong>Module 6</strong></a> will be helpful. Make sure that both you and your partner are collaborators on the repo and that you add me as a collaborator as well (my <strong><em>GitHub</em></strong> username is “difiore”).</p></li>
 <li><p>Go to <a href="https://github.com/difiore/ada-2024-datasets" class="uri">https://github.com/difiore/ada-2024-datasets</a>, download the following two data files, and add them to your repo:</p>
@@ -604,8 +613,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Create a new <strong>RMarkdown</strong> or <strong>Quarto</strong> document, called “wordle.Rmd” or “wordle.qmd”. In this, you do your best to recreate all of the wordplay used in Wordle.</li>
 </ul>
 </section>
-<section id="introduction" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h4>
+<section id="introduction" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="introduction">Introduction</h3>
 <p>Before we begin programming, an important first step is to break down the problem we are trying to down into discrete pieces… What do we need to do to <strong>set</strong> up a Wordle game? What <strong>steps</strong> does game play need to follow? What has to be <strong>evaluated</strong> at each step? How does the game <strong>end</strong>?</p>
 <p>As an early step, for example, we need to choose a mystery “solution” word that players will try to guess. We will use the list of the most common words in the English language to do this as a possible source of solution words for the puzzle.</p>
 <p>Additionally, also need to establish a dictionary of “valid” words that players can guess, and for that we will use the list of Official Scrabble Words.</p>
@@ -613,8 +622,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>NOTE:</strong> The list of possible “solution” words used in the original Wordle puzzle consists of ~2100 5-letter words, while the list of “valid” words that can be used as guesses totals ~13,000. How many 5-letter words are in each of the two data files you have downloaded?</p>
 </blockquote>
 </section>
-<section id="step-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-1">Step 1</h4>
+<section id="step-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-1">Step 1</h3>
 <ul>
 <li><p>Create your own custom function called <code>load_dictionary()</code> that takes a single argument, “filename”, that can be used to read in either of the two data files your downloaded.</p></li>
 <li><p>Once you have created your function, use that function to create two variables, <strong>solution_list</strong> and <strong>valid_list</strong>, that, respectively contain <em>vectors</em> of possible solution words and valid words to guess. That is, you should be able to run the following to create these two vectors:</p></li>
@@ -626,14 +635,14 @@ solution_list &lt;- load_dictionary(&lt;filename here&gt;)</code></pre>
 <p>Running <code>str(solution_list)</code> should return…</p>
 <pre><code>chr [1:8336] "THE" "OF" "AND" "TO"...</code></pre>
 </section>
-<section id="step-2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-2">Step 2</h4>
+<section id="step-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-2">Step 2</h3>
 <ul>
 <li>Winnow your variable <strong>solution_list</strong> to only include words that are included in <strong>valid_list</strong>. There are multiple ways that you could do this, but the set operation function, <code>intersection()</code> is an easy way. Use <strong><em>R</em></strong> help to look at the documentation for the <code>intersection()</code> function to see if you can get that to work. How many words are in your updated <strong>solution_list</strong> vector?</li>
 </ul>
 </section>
-<section id="step-3" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-3">Step 3</h4>
+<section id="step-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-3">Step 3</h3>
 <ul>
 <li>Write a custom function called <code>pick_solution()</code> that [1] removes all words from <strong>solution_list</strong> that are not 5 letters in length, [2] then randomly chooses a single word from those that remain, and [3] then splits that word into a vector of single-character elements. You should be able to pass your <strong>solution_list</strong> vector as the argument to the function.</li>
 </ul>
@@ -644,8 +653,8 @@ solution_list &lt;- load_dictionary(&lt;filename here&gt;)</code></pre>
 <p>Once your function works, run it and assign the result to a variable called <strong>solution</strong>.</p>
 <pre><code>solution &lt;- pick_solution(solution_list)</code></pre>
 </section>
-<section id="step-4" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="step-4">Step 4</h4>
+<section id="step-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="step-4">Step 4</h3>
 <p>Now, to tackle the bulk of the problem, create two more functions. The first should be called <code>play_wordle()</code> and it should take three arguments: [1] the answer to the puzzle (the value of your <strong>solution</strong> variable), [2] a list of valid guesses (the contents of your <strong>valid_list</strong> variable), and [3] a value for “number of guesses”, which you should set to the original <strong>Wordle</strong> game default of 6.</p>
 <blockquote class="blockquote">
 <p><strong>HINT</strong>: Here is possible skeleton code for that function.</p>
@@ -693,8 +702,8 @@ solution_list &lt;- load_dictionary(&lt;filename here&gt;)</code></pre>
 <li><p>If all guesses are exhausted, the function should indicate that the player LOST the game and, again, print out their guess and feedback history.</p></li>
 </ol>
 </section>
-<section id="optional-next-steps" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="optional-next-steps">Optional Next Steps?</h4>
+<section id="optional-next-steps" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="optional-next-steps">Optional Next Steps?</h3>
 <ul>
 <li><p>Try modifying your code to mimic the “hard mode” in <strong>Wordle</strong>, where information about the letters in the solution and their positions revealed in prior guesses has to be used in subsequent guesses.</p></li>
 <li><p>Try spicing up the feedback given using colors or alternative formatting. One way to do this would be to use the {huxtable} package, which is a package for creating text tables that can be styled for display in the <strong><em>R</em></strong> console and can also output to HTML, PDF, and a variety of other formats.</p></li>
@@ -1186,7 +1195,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>The assignment and steps below were inspired by <span class="co">[</span><span class="ot">this fun blog post</span><span class="co">](https://statisticaloddsandends.wordpress.com/2022/01/18/playing-wordle-in-r/)</span>... but before you reference it or other online sites, try to tackle this coding exercise on your own.</span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Preliminaries {.unnumbered}</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preliminaries {.unnumbered}</span></span>
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Set up a new ***GitHub*** repo in you or your partner's ***GitHub*** workspace named "exercise-04" and clone that down to both of your computers as a new ***RStudio*** project. The instructions outlined as **Method 1** in [**Module 6**](#module-06) will be helpful. Make sure that both you and your partner are collaborators on the repo and that you add me as a collaborator as well (my ***GitHub*** username is "difiore").</span>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
@@ -1201,7 +1210,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a new **RMarkdown** or **Quarto** document, called "wordle.Rmd" or "wordle.qmd". In this, you do your best to recreate all of the wordplay used in Wordle.</span>
 <span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Introduction {.unnumbered}</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Introduction {.unnumbered}</span></span>
 <span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>Before we begin programming, an important first step is to break down the problem we are trying to down into discrete pieces... What do we need to do to **set** up a Wordle game? What **steps** does game play need to follow? What has to be **evaluated** at each step? How does the game **end**?</span>
 <span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
@@ -1211,7 +1220,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** The list of possible "solution" words used in the original Wordle puzzle consists of ~2100 5-letter words, while the list of "valid" words that can be used as guesses totals ~13,000. How many 5-letter words are in each of the two data files you have downloaded?</span></span>
 <span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 1 {.unnumbered}</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 1 {.unnumbered}</span></span>
 <span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create your own custom function called <span class="in">`load_dictionary()`</span> that takes a single argument, "filename", that can be used to read in either of the two data files your downloaded.</span>
 <span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
@@ -1233,11 +1242,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="in">chr [1:8336] "THE" "OF" "AND" "TO"...</span></span>
 <span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 2 {.unnumbered}</span></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 2 {.unnumbered}</span></span>
 <span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Winnow your variable **solution_list** to only include words that are included in **valid_list**. There are multiple ways that you could do this, but the set operation function, `intersection()` is an easy way. Use ***R*** help to look at the documentation for the `intersection()` function to see if you can get that to work. How many words are in your updated **solution_list** vector?</span>
 <span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 3 {.unnumbered}</span></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 3 {.unnumbered}</span></span>
 <span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Write a custom function called <span class="in">`pick_solution()`</span> that <span class="co">[</span><span class="ot">1</span><span class="co">]</span> removes all words from **solution_list** that are not 5 letters in length, [2] then randomly chooses a single word from those that remain, and [3] then splits that word into a vector of single-character elements. You should be able to pass your **solution_list** vector as the argument to the function.</span>
 <span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a></span>
@@ -1251,7 +1260,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in">solution &lt;- pick_solution(solution_list)</span></span>
 <span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Step 4 {.unnumbered}</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 4 {.unnumbered}</span></span>
 <span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>Now, to tackle the bulk of the problem, create two more functions. The first should be called <span class="in">`play_wordle()`</span> and it should take three arguments: <span class="co">[</span><span class="ot">1</span><span class="co">]</span> the answer to the puzzle (the value of your **solution** variable), [2] a list of valid guesses (the contents of your **valid_list** variable), and [3] a value for "number of guesses", which you should set to the original **Wordle** game default of 6.</span>
 <span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
@@ -1297,7 +1306,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a><span class="ss">7. </span>If all guesses are exhausted, the function should indicate that the player LOST the game and, again, print out their guess and feedback history.</span>
 <span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Optional Next Steps? {.unnumbered}</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a><span class="fu">### Optional Next Steps? {.unnumbered}</span></span>
 <span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Try modifying your code to mimic the "hard mode" in **Wordle**, where information about the letters in the solution and their positions revealed in prior guesses has to be used in subsequent guesses.</span>
 <span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
