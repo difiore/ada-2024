@@ -2,6 +2,8 @@
 
 # • Solution {.unnumbered}
 
+#### Step 1 {.unnumbered}
+
 Using the {tidyverse} `read_csv()` function, load the "Street_et_al_2017.csv" dataset as a "tibble" named **d**.
 
 ```{r}
@@ -27,6 +29,8 @@ detach(package:kableExtra)
 detach(package:skimr)
 ```
 
+#### Step 2 {.unnumbered}
+
 From this dataset, plot brain size (**ECV**) as a function of social group size (**Group_size**), longevity (**Longevity**), juvenile period length (**Weaning**), and reproductive lifespan (**Repro_lifespan**).
 
 ```{r}
@@ -40,6 +44,10 @@ p4 <- ggplot(data = d, aes(x=Repro_lifespan, y=ECV)) + geom_point()
 plot_grid(p1, p2, p3, p4, nrow = 2)
 ```
 
+> **NOTE:** It looks like most of these variables should probably be log transformed, though that is not essential for this exercise ;)
+
+#### Step 3 {.unnumbered}
+
 Derive by hand the ordinary least squares regression coefficients $\beta1$ and $\beta0$ for ECV as a function of social group size.
 
 ```{r}
@@ -51,15 +59,19 @@ d_mod <- d |> drop_na(ECV, Group_size)
 (b0 <- mean(d_mod$ECV) - b1 * mean(d_mod$Group_size))
 ```
 
+#### Step 4 {.unnumbered}
+
 Confirm that you get the same results using the `lm()` function.
 
 ```{r}
-m <- lm(ECV ~ Group_size, data = d)
+m <- lm(ECV ~ Group_size, data = d_mod)
 results <- m |>
   summary() |>
   tidy()
 results
 ```
+
+#### Step 5 {.unnumbered}
 
 Repeat the analysis above for three different major radiations of primates - "catarrhines", "platyrrhines", and "strepsirhines") separately.
 
@@ -72,6 +84,10 @@ strepsirhini <- d_mod |> filter(Taxonomic_group == "Strepsirhini")
   summary() |>
   tidy())
 
+# or
+(beta1_p <- cov(platyrrhini$ECV, platyrrhini$Group_size)/var(platyrrhini$Group_size))
+(beta0_p <- mean(platyrrhini$ECV) - beta1_p * mean(platyrrhini$Group_size))
+
 (catarrhini_results <- lm(ECV ~ Group_size, data = catarrhini) |>
   summary() |>
   tidy())
@@ -80,7 +96,7 @@ strepsirhini <- d_mod |> filter(Taxonomic_group == "Strepsirhini")
   summary() |>
   tidy())
 ```
-
+#### Step 6 {.unnumbered}
 For your first regression of ECV on social group size, calculate the standard error for the slope coefficient, the 95% CI, and the *p* value associated with this coefficient by hand.
 
 ```{r}
@@ -112,11 +128,11 @@ residuals <- d_mod$ECV - (b0 + b1 * d_mod$Group_size)
 t_b1 = b1/SE_b1
 t_b0 = b0/SE_b0
 
-p_b1 <- pt(-1 * abs(t_b1), df = df, lower.tail = TRUE) + (1 - pt(abs(t_b1), df = df, lower.tail = TRUE))
+(p_b1 <- pt(-1 * abs(t_b1), df = df, lower.tail = TRUE) + (1 - pt(abs(t_b1), df = df, lower.tail = TRUE)))
 # or
-p_b1 <- 2 * pt(abs(t_b1), df = df, lower.tail = FALSE)
+(p_b1 <- 2 * pt(abs(t_b1), df = df, lower.tail = FALSE))
 
-p_b0 <- 2 * pt(abs(t_b0), df = df, lower.tail = FALSE)
+(p_b0 <- 2 * pt(abs(t_b0), df = df, lower.tail = FALSE))
 ```
 
 Also extract this same information from the results of running the `lm()` function. Compare the hand-calculated output above to that pulled from the model result object, **m**.
@@ -126,6 +142,8 @@ Also extract this same information from the results of running the `lm()` functi
   summary() |>
   tidy(conf.int = TRUE, conf.level = 1 - alpha))
 ```
+
+#### Step 7 {.unnumbered}
 
 Then, use a permutation approach with 1000 permutations to generate a null sampling distribution for the slope coefficient.
 
@@ -174,29 +192,23 @@ What is the p value associated with your original slope coefficient? You can use
   mutate(test = abs(stat) >= abs(b1)) |>
   summarize(p = mean(test)) |>
   pull(p))
-# p value taken directly from the permutation distribution
-# i.e., how many of the slope estimates from permuted
-# samples are more extreme than the actual b1?
+# p value taken directly from the permutation distribution i.e., how many of the slope estimates from permuted samples are more extreme than the actual b1?
 # here, absolute value is used to make this a 2-tailed test
 
 # or, using the {infer} package...
 (p.percentile <- perm |> get_p_value(obs_stat = b1, direction="two_sided"))
 
 (p.theory <- 2 * pt(abs(b1)/perm.se, df = df, lower.tail = FALSE))
-# the t statistic used in `pt()` to calculate the p values is
-# b1/se_b1, 
-# where se_b1 is estimated as the standard deviation
-# of the permutation 
-# distribution (i.e., 1/perm_se)
-# the `2 *` the upper-tail probability in this calculation
-# is to make this a 2-tailed test
+# the t statistic used in `pt()` to calculate the p values is `b1/se_b1`, where `se_b1` is estimated as the standard deviation of the permutation distribution (i.e., `1/perm_se`)
+# the `2 *` the upper-tail probability in this calculation is to make this a 2-tailed test
 ```
+
+#### Step 8 {.unnumbered}
 
 Use bootstrapping to generate a 95% CI for your estimate of the slope coefficient using both the percentile method and the theory-based method (i.e., based on the standard deviation of the bootstrapped sampling distribution). Do these CIs suggest that your slope coefficient is different from zero?
 
 ```{r}
-# using a loop to get a bootstrap distribution to generate
-# a CI for the slope coefficient
+# using a loop to get a bootstrap distribution to generate a CI for the slope coefficient
 nboot <- 1000
 boot <- vector(length = nboot)
 for (i in 1:nboot){
@@ -229,12 +241,8 @@ boot.slope <- d_mod |>
 (CI.theory <- b1 + c(-1, 1) * qt(p.upper, df = df) * sd(boot.slope$stat))
 # or...
 (CI.theory <- get_ci(boot.slope, level = 1 - alpha, type = "se", point_estimate = b1))
-# note... the CI_theory values calculated with `get_ci()`
-# differ very slightly from those calculated by hand
-# because {infer} seems to be using upper/lower
-# 0.025% boundaries of a *normal* rather than a *t* distribution
-# I believe this is an "error" in how `get_ci()` is implemented
-# in {infer}
+# note... the CI_theory values calculated with `get_ci()` differ very slightly from those calculated by hand because {infer} seems to be using upper/lower 0.025% boundaries of a *normal* rather than a *t* distribution
+# I believe this is an "error" in how `get_ci()` is implemented in {infer}
 
 visualize(boot.slope) +
   shade_ci(endpoints = CI.percentile, color = "red", fill = NULL) +
