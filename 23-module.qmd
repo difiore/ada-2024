@@ -199,7 +199,7 @@ alpha <- 0.05
 # this function returns a CI based on log-likelihood, an iterative ML process
 ```
 
-Alternatively, we can use the `confint.default()` function, whcih returns a CI based on standard errors, the way we have calculated them by hand previously.
+Alternatively, we can use the `confint.default()` function, which returns a CI based on standard errors, the way we have calculated them by hand previously.
 
 ```{r}
 (CI <- confint.default(glm, level = 1 - alpha))

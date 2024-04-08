@@ -516,6 +516,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./exercise-11-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 11 Solution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./exercise-12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 12</span></a>
   </div>
@@ -1060,7 +1066,7 @@ window.Quarto = {
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this function returns a CI based on log-likelihood, an iterative ML process</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Alternatively, we can use the <code>confint.default()</code> function, whcih returns a CI based on standard errors, the way we have calculated them by hand previously.</p>
+<p>Alternatively, we can use the <code>confint.default()</code> function, which returns a CI based on standard errors, the way we have calculated them by hand previously.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(CI <span class="ot">&lt;-</span> <span class="fu">confint.default</span>(glm, <span class="at">level =</span> <span class="dv">1</span> <span class="sc">-</span> alpha))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2522,7 +2528,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb151-219"><a href="#cb151-219" aria-hidden="true" tabindex="-1"></a><span class="co"># this function returns a CI based on log-likelihood, an iterative ML process</span></span>
 <span id="cb151-220"><a href="#cb151-220" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb151-221"><a href="#cb151-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-222"><a href="#cb151-222" aria-hidden="true" tabindex="-1"></a>Alternatively, we can use the <span class="in">`confint.default()`</span> function, whcih returns a CI based on standard errors, the way we have calculated them by hand previously.</span>
+<span id="cb151-222"><a href="#cb151-222" aria-hidden="true" tabindex="-1"></a>Alternatively, we can use the <span class="in">`confint.default()`</span> function, which returns a CI based on standard errors, the way we have calculated them by hand previously.</span>
 <span id="cb151-223"><a href="#cb151-223" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb151-226"><a href="#cb151-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb151-227"><a href="#cb151-227" aria-hidden="true" tabindex="-1"></a>(CI <span class="ot">&lt;-</span> <span class="fu">confint.default</span>(glm, <span class="at">level =</span> <span class="dv">1</span> <span class="sc">-</span> alpha))</span>
