@@ -492,6 +492,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./exercise-09-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 09 Solution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./exercise-10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercise 10</span></a>
   </div>
@@ -571,7 +577,7 @@ window.Quarto = {
   <li><a href="#working-with-proportions" id="toc-working-with-proportions" class="nav-link" data-scroll-target="#working-with-proportions"><span class="header-section-number">16.5</span> Working with Proportions</a></li>
   <li><a href="#using-the-infer-package" id="toc-using-the-infer-package" class="nav-link" data-scroll-target="#using-the-infer-package"><span class="header-section-number">16.6</span> Using the {infer} Package</a>
   <ul class="collapse">
-  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">CHALLENGE:</a></li>
+  <li><a href="#challenge" id="toc-challenge" class="nav-link" data-scroll-target="#challenge">CHALLENGE</a></li>
   </ul></li>
   <li><a href="#advantages-of-permutation-tests" id="toc-advantages-of-permutation-tests" class="nav-link" data-scroll-target="#advantages-of-permutation-tests"><span class="header-section-number">16.7</span> Advantages of Permutation Tests</a></li>
   <li><a href="#concept-review" id="toc-concept-review" class="nav-link" data-scroll-target="#concept-review">Concept Review</a></li>
@@ -659,12 +665,12 @@ window.Quarto = {
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the two.sided p value</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(permuted_diff <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff)) <span class="sc">+</span> <span class="fu">sum</span>(permuted_diff <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fu">abs</span>(actual_diff)))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0189</code></pre>
+<pre><code>## [1] 0.0199</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(permuted_diff) <span class="sc">&gt;=</span> <span class="fu">abs</span>(actual_diff))<span class="sc">/</span>nperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.0189</code></pre>
+<pre><code>## [1] 0.0199</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or add 1 to both numerator and denominator to avoid p = 0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -710,7 +716,7 @@ window.Quarto = {
 ## [1] 5
 ## 
 ## $p.value
-## [1] 0.0204</code></pre>
+## [1] 0.0198</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>jmuOutlier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1172,19 +1178,15 @@ window.Quarto = {
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span> <span class="co"># here we specify just a response not a formula</span></span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"point"</span>, <span class="at">mu =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="co"># here we are comparing a sample to an expectation</span></span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that here type="bootstrap"! This is actually doing something a little</span></span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># different than we did above... it is sampling *with replacement* from our</span></span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set of weights  rather than randomly permuting the sign of the difference</span></span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># of each value from the mean! (Here, the number of observations sampled is</span></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># equal to the original number of observations)</span></span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"mean"</span>)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that here type="bootstrap"! This is actually doing something a little different than we did above... it is sampling *with replacement* from our set of weights  rather than randomly permuting the sign of the difference of each value from the mean! (Here, the number of observations sampled is equal to the original number of observations)</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"mean"</span>)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"mean"</span>)</span>
 <span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span></span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"mean"</span>)</span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## Warning in (function (mapping = NULL, data = NULL, stat = "identity", position = "identity", : All aesthetics have length 1, but the data has 1000 rows.
 ## ℹ Did you mean to use `annotate()`?</code></pre>
@@ -1201,12 +1203,12 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.024</code></pre>
+## 1   0.026</code></pre>
 </div>
 </div>
 <p>Note that this p value is pretty similar to that returned by <code>jmuOutlier::perm.test()</code> and by our custom <code>perm1samp()</code> function, though as noted above, those use slightly different permutation processes.</p>
 <section id="challenge" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="challenge">CHALLENGE:</h3>
+<h3 class="unnumbered anchored" data-anchor-id="challenge">CHALLENGE</h3>
 <p>As a final example of this approach, we will again examine data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, remember that the record indicates whether a captured female was lactating (1) or not (0).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
@@ -1270,7 +1272,7 @@ window.Quarto = {
 <pre class="details" data-summary="Show Output"><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.452</code></pre>
+## 1   0.398</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -2350,111 +2352,107 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb65-620"><a href="#cb65-620" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span> <span class="co"># here we specify just a response not a formula</span></span>
 <span id="cb65-621"><a href="#cb65-621" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"point"</span>, <span class="at">mu =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="co"># here we are comparing a sample to an expectation</span></span>
 <span id="cb65-622"><a href="#cb65-622" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb65-623"><a href="#cb65-623" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that here type="bootstrap"! This is actually doing something a little</span></span>
-<span id="cb65-624"><a href="#cb65-624" aria-hidden="true" tabindex="-1"></a>  <span class="co"># different than we did above... it is sampling *with replacement* from our</span></span>
-<span id="cb65-625"><a href="#cb65-625" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set of weights  rather than randomly permuting the sign of the difference</span></span>
-<span id="cb65-626"><a href="#cb65-626" aria-hidden="true" tabindex="-1"></a>  <span class="co"># of each value from the mean! (Here, the number of observations sampled is</span></span>
-<span id="cb65-627"><a href="#cb65-627" aria-hidden="true" tabindex="-1"></a>  <span class="co"># equal to the original number of observations)</span></span>
-<span id="cb65-628"><a href="#cb65-628" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"mean"</span>)</span>
+<span id="cb65-623"><a href="#cb65-623" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Note that here type="bootstrap"! This is actually doing something a little different than we did above... it is sampling *with replacement* from our set of weights  rather than randomly permuting the sign of the difference of each value from the mean! (Here, the number of observations sampled is equal to the original number of observations)</span></span>
+<span id="cb65-624"><a href="#cb65-624" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"mean"</span>)</span>
+<span id="cb65-625"><a href="#cb65-625" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-626"><a href="#cb65-626" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb65-627"><a href="#cb65-627" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span></span>
+<span id="cb65-628"><a href="#cb65-628" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"mean"</span>)</span>
 <span id="cb65-629"><a href="#cb65-629" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-630"><a href="#cb65-630" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb65-631"><a href="#cb65-631" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="at">response =</span> weight) <span class="sc">%&gt;%</span></span>
-<span id="cb65-632"><a href="#cb65-632" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"mean"</span>)</span>
-<span id="cb65-633"><a href="#cb65-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-634"><a href="#cb65-634" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb65-635"><a href="#cb65-635" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb65-636"><a href="#cb65-636" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-637"><a href="#cb65-637" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution,observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb65-638"><a href="#cb65-638" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-630"><a href="#cb65-630" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb65-631"><a href="#cb65-631" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb65-632"><a href="#cb65-632" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-633"><a href="#cb65-633" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution,observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb65-634"><a href="#cb65-634" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-635"><a href="#cb65-635" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-636"><a href="#cb65-636" aria-hidden="true" tabindex="-1"></a>Note that this p value is pretty similar to that returned by <span class="in">`jmuOutlier::perm.test()`</span> and by our custom <span class="in">`perm1samp()`</span> function, though as noted above, those use slightly different permutation processes.</span>
+<span id="cb65-637"><a href="#cb65-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-638"><a href="#cb65-638" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
 <span id="cb65-639"><a href="#cb65-639" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-640"><a href="#cb65-640" aria-hidden="true" tabindex="-1"></a>Note that this p value is pretty similar to that returned by <span class="in">`jmuOutlier::perm.test()`</span> and by our custom <span class="in">`perm1samp()`</span> function, though as noted above, those use slightly different permutation processes.</span>
+<span id="cb65-640"><a href="#cb65-640" aria-hidden="true" tabindex="-1"></a>As a final example of this approach, we will again examine data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, remember that the record indicates whether a captured female was lactating (1) or not (0).</span>
 <span id="cb65-641"><a href="#cb65-641" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-642"><a href="#cb65-642" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE: {.unnumbered}</span></span>
-<span id="cb65-643"><a href="#cb65-643" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-644"><a href="#cb65-644" aria-hidden="true" tabindex="-1"></a>As a final example of this approach, we will again examine data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, remember that the record indicates whether a captured female was lactating (1) or not (0).</span>
-<span id="cb65-645"><a href="#cb65-645" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-648"><a href="#cb65-648" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb65-649"><a href="#cb65-649" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: last</span></span>
-<span id="cb65-650"><a href="#cb65-650" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
-<span id="cb65-651"><a href="#cb65-651" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb65-652"><a href="#cb65-652" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb65-653"><a href="#cb65-653" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-654"><a href="#cb65-654" aria-hidden="true" tabindex="-1"></a>First, we need to massage this data into the correct shape:</span>
-<span id="cb65-655"><a href="#cb65-655" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-658"><a href="#cb65-658" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb65-659"><a href="#cb65-659" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species1"</span>, <span class="at">lactating=</span>species1)</span>
-<span id="cb65-660"><a href="#cb65-660" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species2"</span>, <span class="at">lactating=</span>species2)</span>
-<span id="cb65-661"><a href="#cb65-661" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(s1,s2)</span>
-<span id="cb65-662"><a href="#cb65-662" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>lactating <span class="ot">&lt;-</span> <span class="fu">factor</span>(d<span class="sc">$</span>lactating)</span>
-<span id="cb65-663"><a href="#cb65-663" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb65-664"><a href="#cb65-664" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-665"><a href="#cb65-665" aria-hidden="true" tabindex="-1"></a>Now, use the {infer} workflow to test whether the proportion of lactating females among the captured bats differs between species.</span>
-<span id="cb65-666"><a href="#cb65-666" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-669"><a href="#cb65-669" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb65-670"><a href="#cb65-670" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb65-671"><a href="#cb65-671" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb65-672"><a href="#cb65-672" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb65-673"><a href="#cb65-673" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb65-674"><a href="#cb65-674" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb65-675"><a href="#cb65-675" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"independence"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb65-676"><a href="#cb65-676" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"permute"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb65-677"><a href="#cb65-677" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
+<span id="cb65-644"><a href="#cb65-644" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb65-645"><a href="#cb65-645" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-keep: last</span></span>
+<span id="cb65-646"><a href="#cb65-646" aria-hidden="true" tabindex="-1"></a>species1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb65-647"><a href="#cb65-647" aria-hidden="true" tabindex="-1"></a>species2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb65-648"><a href="#cb65-648" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-649"><a href="#cb65-649" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-650"><a href="#cb65-650" aria-hidden="true" tabindex="-1"></a>First, we need to massage this data into the correct shape:</span>
+<span id="cb65-651"><a href="#cb65-651" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-654"><a href="#cb65-654" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb65-655"><a href="#cb65-655" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species1"</span>, <span class="at">lactating=</span>species1)</span>
+<span id="cb65-656"><a href="#cb65-656" aria-hidden="true" tabindex="-1"></a>s2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">species=</span><span class="st">"species2"</span>, <span class="at">lactating=</span>species2)</span>
+<span id="cb65-657"><a href="#cb65-657" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(s1,s2)</span>
+<span id="cb65-658"><a href="#cb65-658" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>lactating <span class="ot">&lt;-</span> <span class="fu">factor</span>(d<span class="sc">$</span>lactating)</span>
+<span id="cb65-659"><a href="#cb65-659" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-660"><a href="#cb65-660" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-661"><a href="#cb65-661" aria-hidden="true" tabindex="-1"></a>Now, use the {infer} workflow to test whether the proportion of lactating females among the captured bats differs between species.</span>
+<span id="cb65-662"><a href="#cb65-662" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-665"><a href="#cb65-665" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb65-666"><a href="#cb65-666" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb65-667"><a href="#cb65-667" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb65-668"><a href="#cb65-668" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb65-669"><a href="#cb65-669" aria-hidden="true" tabindex="-1"></a>null_distribution <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb65-670"><a href="#cb65-670" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-671"><a href="#cb65-671" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null=</span><span class="st">"independence"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-672"><a href="#cb65-672" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"permute"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-673"><a href="#cb65-673" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
+<span id="cb65-674"><a href="#cb65-674" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-675"><a href="#cb65-675" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This runs a LOT slower than our custom permutation function for</span></span>
+<span id="cb65-676"><a href="#cb65-676" aria-hidden="true" tabindex="-1"></a><span class="co"># the same number of reps!</span></span>
+<span id="cb65-677"><a href="#cb65-677" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">20</span>)</span>
 <span id="cb65-678"><a href="#cb65-678" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-679"><a href="#cb65-679" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This runs a LOT slower than our custom permutation function for</span></span>
-<span id="cb65-680"><a href="#cb65-680" aria-hidden="true" tabindex="-1"></a><span class="co"># the same number of reps!</span></span>
-<span id="cb65-681"><a href="#cb65-681" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">20</span>)</span>
+<span id="cb65-679"><a href="#cb65-679" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
+<span id="cb65-680"><a href="#cb65-680" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-681"><a href="#cb65-681" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
 <span id="cb65-682"><a href="#cb65-682" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-683"><a href="#cb65-683" aria-hidden="true" tabindex="-1"></a>observed_stat <span class="ot">&lt;-</span> d <span class="sc">%&gt;%</span></span>
-<span id="cb65-684"><a href="#cb65-684" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(lactating <span class="sc">~</span> species, <span class="at">success=</span><span class="st">"1"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb65-685"><a href="#cb65-685" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat=</span><span class="st">"diff in props"</span>, <span class="at">order=</span><span class="fu">c</span>(<span class="st">"species1"</span>,<span class="st">"species2"</span>))</span>
-<span id="cb65-686"><a href="#cb65-686" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-687"><a href="#cb65-687" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb65-688"><a href="#cb65-688" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb65-683"><a href="#cb65-683" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_distribution, <span class="at">bins=</span><span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb65-684"><a href="#cb65-684" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb65-685"><a href="#cb65-685" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-686"><a href="#cb65-686" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution, observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb65-687"><a href="#cb65-687" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
+<span id="cb65-688"><a href="#cb65-688" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb65-689"><a href="#cb65-689" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-690"><a href="#cb65-690" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(null_distribution, observed_stat, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb65-691"><a href="#cb65-691" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
-<span id="cb65-692"><a href="#cb65-692" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-690"><a href="#cb65-690" aria-hidden="true" tabindex="-1"></a>This p value is similar to that returned by our custom permutation test!</span>
+<span id="cb65-691"><a href="#cb65-691" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-692"><a href="#cb65-692" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advantages of Permutation Tests</span></span>
 <span id="cb65-693"><a href="#cb65-693" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-694"><a href="#cb65-694" aria-hidden="true" tabindex="-1"></a>This p value is similar to that returned by our custom permutation test!</span>
+<span id="cb65-694"><a href="#cb65-694" aria-hidden="true" tabindex="-1"></a>Some of the key advantages of permutation tests include the following:</span>
 <span id="cb65-695"><a href="#cb65-695" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-696"><a href="#cb65-696" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advantages of Permutation Tests</span></span>
-<span id="cb65-697"><a href="#cb65-697" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-698"><a href="#cb65-698" aria-hidden="true" tabindex="-1"></a>Some of the key advantages of permutation tests include the following:</span>
-<span id="cb65-699"><a href="#cb65-699" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-700"><a href="#cb65-700" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are "distribution-free" - i.e., they do not make any assumptions about the distribution of the underlying data</span>
-<span id="cb65-701"><a href="#cb65-701" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There is no presumption of random sampling from some imaginary hypothetical population</span>
-<span id="cb65-702"><a href="#cb65-702" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Unlike some other nonparametric tests, they do not depend on large sample sizes for their validity</span>
-<span id="cb65-703"><a href="#cb65-703" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Many common nonparametric tests **are** permutation tests, just carried out on RANKS</span>
-<span id="cb65-704"><a href="#cb65-704" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They can be used with many kinds of data (nominal, ordinal, interval/ratio)</span>
-<span id="cb65-705"><a href="#cb65-705" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are relatively straightforward to conduct and interpret</span>
-<span id="cb65-706"><a href="#cb65-706" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-707"><a href="#cb65-707" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
-<span id="cb65-708"><a href="#cb65-708" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mosaic)</span></span>
-<span id="cb65-709"><a href="#cb65-709" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:tidyverse)</span></span>
-<span id="cb65-710"><a href="#cb65-710" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-696"><a href="#cb65-696" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are "distribution-free" - i.e., they do not make any assumptions about the distribution of the underlying data</span>
+<span id="cb65-697"><a href="#cb65-697" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There is no presumption of random sampling from some imaginary hypothetical population</span>
+<span id="cb65-698"><a href="#cb65-698" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Unlike some other nonparametric tests, they do not depend on large sample sizes for their validity</span>
+<span id="cb65-699"><a href="#cb65-699" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Many common nonparametric tests **are** permutation tests, just carried out on RANKS</span>
+<span id="cb65-700"><a href="#cb65-700" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They can be used with many kinds of data (nominal, ordinal, interval/ratio)</span>
+<span id="cb65-701"><a href="#cb65-701" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>They are relatively straightforward to conduct and interpret</span>
+<span id="cb65-702"><a href="#cb65-702" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-703"><a href="#cb65-703" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
+<span id="cb65-704"><a href="#cb65-704" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:mosaic)</span></span>
+<span id="cb65-705"><a href="#cb65-705" aria-hidden="true" tabindex="-1"></a><span class="in">detach(package:tidyverse)</span></span>
+<span id="cb65-706"><a href="#cb65-706" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-707"><a href="#cb65-707" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-708"><a href="#cb65-708" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
+<span id="cb65-709"><a href="#cb65-709" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-710"><a href="#cb65-710" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
 <span id="cb65-711"><a href="#cb65-711" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-712"><a href="#cb65-712" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
+<span id="cb65-712"><a href="#cb65-712" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Permutation/randomization tests involve these steps:</span>
 <span id="cb65-713"><a href="#cb65-713" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-714"><a href="#cb65-714" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb65-715"><a href="#cb65-715" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-716"><a href="#cb65-716" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Permutation/randomization tests involve these steps:</span>
-<span id="cb65-717"><a href="#cb65-717" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-718"><a href="#cb65-718" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Compute a sample statistic of your choice (mean, median, proportion, etc.) using the set of original observations</span>
-<span id="cb65-719"><a href="#cb65-719" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Rearrange attributes of the original observations in all or a very large number of random possible permutations, computing the test statistic each time, to yield a permutation or null distribution for the test statistic under the null hypothesis</span>
-<span id="cb65-720"><a href="#cb65-720" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Look at the value of the sample statistic relative to the permutation distribution</span>
-<span id="cb65-721"><a href="#cb65-721" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Based on the permutation distribution, calculate the probability of seeing a sample statistic as high or higher than that observed, i.e., the portion of the permutation distribution that equals or exceed the value of the sample statistic... this is the permutation test p value</span>
+<span id="cb65-714"><a href="#cb65-714" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Compute a sample statistic of your choice (mean, median, proportion, etc.) using the set of original observations</span>
+<span id="cb65-715"><a href="#cb65-715" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Rearrange attributes of the original observations in all or a very large number of random possible permutations, computing the test statistic each time, to yield a permutation or null distribution for the test statistic under the null hypothesis</span>
+<span id="cb65-716"><a href="#cb65-716" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Look at the value of the sample statistic relative to the permutation distribution</span>
+<span id="cb65-717"><a href="#cb65-717" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Based on the permutation distribution, calculate the probability of seeing a sample statistic as high or higher than that observed, i.e., the portion of the permutation distribution that equals or exceed the value of the sample statistic... this is the permutation test p value</span>
+<span id="cb65-718"><a href="#cb65-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-719"><a href="#cb65-719" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`jmuOutlier::perm.test()`</span>, <span class="in">`coin::indepedence_test()`</span>, or write your own!</span>
+<span id="cb65-720"><a href="#cb65-720" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-721"><a href="#cb65-721" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>{infer} workflow</span>
 <span id="cb65-722"><a href="#cb65-722" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-723"><a href="#cb65-723" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`jmuOutlier::perm.test()`</span>, <span class="in">`coin::indepedence_test()`</span>, or write your own!</span>
+<span id="cb65-723"><a href="#cb65-723" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This permutation-based approach to statistical inference is consistent with the philosophy promoted by statistician Allen Downey that, "There is really only test", and that at all statistical tests are based on the same framework. Note that this is still a form of null hypothesis significance testing, or NHST!</span></span>
 <span id="cb65-724"><a href="#cb65-724" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-725"><a href="#cb65-725" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>{infer} workflow</span>
-<span id="cb65-726"><a href="#cb65-726" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-727"><a href="#cb65-727" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** This permutation-based approach to statistical inference is consistent with the philosophy promoted by statistician Allen Downey that, "There is really only test", and that at all statistical tests are based on the same framework. Note that this is still a form of null hypothesis significance testing, or NHST!</span></span>
-<span id="cb65-728"><a href="#cb65-728" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-731"><a href="#cb65-731" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb65-732"><a href="#cb65-732" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb65-733"><a href="#cb65-733" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
-<span id="cb65-734"><a href="#cb65-734" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/downey.png"</span>)</span>
-<span id="cb65-735"><a href="#cb65-735" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb65-727"><a href="#cb65-727" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb65-728"><a href="#cb65-728" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb65-729"><a href="#cb65-729" aria-hidden="true" tabindex="-1"></a><span class="co">#| out-width: "90%"</span></span>
+<span id="cb65-730"><a href="#cb65-730" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"img/downey.png"</span>)</span>
+<span id="cb65-731"><a href="#cb65-731" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

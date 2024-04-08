@@ -572,11 +572,7 @@ null_distribution <- d %>%
   specify(response = weight) %>% # here we specify just a response not a formula
   hypothesize(null="point", mu = 5) %>% # here we are comparing a sample to an expectation
   generate(reps = 1000, type = "bootstrap") %>%
-  # Note that here type="bootstrap"! This is actually doing something a little
-  # different than we did above... it is sampling *with replacement* from our
-  # set of weights  rather than randomly permuting the sign of the difference
-  # of each value from the mean! (Here, the number of observations sampled is
-  # equal to the original number of observations)
+  # Note that here type="bootstrap"! This is actually doing something a little different than we did above... it is sampling *with replacement* from our set of weights  rather than randomly permuting the sign of the difference of each value from the mean! (Here, the number of observations sampled is equal to the original number of observations)
   calculate(stat = "mean")
 
 observed_stat <- d %>%
@@ -591,7 +587,7 @@ get_p_value(null_distribution,observed_stat, direction = "both")
 
 Note that this p value is pretty similar to that returned by `jmuOutlier::perm.test()` and by our custom `perm1samp()` function, though as noted above, those use slightly different permutation processes.
 
-### CHALLENGE: {.unnumbered}
+### CHALLENGE {.unnumbered}
 
 As a final example of this approach, we will again examine data on captures of two species of bats over the course of a week of nightly mist-netting. For each species, remember that the record indicates whether a captured female was lactating (1) or not (0).
 

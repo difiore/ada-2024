@@ -427,7 +427,7 @@ original.slope <- lm(data = d, height ~ weight) %>%
 original.slope # show model results for slope of weight
 ```
 
-We can generate a null distribution for our slope estimates via permutation using {infer} package functions... essentially, each permutation involves randomly shuffling values of the response variable under the null hypothesis that they are independent of the explanatory variable.
+We can generate a null distribution for our slope estimates via permutation using {infer} package functions... essentially, each permutation involves randomly shuffling values of the response variable under the null hypothesis such that they are independent of the explanatory variable (and vice versa).
 
 ```{r}
 permuted.slope <- d %>%
