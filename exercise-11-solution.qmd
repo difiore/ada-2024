@@ -98,6 +98,8 @@ m2 <- aov(logMass ~ Migration, data = d)
 plot(posthoc)
 ```
 
+Comparisons among all pairs of levels are significant.
+
 ### Step 4 {.unnumbered}
 
 - Use a permutation approach to inference to generate a null distribution of F statistic values for the model of log(**Mass**) in relation to **Trophic.Level** and calculate a p value for your original F statistic.
@@ -365,6 +367,7 @@ Then, we do visual checks for normality of observations and residuals within gro
 
 ```{r}
 #| message: false
+#| warning: false
 p1 <- ggplot(data = pass, aes(x=relBeak)) + geom_histogram() + facet_wrap(~Trophic.Level)
 m6data <- tibble(residuals = m6$residuals, Trophic.Level = m6$model$Trophic.Level)
 p2 <- ggqqplot(data = m6data, x = "residuals") + facet_wrap(~Trophic.Level)
@@ -386,13 +389,14 @@ Visual checks... again all seem to deviate from normality!
 
 ```{r}
 #| message: false
+#| warning: false
 p1 <- ggplot(data = migration, aes(x=logRS)) + geom_histogram() + facet_wrap(~Migration)
 m3data <- tibble(residuals = m3$residuals, Migration = m3$model$Migration)
 p2 <- ggqqplot(data = m3data, x = "residuals") + facet_wrap(~Migration)
 plot_grid(p1, p2, nrow=2)
 ```
 
-Given these deviations from the assumptions for simple linear regression, we are not *really* justified in performing the analyses done above using standard linear modeling `lm()` or ANOVA `aov()`.
+Although the variance ratios are under 2, given the clear deviation from normality for the residuals, we are not *really** justified in using standard (or general) linear regression for the analyses done above.
 
 ```{r}
 #| include: false
