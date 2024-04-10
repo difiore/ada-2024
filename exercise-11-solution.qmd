@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # Exercise 11 Solution {.unnumbered}
 
 # • Solution {.unnumbered}
@@ -97,7 +92,7 @@ Based on the re-leveled model results, **Migration** levels 2 and 3 are also dif
 - Conduct a post-hoc Tukey Significant Differences test to also evaluate which **Migration** categories differ "significantly" from one another.
 
 ```{r}
-# we need an anova object to run a Tukey test
+# we need an ANOVA object to run a Tukey test
 m2 <- aov(logMass ~ Migration, data = d)
 (posthoc <- TukeyHSD(m2, which = "Migration", conf.level = 0.95))
 plot(posthoc)
@@ -208,20 +203,25 @@ ggplot(data = migration, aes(x = Migration, y = logRS)) +
 ```{r}
 m3 <- lm(logRS ~ Migration, data = migration)
 summary(m3)
-
-# or
-
-m3 <- aov(logRS ~ Migration, data = migration)
-summary(m3)
-``` 
+```
 
 - Based on the global model, is range size associated with form of migration? How much of the variance in your measure of range size is associated with **Migration** behavior level?
 
-Yes, the F statistic is significant, although the R2 value suggests that only ~9% of the variation in log(range size) is associated with **Migration** behavior style.
+From the model `summary()`, we can see that the F statistic is significant, although the R-squared value suggests that only ~9% of the variation in log(range size) is associated with **Migration** behavior style.
 
-- Given the regression coefficients returned in output of the model, which **Migration** categor(ies) are different than the reference level? What level is the reference level?
+> **NOTE:** We can calculate the amount of variance explained by the model (i.e., R-squared, or, a.k.a. $\eta$-squared) ourselves from the ANOVA table output from running `aov()`. To do so, we calculate the ratio of the *regression sum of squares* to the *total sum of squares*. The code below pulls these value from a `tidy()` table of the model coefficients...
 
-In m3, **Migration** levels 1 and 2 are both different from **Migration** level 3, which is the reference level (because that is what we releveled to above).
+```{r}
+m3 <- aov(logRS ~ Migration, data = migration)
+summary(m3)
+
+coefs <- m3 |> tidy() %>% select(term, sumsq)
+(r2 <- 1 - (coefs |> filter(term == "Residuals") |> pull(sumsq)) / (coefs |> summarize(totalSS = sum(sumsq)) |> pull(totalSS)))
+```
+
+- Given the regression coefficients returned in the output of the model, which **Migration** categor(ies) are different than the reference level? What level is the reference level?
+
+In the `summary()` of the m3 linear model, **Migration** levels 1 and 2 are both different from **Migration** level 3, which is the reference level (because that is what we releveled to above).
 
 - Re-level and assess differences among the remaining pair of **Migration** categories.
 
@@ -283,17 +283,7 @@ plot_grid(plot_grid(p1, p2, nrow = 1), p3, p4, nrow = 3)
 
 ```{r}
 m5 <- aov(relBeak ~ Primary.Lifestyle, data = pass)
-summary(m5)
-```
-
-To calculate R-squared (a.k.a. eta-squared, the amount of variance explained by the model) from the ANOVA table, we calculate the ratio of the regression sum of squares to the total sum of squares.
-
-```{r}
-(r2 <- (18.2)/(18.2 + 307.9))
-```
-> **NOTE:** We could instead run a linear model and recover the equivalent multiple R-squared value directly.
-
-```{r}
+# or
 m5 <- lm(relBeak ~ Primary.Lifestyle, data = pass)
 summary(m5)
 ```
@@ -301,9 +291,8 @@ summary(m5)
 ```{r}
 m6 <- aov(relBeak ~ Trophic.Level, data = pass)
 # or
-# m6 <- lm(relBeak ~ Trophic.Level, data = pass)
+m6 <- lm(relBeak ~ Trophic.Level, data = pass)
 summary(m6)
-(r2 <- (16.31)/(16.31 + 309.81))
 ```
 
 Relative beak length is significantly associated with both variables, but the R-squared (or eta- squared) values are quite modest.
@@ -315,9 +304,8 @@ Relative beak length is significantly associated with both variables, but the R-
 ```{r}
 m7 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
 # or
-# m7 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
+m7 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
 summary(m7)
-(r2 <- (18.20 + 17.68)/(18.20 + 17.68 + 290.24))
 ```
 
 Both variables are important predictors of relative beak length.
@@ -329,9 +317,8 @@ Both variables are important predictors of relative beak length.
 ```{r}
 m8 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
 # or
-# m8 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
+m8 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
 summary(m8)
-(r2 <- (18.20 + 17.68 + 8.41)/(18.20 + 17.68 + 8.41 + 281.83))
 ```
 
 ### Step 7 {.unnumbered}
@@ -366,7 +353,7 @@ interaction.plot(
 
 Let's look at the model of relative beak size ~ trophic level.
 
-Ratio of variances...
+First, we check the ratio of variances among different levels of the predictor...
 
 ```{r}
 sd_ratio <- pass |> group_by(Trophic.Level) |>
@@ -374,7 +361,7 @@ sd_ratio <- pass |> group_by(Trophic.Level) |>
 (sd_ratio <- max(sd_ratio) / min(sd_ratio))
 ```
 
-Visual checks for normality of observations and residuals within groups... all seem to deviate from normality!
+Then, we do visual checks for normality of observations and residuals within groups... all seem to deviate from normality!
 
 ```{r}
 #| message: false
@@ -404,6 +391,8 @@ m3data <- tibble(residuals = m3$residuals, Migration = m3$model$Migration)
 p2 <- ggqqplot(data = m3data, x = "residuals") + facet_wrap(~Migration)
 plot_grid(p1, p2, nrow=2)
 ```
+
+Given these deviations from the assumptions for simple linear regression, we are not *really* justified in performing the analyses done above using standard linear modeling `lm()` or ANOVA `aov()`.
 
 ```{r}
 #| include: false

@@ -63,7 +63,7 @@
 
 - Run ANOVA analyses to look at the association between geographic range size and the variable **Migration**. You should first drop those observations for which **Migration** is not scored and also look at the distribution of the variable **Range.Size** to decide whether and how it might need to be transformed. Based on the global model, is range size associated with form of migration? How much of the variance in your measure of range size is associated with **Migration** behavior style?
 
-- Given the regression coefficients returned in output of the model, which **Migration** categor(ies) are different than the reference level? What level is the reference level? Relevel and assess differences among the remaining pair of **Migration** categories. Also conduct a post-hoc Tukey Honest Significant Differences test to also evaluate which **Migration** categories differ "significantly" from one another (see [**Module 20**](#module-20)).
+- Given the regression coefficients returned in the output of the model, which **Migration** categor(ies) are different than the reference level? What level is the reference level? Relevel and assess differences among the remaining pair of **Migration** categories. Also conduct a post-hoc Tukey Honest Significant Differences test to also evaluate which **Migration** categories differ "significantly" from one another (see [**Module 20**](#module-20)).
 
 ### Step 4 {.unnumbered}
 
