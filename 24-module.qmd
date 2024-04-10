@@ -281,20 +281,20 @@ full <- lmer(data = d, duration ~ reprocondition + parity +
   (1 + reprocondition | subject) + (1 + parity | subject),
   REML = FALSE)
 
-# model without reproductive condition
+# model without reproductive condition as a fixed effect
 minusRC <- lmer(data = d, duration ~ parity +
   (1 + reprocondition | subject) + (1 + parity | subject),
   REML = FALSE)
 
-# model without parity
+# model without parity as a fixed effect
 minusP <- lmer(data = d, duration ~ reprocondition +
   (1 + reprocondition | subject) + (1 + parity | subject),
   REML = FALSE)
 
-# p value for reproductive condition
+# p value for reproductive condition as a fixed effect
 anova(minusRC, full, test = "Chisq")
 
-# p value for parity
+# p value for parity as a fixed effect
 anova(minusP, full, test = "Chisq")
 ```
 
@@ -321,7 +321,7 @@ where $K$ is the number of parameters and $n$ is the sample size.
 
 In the table, for each model, $K$ is the number of model parameters, the $Delta\  AICc$ value is the difference between that model's AICc and the best model's AICc (again, here, that is the full model), and the $AICc\ weight$ is the relative likelihood of that model. [The weights for a particular set of models sums to 1, with each weight equal to the model's likelihood divided by the summed likelihoods across all models.]
 
-Where the best model has a very high Akaike weight, e.g., \> 0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values \< 2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, "model averaging" means making inferences based on a **set** of candidate models, instead of on a single "best" model.
+Where the best model has a very high Akaike weight, e.g., \>0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values \<2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, "model averaging" means making inferences based on a **set** of candidate models, instead of on a single "best" model.
 
 Here, note that the full model containing both *reproductive condition* and *parity* has the highest likelihood (the least negative log-likelihood value) and a much lower AICc than any of the less complex alternative models tested. It also has a very high Akaike weight (0.91).
 
@@ -335,7 +335,7 @@ Using likelihood ratio tests and AIC values for evaluating and expressing how we
 - AIC does not address the amount of variance in a response variable explained by a model
 - AIC is not comparable across datasets, and so fit is not generalizable
 
-Nakagawa & Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models - and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.
+Nakagawa & Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models, and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.
 
 > See:
 >

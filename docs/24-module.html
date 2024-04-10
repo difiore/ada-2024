@@ -1101,15 +1101,15 @@ window.Quarto = {
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span></span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># model without reproductive condition</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># model without reproductive condition as a fixed effect</span></span>
 <span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>minusRC <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> parity <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span></span>
 <span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    parity <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># model without parity</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># model without parity as a fixed effect</span></span>
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>minusP <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span></span>
 <span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for reproductive condition</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for reproductive condition as a fixed effect</span></span>
 <span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusRC, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## Data: d
@@ -1122,7 +1122,7 @@ window.Quarto = {
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for parity</span></span>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for parity as a fixed effect</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusP, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## Data: d
@@ -1163,7 +1163,7 @@ window.Quarto = {
 <p><span class="math display">\[AIC_c = AIC + \frac{2K^2 + 2K}{n-K-1}\]</span></p>
 <p>where <span class="math inline">\(K\)</span> is the number of parameters and <span class="math inline">\(n\)</span> is the sample size.</p>
 <p>In the table, for each model, <span class="math inline">\(K\)</span> is the number of model parameters, the <span class="math inline">\(Delta\  AICc\)</span> value is the difference between that model’s AICc and the best model’s AICc (again, here, that is the full model), and the <span class="math inline">\(AICc\ weight\)</span> is the relative likelihood of that model. [The weights for a particular set of models sums to 1, with each weight equal to the model’s likelihood divided by the summed likelihoods across all models.]</p>
-<p>Where the best model has a very high Akaike weight, e.g., &gt; 0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values &lt; 2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, “model averaging” means making inferences based on a <strong>set</strong> of candidate models, instead of on a single “best” model.</p>
+<p>Where the best model has a very high Akaike weight, e.g., &gt;0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values &lt;2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, “model averaging” means making inferences based on a <strong>set</strong> of candidate models, instead of on a single “best” model.</p>
 <p>Here, note that the full model containing both <em>reproductive condition</em> and <em>parity</em> has the highest likelihood (the least negative log-likelihood value) and a much lower AICc than any of the less complex alternative models tested. It also has a very high Akaike weight (0.91).</p>
 <blockquote class="blockquote">
 <p><strong>NOTE:</strong> When running a number of the above models and/or in doing the likelihood ratio tests, we saw a significant result but we also got either a warning that our null models “failed to converge” or we saw a warning about a “boundary (singular) fit”. Both of these warning are due to having a LOT of parameters we are trying to estimate relative to the number of observations we have. Dealing with lack of convergence in fitting maximum likelihood models is beyond what we can cover here, but I encourage you to explore that on your own!</p>
@@ -1177,7 +1177,7 @@ window.Quarto = {
 <li>AIC does not address the amount of variance in a response variable explained by a model</li>
 <li>AIC is not comparable across datasets, and so fit is not generalizable</li>
 </ul>
-<p>Nakagawa &amp; Schielzeth (2013) and Nakagawa et al.&nbsp;(2017) have published a simple and effective method for calculating a type of <em>pseudo-</em><span class="math inline">\(R^2\)</span> (or coefficient of determination) value for generalized linear mixed models - and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.</p>
+<p>Nakagawa &amp; Schielzeth (2013) and Nakagawa et al.&nbsp;(2017) have published a simple and effective method for calculating a type of <em>pseudo-</em><span class="math inline">\(R^2\)</span> (or coefficient of determination) value for generalized linear mixed models, and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.</p>
 <blockquote class="blockquote">
 <p>See:</p>
 <ul>
@@ -2023,20 +2023,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-311"><a href="#cb54-311" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
 <span id="cb54-312"><a href="#cb54-312" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb54-313"><a href="#cb54-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-314"><a href="#cb54-314" aria-hidden="true" tabindex="-1"></a><span class="co"># model without reproductive condition</span></span>
+<span id="cb54-314"><a href="#cb54-314" aria-hidden="true" tabindex="-1"></a><span class="co"># model without reproductive condition as a fixed effect</span></span>
 <span id="cb54-315"><a href="#cb54-315" aria-hidden="true" tabindex="-1"></a>minusRC <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> parity <span class="sc">+</span></span>
 <span id="cb54-316"><a href="#cb54-316" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
 <span id="cb54-317"><a href="#cb54-317" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb54-318"><a href="#cb54-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-319"><a href="#cb54-319" aria-hidden="true" tabindex="-1"></a><span class="co"># model without parity</span></span>
+<span id="cb54-319"><a href="#cb54-319" aria-hidden="true" tabindex="-1"></a><span class="co"># model without parity as a fixed effect</span></span>
 <span id="cb54-320"><a href="#cb54-320" aria-hidden="true" tabindex="-1"></a>minusP <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span></span>
 <span id="cb54-321"><a href="#cb54-321" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
 <span id="cb54-322"><a href="#cb54-322" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb54-323"><a href="#cb54-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-324"><a href="#cb54-324" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for reproductive condition</span></span>
+<span id="cb54-324"><a href="#cb54-324" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for reproductive condition as a fixed effect</span></span>
 <span id="cb54-325"><a href="#cb54-325" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusRC, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
 <span id="cb54-326"><a href="#cb54-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-327"><a href="#cb54-327" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for parity</span></span>
+<span id="cb54-327"><a href="#cb54-327" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for parity as a fixed effect</span></span>
 <span id="cb54-328"><a href="#cb54-328" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusP, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
 <span id="cb54-329"><a href="#cb54-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-330"><a href="#cb54-330" aria-hidden="true" tabindex="-1"></a></span>
@@ -2063,7 +2063,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-353"><a href="#cb54-353" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-354"><a href="#cb54-354" aria-hidden="true" tabindex="-1"></a>In the table, for each model, $K$ is the number of model parameters, the $Delta\  AICc$ value is the difference between that model's AICc and the best model's AICc (again, here, that is the full model), and the $AICc\ weight$ is the relative likelihood of that model. <span class="co">[</span><span class="ot">The weights for a particular set of models sums to 1, with each weight equal to the model's likelihood divided by the summed likelihoods across all models.</span><span class="co">]</span></span>
 <span id="cb54-355"><a href="#cb54-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-356"><a href="#cb54-356" aria-hidden="true" tabindex="-1"></a>Where the best model has a very high Akaike weight, e.g., <span class="sc">\&gt;</span> 0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values <span class="sc">\&lt;</span> 2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, "model averaging" means making inferences based on a **set** of candidate models, instead of on a single "best" model.</span>
+<span id="cb54-356"><a href="#cb54-356" aria-hidden="true" tabindex="-1"></a>Where the best model has a very high Akaike weight, e.g., <span class="sc">\&gt;</span>0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values <span class="sc">\&lt;</span>2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, "model averaging" means making inferences based on a **set** of candidate models, instead of on a single "best" model.</span>
 <span id="cb54-357"><a href="#cb54-357" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-358"><a href="#cb54-358" aria-hidden="true" tabindex="-1"></a>Here, note that the full model containing both *reproductive condition* and *parity* has the highest likelihood (the least negative log-likelihood value) and a much lower AICc than any of the less complex alternative models tested. It also has a very high Akaike weight (0.91).</span>
 <span id="cb54-359"><a href="#cb54-359" aria-hidden="true" tabindex="-1"></a></span>
@@ -2077,7 +2077,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-367"><a href="#cb54-367" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AIC does not address the amount of variance in a response variable explained by a model</span>
 <span id="cb54-368"><a href="#cb54-368" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AIC is not comparable across datasets, and so fit is not generalizable</span>
 <span id="cb54-369"><a href="#cb54-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-370"><a href="#cb54-370" aria-hidden="true" tabindex="-1"></a>Nakagawa &amp; Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models - and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.</span>
+<span id="cb54-370"><a href="#cb54-370" aria-hidden="true" tabindex="-1"></a>Nakagawa &amp; Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models, and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.</span>
 <span id="cb54-371"><a href="#cb54-371" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-372"><a href="#cb54-372" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; See:</span></span>
 <span id="cb54-373"><a href="#cb54-373" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
