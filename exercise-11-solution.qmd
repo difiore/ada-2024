@@ -198,6 +198,7 @@ It looks like **Range.Size** should be log transformed.
 
 ```{r}
 #| message: false
+#| warning: false
 # look at distribution of the data across levels
 ggplot(data = migration, aes(x = Migration, y = logRS)) +
   geom_violin() +
@@ -206,6 +207,11 @@ ggplot(data = migration, aes(x = Migration, y = logRS)) +
 
 ```{r}
 m3 <- lm(logRS ~ Migration, data = migration)
+summary(m3)
+
+# or
+
+m3 <- aov(logRS ~ Migration, data = migration)
 summary(m3)
 ``` 
 
@@ -244,53 +250,74 @@ pass <- d |> filter(Order1 == "Passeriformes")
 
 - Run separate one-factor ANOVA analyses to look at the association between [1] relative beak length and **Primary.Lifestyle** and between [2] relative beak length and **Trophic.Level**. In doing so...
 
-  - Make boxplots of response variable by each predictor and by the combination of predictors.
+Make boxplots of the response variable by each predictor and by the combination of predictors...
 
 ```{r}
-#| fig-height: 6
+#| fig-height: 12
 p1 <- ggplot(data=pass, aes(x=Primary.Lifestyle, y=relBeak)) +
   geom_boxplot() +
+  geom_jitter(alpha = 0.05) +
   theme(
     axis.text.x = element_text(angle = 45, hjust=1))
 p2 <- ggplot(data=pass, aes(x=Trophic.Level, y=relBeak)) +
   geom_boxplot() +
+  geom_jitter(alpha = 0.05) +
   theme(
     axis.text.x = element_text(angle = 45, hjust=1))
 p3 <- ggplot(data = pass, aes(x=Primary.Lifestyle, y=relBeak)) +
   geom_boxplot() +
+  geom_jitter(alpha = 0.05) +
   facet_wrap(~Trophic.Level) +
   theme(
     axis.text.x = element_text(angle = 45, hjust=1))
 p4 <- ggplot(data = pass, aes(x=Trophic.Level, y=relBeak)) +
   geom_boxplot() +
+  geom_jitter(alpha = 0.05) +
   facet_wrap(~Primary.Lifestyle) +
   theme(
     axis.text.x = element_text(angle = 45, hjust=1))
 plot_grid(plot_grid(p1, p2, nrow = 1), p3, p4, nrow = 3)
 ```
 
-  - Run linear models for each predictor separately and interpret the model output.
+... and run linear models for each predictor separately and interpret the model output.
+
+```{r}
+m5 <- aov(relBeak ~ Primary.Lifestyle, data = pass)
+summary(m5)
+```
+
+To calculate R-squared (a.k.a. eta-squared, the amount of variance explained by the model) from the ANOVA table, we calculate the ratio of the regression sum of squares to the total sum of squares.
+
+```{r}
+(r2 <- (18.2)/(18.2 + 307.9))
+```
+> **NOTE:** We could instead run a linear model and recover the equivalent multiple R-squared value directly.
 
 ```{r}
 m5 <- lm(relBeak ~ Primary.Lifestyle, data = pass)
-m6 <- lm(relBeak ~ Trophic.Level, data = pass)
 summary(m5)
-summary(m6)
 ```
 
-Relative beak length is significantly associated with both variables, but the R2 value is quite modest.
+```{r}
+m6 <- aov(relBeak ~ Trophic.Level, data = pass)
+# or
+# m6 <- lm(relBeak ~ Trophic.Level, data = pass)
+summary(m6)
+(r2 <- (16.31)/(16.31 + 309.81))
+```
+
+Relative beak length is significantly associated with both variables, but the R-squared (or eta- squared) values are quite modest.
 
 ### Step 5 {.unnumbered}
 
 - Run a two-factor model to look at the association between relative beak length and both **Primary.Lifestyle** and **Trophic.Level** among the passeriforms. Based on the model output, what would you conclude about how relative beak length is related to these two variables?
 
 ```{r}
-m7 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
-tidy(m7)
-
+m7 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
 # or
-m7 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass) #looking at relative association between Tropic.Level and Primary.Lifestyle
+# m7 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
 summary(m7)
+(r2 <- (18.20 + 17.68)/(18.20 + 17.68 + 290.24))
 ```
 
 Both variables are important predictors of relative beak length.
@@ -300,8 +327,11 @@ Both variables are important predictors of relative beak length.
 - Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term.
 
 ```{r}
-m8 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
-tidy(m8)
+m8 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
+# or
+# m8 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
+summary(m8)
+(r2 <- (18.20 + 17.68 + 8.41)/(18.20 + 17.68 + 8.41 + 281.83))
 ```
 
 ### Step 7 {.unnumbered}
