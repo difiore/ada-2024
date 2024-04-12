@@ -55,7 +55,7 @@ book:
       - 24-module.qmd
     - part: "Part III - Miscellany"
       chapters:
-      # - 25-r-packages.qmd
+      - 25-r-packages.qmd
       # - 26-shiny.qmd
       - 27-python-from-R.qmd
     - part: "Exercises"
@@ -80,9 +80,8 @@ book:
     - part: "Assignments"
       chapters:
       - data-analysis-replication-assignment.qmd
-      # - data-analysis-replication-assignment-rubric.qmd
       # - data-analysis-replication-assignment-template.qmd
-      # - custom-package-and-vignette-assignment.qmd
+      - custom-package-and-vignette-assignment.qmd
       # - custom-package-and-vignette-template.qmd
       # - creative-dataviz-assignment.qmd
       # - shiny-app-assignment.qmd

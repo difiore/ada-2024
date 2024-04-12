@@ -409,8 +409,14 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./25-r-packages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Building Custom <strong><em>R</em></strong> Packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./27-python-from-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Using <strong><em>Python</em></strong> from <strong><em>R</em></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Using <strong><em>Python</em></strong> from <strong><em>R</em></strong></span></span></a>
   </div>
 </li>
       </ul>
@@ -541,6 +547,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./data-analysis-replication-assignment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Analysis Replication</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./custom-package-and-vignette-assignment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Custom Package and Vignette Assignment</span></a>
   </div>
 </li>
       </ul>
@@ -990,7 +1002,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.231</code></pre>
+## 1   0.232</code></pre>
 </div>
 </div>
 <p>Note that, for these data, the p value estimated through simulated based inference is very similar to that calculated paramterically based on mathematical theory. This is not always the case!</p>
@@ -1004,7 +1016,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 1
 ##   p_value
 ##     &lt;dbl&gt;
-## 1   0.231</code></pre>
+## 1   0.232</code></pre>
 </div>
 </div>
 <p>Alternatively, the {permuco} package introduces the <code>aovperm()</code> and <code>lmperm()</code> functions as analogs for <code>aov()</code> and <code>lm()</code> for analysis of variance and simple linear regression, where p values are calculated by permutation.</p>
@@ -1016,7 +1028,7 @@ window.Quarto = {
 <pre><code>## Anova Table
 ## Resampling test using freedman_lane to handle nuisance variables and 5000 permutations.
 ##                 SS  df     F parametric P(&gt;F) resampled P(&gt;F)
-## occupation   12.85   3 1.403           0.2403          0.2484
+## occupation   12.85   3 1.403           0.2403          0.2466
 ## Residuals  3041.08 996</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(m.aovperm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1039,9 +1051,9 @@ window.Quarto = {
 ## occupationother        0.10424    0.13496  0.7724           4.401e-01
 ##                       resampled Pr(&lt;t) resampled Pr(&gt;t) resampled Pr(&gt;|t|)
 ## (Intercept)                                                               
-## occupationengineering           0.9786           0.0216             0.0438
-## occupationlogistics             0.7322           0.2680             0.5456
-## occupationother                 0.7870           0.2132             0.4330</code></pre>
+## occupationengineering           0.9806           0.0196             0.0354
+## occupationlogistics             0.7346           0.2656             0.5412
+## occupationother                 0.7758           0.2244             0.4466</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>permuco)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1057,7 +1069,7 @@ window.Quarto = {
 ## 
 ## data:  zombies_killed by
 ##   occupation (natural science, engineering, logistics, other)
-## chi-squared = 4.2048, p-value = 0.2427</code></pre>
+## chi-squared = 4.2048, p-value = 0.2435</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>coin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
