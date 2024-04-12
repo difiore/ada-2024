@@ -352,7 +352,7 @@ There is an easy way to calculate these two R2GLMM values in ***R*** using the `
 
 ### CHALLENGE {.unnumbered}
 
-Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? How much more of the total variance is explained by the random effects than by the fixed effects alone?
+Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? In the full model, how much more of the total variance is explained by the random effects than by the fixed effects alone?
 
 ```{r}
 #| message: false
@@ -360,6 +360,8 @@ Compare the full, the two reduced, and the null mixed effects models from our ra
 aic_table # re-print the AIC table
 library(MuMIn)
 r.squaredGLMM(full)
+r.squaredGLMM(minusRC)
+r.squaredGLMM(minusP)
 r.squaredGLMM(null)
 detach(package:MuMIn)
 ```

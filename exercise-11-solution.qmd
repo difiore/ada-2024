@@ -286,14 +286,14 @@ plot_grid(plot_grid(p1, p2, nrow = 1), p3, p4, nrow = 3)
 ```{r}
 m5 <- aov(relBeak ~ Primary.Lifestyle, data = pass)
 # or
-m5 <- lm(relBeak ~ Primary.Lifestyle, data = pass)
+# m5 <- lm(relBeak ~ Primary.Lifestyle, data = pass)
 summary(m5)
 ```
 
 ```{r}
 m6 <- aov(relBeak ~ Trophic.Level, data = pass)
 # or
-m6 <- lm(relBeak ~ Trophic.Level, data = pass)
+# m6 <- lm(relBeak ~ Trophic.Level, data = pass)
 summary(m6)
 ```
 
@@ -306,7 +306,7 @@ Relative beak length is significantly associated with both variables, but the R-
 ```{r}
 m7 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
 # or
-m7 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
+# m7 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
 summary(m7)
 ```
 
@@ -314,14 +314,16 @@ Both variables are important predictors of relative beak length.
 
 ### Step 6 {.unnumbered}
 
-- Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term.
+- Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term. Based on the model output, what would you now conclude about how relative beak length is related to these two variables?
 
 ```{r}
 m8 <- aov(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
 # or
-m8 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
+# m8 <- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)
 summary(m8)
 ```
+
+**Primary.Lifestyle**, **Trophic.Level**, and the interaction of these two variables are all significant predictors of relative beak length.
 
 ### Step 7 {.unnumbered}
 

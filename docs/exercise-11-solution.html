@@ -1435,57 +1435,26 @@ window.Quarto = {
 <p>… and run linear models for each predictor separately and interpret the model output.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Primary.Lifestyle, <span class="at">data =</span> pass)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Primary.Lifestyle, <span class="at">data =</span> pass)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or m5 &lt;- lm(relBeak ~ Primary.Lifestyle, data = pass)</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## 
-## Call:
-## lm(formula = relBeak ~ Primary.Lifestyle, data = pass)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -0.6314 -0.1380 -0.0172  0.1118  1.2241 
-## 
-## Coefficients:
-##                              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                  -0.34950    0.02158  -16.19   &lt;2e-16 ***
-## Primary.LifestyleGeneralist   0.27926    0.02306   12.11   &lt;2e-16 ***
-## Primary.LifestyleInsessorial  0.35342    0.02181   16.20   &lt;2e-16 ***
-## Primary.LifestyleTerrestrial  0.27924    0.02249   12.42   &lt;2e-16 ***
+<pre><code>##                     Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Primary.Lifestyle    3   18.2   6.067   130.2 &lt;2e-16 ***
+## Residuals         6610  307.9   0.047                   
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.2158 on 6610 degrees of freedom
-## Multiple R-squared:  0.05581,    Adjusted R-squared:  0.05538 
-## F-statistic: 130.2 on 3 and 6610 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>m6 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Trophic.Level, <span class="at">data =</span> pass)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>m6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Trophic.Level, <span class="at">data =</span> pass)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or m6 &lt;- lm(relBeak ~ Trophic.Level, data = pass)</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## 
-## Call:
-## lm(formula = relBeak ~ Trophic.Level, data = pass)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.67045 -0.13692 -0.02063  0.11129  1.23116 
-## 
-## Coefficients:
-##                         Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)            -0.003170   0.003501  -0.906  0.36518    
-## Trophic.LevelHerbivore -0.118713   0.006956 -17.066  &lt; 2e-16 ***
-## Trophic.LevelOmnivore   0.017902   0.006606   2.710  0.00675 ** 
+<pre><code>##                 Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Trophic.Level    2  16.31   8.154     174 &lt;2e-16 ***
+## Residuals     6611 309.81   0.047                   
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.2165 on 6611 degrees of freedom
-## Multiple R-squared:  0.05001,    Adjusted R-squared:  0.04972 
-## F-statistic:   174 on 2 and 6611 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>Relative beak length is significantly associated with both variables, but the R-squared (or eta- squared) values are quite modest.</p>
@@ -1497,32 +1466,15 @@ window.Quarto = {
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>m7 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level, <span class="at">data =</span> pass)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>m7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level, <span class="at">data =</span> pass)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or m7 &lt;- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m7)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## 
-## Call:
-## lm(formula = relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.65365 -0.13329 -0.02284  0.10274  1.20180 
-## 
-## Coefficients:
-##                               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)                  -0.349502   0.020958 -16.677   &lt;2e-16 ***
-## Primary.LifestyleGeneralist   0.301517   0.022582  13.352   &lt;2e-16 ***
-## Primary.LifestyleInsessorial  0.375698   0.021295  17.642   &lt;2e-16 ***
-## Primary.LifestyleTerrestrial  0.302119   0.021942  13.769   &lt;2e-16 ***
-## Trophic.LevelHerbivore       -0.126397   0.006761 -18.695   &lt;2e-16 ***
-## Trophic.LevelOmnivore         0.012140   0.006450   1.882   0.0599 .  
+<pre><code>##                     Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Primary.Lifestyle    3  18.20   6.067   138.1 &lt;2e-16 ***
+## Trophic.Level        2  17.68   8.838   201.2 &lt;2e-16 ***
+## Residuals         6608 290.24   0.044                   
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.2096 on 6608 degrees of freedom
-## Multiple R-squared:   0.11,  Adjusted R-squared:  0.1093 
-## F-statistic: 163.4 on 5 and 6608 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>Both variables are important predictors of relative beak length.</p>
@@ -1530,60 +1482,25 @@ window.Quarto = {
 <section id="step-6" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="step-6">Step 6</h3>
 <ul>
-<li>Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term.</li>
+<li>Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term. Based on the model output, what would you now conclude about how relative beak length is related to these two variables?</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>m8 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level <span class="sc">+</span> Primary.Lifestyle<span class="sc">:</span>Trophic.Level,</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pass)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>m8 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level <span class="sc">+</span> Primary.Lifestyle<span class="sc">:</span>Trophic.Level,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pass)</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or m8 &lt;- lm(relBeak ~ Primary.Lifestyle + Trophic.Level +</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Primary.Lifestyle:Trophic.Level, data = pass)</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## 
-## Call:
-## lm(formula = relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, 
-##     data = pass)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.64623 -0.12836 -0.02078  0.10070  1.21924 
-## 
-## Coefficients: (2 not defined because of singularities)
-##                                                     Estimate Std. Error t value
-## (Intercept)                                         -0.34950    0.02066 -16.918
-## Primary.LifestyleGeneralist                          0.33010    0.02367  13.948
-## Primary.LifestyleInsessorial                         0.35826    0.02104  17.031
-## Primary.LifestyleTerrestrial                         0.35714    0.02210  16.162
-## Trophic.LevelHerbivore                              -0.27502    0.01562 -17.608
-## Trophic.LevelOmnivore                               -0.11080    0.01550  -7.150
-## Primary.LifestyleGeneralist:Trophic.LevelHerbivore   0.05033    0.02584   1.948
-## Primary.LifestyleInsessorial:Trophic.LevelHerbivore  0.20115    0.01750  11.494
-## Primary.LifestyleTerrestrial:Trophic.LevelHerbivore       NA         NA      NA
-## Primary.LifestyleGeneralist:Trophic.LevelOmnivore    0.09898    0.02351   4.210
-## Primary.LifestyleInsessorial:Trophic.LevelOmnivore   0.15527    0.01726   8.996
-## Primary.LifestyleTerrestrial:Trophic.LevelOmnivore        NA         NA      NA
-##                                                     Pr(&gt;|t|)    
-## (Intercept)                                          &lt; 2e-16 ***
-## Primary.LifestyleGeneralist                          &lt; 2e-16 ***
-## Primary.LifestyleInsessorial                         &lt; 2e-16 ***
-## Primary.LifestyleTerrestrial                         &lt; 2e-16 ***
-## Trophic.LevelHerbivore                               &lt; 2e-16 ***
-## Trophic.LevelOmnivore                               9.61e-13 ***
-## Primary.LifestyleGeneralist:Trophic.LevelHerbivore    0.0515 .  
-## Primary.LifestyleInsessorial:Trophic.LevelHerbivore  &lt; 2e-16 ***
-## Primary.LifestyleTerrestrial:Trophic.LevelHerbivore       NA    
-## Primary.LifestyleGeneralist:Trophic.LevelOmnivore   2.59e-05 ***
-## Primary.LifestyleInsessorial:Trophic.LevelOmnivore   &lt; 2e-16 ***
-## Primary.LifestyleTerrestrial:Trophic.LevelOmnivore        NA    
+<pre><code>##                                   Df Sum Sq Mean Sq F value Pr(&gt;F)    
+## Primary.Lifestyle                  3  18.20   6.067  142.15 &lt;2e-16 ***
+## Trophic.Level                      2  17.68   8.838  207.11 &lt;2e-16 ***
+## Primary.Lifestyle:Trophic.Level    4   8.41   2.102   49.26 &lt;2e-16 ***
+## Residuals                       6604 281.83   0.043                   
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.2066 on 6604 degrees of freedom
-## Multiple R-squared:  0.1358, Adjusted R-squared:  0.1346 
-## F-statistic: 115.3 on 9 and 6604 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
+<p><strong>Primary.Lifestyle</strong>, <strong>Trophic.Level</strong>, and the interaction of these two variables are all significant predictors of relative beak length.</p>
 </section>
 <section id="step-7" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="step-7">Step 7</h3>
@@ -2422,14 +2339,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb53-324"><a href="#cb53-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb53-325"><a href="#cb53-325" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Primary.Lifestyle, <span class="at">data =</span> pass)</span>
 <span id="cb53-326"><a href="#cb53-326" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb53-327"><a href="#cb53-327" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Primary.Lifestyle, <span class="at">data =</span> pass)</span>
+<span id="cb53-327"><a href="#cb53-327" aria-hidden="true" tabindex="-1"></a><span class="co"># m5 &lt;- lm(relBeak ~ Primary.Lifestyle, data = pass)</span></span>
 <span id="cb53-328"><a href="#cb53-328" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m5)</span>
 <span id="cb53-329"><a href="#cb53-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-330"><a href="#cb53-330" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-333"><a href="#cb53-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb53-334"><a href="#cb53-334" aria-hidden="true" tabindex="-1"></a>m6 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Trophic.Level, <span class="at">data =</span> pass)</span>
 <span id="cb53-335"><a href="#cb53-335" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb53-336"><a href="#cb53-336" aria-hidden="true" tabindex="-1"></a>m6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Trophic.Level, <span class="at">data =</span> pass)</span>
+<span id="cb53-336"><a href="#cb53-336" aria-hidden="true" tabindex="-1"></a><span class="co"># m6 &lt;- lm(relBeak ~ Trophic.Level, data = pass)</span></span>
 <span id="cb53-337"><a href="#cb53-337" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m6)</span>
 <span id="cb53-338"><a href="#cb53-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-339"><a href="#cb53-339" aria-hidden="true" tabindex="-1"></a></span>
@@ -2442,7 +2359,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb53-348"><a href="#cb53-348" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb53-349"><a href="#cb53-349" aria-hidden="true" tabindex="-1"></a>m7 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level, <span class="at">data =</span> pass)</span>
 <span id="cb53-350"><a href="#cb53-350" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb53-351"><a href="#cb53-351" aria-hidden="true" tabindex="-1"></a>m7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level, <span class="at">data =</span> pass)</span>
+<span id="cb53-351"><a href="#cb53-351" aria-hidden="true" tabindex="-1"></a><span class="co"># m7 &lt;- lm(relBeak ~ Primary.Lifestyle + Trophic.Level, data = pass)</span></span>
 <span id="cb53-352"><a href="#cb53-352" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m7)</span>
 <span id="cb53-353"><a href="#cb53-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-354"><a href="#cb53-354" aria-hidden="true" tabindex="-1"></a></span>
@@ -2450,100 +2367,102 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb53-356"><a href="#cb53-356" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-357"><a href="#cb53-357" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 6 {.unnumbered}</span></span>
 <span id="cb53-358"><a href="#cb53-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-359"><a href="#cb53-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term.</span>
+<span id="cb53-359"><a href="#cb53-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Finally, run an additional two-way model with the same dataset and predictors, but adding the possibility of an interaction term. Based on the model output, what would you now conclude about how relative beak length is related to these two variables?</span>
 <span id="cb53-360"><a href="#cb53-360" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-363"><a href="#cb53-363" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb53-364"><a href="#cb53-364" aria-hidden="true" tabindex="-1"></a>m8 <span class="ot">&lt;-</span> <span class="fu">aov</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level <span class="sc">+</span> Primary.Lifestyle<span class="sc">:</span>Trophic.Level, <span class="at">data =</span> pass)</span>
 <span id="cb53-365"><a href="#cb53-365" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb53-366"><a href="#cb53-366" aria-hidden="true" tabindex="-1"></a>m8 <span class="ot">&lt;-</span> <span class="fu">lm</span>(relBeak <span class="sc">~</span> Primary.Lifestyle <span class="sc">+</span> Trophic.Level <span class="sc">+</span> Primary.Lifestyle<span class="sc">:</span>Trophic.Level, <span class="at">data =</span> pass)</span>
+<span id="cb53-366"><a href="#cb53-366" aria-hidden="true" tabindex="-1"></a><span class="co"># m8 &lt;- lm(relBeak ~ Primary.Lifestyle + Trophic.Level + Primary.Lifestyle:Trophic.Level, data = pass)</span></span>
 <span id="cb53-367"><a href="#cb53-367" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m8)</span>
 <span id="cb53-368"><a href="#cb53-368" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-369"><a href="#cb53-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-370"><a href="#cb53-370" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 7 {.unnumbered}</span></span>
+<span id="cb53-370"><a href="#cb53-370" aria-hidden="true" tabindex="-1"></a>**Primary.Lifestyle**, **Trophic.Level**, and the interaction of these two variables are all significant predictors of relative beak length.</span>
 <span id="cb53-371"><a href="#cb53-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-372"><a href="#cb53-372" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the <span class="in">`interaction.plot()`</span> function to visualize the interaction between **Primary.Lifestyle** and **Trophic.Level**.</span>
+<span id="cb53-372"><a href="#cb53-372" aria-hidden="true" tabindex="-1"></a><span class="fu">### Step 7 {.unnumbered}</span></span>
 <span id="cb53-373"><a href="#cb53-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-376"><a href="#cb53-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-377"><a href="#cb53-377" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 8</span></span>
-<span id="cb53-378"><a href="#cb53-378" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
-<span id="cb53-379"><a href="#cb53-379" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(</span>
-<span id="cb53-380"><a href="#cb53-380" aria-hidden="true" tabindex="-1"></a>  <span class="at">x.factor =</span> pass<span class="sc">$</span>Primary.Lifestyle,</span>
-<span id="cb53-381"><a href="#cb53-381" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Primary Lifestyle"</span>,</span>
-<span id="cb53-382"><a href="#cb53-382" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.factor =</span> pass<span class="sc">$</span>Trophic.Level,</span>
-<span id="cb53-383"><a href="#cb53-383" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.label =</span> <span class="st">"Trophic Level"</span>,</span>
-<span id="cb53-384"><a href="#cb53-384" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> pass<span class="sc">$</span>relBeak,</span>
-<span id="cb53-385"><a href="#cb53-385" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> base<span class="sc">::</span>mean, <span class="co"># make sure we use {base} version</span></span>
-<span id="cb53-386"><a href="#cb53-386" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Mean Relative Beak Length"</span></span>
-<span id="cb53-387"><a href="#cb53-387" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-388"><a href="#cb53-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-389"><a href="#cb53-389" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(</span>
-<span id="cb53-390"><a href="#cb53-390" aria-hidden="true" tabindex="-1"></a>  <span class="at">x.factor =</span> pass<span class="sc">$</span>Trophic.Level,</span>
-<span id="cb53-391"><a href="#cb53-391" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Trophic Level"</span>,</span>
-<span id="cb53-392"><a href="#cb53-392" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.factor =</span> pass<span class="sc">$</span>Primary.Lifestyle,</span>
-<span id="cb53-393"><a href="#cb53-393" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.label =</span> <span class="st">"Primary Lifestyle"</span>,</span>
-<span id="cb53-394"><a href="#cb53-394" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> pass<span class="sc">$</span>relBeak,</span>
-<span id="cb53-395"><a href="#cb53-395" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> base<span class="sc">::</span>mean, <span class="co"># make sure we use {base} version</span></span>
-<span id="cb53-396"><a href="#cb53-396" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Mean Relative Beak Length"</span></span>
-<span id="cb53-397"><a href="#cb53-397" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-398"><a href="#cb53-398" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-399"><a href="#cb53-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-400"><a href="#cb53-400" aria-hidden="true" tabindex="-1"></a><span class="fu">## Additional Steps? {.unnumbered}</span></span>
+<span id="cb53-374"><a href="#cb53-374" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use the <span class="in">`interaction.plot()`</span> function to visualize the interaction between **Primary.Lifestyle** and **Trophic.Level**.</span>
+<span id="cb53-375"><a href="#cb53-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-378"><a href="#cb53-378" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-379"><a href="#cb53-379" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 8</span></span>
+<span id="cb53-380"><a href="#cb53-380" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb53-381"><a href="#cb53-381" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(</span>
+<span id="cb53-382"><a href="#cb53-382" aria-hidden="true" tabindex="-1"></a>  <span class="at">x.factor =</span> pass<span class="sc">$</span>Primary.Lifestyle,</span>
+<span id="cb53-383"><a href="#cb53-383" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Primary Lifestyle"</span>,</span>
+<span id="cb53-384"><a href="#cb53-384" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.factor =</span> pass<span class="sc">$</span>Trophic.Level,</span>
+<span id="cb53-385"><a href="#cb53-385" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.label =</span> <span class="st">"Trophic Level"</span>,</span>
+<span id="cb53-386"><a href="#cb53-386" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> pass<span class="sc">$</span>relBeak,</span>
+<span id="cb53-387"><a href="#cb53-387" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> base<span class="sc">::</span>mean, <span class="co"># make sure we use {base} version</span></span>
+<span id="cb53-388"><a href="#cb53-388" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Mean Relative Beak Length"</span></span>
+<span id="cb53-389"><a href="#cb53-389" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-390"><a href="#cb53-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-391"><a href="#cb53-391" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(</span>
+<span id="cb53-392"><a href="#cb53-392" aria-hidden="true" tabindex="-1"></a>  <span class="at">x.factor =</span> pass<span class="sc">$</span>Trophic.Level,</span>
+<span id="cb53-393"><a href="#cb53-393" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Trophic Level"</span>,</span>
+<span id="cb53-394"><a href="#cb53-394" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.factor =</span> pass<span class="sc">$</span>Primary.Lifestyle,</span>
+<span id="cb53-395"><a href="#cb53-395" aria-hidden="true" tabindex="-1"></a>  <span class="at">trace.label =</span> <span class="st">"Primary Lifestyle"</span>,</span>
+<span id="cb53-396"><a href="#cb53-396" aria-hidden="true" tabindex="-1"></a>  <span class="at">response =</span> pass<span class="sc">$</span>relBeak,</span>
+<span id="cb53-397"><a href="#cb53-397" aria-hidden="true" tabindex="-1"></a>  <span class="at">fun =</span> base<span class="sc">::</span>mean, <span class="co"># make sure we use {base} version</span></span>
+<span id="cb53-398"><a href="#cb53-398" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Mean Relative Beak Length"</span></span>
+<span id="cb53-399"><a href="#cb53-399" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb53-400"><a href="#cb53-400" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-401"><a href="#cb53-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-402"><a href="#cb53-402" aria-hidden="true" tabindex="-1"></a>Let's look at the model of relative beak size ~ trophic level.</span>
+<span id="cb53-402"><a href="#cb53-402" aria-hidden="true" tabindex="-1"></a><span class="fu">## Additional Steps? {.unnumbered}</span></span>
 <span id="cb53-403"><a href="#cb53-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-404"><a href="#cb53-404" aria-hidden="true" tabindex="-1"></a>First, we check the ratio of variances among different levels of the predictor...</span>
+<span id="cb53-404"><a href="#cb53-404" aria-hidden="true" tabindex="-1"></a>Let's look at the model of relative beak size ~ trophic level.</span>
 <span id="cb53-405"><a href="#cb53-405" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-408"><a href="#cb53-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-409"><a href="#cb53-409" aria-hidden="true" tabindex="-1"></a>sd_ratio <span class="ot">&lt;-</span> pass <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Trophic.Level) <span class="sc">|&gt;</span></span>
-<span id="cb53-410"><a href="#cb53-410" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd =</span> <span class="fu">sd</span>(relBeak, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(sd)</span>
-<span id="cb53-411"><a href="#cb53-411" aria-hidden="true" tabindex="-1"></a>(sd_ratio <span class="ot">&lt;-</span> <span class="fu">max</span>(sd_ratio) <span class="sc">/</span> <span class="fu">min</span>(sd_ratio))</span>
-<span id="cb53-412"><a href="#cb53-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-413"><a href="#cb53-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-414"><a href="#cb53-414" aria-hidden="true" tabindex="-1"></a>Then, we do visual checks for normality of observations and residuals within groups... all seem to deviate from normality!</span>
+<span id="cb53-406"><a href="#cb53-406" aria-hidden="true" tabindex="-1"></a>First, we check the ratio of variances among different levels of the predictor...</span>
+<span id="cb53-407"><a href="#cb53-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-410"><a href="#cb53-410" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-411"><a href="#cb53-411" aria-hidden="true" tabindex="-1"></a>sd_ratio <span class="ot">&lt;-</span> pass <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Trophic.Level) <span class="sc">|&gt;</span></span>
+<span id="cb53-412"><a href="#cb53-412" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd =</span> <span class="fu">sd</span>(relBeak, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(sd)</span>
+<span id="cb53-413"><a href="#cb53-413" aria-hidden="true" tabindex="-1"></a>(sd_ratio <span class="ot">&lt;-</span> <span class="fu">max</span>(sd_ratio) <span class="sc">/</span> <span class="fu">min</span>(sd_ratio))</span>
+<span id="cb53-414"><a href="#cb53-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-415"><a href="#cb53-415" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-418"><a href="#cb53-418" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-419"><a href="#cb53-419" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb53-420"><a href="#cb53-420" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb53-421"><a href="#cb53-421" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> pass, <span class="fu">aes</span>(<span class="at">x=</span>relBeak)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trophic.Level)</span>
-<span id="cb53-422"><a href="#cb53-422" aria-hidden="true" tabindex="-1"></a>m6data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">residuals =</span> m6<span class="sc">$</span>residuals, <span class="at">Trophic.Level =</span> m6<span class="sc">$</span>model<span class="sc">$</span>Trophic.Level)</span>
-<span id="cb53-423"><a href="#cb53-423" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggqqplot</span>(<span class="at">data =</span> m6data, <span class="at">x =</span> <span class="st">"residuals"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trophic.Level)</span>
-<span id="cb53-424"><a href="#cb53-424" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb53-425"><a href="#cb53-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-426"><a href="#cb53-426" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-427"><a href="#cb53-427" aria-hidden="true" tabindex="-1"></a>We can do the same for our model of log(range size) ~ migration level.</span>
+<span id="cb53-416"><a href="#cb53-416" aria-hidden="true" tabindex="-1"></a>Then, we do visual checks for normality of observations and residuals within groups... all seem to deviate from normality!</span>
+<span id="cb53-417"><a href="#cb53-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-420"><a href="#cb53-420" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-421"><a href="#cb53-421" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb53-422"><a href="#cb53-422" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb53-423"><a href="#cb53-423" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> pass, <span class="fu">aes</span>(<span class="at">x=</span>relBeak)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trophic.Level)</span>
+<span id="cb53-424"><a href="#cb53-424" aria-hidden="true" tabindex="-1"></a>m6data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">residuals =</span> m6<span class="sc">$</span>residuals, <span class="at">Trophic.Level =</span> m6<span class="sc">$</span>model<span class="sc">$</span>Trophic.Level)</span>
+<span id="cb53-425"><a href="#cb53-425" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggqqplot</span>(<span class="at">data =</span> m6data, <span class="at">x =</span> <span class="st">"residuals"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trophic.Level)</span>
+<span id="cb53-426"><a href="#cb53-426" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb53-427"><a href="#cb53-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-428"><a href="#cb53-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-429"><a href="#cb53-429" aria-hidden="true" tabindex="-1"></a>Ratio of variances...</span>
+<span id="cb53-429"><a href="#cb53-429" aria-hidden="true" tabindex="-1"></a>We can do the same for our model of log(range size) ~ migration level.</span>
 <span id="cb53-430"><a href="#cb53-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-433"><a href="#cb53-433" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-434"><a href="#cb53-434" aria-hidden="true" tabindex="-1"></a>sd_ratio <span class="ot">&lt;-</span> migration <span class="sc">|&gt;</span></span>
-<span id="cb53-435"><a href="#cb53-435" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Migration) <span class="sc">|&gt;</span></span>
-<span id="cb53-436"><a href="#cb53-436" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd =</span> <span class="fu">sd</span>(logRS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(sd)</span>
-<span id="cb53-437"><a href="#cb53-437" aria-hidden="true" tabindex="-1"></a>(sd_ratio <span class="ot">&lt;-</span> <span class="fu">max</span>(sd_ratio) <span class="sc">/</span> <span class="fu">min</span>(sd_ratio))</span>
-<span id="cb53-438"><a href="#cb53-438" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-439"><a href="#cb53-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-440"><a href="#cb53-440" aria-hidden="true" tabindex="-1"></a>Visual checks... again all seem to deviate from normality!</span>
+<span id="cb53-431"><a href="#cb53-431" aria-hidden="true" tabindex="-1"></a>Ratio of variances...</span>
+<span id="cb53-432"><a href="#cb53-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-435"><a href="#cb53-435" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-436"><a href="#cb53-436" aria-hidden="true" tabindex="-1"></a>sd_ratio <span class="ot">&lt;-</span> migration <span class="sc">|&gt;</span></span>
+<span id="cb53-437"><a href="#cb53-437" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Migration) <span class="sc">|&gt;</span></span>
+<span id="cb53-438"><a href="#cb53-438" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd =</span> <span class="fu">sd</span>(logRS, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> <span class="fu">pull</span>(sd)</span>
+<span id="cb53-439"><a href="#cb53-439" aria-hidden="true" tabindex="-1"></a>(sd_ratio <span class="ot">&lt;-</span> <span class="fu">max</span>(sd_ratio) <span class="sc">/</span> <span class="fu">min</span>(sd_ratio))</span>
+<span id="cb53-440"><a href="#cb53-440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-441"><a href="#cb53-441" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-444"><a href="#cb53-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-445"><a href="#cb53-445" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb53-446"><a href="#cb53-446" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb53-447"><a href="#cb53-447" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> migration, <span class="fu">aes</span>(<span class="at">x=</span>logRS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Migration)</span>
-<span id="cb53-448"><a href="#cb53-448" aria-hidden="true" tabindex="-1"></a>m3data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">residuals =</span> m3<span class="sc">$</span>residuals, <span class="at">Migration =</span> m3<span class="sc">$</span>model<span class="sc">$</span>Migration)</span>
-<span id="cb53-449"><a href="#cb53-449" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggqqplot</span>(<span class="at">data =</span> m3data, <span class="at">x =</span> <span class="st">"residuals"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Migration)</span>
-<span id="cb53-450"><a href="#cb53-450" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb53-451"><a href="#cb53-451" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb53-452"><a href="#cb53-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-453"><a href="#cb53-453" aria-hidden="true" tabindex="-1"></a>Although the variance ratios are under 2, given the clear deviation from normality for the residuals, we are not *really** justified in using standard (or general) linear regression for the analyses done above.</span>
+<span id="cb53-442"><a href="#cb53-442" aria-hidden="true" tabindex="-1"></a>Visual checks... again all seem to deviate from normality!</span>
+<span id="cb53-443"><a href="#cb53-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-446"><a href="#cb53-446" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-447"><a href="#cb53-447" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb53-448"><a href="#cb53-448" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb53-449"><a href="#cb53-449" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> migration, <span class="fu">aes</span>(<span class="at">x=</span>logRS)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Migration)</span>
+<span id="cb53-450"><a href="#cb53-450" aria-hidden="true" tabindex="-1"></a>m3data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">residuals =</span> m3<span class="sc">$</span>residuals, <span class="at">Migration =</span> m3<span class="sc">$</span>model<span class="sc">$</span>Migration)</span>
+<span id="cb53-451"><a href="#cb53-451" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggqqplot</span>(<span class="at">data =</span> m3data, <span class="at">x =</span> <span class="st">"residuals"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Migration)</span>
+<span id="cb53-452"><a href="#cb53-452" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1, p2, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb53-453"><a href="#cb53-453" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-454"><a href="#cb53-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-457"><a href="#cb53-457" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb53-458"><a href="#cb53-458" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb53-459"><a href="#cb53-459" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggpubr)</span>
-<span id="cb53-460"><a href="#cb53-460" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mosaic)</span>
-<span id="cb53-461"><a href="#cb53-461" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
-<span id="cb53-462"><a href="#cb53-462" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>broom)</span>
-<span id="cb53-463"><a href="#cb53-463" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
-<span id="cb53-464"><a href="#cb53-464" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>skimr)</span>
-<span id="cb53-465"><a href="#cb53-465" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb53-466"><a href="#cb53-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb53-455"><a href="#cb53-455" aria-hidden="true" tabindex="-1"></a>Although the variance ratios are under 2, given the clear deviation from normality for the residuals, we are not *really** justified in using standard (or general) linear regression for the analyses done above.</span>
+<span id="cb53-456"><a href="#cb53-456" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-459"><a href="#cb53-459" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb53-460"><a href="#cb53-460" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb53-461"><a href="#cb53-461" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>ggpubr)</span>
+<span id="cb53-462"><a href="#cb53-462" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>mosaic)</span>
+<span id="cb53-463"><a href="#cb53-463" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>infer)</span>
+<span id="cb53-464"><a href="#cb53-464" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>broom)</span>
+<span id="cb53-465"><a href="#cb53-465" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>cowplot)</span>
+<span id="cb53-466"><a href="#cb53-466" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>skimr)</span>
+<span id="cb53-467"><a href="#cb53-467" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb53-468"><a href="#cb53-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

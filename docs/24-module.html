@@ -1194,7 +1194,7 @@ window.Quarto = {
 </section>
 <section id="challenge-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="challenge-3">CHALLENGE</h3>
-<p>Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? How much more of the total variance is explained by the random effects than by the fixed effects alone?</p>
+<p>Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? In the full model, how much more of the total variance is explained by the random effects than by the fixed effects alone?</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>aic_table  <span class="co"># re-print the AIC table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1213,12 +1213,22 @@ window.Quarto = {
 <pre><code>##            R2m       R2c
 ## [1,] 0.7221769 0.8102366</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(null)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(minusRC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>##            R2m    R2c
+## [1,] 0.6778132 0.7898</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(minusP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>##             R2m       R2c
+## [1,] 0.01443171 0.8841458</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(null)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##      R2m       R2c
 ## [1,]   0 0.8714428</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MuMIn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MuMIn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1229,8 +1239,8 @@ window.Quarto = {
 <h3 class="unnumbered anchored" data-anchor-id="challenge-4">CHALLENGE</h3>
 <p>Boden-Parry et al.&nbsp;(2020) studied the effect of food type and abundance on the begging and food sharing behavior of otters in captivity.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Bowden-ParryOtterdata.csv"</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Bowden-ParryOtterdata.csv"</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## Rows: 180 Columns: 22
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -1241,7 +1251,7 @@ window.Quarto = {
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## # A tibble: 6 × 22
 ##   zoo   ID    fooddensity foodtype trialorder forcedclaim unsuccessfulforcedcl…¹
@@ -1260,7 +1270,7 @@ window.Quarto = {
 ## #   ownersharebecauseharassed &lt;dbl&gt;, TotalSharebothharasspro &lt;dbl&gt;,
 ## #   sharingbybegonly &lt;dbl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmML)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmML)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## Registered S3 methods overwritten by 'glmmML':
 ##   method         from 
@@ -1740,405 +1750,407 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb54" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mixed Effects or Multilevel Modeling {#module-24}</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; In this module, we extend our discussion of regression modeling even further to include "mixed effects" or "multilevel" models.</span></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminaries</span></span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install and load this package in ***R***: <span class="co">[</span><span class="ot">{lme4}</span><span class="co">](https://cran.r-project.org/web/packages/lme4/lme4.pdf)</span></span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load {tidyverse}</span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
-<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview of "Mixed" Models</span></span>
-<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>A final extension of linear regression modeling that we will talk about is so-called "multilevel" or "mixed effects" modeling. This is a very complex topic, and we will only scratch the surface!</span>
-<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>In a (general or generalized) linear mixed model, we have a reponse variable, $Y$, and observations that fall into different factor categories each with some set of levels (e.g., "sex" with levels "male" and "female"), and we are interested in the effects of the various factors **and** factor levels on the response variable. Generically, if $\mu$ = a population mean response and $\mu_A$ = mean response for observations belonging to factor level A, then the effect of A is given by $\mu$ - $\mu_A$. We have already dealt with factors and factor levels in our linear regression models when we looked at categorical predictors (e.g., *sex*, *rank category*) in our discussions of ANOVA and ANCOVA.</span>
-<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>We can conceptualize these factor effects as being either *fixed* or *random*. *Fixed* factors are those that reflect all levels of interest in our study, while *random* effects are those that represent only a sample of the levels of interest. For example, if we include **sex** as a factor in a model with the factor levels "male" and "female", this (typically) will cover the entire gamut of levels of interest our study, thus we would consider **sex** a fixed factor. When we were doing ANOVA and ANCOVA analyses previously, we were implicitly looking at the effects of such fixed factors.</span>
-<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>However, if our observational data were to consist of repeated observations of the same sampling unit, e.g., measurements taken on the same set of individuals on different dates, **individual ID** would be considered a random factor because it is unlikely that we will have collected data from all possible "levels of interest", i.e., from all possible individual subjects. We have not yet dealt with such random factors as an additional source of variance in our modeling.</span>
-<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a>So-called **mixed models**, then, are those that include BOTH fixed and random effects. Including random effects in addition to fixed effects in our models has several ramifications:</span>
-<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using random effects broadens the scope of inference. That is, we can use statistical methods to infer something about the population from which the levels of the random factor have been drawn.</span>
-<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using random effects naturally incorporates dependence in the model and helps us account for pseudoreplication in our dataset. Observations that share the same level of the random effects are explicitly modeled as being correlated. This makes mixed effect modeling very useful for dealing with time series data, spatially correlated data, or situations where we have repeated observations/measures from the same subjects or sampling unit.</span>
-<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using random factors often gives more accurate parameter estimates.</span>
-<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Incorporating random factors, however, does require the use of more sophisticated estimation and fitting methods.</span>
-<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a>Not surprisingly, there several different varieties of mixed modeling approaches, which are supported in a variety of different packages in ***R***:</span>
-<span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Standard or general **Linear Mixed Models (LMM)**, analogous to standard or general linear regression - used when we are dealing with normally distributed variables and error structures.</span>
-<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Generalized Linear Mixed Models (GLMM)**, analogous to generalized linear regresseion - used when we are dealing with various other variable types and error structure (e.g., binary, proportion, or count data).</span>
-<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nonlinear Mixed Models (NLMM)**, analogous to nonlinear regression - used if we are dealing with situations where our response variable is best modeled by a nonlinear combination of predictor variables.</span>
-<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** We have not talked at all in this course about general or generalized NONLINEAR modeling, but it is worth knowing that such approaches are also possible. NONLINEAR modeling is where our regression equation is a **nonlinear** function of the model parameters.</span></span>
-<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>We will explore "mixed effects" modeling using an example based on this <span class="co">[</span><span class="ot">excellent tutorial</span><span class="co">](http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf)</span>.</span>
-<span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### EXAMPLE: {.unnumbered}</span></span>
-<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a>Suppose we have measured the amount of grooming received by female chimpanzees when they are either in their periovulatory period (i.e., the window of 2-3 days around the likely time of ovulation) or duing other portions of their reproductive cycle. We collected data on the **duration of grooming bouts received** and scored a female's **reproductive condition** at the time as a categorical factor with two levels: "POP" versus "NONPOP". On top of that, we also recorded data on female parity at the time of the grooming bout, i.e., whether the female had given birth previously (was "parous", or "P") or had not yet had an offspring (was "nulliparous", or "N").</span>
-<span id="cb54-50"><a href="#cb54-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-51"><a href="#cb54-51" aria-hidden="true" tabindex="-1"></a>If we are interested in how reproductive condition and parity influence how much grooming a female receives, our simple regression model would look like this:</span>
-<span id="cb54-52"><a href="#cb54-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-53"><a href="#cb54-53" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity + \epsilon$$</span>
-<span id="cb54-54"><a href="#cb54-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-55"><a href="#cb54-55" aria-hidden="true" tabindex="-1"></a>Also imagine that our study design was such that we took multiple observations per subject. That is, our data set includes records of multiple grooming bouts received by each subject. This situation violates the assumption of independence of observations that we make for standard linear regression: multiple responses/measures from the same subject cannot be regarded as independent from each other.</span>
-<span id="cb54-56"><a href="#cb54-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-57"><a href="#cb54-57" aria-hidden="true" tabindex="-1"></a>Using a mixed effects model, we can deal with this situation by adding **subject ID** as a random effect in our model. Doing so allows us to address the nonindependence issue by estimating a different set of parameters for each level of the factor "subject". We can either estimate a different *intercept* for each subject (which would correspond to each female having a different "baseline" level of grooming received) or estimate a different *intercept* **and** *slope* (where individual subjects are presumed to differ both in the baseline level of grooming received and the strength of the relationship between grooming duration, on the one hand, and reproductive condition and parity, on the other). Our mixed effects model estimates these individual level parameters in addition to the main effects of each variable.</span>
-<span id="cb54-58"><a href="#cb54-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-59"><a href="#cb54-59" aria-hidden="true" tabindex="-1"></a>This is why a "mixed effects" model is called a **mixed** model. The models that we have considered so far have been **fixed effects only** models and included only one or more "fixed" predictor variables and a general error term. We essentially divided the world into things that we somehow understand or that are systematic (the fixed effects, or the explanatory variables) and things that we could not control for or do not understand (the general error, or $\epsilon$). These fixed effects models did not examine possible structure *within* the error term.</span>
-<span id="cb54-60"><a href="#cb54-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-61"><a href="#cb54-61" aria-hidden="true" tabindex="-1"></a>In a mixed model, by contrast, we add one or more random effects to our fixed effects that may explain a portion of the variance in our error term.</span>
-<span id="cb54-62"><a href="#cb54-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-63"><a href="#cb54-63" aria-hidden="true" tabindex="-1"></a>Let's explore these idea using some actual data. First, load in the dataset "chimpgrooming.csv" and do some exploratory data analysis:</span>
-<span id="cb54-64"><a href="#cb54-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-67"><a href="#cb54-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-68"><a href="#cb54-68" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/chimpgrooming.csv"</span></span>
-<span id="cb54-69"><a href="#cb54-69" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-70"><a href="#cb54-70" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
-<span id="cb54-71"><a href="#cb54-71" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d)</span>
-<span id="cb54-72"><a href="#cb54-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-73"><a href="#cb54-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-74"><a href="#cb54-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb54-75"><a href="#cb54-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-76"><a href="#cb54-76" aria-hidden="true" tabindex="-1"></a>Plot grooming received duration in relation to subject ID...</span>
-<span id="cb54-77"><a href="#cb54-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-80"><a href="#cb54-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-81"><a href="#cb54-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb54-82"><a href="#cb54-82" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span>subject, <span class="at">y=</span>duration)) <span class="sc">+</span></span>
-<span id="cb54-83"><a href="#cb54-83" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"subject"</span>) <span class="sc">+</span></span>
-<span id="cb54-84"><a href="#cb54-84" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
-<span id="cb54-85"><a href="#cb54-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-86"><a href="#cb54-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-87"><a href="#cb54-87" aria-hidden="true" tabindex="-1"></a>Now plot grooming received in relation to reproductive condition...</span>
-<span id="cb54-88"><a href="#cb54-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-91"><a href="#cb54-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-92"><a href="#cb54-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb54-93"><a href="#cb54-93" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> reprocondition, <span class="at">y =</span> duration)) <span class="sc">+</span></span>
-<span id="cb54-94"><a href="#cb54-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"reproductive condition"</span>) <span class="sc">+</span></span>
-<span id="cb54-95"><a href="#cb54-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
-<span id="cb54-96"><a href="#cb54-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-97"><a href="#cb54-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-98"><a href="#cb54-98" aria-hidden="true" tabindex="-1"></a>Now plot grooming received in relation to reproductive condition *and* parity...</span>
-<span id="cb54-99"><a href="#cb54-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-102"><a href="#cb54-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-103"><a href="#cb54-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb54-104"><a href="#cb54-104" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> reprocondition, <span class="at">y =</span> duration,</span>
-<span id="cb54-105"><a href="#cb54-105" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill=</span><span class="fu">factor</span>(parity))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb54-106"><a href="#cb54-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"reproductive condition"</span>) <span class="sc">+</span></span>
-<span id="cb54-107"><a href="#cb54-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"parity"</span>) <span class="sc">+</span></span>
-<span id="cb54-108"><a href="#cb54-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
-<span id="cb54-109"><a href="#cb54-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-110"><a href="#cb54-110" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb54-111"><a href="#cb54-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-112"><a href="#cb54-112" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> parity, <span class="at">y =</span> duration,</span>
-<span id="cb54-113"><a href="#cb54-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill=</span><span class="fu">factor</span>(reprocondition))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb54-114"><a href="#cb54-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"parity"</span>) <span class="sc">+</span></span>
-<span id="cb54-115"><a href="#cb54-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"repro</span><span class="sc">\n</span><span class="st">condition"</span>) <span class="sc">+</span></span>
-<span id="cb54-116"><a href="#cb54-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
-<span id="cb54-117"><a href="#cb54-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-118"><a href="#cb54-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-119"><a href="#cb54-119" aria-hidden="true" tabindex="-1"></a>From these plots, we can see lots of <span class="co">[</span><span class="ot">a</span><span class="co">]</span> individual variation in how much grooming is received, <span class="co">[</span><span class="ot">b</span><span class="co">]</span> variation in response to reproductive condition, <span class="co">[</span><span class="ot">c</span><span class="co">]</span> limited variation due to parity, and <span class="co">[</span><span class="ot">d</span><span class="co">]</span> variation in response to this combination of fixed effects.</span>
-<span id="cb54-120"><a href="#cb54-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-121"><a href="#cb54-121" aria-hidden="true" tabindex="-1"></a>Finally, plot grooming received into relation to both a fixed effect (reprocondition) and a random effect (subject)...</span>
-<span id="cb54-122"><a href="#cb54-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-125"><a href="#cb54-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-126"><a href="#cb54-126" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb54-127"><a href="#cb54-127" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> reprocondition, <span class="at">y =</span> duration,</span>
-<span id="cb54-128"><a href="#cb54-128" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">factor</span>(subject))) <span class="sc">+</span></span>
-<span id="cb54-129"><a href="#cb54-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb54-130"><a href="#cb54-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"reproductive condition"</span>) <span class="sc">+</span></span>
-<span id="cb54-131"><a href="#cb54-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"subject"</span>) <span class="sc">+</span></span>
-<span id="cb54-132"><a href="#cb54-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
-<span id="cb54-133"><a href="#cb54-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-134"><a href="#cb54-134" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb54-135"><a href="#cb54-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-136"><a href="#cb54-136" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> subject, <span class="at">y =</span> duration,</span>
-<span id="cb54-137"><a href="#cb54-137" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">factor</span>(reprocondition))) <span class="sc">+</span></span>
-<span id="cb54-138"><a href="#cb54-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb54-139"><a href="#cb54-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"subject"</span>) <span class="sc">+</span></span>
-<span id="cb54-140"><a href="#cb54-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"repro</span><span class="sc">\n</span><span class="st">condition"</span>) <span class="sc">+</span></span>
-<span id="cb54-141"><a href="#cb54-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
-<span id="cb54-142"><a href="#cb54-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-143"><a href="#cb54-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-144"><a href="#cb54-144" aria-hidden="true" tabindex="-1"></a>What patterns do you see? There is, again, lots of apparent variation!</span>
-<span id="cb54-145"><a href="#cb54-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-146"><a href="#cb54-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Intercept Models</span></span>
-<span id="cb54-147"><a href="#cb54-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-148"><a href="#cb54-148" aria-hidden="true" tabindex="-1"></a>We will now perform an initial mixed effects analysis where we look at how reproductive condition and parity (as fixed effects) affect grooming duration, where we include individual subject ID as a random effect.</span>
-<span id="cb54-149"><a href="#cb54-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-150"><a href="#cb54-150" aria-hidden="true" tabindex="-1"></a>Here is a first mixed effects model that we will fit, using one extension of formula notation that is commonly used in ***R***.</span>
-<span id="cb54-151"><a href="#cb54-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-152"><a href="#cb54-152" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity + (1|subject) + \epsilon$$</span>
-<span id="cb54-153"><a href="#cb54-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-154"><a href="#cb54-154" aria-hidden="true" tabindex="-1"></a>Here, the 1 refers to the fact that we want to estimate an *intercept* and the pipe "\|" operator following the "1" signifies that we want to estimate a *different intercept for each subject*. Note that this generic formula still contains a general error term, $\epsilon$, to highlight that there will still be unexplained "error" variance after accounting for both fixed and random effects in the model.</span>
-<span id="cb54-155"><a href="#cb54-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-156"><a href="#cb54-156" aria-hidden="true" tabindex="-1"></a>We can think of this formula as saying that we expect our dataset to include multiple observations of the response variable per subject, and these responses will depend, in part, on each subject's baseline level. This effectively accounts the nonindependence that stems from having multiple responses by the same subject.</span>
-<span id="cb54-157"><a href="#cb54-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-158"><a href="#cb54-158" aria-hidden="true" tabindex="-1"></a>The {lme4} package in **R** is commonly used for mixed effects modeling, and the function <span class="in">`lmer()`</span> is the mixed model equivalent of the function <span class="in">`lm()`</span>. In the formula syntax for mixed effects models using the {lme4} package, fixed effects are included without parentheses while random effects are included in parentheses (the error, $\epsilon$, is understood and is not included explicitly).</span>
-<span id="cb54-159"><a href="#cb54-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-160"><a href="#cb54-160" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** We could also use the package {nlme} for mixed effects modeling (which requires a slightly different formula syntax than that used here). That same package also allows us to do **nonlinear** mixed effects modeling, which we will not be talking about. It is important to note that {lme4} uses, by default, a slightly different parameter estimation algorithm than {nlme}. Unless otherwise specified, {lme4} uses "restricted maximum likelihood" (REML) rather than ordinary maximum likelihood estimation, which is what is used in {nlme}. In practice, these give very similar results. We will see below that when we want to compare different models using {lme4}, we will need to tell {lme4} to use ordinary maximum likelihood.</span></span>
-<span id="cb54-161"><a href="#cb54-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-162"><a href="#cb54-162" aria-hidden="true" tabindex="-1"></a>The code block below implements this first "mixed effects" model:</span>
-<span id="cb54-163"><a href="#cb54-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-166"><a href="#cb54-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-167"><a href="#cb54-167" aria-hidden="true" tabindex="-1"></a>lme <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
-<span id="cb54-168"><a href="#cb54-168" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject))</span>
-<span id="cb54-169"><a href="#cb54-169" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lme)</span>
-<span id="cb54-170"><a href="#cb54-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-171"><a href="#cb54-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-172"><a href="#cb54-172" aria-hidden="true" tabindex="-1"></a>Let's focus on the output for the random effects first. Have a look at the column standard deviation. The entry for *subject* shows us how much variability in grooming duration (apart from that explained by the fixed effects) is due to subject ID. The entry for *Residual* summarizes the remaining variability in grooming duration that is not due to *subject* or to our fixed effects. This is our $\epsilon$, the "random" deviations from the predicted values that are not due to either subject or our fixed effects.</span>
-<span id="cb54-173"><a href="#cb54-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-174"><a href="#cb54-174" aria-hidden="true" tabindex="-1"></a>The fixed effects output mirrors the coefficient tables that we have seen previously in our linear models that have focused only on fixed effects. The coefficient "reproconditionPOP" is the $\beta$ coefficient (slope) for the categorical effect of reproductive condition. The positive sign for the coefficient means that grooming duration is GREATER by 20.293 units for POP than for NONPOP females. Then, there's a standard error associated with this slope, and a t value, which is simply the estimate divided by the standard error.</span>
-<span id="cb54-175"><a href="#cb54-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-176"><a href="#cb54-176" aria-hidden="true" tabindex="-1"></a>The coefficient "parityP" is the $\beta$ coefficient for the categorical effect of parity. The grooming duration associated with being parous versus nulliparous is GREATER by 109.65 units.</span>
-<span id="cb54-177"><a href="#cb54-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-178"><a href="#cb54-178" aria-hidden="true" tabindex="-1"></a>The INTERCEPT in this case is the grooming duration associated with being an average, nulliparous, NONPOP female. Like the <span class="in">`lm()`</span> function, the <span class="in">`lmer()`</span> took whatever factor level came first in the alphabet to be the reference level for each fixed effect variable.</span>
-<span id="cb54-179"><a href="#cb54-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-180"><a href="#cb54-180" aria-hidden="true" tabindex="-1"></a>Let's also look at the coefficients coming out of the model.</span>
-<span id="cb54-181"><a href="#cb54-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-184"><a href="#cb54-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-185"><a href="#cb54-185" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lme)</span>
-<span id="cb54-186"><a href="#cb54-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-187"><a href="#cb54-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-188"><a href="#cb54-188" aria-hidden="true" tabindex="-1"></a>We can see the separate intercepts, or "baseline" level of grooming received, associated with each female when they are (presumably) nulliparous and in a NONPOP reproductive condition.</span>
-<span id="cb54-189"><a href="#cb54-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-190"><a href="#cb54-190" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Not all females are, necessarily, ever seen in a particular parity or reproductive condition!</span></span>
-<span id="cb54-191"><a href="#cb54-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-192"><a href="#cb54-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inference using LRTs {.unnumbered}</span></span>
-<span id="cb54-193"><a href="#cb54-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-194"><a href="#cb54-194" aria-hidden="true" tabindex="-1"></a>In mixed effects models, it is not as straightforward as it is for standard linear models to determine p values associated with either overall models or individual coefficients. However, using **likelihood ratio tests**, which we previously used for comparing among generalized linear models, is one common approach. Likelihood is the probability of seeing the data we have actually collected *given* a particular model. The logic of the likelihood ratio test is to compare the likelihood of two models with each other, i.e., a model that includes the factor that we are interested in versus a reduced, nested model with that factor excluded.</span>
-<span id="cb54-195"><a href="#cb54-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-196"><a href="#cb54-196" aria-hidden="true" tabindex="-1"></a>So... if we are interested in the effect of **reproductive condition** on grooming duration, we could compare a more complex model...</span>
-<span id="cb54-197"><a href="#cb54-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-198"><a href="#cb54-198" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity + (1|subject) + \epsilon$$</span>
-<span id="cb54-199"><a href="#cb54-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-200"><a href="#cb54-200" aria-hidden="true" tabindex="-1"></a>to a nested, less complex model...</span>
-<span id="cb54-201"><a href="#cb54-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-202"><a href="#cb54-202" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim parity + (1|subject) + \epsilon$$</span>
-<span id="cb54-203"><a href="#cb54-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-204"><a href="#cb54-204" aria-hidden="true" tabindex="-1"></a>In ***R***, we would do this as follows:</span>
-<span id="cb54-205"><a href="#cb54-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-208"><a href="#cb54-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-209"><a href="#cb54-209" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
-<span id="cb54-210"><a href="#cb54-210" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-211"><a href="#cb54-211" aria-hidden="true" tabindex="-1"></a><span class="co"># note the additional `REML=` argument</span></span>
-<span id="cb54-212"><a href="#cb54-212" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(full)</span>
-<span id="cb54-213"><a href="#cb54-213" aria-hidden="true" tabindex="-1"></a>reduced <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> parity <span class="sc">+</span></span>
-<span id="cb54-214"><a href="#cb54-214" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb54-215"><a href="#cb54-215" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reduced)</span>
-<span id="cb54-216"><a href="#cb54-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-217"><a href="#cb54-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-218"><a href="#cb54-218" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here, we added the argument </span><span class="in">`REML=FALSE`</span><span class="at"> to the </span><span class="in">`lmer()`</span><span class="at"> function. This is necessary to do when we want to compare models using the likelihood ratio test. Basically, REML uses a different algorithm to determine likelihood values than ordinary likelihood, and, if we want to use these likelihoods to execute an LRT, we need to use ordinary likelihood. See </span><span class="co">[</span><span class="ot">this site</span><span class="co">](http://users.stat.umn.edu/~gary/classes/5303/handouts/REML.pdf)</span><span class="at"> for a more complete explanation of this issue.</span></span>
-<span id="cb54-219"><a href="#cb54-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-220"><a href="#cb54-220" aria-hidden="true" tabindex="-1"></a>We then perform the likelihood ratio test using the <span class="in">`anova()`</span> function or the <span class="in">`lrtest()`</span> function from {lmtest}.</span>
-<span id="cb54-221"><a href="#cb54-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-224"><a href="#cb54-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-225"><a href="#cb54-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb54-226"><a href="#cb54-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb54-227"><a href="#cb54-227" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(reduced, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
-<span id="cb54-228"><a href="#cb54-228" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
-<span id="cb54-229"><a href="#cb54-229" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(reduced, full)</span>
-<span id="cb54-230"><a href="#cb54-230" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>lmtest)</span>
-<span id="cb54-231"><a href="#cb54-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-232"><a href="#cb54-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-233"><a href="#cb54-233" aria-hidden="true" tabindex="-1"></a>These results tell us that the model containing both **reproductive condition** and **parity** as *fixed* effects fits the data better than a model lacking **reproductive condition** and containing only **parity** as a *fixed* effect, while accounting for **subject** as a *random* effect.</span>
-<span id="cb54-234"><a href="#cb54-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-235"><a href="#cb54-235" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb54-236"><a href="#cb54-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-237"><a href="#cb54-237" aria-hidden="true" tabindex="-1"></a>Now, compare a model containing **reproductive condition** and **parity** to one containing just **reproductive condition**.</span>
-<span id="cb54-238"><a href="#cb54-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-241"><a href="#cb54-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-242"><a href="#cb54-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb54-243"><a href="#cb54-243" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
-<span id="cb54-244"><a href="#cb54-244" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span><span class="sc">|</span>subject), <span class="at">REML=</span><span class="cn">FALSE</span>)</span>
-<span id="cb54-245"><a href="#cb54-245" aria-hidden="true" tabindex="-1"></a>reduced <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data=</span>d, duration<span class="sc">~</span>reprocondition <span class="sc">+</span></span>
-<span id="cb54-246"><a href="#cb54-246" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span><span class="sc">|</span>subject), <span class="at">REML=</span><span class="cn">FALSE</span>)</span>
-<span id="cb54-247"><a href="#cb54-247" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(reduced, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
-<span id="cb54-248"><a href="#cb54-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-249"><a href="#cb54-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-250"><a href="#cb54-250" aria-hidden="true" tabindex="-1"></a>Based on this result, including **parity** as well as **reproductive condition** as fixed effects also significantly improves the fit of our model.</span>
-<span id="cb54-251"><a href="#cb54-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-252"><a href="#cb54-252" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb54-253"><a href="#cb54-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-254"><a href="#cb54-254" aria-hidden="true" tabindex="-1"></a>Construct a model that includes an interaction of **reproductive condition** and **parity** and compare it to a model without the interaction term. Is the interaction of these two fixed effects significant?</span>
-<span id="cb54-255"><a href="#cb54-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-258"><a href="#cb54-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-259"><a href="#cb54-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb54-260"><a href="#cb54-260" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">*</span> parity <span class="sc">+</span></span>
-<span id="cb54-261"><a href="#cb54-261" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-262"><a href="#cb54-262" aria-hidden="true" tabindex="-1"></a>reduced <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
-<span id="cb54-263"><a href="#cb54-263" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML=</span><span class="cn">FALSE</span>)</span>
-<span id="cb54-264"><a href="#cb54-264" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(reduced, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
-<span id="cb54-265"><a href="#cb54-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-266"><a href="#cb54-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-267"><a href="#cb54-267" aria-hidden="true" tabindex="-1"></a>In this case, adding the interaction of **reproductive condition** and **parity** does not significantly improve the explanatory power of the model.</span>
-<span id="cb54-268"><a href="#cb54-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-269"><a href="#cb54-269" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Slope Models</span></span>
-<span id="cb54-270"><a href="#cb54-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-271"><a href="#cb54-271" aria-hidden="true" tabindex="-1"></a>In the exercise above, we included only estimation of a separate INTERCEPT for each female and presumed that the same relationships (SLOPES) between grooming duration and reproductive condition + parity obtained for all females. But we can also allow that relationship to vary from subject to subject. We would indicate this model in formula notation as follows:</span>
-<span id="cb54-272"><a href="#cb54-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-273"><a href="#cb54-273" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity\ +$$ $$(1 + reproductive\ condition|subject) + (1 + parity|subject) + \epsilon$$</span>
-<span id="cb54-274"><a href="#cb54-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-277"><a href="#cb54-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-278"><a href="#cb54-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb54-279"><a href="#cb54-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb54-280"><a href="#cb54-280" aria-hidden="true" tabindex="-1"></a>lme <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
-<span id="cb54-281"><a href="#cb54-281" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
-<span id="cb54-282"><a href="#cb54-282" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-283"><a href="#cb54-283" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lme)</span>
-<span id="cb54-284"><a href="#cb54-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-285"><a href="#cb54-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-286"><a href="#cb54-286" aria-hidden="true" tabindex="-1"></a>Here, we have changed the random effects, which now look a little more complicated. The notation "(1 + reprocondition \| subject)" tells the model to estimate differing baseline levels of grooming duration (the intercept, represented by 1) as well as differing responses to the main factor in question, which is reproductive condition in this case. We do the same for parity.</span>
-<span id="cb54-287"><a href="#cb54-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-288"><a href="#cb54-288" aria-hidden="true" tabindex="-1"></a>Looking at the coefficients of the new model, we see the effects. Each female now has a different intercept **and** a different coefficient for the slopes of grooming duration as a function of both reproductive condition and parity.</span>
-<span id="cb54-289"><a href="#cb54-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-292"><a href="#cb54-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-293"><a href="#cb54-293" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lme)</span>
-<span id="cb54-294"><a href="#cb54-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-295"><a href="#cb54-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-296"><a href="#cb54-296" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inference using LRTs {.unnumbered}</span></span>
-<span id="cb54-297"><a href="#cb54-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-298"><a href="#cb54-298" aria-hidden="true" tabindex="-1"></a>To then get p values associated with each of the fixed factors, we can use likelihood ratio tests...</span>
-<span id="cb54-299"><a href="#cb54-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-302"><a href="#cb54-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-303"><a href="#cb54-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb54-304"><a href="#cb54-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb54-305"><a href="#cb54-305" aria-hidden="true" tabindex="-1"></a><span class="co"># random factors only</span></span>
-<span id="cb54-306"><a href="#cb54-306" aria-hidden="true" tabindex="-1"></a>null <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span></span>
-<span id="cb54-307"><a href="#cb54-307" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-308"><a href="#cb54-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-309"><a href="#cb54-309" aria-hidden="true" tabindex="-1"></a><span class="co"># full model with both fixed effects</span></span>
-<span id="cb54-310"><a href="#cb54-310" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
-<span id="cb54-311"><a href="#cb54-311" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
-<span id="cb54-312"><a href="#cb54-312" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-313"><a href="#cb54-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-314"><a href="#cb54-314" aria-hidden="true" tabindex="-1"></a><span class="co"># model without reproductive condition as a fixed effect</span></span>
-<span id="cb54-315"><a href="#cb54-315" aria-hidden="true" tabindex="-1"></a>minusRC <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> parity <span class="sc">+</span></span>
-<span id="cb54-316"><a href="#cb54-316" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
-<span id="cb54-317"><a href="#cb54-317" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-318"><a href="#cb54-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-319"><a href="#cb54-319" aria-hidden="true" tabindex="-1"></a><span class="co"># model without parity as a fixed effect</span></span>
-<span id="cb54-320"><a href="#cb54-320" aria-hidden="true" tabindex="-1"></a>minusP <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span></span>
-<span id="cb54-321"><a href="#cb54-321" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
-<span id="cb54-322"><a href="#cb54-322" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-323"><a href="#cb54-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-324"><a href="#cb54-324" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for reproductive condition as a fixed effect</span></span>
-<span id="cb54-325"><a href="#cb54-325" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusRC, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
-<span id="cb54-326"><a href="#cb54-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-327"><a href="#cb54-327" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for parity as a fixed effect</span></span>
-<span id="cb54-328"><a href="#cb54-328" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusP, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
-<span id="cb54-329"><a href="#cb54-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-330"><a href="#cb54-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-331"><a href="#cb54-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inference using AIC {.unnumbered}</span></span>
-<span id="cb54-332"><a href="#cb54-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-333"><a href="#cb54-333" aria-hidden="true" tabindex="-1"></a>For a long time, the appropriateness of our mixed models was assessed as above - i.e., by evaluating the significance of each fixed effect using LRTs. As information theoretic approaches have become more popular, it is increasingly common to assess model fit by comparing the AIC values of different models, acknowledging the caveat that AIC can only tell us about the *relative* fit of alternative models, but not whether a particular model is a good fit, overall. Recall that AIC values are a way of inverting and scaling model log-likelihoods that penalizes models with greater numbers of parameters.</span>
-<span id="cb54-334"><a href="#cb54-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-335"><a href="#cb54-335" aria-hidden="true" tabindex="-1"></a>The <span class="in">`aictab()`</span> function from {AICcmodavg} neatly prints out tables with AIC, Delta AIC, and log-likelihood values, along with AIC "weights".</span>
-<span id="cb54-336"><a href="#cb54-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-339"><a href="#cb54-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-340"><a href="#cb54-340" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb54-341"><a href="#cb54-341" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb54-342"><a href="#cb54-342" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AICcmodavg)</span>
-<span id="cb54-343"><a href="#cb54-343" aria-hidden="true" tabindex="-1"></a>(aic_table <span class="ot">&lt;-</span> <span class="fu">aictab</span>( <span class="fu">list</span>(full, minusRC, minusP, null),</span>
-<span id="cb54-344"><a href="#cb54-344" aria-hidden="true" tabindex="-1"></a>  <span class="at">modnames =</span> <span class="fu">c</span>(<span class="st">"full"</span>, <span class="st">"minusRC"</span>, <span class="st">"minusP"</span>, <span class="st">"null"</span>)))</span>
-<span id="cb54-345"><a href="#cb54-345" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>AICcmodavg)</span>
-<span id="cb54-346"><a href="#cb54-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-347"><a href="#cb54-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-348"><a href="#cb54-348" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here we are printing out AICc values, rather than AIC values. AICc is simply a version of AIC with a correction added for small sample sizes. To print the uncorrected AIC values, which appear in the </span><span class="in">`anova()`</span><span class="at"> LRT output, we can add the argument </span><span class="in">`second.ord=TRUE`</span><span class="at"> to the </span><span class="in">`aictab()`</span><span class="at"> function.</span></span>
-<span id="cb54-349"><a href="#cb54-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-350"><a href="#cb54-350" aria-hidden="true" tabindex="-1"></a>$$AIC_c = AIC + \frac{2K^2 + 2K}{n-K-1}$$</span>
-<span id="cb54-351"><a href="#cb54-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-352"><a href="#cb54-352" aria-hidden="true" tabindex="-1"></a>where $K$ is the number of parameters and $n$ is the sample size.</span>
-<span id="cb54-353"><a href="#cb54-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-354"><a href="#cb54-354" aria-hidden="true" tabindex="-1"></a>In the table, for each model, $K$ is the number of model parameters, the $Delta\  AICc$ value is the difference between that model's AICc and the best model's AICc (again, here, that is the full model), and the $AICc\ weight$ is the relative likelihood of that model. <span class="co">[</span><span class="ot">The weights for a particular set of models sums to 1, with each weight equal to the model's likelihood divided by the summed likelihoods across all models.</span><span class="co">]</span></span>
-<span id="cb54-355"><a href="#cb54-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-356"><a href="#cb54-356" aria-hidden="true" tabindex="-1"></a>Where the best model has a very high Akaike weight, e.g., <span class="sc">\&gt;</span>0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values <span class="sc">\&lt;</span>2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, "model averaging" means making inferences based on a **set** of candidate models, instead of on a single "best" model.</span>
-<span id="cb54-357"><a href="#cb54-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-358"><a href="#cb54-358" aria-hidden="true" tabindex="-1"></a>Here, note that the full model containing both *reproductive condition* and *parity* has the highest likelihood (the least negative log-likelihood value) and a much lower AICc than any of the less complex alternative models tested. It also has a very high Akaike weight (0.91).</span>
-<span id="cb54-359"><a href="#cb54-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-360"><a href="#cb54-360" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** When running a number of the above models and/or in doing the likelihood ratio tests, we saw a significant result but we also got either a warning that our null models "failed to converge" or we saw a warning about a "boundary (singular) fit". Both of these warning are due to having a LOT of parameters we are trying to estimate relative to the number of observations we have. Dealing with lack of convergence in fitting maximum likelihood models is beyond what we can cover here, but I encourage you to explore that on your own!</span></span>
-<span id="cb54-361"><a href="#cb54-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-362"><a href="#cb54-362" aria-hidden="true" tabindex="-1"></a><span class="fu">### Other Methods for Assessing Fit {.unnumbered}</span></span>
-<span id="cb54-363"><a href="#cb54-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-364"><a href="#cb54-364" aria-hidden="true" tabindex="-1"></a>Using likelihood ratio tests and AIC values for evaluating and expressing how well a particular model fits a dataset both have some critical limitations:</span>
-<span id="cb54-365"><a href="#cb54-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-366"><a href="#cb54-366" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>While AIC provides an estimate of the *relative* fit of various models, it does not say anything about the absolute fit</span>
-<span id="cb54-367"><a href="#cb54-367" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AIC does not address the amount of variance in a response variable explained by a model</span>
-<span id="cb54-368"><a href="#cb54-368" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AIC is not comparable across datasets, and so fit is not generalizable</span>
-<span id="cb54-369"><a href="#cb54-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-370"><a href="#cb54-370" aria-hidden="true" tabindex="-1"></a>Nakagawa &amp; Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models, and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.</span>
-<span id="cb54-371"><a href="#cb54-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-372"><a href="#cb54-372" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; See:</span></span>
-<span id="cb54-373"><a href="#cb54-373" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb54-374"><a href="#cb54-374" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Nakagawa, S., &amp; Schielzeth, H. (2013). A general and simple method for obtaining R2 from generalized linear mixed-effects models. *Methods in Ecology and Evolution*, 4, 133--142.</span></span>
-<span id="cb54-375"><a href="#cb54-375" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
-<span id="cb54-376"><a href="#cb54-376" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Nakagawa, S., Johnson, P. C. D., &amp; Schielzeth, H. (2017). The coefficient of determination R2 and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. *Journal of the Royal Society Interface*, 14, article 20170213.</span></span>
-<span id="cb54-377"><a href="#cb54-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-378"><a href="#cb54-378" aria-hidden="true" tabindex="-1"></a>In these papers, two measures are proposed for characterizing the amount of "variance explained" in for mixed effects models:</span>
-<span id="cb54-379"><a href="#cb54-379" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-380"><a href="#cb54-380" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Marginal\ R2GLMM(m)^2$ is the amount of variance explained on the latent (or link) scale rather than the original scale. We can interpret this as a measure of the variance explained by only the fixed effects.</span>
-<span id="cb54-381"><a href="#cb54-381" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Conditional\ R2GLMM(c)^2$ is the amount of variance explained by both fixed and random effects, i.e., by the entire model.</span>
-<span id="cb54-382"><a href="#cb54-382" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-383"><a href="#cb54-383" aria-hidden="true" tabindex="-1"></a>There is an easy way to calculate these two R2GLMM values in ***R*** using the <span class="in">`r.squaredGLMM()`</span> function in the package {MuMIn}.</span>
-<span id="cb54-384"><a href="#cb54-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-385"><a href="#cb54-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb54-386"><a href="#cb54-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-387"><a href="#cb54-387" aria-hidden="true" tabindex="-1"></a>Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? How much more of the total variance is explained by the random effects than by the fixed effects alone?</span>
-<span id="cb54-388"><a href="#cb54-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-391"><a href="#cb54-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-392"><a href="#cb54-392" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb54-393"><a href="#cb54-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb54-394"><a href="#cb54-394" aria-hidden="true" tabindex="-1"></a>aic_table <span class="co"># re-print the AIC table</span></span>
-<span id="cb54-395"><a href="#cb54-395" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
-<span id="cb54-396"><a href="#cb54-396" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(full)</span>
-<span id="cb54-397"><a href="#cb54-397" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(null)</span>
-<span id="cb54-398"><a href="#cb54-398" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MuMIn)</span>
-<span id="cb54-399"><a href="#cb54-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-400"><a href="#cb54-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-401"><a href="#cb54-401" aria-hidden="true" tabindex="-1"></a><span class="fu">## Generalized LMMs</span></span>
-<span id="cb54-402"><a href="#cb54-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-403"><a href="#cb54-403" aria-hidden="true" tabindex="-1"></a>Just as we extended our standard linear modeling approach to include non-normally distributed response variables/error structures, so too can we extend our mixed effects modeling to such situations. This is referred to as **generalized linear mixed modeling, or GLMM**. There are several ***R*** packages we can use to do this under either a maximum likelihood (e.g., {lme4}, {glmmML}, the no-longer-maintained {glmmboot}) or Bayesian (e.g., {MCMCglmm}, {glmmTMB}, {brms}) framework. The methods for generating maximum likelihood and Bayesian parameter estimates under GLMMs are more complicated, but conceptually, the process is an extension of what we have talked about already. Below, we explore such a scenario.</span>
-<span id="cb54-404"><a href="#cb54-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-405"><a href="#cb54-405" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb54-406"><a href="#cb54-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-407"><a href="#cb54-407" aria-hidden="true" tabindex="-1"></a>Boden-Parry et al. (2020) studied the effect of food type and abundance on the begging and food sharing behavior of otters in captivity.</span>
-<span id="cb54-408"><a href="#cb54-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-411"><a href="#cb54-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-412"><a href="#cb54-412" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Bowden-ParryOtterdata.csv"</span></span>
-<span id="cb54-413"><a href="#cb54-413" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-414"><a href="#cb54-414" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
-<span id="cb54-415"><a href="#cb54-415" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmML)</span>
-<span id="cb54-416"><a href="#cb54-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-417"><a href="#cb54-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-418"><a href="#cb54-418" aria-hidden="true" tabindex="-1"></a>Bowden-Parry, M.; Postma, E.; and Boogert, N.J. (2020). Effects of food type and abundance on begging and sharing in Asian small-clawed otters (*Aonyx cinereus*). *PeerJ* 8: e10369.</span>
-<span id="cb54-419"><a href="#cb54-419" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-422"><a href="#cb54-422" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-423"><a href="#cb54-423" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb54-424"><a href="#cb54-424" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>glmmML)</span>
-<span id="cb54-425"><a href="#cb54-425" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>lme4)</span>
-<span id="cb54-426"><a href="#cb54-426" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb54-427"><a href="#cb54-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-428"><a href="#cb54-428" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-429"><a href="#cb54-429" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
-<span id="cb54-430"><a href="#cb54-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-431"><a href="#cb54-431" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb54-432"><a href="#cb54-432" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-433"><a href="#cb54-433" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"Mixed" modeling extends general and generalized linear modeling to consider cases where we have additional "random" factors that are another source of possible variation in our response variable</span>
-<span id="cb54-434"><a href="#cb54-434" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The approach allows us to estimate either different intercepts or different slopes *and* intercepts for each level of the random factor</span>
-<span id="cb54-435"><a href="#cb54-435" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>As in generalized linear modeling, likelihood ratio tests and information criteria approaches can be used to compare the explanatory power of different models</span>
-<span id="cb54-436"><a href="#cb54-436" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Though we do not address it in this class, regression modeling can be extended further to consider NONLINEAR relationships among predictor variables</span>
-<span id="cb54-437"><a href="#cb54-437" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>The ***R*** packages {lme4} and {nlme} provide functions for performing for "nonlinear mixed effects modeling"</span>
+<div class="sourceCode" id="cb58" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mixed Effects or Multilevel Modeling {#module-24}</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; In this module, we extend our discussion of regression modeling even further to include "mixed effects" or "multilevel" models.</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminaries</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install and load this package in ***R***: <span class="co">[</span><span class="ot">{lme4}</span><span class="co">](https://cran.r-project.org/web/packages/lme4/lme4.pdf)</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load {tidyverse}</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview of "Mixed" Models</span></span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a>A final extension of linear regression modeling that we will talk about is so-called "multilevel" or "mixed effects" modeling. This is a very complex topic, and we will only scratch the surface!</span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a>In a (general or generalized) linear mixed model, we have a reponse variable, $Y$, and observations that fall into different factor categories each with some set of levels (e.g., "sex" with levels "male" and "female"), and we are interested in the effects of the various factors **and** factor levels on the response variable. Generically, if $\mu$ = a population mean response and $\mu_A$ = mean response for observations belonging to factor level A, then the effect of A is given by $\mu$ - $\mu_A$. We have already dealt with factors and factor levels in our linear regression models when we looked at categorical predictors (e.g., *sex*, *rank category*) in our discussions of ANOVA and ANCOVA.</span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-26"><a href="#cb58-26" aria-hidden="true" tabindex="-1"></a>We can conceptualize these factor effects as being either *fixed* or *random*. *Fixed* factors are those that reflect all levels of interest in our study, while *random* effects are those that represent only a sample of the levels of interest. For example, if we include **sex** as a factor in a model with the factor levels "male" and "female", this (typically) will cover the entire gamut of levels of interest our study, thus we would consider **sex** a fixed factor. When we were doing ANOVA and ANCOVA analyses previously, we were implicitly looking at the effects of such fixed factors.</span>
+<span id="cb58-27"><a href="#cb58-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-28"><a href="#cb58-28" aria-hidden="true" tabindex="-1"></a>However, if our observational data were to consist of repeated observations of the same sampling unit, e.g., measurements taken on the same set of individuals on different dates, **individual ID** would be considered a random factor because it is unlikely that we will have collected data from all possible "levels of interest", i.e., from all possible individual subjects. We have not yet dealt with such random factors as an additional source of variance in our modeling.</span>
+<span id="cb58-29"><a href="#cb58-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-30"><a href="#cb58-30" aria-hidden="true" tabindex="-1"></a>So-called **mixed models**, then, are those that include BOTH fixed and random effects. Including random effects in addition to fixed effects in our models has several ramifications:</span>
+<span id="cb58-31"><a href="#cb58-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-32"><a href="#cb58-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using random effects broadens the scope of inference. That is, we can use statistical methods to infer something about the population from which the levels of the random factor have been drawn.</span>
+<span id="cb58-33"><a href="#cb58-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using random effects naturally incorporates dependence in the model and helps us account for pseudoreplication in our dataset. Observations that share the same level of the random effects are explicitly modeled as being correlated. This makes mixed effect modeling very useful for dealing with time series data, spatially correlated data, or situations where we have repeated observations/measures from the same subjects or sampling unit.</span>
+<span id="cb58-34"><a href="#cb58-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Using random factors often gives more accurate parameter estimates.</span>
+<span id="cb58-35"><a href="#cb58-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Incorporating random factors, however, does require the use of more sophisticated estimation and fitting methods.</span>
+<span id="cb58-36"><a href="#cb58-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-37"><a href="#cb58-37" aria-hidden="true" tabindex="-1"></a>Not surprisingly, there several different varieties of mixed modeling approaches, which are supported in a variety of different packages in ***R***:</span>
+<span id="cb58-38"><a href="#cb58-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-39"><a href="#cb58-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Standard or general **Linear Mixed Models (LMM)**, analogous to standard or general linear regression - used when we are dealing with normally distributed variables and error structures.</span>
+<span id="cb58-40"><a href="#cb58-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Generalized Linear Mixed Models (GLMM)**, analogous to generalized linear regresseion - used when we are dealing with various other variable types and error structure (e.g., binary, proportion, or count data).</span>
+<span id="cb58-41"><a href="#cb58-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Nonlinear Mixed Models (NLMM)**, analogous to nonlinear regression - used if we are dealing with situations where our response variable is best modeled by a nonlinear combination of predictor variables.</span>
+<span id="cb58-42"><a href="#cb58-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-43"><a href="#cb58-43" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** We have not talked at all in this course about general or generalized NONLINEAR modeling, but it is worth knowing that such approaches are also possible. NONLINEAR modeling is where our regression equation is a **nonlinear** function of the model parameters.</span></span>
+<span id="cb58-44"><a href="#cb58-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-45"><a href="#cb58-45" aria-hidden="true" tabindex="-1"></a>We will explore "mixed effects" modeling using an example based on this <span class="co">[</span><span class="ot">excellent tutorial</span><span class="co">](http://www.bodowinter.com/tutorial/bw_LME_tutorial2.pdf)</span>.</span>
+<span id="cb58-46"><a href="#cb58-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-47"><a href="#cb58-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### EXAMPLE: {.unnumbered}</span></span>
+<span id="cb58-48"><a href="#cb58-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-49"><a href="#cb58-49" aria-hidden="true" tabindex="-1"></a>Suppose we have measured the amount of grooming received by female chimpanzees when they are either in their periovulatory period (i.e., the window of 2-3 days around the likely time of ovulation) or duing other portions of their reproductive cycle. We collected data on the **duration of grooming bouts received** and scored a female's **reproductive condition** at the time as a categorical factor with two levels: "POP" versus "NONPOP". On top of that, we also recorded data on female parity at the time of the grooming bout, i.e., whether the female had given birth previously (was "parous", or "P") or had not yet had an offspring (was "nulliparous", or "N").</span>
+<span id="cb58-50"><a href="#cb58-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-51"><a href="#cb58-51" aria-hidden="true" tabindex="-1"></a>If we are interested in how reproductive condition and parity influence how much grooming a female receives, our simple regression model would look like this:</span>
+<span id="cb58-52"><a href="#cb58-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-53"><a href="#cb58-53" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity + \epsilon$$</span>
+<span id="cb58-54"><a href="#cb58-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-55"><a href="#cb58-55" aria-hidden="true" tabindex="-1"></a>Also imagine that our study design was such that we took multiple observations per subject. That is, our data set includes records of multiple grooming bouts received by each subject. This situation violates the assumption of independence of observations that we make for standard linear regression: multiple responses/measures from the same subject cannot be regarded as independent from each other.</span>
+<span id="cb58-56"><a href="#cb58-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-57"><a href="#cb58-57" aria-hidden="true" tabindex="-1"></a>Using a mixed effects model, we can deal with this situation by adding **subject ID** as a random effect in our model. Doing so allows us to address the nonindependence issue by estimating a different set of parameters for each level of the factor "subject". We can either estimate a different *intercept* for each subject (which would correspond to each female having a different "baseline" level of grooming received) or estimate a different *intercept* **and** *slope* (where individual subjects are presumed to differ both in the baseline level of grooming received and the strength of the relationship between grooming duration, on the one hand, and reproductive condition and parity, on the other). Our mixed effects model estimates these individual level parameters in addition to the main effects of each variable.</span>
+<span id="cb58-58"><a href="#cb58-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-59"><a href="#cb58-59" aria-hidden="true" tabindex="-1"></a>This is why a "mixed effects" model is called a **mixed** model. The models that we have considered so far have been **fixed effects only** models and included only one or more "fixed" predictor variables and a general error term. We essentially divided the world into things that we somehow understand or that are systematic (the fixed effects, or the explanatory variables) and things that we could not control for or do not understand (the general error, or $\epsilon$). These fixed effects models did not examine possible structure *within* the error term.</span>
+<span id="cb58-60"><a href="#cb58-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-61"><a href="#cb58-61" aria-hidden="true" tabindex="-1"></a>In a mixed model, by contrast, we add one or more random effects to our fixed effects that may explain a portion of the variance in our error term.</span>
+<span id="cb58-62"><a href="#cb58-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-63"><a href="#cb58-63" aria-hidden="true" tabindex="-1"></a>Let's explore these idea using some actual data. First, load in the dataset "chimpgrooming.csv" and do some exploratory data analysis:</span>
+<span id="cb58-64"><a href="#cb58-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-67"><a href="#cb58-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-68"><a href="#cb58-68" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/chimpgrooming.csv"</span></span>
+<span id="cb58-69"><a href="#cb58-69" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-70"><a href="#cb58-70" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb58-71"><a href="#cb58-71" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d)</span>
+<span id="cb58-72"><a href="#cb58-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-73"><a href="#cb58-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-74"><a href="#cb58-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb58-75"><a href="#cb58-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-76"><a href="#cb58-76" aria-hidden="true" tabindex="-1"></a>Plot grooming received duration in relation to subject ID...</span>
+<span id="cb58-77"><a href="#cb58-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-80"><a href="#cb58-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-81"><a href="#cb58-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb58-82"><a href="#cb58-82" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>d, <span class="fu">aes</span>(<span class="at">x=</span>subject, <span class="at">y=</span>duration)) <span class="sc">+</span></span>
+<span id="cb58-83"><a href="#cb58-83" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"subject"</span>) <span class="sc">+</span></span>
+<span id="cb58-84"><a href="#cb58-84" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
+<span id="cb58-85"><a href="#cb58-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-86"><a href="#cb58-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-87"><a href="#cb58-87" aria-hidden="true" tabindex="-1"></a>Now plot grooming received in relation to reproductive condition...</span>
+<span id="cb58-88"><a href="#cb58-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-91"><a href="#cb58-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-92"><a href="#cb58-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb58-93"><a href="#cb58-93" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> reprocondition, <span class="at">y =</span> duration)) <span class="sc">+</span></span>
+<span id="cb58-94"><a href="#cb58-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"reproductive condition"</span>) <span class="sc">+</span></span>
+<span id="cb58-95"><a href="#cb58-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
+<span id="cb58-96"><a href="#cb58-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-97"><a href="#cb58-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-98"><a href="#cb58-98" aria-hidden="true" tabindex="-1"></a>Now plot grooming received in relation to reproductive condition *and* parity...</span>
+<span id="cb58-99"><a href="#cb58-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-102"><a href="#cb58-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-103"><a href="#cb58-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb58-104"><a href="#cb58-104" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> reprocondition, <span class="at">y =</span> duration,</span>
+<span id="cb58-105"><a href="#cb58-105" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill=</span><span class="fu">factor</span>(parity))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb58-106"><a href="#cb58-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"reproductive condition"</span>) <span class="sc">+</span></span>
+<span id="cb58-107"><a href="#cb58-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"parity"</span>) <span class="sc">+</span></span>
+<span id="cb58-108"><a href="#cb58-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
+<span id="cb58-109"><a href="#cb58-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-110"><a href="#cb58-110" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb58-111"><a href="#cb58-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-112"><a href="#cb58-112" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> parity, <span class="at">y =</span> duration,</span>
+<span id="cb58-113"><a href="#cb58-113" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill=</span><span class="fu">factor</span>(reprocondition))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb58-114"><a href="#cb58-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"parity"</span>) <span class="sc">+</span></span>
+<span id="cb58-115"><a href="#cb58-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"repro</span><span class="sc">\n</span><span class="st">condition"</span>) <span class="sc">+</span></span>
+<span id="cb58-116"><a href="#cb58-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
+<span id="cb58-117"><a href="#cb58-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-118"><a href="#cb58-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-119"><a href="#cb58-119" aria-hidden="true" tabindex="-1"></a>From these plots, we can see lots of <span class="co">[</span><span class="ot">a</span><span class="co">]</span> individual variation in how much grooming is received, <span class="co">[</span><span class="ot">b</span><span class="co">]</span> variation in response to reproductive condition, <span class="co">[</span><span class="ot">c</span><span class="co">]</span> limited variation due to parity, and <span class="co">[</span><span class="ot">d</span><span class="co">]</span> variation in response to this combination of fixed effects.</span>
+<span id="cb58-120"><a href="#cb58-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-121"><a href="#cb58-121" aria-hidden="true" tabindex="-1"></a>Finally, plot grooming received into relation to both a fixed effect (reprocondition) and a random effect (subject)...</span>
+<span id="cb58-122"><a href="#cb58-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-125"><a href="#cb58-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-126"><a href="#cb58-126" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb58-127"><a href="#cb58-127" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> reprocondition, <span class="at">y =</span> duration,</span>
+<span id="cb58-128"><a href="#cb58-128" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">factor</span>(subject))) <span class="sc">+</span></span>
+<span id="cb58-129"><a href="#cb58-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb58-130"><a href="#cb58-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"reproductive condition"</span>) <span class="sc">+</span></span>
+<span id="cb58-131"><a href="#cb58-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"subject"</span>) <span class="sc">+</span></span>
+<span id="cb58-132"><a href="#cb58-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
+<span id="cb58-133"><a href="#cb58-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-134"><a href="#cb58-134" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb58-135"><a href="#cb58-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-136"><a href="#cb58-136" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> d, <span class="fu">aes</span>(<span class="at">x =</span> subject, <span class="at">y =</span> duration,</span>
+<span id="cb58-137"><a href="#cb58-137" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="fu">factor</span>(reprocondition))) <span class="sc">+</span></span>
+<span id="cb58-138"><a href="#cb58-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb58-139"><a href="#cb58-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"subject"</span>) <span class="sc">+</span></span>
+<span id="cb58-140"><a href="#cb58-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">fill =</span> <span class="st">"repro</span><span class="sc">\n</span><span class="st">condition"</span>) <span class="sc">+</span></span>
+<span id="cb58-141"><a href="#cb58-141" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)))</span>
+<span id="cb58-142"><a href="#cb58-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-143"><a href="#cb58-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-144"><a href="#cb58-144" aria-hidden="true" tabindex="-1"></a>What patterns do you see? There is, again, lots of apparent variation!</span>
+<span id="cb58-145"><a href="#cb58-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-146"><a href="#cb58-146" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Intercept Models</span></span>
+<span id="cb58-147"><a href="#cb58-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-148"><a href="#cb58-148" aria-hidden="true" tabindex="-1"></a>We will now perform an initial mixed effects analysis where we look at how reproductive condition and parity (as fixed effects) affect grooming duration, where we include individual subject ID as a random effect.</span>
+<span id="cb58-149"><a href="#cb58-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-150"><a href="#cb58-150" aria-hidden="true" tabindex="-1"></a>Here is a first mixed effects model that we will fit, using one extension of formula notation that is commonly used in ***R***.</span>
+<span id="cb58-151"><a href="#cb58-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-152"><a href="#cb58-152" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity + (1|subject) + \epsilon$$</span>
+<span id="cb58-153"><a href="#cb58-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-154"><a href="#cb58-154" aria-hidden="true" tabindex="-1"></a>Here, the 1 refers to the fact that we want to estimate an *intercept* and the pipe "\|" operator following the "1" signifies that we want to estimate a *different intercept for each subject*. Note that this generic formula still contains a general error term, $\epsilon$, to highlight that there will still be unexplained "error" variance after accounting for both fixed and random effects in the model.</span>
+<span id="cb58-155"><a href="#cb58-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-156"><a href="#cb58-156" aria-hidden="true" tabindex="-1"></a>We can think of this formula as saying that we expect our dataset to include multiple observations of the response variable per subject, and these responses will depend, in part, on each subject's baseline level. This effectively accounts the nonindependence that stems from having multiple responses by the same subject.</span>
+<span id="cb58-157"><a href="#cb58-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-158"><a href="#cb58-158" aria-hidden="true" tabindex="-1"></a>The {lme4} package in **R** is commonly used for mixed effects modeling, and the function <span class="in">`lmer()`</span> is the mixed model equivalent of the function <span class="in">`lm()`</span>. In the formula syntax for mixed effects models using the {lme4} package, fixed effects are included without parentheses while random effects are included in parentheses (the error, $\epsilon$, is understood and is not included explicitly).</span>
+<span id="cb58-159"><a href="#cb58-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-160"><a href="#cb58-160" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** We could also use the package {nlme} for mixed effects modeling (which requires a slightly different formula syntax than that used here). That same package also allows us to do **nonlinear** mixed effects modeling, which we will not be talking about. It is important to note that {lme4} uses, by default, a slightly different parameter estimation algorithm than {nlme}. Unless otherwise specified, {lme4} uses "restricted maximum likelihood" (REML) rather than ordinary maximum likelihood estimation, which is what is used in {nlme}. In practice, these give very similar results. We will see below that when we want to compare different models using {lme4}, we will need to tell {lme4} to use ordinary maximum likelihood.</span></span>
+<span id="cb58-161"><a href="#cb58-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-162"><a href="#cb58-162" aria-hidden="true" tabindex="-1"></a>The code block below implements this first "mixed effects" model:</span>
+<span id="cb58-163"><a href="#cb58-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-166"><a href="#cb58-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-167"><a href="#cb58-167" aria-hidden="true" tabindex="-1"></a>lme <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
+<span id="cb58-168"><a href="#cb58-168" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject))</span>
+<span id="cb58-169"><a href="#cb58-169" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lme)</span>
+<span id="cb58-170"><a href="#cb58-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-171"><a href="#cb58-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-172"><a href="#cb58-172" aria-hidden="true" tabindex="-1"></a>Let's focus on the output for the random effects first. Have a look at the column standard deviation. The entry for *subject* shows us how much variability in grooming duration (apart from that explained by the fixed effects) is due to subject ID. The entry for *Residual* summarizes the remaining variability in grooming duration that is not due to *subject* or to our fixed effects. This is our $\epsilon$, the "random" deviations from the predicted values that are not due to either subject or our fixed effects.</span>
+<span id="cb58-173"><a href="#cb58-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-174"><a href="#cb58-174" aria-hidden="true" tabindex="-1"></a>The fixed effects output mirrors the coefficient tables that we have seen previously in our linear models that have focused only on fixed effects. The coefficient "reproconditionPOP" is the $\beta$ coefficient (slope) for the categorical effect of reproductive condition. The positive sign for the coefficient means that grooming duration is GREATER by 20.293 units for POP than for NONPOP females. Then, there's a standard error associated with this slope, and a t value, which is simply the estimate divided by the standard error.</span>
+<span id="cb58-175"><a href="#cb58-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-176"><a href="#cb58-176" aria-hidden="true" tabindex="-1"></a>The coefficient "parityP" is the $\beta$ coefficient for the categorical effect of parity. The grooming duration associated with being parous versus nulliparous is GREATER by 109.65 units.</span>
+<span id="cb58-177"><a href="#cb58-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-178"><a href="#cb58-178" aria-hidden="true" tabindex="-1"></a>The INTERCEPT in this case is the grooming duration associated with being an average, nulliparous, NONPOP female. Like the <span class="in">`lm()`</span> function, the <span class="in">`lmer()`</span> took whatever factor level came first in the alphabet to be the reference level for each fixed effect variable.</span>
+<span id="cb58-179"><a href="#cb58-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-180"><a href="#cb58-180" aria-hidden="true" tabindex="-1"></a>Let's also look at the coefficients coming out of the model.</span>
+<span id="cb58-181"><a href="#cb58-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-184"><a href="#cb58-184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-185"><a href="#cb58-185" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lme)</span>
+<span id="cb58-186"><a href="#cb58-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-187"><a href="#cb58-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-188"><a href="#cb58-188" aria-hidden="true" tabindex="-1"></a>We can see the separate intercepts, or "baseline" level of grooming received, associated with each female when they are (presumably) nulliparous and in a NONPOP reproductive condition.</span>
+<span id="cb58-189"><a href="#cb58-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-190"><a href="#cb58-190" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Not all females are, necessarily, ever seen in a particular parity or reproductive condition!</span></span>
+<span id="cb58-191"><a href="#cb58-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-192"><a href="#cb58-192" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inference using LRTs {.unnumbered}</span></span>
+<span id="cb58-193"><a href="#cb58-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-194"><a href="#cb58-194" aria-hidden="true" tabindex="-1"></a>In mixed effects models, it is not as straightforward as it is for standard linear models to determine p values associated with either overall models or individual coefficients. However, using **likelihood ratio tests**, which we previously used for comparing among generalized linear models, is one common approach. Likelihood is the probability of seeing the data we have actually collected *given* a particular model. The logic of the likelihood ratio test is to compare the likelihood of two models with each other, i.e., a model that includes the factor that we are interested in versus a reduced, nested model with that factor excluded.</span>
+<span id="cb58-195"><a href="#cb58-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-196"><a href="#cb58-196" aria-hidden="true" tabindex="-1"></a>So... if we are interested in the effect of **reproductive condition** on grooming duration, we could compare a more complex model...</span>
+<span id="cb58-197"><a href="#cb58-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-198"><a href="#cb58-198" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity + (1|subject) + \epsilon$$</span>
+<span id="cb58-199"><a href="#cb58-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-200"><a href="#cb58-200" aria-hidden="true" tabindex="-1"></a>to a nested, less complex model...</span>
+<span id="cb58-201"><a href="#cb58-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-202"><a href="#cb58-202" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim parity + (1|subject) + \epsilon$$</span>
+<span id="cb58-203"><a href="#cb58-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-204"><a href="#cb58-204" aria-hidden="true" tabindex="-1"></a>In ***R***, we would do this as follows:</span>
+<span id="cb58-205"><a href="#cb58-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-208"><a href="#cb58-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-209"><a href="#cb58-209" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
+<span id="cb58-210"><a href="#cb58-210" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-211"><a href="#cb58-211" aria-hidden="true" tabindex="-1"></a><span class="co"># note the additional `REML=` argument</span></span>
+<span id="cb58-212"><a href="#cb58-212" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(full)</span>
+<span id="cb58-213"><a href="#cb58-213" aria-hidden="true" tabindex="-1"></a>reduced <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> parity <span class="sc">+</span></span>
+<span id="cb58-214"><a href="#cb58-214" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb58-215"><a href="#cb58-215" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reduced)</span>
+<span id="cb58-216"><a href="#cb58-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-217"><a href="#cb58-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-218"><a href="#cb58-218" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here, we added the argument </span><span class="in">`REML=FALSE`</span><span class="at"> to the </span><span class="in">`lmer()`</span><span class="at"> function. This is necessary to do when we want to compare models using the likelihood ratio test. Basically, REML uses a different algorithm to determine likelihood values than ordinary likelihood, and, if we want to use these likelihoods to execute an LRT, we need to use ordinary likelihood. See </span><span class="co">[</span><span class="ot">this site</span><span class="co">](http://users.stat.umn.edu/~gary/classes/5303/handouts/REML.pdf)</span><span class="at"> for a more complete explanation of this issue.</span></span>
+<span id="cb58-219"><a href="#cb58-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-220"><a href="#cb58-220" aria-hidden="true" tabindex="-1"></a>We then perform the likelihood ratio test using the <span class="in">`anova()`</span> function or the <span class="in">`lrtest()`</span> function from {lmtest}.</span>
+<span id="cb58-221"><a href="#cb58-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-224"><a href="#cb58-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-225"><a href="#cb58-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb58-226"><a href="#cb58-226" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb58-227"><a href="#cb58-227" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(reduced, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
+<span id="cb58-228"><a href="#cb58-228" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest)</span>
+<span id="cb58-229"><a href="#cb58-229" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(reduced, full)</span>
+<span id="cb58-230"><a href="#cb58-230" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>lmtest)</span>
+<span id="cb58-231"><a href="#cb58-231" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-232"><a href="#cb58-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-233"><a href="#cb58-233" aria-hidden="true" tabindex="-1"></a>These results tell us that the model containing both **reproductive condition** and **parity** as *fixed* effects fits the data better than a model lacking **reproductive condition** and containing only **parity** as a *fixed* effect, while accounting for **subject** as a *random* effect.</span>
+<span id="cb58-234"><a href="#cb58-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-235"><a href="#cb58-235" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb58-236"><a href="#cb58-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-237"><a href="#cb58-237" aria-hidden="true" tabindex="-1"></a>Now, compare a model containing **reproductive condition** and **parity** to one containing just **reproductive condition**.</span>
+<span id="cb58-238"><a href="#cb58-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-241"><a href="#cb58-241" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-242"><a href="#cb58-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb58-243"><a href="#cb58-243" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
+<span id="cb58-244"><a href="#cb58-244" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span><span class="sc">|</span>subject), <span class="at">REML=</span><span class="cn">FALSE</span>)</span>
+<span id="cb58-245"><a href="#cb58-245" aria-hidden="true" tabindex="-1"></a>reduced <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data=</span>d, duration<span class="sc">~</span>reprocondition <span class="sc">+</span></span>
+<span id="cb58-246"><a href="#cb58-246" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span><span class="sc">|</span>subject), <span class="at">REML=</span><span class="cn">FALSE</span>)</span>
+<span id="cb58-247"><a href="#cb58-247" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(reduced, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
+<span id="cb58-248"><a href="#cb58-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-249"><a href="#cb58-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-250"><a href="#cb58-250" aria-hidden="true" tabindex="-1"></a>Based on this result, including **parity** as well as **reproductive condition** as fixed effects also significantly improves the fit of our model.</span>
+<span id="cb58-251"><a href="#cb58-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-252"><a href="#cb58-252" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb58-253"><a href="#cb58-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-254"><a href="#cb58-254" aria-hidden="true" tabindex="-1"></a>Construct a model that includes an interaction of **reproductive condition** and **parity** and compare it to a model without the interaction term. Is the interaction of these two fixed effects significant?</span>
+<span id="cb58-255"><a href="#cb58-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-258"><a href="#cb58-258" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-259"><a href="#cb58-259" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb58-260"><a href="#cb58-260" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">*</span> parity <span class="sc">+</span></span>
+<span id="cb58-261"><a href="#cb58-261" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-262"><a href="#cb58-262" aria-hidden="true" tabindex="-1"></a>reduced <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
+<span id="cb58-263"><a href="#cb58-263" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">|</span> subject), <span class="at">REML=</span><span class="cn">FALSE</span>)</span>
+<span id="cb58-264"><a href="#cb58-264" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(reduced, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
+<span id="cb58-265"><a href="#cb58-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-266"><a href="#cb58-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-267"><a href="#cb58-267" aria-hidden="true" tabindex="-1"></a>In this case, adding the interaction of **reproductive condition** and **parity** does not significantly improve the explanatory power of the model.</span>
+<span id="cb58-268"><a href="#cb58-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-269"><a href="#cb58-269" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Slope Models</span></span>
+<span id="cb58-270"><a href="#cb58-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-271"><a href="#cb58-271" aria-hidden="true" tabindex="-1"></a>In the exercise above, we included only estimation of a separate INTERCEPT for each female and presumed that the same relationships (SLOPES) between grooming duration and reproductive condition + parity obtained for all females. But we can also allow that relationship to vary from subject to subject. We would indicate this model in formula notation as follows:</span>
+<span id="cb58-272"><a href="#cb58-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-273"><a href="#cb58-273" aria-hidden="true" tabindex="-1"></a>$$grooming\ duration \sim reproductive\ condition + parity\ +$$ $$(1 + reproductive\ condition|subject) + (1 + parity|subject) + \epsilon$$</span>
+<span id="cb58-274"><a href="#cb58-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-277"><a href="#cb58-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-278"><a href="#cb58-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb58-279"><a href="#cb58-279" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb58-280"><a href="#cb58-280" aria-hidden="true" tabindex="-1"></a>lme <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
+<span id="cb58-281"><a href="#cb58-281" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
+<span id="cb58-282"><a href="#cb58-282" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-283"><a href="#cb58-283" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lme)</span>
+<span id="cb58-284"><a href="#cb58-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-285"><a href="#cb58-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-286"><a href="#cb58-286" aria-hidden="true" tabindex="-1"></a>Here, we have changed the random effects, which now look a little more complicated. The notation "(1 + reprocondition \| subject)" tells the model to estimate differing baseline levels of grooming duration (the intercept, represented by 1) as well as differing responses to the main factor in question, which is reproductive condition in this case. We do the same for parity.</span>
+<span id="cb58-287"><a href="#cb58-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-288"><a href="#cb58-288" aria-hidden="true" tabindex="-1"></a>Looking at the coefficients of the new model, we see the effects. Each female now has a different intercept **and** a different coefficient for the slopes of grooming duration as a function of both reproductive condition and parity.</span>
+<span id="cb58-289"><a href="#cb58-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-292"><a href="#cb58-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-293"><a href="#cb58-293" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(lme)</span>
+<span id="cb58-294"><a href="#cb58-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-295"><a href="#cb58-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-296"><a href="#cb58-296" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inference using LRTs {.unnumbered}</span></span>
+<span id="cb58-297"><a href="#cb58-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-298"><a href="#cb58-298" aria-hidden="true" tabindex="-1"></a>To then get p values associated with each of the fixed factors, we can use likelihood ratio tests...</span>
+<span id="cb58-299"><a href="#cb58-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-302"><a href="#cb58-302" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-303"><a href="#cb58-303" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb58-304"><a href="#cb58-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb58-305"><a href="#cb58-305" aria-hidden="true" tabindex="-1"></a><span class="co"># random factors only</span></span>
+<span id="cb58-306"><a href="#cb58-306" aria-hidden="true" tabindex="-1"></a>null <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span></span>
+<span id="cb58-307"><a href="#cb58-307" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject), <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-308"><a href="#cb58-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-309"><a href="#cb58-309" aria-hidden="true" tabindex="-1"></a><span class="co"># full model with both fixed effects</span></span>
+<span id="cb58-310"><a href="#cb58-310" aria-hidden="true" tabindex="-1"></a>full <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span> parity <span class="sc">+</span></span>
+<span id="cb58-311"><a href="#cb58-311" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
+<span id="cb58-312"><a href="#cb58-312" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-313"><a href="#cb58-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-314"><a href="#cb58-314" aria-hidden="true" tabindex="-1"></a><span class="co"># model without reproductive condition as a fixed effect</span></span>
+<span id="cb58-315"><a href="#cb58-315" aria-hidden="true" tabindex="-1"></a>minusRC <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> parity <span class="sc">+</span></span>
+<span id="cb58-316"><a href="#cb58-316" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
+<span id="cb58-317"><a href="#cb58-317" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-318"><a href="#cb58-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-319"><a href="#cb58-319" aria-hidden="true" tabindex="-1"></a><span class="co"># model without parity as a fixed effect</span></span>
+<span id="cb58-320"><a href="#cb58-320" aria-hidden="true" tabindex="-1"></a>minusP <span class="ot">&lt;-</span> <span class="fu">lmer</span>(<span class="at">data =</span> d, duration <span class="sc">~</span> reprocondition <span class="sc">+</span></span>
+<span id="cb58-321"><a href="#cb58-321" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span> <span class="sc">+</span> reprocondition <span class="sc">|</span> subject) <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">+</span> parity <span class="sc">|</span> subject),</span>
+<span id="cb58-322"><a href="#cb58-322" aria-hidden="true" tabindex="-1"></a>  <span class="at">REML =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-323"><a href="#cb58-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-324"><a href="#cb58-324" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for reproductive condition as a fixed effect</span></span>
+<span id="cb58-325"><a href="#cb58-325" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusRC, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
+<span id="cb58-326"><a href="#cb58-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-327"><a href="#cb58-327" aria-hidden="true" tabindex="-1"></a><span class="co"># p value for parity as a fixed effect</span></span>
+<span id="cb58-328"><a href="#cb58-328" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(minusP, full, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span>
+<span id="cb58-329"><a href="#cb58-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-330"><a href="#cb58-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-331"><a href="#cb58-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### Inference using AIC {.unnumbered}</span></span>
+<span id="cb58-332"><a href="#cb58-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-333"><a href="#cb58-333" aria-hidden="true" tabindex="-1"></a>For a long time, the appropriateness of our mixed models was assessed as above - i.e., by evaluating the significance of each fixed effect using LRTs. As information theoretic approaches have become more popular, it is increasingly common to assess model fit by comparing the AIC values of different models, acknowledging the caveat that AIC can only tell us about the *relative* fit of alternative models, but not whether a particular model is a good fit, overall. Recall that AIC values are a way of inverting and scaling model log-likelihoods that penalizes models with greater numbers of parameters.</span>
+<span id="cb58-334"><a href="#cb58-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-335"><a href="#cb58-335" aria-hidden="true" tabindex="-1"></a>The <span class="in">`aictab()`</span> function from {AICcmodavg} neatly prints out tables with AIC, Delta AIC, and log-likelihood values, along with AIC "weights".</span>
+<span id="cb58-336"><a href="#cb58-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-339"><a href="#cb58-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-340"><a href="#cb58-340" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb58-341"><a href="#cb58-341" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb58-342"><a href="#cb58-342" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AICcmodavg)</span>
+<span id="cb58-343"><a href="#cb58-343" aria-hidden="true" tabindex="-1"></a>(aic_table <span class="ot">&lt;-</span> <span class="fu">aictab</span>( <span class="fu">list</span>(full, minusRC, minusP, null),</span>
+<span id="cb58-344"><a href="#cb58-344" aria-hidden="true" tabindex="-1"></a>  <span class="at">modnames =</span> <span class="fu">c</span>(<span class="st">"full"</span>, <span class="st">"minusRC"</span>, <span class="st">"minusP"</span>, <span class="st">"null"</span>)))</span>
+<span id="cb58-345"><a href="#cb58-345" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>AICcmodavg)</span>
+<span id="cb58-346"><a href="#cb58-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-347"><a href="#cb58-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-348"><a href="#cb58-348" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here we are printing out AICc values, rather than AIC values. AICc is simply a version of AIC with a correction added for small sample sizes. To print the uncorrected AIC values, which appear in the </span><span class="in">`anova()`</span><span class="at"> LRT output, we can add the argument </span><span class="in">`second.ord=TRUE`</span><span class="at"> to the </span><span class="in">`aictab()`</span><span class="at"> function.</span></span>
+<span id="cb58-349"><a href="#cb58-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-350"><a href="#cb58-350" aria-hidden="true" tabindex="-1"></a>$$AIC_c = AIC + \frac{2K^2 + 2K}{n-K-1}$$</span>
+<span id="cb58-351"><a href="#cb58-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-352"><a href="#cb58-352" aria-hidden="true" tabindex="-1"></a>where $K$ is the number of parameters and $n$ is the sample size.</span>
+<span id="cb58-353"><a href="#cb58-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-354"><a href="#cb58-354" aria-hidden="true" tabindex="-1"></a>In the table, for each model, $K$ is the number of model parameters, the $Delta\  AICc$ value is the difference between that model's AICc and the best model's AICc (again, here, that is the full model), and the $AICc\ weight$ is the relative likelihood of that model. <span class="co">[</span><span class="ot">The weights for a particular set of models sums to 1, with each weight equal to the model's likelihood divided by the summed likelihoods across all models.</span><span class="co">]</span></span>
+<span id="cb58-355"><a href="#cb58-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-356"><a href="#cb58-356" aria-hidden="true" tabindex="-1"></a>Where the best model has a very high Akaike weight, e.g., <span class="sc">\&gt;</span>0.9, it is reasonable to base inferences about the included variables on that single most parsimonious model, but when several models rank highly (e.g., several models have Delta AICc values <span class="sc">\&lt;</span>2 to 4), it is common to model-average effect sizes for the variables that have the most support across that set of models. That is, "model averaging" means making inferences based on a **set** of candidate models, instead of on a single "best" model.</span>
+<span id="cb58-357"><a href="#cb58-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-358"><a href="#cb58-358" aria-hidden="true" tabindex="-1"></a>Here, note that the full model containing both *reproductive condition* and *parity* has the highest likelihood (the least negative log-likelihood value) and a much lower AICc than any of the less complex alternative models tested. It also has a very high Akaike weight (0.91).</span>
+<span id="cb58-359"><a href="#cb58-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-360"><a href="#cb58-360" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** When running a number of the above models and/or in doing the likelihood ratio tests, we saw a significant result but we also got either a warning that our null models "failed to converge" or we saw a warning about a "boundary (singular) fit". Both of these warning are due to having a LOT of parameters we are trying to estimate relative to the number of observations we have. Dealing with lack of convergence in fitting maximum likelihood models is beyond what we can cover here, but I encourage you to explore that on your own!</span></span>
+<span id="cb58-361"><a href="#cb58-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-362"><a href="#cb58-362" aria-hidden="true" tabindex="-1"></a><span class="fu">### Other Methods for Assessing Fit {.unnumbered}</span></span>
+<span id="cb58-363"><a href="#cb58-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-364"><a href="#cb58-364" aria-hidden="true" tabindex="-1"></a>Using likelihood ratio tests and AIC values for evaluating and expressing how well a particular model fits a dataset both have some critical limitations:</span>
+<span id="cb58-365"><a href="#cb58-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-366"><a href="#cb58-366" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>While AIC provides an estimate of the *relative* fit of various models, it does not say anything about the absolute fit</span>
+<span id="cb58-367"><a href="#cb58-367" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AIC does not address the amount of variance in a response variable explained by a model</span>
+<span id="cb58-368"><a href="#cb58-368" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>AIC is not comparable across datasets, and so fit is not generalizable</span>
+<span id="cb58-369"><a href="#cb58-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-370"><a href="#cb58-370" aria-hidden="true" tabindex="-1"></a>Nakagawa &amp; Schielzeth (2013) and Nakagawa et al. (2017) have published a simple and effective method for calculating a type of *pseudo-*$R^2$ (or coefficient of determination) value for generalized linear mixed models, and because linear mixed models are a specific type of GLMM, this method can be used with LMMs as well.</span>
+<span id="cb58-371"><a href="#cb58-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-372"><a href="#cb58-372" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; See:</span></span>
+<span id="cb58-373"><a href="#cb58-373" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb58-374"><a href="#cb58-374" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Nakagawa, S., &amp; Schielzeth, H. (2013). A general and simple method for obtaining R2 from generalized linear mixed-effects models. *Methods in Ecology and Evolution*, 4, 133--142.</span></span>
+<span id="cb58-375"><a href="#cb58-375" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb58-376"><a href="#cb58-376" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; - Nakagawa, S., Johnson, P. C. D., &amp; Schielzeth, H. (2017). The coefficient of determination R2 and intra-class correlation coefficient from generalized linear mixed-effects models revisited and expanded. *Journal of the Royal Society Interface*, 14, article 20170213.</span></span>
+<span id="cb58-377"><a href="#cb58-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-378"><a href="#cb58-378" aria-hidden="true" tabindex="-1"></a>In these papers, two measures are proposed for characterizing the amount of "variance explained" in for mixed effects models:</span>
+<span id="cb58-379"><a href="#cb58-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-380"><a href="#cb58-380" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Marginal\ R2GLMM(m)^2$ is the amount of variance explained on the latent (or link) scale rather than the original scale. We can interpret this as a measure of the variance explained by only the fixed effects.</span>
+<span id="cb58-381"><a href="#cb58-381" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Conditional\ R2GLMM(c)^2$ is the amount of variance explained by both fixed and random effects, i.e., by the entire model.</span>
+<span id="cb58-382"><a href="#cb58-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-383"><a href="#cb58-383" aria-hidden="true" tabindex="-1"></a>There is an easy way to calculate these two R2GLMM values in ***R*** using the <span class="in">`r.squaredGLMM()`</span> function in the package {MuMIn}.</span>
+<span id="cb58-384"><a href="#cb58-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-385"><a href="#cb58-385" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb58-386"><a href="#cb58-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-387"><a href="#cb58-387" aria-hidden="true" tabindex="-1"></a>Compare the full, the two reduced, and the null mixed effects models from our random slope exercise using an information theoretic approach. Is the best model (full) the one that explains the greatest amount of variance in the dataset? In the full model, how much more of the total variance is explained by the random effects than by the fixed effects alone?</span>
+<span id="cb58-388"><a href="#cb58-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-391"><a href="#cb58-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-392"><a href="#cb58-392" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb58-393"><a href="#cb58-393" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb58-394"><a href="#cb58-394" aria-hidden="true" tabindex="-1"></a>aic_table <span class="co"># re-print the AIC table</span></span>
+<span id="cb58-395"><a href="#cb58-395" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
+<span id="cb58-396"><a href="#cb58-396" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(full)</span>
+<span id="cb58-397"><a href="#cb58-397" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(minusRC)</span>
+<span id="cb58-398"><a href="#cb58-398" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(minusP)</span>
+<span id="cb58-399"><a href="#cb58-399" aria-hidden="true" tabindex="-1"></a><span class="fu">r.squaredGLMM</span>(null)</span>
+<span id="cb58-400"><a href="#cb58-400" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MuMIn)</span>
+<span id="cb58-401"><a href="#cb58-401" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-402"><a href="#cb58-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-403"><a href="#cb58-403" aria-hidden="true" tabindex="-1"></a><span class="fu">## Generalized LMMs</span></span>
+<span id="cb58-404"><a href="#cb58-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-405"><a href="#cb58-405" aria-hidden="true" tabindex="-1"></a>Just as we extended our standard linear modeling approach to include non-normally distributed response variables/error structures, so too can we extend our mixed effects modeling to such situations. This is referred to as **generalized linear mixed modeling, or GLMM**. There are several ***R*** packages we can use to do this under either a maximum likelihood (e.g., {lme4}, {glmmML}, the no-longer-maintained {glmmboot}) or Bayesian (e.g., {MCMCglmm}, {glmmTMB}, {brms}) framework. The methods for generating maximum likelihood and Bayesian parameter estimates under GLMMs are more complicated, but conceptually, the process is an extension of what we have talked about already. Below, we explore such a scenario.</span>
+<span id="cb58-406"><a href="#cb58-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-407"><a href="#cb58-407" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb58-408"><a href="#cb58-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-409"><a href="#cb58-409" aria-hidden="true" tabindex="-1"></a>Boden-Parry et al. (2020) studied the effect of food type and abundance on the begging and food sharing behavior of otters in captivity.</span>
+<span id="cb58-410"><a href="#cb58-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-413"><a href="#cb58-413" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-414"><a href="#cb58-414" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/Bowden-ParryOtterdata.csv"</span></span>
+<span id="cb58-415"><a href="#cb58-415" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb58-416"><a href="#cb58-416" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span>
+<span id="cb58-417"><a href="#cb58-417" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmML)</span>
+<span id="cb58-418"><a href="#cb58-418" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-419"><a href="#cb58-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-420"><a href="#cb58-420" aria-hidden="true" tabindex="-1"></a>Bowden-Parry, M.; Postma, E.; and Boogert, N.J. (2020). Effects of food type and abundance on begging and sharing in Asian small-clawed otters (*Aonyx cinereus*). *PeerJ* 8: e10369.</span>
+<span id="cb58-421"><a href="#cb58-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-424"><a href="#cb58-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb58-425"><a href="#cb58-425" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb58-426"><a href="#cb58-426" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>glmmML)</span>
+<span id="cb58-427"><a href="#cb58-427" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>lme4)</span>
+<span id="cb58-428"><a href="#cb58-428" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb58-429"><a href="#cb58-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb58-430"><a href="#cb58-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-431"><a href="#cb58-431" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
+<span id="cb58-432"><a href="#cb58-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-433"><a href="#cb58-433" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb58-434"><a href="#cb58-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-435"><a href="#cb58-435" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>"Mixed" modeling extends general and generalized linear modeling to consider cases where we have additional "random" factors that are another source of possible variation in our response variable</span>
+<span id="cb58-436"><a href="#cb58-436" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The approach allows us to estimate either different intercepts or different slopes *and* intercepts for each level of the random factor</span>
+<span id="cb58-437"><a href="#cb58-437" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>As in generalized linear modeling, likelihood ratio tests and information criteria approaches can be used to compare the explanatory power of different models</span>
+<span id="cb58-438"><a href="#cb58-438" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Though we do not address it in this class, regression modeling can be extended further to consider NONLINEAR relationships among predictor variables</span>
+<span id="cb58-439"><a href="#cb58-439" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>The ***R*** packages {lme4} and {nlme} provide functions for performing for "nonlinear mixed effects modeling"</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
