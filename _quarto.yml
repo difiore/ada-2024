@@ -81,8 +81,7 @@ book:
       chapters:
       - data-analysis-replication-assignment.qmd
       # - data-analysis-replication-assignment-template.qmd
-      - custom-package-and-vignette-assignment.qmd
-      # - custom-package-and-vignette-template.qmd
+      - collaborative-data-science-assignment.qmd
       # - creative-dataviz-assignment.qmd
       # - shiny-app-assignment.qmd
     - part: "References"
