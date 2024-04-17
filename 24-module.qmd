@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Mixed Effects or Multilevel Modeling {#module-24}
 
 ## Objectives
@@ -204,7 +209,7 @@ We then perform the likelihood ratio test using the `anova()` function or the `l
 ```{r}
 #| message: false
 #| warning: false
-anova(reduced, full, test = "Chisq")
+anova(reduced, full)
 library(lmtest)
 lrtest(reduced, full)
 detach(package:lmtest)
@@ -222,7 +227,7 @@ full <- lmer(data = d, duration ~ reprocondition + parity +
   (1|subject), REML=FALSE)
 reduced <- lmer(data=d, duration~reprocondition +
   (1|subject), REML=FALSE)
-anova(reduced, full, test = "Chisq")
+anova(reduced, full)
 ```
 
 Based on this result, including **parity** as well as **reproductive condition** as fixed effects also significantly improves the fit of our model.
@@ -237,7 +242,7 @@ full <- lmer(data = d, duration ~ reprocondition * parity +
   (1 | subject), REML = FALSE)
 reduced <- lmer(data = d, duration ~ reprocondition + parity +
   (1 | subject), REML=FALSE)
-anova(reduced, full, test = "Chisq")
+anova(reduced, full)
 ```
 
 In this case, adding the interaction of **reproductive condition** and **parity** does not significantly improve the explanatory power of the model.
@@ -292,10 +297,10 @@ minusP <- lmer(data = d, duration ~ reprocondition +
   REML = FALSE)
 
 # p value for reproductive condition as a fixed effect
-anova(minusRC, full, test = "Chisq")
+anova(minusRC, full)
 
 # p value for parity as a fixed effect
-anova(minusP, full, test = "Chisq")
+anova(minusP, full)
 ```
 
 ### Inference using AIC {.unnumbered}
@@ -398,4 +403,4 @@ detach(package:tidyverse)
 - The approach allows us to estimate either different intercepts or different slopes *and* intercepts for each level of the random factor
 - As in generalized linear modeling, likelihood ratio tests and information criteria approaches can be used to compare the explanatory power of different models
 - Though we do not address it in this class, regression modeling can be extended further to consider NONLINEAR relationships among predictor variables
-    - The ***R*** packages {lme4} and {nlme} provide functions for performing for "nonlinear mixed effects modeling"
+  - The ***R*** packages {lme4} and {nlme} provide functions for performing for "nonlinear mixed effects modeling"

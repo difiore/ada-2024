@@ -276,23 +276,25 @@ To evaluate the significance of an **overall model** in a logistic regression, w
 
 For example, to test the null hypothesis of $\beta_1$ = 0 for a simple logistic regression model with a single predictor, we would compare the log-likelihood of the full model to that of the reduced, intercept only model. This is called a **likelihood ratio test**. Likelihood ratio tests are very similar to partial F tests in that they compare the full model with a nested, reduced model where the explanatory variables of interest are omitted. Now, however, instead of using a test statistic based on a ratio of *variances* explained by the two models and interpreting that by comparison to an $F$ distribution, we create a test statistic that is a ratio of the *log-likelihoods* of the two models and interpret that statistic by comparison to a $\chi^2$ distribution with a given number of degrees of freedom. Still, the underlying idea is conceptually the same.
 
-A likelihood ratio test comparing a proposed and reduced model can be performed using the `anova()` function with the additional argument `test="Chisq"` rather than `test="F"`.
+A likelihood ratio test comparing a proposed and reduced model can be performed using the `anova()` function where we specify the `test=` argument to be either `LRT` or `Chisq` (these are equivalent).
+
+Recall that when we used the `anova()` function to run F ratio tests to compare the proportion of **variance** explained by two general linear models, we specified that `test = "F" and generated an F statistic which was considered relative to an F distribution to calculate a p value. With generalized linear models, because we are working with deviances and likelihood ratios, the test statistic we generate is *ratio of likelihoods* (which is equivalent to a difference in deviances, see below) rather than a *ratio of variances*. That statistic is then considered relative to a $\chi^2$ distribution to determine the p value. The relevant degrees of freedom for the likelihood ratio test is the **\# of parameters in the proposed model minus the \# parameters in the nested model** (here, df = 2 - 1 = 1).
 
 ```{r}
 proposed <- glm(data = d, admit ~ gpa, family = "binomial")
 reduced <- glm(data = d, admit ~ 1, family = "binomial")
-anova(reduced, proposed, test = "Chisq")
+anova(reduced, proposed, test = "LRT") # or `test = "Chisq")
 ```
 
-Note that the degrees of freedom for the $\chi^2$ test is the **\# of parameters in the proposed model minus the \# parameters in the nested model** (here, df = 2-1 = 1). With this low p value, we would reject the null hypothesis that removing the variable of interest (*gpa*) from our model does not result in a loss of fit.
+With this low p value, we would reject the null hypothesis that removing the variable of interest (*gpa*) from our model does not result in a loss of fit. 
 
-Alternatively, we could use the function `lrtest()` from the {lmtest} package to do a likelihood ratio test of the two models.
+Alternatively, we could use the function `lrtest()` from the {lmtest} package to do the same likelihood ratio test of the two models.
 
 ```{r}
 lrtest (reduced, proposed)
 ```
 
-We can also perform a likelihood ratio test by hand by taking the difference between the *deviances* of the two models. The deviance for a generalized linear model is analogous to the the residual sum of squares (i.e., unexplained variance) in a general linear model - i.e, lower deviance and lower RSS both mean better models. Deviance is calculated as a kind of "distance" of given model from a fully "saturated" model, i.e., a model where each data point has its own parameters. The likelihood of the saturated model is 1, thus its log-likelihood is log(1) = 0.
+We can also perform a likelihood ratio test by hand by taking the difference between the *deviances* of the two models. The deviance for a generalized linear model is analogous to the the residual sum of squares (i.e., unexplained variance) in a general linear model - i.e, lower deviance and lower RSS both mean better models. Deviance is calculated as a kind of "distance" of given model from a fully "saturated" model, i.e., a model where each data point has its own parameters. The likelihood of a fully "saturated" model is 1, thus its log-likelihood is log(1) = 0.
 
 - *Deviance* = 2 $\times$ (log-likelihood of the saturated model - log-likelihood of the proposed model)
 - *Deviance* = 2 $\times$ (0 - log-likelihood of the proposed model)
@@ -311,7 +313,7 @@ We can get the deviance associated with a given glm model object by accessing it
 (D_proposed <- deviance(proposed))
 ```
 
-The $\chi^2$ value is then just the difference of the deviances...
+The $\chi^2$ statistic is then just the difference of the deviances...
 
 ```{r}
 (chisq <- D_reduced - D_proposed)
