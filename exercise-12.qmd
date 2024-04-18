@@ -54,6 +54,6 @@
 
 > **HINT:** Before running models, winnow your dataset to drop rows that are missing the respective response variable or any of the predictors, e.g., by using `drop_na()`.
 
-- For each of the two response variables, indicate what is the best model overall based on AICc and how many models have a delta AICc of 4 or less.
+- For each of the two response variables, indicate what is the best model overall based on AICc and how many models have a delta AICc of 4 or less?
 - What variables, if any, appear in all of this set of "top" models?
 - Calculate and plot the model-averaged coefficients and their CIs across this set of top models.
