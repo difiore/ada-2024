@@ -35,7 +35,7 @@ Every "app.R" script has three components:
 
 - a user interface object (called `ui`)
 - a `server` function
-- a call to the `shinyApp` function
+- a call to the `shinyApp()` function
 
 The user interface (`ui`) object controls the layout and appearance of your app. The `server` function contains the instructions that your computer needs to build your app. Finally the `shinyApp()` function creates Shiny app objects from an explicit UI/server pair.
 
@@ -95,7 +95,7 @@ shinyApp(ui = ui, server = server)
 
 {shiny} uses the function `fluidPage()` to create a display that automatically adjusts to the dimensions of your user's browser window. You lay out the user interface of your app by placing elements in the `fluidPage()` function.
 
-For example, the `ui` function below creates a user interface that has a title panel element (`titlePanel`) and a sidebar layout (`sidebarLayout`) format. The sidebar layout defines includes a sidebar panel (`sidebarPanel`) and a main panel (`mainPanel`). Note that all these elements are placed within the `fluidPage()` function.
+For example, the `ui` function below creates a user interface that has a title panel element (`titlePanel()`) and a sidebar layout (`sidebarLayout()`) format. The sidebar layout defines includes a sidebar panel (`sidebarPanel()`) and a main panel (`mainPanel()`). Note that all these elements are placed within the `fluidPage()` function.
 
 > **NOTE:** {shiny} offers many other options for designing the user interface besides `fluidPage()` and various `*Panels`. You can explore these in the {shiny} documentation.
 
@@ -112,9 +112,9 @@ ui <- fluidPage(
 )
 ```
 
-`titlePanel` and `sidebarLayout` create a basic layout for your {shiny} app, but you can also create more advanced layouts. For example, you can use `navbarPage` to give your app a multi-page user interface that includes a navigation bar. Or you can use `fluidRow` and `column` to build your layout up from a grid system. The [Shiny Application Layout Guide](http://shiny.rstudio.com/articles/layout-guide.html) provides further details about how you can modify the layout of your app.
+`titlePanel()` and `sidebarLayout()` create a basic layout for your {shiny} app, but you can also create more advanced layouts. For example, you can use `navbarPage()` to give your app a multi-page user interface that includes a navigation bar. Or you can use `fluidRow()` and `column()` to build your layout up from a grid system. The [Shiny Application Layout Guide](http://shiny.rstudio.com/articles/layout-guide.html) provides further details about how you can modify the layout of your app.
 
-You can add content to your {shiny} app by placing it inside one of the various `*Panel` functions (e.g., `sidebarPanel`). For example, the app above displays a character string in each of its panels. The words "sidebar panel" appear in the sidebar panel because we added that string as an argument to the `sidebarPanel function`, e.g. `sidebarPanel("sidebar panel")`.
+You can add content to your {shiny} app by placing it inside one of the various `*Panel()` functions (e.g., `sidebarPanel()`). For example, the app above displays a character string in each of its panels. The words "sidebar panel" appear in the sidebar panel because we added that string as an argument to the `sidebarPanel()` function, e.g. `sidebarPanel("sidebar panel")`.
 
 ### Add HTML Context {.unnumbered}
 
@@ -144,15 +144,15 @@ To add more advanced text content, use one of {shiny}'s HTML tag functions. Thes
 
 </center>
 
-To place a text element of one of these types in your app, pass the appropriate {shiny} function and argument as an argument to one of the `*Panel` functions in the `ui` section of your app. The text will appear in the corresponding panel of your web page. You can place multiple elements in the same panel if you separate them with a comma.
+To place a text element of one of these types in your app, pass the appropriate {shiny} function and argument as an argument to one of the `*Panel()` functions in the `ui` section of your app. The text will appear in the corresponding panel of your web page. You can place multiple elements in the same panel if you separate them with a comma.
 
 ### CHALLENGE {.unnumbered}
 
-- Replace the "title panel" text in the `titlePanel` of your app with an **h1** element that says "My First Web App".
+- Replace the "title panel" text in the `titlePanel()` of your app with an **h1** element that says "My First Web App".
 
-- Replace the "main panel" text in the `mainPanel` of your app with an **h3** element that says "Wow, I'm creating a webpage and web server!".
+- Replace the "main panel" text in the `mainPanel()` of your app with an **h3** element that says "Wow, I'm creating a webpage and web server!".
 
-- Add an **h4** element to the `mainPanel` that says "This is really cool.".
+- Add an **h4** element to the `mainPanel()` that says "This is really cool.".
 
 ```{r}
 #| code-fold: true
@@ -160,8 +160,8 @@ To place a text element of one of these types in your app, pass the appropriate 
 #| attr.output: '.details summary="Show Output"'
 #| eval: false
 library(shiny)
-# Define the UI ----
 
+# Define the UI ----
 ui <- fluidPage(
   titlePanel(h1("My First Web App")),
   sidebarLayout(
@@ -195,15 +195,15 @@ with...
 
 ... and then rerun your app.
 
-To insert an image into your webpage, you can use the `img()` function and give the name of your image file as the `src` argument (e.g., `img(src = "my_image.png")`). You must spell out this argument since `img` passes your input to an HTML tag, and `src` is what the tag expects.
+To insert an image into your webpage, you can use the `img()` function and give the name of your image file as the "src" argument (e.g., `img(src = "my_image.png")`). You must spell out this argument since `img()` passes your input to an HTML tag, and "src"is what the tag expects.
 
 You can also include other HTML-friendly parameters for your image such as `height=` and `width=` - e.g., `img(src = "my_image.png", height = 72, width = 72)`, where height and width numbers will refer to pixels.
 
-The `img()` function from {shiny} looks for your image file in a specific place. Your file must be in a folder named `www` in the same directory as the "app.R" script. {shiny} treats this directory in a special way... it will share any file placed here with your user's web browser, which makes the `www` a great place to store images, css style sheets, and other things the web browser will need to build web components of your app.
+The `img()` function from {shiny} looks for your image file **in a specific place**. Your file must be in a folder named `www` located in the same directory as the "app.R" script. {shiny} treats this directory in a special way... it will share any file placed here with your user's web browser, which makes the `www` a great place to store images, css ("cascading style sheet") files, and other things the web browser will need to build web components of your app.
 
 ### CHALLENGE {.unnumbered}
 
-- Insert an image into the `sidebarPanel` of your app, replacing the existing text. Also pass a "style" to the HTML element to center it.
+- Insert an image into the `sidebarPanel()` of your app, replacing the existing text. Also pass a "style" to the HTML element to center it.
 
 Replace the sidebar panel line with...
 
@@ -245,11 +245,13 @@ Add a button labeled "SUBMIT" to the `sidebarPanel` of your app below the image 
 Replace the sidebar panel line with...
 
 ```
-sidebarPanel(img(src="pvz-zombie1.png", width=100),
+sidebarPanel(img(src="pvz-zombie1.png", width=100), style="text-align:center"),
     br(),
     br(),
-    actionButton("submit", "SUBMIT"),style="text-align:center")
+    actionButton("submit", "SUBMIT"),
+    style="text-align:center")
 ```
+
 ... and then rerun your app.
 
 The [Shiny Widgets Gallery](http://shiny.rstudio.com/gallery/widget-gallery.html) provides templates that you can use to quickly add widgets to your {shiny} apps.
@@ -358,9 +360,9 @@ This is how you create reactivity with {shiny}, by connecting the values of "inp
 
 ## Loading in a Data from a File {.unnumbered}
 
-To load in data from file to use in a {shiny} visualization, we have to have our app execute some kind of `read*()` function specifying the path to the file. We also have to have {shiny} load any libraries we might need to visualize our data. We are going to use the {DT} library to make a nicely formatted table of data and {ggplot2} to build graphs. {shiny} will execute the commands we give it apart from the `ui` and `server` sections of our script, but where we place those commands will determine when and how many times they are run (or rerun), which can affect the performance of our app.
+To load in data from file to use in a {shiny} visualization, we have to have our app execute some kind of `read*()` function specifying the path to the file. We also have to have {shiny} load any libraries we might need to visualize our data. Below, we are going to use the {DT} library to make a nicely formatted table of data and {ggplot2} to build graphs. {shiny} will execute the commands we give it apart from the `ui` and `server` sections of our script, but where we place those commands will determine when and how many times they are run (or rerun), which can affect the performance of our app.
 
-- {shiny} will run the whole script the first time we call `runApp()`. This causes {shiny} to execute the server function. Code put before the `ui` step will thus run 1x.
+- {shiny} will run the whole script the first time we call `runApp()`. This causes {shiny} to execute the server function. Code put before the `ui` step will thus run one time.
 
 ```{r}
 #| echo: false
@@ -384,15 +386,15 @@ Finally, we can put code inside the `render*()` function. With this setup, {shin
 knitr::include_graphics("img/run-many-times.png")
 ```
 
-This behavior suggests that you should do the following:
+These patterns of behavior suggest that you should do the following:
 
-- Put code for sourcing scripts, loading libraries, and reading data sets at the beginning of `app.R` outside of the `server()` function. {shiny} will only run this code once, which is all you need to set your server up to run the ***R*** expressions contained in `server()`.
+- Put code for sourcing scripts, loading libraries, and reading data sets at the beginning of `app.R` **outside** of the `server()` function. {shiny} will only run this code once, which is all you need to set your server up to run the ***R*** expressions contained in `server()`.
 
-- Define user specific objects inside the `server()` function, but outside of any `render*()` calls. These would be objects that you think each user will need their own personal copy of, e.g., an object that records the user's session information. This code will be run once per user.
+- Define user-specific objects **inside** the `server()` function, but **outside** of any `render*()` calls. These would be objects that you think each user will need their own personal copy of, e.g., an object that records the user's session information. This code will be run once per user.
 
-- Only place code that {shiny} must rerun to build an object inside of a `render*` function. {shiny} will rerun all of the code in a `render*` chunk each time a user changes a widget mentioned in the chunk. This can be quite often.
+- Only place code that {shiny} must **rerun to build an object** inside of a `render*()` function. {shiny} will rerun all of the code in a `render*()` chunk every time a user changes a widget mentioned in the chunk. This can be quite often.
 
-You should generally avoid placing code inside a `render*` function that does not need to be there. Doing so will slow down the entire app.
+You should generally avoid placing code inside a `render*()` function that does not need to be there. Doing so will slow down the entire app.
 
 ## Example Linear Model Visualizer App {.unnumbered}
 
@@ -402,7 +404,7 @@ We are now going to use some of the above techniques to build a functional web a
 
 #### Step 1 {.unnumbered}
 
-- Create a new {shiny} app called "lm.R" with the three sections of a {shiny} app:
+- Create a new {shiny} app called "lm.R" with the three standard sections of a {shiny} app:
 
 ```
 ui <- fluidPage()
@@ -412,7 +414,7 @@ shinyApp(ui = ui, server = server)
 
 #### Step 2 {.unnumbered}
 
-- Add to the `ui` a `titlePanel` with an `h1` element you call "Simple LM Visualizer" and a `sidebarLayout()` with `sidebarPanel()` and `mainPanel()` elements. Also add a `dataTableOutput()` and `plotOutput()` element to your `mainPanel()`. Set the names for these to "datatable" and "plot", respectively.
+- Add to the `ui` a `titlePanel()` with an `h1` element you call "Simple LM Visualizer" and a `sidebarLayout()` with `sidebarPanel()` and `mainPanel()` elements. Also add a `dataTableOutput()` and `plotOutput()` element to your `mainPanel()`. Set the names for these to "datatable" and "plot", respectively. We also set the width of the `sidebarPanel()` and `mainPanel()` to 5 and 7 units, respectively. This is because the layout system that {shiny} uses is based on dividing the browser window into a grid with 12 columns.
 
 ```
 ui <- fluidPage(
@@ -430,7 +432,7 @@ ui <- fluidPage(
 
 #### Step 3 {.unnumbered}
 
-- Add code to the start of your app to load in the {DT} and {tidyverse} (and, by extension, the {dplyr} and {ggplot2}) libraries and to read the zombie apocalypse survivors dataset into the app as a variable named **z** when the app starts up.
+- Add code to the start of your app to load in the {DT} and {tidyverse} (and, by extension, the {dplyr} and {ggplot2}) libraries and to read our zombie apocalypse survivors dataset into the app as a variable named **d** when the app starts up.
 
 ```
 library(shiny)
@@ -493,13 +495,13 @@ selectInput(
 )
 ```
 
-- Also add two other output variables to the sidebar. The first will be used to display the linear model we construc...
+- Also add two other output variables to the sidebar. The first will be used to display the linear model we construct...
 
 ```
 textOutput("model")
 ```
 
-... and the second will be used to display the results of our chosen linear model.
+... and the second will be used to display the results of the model.
 
 ```
 tableOutput("modelresults")
@@ -509,7 +511,7 @@ tableOutput("modelresults")
 
 - Add the following code chunks to your `server()` function:
 
-Chunk 1 creates a reactive variable, `m()`, the value of which will be updated every time that the `input$response` or `input$predictors` values change as a user interacts with our app. The value returned by the `m()` reactive function is either NULL (if no response or predictor variable are chosen by the user) or a text version of a linear model formula (e.g., "height ~  weight + age").
+The first code chunk creates a reactive variable, `m()`, the value of which will be updated every time that the `input$response` or `input$predictors` values change as a user interacts with our app. The value returned by the `m()` reactive function is either NULL (if no response or predictor variable are chosen by the user) or a text version of a linear model formula (e.g., "height ~  weight + age").
 
 ```{r}
 #| eval: false
@@ -526,7 +528,7 @@ Chunk 1 creates a reactive variable, `m()`, the value of which will be updated e
   })
 ```
 
-Chunk 2 outputs a table of coefficients resulting from the linear model formula stored in `m()`, and it updates every time the user changes `input$response` or `input$predictors` because doing that updates the value of `m()` the output function first confirms that a valid linear model has been constructed.
+A second code chunk outputs a table of coefficients resulting from the linear model formula stored in `m()`, and it updates every time the user changes `input$response` or `input$predictors` because doing that updates the value of `m()` the output function first confirms that a valid linear model has been constructed.
 
 ```{r}
 #| eval: false
@@ -540,14 +542,14 @@ Chunk 2 outputs a table of coefficients resulting from the linear model formula 
   }, width="100%", rownames = TRUE, striped = TRUE, spacing = "s", bordered = TRUE, align = "c", digits = 3)
 ```
 
-Chunk 3 prints out the `lm()` being fitted.
+Code chunk 3 prints out the `lm()` being fitted.
 
 ```{r}
 #| eval: false
   output$model <- renderText({paste0("Model: ", print(m()))})
 ```
 
-Chunk 4 prints out a table of beta coefficients for the fitted model.
+Code chunk 4 prints out a table of beta coefficients for the fitted model.
 
 ```{r}
 #| eval: false
@@ -560,13 +562,15 @@ Chunk 4 prints out a table of beta coefficients for the fitted model.
     TRUE, align = "c", digits = 3)
 ```
 
-Chunk 5 uses {ggplot2} to graph the relationship between the variables we have selected as `input$response` and `input$predictors`.
+Finally, the last code chunk uses {ggplot2} to graph the relationship between the variables we have selected as `input$response` and `input$predictors`.
 
-The output function first confirms that a valid linear model has been constructed and whether there is one or more than one predictor variable.
+Note that this output function first confirms that a valid linear model has been constructed and whether there is one or more than one predictor variable. What output gets plotted depends on the number and type(s) of the predictor variable(s).
 
-The output plotted depends on the number and type of the predictor variables. with one predictor, the output may be either as a scatterplot with a fitted regression line (if `input$predictors` is a continuous variable) or a boxplot (if `input$predictors` is a factor variable).
+With one predictor, the output may be either a scatterplot with a fitted regression line (if `input$predictors` is a continuous variable) or a violin + scatter plot (if `input$predictors` is a factor variable).
 
-With two predictors, at least one of which is a factor, the output may be scatterplots or boxplots, faceted by (one of) the factors. With two continuous predictor variables or with more than two predictor variables, no plot is created.
+With two predictors, at least one of which is a factor, the output may be scatterplots or violin + scatter plots, faceted by (one of) the factors.
+
+With two continuous predictor variables, or with more than two predictor variables, no plot is created.
 
 ```{r}
 #| eval: false
