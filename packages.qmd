@@ -131,6 +131,7 @@
 - **{permuco}**: @R-permuco
 - **{dunn.test}**: @R-dunn.test
 - **{conover.test}**: @R-conover.test
+- **{effectsize}**: @R-effectsize, @effectsize2020
 
 ### Module 21 {.unnumbered}
 
@@ -139,6 +140,7 @@
 - **{broom}**: @R-broom
 - **{car}**: @R-car, @car2019
 - **{gridExtra}**: @R-gridExtra
+- **{effects}**: @R-effects, @effects2009
 
 ### Module 22 {.unnumbered}
 
@@ -160,9 +162,13 @@
 - **{lmtest}**: @R-lmtest, @lmtest2002
 - **{AICcmodavg}**: @R-AICcmodavg
 - **{lme4}**: @R-lme4, @lme42015
+- **{redres}**: @R-redres
+- **{effects}**: @R-effects, @effects2009
+- **{cowplot}**: @R-cowplot
+- **{sjPlots}**: @R-sjPlot
 - **{MuMIn}**: @R-MuMIn
 - **{glmmML}**: @R-glmmML
-- **{glmmboot}**: @R-glmmboot
+- **{MASS}**: @R-MASS
 
 ### Module 25 {.unnumbered}
 
@@ -227,6 +233,8 @@
 - **{dunn.test}**: @R-dunn.test
 - **{emayili}**: @R-emayili
 - **{easypackages}**: @R-easypackages
+- **{effects}**: @R-effects, @effects2009
+- **{effectsize}**: @R-effectsize, @effectsize2020
 - **{emo}**: @R-emo
 - **{forcats}**: @R-forcats
 - **{gdata}**: @R-gdata
@@ -234,7 +242,6 @@
 - **{ggExtra}**: @R-ggExtra
 - **{ggplot2}**: @R-ggplot2, @ggplot22016
 - **{ggpubr}**: @R-ggpubr
-- **{glmmboot}**: @R-glmmboot
 - **{glmmML}**: @R-glmmML
 - **{googledrive}**: @R-googledrive
 - **{googlesheets4}**: @R-googlesheets4
@@ -262,6 +269,7 @@
 - **{radiant}**: @R-radiant
 - **{rdrop2}**: @R-rdrop2
 - **{readr}**: @R-readr
+- **{redres}**: @R-redres
 - **{readxl}**: @R-readxl
 - **{repmis}**: @R-repmis
 - **{reticulate}**: @R-reticulate
@@ -271,11 +279,11 @@
 - **{shiny}**: @R-shiny
 - **{sjmisc}**: @R-sjmisc, @sjmisc2018
 - **{skimr}**: @R-skimr
+- **{sjPlot}**: @R-sjPlot
 - **{stringr}**: @R-stringr
 - **{summarytools}**: @R-summarytools
 - **{tibble}**: @R-tibble
 - **{tictoc}**: @R-tictoc
-- **{tidycovid19}**: @R-tidycovid19
 - **{tidyr}**: @R-tidyr
 - **{tidyverse}**: @R-tidyverse, @tidyverse2019
 - **{usethis}**: @R-usethis

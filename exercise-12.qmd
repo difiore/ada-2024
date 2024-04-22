@@ -30,7 +30,7 @@
 
 #### Step 3 {.unnumbered}
 
-- Log transform **all** of the other numeric variables.
+- Log transform all of the other numeric variables.
 
 > **HINT:** There are lots of ways to do this... look into `mutate(across(where(), .funs))` for an efficient motif.
 

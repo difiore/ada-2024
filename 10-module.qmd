@@ -13,6 +13,7 @@
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 library(magrittr)
 ```

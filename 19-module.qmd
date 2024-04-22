@@ -10,7 +10,8 @@
 - Load {tidyverse}, {mosiac}, {car}, {broom}
 
 ```{r}
-# | include: false
+#| include: false
+#| message: false
 library(tidyverse)
 library(broom)
 library(car)

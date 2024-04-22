@@ -77,6 +77,7 @@ book:
       - exercise-11.qmd
       - exercise-11-solution.qmd
       - exercise-12.qmd
+      - exercise-12-solution.qmd
     - part: "Assignments"
       chapters:
       - data-analysis-replication-assignment.qmd

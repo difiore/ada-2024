@@ -7,13 +7,17 @@
 ## Preliminaries
 
 - Install these packages in ***R***: [{permuco}](https://cran.r-project.org/web/packages/permuco/permuco.pdf), [{dunn.test}](https://cran.r-project.org/web/packages/dunn.test/dunn.test.pdf), [{conover.test}](https://cran.r-project.org/web/packages/conover.test/conover.test.pdf)
+- Install and load this package in ***R***:
+[{effectsize}](https://cran.r-project.org/web/packages/effectsize/effectsize.pdf)
 - Load {tidyverse}, {broom}, and {infer}
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 library(broom)
 library(infer)
+library(effectsize)
 ```
 
 ## Categorical Predictors
@@ -332,16 +336,16 @@ Also, check whether the different groups have roughly equal variances. As a gene
 max(stats$`sd(femur_length)`) / min(stats$`sd(femur_length)`)
 ```
 
-All this checking done, we can again plot our data by group and then run our ANOVA model...
+All this checking done, we can again plot our data by group and then run our linear or ANOVA model...
 
 ```{r}
 par(mfrow = c(1, 1))
 plot(data = d, femur_length ~ age,
   xlab = "Age", ylab = "Femur Length (cm)")
-m <- aov(data = d, femur_length ~ age) # femur length related to age
-summary(m)
 m <- lm(data = d, femur_length ~ age)
 summary(m)
+m.aov <- aov(data = d, femur_length ~ age) # femur length related to age
+summary(m.aov)
 ```
 
 Is the omnibus test of the relationship between age category and femur length significant? YES! Are femur lengths significantly different for juveniles versus subadults? Subadults versus adults? Juveniles versus adults?
@@ -384,13 +388,13 @@ plot(posthoc, xlim = c(-2, 12)) # xlim set to show zero
 The **Kruskal-Wallis** test is a nonparametric alternative to One-Way ANOVA that relaxes the need for normality in the distribution of data in each group (the different groups should still have roughly equal variances). Essentially, rather than testing the null hypothesis that the means for each group do not differ we are instead testing the null hypothesis that the **medians** do not differ. The test converts the continuous response variable to a set of RANKS (i.e., it does a uniform transformation) and then works with those ranks. The **p** value associated with the Kruskall-Wallis test statistic is calculated mathematically relative to a Chi-Square distribution.
 
 ```{r}
-(m <- kruskal.test(data = d, femur_length ~ age))
+(m.kruskal <- kruskal.test(data = d, femur_length ~ age))
 # to show that this is the same as the test using ranks...
 # use {dplyr} to sort by femur.length...
 d <- arrange(d, femur_length)
 # then use {dplyr} to add new variable of rank femur_length
 d <- mutate(d, femur_rank = row(data.frame(d$femur_length)))
-(m <- kruskal.test(data = d, femur_rank ~ age))
+(m.kruskal <- kruskal.test(data = d, femur_rank ~ age))
 ```
 
 For a post-hoc test of which groups are different following a Kruskall-Wallis test, we can use either a pairwise Mann-Whitney U test, a Dunn test, or a Conover-Iman test. The latter two tests are implemented using `dunn.test()` from the {dunn.test} package or `conover.test()` from the {conover.test} package, which both allow us to show the calculated Krusal-Wallis test statistic as well.
@@ -411,6 +415,30 @@ library(conover.test)
 conover.test(d$femur_length, g=d$age, method="bonferroni", kw=TRUE)
 detach(package:conover.test)
 ```
+
+### Effect Sizes
+
+We can apply the `effectsize()` function from the {effectsize} package to our model objects to better interpret the meaning of our coefficients.
+
+For an ANOVA, the effect sizes represent the amount of variance in the response variable explained by each of the model’s terms. For this model, we are asking what percent of the total variance in **femur length** is explained by the categorical variable of **age** class. This measure is called $\eta^2$ ("eta-squared") and is analogous to r-squared.
+
+$$\eta^2 = \frac{SS_{predictor}}{SS_{total}} = \frac{SS_{predictor}}{SS_{predictor} + SS_{residuals}}$$
+
+```{r}
+effectsize(m.aov)
+# or `eta_squared(m.aov)`
+# we can hand-calculate this same value from the ANOVA table as 6152/(6152 + 1452)
+```
+
+Here, 81% of the variance in **femur length** is accounted for by variance in **age**.
+
+Applied to a linear model object, the `effectsize()` function refits the model and returns **standardized** coefficients rather than unstandardized ones. This is equivalent to running the original linear model after standardizing all of the variables so that they are represented on the same scale, which is typically done via a $Z$ transformation (i.e., by subtracting its mean from each variable observation and divide by its standard deviation): $z_i = \frac{x_i - \mu_x}{SD_x}$
+
+```{r}
+effectsize(m)
+```
+
+> **NOTE**: The {datawizard} package provides the function `standardize()`, which will take a model and refit it using standardized parameters and return a refitted model object. The {parameters} package function `standardize_parameters()` will also return standardized coefficients when passed a model object. These two function are designed to replace the `effectsize()` function from the {effectsize} package.
 
 ## Multiple Factor ANOVA
 
@@ -449,14 +477,14 @@ summary(aov(data = d, femur_length ~ sex))
 However, if we do a Two-Way ANOVA and consider the factors together, we see that there is still a main effect of **age** when taking **sex** into account **and** there is a main effect of **sex** when we take **age** into account.
 
 ```{r}
-m <- summary(aov(data = d, femur_length ~ age + sex))
-m
+m.aov <- summary(aov(data = d, femur_length ~ age + sex))
+m.aov
 ```
 
 To examine whether there is an interaction effect, we would modify our model formula a bit using the colon operator (`:`) to specify a particular interaction term...
 
 ```{r}
-m <- aov(data = d, femur_length ~ age + sex + age:sex)
+m.aov <- aov(data = d, femur_length ~ age + sex + age:sex)
 # the colon (:) operator includes specific interaction terms
 summary(m)
 ```
@@ -464,9 +492,9 @@ summary(m)
 We could also use the asterisk (`*`) operator, which expands to include all interactions among terms, including 3-way, 4-way, etc., interactions.
 
 ```{r}
-m <- aov(data = d, femur_length ~ age * sex)
+m.aov <- aov(data = d, femur_length ~ age * sex)
 # asterisk (*) operator includes all interaction terms
-summary(m)
+summary(m.aov)
 m <- lm(data = d, femur_length ~ age * sex)
 # or using the lm() function...
 summary(m)
@@ -498,6 +526,13 @@ library(permuco)
 m.aovperm <- aovperm(data = d, femur_length ~ age + sex + age:sex)
 summary(m.aovperm)
 detach(package:permuco)
+```
+
+When we run `effectsize()` on a model object resulting from a multiple factor ANOVA, the function by default returns partial $\eta^2$ values, which is the proportion of the variance in the response variable that is accounted by each predictor *when controlling for the other predictors*.
+
+```{r}
+effectsize(m.aov)
+# or effectsize(m.aov, partial = TRUE)
 ```
 
 ## Type I, II, and III ANOVA
@@ -548,16 +583,20 @@ To summarize:
 
 See [this post](http://md.psych.bio.uni-goettingen.de/mv/unit/lm_cat/lm_cat_unbal_ss_explained.html) or [this post](http://goanna.cs.rmit.edu.au/~fscholer/anova.php) for further treatments of the issue.
 
-We can use the `Anova()` function in the {car} package to run ANOVA with Type II and Type III Sums of Squares. In the examples below, both linear models, where the order of factors are reversed, give the same results for Type II and Type III. The `Anova()` function takes as its argument a model object, e.g., the result from a call to either `lm()` or `aov()`.
+We can use the `Anova()` function in the {car} package to run ANOVA with Type II and Type III Sums of Squares. In the examples below, both linear models, where the order of factors are reversed, give the same results for Type II and Type III ANOVA, but not for Type I. The `Anova()` function takes as its argument a model object, e.g., the result from a call to either `lm()` or `aov()` and recalculates the appropriate sums of squares. Note how the effect sizes (partial $\eta^2$ values) are slightly different depending on whether they are being calculated from Type I or Type II ANOVA objects.
 
 ```{r}
 library(car)
 m1 <- aov(data=d,femur_length~age+sex)
+effectsize(m1)
 m1 <- Anova(m1, type = "II")
 m1 
 m2 <- aov(data=d,femur_length~sex+age)
+effectsize(m2)
 m2 <- Anova(m2, type = "II")
 m2
+effectsize(m1)
+effectsize(m2)
 m1 <- aov(data=d,femur_length~age*sex)
 m1 <- Anova(m1, type = "III")
 m1
@@ -660,21 +699,25 @@ Then, we determine our table of expected proportions:
 (c <- colSums(obs.table)) # column margins
 (nr <- nrow(obs.table)) # row dimensions
 (nc <- ncol(obs.table)) # column dimensions
-(exp.table <- matrix(rep(c,each=nr)*r/sum(obs.table),
-  nrow=nr, ncol=nc, dimnames=dimnames(obs.table), byrow=FALSE))
+(exp.table <- matrix(rep(c, each = nr) * r/sum(obs.table),
+  nrow = nr,
+  ncol = nc,
+  dimnames = dimnames(obs.table),
+  byrow = FALSE))
 # calculates the product of c*r and divides by total
 (X2 <- sum((obs.table - exp.table) ^ 2 / exp.table))
-(p <- 1-pchisq(q=X2,df=(nr-1)*(nc-1)))
+(p <- 1 - pchisq(q = X2, df = (nr - 1) * (nc - 1)))
 ```
 
 Again, we can do a one-liner for a test of independence...
 
 ```{r}
-chisq.test(x=obs.table)
+chisq.test(x = obs.table)
 ```
 
 ```{r}
 #| include: false
+detach(package:effectsize)
 detach(package:infer)
 detach(package:broom)
 detach(package:tidyverse)

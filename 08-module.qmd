@@ -23,6 +23,7 @@ These files contain a version of the **Comparative Political Data Set (CPDS)**, 
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 ```
 

@@ -23,6 +23,7 @@
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 library(devtools)
 library(roxygen2)
@@ -118,20 +119,22 @@ Open up the newly created DESCRIPTION file, which was created as a template by e
 
 The *Package* line displays the name of the package. The *Version* line indicates a version number for your package and should be updated as you revise your package. The *Title* and *Description* lines give a broad understanding of the purpose of your package. The *Author* and *Maintainer* lines (created by Method 1) and the [*Author\@R*](mailto:Author@R){.email} line (created by Method 2) include information on who the author ("aut") and maintainer ("cre") of the package are and should be replaced with your information. The *License* line indicates under what conditions your code can be used. For the package we are creating, you can use the following:
 
-    Package: powerplot
-    Title: Power Plot Package
-    Version: 0.0.1.0
-    Authors@R: 
-        person(given = "First",
-               family = "Last",
-               role = c("aut", "cre"),
-               email = "first.last@example.com",
-               comment = c(ORCID = "YOUR-ORCID-ID"))
-    Description: The function included in this package lets you explore power and effect size. When used with the {manipulate} package, you can use the sliders to set mu_0 and mu_A for a one-sample test (or, alternatively, think about these as mu_1 and mu_2 for a two-sample test), sigma, alpha, and n, and you can choose whether you are testing a one-sided hypothesis of mu_A being "greater" or "less" than mu_0 or are testing the two-sided hypothesis that mu_A != mu_0 ("two.tailed"). The graph will output Power and Effect Size.
-    Depends: R (>= 4.3)
-    License: GPL-3
-    Encoding: UTF-8
-    LazyData: true
+```
+Package: powerplot
+Title: Power Plot Package
+Version: 0.0.1.0
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: The function included in this package lets you explore power and effect size. When used with the {manipulate} package, you can use the sliders to set mu_0 and mu_A for a one-sample test (or, alternatively, think about these as mu_1 and mu_2 for a two-sample test), sigma, alpha, and n, and you can choose whether you are testing a one-sided hypothesis of mu_A being "greater" or "less" than mu_0 or are testing the two-sided hypothesis that mu_A != mu_0 ("two.tailed"). The graph will output Power and Effect Size.
+Depends: R (>= 4.3)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+```
 
 > **NOTE:** Be sure to end the DESCRIPTION file with a carriage return or you may get errors in running the "Process the Documentation Files"). Also not that you might want to edit the `Depends: R (>=...)` line to an earlier version of ***R*** (e.g., `Depends: R (>= 3.5)`) if you have not updated your version of ***R*** recently.
 
@@ -363,18 +366,20 @@ Minimally, we want to add the following tags to our file.
 
 For my file, I added the text below just before the `power.plot()` function.
 
-  #' @title An interactive power plotting function
-  #' @description This function allows you explore the relationship between sample size, alpha level, mean, standard deviation, and power
-  #' @param sigma standard deviation
-  #' @param mu0 mean value under the null hypothesis
-  #' @param muA mean value under the alternative hypothesis
-  #' @param n sample size
-  #' @param alpha alpha level
-  #' @param alternative type of test to run, defaults to "two-tailed"
-  #' @keywords power
-  #' @export
-  #' @examples
-  #' power.plot(sigma=0.5, mu0=1, muA=1, n=25, alpha=0.05, alternative="two.tailed")
+```
+#' @title An interactive power plotting function
+#' @description This function allows you explore the relationship between sample size, alpha level, mean, standard deviation, and power
+#' @param sigma standard deviation
+#' @param mu0 mean value under the null hypothesis
+#' @param muA mean value under the alternative hypothesis
+#' @param n sample size
+#' @param alpha alpha level
+#' @param alternative type of test to run, defaults to "two-tailed"
+#' @keywords power
+#' @export
+#' @examples
+#' power.plot(sigma=0.5, mu0=1, muA=1, n=25, alpha=0.05, alternative="two.tailed")
+```
 
 ### Add Dependencies {.unnumbered}
 
@@ -644,19 +649,21 @@ This should open a new ***RStudio*** session... then, in that session...
 
 Just open the file, edit, and save (make sure the last line remains a line break)!
 
-  Package: multireg
-  Title: A module for demonstrating multiple regression and ANCOVA
-  Version: 0.0.1.0
-  Authors@R: 
-    person(given = "Anthony",
-           family = "Di Fiore",
-           role = c("aut", "cre"),
-           email = "anthony.difiore@austin.utexas.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-  Description: This module is used to demonstrate building a package that contains a vignette about running multiple regression using an included dataset.
-  License: GPL-3
-  Encoding: UTF-8
-  LazyData: true
+```
+Package: multireg
+Title: A module for demonstrating multiple regression and ANCOVA
+Version: 0.0.1.0
+Authors@R: 
+  person(given = "Anthony",
+         family = "Di Fiore",
+         role = c("aut", "cre"),
+         email = "anthony.difiore@austin.utexas.edu",
+         comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This module is used to demonstrate building a package that contains a vignette about running multiple regression using an included dataset.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+```
 
 ### Add Dependencies {.unnumbered}
 
@@ -775,6 +782,6 @@ head(zombies)
 utils::vignette(package = "multireg")
 ```
 
-Then, CHECK OUT YOUR VIGNETTE AND DATA!!!
+Then, **CHECK OUT YOUR VIGNETTE AND DATA!!!**
 
 > **NOTE**: You may need to restart ***R*** before you `library()` your package to get the package manager to refresh with your newly built package and any vignettes to appear properly.

@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # Using ***Python*** from ***R*** {#using-python}
 
 ## Objectives {.unnumbered}
@@ -17,6 +12,7 @@ editor_options:
 
 ```{r}
 #| include: false
+#| message: false
 library(reticulate)
 ```
 

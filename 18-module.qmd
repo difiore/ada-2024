@@ -12,6 +12,7 @@
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 library(patchwork)
 library(infer)

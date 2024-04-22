@@ -1,7 +1,3 @@
----
-title: "Building Interactive Web Apps"
----
-
 # Building Interactive Web Apps {#shiny}
 
 ## Objectives {.unnumbered}
@@ -10,10 +6,12 @@ title: "Building Interactive Web Apps"
 
 ## Preliminaries {.unnumbered}
 
--   Install and load these packages in ***R***: [{shiny}](https://cran.r-project.org/web/packages/shiny/shiny.pdf) and [{DT}](https://cran.r-project.org/web/packages/DT/DT.pdf)
--   Load {tidyverse}
+- Install and load these packages in ***R***: [{shiny}](https://cran.r-project.org/web/packages/shiny/shiny.pdf) and [{DT}](https://cran.r-project.org/web/packages/DT/DT.pdf)
+- Load {tidyverse}
 
-```{r include=FALSE}
+```{r}
+#| include: false
+#| message: false
 library(tidyverse)
 library(shiny)
 library(DT)

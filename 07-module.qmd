@@ -19,6 +19,7 @@ Alternatively, you can press the "Raw" button, highlight, and copy the text to a
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 library(data.table)
 ```

@@ -11,6 +11,7 @@
 
 ```{r}
 #| include: false
+#| message: false
 library(tidyverse)
 library(broom)
 library(lmtest)
@@ -533,6 +534,12 @@ tidy(glm2, conf.int = TRUE, conf.level = 0.95)
 glm3 <- glm(data = d, success ~ age * rank, family = "poisson")
 summary(glm3)
 tidy(glm3, conf.int = TRUE, conf.level = 0.95)
+```
+
+```{r}
+library(effects)
+plot(predictorEffects(glm3, partial.residuals = TRUE))
+plot(allEffects(glm3, partial.residuals = TRUE))
 ```
 
 ```{r include=FALSE}

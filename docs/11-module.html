@@ -503,6 +503,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Exercise 12</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exercise-12-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercise 12 Solution</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -631,34 +637,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name     house   code
-## 1      Ned     Stark 880775
-## 2    Sansa     Stark 576844
-## 3   Cersei Lannister 732470
-## 4   Tyrion Lannister 807303
-## 5      Jon     Stark 624718
-## 6 Daenerys Targaryen 626061</code></pre>
+## 1      Ned     Stark 986645
+## 2    Sansa     Stark 835186
+## 3   Cersei Lannister 540154
+## 4   Tyrion Lannister 799630
+## 5      Jon     Stark 749538
+## 6 Daenerys Targaryen 556289</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">prefix =</span> <span class="st">"House "</span>, <span class="at">variable =</span> <span class="st">"house"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name           house   code
-## 1      Ned     House Stark 880775
-## 2    Sansa     House Stark 576844
-## 3   Cersei House Lannister 732470
-## 4   Tyrion House Lannister 807303
-## 5      Jon     House Stark 624718
-## 6 Daenerys House Targaryen 626061</code></pre>
+## 1      Ned     House Stark 986645
+## 2    Sansa     House Stark 835186
+## 3   Cersei House Lannister 540154
+## 4   Tyrion House Lannister 799630
+## 5      Jon     House Stark 749538
+## 6 Daenerys House Targaryen 556289</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">prefix =</span> <span class="st">"00001-"</span>, <span class="at">variable =</span> <span class="st">"code"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name     house         code
-## 1      Ned     Stark 00001-880775
-## 2    Sansa     Stark 00001-576844
-## 3   Cersei Lannister 00001-732470
-## 4   Tyrion Lannister 00001-807303
-## 5      Jon     Stark 00001-624718
-## 6 Daenerys Targaryen 00001-626061</code></pre>
+## 1      Ned     Stark 00001-986645
+## 2    Sansa     Stark 00001-835186
+## 3   Cersei Lannister 00001-540154
+## 4   Tyrion Lannister 00001-799630
+## 5      Jon     Stark 00001-749538
+## 6 Daenerys Targaryen 00001-556289</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -668,23 +674,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(<span class="at">df =</span> my_data, <span class="at">variable =</span> <span class="st">"house"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name     house   code
-## 1      Ned     Stark 880775
-## 2    Sansa     Stark 576844
-## 3   Cersei Lannister 732470
-## 4   Tyrion Lannister 807303
-## 5      Jon     Stark 624718
-## 6 Daenerys Targaryen 626061</code></pre>
+## 1      Ned     Stark 986645
+## 2    Sansa     Stark 835186
+## 3   Cersei Lannister 540154
+## 4   Tyrion Lannister 799630
+## 5      Jon     Stark 749538
+## 6 Daenerys Targaryen 556289</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># versus...</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(<span class="at">variable =</span> <span class="st">"house"</span>, <span class="at">df =</span> my_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name     house   code
-## 1      Ned     Stark 880775
-## 2    Sansa     Stark 576844
-## 3   Cersei Lannister 732470
-## 4   Tyrion Lannister 807303
-## 5      Jon     Stark 624718
-## 6 Daenerys Targaryen 626061</code></pre>
+## 1      Ned     Stark 986645
+## 2    Sansa     Stark 835186
+## 3   Cersei Lannister 540154
+## 4   Tyrion Lannister 799630
+## 5      Jon     Stark 749538
+## 6 Daenerys Targaryen 556289</code></pre>
 </div>
 </div>
 <p>Note that in the example above, because the argument name <code>prefix</code> was excluded, the default value was used.</p>
@@ -693,34 +699,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(my_data, <span class="st">"00001-"</span>, <span class="st">"code"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name     house         code
-## 1      Ned     Stark 00001-880775
-## 2    Sansa     Stark 00001-576844
-## 3   Cersei Lannister 00001-732470
-## 4   Tyrion Lannister 00001-807303
-## 5      Jon     Stark 00001-624718
-## 6 Daenerys Targaryen 00001-626061</code></pre>
+## 1      Ned     Stark 00001-986645
+## 2    Sansa     Stark 00001-835186
+## 3   Cersei Lannister 00001-540154
+## 4   Tyrion Lannister 00001-799630
+## 5      Jon     Stark 00001-749538
+## 6 Daenerys Targaryen 00001-556289</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># versus...</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(my_data, <span class="st">"House "</span>, <span class="st">"house"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name           house   code
-## 1      Ned     House Stark 880775
-## 2    Sansa     House Stark 576844
-## 3   Cersei House Lannister 732470
-## 4   Tyrion House Lannister 807303
-## 5      Jon     House Stark 624718
-## 6 Daenerys House Targaryen 626061</code></pre>
+## 1      Ned     House Stark 986645
+## 2    Sansa     House Stark 835186
+## 3   Cersei House Lannister 540154
+## 4   Tyrion House Lannister 799630
+## 5      Jon     House Stark 749538
+## 6 Daenerys House Targaryen 556289</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># versus...</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(my_data, <span class="st">""</span>, <span class="st">"house"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##       name     house   code
-## 1      Ned     Stark 880775
-## 2    Sansa     Stark 576844
-## 3   Cersei Lannister 732470
-## 4   Tyrion Lannister 807303
-## 5      Jon     Stark 624718
-## 6 Daenerys Targaryen 626061</code></pre>
+## 1      Ned     Stark 986645
+## 2    Sansa     Stark 835186
+## 3   Cersei Lannister 540154
+## 4   Tyrion Lannister 799630
+## 5      Jon     Stark 749538
+## 6 Daenerys Targaryen 556289</code></pre>
 </div>
 </div>
 <p>If we try to run the line below, however, it throws an error because too few (unnamed) arguments are passed to the function for it to be able to disambiguate them:</p>
@@ -992,35 +998,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
 <pre class="details" data-summary="Show Output"><code>##   name house   code
-## 1  Ned Stark 880775
+## 1  Ned Stark 986645
 ##    name house   code
-## 2 Sansa Stark 576844
+## 2 Sansa Stark 835186
 ##     name     house   code
-## 3 Cersei Lannister 732470
+## 3 Cersei Lannister 540154
 ##     name     house   code
-## 4 Tyrion Lannister 807303
+## 4 Tyrion Lannister 799630
 ##   name house   code
-## 5  Jon Stark 624718
+## 5  Jon Stark 749538
 ##       name     house   code
-## 6 Daenerys Targaryen 626061
+## 6 Daenerys Targaryen 556289
 ##   name house   code
-## 7 Aria Stark 741119
+## 7 Aria Stark 287340
 ##      name house   code
-## 8 Brienne Tarth 887180
+## 8 Brienne Tarth 732042
 ##     name house   code
-## 9 Rickon Stark 763794
+## 9 Rickon Stark 231446
 ##      name house   code
-## 10 Edmure Tully 663092
+## 10 Edmure Tully 401419
 ##     name   house   code
-## 11 Petyr Baelish 301044
+## 11 Petyr Baelish 529719
 ##     name     house   code
-## 12 Jamie Lannister 860508
+## 12 Jamie Lannister 735606
 ##      name     house   code
-## 13 Robert Baratheon 309112
+## 13 Robert Baratheon 595802
 ##       name     house   code
-## 14 Stannis Baratheon 448044
+## 14 Stannis Baratheon 157017
 ##     name   house   code
-## 15 Theon Greyjoy 676703</code></pre>
+## 15 Theon Greyjoy 402740</code></pre>
 </details>
 </div>
 </div>
@@ -1037,21 +1043,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] "577088"
-## [1] "448675"
-## [1] "074237"
-## [1] "303708"
-## [1] "817426"
-## [1] "160626"
-## [1] "911147"
-## [1] "081788"
-## [1] "497367"
-## [1] "290366"
-## [1] "440103"
-## [1] "805068"
-## [1] "211903"
-## [1] "440844"
-## [1] "307676"</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] "546689"
+## [1] "681538"
+## [1] "451045"
+## [1] "036997"
+## [1] "835947"
+## [1] "982655"
+## [1] "043782"
+## [1] "240237"
+## [1] "644132"
+## [1] "914104"
+## [1] "917925"
+## [1] "606537"
+## [1] "208595"
+## [1] "710751"
+## [1] "047204"</code></pre>
 </details>
 </div>
 </div>
@@ -1655,355 +1661,356 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb94-15"><a href="#cb94-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-19"><a href="#cb94-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functions</span></span>
-<span id="cb94-20"><a href="#cb94-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-21"><a href="#cb94-21" aria-hidden="true" tabindex="-1"></a>One of the strengths of using a programming language like ***R*** for data manipulation and analysis is that we can write our own functions to things we need to do in a particular way, e.g., to create a custom analysis or visualization. In [**Module 04**](#module-04) we practiced writing our own simple function, and we will revisit that here.</span>
-<span id="cb94-22"><a href="#cb94-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-23"><a href="#cb94-23" aria-hidden="true" tabindex="-1"></a>Recall that the general format for a function is as follows:</span>
-<span id="cb94-24"><a href="#cb94-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-25"><a href="#cb94-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-26"><a href="#cb94-26" aria-hidden="true" tabindex="-1"></a><span class="in">function_name &lt;- function(&lt;argument list&gt;) {</span></span>
-<span id="cb94-27"><a href="#cb94-27" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;function body&gt;</span></span>
-<span id="cb94-28"><a href="#cb94-28" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb94-29"><a href="#cb94-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-30"><a href="#cb94-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-31"><a href="#cb94-31" aria-hidden="true" tabindex="-1"></a>Functions that we define ourselves can have *multiple arguments*, and each argument can have a *default value*. Arguments are separated by commas and default values are specified in the list of arguments. For example, suppose we wanted to make a function that added a user-specified <span class="in">`prefix`</span> to every entry in a particular named variable in a data frame, we could write the following:</span>
-<span id="cb94-32"><a href="#cb94-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-35"><a href="#cb94-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-36"><a href="#cb94-36" aria-hidden="true" tabindex="-1"></a>add_prefix <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">prefix =</span> <span class="st">""</span>, variable) {</span>
-<span id="cb94-37"><a href="#cb94-37" aria-hidden="true" tabindex="-1"></a>  df[[variable]] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(prefix, df[[variable]])</span>
-<span id="cb94-38"><a href="#cb94-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
-<span id="cb94-39"><a href="#cb94-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-40"><a href="#cb94-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-41"><a href="#cb94-41" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span></span>
-<span id="cb94-42"><a href="#cb94-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
-<span id="cb94-43"><a href="#cb94-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Ned"</span>, <span class="st">"Sansa"</span>, <span class="st">"Cersei"</span>,  <span class="st">"Tyrion"</span>, <span class="st">"Jon"</span>, <span class="st">"Daenerys"</span>, <span class="st">"Aria"</span>, <span class="st">"Brienne"</span>, <span class="st">"Rickon"</span>, <span class="st">"Edmure"</span>, <span class="st">"Petyr"</span>, <span class="st">"Jamie"</span>, <span class="st">"Robert"</span>, <span class="st">"Stannis"</span>, <span class="st">"Theon"</span></span>
-<span id="cb94-44"><a href="#cb94-44" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb94-45"><a href="#cb94-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Stark"</span>, <span class="st">"Stark"</span>, <span class="st">"Lannister"</span>, <span class="st">"Lannister"</span>, <span class="st">"Stark"</span>, <span class="st">"Targaryen"</span>, <span class="st">"Stark"</span>, <span class="st">"Tarth"</span>, <span class="st">"Stark"</span>, <span class="st">"Tully"</span>, <span class="st">"Baelish"</span>, <span class="st">"Lannister"</span>, <span class="st">"Baratheon"</span>, <span class="st">"Baratheon"</span>, <span class="st">"Greyjoy"</span></span>
-<span id="cb94-46"><a href="#cb94-46" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb94-47"><a href="#cb94-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"code"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">100000</span><span class="sc">:</span><span class="dv">999999</span>, <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb94-48"><a href="#cb94-48" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb94-49"><a href="#cb94-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-50"><a href="#cb94-50" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">variable =</span> <span class="st">"house"</span>) <span class="co"># uses default prefix</span></span>
-<span id="cb94-51"><a href="#cb94-51" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb94-52"><a href="#cb94-52" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">prefix =</span> <span class="st">"House "</span>, <span class="at">variable =</span> <span class="st">"house"</span>) </span>
-<span id="cb94-53"><a href="#cb94-53" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb94-54"><a href="#cb94-54" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">prefix =</span> <span class="st">"00001-"</span>, <span class="at">variable =</span> <span class="st">"code"</span>) </span>
-<span id="cb94-55"><a href="#cb94-55" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
-<span id="cb94-56"><a href="#cb94-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-57"><a href="#cb94-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-58"><a href="#cb94-58" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Arguments can be passed to a function in any order, as long as the argument name is included. For example, for the </span><span class="in">`add_prefix()`</span><span class="at"> function above, the following are equivalent:</span></span>
-<span id="cb94-59"><a href="#cb94-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-62"><a href="#cb94-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-63"><a href="#cb94-63" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(<span class="at">df =</span> my_data, <span class="at">variable =</span> <span class="st">"house"</span>))</span>
-<span id="cb94-64"><a href="#cb94-64" aria-hidden="true" tabindex="-1"></a><span class="co"># versus...</span></span>
-<span id="cb94-65"><a href="#cb94-65" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(<span class="at">variable =</span> <span class="st">"house"</span>, <span class="at">df =</span> my_data))</span>
-<span id="cb94-66"><a href="#cb94-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-67"><a href="#cb94-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-68"><a href="#cb94-68" aria-hidden="true" tabindex="-1"></a>Note that in the example above, because the argument name <span class="in">`prefix`</span> was excluded, the default value was used.</span>
-<span id="cb94-69"><a href="#cb94-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-70"><a href="#cb94-70" aria-hidden="true" tabindex="-1"></a>***R*** also uses positional matching to assign values to arguments when argument names are excluded. Note the difference in the results of these lines:</span>
-<span id="cb94-71"><a href="#cb94-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-72"><a href="#cb94-72" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r}</span></span>
-<span id="cb94-73"><a href="#cb94-73" aria-hidden="true" tabindex="-1"></a><span class="in">head(add_prefix(my_data, "00001-", "code"))</span></span>
-<span id="cb94-74"><a href="#cb94-74" aria-hidden="true" tabindex="-1"></a><span class="in"># versus...</span></span>
-<span id="cb94-75"><a href="#cb94-75" aria-hidden="true" tabindex="-1"></a><span class="in">head(add_prefix(my_data, "House ", "house"))</span></span>
-<span id="cb94-76"><a href="#cb94-76" aria-hidden="true" tabindex="-1"></a><span class="in"># versus...</span></span>
-<span id="cb94-77"><a href="#cb94-77" aria-hidden="true" tabindex="-1"></a><span class="in">head(add_prefix(my_data, "", "house"))</span></span>
-<span id="cb94-78"><a href="#cb94-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-79"><a href="#cb94-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-80"><a href="#cb94-80" aria-hidden="true" tabindex="-1"></a>If we try to run the line below, however, it throws an error because too few (unnamed) arguments are passed to the function for it to be able to disambiguate them:</span>
-<span id="cb94-81"><a href="#cb94-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-84"><a href="#cb94-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-85"><a href="#cb94-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb94-86"><a href="#cb94-86" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(my_data, <span class="st">"00001-"</span>))</span>
-<span id="cb94-87"><a href="#cb94-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-88"><a href="#cb94-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-89"><a href="#cb94-89" aria-hidden="true" tabindex="-1"></a>Unless otherwise specified, functions return the result of the last expression evaluated in the function body. However, is good programming practice to explicitly specify the object or value you want returned from the function with <span class="in">`return(&lt;value&gt;)`</span> or <span class="in">`return(&lt;object&gt;)`</span>.</span>
-<span id="cb94-90"><a href="#cb94-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-91"><a href="#cb94-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conditional Expressions</span></span>
-<span id="cb94-92"><a href="#cb94-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-93"><a href="#cb94-93" aria-hidden="true" tabindex="-1"></a>Conditional expressions are a basic feature of any programming language. They are used for "flow control", i.e., to structure what your program does when. The most common conditional expression is the "if... else..." statement, which is used to direct flow of a program between two paths. The general form is:</span>
-<span id="cb94-94"><a href="#cb94-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-95"><a href="#cb94-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-96"><a href="#cb94-96" aria-hidden="true" tabindex="-1"></a><span class="in">if (&lt;test&gt;) {</span></span>
-<span id="cb94-97"><a href="#cb94-97" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;action 1&gt;</span></span>
-<span id="cb94-98"><a href="#cb94-98" aria-hidden="true" tabindex="-1"></a><span class="in">} else {</span></span>
-<span id="cb94-99"><a href="#cb94-99" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;action 2&gt;</span></span>
-<span id="cb94-100"><a href="#cb94-100" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb94-101"><a href="#cb94-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-102"><a href="#cb94-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-103"><a href="#cb94-103" aria-hidden="true" tabindex="-1"></a>As an example...</span>
-<span id="cb94-104"><a href="#cb94-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-107"><a href="#cb94-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-108"><a href="#cb94-108" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb94-109"><a href="#cb94-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-110"><a href="#cb94-110" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
-<span id="cb94-111"><a href="#cb94-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Yes"</span>)</span>
-<span id="cb94-112"><a href="#cb94-112" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb94-113"><a href="#cb94-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"No"</span>)</span>
-<span id="cb94-114"><a href="#cb94-114" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-115"><a href="#cb94-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-116"><a href="#cb94-116" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb94-117"><a href="#cb94-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-118"><a href="#cb94-118" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
-<span id="cb94-119"><a href="#cb94-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Yes"</span>)</span>
-<span id="cb94-120"><a href="#cb94-120" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb94-121"><a href="#cb94-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"No"</span>)</span>
-<span id="cb94-122"><a href="#cb94-122" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-123"><a href="#cb94-123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-124"><a href="#cb94-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-125"><a href="#cb94-125" aria-hidden="true" tabindex="-1"></a>A related form is the <span class="in">`ifelse()`</span> function, which has three arguments: the test condition, the value to be returned or expression to be run if the test condition is true, and the value to be returned or expression to be run if the test condition is false. Unlike the "if... else..." formulation, the <span class="in">`ifelse()`</span> function can work on a vector, too, and returns a vector.</span>
-<span id="cb94-126"><a href="#cb94-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-129"><a href="#cb94-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-130"><a href="#cb94-130" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb94-131"><a href="#cb94-131" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
-<span id="cb94-132"><a href="#cb94-132" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">11</span></span>
-<span id="cb94-133"><a href="#cb94-133" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
-<span id="cb94-134"><a href="#cb94-134" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb94-135"><a href="#cb94-135" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
-<span id="cb94-136"><a href="#cb94-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-137"><a href="#cb94-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-138"><a href="#cb94-138" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** There is also a {dplyr} version of the "if... else..." conditional: `if_else()`. I tend to use this one much more than the {base} ***R*** version.</span></span>
-<span id="cb94-139"><a href="#cb94-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-140"><a href="#cb94-140" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`case_when()`</span> is the equivalent of mixing several "if... else..." statements.</span>
-<span id="cb94-141"><a href="#cb94-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-144"><a href="#cb94-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-145"><a href="#cb94-145" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb94-146"><a href="#cb94-146" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
-<span id="cb94-147"><a href="#cb94-147" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">&lt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
-<span id="cb94-148"><a href="#cb94-148" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">&lt;=</span> <span class="dv">7</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
-<span id="cb94-149"><a href="#cb94-149" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"large"</span></span>
-<span id="cb94-150"><a href="#cb94-150" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb94-151"><a href="#cb94-151" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-152"><a href="#cb94-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-153"><a href="#cb94-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-154"><a href="#cb94-154" aria-hidden="true" tabindex="-1"></a>For conditional statements, there are two additional functions that are often useful: <span class="in">`any()`</span> and <span class="in">`all()`</span>. The <span class="in">`any()`</span> function takes a vector of logical values and returns <span class="in">`TRUE`</span> if *any* of the elements is TRUE, while the `all()` function takes a vector of logical values and returns `TRUE` if *all* elements are TRUE.</span>
-<span id="cb94-155"><a href="#cb94-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-158"><a href="#cb94-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-159"><a href="#cb94-159" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb94-160"><a href="#cb94-160" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>)</span>
-<span id="cb94-161"><a href="#cb94-161" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>)</span>
-<span id="cb94-162"><a href="#cb94-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-163"><a href="#cb94-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-164"><a href="#cb94-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relational Operators</span></span>
-<span id="cb94-165"><a href="#cb94-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-166"><a href="#cb94-166" aria-hidden="true" tabindex="-1"></a>The following relational operators are often used in conditional expressions:</span>
-<span id="cb94-167"><a href="#cb94-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-168"><a href="#cb94-168" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>less than, greater than: <span class="in">`&lt;`</span>, <span class="in">`&gt;`</span></span>
-<span id="cb94-169"><a href="#cb94-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>less than or equal to, greater than or equal to: <span class="in">`&lt;=`</span>, <span class="in">`&gt;=`</span></span>
-<span id="cb94-170"><a href="#cb94-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>equal to: <span class="in">`==`</span> **NOTE:** This uses a double equal sign!</span>
-<span id="cb94-171"><a href="#cb94-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>not equal to: <span class="in">`!=`</span></span>
-<span id="cb94-172"><a href="#cb94-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-173"><a href="#cb94-173" aria-hidden="true" tabindex="-1"></a><span class="fu">## Logical and Other Operators</span></span>
-<span id="cb94-174"><a href="#cb94-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-175"><a href="#cb94-175" aria-hidden="true" tabindex="-1"></a>The following additional operators are also useful and important:</span>
-<span id="cb94-176"><a href="#cb94-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-177"><a href="#cb94-177" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`!`</span>: logical **NOT** Note that this operator can be applied to values *and* to functions</span>
-<span id="cb94-178"><a href="#cb94-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`&amp;`</span>: element-wise logical **AND** (applies to element in a vector)</span>
-<span id="cb94-179"><a href="#cb94-179" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`&amp;&amp;`</span>: logical **AND** (applies to single conditions or first element in vector)</span>
-<span id="cb94-180"><a href="#cb94-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`|`</span>: element-wise logical **OR** (applies to element in a vector)</span>
-<span id="cb94-181"><a href="#cb94-181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`||`</span>: logical **OR** (applies to single conditions or first element in vector)</span>
-<span id="cb94-182"><a href="#cb94-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`%in%`</span>: tests for membership **in** a vector</span>
-<span id="cb94-183"><a href="#cb94-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the {sjmisc} package adds a "not in" operator to test for membership in a vector: <span class="in">`%nin%`</span></span>
-<span id="cb94-184"><a href="#cb94-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-185"><a href="#cb94-185" aria-hidden="true" tabindex="-1"></a>Examples:</span>
-<span id="cb94-186"><a href="#cb94-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-189"><a href="#cb94-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-190"><a href="#cb94-190" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
-<span id="cb94-191"><a href="#cb94-191" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">any</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="co"># logical NOT</span></span>
-<span id="cb94-192"><a href="#cb94-192" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">all</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="co"># logical NOT</span></span>
-<span id="cb94-193"><a href="#cb94-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-194"><a href="#cb94-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-197"><a href="#cb94-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-198"><a href="#cb94-198" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
-<span id="cb94-199"><a href="#cb94-199" aria-hidden="true" tabindex="-1"></a>i <span class="sc">&lt;</span> <span class="dv">12</span> <span class="sc">&amp;</span> (i<span class="sc">%%</span><span class="dv">3</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># element-wise logical AND</span></span>
-<span id="cb94-200"><a href="#cb94-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-201"><a href="#cb94-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-204"><a href="#cb94-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-205"><a href="#cb94-205" aria-hidden="true" tabindex="-1"></a>i[<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">12</span> <span class="sc">&amp;&amp;</span> (i[<span class="dv">1</span>]<span class="sc">%%</span><span class="dv">3</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># logical AND</span></span>
-<span id="cb94-206"><a href="#cb94-206" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-207"><a href="#cb94-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-210"><a href="#cb94-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-211"><a href="#cb94-211" aria-hidden="true" tabindex="-1"></a>i <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> (i<span class="sc">%%</span><span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># element-wise logical OR</span></span>
-<span id="cb94-212"><a href="#cb94-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-213"><a href="#cb94-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-216"><a href="#cb94-216" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-217"><a href="#cb94-217" aria-hidden="true" tabindex="-1"></a>i[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">||</span> (i[<span class="dv">1</span>]<span class="sc">%%</span><span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># logical OR</span></span>
-<span id="cb94-218"><a href="#cb94-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-219"><a href="#cb94-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-222"><a href="#cb94-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-223"><a href="#cb94-223" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"There"</span>, <span class="st">"is"</span>, <span class="st">"grandeur"</span>, <span class="st">"in"</span>, <span class="st">"this"</span>, <span class="st">"view"</span>, <span class="st">"of"</span>, <span class="st">"life"</span>)</span>
-<span id="cb94-224"><a href="#cb94-224" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"grandeur"</span></span>
-<span id="cb94-225"><a href="#cb94-225" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%in%</span> a <span class="co"># membership</span></span>
-<span id="cb94-226"><a href="#cb94-226" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"selection"</span>,<span class="st">"life"</span>)</span>
-<span id="cb94-227"><a href="#cb94-227" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%in%</span> a</span>
-<span id="cb94-228"><a href="#cb94-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-229"><a href="#cb94-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-232"><a href="#cb94-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-233"><a href="#cb94-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb94-234"><a href="#cb94-234" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
-<span id="cb94-235"><a href="#cb94-235" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%nin%</span> a <span class="co"># not membership</span></span>
-<span id="cb94-236"><a href="#cb94-236" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sjmisc)</span>
-<span id="cb94-237"><a href="#cb94-237" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-238"><a href="#cb94-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-239"><a href="#cb94-239" aria-hidden="true" tabindex="-1"></a><span class="fu">## Iterating with Loops</span></span>
-<span id="cb94-240"><a href="#cb94-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-241"><a href="#cb94-241" aria-hidden="true" tabindex="-1"></a><span class="fu">### `for()` Loops {.unnumbered}</span></span>
-<span id="cb94-242"><a href="#cb94-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-243"><a href="#cb94-243" aria-hidden="true" tabindex="-1"></a>When we want to execute a particular piece of code multiple times, for example to iterate over a set of values or to apply the same function to a set of elements in a vector, one way (but not the only way!) to do this is with a *loop*. There are several different constructions we can use for looping, one of the most common of which is a <span class="in">`for()`</span> loop. The basic contruction for a <span class="in">`for()`</span> loop is:</span>
-<span id="cb94-244"><a href="#cb94-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-245"><a href="#cb94-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-246"><a href="#cb94-246" aria-hidden="true" tabindex="-1"></a><span class="in">for (&lt;index&gt; in &lt;range&gt;){</span></span>
-<span id="cb94-247"><a href="#cb94-247" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;code to execute&gt;</span></span>
-<span id="cb94-248"><a href="#cb94-248" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb94-249"><a href="#cb94-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-250"><a href="#cb94-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-251"><a href="#cb94-251" aria-hidden="true" tabindex="-1"></a>The following examples print out each element in a vector, **v**:</span>
-<span id="cb94-252"><a href="#cb94-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-255"><a href="#cb94-255" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-256"><a href="#cb94-256" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">100</span>, <span class="at">to =</span> <span class="dv">120</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb94-257"><a href="#cb94-257" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(v)){ <span class="co"># here, we are looping over the indices of v</span></span>
-<span id="cb94-258"><a href="#cb94-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(v[i]) </span>
-<span id="cb94-259"><a href="#cb94-259" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-260"><a href="#cb94-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-261"><a href="#cb94-261" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(v)){ <span class="co"># seq_along() also loops over the indices of v</span></span>
-<span id="cb94-262"><a href="#cb94-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(v[i])</span>
-<span id="cb94-263"><a href="#cb94-263" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-264"><a href="#cb94-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-265"><a href="#cb94-265" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> v){ <span class="co"># here we loop over the elements of v</span></span>
-<span id="cb94-266"><a href="#cb94-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb94-267"><a href="#cb94-267" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-268"><a href="#cb94-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-269"><a href="#cb94-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-270"><a href="#cb94-270" aria-hidden="true" tabindex="-1"></a>It is good form and improves efficiency if we allocate memory to whatever output we may want to generate inside of a loop beforehand. For example, if we want to use a loop to calculate the <span class="in">`median()`</span> across all Platyrrhine primate genera for the female brain size, female body size, and canine dimorphism variables in the Kamilar and Cooper dataset we have used previously, we could do the following:</span>
-<span id="cb94-271"><a href="#cb94-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-274"><a href="#cb94-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-275"><a href="#cb94-275" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb94-276"><a href="#cb94-276" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
-<span id="cb94-277"><a href="#cb94-277" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>) <span class="co"># creates a "tibble"</span></span>
-<span id="cb94-278"><a href="#cb94-278" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, Family <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Atelidae"</span>,<span class="st">"Pitheciidae"</span>,<span class="st">"Cebidae"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb94-279"><a href="#cb94-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Brain_Size_Female_Mean,Body_mass_female_mean,Canine_Dimorphism)</span>
-<span id="cb94-280"><a href="#cb94-280" aria-hidden="true" tabindex="-1"></a><span class="co"># good practice</span></span>
-<span id="cb94-281"><a href="#cb94-281" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="fu">ncol</span>(s))</span>
-<span id="cb94-282"><a href="#cb94-282" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(s)) {</span>
-<span id="cb94-283"><a href="#cb94-283" aria-hidden="true" tabindex="-1"></a>    output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(s[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb94-284"><a href="#cb94-284" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb94-285"><a href="#cb94-285" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-286"><a href="#cb94-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-287"><a href="#cb94-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-288"><a href="#cb94-288" aria-hidden="true" tabindex="-1"></a>The following is another very common way to do this, but is less efficient as we are rewriting the object **output** (and making it one element longer) in every iteration of the loop.</span>
-<span id="cb94-289"><a href="#cb94-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-292"><a href="#cb94-292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-293"><a href="#cb94-293" aria-hidden="true" tabindex="-1"></a><span class="co"># not so good practice</span></span>
-<span id="cb94-294"><a href="#cb94-294" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>()</span>
-<span id="cb94-295"><a href="#cb94-295" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(s)) {</span>
-<span id="cb94-296"><a href="#cb94-296" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">median</span>(s[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb94-297"><a href="#cb94-297" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb94-298"><a href="#cb94-298" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-299"><a href="#cb94-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-300"><a href="#cb94-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-301"><a href="#cb94-301" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
-<span id="cb94-302"><a href="#cb94-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-303"><a href="#cb94-303" aria-hidden="true" tabindex="-1"></a>Write a <span class="in">`for()`</span> loop to print out each row in the data frame **my_data**.</span>
-<span id="cb94-304"><a href="#cb94-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-307"><a href="#cb94-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-308"><a href="#cb94-308" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb94-309"><a href="#cb94-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb94-310"><a href="#cb94-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb94-311"><a href="#cb94-311" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(my_data)) {</span>
-<span id="cb94-312"><a href="#cb94-312" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(my_data[i,])</span>
-<span id="cb94-313"><a href="#cb94-313" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-314"><a href="#cb94-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-315"><a href="#cb94-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-316"><a href="#cb94-316" aria-hidden="true" tabindex="-1"></a>Write a <span class="in">`for()`</span> loop to print out the reverse of each element in the **code** vector in the data frame **my_data**.</span>
-<span id="cb94-317"><a href="#cb94-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-318"><a href="#cb94-318" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** Check out the function </span><span class="in">`stri_reverse()`</span><span class="at"> from the {stringi} package.</span></span>
-<span id="cb94-319"><a href="#cb94-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-322"><a href="#cb94-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-323"><a href="#cb94-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb94-324"><a href="#cb94-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
-<span id="cb94-325"><a href="#cb94-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
-<span id="cb94-326"><a href="#cb94-326" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> my_data<span class="sc">$</span>code){</span>
-<span id="cb94-327"><a href="#cb94-327" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(stringi<span class="sc">::</span><span class="fu">stri_reverse</span>(i))</span>
-<span id="cb94-328"><a href="#cb94-328" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-329"><a href="#cb94-329" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-330"><a href="#cb94-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-331"><a href="#cb94-331" aria-hidden="true" tabindex="-1"></a><span class="fu">### `while()` Loops {.unnumbered}</span></span>
-<span id="cb94-332"><a href="#cb94-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-333"><a href="#cb94-333" aria-hidden="true" tabindex="-1"></a>An alternative to using a <span class="in">`for()`</span> loop for repeating a particular block of code is to use a <span class="in">`while()`</span> loop. The general construction for a <span class="in">`while()`</span> loop is:</span>
-<span id="cb94-334"><a href="#cb94-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-335"><a href="#cb94-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-336"><a href="#cb94-336" aria-hidden="true" tabindex="-1"></a><span class="in">while (&lt;test expression&gt;) {</span></span>
-<span id="cb94-337"><a href="#cb94-337" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;code to execute&gt;</span></span>
-<span id="cb94-338"><a href="#cb94-338" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb94-339"><a href="#cb94-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-340"><a href="#cb94-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-341"><a href="#cb94-341" aria-hidden="true" tabindex="-1"></a>Here, the test expression is evaluated at the start of the loop, and the body of the loop is only entered if the result is TRUE. Once the statements inside the loop are executed, flow returns to the top of the loop to evaluate the test expression again. That process is repeated until the test expression is FALSE, and then the loop is exited and control moves on to subsequent parts of the program.</span>
-<span id="cb94-342"><a href="#cb94-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-343"><a href="#cb94-343" aria-hidden="true" tabindex="-1"></a>As above, the following example prints out each element in the vector, **v**:</span>
-<span id="cb94-344"><a href="#cb94-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-347"><a href="#cb94-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-348"><a href="#cb94-348" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">100</span>, <span class="at">to =</span> <span class="dv">120</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
-<span id="cb94-349"><a href="#cb94-349" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb94-350"><a href="#cb94-350" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="fu">length</span>(v)){</span>
-<span id="cb94-351"><a href="#cb94-351" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(v[i])</span>
-<span id="cb94-352"><a href="#cb94-352" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb94-353"><a href="#cb94-353" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb94-354"><a href="#cb94-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-355"><a href="#cb94-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-356"><a href="#cb94-356" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vectorization and Functionals</span></span>
-<span id="cb94-357"><a href="#cb94-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-358"><a href="#cb94-358" aria-hidden="true" tabindex="-1"></a>In many cases what we want to do in a loop is apply the same function or operation to each of the elements in a vector, matrix, data frame, list or part thereof... and often we do not actually need a loop to do that. Rather, we can often use what is called a *vectorized function*, or *functional*. The function `sapply()`, and related functions (e.g., `apply()`, `lapply()`, `mapply()`, `vapply()`) are examples of functionals: they allow us to perform *element-wise* operations on the entries in a data object.</span>
-<span id="cb94-359"><a href="#cb94-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-360"><a href="#cb94-360" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`sapply()`</span> takes two arguments, a data object (a vector, list, or data frame) and a function (<span class="in">`FUN=`</span>) to apply to its elements. Each element of the data object is passed on to the function, and the result is returned and concatenated into a *vector* of the same length as the original data object. <span class="in">`lapply()`</span> is similar except that the output is a list rather than a vector.</span>
-<span id="cb94-361"><a href="#cb94-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-362"><a href="#cb94-362" aria-hidden="true" tabindex="-1"></a>The following examples replicate what we did with <span class="in">`for()`</span> loops above. Here, **s** is a data frame, and the function <span class="in">`median()`</span> is being applied to each element, i.e., each variable, in that data frame:</span>
-<span id="cb94-363"><a href="#cb94-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-366"><a href="#cb94-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-367"><a href="#cb94-367" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">sapply</span>(s, <span class="at">FUN =</span> median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb94-368"><a href="#cb94-368" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are passing on an extra argument to the `median()`function, i.e., `na.rm=TRUE`. This is an example of "dot-dot-dot" (`...`) being an extra argument of the `sapply()` function where those arguments are "passed through" as arguments of the `FUN=` function. Basically, this means that we can pass on an arbitrary set and number of arguments into `sapply()` which, in this case, are then being used in the `median()` function.</span></span>
-<span id="cb94-369"><a href="#cb94-369" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-370"><a href="#cb94-370" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output)</span>
-<span id="cb94-371"><a href="#cb94-371" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">lapply</span>(s, <span class="at">FUN =</span> median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb94-372"><a href="#cb94-372" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-373"><a href="#cb94-373" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output)</span>
-<span id="cb94-374"><a href="#cb94-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-375"><a href="#cb94-375" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-376"><a href="#cb94-376" aria-hidden="true" tabindex="-1"></a>The <span class="in">`map()`</span> family of functions from the {purrr} package (which is part of the {tidyverse} set of packages) works very similarly to the <span class="in">`apply()`</span> functions:</span>
-<span id="cb94-377"><a href="#cb94-377" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-380"><a href="#cb94-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-381"><a href="#cb94-381" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(s, <span class="at">.f =</span> median, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb94-382"><a href="#cb94-382" aria-hidden="true" tabindex="-1"></a><span class="co"># note the argument `.f=` instead of `FUN=`</span></span>
-<span id="cb94-383"><a href="#cb94-383" aria-hidden="true" tabindex="-1"></a><span class="co"># `map_dbl()` returns an atomic vector of type "double"</span></span>
-<span id="cb94-384"><a href="#cb94-384" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-385"><a href="#cb94-385" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output) <span class="co"># returns a vector, like `sapply()`</span></span>
-<span id="cb94-386"><a href="#cb94-386" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">map</span>(s, <span class="at">.f =</span> median, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb94-387"><a href="#cb94-387" aria-hidden="true" tabindex="-1"></a><span class="co"># `map()` returns a list</span></span>
-<span id="cb94-388"><a href="#cb94-388" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-389"><a href="#cb94-389" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output) <span class="co"># returns a list, like `lapply()`</span></span>
-<span id="cb94-390"><a href="#cb94-390" aria-hidden="true" tabindex="-1"></a><span class="co"># `map_dfr()` returns a data frame</span></span>
-<span id="cb94-391"><a href="#cb94-391" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(s, <span class="at">.f =</span> median, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb94-392"><a href="#cb94-392" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span> (output) <span class="co"># returns a data frame, unlike any of the `apply()` functions</span></span>
-<span id="cb94-393"><a href="#cb94-393" aria-hidden="true" tabindex="-1"></a>output</span>
-<span id="cb94-394"><a href="#cb94-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-395"><a href="#cb94-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-398"><a href="#cb94-398" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb94-399"><a href="#cb94-399" aria-hidden="true" tabindex="-1"></a><span class="co"># | include: false</span></span>
-<span id="cb94-400"><a href="#cb94-400" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb94-401"><a href="#cb94-401" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb94-402"><a href="#cb94-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-403"><a href="#cb94-403" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb94-404"><a href="#cb94-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-405"><a href="#cb94-405" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb94-406"><a href="#cb94-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-407"><a href="#cb94-407" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Functions: arguments, default values, and "dot-dot-dot" (<span class="in">`...`</span>)</span>
-<span id="cb94-408"><a href="#cb94-408" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Conditional expressions: <span class="in">`if... else...`</span>, <span class="in">`ifelse()`</span>, <span class="in">`if_else()`</span>, <span class="in">`case_when()`</span></span>
-<span id="cb94-409"><a href="#cb94-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Iterating with loops: <span class="in">`for()`</span> loops, <span class="in">`while()`</span> loops</span>
-<span id="cb94-410"><a href="#cb94-410" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Functionals for vectorizing data manipulations: <span class="in">`apply()`</span> and <span class="in">`map()`</span> families of function</span>
+<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-19"><a href="#cb94-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-20"><a href="#cb94-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functions</span></span>
+<span id="cb94-21"><a href="#cb94-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-22"><a href="#cb94-22" aria-hidden="true" tabindex="-1"></a>One of the strengths of using a programming language like ***R*** for data manipulation and analysis is that we can write our own functions to things we need to do in a particular way, e.g., to create a custom analysis or visualization. In [**Module 04**](#module-04) we practiced writing our own simple function, and we will revisit that here.</span>
+<span id="cb94-23"><a href="#cb94-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-24"><a href="#cb94-24" aria-hidden="true" tabindex="-1"></a>Recall that the general format for a function is as follows:</span>
+<span id="cb94-25"><a href="#cb94-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-26"><a href="#cb94-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-27"><a href="#cb94-27" aria-hidden="true" tabindex="-1"></a><span class="in">function_name &lt;- function(&lt;argument list&gt;) {</span></span>
+<span id="cb94-28"><a href="#cb94-28" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;function body&gt;</span></span>
+<span id="cb94-29"><a href="#cb94-29" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb94-30"><a href="#cb94-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-31"><a href="#cb94-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-32"><a href="#cb94-32" aria-hidden="true" tabindex="-1"></a>Functions that we define ourselves can have *multiple arguments*, and each argument can have a *default value*. Arguments are separated by commas and default values are specified in the list of arguments. For example, suppose we wanted to make a function that added a user-specified <span class="in">`prefix`</span> to every entry in a particular named variable in a data frame, we could write the following:</span>
+<span id="cb94-33"><a href="#cb94-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-36"><a href="#cb94-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-37"><a href="#cb94-37" aria-hidden="true" tabindex="-1"></a>add_prefix <span class="ot">&lt;-</span> <span class="cf">function</span>(df, <span class="at">prefix =</span> <span class="st">""</span>, variable) {</span>
+<span id="cb94-38"><a href="#cb94-38" aria-hidden="true" tabindex="-1"></a>  df[[variable]] <span class="ot">&lt;-</span> <span class="fu">paste0</span>(prefix, df[[variable]])</span>
+<span id="cb94-39"><a href="#cb94-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(df)</span>
+<span id="cb94-40"><a href="#cb94-40" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-41"><a href="#cb94-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-42"><a href="#cb94-42" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span></span>
+<span id="cb94-43"><a href="#cb94-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb94-44"><a href="#cb94-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Ned"</span>, <span class="st">"Sansa"</span>, <span class="st">"Cersei"</span>,  <span class="st">"Tyrion"</span>, <span class="st">"Jon"</span>, <span class="st">"Daenerys"</span>, <span class="st">"Aria"</span>, <span class="st">"Brienne"</span>, <span class="st">"Rickon"</span>, <span class="st">"Edmure"</span>, <span class="st">"Petyr"</span>, <span class="st">"Jamie"</span>, <span class="st">"Robert"</span>, <span class="st">"Stannis"</span>, <span class="st">"Theon"</span></span>
+<span id="cb94-45"><a href="#cb94-45" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb94-46"><a href="#cb94-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Stark"</span>, <span class="st">"Stark"</span>, <span class="st">"Lannister"</span>, <span class="st">"Lannister"</span>, <span class="st">"Stark"</span>, <span class="st">"Targaryen"</span>, <span class="st">"Stark"</span>, <span class="st">"Tarth"</span>, <span class="st">"Stark"</span>, <span class="st">"Tully"</span>, <span class="st">"Baelish"</span>, <span class="st">"Lannister"</span>, <span class="st">"Baratheon"</span>, <span class="st">"Baratheon"</span>, <span class="st">"Greyjoy"</span></span>
+<span id="cb94-47"><a href="#cb94-47" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb94-48"><a href="#cb94-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"code"</span> <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">100000</span><span class="sc">:</span><span class="dv">999999</span>, <span class="dv">15</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb94-49"><a href="#cb94-49" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb94-50"><a href="#cb94-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-51"><a href="#cb94-51" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">variable =</span> <span class="st">"house"</span>) <span class="co"># uses default prefix</span></span>
+<span id="cb94-52"><a href="#cb94-52" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb94-53"><a href="#cb94-53" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">prefix =</span> <span class="st">"House "</span>, <span class="at">variable =</span> <span class="st">"house"</span>) </span>
+<span id="cb94-54"><a href="#cb94-54" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb94-55"><a href="#cb94-55" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">add_prefix</span>(my_data, <span class="at">prefix =</span> <span class="st">"00001-"</span>, <span class="at">variable =</span> <span class="st">"code"</span>) </span>
+<span id="cb94-56"><a href="#cb94-56" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span>
+<span id="cb94-57"><a href="#cb94-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-58"><a href="#cb94-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-59"><a href="#cb94-59" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Arguments can be passed to a function in any order, as long as the argument name is included. For example, for the </span><span class="in">`add_prefix()`</span><span class="at"> function above, the following are equivalent:</span></span>
+<span id="cb94-60"><a href="#cb94-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-63"><a href="#cb94-63" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-64"><a href="#cb94-64" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(<span class="at">df =</span> my_data, <span class="at">variable =</span> <span class="st">"house"</span>))</span>
+<span id="cb94-65"><a href="#cb94-65" aria-hidden="true" tabindex="-1"></a><span class="co"># versus...</span></span>
+<span id="cb94-66"><a href="#cb94-66" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(<span class="at">variable =</span> <span class="st">"house"</span>, <span class="at">df =</span> my_data))</span>
+<span id="cb94-67"><a href="#cb94-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-68"><a href="#cb94-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-69"><a href="#cb94-69" aria-hidden="true" tabindex="-1"></a>Note that in the example above, because the argument name <span class="in">`prefix`</span> was excluded, the default value was used.</span>
+<span id="cb94-70"><a href="#cb94-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-71"><a href="#cb94-71" aria-hidden="true" tabindex="-1"></a>***R*** also uses positional matching to assign values to arguments when argument names are excluded. Note the difference in the results of these lines:</span>
+<span id="cb94-72"><a href="#cb94-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-73"><a href="#cb94-73" aria-hidden="true" tabindex="-1"></a><span class="in">``` {r}</span></span>
+<span id="cb94-74"><a href="#cb94-74" aria-hidden="true" tabindex="-1"></a><span class="in">head(add_prefix(my_data, "00001-", "code"))</span></span>
+<span id="cb94-75"><a href="#cb94-75" aria-hidden="true" tabindex="-1"></a><span class="in"># versus...</span></span>
+<span id="cb94-76"><a href="#cb94-76" aria-hidden="true" tabindex="-1"></a><span class="in">head(add_prefix(my_data, "House ", "house"))</span></span>
+<span id="cb94-77"><a href="#cb94-77" aria-hidden="true" tabindex="-1"></a><span class="in"># versus...</span></span>
+<span id="cb94-78"><a href="#cb94-78" aria-hidden="true" tabindex="-1"></a><span class="in">head(add_prefix(my_data, "", "house"))</span></span>
+<span id="cb94-79"><a href="#cb94-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-80"><a href="#cb94-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-81"><a href="#cb94-81" aria-hidden="true" tabindex="-1"></a>If we try to run the line below, however, it throws an error because too few (unnamed) arguments are passed to the function for it to be able to disambiguate them:</span>
+<span id="cb94-82"><a href="#cb94-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-85"><a href="#cb94-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-86"><a href="#cb94-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb94-87"><a href="#cb94-87" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">add_prefix</span>(my_data, <span class="st">"00001-"</span>))</span>
+<span id="cb94-88"><a href="#cb94-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-89"><a href="#cb94-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-90"><a href="#cb94-90" aria-hidden="true" tabindex="-1"></a>Unless otherwise specified, functions return the result of the last expression evaluated in the function body. However, is good programming practice to explicitly specify the object or value you want returned from the function with <span class="in">`return(&lt;value&gt;)`</span> or <span class="in">`return(&lt;object&gt;)`</span>.</span>
+<span id="cb94-91"><a href="#cb94-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-92"><a href="#cb94-92" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conditional Expressions</span></span>
+<span id="cb94-93"><a href="#cb94-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-94"><a href="#cb94-94" aria-hidden="true" tabindex="-1"></a>Conditional expressions are a basic feature of any programming language. They are used for "flow control", i.e., to structure what your program does when. The most common conditional expression is the "if... else..." statement, which is used to direct flow of a program between two paths. The general form is:</span>
+<span id="cb94-95"><a href="#cb94-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-96"><a href="#cb94-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-97"><a href="#cb94-97" aria-hidden="true" tabindex="-1"></a><span class="in">if (&lt;test&gt;) {</span></span>
+<span id="cb94-98"><a href="#cb94-98" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;action 1&gt;</span></span>
+<span id="cb94-99"><a href="#cb94-99" aria-hidden="true" tabindex="-1"></a><span class="in">} else {</span></span>
+<span id="cb94-100"><a href="#cb94-100" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;action 2&gt;</span></span>
+<span id="cb94-101"><a href="#cb94-101" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb94-102"><a href="#cb94-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-103"><a href="#cb94-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-104"><a href="#cb94-104" aria-hidden="true" tabindex="-1"></a>As an example...</span>
+<span id="cb94-105"><a href="#cb94-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-108"><a href="#cb94-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-109"><a href="#cb94-109" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb94-110"><a href="#cb94-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-111"><a href="#cb94-111" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
+<span id="cb94-112"><a href="#cb94-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Yes"</span>)</span>
+<span id="cb94-113"><a href="#cb94-113" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb94-114"><a href="#cb94-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"No"</span>)</span>
+<span id="cb94-115"><a href="#cb94-115" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-116"><a href="#cb94-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-117"><a href="#cb94-117" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb94-118"><a href="#cb94-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-119"><a href="#cb94-119" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">==</span> <span class="cn">TRUE</span>){</span>
+<span id="cb94-120"><a href="#cb94-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Yes"</span>)</span>
+<span id="cb94-121"><a href="#cb94-121" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb94-122"><a href="#cb94-122" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"No"</span>)</span>
+<span id="cb94-123"><a href="#cb94-123" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-124"><a href="#cb94-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-125"><a href="#cb94-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-126"><a href="#cb94-126" aria-hidden="true" tabindex="-1"></a>A related form is the <span class="in">`ifelse()`</span> function, which has three arguments: the test condition, the value to be returned or expression to be run if the test condition is true, and the value to be returned or expression to be run if the test condition is false. Unlike the "if... else..." formulation, the <span class="in">`ifelse()`</span> function can work on a vector, too, and returns a vector.</span>
+<span id="cb94-127"><a href="#cb94-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-130"><a href="#cb94-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-131"><a href="#cb94-131" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb94-132"><a href="#cb94-132" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
+<span id="cb94-133"><a href="#cb94-133" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">11</span></span>
+<span id="cb94-134"><a href="#cb94-134" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
+<span id="cb94-135"><a href="#cb94-135" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb94-136"><a href="#cb94-136" aria-hidden="true" tabindex="-1"></a><span class="fu">ifelse</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span>
+<span id="cb94-137"><a href="#cb94-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-138"><a href="#cb94-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-139"><a href="#cb94-139" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** There is also a {dplyr} version of the "if... else..." conditional: `if_else()`. I tend to use this one much more than the {base} ***R*** version.</span></span>
+<span id="cb94-140"><a href="#cb94-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-141"><a href="#cb94-141" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`case_when()`</span> is the equivalent of mixing several "if... else..." statements.</span>
+<span id="cb94-142"><a href="#cb94-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-145"><a href="#cb94-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-146"><a href="#cb94-146" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb94-147"><a href="#cb94-147" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb94-148"><a href="#cb94-148" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">&lt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb94-149"><a href="#cb94-149" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">&lt;=</span> <span class="dv">7</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb94-150"><a href="#cb94-150" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">&lt;=</span> <span class="dv">10</span> <span class="sc">~</span> <span class="st">"large"</span></span>
+<span id="cb94-151"><a href="#cb94-151" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb94-152"><a href="#cb94-152" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-153"><a href="#cb94-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-154"><a href="#cb94-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-155"><a href="#cb94-155" aria-hidden="true" tabindex="-1"></a>For conditional statements, there are two additional functions that are often useful: <span class="in">`any()`</span> and <span class="in">`all()`</span>. The <span class="in">`any()`</span> function takes a vector of logical values and returns <span class="in">`TRUE`</span> if *any* of the elements is TRUE, while the `all()` function takes a vector of logical values and returns `TRUE` if *all* elements are TRUE.</span>
+<span id="cb94-156"><a href="#cb94-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-159"><a href="#cb94-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-160"><a href="#cb94-160" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb94-161"><a href="#cb94-161" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>)</span>
+<span id="cb94-162"><a href="#cb94-162" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>)</span>
+<span id="cb94-163"><a href="#cb94-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-164"><a href="#cb94-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-165"><a href="#cb94-165" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relational Operators</span></span>
+<span id="cb94-166"><a href="#cb94-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-167"><a href="#cb94-167" aria-hidden="true" tabindex="-1"></a>The following relational operators are often used in conditional expressions:</span>
+<span id="cb94-168"><a href="#cb94-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-169"><a href="#cb94-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>less than, greater than: <span class="in">`&lt;`</span>, <span class="in">`&gt;`</span></span>
+<span id="cb94-170"><a href="#cb94-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>less than or equal to, greater than or equal to: <span class="in">`&lt;=`</span>, <span class="in">`&gt;=`</span></span>
+<span id="cb94-171"><a href="#cb94-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>equal to: <span class="in">`==`</span> **NOTE:** This uses a double equal sign!</span>
+<span id="cb94-172"><a href="#cb94-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>not equal to: <span class="in">`!=`</span></span>
+<span id="cb94-173"><a href="#cb94-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-174"><a href="#cb94-174" aria-hidden="true" tabindex="-1"></a><span class="fu">## Logical and Other Operators</span></span>
+<span id="cb94-175"><a href="#cb94-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-176"><a href="#cb94-176" aria-hidden="true" tabindex="-1"></a>The following additional operators are also useful and important:</span>
+<span id="cb94-177"><a href="#cb94-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-178"><a href="#cb94-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`!`</span>: logical **NOT** Note that this operator can be applied to values *and* to functions</span>
+<span id="cb94-179"><a href="#cb94-179" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`&amp;`</span>: element-wise logical **AND** (applies to element in a vector)</span>
+<span id="cb94-180"><a href="#cb94-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`&amp;&amp;`</span>: logical **AND** (applies to single conditions or first element in vector)</span>
+<span id="cb94-181"><a href="#cb94-181" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`|`</span>: element-wise logical **OR** (applies to element in a vector)</span>
+<span id="cb94-182"><a href="#cb94-182" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`||`</span>: logical **OR** (applies to single conditions or first element in vector)</span>
+<span id="cb94-183"><a href="#cb94-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`%in%`</span>: tests for membership **in** a vector</span>
+<span id="cb94-184"><a href="#cb94-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the {sjmisc} package adds a "not in" operator to test for membership in a vector: <span class="in">`%nin%`</span></span>
+<span id="cb94-185"><a href="#cb94-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-186"><a href="#cb94-186" aria-hidden="true" tabindex="-1"></a>Examples:</span>
+<span id="cb94-187"><a href="#cb94-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-190"><a href="#cb94-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-191"><a href="#cb94-191" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>)</span>
+<span id="cb94-192"><a href="#cb94-192" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">any</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="co"># logical NOT</span></span>
+<span id="cb94-193"><a href="#cb94-193" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">all</span>(i <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="co"># logical NOT</span></span>
+<span id="cb94-194"><a href="#cb94-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-195"><a href="#cb94-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-198"><a href="#cb94-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-199"><a href="#cb94-199" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span></span>
+<span id="cb94-200"><a href="#cb94-200" aria-hidden="true" tabindex="-1"></a>i <span class="sc">&lt;</span> <span class="dv">12</span> <span class="sc">&amp;</span> (i<span class="sc">%%</span><span class="dv">3</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># element-wise logical AND</span></span>
+<span id="cb94-201"><a href="#cb94-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-202"><a href="#cb94-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-205"><a href="#cb94-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-206"><a href="#cb94-206" aria-hidden="true" tabindex="-1"></a>i[<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">12</span> <span class="sc">&amp;&amp;</span> (i[<span class="dv">1</span>]<span class="sc">%%</span><span class="dv">3</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># logical AND</span></span>
+<span id="cb94-207"><a href="#cb94-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-208"><a href="#cb94-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-211"><a href="#cb94-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-212"><a href="#cb94-212" aria-hidden="true" tabindex="-1"></a>i <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">|</span> (i<span class="sc">%%</span><span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># element-wise logical OR</span></span>
+<span id="cb94-213"><a href="#cb94-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-214"><a href="#cb94-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-217"><a href="#cb94-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-218"><a href="#cb94-218" aria-hidden="true" tabindex="-1"></a>i[<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">10</span> <span class="sc">||</span> (i[<span class="dv">1</span>]<span class="sc">%%</span><span class="dv">2</span>) <span class="sc">==</span> <span class="dv">0</span> <span class="co"># logical OR</span></span>
+<span id="cb94-219"><a href="#cb94-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-220"><a href="#cb94-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-223"><a href="#cb94-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-224"><a href="#cb94-224" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"There"</span>, <span class="st">"is"</span>, <span class="st">"grandeur"</span>, <span class="st">"in"</span>, <span class="st">"this"</span>, <span class="st">"view"</span>, <span class="st">"of"</span>, <span class="st">"life"</span>)</span>
+<span id="cb94-225"><a href="#cb94-225" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="st">"grandeur"</span></span>
+<span id="cb94-226"><a href="#cb94-226" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%in%</span> a <span class="co"># membership</span></span>
+<span id="cb94-227"><a href="#cb94-227" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"selection"</span>,<span class="st">"life"</span>)</span>
+<span id="cb94-228"><a href="#cb94-228" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%in%</span> a</span>
+<span id="cb94-229"><a href="#cb94-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-230"><a href="#cb94-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-233"><a href="#cb94-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-234"><a href="#cb94-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb94-235"><a href="#cb94-235" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span>
+<span id="cb94-236"><a href="#cb94-236" aria-hidden="true" tabindex="-1"></a>b <span class="sc">%nin%</span> a <span class="co"># not membership</span></span>
+<span id="cb94-237"><a href="#cb94-237" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>sjmisc)</span>
+<span id="cb94-238"><a href="#cb94-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-239"><a href="#cb94-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-240"><a href="#cb94-240" aria-hidden="true" tabindex="-1"></a><span class="fu">## Iterating with Loops</span></span>
+<span id="cb94-241"><a href="#cb94-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-242"><a href="#cb94-242" aria-hidden="true" tabindex="-1"></a><span class="fu">### `for()` Loops {.unnumbered}</span></span>
+<span id="cb94-243"><a href="#cb94-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-244"><a href="#cb94-244" aria-hidden="true" tabindex="-1"></a>When we want to execute a particular piece of code multiple times, for example to iterate over a set of values or to apply the same function to a set of elements in a vector, one way (but not the only way!) to do this is with a *loop*. There are several different constructions we can use for looping, one of the most common of which is a <span class="in">`for()`</span> loop. The basic contruction for a <span class="in">`for()`</span> loop is:</span>
+<span id="cb94-245"><a href="#cb94-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-246"><a href="#cb94-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-247"><a href="#cb94-247" aria-hidden="true" tabindex="-1"></a><span class="in">for (&lt;index&gt; in &lt;range&gt;){</span></span>
+<span id="cb94-248"><a href="#cb94-248" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;code to execute&gt;</span></span>
+<span id="cb94-249"><a href="#cb94-249" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb94-250"><a href="#cb94-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-251"><a href="#cb94-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-252"><a href="#cb94-252" aria-hidden="true" tabindex="-1"></a>The following examples print out each element in a vector, **v**:</span>
+<span id="cb94-253"><a href="#cb94-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-256"><a href="#cb94-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-257"><a href="#cb94-257" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">100</span>, <span class="at">to =</span> <span class="dv">120</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb94-258"><a href="#cb94-258" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(v)){ <span class="co"># here, we are looping over the indices of v</span></span>
+<span id="cb94-259"><a href="#cb94-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(v[i]) </span>
+<span id="cb94-260"><a href="#cb94-260" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-261"><a href="#cb94-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-262"><a href="#cb94-262" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(v)){ <span class="co"># seq_along() also loops over the indices of v</span></span>
+<span id="cb94-263"><a href="#cb94-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(v[i])</span>
+<span id="cb94-264"><a href="#cb94-264" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-265"><a href="#cb94-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-266"><a href="#cb94-266" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> v){ <span class="co"># here we loop over the elements of v</span></span>
+<span id="cb94-267"><a href="#cb94-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb94-268"><a href="#cb94-268" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-269"><a href="#cb94-269" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-270"><a href="#cb94-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-271"><a href="#cb94-271" aria-hidden="true" tabindex="-1"></a>It is good form and improves efficiency if we allocate memory to whatever output we may want to generate inside of a loop beforehand. For example, if we want to use a loop to calculate the <span class="in">`median()`</span> across all Platyrrhine primate genera for the female brain size, female body size, and canine dimorphism variables in the Kamilar and Cooper dataset we have used previously, we could do the following:</span>
+<span id="cb94-272"><a href="#cb94-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-275"><a href="#cb94-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-276"><a href="#cb94-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb94-277"><a href="#cb94-277" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/KamilarAndCooperData.csv"</span></span>
+<span id="cb94-278"><a href="#cb94-278" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>) <span class="co"># creates a "tibble"</span></span>
+<span id="cb94-279"><a href="#cb94-279" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">filter</span>(d, Family <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Atelidae"</span>,<span class="st">"Pitheciidae"</span>,<span class="st">"Cebidae"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb94-280"><a href="#cb94-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Brain_Size_Female_Mean,Body_mass_female_mean,Canine_Dimorphism)</span>
+<span id="cb94-281"><a href="#cb94-281" aria-hidden="true" tabindex="-1"></a><span class="co"># good practice</span></span>
+<span id="cb94-282"><a href="#cb94-282" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="fu">ncol</span>(s))</span>
+<span id="cb94-283"><a href="#cb94-283" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(s)) {</span>
+<span id="cb94-284"><a href="#cb94-284" aria-hidden="true" tabindex="-1"></a>    output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(s[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb94-285"><a href="#cb94-285" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb94-286"><a href="#cb94-286" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-287"><a href="#cb94-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-288"><a href="#cb94-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-289"><a href="#cb94-289" aria-hidden="true" tabindex="-1"></a>The following is another very common way to do this, but is less efficient as we are rewriting the object **output** (and making it one element longer) in every iteration of the loop.</span>
+<span id="cb94-290"><a href="#cb94-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-293"><a href="#cb94-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-294"><a href="#cb94-294" aria-hidden="true" tabindex="-1"></a><span class="co"># not so good practice</span></span>
+<span id="cb94-295"><a href="#cb94-295" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>()</span>
+<span id="cb94-296"><a href="#cb94-296" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(s)) {</span>
+<span id="cb94-297"><a href="#cb94-297" aria-hidden="true" tabindex="-1"></a>    output <span class="ot">&lt;-</span> <span class="fu">c</span>(output, <span class="fu">median</span>(s[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb94-298"><a href="#cb94-298" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb94-299"><a href="#cb94-299" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-300"><a href="#cb94-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-301"><a href="#cb94-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-302"><a href="#cb94-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### CHALLENGE {.unnumbered}</span></span>
+<span id="cb94-303"><a href="#cb94-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-304"><a href="#cb94-304" aria-hidden="true" tabindex="-1"></a>Write a <span class="in">`for()`</span> loop to print out each row in the data frame **my_data**.</span>
+<span id="cb94-305"><a href="#cb94-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-308"><a href="#cb94-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-309"><a href="#cb94-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb94-310"><a href="#cb94-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb94-311"><a href="#cb94-311" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb94-312"><a href="#cb94-312" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(my_data)) {</span>
+<span id="cb94-313"><a href="#cb94-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(my_data[i,])</span>
+<span id="cb94-314"><a href="#cb94-314" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-315"><a href="#cb94-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-316"><a href="#cb94-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-317"><a href="#cb94-317" aria-hidden="true" tabindex="-1"></a>Write a <span class="in">`for()`</span> loop to print out the reverse of each element in the **code** vector in the data frame **my_data**.</span>
+<span id="cb94-318"><a href="#cb94-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-319"><a href="#cb94-319" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **HINT:** Check out the function </span><span class="in">`stri_reverse()`</span><span class="at"> from the {stringi} package.</span></span>
+<span id="cb94-320"><a href="#cb94-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-323"><a href="#cb94-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-324"><a href="#cb94-324" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb94-325"><a href="#cb94-325" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Show Code"</span></span>
+<span id="cb94-326"><a href="#cb94-326" aria-hidden="true" tabindex="-1"></a><span class="co">#| attr.output: '.details summary="Show Output"'</span></span>
+<span id="cb94-327"><a href="#cb94-327" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> my_data<span class="sc">$</span>code){</span>
+<span id="cb94-328"><a href="#cb94-328" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(stringi<span class="sc">::</span><span class="fu">stri_reverse</span>(i))</span>
+<span id="cb94-329"><a href="#cb94-329" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-330"><a href="#cb94-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-331"><a href="#cb94-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-332"><a href="#cb94-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### `while()` Loops {.unnumbered}</span></span>
+<span id="cb94-333"><a href="#cb94-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-334"><a href="#cb94-334" aria-hidden="true" tabindex="-1"></a>An alternative to using a <span class="in">`for()`</span> loop for repeating a particular block of code is to use a <span class="in">`while()`</span> loop. The general construction for a <span class="in">`while()`</span> loop is:</span>
+<span id="cb94-335"><a href="#cb94-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-336"><a href="#cb94-336" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-337"><a href="#cb94-337" aria-hidden="true" tabindex="-1"></a><span class="in">while (&lt;test expression&gt;) {</span></span>
+<span id="cb94-338"><a href="#cb94-338" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;code to execute&gt;</span></span>
+<span id="cb94-339"><a href="#cb94-339" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb94-340"><a href="#cb94-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-341"><a href="#cb94-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-342"><a href="#cb94-342" aria-hidden="true" tabindex="-1"></a>Here, the test expression is evaluated at the start of the loop, and the body of the loop is only entered if the result is TRUE. Once the statements inside the loop are executed, flow returns to the top of the loop to evaluate the test expression again. That process is repeated until the test expression is FALSE, and then the loop is exited and control moves on to subsequent parts of the program.</span>
+<span id="cb94-343"><a href="#cb94-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-344"><a href="#cb94-344" aria-hidden="true" tabindex="-1"></a>As above, the following example prints out each element in the vector, **v**:</span>
+<span id="cb94-345"><a href="#cb94-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-348"><a href="#cb94-348" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-349"><a href="#cb94-349" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">100</span>, <span class="at">to =</span> <span class="dv">120</span>, <span class="at">by =</span> <span class="dv">2</span>)</span>
+<span id="cb94-350"><a href="#cb94-350" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb94-351"><a href="#cb94-351" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="fu">length</span>(v)){</span>
+<span id="cb94-352"><a href="#cb94-352" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(v[i])</span>
+<span id="cb94-353"><a href="#cb94-353" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb94-354"><a href="#cb94-354" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb94-355"><a href="#cb94-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-356"><a href="#cb94-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-357"><a href="#cb94-357" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vectorization and Functionals</span></span>
+<span id="cb94-358"><a href="#cb94-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-359"><a href="#cb94-359" aria-hidden="true" tabindex="-1"></a>In many cases what we want to do in a loop is apply the same function or operation to each of the elements in a vector, matrix, data frame, list or part thereof... and often we do not actually need a loop to do that. Rather, we can often use what is called a *vectorized function*, or *functional*. The function `sapply()`, and related functions (e.g., `apply()`, `lapply()`, `mapply()`, `vapply()`) are examples of functionals: they allow us to perform *element-wise* operations on the entries in a data object.</span>
+<span id="cb94-360"><a href="#cb94-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-361"><a href="#cb94-361" aria-hidden="true" tabindex="-1"></a>The function <span class="in">`sapply()`</span> takes two arguments, a data object (a vector, list, or data frame) and a function (<span class="in">`FUN=`</span>) to apply to its elements. Each element of the data object is passed on to the function, and the result is returned and concatenated into a *vector* of the same length as the original data object. <span class="in">`lapply()`</span> is similar except that the output is a list rather than a vector.</span>
+<span id="cb94-362"><a href="#cb94-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-363"><a href="#cb94-363" aria-hidden="true" tabindex="-1"></a>The following examples replicate what we did with <span class="in">`for()`</span> loops above. Here, **s** is a data frame, and the function <span class="in">`median()`</span> is being applied to each element, i.e., each variable, in that data frame:</span>
+<span id="cb94-364"><a href="#cb94-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-367"><a href="#cb94-367" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-368"><a href="#cb94-368" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">sapply</span>(s, <span class="at">FUN =</span> median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb94-369"><a href="#cb94-369" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we are passing on an extra argument to the `median()`function, i.e., `na.rm=TRUE`. This is an example of "dot-dot-dot" (`...`) being an extra argument of the `sapply()` function where those arguments are "passed through" as arguments of the `FUN=` function. Basically, this means that we can pass on an arbitrary set and number of arguments into `sapply()` which, in this case, are then being used in the `median()` function.</span></span>
+<span id="cb94-370"><a href="#cb94-370" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-371"><a href="#cb94-371" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output)</span>
+<span id="cb94-372"><a href="#cb94-372" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">lapply</span>(s, <span class="at">FUN =</span> median, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb94-373"><a href="#cb94-373" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-374"><a href="#cb94-374" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output)</span>
+<span id="cb94-375"><a href="#cb94-375" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-376"><a href="#cb94-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-377"><a href="#cb94-377" aria-hidden="true" tabindex="-1"></a>The <span class="in">`map()`</span> family of functions from the {purrr} package (which is part of the {tidyverse} set of packages) works very similarly to the <span class="in">`apply()`</span> functions:</span>
+<span id="cb94-378"><a href="#cb94-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-381"><a href="#cb94-381" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-382"><a href="#cb94-382" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(s, <span class="at">.f =</span> median, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb94-383"><a href="#cb94-383" aria-hidden="true" tabindex="-1"></a><span class="co"># note the argument `.f=` instead of `FUN=`</span></span>
+<span id="cb94-384"><a href="#cb94-384" aria-hidden="true" tabindex="-1"></a><span class="co"># `map_dbl()` returns an atomic vector of type "double"</span></span>
+<span id="cb94-385"><a href="#cb94-385" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-386"><a href="#cb94-386" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output) <span class="co"># returns a vector, like `sapply()`</span></span>
+<span id="cb94-387"><a href="#cb94-387" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">map</span>(s, <span class="at">.f =</span> median, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb94-388"><a href="#cb94-388" aria-hidden="true" tabindex="-1"></a><span class="co"># `map()` returns a list</span></span>
+<span id="cb94-389"><a href="#cb94-389" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-390"><a href="#cb94-390" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(output) <span class="co"># returns a list, like `lapply()`</span></span>
+<span id="cb94-391"><a href="#cb94-391" aria-hidden="true" tabindex="-1"></a><span class="co"># `map_dfr()` returns a data frame</span></span>
+<span id="cb94-392"><a href="#cb94-392" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(s, <span class="at">.f =</span> median, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb94-393"><a href="#cb94-393" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span> (output) <span class="co"># returns a data frame, unlike any of the `apply()` functions</span></span>
+<span id="cb94-394"><a href="#cb94-394" aria-hidden="true" tabindex="-1"></a>output</span>
+<span id="cb94-395"><a href="#cb94-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-396"><a href="#cb94-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-399"><a href="#cb94-399" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb94-400"><a href="#cb94-400" aria-hidden="true" tabindex="-1"></a><span class="co"># | include: false</span></span>
+<span id="cb94-401"><a href="#cb94-401" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb94-402"><a href="#cb94-402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb94-403"><a href="#cb94-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-404"><a href="#cb94-404" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb94-405"><a href="#cb94-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-406"><a href="#cb94-406" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb94-407"><a href="#cb94-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-408"><a href="#cb94-408" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Functions: arguments, default values, and "dot-dot-dot" (<span class="in">`...`</span>)</span>
+<span id="cb94-409"><a href="#cb94-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Conditional expressions: <span class="in">`if... else...`</span>, <span class="in">`ifelse()`</span>, <span class="in">`if_else()`</span>, <span class="in">`case_when()`</span></span>
+<span id="cb94-410"><a href="#cb94-410" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Iterating with loops: <span class="in">`for()`</span> loops, <span class="in">`while()`</span> loops</span>
+<span id="cb94-411"><a href="#cb94-411" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Functionals for vectorizing data manipulations: <span class="in">`apply()`</span> and <span class="in">`map()`</span> families of function</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

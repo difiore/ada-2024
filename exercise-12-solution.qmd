@@ -8,6 +8,7 @@ editor_options:
 # • Solution {.unnumbered}
 
 ```{r}
+#| message: false
 library(tidyverse)
 library(skimr)
 library(cowplot)
@@ -45,7 +46,7 @@ d[d==-999] <- NA # using base ***R***
 # d <- d %>% replace_with_na_all(condition = ~.x == -999)
 ```
 
-#### Step 2 {.unnumbered}
+### Step 2 {.unnumbered}
 
 - Drop the variables **litter size** and **refs**.
 
@@ -53,9 +54,9 @@ d[d==-999] <- NA # using base ***R***
 d <- d |> select(-c("litter size", "refs"))
 ```
 
-#### Step 3 {.unnumbered}
+### Step 3 {.unnumbered}
 
-- Log transform **all** of the other numeric variables.
+- Log transform all of the other numeric variables.
 
 ```{r}
 d <- d |> mutate(across(where(is.numeric), log))
@@ -65,7 +66,7 @@ d <- d |> mutate(across(where(is.numeric), log))
 # d <- d |>mutate(across(all_of(vars), log))
 ```
 
-#### Step 4 {.unnumbered}
+### Step 4 {.unnumbered}
 
 - Regress the (now log transformed) age [**gestation(mo)**, **weaning(mo)**, **AFR(mo)** (age at first reproduction), and **max. life(mo)** (maximum lifespan)] and mass [**newborn(g)** and **wean mass(g)**] variables on (now log transformed) overall body **mass(g)** and add the residuals to the dataframe as new variables (**relGest**, **relWean**, **relAFR**, **relLife**, **relNewbornMass**, and **relWeaningMass**).
 
@@ -88,13 +89,14 @@ d$relWeaningMass <- resid(lm(`wean mass(g)` ~ `mass(g)`, data = d, na.action=na.
 # )
 ```
 
-#### Step 5 {.unnumbered}
+### Step 5 {.unnumbered}
 
 - Plot residuals of max lifespan (**relLife**) in relation to **Order**. Which mammalian orders have the highest residual lifespan?
 - Plot residuals of newborn mass (**relNewbornMass**) in relation to **Order**. Which mammalian orders have the have highest residual newborn mass?
 - Plot residuals of weaning mass (**relWeaningMass**) in relation to **Order**. Which mammalian orders have the have highest relative weaning mass?
 
 ```{r}
+#| fig-height: 8
 p1 <- ggplot(data = d, aes(x = order, y = relLife)) +
   geom_boxplot(na.rm = TRUE) +
   geom_jitter(na.rm = TRUE, alpha = 0.1) +
@@ -113,17 +115,15 @@ p3 <- ggplot(data = d, aes(x = order, y = relWeaningMass)) +
 plot_grid(p1, p2, p3, nrow = 3)
 ```
 
-Order Primates has the highest residual lifespan.
+- Order Primates has the highest residual lifespan.
+- Orders Macroscelidae and Cetacea have the highest residual newborn mass.
+- Order Perrisodactyla has the highest residual weaning mass.
 
-Orders Macroscelidae and Cetacea have the highest residual newborn mass
-
-Order Perrisodactyla has the highest residual weaning mass.
-
-#### Step 6 {.unnumbered}
+### Step 6 {.unnumbered}
 
 - Run models and a model selection process to evaluate what (now log transformed) variables best predict each of the two response variables, **max. life(mo)** and **AFR(mo)**, from the set of the following predictors: **gestation(mo)**, **newborn(g)**, **weaning(mo)**, **wean mass(g)**, **litters/year**, and overall body **mass(g)**.
 
-##### Maximum Lifespan
+#### Maximum Lifespan
 
 ```{r}
 d1 <- d |> drop_na(c("max. life(mo)", "gestation(mo)", "newborn(g)", "weaning(mo)", "wean mass(g)", "litters/year", "mass(g)"))
@@ -154,12 +154,12 @@ add1(f5, .~. + `gestation(mo)` + `newborn(g)` + `weaning(mo)` + `wean mass(g)` +
 
 Both forward and backward selection using F ratio tests yield the same best model...
 
-max. life(mo) ~ gestation(mo) + weaning(mo) + litters/year + mass(g)
+$$max. life(mo) \sim gestation(mo) + weaning(mo) + litters/year + mass(g)$$
 
 ```{r}
 # using AICC
 ML_mods <- dredge(ML_full)
-head(coef(ML_mods))
+head(coef(ML_mods), 10) # top 10 models
 (ML_mods.avg <- summary(model.avg(ML_mods, subset = delta <4)))
 ```
 
@@ -169,7 +169,7 @@ The best model overall is `max. life(mo) ~ gestation(mo) + weaning(mo) + litters
 
 - What variables, if any, appear in all of this set of “top” models?
 
-The variables `gestation(mo)`, `litters/year`, `mass(g)`, and `weaning(mo)` appear in all of the models with delta AICc of ≤ 4.
+The variables **gestation(mo)**, **litters/year**, **mass(g)**, and **weaning(mo)** appear in all of the models with delta AICc of ≤ 4.
 
 - Calculate and plot the model-averaged coefficients and their CIs across this set of top models.
 
@@ -178,9 +178,9 @@ confint(ML_mods.avg)
 plot(ML_mods.avg, full = TRUE, intercept = FALSE)
 ```
 
-Based on the plot, we can again see that set of top models includes four predictors for which the 95% CI around the coefficient does not include zero. These are the same predictors identified by forward and backwards selection: `gestation(mo)`, `litters/year`, `mass(g)`, and `weaning(mo)`.
+Based on the plot, we can again see that set of top models includes four predictors for which the 95% CI around the coefficient does not include zero. These are the same predictors identified by forward and backwards selection: **gestation(mo)**, **litters/year**, **mass(g)**, and **weaning(mo)**.
 
-##### Age at First Reproduction
+#### Age at First Reproduction
 
 ```{r}
 d2 <- d |> drop_na(c("AFR(mo)", "gestation(mo)", "newborn(g)", "weaning(mo)", "wean mass(g)", "litters/year", "mass(g)"))
@@ -209,12 +209,12 @@ add1(f5, .~. + `gestation(mo)` + `newborn(g)` + `weaning(mo)` + `wean mass(g)` +
 
 Again, both forward and backward selection using F ratio tests yield the same best model...
 
-max. life(mo) ~ gestation(mo) + weaning(mo) + litters/year + mass(g) 
+$$max. life(mo) \sim gestation(mo) + weaning(mo) + litters/year + mass(g)$$
 
 ```{r}
 # using AICC
 AFR_mods <- dredge(AFR_full)
-head(coef(AFR_mods))
+head(coef(AFR_mods), 10) # top 10 models
 (AFR_mods.avg <- summary(model.avg(AFR_mods, subset = delta < 4)))
 confint(AFR_mods.avg)
 plot(AFR_mods.avg, full = TRUE, intercept = FALSE)
@@ -226,7 +226,7 @@ Again, the best model overall is `max. life(mo) ~ gestation(mo) + weaning(mo) + 
 
 - What variables, if any, appear in all of this set of “top” models?
 
-Here, only three variables - `gestation(mo)`, `litters/year`, and `weaning(mo)` appear in all of the models with delta AICc of ≤ 4. `mass(g)` appears in 3 of the top 6 models, while `newborn(g)` and `wean mass(g)` each appear in 4.
+Here, only three variables - **gestation(mo)**, **litters/year**, and **weaning(mo)** - appear in all of the models with delta AICc of ≤ 4. The variable **mass(g)** appears in 3 of the top 6 models, while the variables **newborn(g)** and **wean mass(g)** each appear in 4.
 
 - Calculate and plot the model-averaged coefficients and their CIs across this set of top models.
 
@@ -235,4 +235,4 @@ confint(ML_mods.avg)
 plot(ML_mods.avg, full = TRUE, intercept = FALSE)
 ```
 
-Based on the plot, we again see that the set of top models only includes 3 predictors whose 95% CIs around the regression coefficients do not include 0: `gestation(mo)`, `litters/year`, and `weaning(mo)`.
+Based on the plot, we again see that the set of top models only includes 3 predictors whose 95% CIs around the regression coefficients do not include 0: **gestation(mo)**, **litters/year**, and **weaning(mo)**.
