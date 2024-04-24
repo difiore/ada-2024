@@ -438,6 +438,7 @@ ui <- fluidPage(
 library(shiny)
 library(DT)
 library(tidyverse)
+library(broom)
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
 d <- read_csv(f, col_names = TRUE)
 ```
@@ -528,7 +529,14 @@ The first code chunk creates a reactive variable, `m()`, the value of which will
   })
 ```
 
-A second code chunk outputs a table of coefficients resulting from the linear model formula stored in `m()`, and it updates every time the user changes `input$response` or `input$predictors` because doing that updates the value of `m()` the output function first confirms that a valid linear model has been constructed.
+A second code chunk prints out the `lm()` being fitted.
+
+```{r}
+#| eval: false
+  output$model <- renderText({paste0("Model: ", print(m()))})
+```
+
+Code chunk 3 outputs a table of coefficients resulting from the linear model formula stored in `m()`, and it updates every time the user changes `input$response` or `input$predictors` because doing that updates the value of `m()` the output function first confirms that a valid linear model has been constructed.
 
 ```{r}
 #| eval: false
@@ -540,26 +548,6 @@ A second code chunk outputs a table of coefficients resulting from the linear mo
       res
     }
   }, width="100%", rownames = TRUE, striped = TRUE, spacing = "s", bordered = TRUE, align = "c", digits = 3)
-```
-
-Code chunk 3 prints out the `lm()` being fitted.
-
-```{r}
-#| eval: false
-  output$model <- renderText({paste0("Model: ", print(m()))})
-```
-
-Code chunk 4 prints out a table of beta coefficients for the fitted model.
-
-```{r}
-#| eval: false
-  output$modelresults <- renderTable({
-    if (!is.null(m())) {
-      res <- lm(data = d, formula = m())
-      tidy(res) |> select(term, estimate, p.value)
-    }
-  }, width = "100%", rownames = TRUE, striped = TRUE, spacing = "s", bordered =
-    TRUE, align = "c", digits = 3)
 ```
 
 Finally, the last code chunk uses {ggplot2} to graph the relationship between the variables we have selected as `input$response` and `input$predictors`.

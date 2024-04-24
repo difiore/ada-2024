@@ -56,10 +56,10 @@ if (commandArgs()[1]=='RStudio'){
   print.cleanup <- function(cleanupObject) cat("\f")
 
 
-}else if(substr(commandArgs()[1], nchar(commandArgs()[1]), nchar(commandArgs()[1])) == "R"){
+} else if(substr(commandArgs()[1], nchar(commandArgs()[1]), nchar(commandArgs()[1])) == "R"){
 
   ##  -------------------------------------------------------------
-  ##  }else if(tail(strsplit(commandArgs()[1], split = "")[[1]], n=length(commandArgs()[1])))
+  ##  } else if(tail(strsplit(commandArgs()[1], split = "")[[1]], n=length(commandArgs()[1])))
   ##  -------------------------------------------------------------
   ##  Reference
   ##  Rapp defaul configuration in macOS:
@@ -70,7 +70,7 @@ if (commandArgs()[1]=='RStudio'){
   ##  https://stackoverflow.com/questions/1348563/clearing-output-of-a-terminal-program-linux-c-c     (check)
   print.cleanup <- function(cleanupObject) cat(c("\033[2J","\033[H"))
 
-}else{print(paste0("not support: ",commandArgs()[1]))}
+} else {print(paste0("not support: ",commandArgs()[1]))}
 
 
 ##  ----------------------------------------

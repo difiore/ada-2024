@@ -58,6 +58,7 @@ book:
       - 25-r-packages.qmd
       - 26-python-from-R.qmd
       - 27-shiny.qmd
+      - 28-geospatial.qmd
     - part: "Exercises"
       chapters:
       - exercise-01.qmd
