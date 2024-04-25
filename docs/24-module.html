@@ -427,8 +427,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./28-geospatial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Intro to Spatial Data</span></span></a>
+  <a href="./28-geospatial-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Introduction to Spatial Data</span></span></a>
   </div>
 </li>
       </ul>
@@ -909,16 +909,15 @@ window.Quarto = {
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## 
-## 11 message(s): boundary (singular) fit: see help('isSingular')
-## 1 warning(s): Model failed to converge with max|grad| = 0.00312022 (tol = 0.002, component 1)</code></pre>
+## 12 message(s): boundary (singular) fit: see help('isSingular')</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>##                        2.5 %    97.5 %
-## .sig01              2.887919  45.25341
-## .sigma             24.972360  33.74418
-## (Intercept)       103.623325 162.81862
-## reproconditionPOP   7.119924  33.86860
-## parityP            68.447957 148.24820</code></pre>
+<pre><code>##                         2.5 %    97.5 %
+## .sig01              0.5244279  42.62539
+## .sigma             24.5251345  33.18436
+## (Intercept)       103.8417938 162.81132
+## reproconditionPOP   8.0936524  32.76944
+## parityP            72.4018238 150.78698</code></pre>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -1339,16 +1338,16 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(m, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">method =</span> <span class="st">"boot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##                           2.5 %    97.5 %
-## .sig01             0.0000000000  19.25782
-## .sig02            -1.0000000000   1.00000
-## .sig03             0.0001742743  17.10608
-## .sig04             0.0000000000  40.84213
-## .sig05            -1.0000000000   0.00000
-## .sig06             0.0001570223  40.50146
-## .sigma            23.2643775469  32.93539
-## (Intercept)       99.9597836123 165.21120
-## reproconditionPOP  6.8140323505  31.95849
-## parityP           74.2463834595 144.58753</code></pre>
+## .sig01             0.000000e+00  20.85998
+## .sig02            -1.000000e+00   1.00000
+## .sig03             9.999631e-05  19.62518
+## .sig04             0.000000e+00  44.12432
+## .sig05            -1.000000e+00   0.00000
+## .sig06             1.796452e-04  44.12460
+## .sigma             2.387722e+01  32.96217
+## (Intercept)        1.012726e+02 163.61060
+## reproconditionPOP  6.827783e+00  32.39119
+## parityP            7.804431e+01 146.59755</code></pre>
 </div>
 </div>
 <p>Finally, effects plots of how the expected amount of grooming received varies with the fixed effects (<strong>reprocondition</strong> and <strong>parity</strong>) under our new random slope model is the same as that under the random intercept model.</p>

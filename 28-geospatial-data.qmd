@@ -1,620 +1,279 @@
-# Building Interactive Web Apps {#shiny}
+# Introduction to Spatial Data {#spatial-data}
 
 ## Objectives {.unnumbered}
 
-> In this module, we explore using the {shiny} package to build interactive web applications for data analysis and visualization. The following is based heavily and shamelessly on material from this excellent [tutorial](http://shiny.rstudio.com/tutorial/) and related [articles](http://shiny.rstudio.com/articles/) on using {shiny} from ***RStudio***, as well as on [this blog post](http://zevross.com/blog/2016/04/19/r-powered-web-applications-with-shiny-a-tutorial-and-cheat-sheet-with-40-example-apps/) by developer Zev Ross.
-
-## Preliminaries {.unnumbered}
-
-- Install and load these packages in ***R***: [{shiny}](https://cran.r-project.org/web/packages/shiny/shiny.pdf) and [{DT}](https://cran.r-project.org/web/packages/DT/DT.pdf)
-- Load {tidyverse}
-
 ```{r}
 #| include: false
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- Load the following packages:
+
+```{r}
 #| message: false
+#| warning: false
 library(tidyverse)
-library(shiny)
-library(DT)
+library(sp)
+library(sf)
+library(cowplot)
+library(adehabitatHR)
 ```
 
-## Getting Started {.unnumbered}
+## Background
 
-{shiny} is an ***R*** package that makes it easy to build interactive web applications straight from ***R***.
+In recent years, affordable and accessible GPS units or GPS-enabled smartphones, watches, tablets, cameras, etc. have allowed for the recording of data with precise locations attached. This increase in the amount of available spatial data has been associated with an increase in demand for visualizations and analyses of such data, to exploit the richness of analysis that location affords.
 
-A typical {shiny} app contained in a single ***R*** script called "app.R". You can create a Shiny app by making a new directory and saving an "app.R" file inside it. It is recommended that each "app.R" script is stored in its own unique directory.
+Spatial data can be processed and analyzed using a geographic information system (GIS). There are several packages and software available capable of working with spatial data, but in many cases, data observations may not be independent or the relationship between variables may vary across geographical space. Thus standard statistical packages are often inadequate for analysis as they cannot account for the complexities of spatial processes and spatial data. Additionally, although standard GIS packages and software, such as the ESRI system of products, provide tools for the visualization of spatial data, their analytical capabilities are relatively limited and inflexible. Some ***R*** packages, on the other hand, are created by experts and innovators in the field of spatial data analysis and visualization, making ***R*** one of the best environments for spatial data analysis and manipulation. ***R*** can also be used to complement other mapping programs; for example, with visualizations completed in ***ArcGIS*** followed by data analysis in ***R***.
 
-> **NOTE:** You do not need to call your app script "app.R"... any ".R" file with the appropriate {shiny} structure can be an app.
+The `sp` spatial data format, as defined in the {sp} package, has been a dominant format in ***R*** for several years and provides an organized set of classes for storing spatial data. These classes (or types of `sp` objects) correspond to the three main types of vector data, i.e., the data used to represent real world features in a GIS: points (with class “SpatialPoints”), lines (with class “SpatialLines”), and areas (with class “SpatialPolygons”). Tools drawn from a range of ***R*** packages, such as {maptools}, {GISTools}, and {adehabitatHR} require spatial data in the `sp` format for spatial data analysis. Currently, however, the ***R*** spatial community is in a period of transition from relying on the `sp` format to using a newer way of representing spatial data known as "simple features" or `sf` format.
 
-You can run a {shiny} app by passing the name of its directory to the function `runApp()`, i.e., by setting the path to the directory as an argument. If your app directory is inside your working directory, then the argument is just the name of the directory for your app. For example if your {shiny} app is in a directory called "my_app", which is located in your working directory, you can run it with the following code: `runApp("my_app")`.
+"Simple features" refers to a formal standard that describes how objects in the real world can be represented, stored, and accessed, with emphasis on the *spatial geometry* of these objects. The standard is widely implemented in spatial databases (such as ***PostGIS***) and is the basis for most of the newer ***R*** packages dealing with spatial data. A "feature" is thought of as a thing, or an object in the real world, that has a geometry (i.e., coordinates) describing where on Earth the feature is located. Just as objects in ***R*** often consist of other objects, a set of features can form a single feature. So, a tree can be a feature, a forest stand can be a feature, or an entire country can be a feature. There are many `sf` feature types, but the key ones again correspond to points (“Point”), lines (“Linestring”), and areas (“Polygon”). The {sf} package has a stronger theoretical structure than {sp}, with, for example, "multipoint" features being composed of single point features. However, many packages providing operations and functions for spatial data analyses have not  been updated to work with `sf` format spatial data. Therefore, both the `sp` and `sf` formats are introduced here and used throughout this module, with conversion between the two occurring as needed.
 
-If your "app.R" script is open in ***RStudio***, you can also run it using the "RunApp" button at the top of the editor window.
+In addition to their geometry, spatial data may also have any number of additional *attributes*, which describe other properties of a feature (i.e., metadata, such as population, length, area, etc.). The attributes associated with individual features (lines, points, and areas in vector data and cell values in raster data) provide the basis for spatial analyses and geographical investigation.
 
-> **NOTE:** Your ***R*** session will be busy while any running {shiny} app is active, so you will not be able to run any other ***R*** commands. Basically, ***R*** is running behind the scenes, monitoring the app and executing the app's reactions. To return to your ***R*** session, hit <esc> or click the stop sign icon found in the upper right corner of the ***RStudio*** console panel.
+It is common for researchers to begin their spatial analyses with point data represented in tabular format rather than as an ***R*** spatial object (i.e., of class `sp` or `sf` format), so importing data for GIS analyses is often similar to importing data for other ***R*** analyses. As with non-spatial data, tabular datasets consisting of sets of features with geometries and attributes are the most useful structure for important and wrangling in ***R***. In spatial data frames, each record (row) typically represents a single feature, while the fields (columns) describe the coordinates plus any variables or attributes associated with that feature.
 
-Every "app.R" script has three components:
-
-- a user interface object (called `ui`)
-- a `server` function
-- a call to the `shinyApp()` function
-
-The user interface (`ui`) object controls the layout and appearance of your app. The `server` function contains the instructions that your computer needs to build your app. Finally the `shinyApp()` function creates Shiny app objects from an explicit UI/server pair.
-
-Your "app.R" ***R*** script must also begin by loading the {shiny} package. Below is the skeleton of a typical {shiny} app.
+In this module we will work primarily with a dataset of the ranging patterns for a group of spider monkeys, *Ateles belzebuth*, at Tiputini Biodiversity Station from July 2010 through June 2012. Rows in the data file we will work with represent point data describing the  tracks of monkeys that were originally collected at 15-minute intervals using handheld GPS units while performing behavioral focal follows on members of a  single social group named MQ1. Let's load some packages and import this dataset now:
 
 ```{r}
-#| eval: false
-library(shiny)
-
-ui <- ...
-
-server <- ...
-
-shinyApp(ui = ui, server = server)
-```
-
-To see an example app in action, run one of the following:
-
-```{r}
-#| eval: false
-runExample("01_hello")      # a histogram
-runExample("02_text")       # tables and data frames
-runExample("03_reactivity") # a reactive expression
-runExample("04_mpg")        # global variables
-runExample("05_sliders")    # slider bars
-runExample("06_tabsets")    # tabbed panels
-runExample("07_widgets")    # help text and submit buttons
-runExample("08_html")       # Shiny app built from HTML
-runExample("09_upload")     # file upload wizard
-runExample("10_download")   # file download wizard
-runExample("11_timer")      # an automated timer
-```
-
-## Building a User Interface {.unnumbered}
-
-Now that you understand the structure of a {shiny} app, it's time to build our own first app from scratch!
-
-### Create a Skeleton App {.unnumbered}
-
-You can do this in a file called "app.R" by entering the following code:
-
-```{r}
-#| eval: false
-library(shiny)
-
-# Define the UI ----
-ui <- fluidPage(
-)
-
-# Define server logic ----
-server <- function(input, output) {
-}
-
-# Run the app ----
-shinyApp(ui = ui, server = server)
-```
-
-{shiny} uses the function `fluidPage()` to create a display that automatically adjusts to the dimensions of your user's browser window. You lay out the user interface of your app by placing elements in the `fluidPage()` function.
-
-For example, the `ui` function below creates a user interface that has a title panel element (`titlePanel()`) and a sidebar layout (`sidebarLayout()`) format. The sidebar layout defines includes a sidebar panel (`sidebarPanel()`) and a main panel (`mainPanel()`). Note that all these elements are placed within the `fluidPage()` function.
-
-> **NOTE:** {shiny} offers many other options for designing the user interface besides `fluidPage()` and various `*Panels`. You can explore these in the {shiny} documentation.
-
-Modify your "app.R" file to the following and then run the app:
-
-```{r}
-ui <- fluidPage(
-  titlePanel("title panel"),
-
-  sidebarLayout(
-    sidebarPanel("sidebar panel"),
-    mainPanel("main panel")
-  )
-)
-```
-
-`titlePanel()` and `sidebarLayout()` create a basic layout for your {shiny} app, but you can also create more advanced layouts. For example, you can use `navbarPage()` to give your app a multi-page user interface that includes a navigation bar. Or you can use `fluidRow()` and `column()` to build your layout up from a grid system. The [Shiny Application Layout Guide](http://shiny.rstudio.com/articles/layout-guide.html) provides further details about how you can modify the layout of your app.
-
-You can add content to your {shiny} app by placing it inside one of the various `*Panel()` functions (e.g., `sidebarPanel()`). For example, the app above displays a character string in each of its panels. The words "sidebar panel" appear in the sidebar panel because we added that string as an argument to the `sidebarPanel()` function, e.g. `sidebarPanel("sidebar panel")`.
-
-### Add HTML Context {.unnumbered}
-
-To add more advanced text content, use one of {shiny}'s HTML tag functions. These functions parallel common HTML5 tags.
-
-<center>
-
-| {shiny} HTML Tag Function | HTML5 Equivalent | Creates                                          |
-|---------------------------|------------------|--------------------------------------------------|
-| p                         | \<p\>            | A paragraph of text                              |
-| h1                        | \<h1\>           | A first level header                             |
-| h2                        | \<h2\>           | A second level header                            |
-| h3                        | \<h3\>           | A third level header                             |
-| h4                        | \<h4\>           | A fourth level header                            |
-| h5                        | \<h5\>           | A fifth level header                             |
-| h6                        | \<h6\>           | A sixth level header                             |
-| a                         | \<a\>            | A hyper link                                     |
-| br                        | \<br\>           | A line break (e.g. a blank line)                 |
-| div                       | \<div\>          | A division of text with a uniform style          |
-| span                      | \<span\>         | An in-line division of text with a uniform style |
-| pre                       | \<pre\>          | Text 'as is' in a fixed width font               |
-| code                      | \<code\>         | A formatted block of code                        |
-| img                       | \<img\>          | An image                                         |
-| strong                    | \<strong\>       | Bold text                                        |
-| em                        | \<em\>           | Italicized text                                  |
-| HTML                      |                  | Directly passes a character string as HTML code  |
-
-</center>
-
-To place a text element of one of these types in your app, pass the appropriate {shiny} function and argument as an argument to one of the `*Panel()` functions in the `ui` section of your app. The text will appear in the corresponding panel of your web page. You can place multiple elements in the same panel if you separate them with a comma.
-
-### CHALLENGE {.unnumbered}
-
-- Replace the "title panel" text in the `titlePanel()` of your app with an **h1** element that says "My First Web App".
-
-- Replace the "main panel" text in the `mainPanel()` of your app with an **h3** element that says "Wow, I'm creating a webpage and web server!".
-
-- Add an **h4** element to the `mainPanel()` that says "This is really cool.".
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show Code"
-#| attr.output: '.details summary="Show Output"'
-#| eval: false
-library(shiny)
-
-# Define the UI ----
-ui <- fluidPage(
-  titlePanel(h1("My First Web App")),
-  sidebarLayout(
-    sidebarPanel("sidebar panel"),
-    mainPanel(h3("Wow, I'm creating a webpage and web server!"),
-              h4("This is really cool.")
-              )
-    )
-  )
-
-# Define server logic ----
-server <- function(input, output) {
-  
-}
-
-# Run the app ----
-shinyApp(ui = ui, server = server)
-```
-
-### Style HTML Content {.unnumbered}
-
-You can use html tag attribute "style" to style the HTML text element.
-
-For example, replace this line in your `ui` code...
-
-`h4("This is really cool.")`
-
-with...
-
-`h4("This is really cool.", style="color:blue; text-align:center")`
-
-... and then rerun your app.
-
-To insert an image into your webpage, you can use the `img()` function and give the name of your image file as the "src" argument (e.g., `img(src = "my_image.png")`). You must spell out this argument since `img()` passes your input to an HTML tag, and "src"is what the tag expects.
-
-You can also include other HTML-friendly parameters for your image such as `height=` and `width=` - e.g., `img(src = "my_image.png", height = 72, width = 72)`, where height and width numbers will refer to pixels.
-
-The `img()` function from {shiny} looks for your image file **in a specific place**. Your file must be in a folder named `www` located in the same directory as the "app.R" script. {shiny} treats this directory in a special way... it will share any file placed here with your user's web browser, which makes the `www` a great place to store images, css ("cascading style sheet") files, and other things the web browser will need to build web components of your app.
-
-### CHALLENGE {.unnumbered}
-
-- Insert an image into the `sidebarPanel()` of your app, replacing the existing text. Also pass a "style" to the HTML element to center it.
-
-Replace the sidebar panel line with...
-
-`sidebarPanel(img(src="pvz-zombie1.png", width=100), style="text-align:center")`
-
-... and then rerun your app.
-
-### Adding Control Widgets {.unnumbered}
-
-So far, all our app does is create a static web page, but we can add control widgets and elements whose display updates when we change a value in a control to make our webpage interactive. A widget is a web element that users can interact with. They collect a value from the user and, when a user changes the widget, the value will change as well. Widgets thus provide a way for your users to send messages to the {shiny} app.
-
-{shiny} comes with a family of pre-built widgets, each created with a correspondingly named ***R*** function (and additional packages exist that you can use to extend the family of widgets). For example, {shiny} provides a function named `actionButton()` that creates an button and a function named `sliderInput()` that creates a slider bar.
-
-```{r}
-#| echo: false
-#| out-width: "75%"
-knitr::include_graphics("img/basic-widgets.png")
-```
-
-You can add widgets to your webpage in the same way that you added other types of HTML content. To add a widget, place its corresponding function in one of the `*Panel` elements in your `ui` object.
-
-Each widget function requires several arguments. The first two arguments for each widget are:
-
-- A **name** for the widget:The user will not see this name, but you can use it to access the widget's value. The name should be a character string.
-- A **label**: This label will appear with the widget in your app. It should be a character string, but it can be an empty string "", e.g., `label=""`.
-
-In this example, the name is "submit" and the label is "SUBMIT":
-
-`actionButton("submit", label = "SUBMIT")`
-
-The remaining arguments vary from widget to widget, depending on what the widget needs to do its job. They include things like initial values, ranges, and increments. You can find the exact arguments needed by a widget on the widget function's help page, (e.g., `?selectInput()`).
-
-### CHALLENGE {.unnumbered}
-
-Add a button labeled "SUBMIT" to the `sidebarPanel` of your app below the image you already added and then rerun your app.
-
-> **NOTE:** To get your button to show up BELOW the image, you will need to also add one or more `br()` (line break) elements to the `sidebarPanel()` element.
-
-Replace the sidebar panel line with...
-
-```
-sidebarPanel(img(src="pvz-zombie1.png", width=100), style="text-align:center"),
-    br(),
-    br(),
-    actionButton("submit", "SUBMIT"),
-    style="text-align:center")
-```
-
-... and then rerun your app.
-
-The [Shiny Widgets Gallery](http://shiny.rstudio.com/gallery/widget-gallery.html) provides templates that you can use to quickly add widgets to your {shiny} apps.
-
-To use a template, visit the gallery. The gallery displays each of {shiny}'s widgets, and demonstrates how the widgets' values change in response to your input.
-
-Select the widget that you want and then click the "See Code" button below the widget. The gallery will take you to an example app that describes the widget. To use the widget, copy and paste the code in the example's "app.R" file to your "app.R" file in the desired place in your `ui` object.
-
-## Displaying Reactive Values {.unnumbered}
-
-If we now want our web app to conduct some analysis or display some data visualization that responds to user input, we need to set up the `ui` and the associated `server` function to create and **reactive** output. This involves two basic steps:
-
-- Adding an ***R*** object to our user interface.
-- Telling {shiny} how to build that object in the `server()` function. The object will be **reactive** if the code that builds it calls a widget value.
-
-#### Step 1: Adding an ***R*** Object to the UI {.unnumbered}
-
-{shiny} provides a family of functions that turn ***R*** objects into output for your user interface. Each function creates a specific type of output.
-
-<center>
-
-| {shiny} Output Function |  Creates  |
-|:-----------------------:|:---------:|
-|     dataTableOutput     | DataTable |
-|       htmlOutput        | raw HTML  |
-|       imageOutput       |   image   |
-|       plotOutput        |   plot    |
-|       tableOutput       |   table   |
-|       textOutput        |   text    |
-|        uiOutput         | raw HTML  |
-|   verbatimTextOutput    |   text    |
-
-</center>
-
-You can add output to the user interface in the same way that we added HTML elements and widgets, by placing the desired `*Output()` function inside one of the `*Panel` elements in the `ui`.
-
-### CHALLENGE {.unnumbered}
-
-Let's add a `selectInput()` popdown menu element to the `sidebarPanel()` of your app. This function takes up to four arguments, the element name, the element label, a vector of choices to select from, and the name of the default choice.
-
-Replace the `actionButton()` you added to the sidebarPanel with the following and rerun your app.
-
-```
-selectInput(
-  "favorite_monster",
-  label = "Choose one of the following...",
-  choices = c("Zombie", "Vampire", "Alien", "Werewolf"),
-  selected = "Zombie"
-  )
-```
-
-Now add a reactive `textOutput()` function to the `mainPanel` element of your app... it should now look like this...
-
-```
-mainPanel(
-  h3("Wow, I'm creating a webpage and web server!"),
-  h4("This is really cool."),
-  textOutput("favorite_monster")
-  )
-```
-
-Notice that `textOutput()` takes an argument, in this case the character string "favorite_monster". Each of the `*Output()` functions require a single argument: a character string that {shiny} uses as the name of your reactive element. Your users will not see this name, but you will use it later.
-
-#### Step 2: Provide ***R*** Code to Build the Reactive Object {.unnumbered}
-
-Placing a function in the `ui` tells {shiny} where to display your object. Next, you need to tell {shiny} how to build the object.
-
-We do this by providing the ***R*** code that builds the object in the `server()` function.
-
-The `server()` function builds a list-like object named "output" that contains all of the code needed to update the ***R*** objects in your app. Each ***R*** object needs to have its own entry in the list.
-
-You can create an entry by defining a new element for `output` within the `server()` function, like below. The element name should match the name of the reactive element that you created in the `ui`.
-
-In the server function below, `output$favorite_monster` matches `textOutput("favorite_monster")` in your `ui`.
-
-Modify the `server()` function in your app to look like the code below and then run your app.
-
-```
-server <- function(input, output) {
-  output$favorite_monster <- renderText({"argument"})
-}
-```
-
-Each `render*()` function takes a single argument: an ***R*** expression surrounded by braces, `{}`. The expression can be one simple line of text, or it can involve many lines of code, as if it were a complicated function call.
-
-Think of this ***R*** expression as a set of instructions that you give {shiny} to store for later. {shiny} will these instructions when you first launch your app and then will re-run the instructions every time it needs to update your object.
-
-For this to work, your expression should return the object you have in mind (a piece of text, a plot, a data frame, etc.). You will get an error if the expression does not return an object, or if it returns the wrong type of object.
-
-Thus far, the text returned is not reactive. It will not change even if you manipulate the `selectInput()` widget of the app. But we can make the text reactive by asking {shiny} to call a widget value when it builds the text.
-
-Notice that the `server()` function has two arguments, `input=` and `output=`. Like `output`, `input` is also a list-like object. It stores the current values of all of the widgets in your app. These values will be saved under the names that you gave the widgets in your `ui`. We have a widget named "favorite_monster" in our `ui`, and this value is stored as `input$favorite_monster` and gets updated every time we change the value of the widget.
-
-{shiny} will automatically make an object reactive if the object incorporates an input value. For example, we can make our `server()` function create a reactive line of text by calling the value of the `selectInput()` widget to build the text.
-
-Again, modify the `server()` function in your app to look like the code below and then run your app.
-
-```
-server <- function(input, output) {
-  output$favorite_monster <- renderText({paste0("You have selected... ", input$favorite_monster)})
-}
-```
-{shiny} tracks which outputs depend on which widgets. When a user changes a widget, {shiny} rebuilds all of the outputs that depend on that widget, using the new value of the widget as it goes.
-
-This is how you create reactivity with {shiny}, by connecting the values of "input" to the objects in "output". {shiny} takes care of all of the other details.
-
-## Loading in a Data from a File {.unnumbered}
-
-To load in data from file to use in a {shiny} visualization, we have to have our app execute some kind of `read*()` function specifying the path to the file. We also have to have {shiny} load any libraries we might need to visualize our data. Below, we are going to use the {DT} library to make a nicely formatted table of data and {ggplot2} to build graphs. {shiny} will execute the commands we give it apart from the `ui` and `server` sections of our script, but where we place those commands will determine when and how many times they are run (or rerun), which can affect the performance of our app.
-
-- {shiny} will run the whole script the first time we call `runApp()`. This causes {shiny} to execute the server function. Code put before the `ui` step will thus run one time.
-
-```{r}
-#| echo: false
-#| out-width: "75%"
-knitr::include_graphics("img/run-once.png")
-```
-
-Alternatively we can put code inside the `server()` function. For each time that a new user visits the app, {shiny} will run the server function again. The `server()` function helps {shiny} build a distinct set of reactive objects for each user, but it is not run repeatedly.
-
-```{r}
-#| echo: false
-#| out-width: "75%"
-knitr::include_graphics("img/run-once.png")
-```
-
-Finally, we can put code inside the `render*()` function. With this setup, {shiny} will run the function every time a user changes the value of a widget.
-
-```{r}
-#| echo: false
-#| out-width: "75%"
-knitr::include_graphics("img/run-many-times.png")
-```
-
-These patterns of behavior suggest that you should do the following:
-
-- Put code for sourcing scripts, loading libraries, and reading data sets at the beginning of `app.R` **outside** of the `server()` function. {shiny} will only run this code once, which is all you need to set your server up to run the ***R*** expressions contained in `server()`.
-
-- Define user-specific objects **inside** the `server()` function, but **outside** of any `render*()` calls. These would be objects that you think each user will need their own personal copy of, e.g., an object that records the user's session information. This code will be run once per user.
-
-- Only place code that {shiny} must **rerun to build an object** inside of a `render*()` function. {shiny} will rerun all of the code in a `render*()` chunk every time a user changes a widget mentioned in the chunk. This can be quite often.
-
-You should generally avoid placing code inside a `render*()` function that does not need to be there. Doing so will slow down the entire app.
-
-## Example Linear Model Visualizer App {.unnumbered}
-
-We are now going to use some of the above techniques to build a functional web app that loads in data from the "zombies.csv" file we have been using, displays the data in a table, and then lets us interactively explore simple and multiple regression linear model to generate a table of beta coefficients and plot bivariate scatterplots and boxplots. A full version of this app can be viewed or downloaded from [here](https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/lm.R).
-
-### CHALLENGE {.unnumbered}
-
-#### Step 1 {.unnumbered}
-
-- Create a new {shiny} app called "lm.R" with the three standard sections of a {shiny} app:
-
-```
-ui <- fluidPage()
-server <- function(input,output){}
-shinyApp(ui = ui, server = server)
-```
-
-#### Step 2 {.unnumbered}
-
-- Add to the `ui` a `titlePanel()` with an `h1` element you call "Simple LM Visualizer" and a `sidebarLayout()` with `sidebarPanel()` and `mainPanel()` elements. Also add a `dataTableOutput()` and `plotOutput()` element to your `mainPanel()`. Set the names for these to "datatable" and "plot", respectively. We also set the width of the `sidebarPanel()` and `mainPanel()` to 5 and 7 units, respectively. This is because the layout system that {shiny} uses is based on dividing the browser window into a grid with 12 columns.
-
-```
-ui <- fluidPage(
-  titlePanel(h1("Simple LM Visualizer")),
-  sidebarLayout(
-    sidebarPanel(width = 5,
-    ),
-    mainPanel(width = 7,
-      dataTableOutput("datatable"),
-      plotOutput("plot")
-    )
-  )
-)
-```
-
-#### Step 3 {.unnumbered}
-
-- Add code to the start of your app to load in the {DT} and {tidyverse} (and, by extension, the {dplyr} and {ggplot2}) libraries and to read our zombie apocalypse survivors dataset into the app as a variable named **d** when the app starts up.
-
-```
-library(shiny)
-library(DT)
-library(tidyverse)
-library(broom)
-f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"
+#| message: false
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/spider_monkeys.csv"
 d <- read_csv(f, col_names = TRUE)
+head(d)
 ```
 
-#### Step 4 {.unnumbered}
+As we can see, the dataset includes not only the focal point locations of the group given in latitude and longitude, but attributes including the subgroup composition, date and time of observation, and other details (the focal and/or observation number, observer, etc.) at each of those points.
 
-- Use the {dplyr} verb `select()` to winnow the dataset to the following five variables from the dataset: **height**, **weight**, **age**, **gender**, and **major**. Convert the variables **gender** and **major** to be factors. Also, create two variables **r** and **p** that are vectors of the possible quantitative "response" variables (height, weight, and age) and possible "predictor" variables (all of the possible variables, both quantitative and categorical).
+## Projections and CRSs
 
-```
-d <- select(d, height, weight, age, gender, major)
-d$gender <- factor(d$gender)
-d$major <- factor(d$major)
-r <- c("height", "weight", "age")
-p <- names(d)
-```
+In order to carry out spatial analyses, we first want to convert this data frame to the `sp` or `sf` format. There are few ways to do this, but one of the most straightforward workflows, particularly if we need to re-project the geometry/coordinates, is the following:
 
-#### Step 5 {.unnumbered}
+- Import the data in tabular format
+- Assign the coordinates for the spatial object
+- Assign the current projection of the coordinates
+- Create an `sp` data format object from the data and assign the coordinate reference system (CRS) relevant to the imported data
+- If required, convert the object to a new CRS to match that of other spatial objects in the project
+- If required, convert the `sp` object to `sf` format using `st_as_sf()`
 
-Modify the default `server()` function as follows...
+These steps are important because they allow us to define a common CRS, and project all data into the same geospatial extent. Coordinate reference systems are like measurement units for coordinates: they provide a standardized way of describing locations and specify to which location on Earth a particular coordinate pair refers. Coordinates can only be placed on the Earth’s surface when their CRS is known and specified. In ***R***, when data with different CRSs are combined, it is important to transform them to a common CRS so they align with one another.
 
-```
-server <- function(input, output) {
-  output$datatable <-
-    renderDataTable(d, options = list(
-      paging = TRUE,
-      lengthMenu = list(c(5, 10, 25, -1), c('5', '10', '25', 'All')),
-      pageLength = 5
-    ))
-```
+A CRS includes the **datum**, **projection**, and **unit** components, and in ***R*** is described using `proj4string` notation, which is a standard defined and implemented in a geospatial data processing library called PROJ4. The **datum** defines the origin and orientation of the coordinate axes, as well the size/shape of Earth, and also specifies an ellipsoid model that is used to characterize the globe.
 
-Now run your app... what does it do?
+A particular CRS can be referenced by its **EPSG** code, which is an integer ID for a particular, known CRS that can be resolved into a `proj4string` representation. There are two general types of CRSs:
 
-#### Step 6 {.unnumbered}
+- **unprojected** (or **geographic**): e.g., Latitude/Longitude for referencing a location on the ellipsoid model of the Earth
+- **projected**: e.g., Easting/Northing distances for referencing the location on a particular 2D representation of the Earth
 
-- Next, modify your sidebar to include two `selectInput()` popdown menus. The first popdown allows you to select a variable to be a *response* variable:
+An elliptical Earth is thus projected onto a flat surface. Map coordinates for a point are computed from their ellipsoidal latitude and longitude by a standard formula known as a map projection. But because it is impossible to flatten a round object without distortion, this results in trade-offs between area, direction, shape, and distance. There is no "best" projection, but some projections are better suited to different applications.
 
-```
-selectInput(
-  "response",
-  label = "Choose a response variable...",
-  choices = c("", r)
-)
-```
+The Universal Transverse Mercator (UTM) projection, for example, is commonly used in research because it tends to be more locally accurate and has attributes that make estimating distance easy and accurate. Positions are described using Easting and Northing coordinates. The Mercator projection preserves angles and direction, but distorts distance. To minimize this distortion, the UTM divides the Earth into sixty separate zones. The UTM zone for a location of interest can easily be found online. The points collected at TBS in Eastern Ecuador are mapped to UTM zone 18 South.
 
-> **NOTE**: The "" is needed in `choices = c()` to allow NO VARIABLE to be the default value
+Now let’s convert our spider monkey data frame into an `sp` object. Our initial coordinates are given in longitude and latitude, but we want to transform all of our data to a UTM projection as we'll be mapping and analyzing points on a 2D surface. For this, we need to define the datum and projection.
 
-The second popdown allows you to select one or more variables as *predictor* variables:
-
-```
-selectInput(
-  "predictors",
-  label = "Choose one or more predictor variables...",
-  choices = p,
-  multiple = TRUE
-)
-```
-
-- Also add two other output variables to the sidebar. The first will be used to display the linear model we construct...
-
-```
-textOutput("model")
-```
-
-... and the second will be used to display the results of the model.
-
-```
-tableOutput("modelresults")
-```
-
-#### Step 7 {.unnumbered}
-
-- Add the following code chunks to your `server()` function:
-
-The first code chunk creates a reactive variable, `m()`, the value of which will be updated every time that the `input$response` or `input$predictors` values change as a user interacts with our app. The value returned by the `m()` reactive function is either NULL (if no response or predictor variable are chosen by the user) or a text version of a linear model formula (e.g., "height ~  weight + age").
+The World Geodetic System 1984 (WGS84) is a common standard datum to used. It is defined and maintained by the United States National Geospatial-Intelligence Agency, and so is typically the default for US GPS systems. Therefore, the datum for our coordinate reference system is "WGS84". The data we will import will have either been collected in longitude/latitude format (with projection "longlat") or may consist of  Easting/Northing coordinates already projected to UTM Zone 18S (with projection UTM Zone 18S). Lastly, we'll select meters as our **units** to include in our `proj4string` specification. Once we've projected and transformed the data into a common CRS, we can use the generic `plot()` function to see a spatial representation of our points stored in `sp` format.
 
 ```{r}
-#| eval: false
-  m <- reactive({
-    mod <- NULL
-    if (input$response=="" | length(input$predictors)==0){return(mod)}
-    mod <- paste0(input$response," ~ ", input$predictors[1])
-    if (length(input$predictors) > 1){
-      for (i in 2:length(input$predictors)){
-      mod <- paste0(mod, " + ", input$predictors[i])
-      }
-      }
-    return(mod)
-  })
+# project and plot focal points
+crs_original <- "+proj=longlat +datum=WGS84"
+coordinates(d) <- c("Longitude", "Latitude") # x, y values represent the longitude and latitude, respectively and match the names of the fields in our original data table
+proj4string(d) <- CRS(crs_original) # note that the data need to have an initial projection assigned in order to be transformed; here we know that our initial coordinates are in latitude-longitude
+crs_target <- "+proj=utm +zone=18 + south +datum=WGS84 +units=m"
+d_sp <- spTransform(d, CRS(crs_target))
+plot(d_sp, pch = 1, main = "Focal Points")
 ```
 
-A second code chunk prints out the `lm()` being fitted.
+We can also ask ***R*** to confirm that these points are indeed projected or examine a summary of our `sp` object.
 
 ```{r}
-#| eval: false
-  output$model <- renderText({paste0("Model: ", print(m()))})
+is.projected(d_sp)
+summary(d_sp)
 ```
 
-Code chunk 3 outputs a table of coefficients resulting from the linear model formula stored in `m()`, and it updates every time the user changes `input$response` or `input$predictors` because doing that updates the value of `m()` the output function first confirms that a valid linear model has been constructed.
+We can convert `sp` format spatial data to `sf` format using the `st_as_sf()` function, and `sf` format spatial data can be plotted using `geom_sf()` from {ggplot}.
 
 ```{r}
-#| eval: false
-  output$modelresults <- renderTable({
-    if (!is.null(m())){
-      res <- lm(data =d , formula = m())
-      res <- as.data.frame(coefficients(res))
-      names(res) <- "Beta"
-      res
-    }
-  }, width="100%", rownames = TRUE, striped = TRUE, spacing = "s", bordered = TRUE, align = "c", digits = 3)
+d_sf <- st_as_sf(d_sp, CRS(crs_target))
+ggplot() +
+  geom_sf(data = d_sf) +
+  theme(axis.text.x = element_text(angle = 90))
 ```
 
-Finally, the last code chunk uses {ggplot2} to graph the relationship between the variables we have selected as `input$response` and `input$predictors`.
+As with non-spatial data frames and tibbles, the data frame of these spatial objects can be accessed to examine, manipulate, or classify the attribute data or generate simple summaries. Here, we’ll add an attribute to our `sp` object for group size (defined here as the number of adult individuals in a subgroup at any given point) using our attribute for group composition, then generate summary statistics.
 
-Note that this output function first confirms that a valid linear model has been constructed and whether there is one or more than one predictor variable. What output gets plotted depends on the number and type(s) of the predictor variable(s).
+> **NOTE**: In the code example below, we are accessing the `@data` slot of the **d_sp** spatial object we created above... this slot consists of the original tabular data we loaded, minus the columns specifying the coordinates for each row.
 
-With one predictor, the output may be either a scatterplot with a fitted regression line (if `input$predictors` is a continuous variable) or a violin + scatter plot (if `input$predictors` is a factor variable).
-
-With two predictors, at least one of which is a factor, the output may be scatterplots or violin + scatter plots, faceted by (one of) the factors.
-
-With two continuous predictor variables, or with more than two predictor variables, no plot is created.
+This code example calculates the five-number summary and the mean group size across all of our location records...
 
 ```{r}
-#| eval: false
-  output$plot <- renderPlot({
-    if (!is.null(m()) & length(input$predictors) == 1) {
-      y <- input$response
-      x <- input$predictors
-      if (class(d[[x]]) != "factor") {
-        p <- ggplot(data = d, aes(x = .data[[x]], y = .data[[y]])) +
-          geom_point() +
-          geom_smooth(method = lm)
-      } else {
-        p <- ggplot(data = d, aes(x = .data[[x]], y = .data[[y]])) +
-          geom_violin() +
-          geom_jitter(width = 0.2, alpha = 0.5)
-      }
-      p <- p + xlab(x) + ylab(y) +
-        theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-      p
-    } else if (!is.null(m()) & length(input$predictors) == 2) {
-      y <- input$response
-      x <- input$predictors
-      if (class(d[[x[1]]]) == "factor" & class(d[[x[2]]]) == "factor") {
-        p <- ggplot(data = d, aes(x = .data[[x[1]]], y = .data[[y]])) +
-          geom_violin() +
-          geom_jitter(width = 0.2, alpha = 0.5) +
-          facet_wrap(~ d[[x[2]]])
-        p <- p + xlab(x[1]) + ylab(y)
-      } else if (class(d[[x[1]]]) != "factor" & class(d[[x[2]]]) == "factor"){
-        p <- ggplot(data = d, aes(x = .data[[x[1]]], y = .data[[y]])) +
-          geom_point() +
-          geom_smooth(method = lm) +
-          facet_wrap(~ d[[x[2]]])
-        p <- p + xlab(x[1]) + ylab(y)
-      } else if (class(d[[x[1]]]) == "factor" & class(d[[x[2]]]) != "factor"){
-        p <- ggplot(data = d, aes(x = .data[[x[2]]], y = .data[[y]])) +
-          geom_point() +
-          geom_smooth(method = lm) +
-          facet_wrap(~ d[[x[1]]])
-        p <- p + xlab(x[2]) + ylab(y)
-      } else {
-        p <- NULL
-      }
-      p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
-      p
-    }
-  })
+d_sp@data$Group_Size <- str_count(d_sp@data$Composition,"/")
+
+# or
+d_sp@data <- d_sp@data |>
+  mutate(Group_Size = str_count(Composition,"/"))
+
+fivenum(d_sp$Group_Size) # or `fivenum(d_sp@data$Group_Size)`
+mean(d_sp$Group_Size) # or `mean(d_sp@data$Group_Size)`
 ```
 
-#### Step 8 {.unnumbered}
-
-- Run and play with your app!
+Now let’s try importing and projecting two other spatial datasets. The first consists of the locations of known spider monkey feeding trees through 2012, which correspond to the end of the time window covered in the ranging dataset. The second comprises a single point location for the Tiputini Biodiversity Station. Both of these data files have spatial coordinates stored in longitude, latitude format.
 
 ```{r}
-#| include: false
-detach(package:DT)
-detach(package:shiny)
-detach(package:tidyverse)
+#| message: false
+# point data for trees through 2012
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/trees_2012.csv"
+trees <- read_csv(f, col_names = TRUE)
+coordinates(trees) <- c("FINAL_LON", "FINAL_LAT")
+proj4string(trees) <- CRS(crs_original)
+trees_sp <- spTransform(trees, CRS(crs_target))
+trees_sf <- st_as_sf(trees_sp, CRS(crs_target))
+
+# point data for TBS field station
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/station.csv"
+station <- read_csv(f, col_names = TRUE)
+coordinates(station) <- c("Longitude", "Latitude")
+proj4string(station) <- CRS(crs_original)
+station_sp <- spTransform(station, CRS(crs_target))
+station_sf <- st_as_sf(station_sp, CRS(crs_target))
+```
+
+Sometimes we'll have spatial data in a data frame already provided in projected Easting/Northing coordinates. For example, here we import the point location of a mineral lick frequently used by the main study group of spider monkeys. Again, after importing, we want to convert this location to `sp` or `sf` format, project it, and set its CRS. This time, after loading in the data, we will convert it first to `sf` using the `st_as_sf()` function. With this function, we use the "coords =" argument to designate which columns in our data frame correspond to the x and y values for each location, and we use the "crs = " argument to designate the projection. In this case, 32718 is the EPSG code, which corresponds to UTM Zone 18 South.
+
+```{r}
+#| message: false
+# point data for the mineral lick
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/mineral_lick.csv"
+mineral_lick <- read_csv(f, col_names = TRUE)
+mineral_lick_sf <- st_as_sf(mineral_lick, coords = c("x_proj", "y_proj"), crs = 32718)
+```
+
+Then, we can convert our spatial data object back from `sf` to `sp` format using the `as()` function.
+
+```{r}
+mineral_lick_sp <- as(mineral_lick_sf, "Spatial")
+```
+
+Data is also sometimes provided in ***ArcGIS*** **shapefile** format (a proprietary but widely used spatial data format defined by the company ESRI) rather than as a data table. Shapefiles can store the location and associated attributes of a (set of) geographic features, which, as for `sp` and `sf` objects, can be represented by points, lines, or areas. Behind the scenes, the shapefile format actually stores data across several files of the same name but different file types (".shp", ".shx", etc.), so when working with this data format, it is important to keep all of the file pertaining to a shapefile in the same location.
+
+There are a couple of options for loading shapefiles into ***R***, as seen below. We will read in three shapefiles using the `st_read()` function from the {sf} package. The first consists of an outline of the country of Ecuador and its constituent provinces, with coordinates already projected. The second comprisises a set of lines defining the trail system at the TBS study site, and the third consists of a single feature representing the Rio Tiputini, which borders the study site. Both of these latter spatial data sets needs to be projected into UTM as we did for our points above. 
+
+```{r}
+#| message: false
+# load shapefile for Ecuador, convert to sp/sf
+f <- "data/spatial_data/ec_provinces.shp"
+ecuador <- st_read(f)
+ecuador_sp <- as(ecuador, "Spatial")
+proj4string(ecuador_sp) <- CRS(crs_target)
+ecuador_sf <- st_as_sf(ecuador_sp, CRS(crs_target))
+
+# load and project shapefile for the TBS trail system, convert to sp/sf
+f <- "data/spatial_data/trails.shp"
+trails <- st_read(f)
+trails_sp <- as(trails, "Spatial")
+proj4string(trails_sp) <- CRS(crs_original)
+trails_sp <- spTransform(trails_sp, CRS(crs_target))
+trails_sf <- st_as_sf(trails_sp, CRS(crs_target))
+
+# load and project shapefile for the Tiputini River, convert to sp/sf
+f <- "data/spatial_data/rio_tiputini.shp"
+rio <- st_read(f)
+rio_sp <- as(rio, "Spatial")
+proj4string(rio_sp) <- CRS(crs_original)
+rio_sp <- spTransform(rio_sp, CRS(crs_target))
+rio_sf <- st_as_sf(rio_sp, CRS(crs_target))
+```
+
+## Basic Plots
+
+The shapefiles we have loaded can be used to provide context for each other and for the spider monkey focal points and feeding tree locations we imported above. For example, the point for the field station has little meaning its own, but if we map it over the shapefile for Ecuador, we can visualize where in the country the TBS site is located. Or we can plot it over the trail and river shapefiles to see how these features are related to each other. Similarly, as we saw above, if we simply plot all the focal point locations of the spider monkey group or all of the feeding trees, this does not really provide much useful information. If we overlay those points on layers of data for the TBS trail system and river, however, suddenly this can inform where in relation to these features the group spends its time. Now we can make inferences about how the factors in these various layers might influence whether an observer is likely to see the group at a particular location. There are a couple of familiar options when making these basic maps. Here, we will use `ggplot()` to map the `sf` variant of the objects we created, but the generic `plot()` object can be used to visualize spatial data stored in `sp` format.
+
+```{r}
+# plot TBS point over Ecuador shapefile and TBS point over trail and river shapefiles using ggplot() and sf objects
+
+p1 <- ggplot() +
+  geom_sf(data = ecuador_sf) +
+  geom_sf(data = rio_sf, color = "blue") +
+  geom_sf(data = station_sf, color = "red") +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  ggtitle("TBS, Ecuador") +
+  coord_sf(crs = 32718) +
+  theme(axis.text.x = element_text(angle = 90))
+
+p2 <- ggplot() +
+  geom_sf(data = trails_sf) +
+  geom_sf(data = rio_sf, color = "blue") +
+  geom_sf(data = station_sf, color = "red") +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  ggtitle("TBS trail system \n and Tiputini river") +
+  coord_sf(crs = 32718) +
+  theme(axis.text.x = element_text(angle = 90))
+
+plot_grid(p1, p2, ncol = 2)
+
+# plot focal points over trail and river shapefiles
+
+p3 <- ggplot() +
+  geom_sf(data = trails_sf) +
+  geom_sf(data = rio_sf, color = "blue") +
+  geom_sf(data = d_sf, color = "black", alpha = 0.2) +
+  xlab("Longitude") + ylab("Latitude") +
+  ggtitle("Focal points with trail system \n and Tiputini river") +
+  coord_sf(crs = 32718) +
+  theme(axis.text.x = element_text(angle = 90))
+
+p3
+```
+
+## Simple Analyses
+
+### Generating MCP Home Ranges
+
+Now that we've done some basic importing, projections, and mapping, let’s try some more interesting analyses. Across the primate order, there is extreme inter- and intra-specific variation in the size of home ranges and groups, and the distances groups travel per day. Additionally, the factors determining home range size and changes in home range use over time remain poorly understood for most primate species. We can estimate our spider monkey group’s home range from their focal point locations using a few different methods implemented with the {adehabitatHR} package, which accepts only `sp` format objects (not `sf`). The minimum convex polygon (MCP) is probably the most widely used of these methods, as it is quick and easy to compute from coordinate data. The `mcp()` function calculates the smallest convex polygon enclosing all the relocations (points) of the animal (or group). This polygon is then considered the home range.
+
+```{r}
+#| warning: false
+# calculate home range area
+# MCP method
+polygon <- mcp(d_sp, percent = 100) # set to 100% to include all points
+ggplot() +
+  geom_sf(data = st_as_sf(polygon), aes(geometry = geometry)) +
+  geom_sf(alpha = 0.5) +
+  geom_sf(data = d_sf, color = "black", alpha = 0.2) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+We can also exclude some points if we think they may be outliers and not accurately represent the group's home range. We simply need to select the percentage of points we want to include.
+
+```{r}
+#| warning: false
+polygon95 <- mcp(d_sp, percent = 95) # set to 95%
+ggplot() +
+  geom_sf(data = st_as_sf(polygon), aes(geometry = geometry), alpha = 0.5) +
+  geom_sf(data = st_as_sf(polygon95), aes(geometry = geometry), alpha = 0.5) +
+  geom_sf(data = d_sf, color = "black", alpha = 0.2) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+### Generating Kernel Home Ranges
+
+Although the MCP method is commonly used in the ecological literature, many researchers have stressed that the utilization distribution (UD) model is more appropriate. Under this model, animals’ use of space can be described by a bivariate probability density function, the UD, which gives the probability density to relocate the animal at any place according to the coordinates (x, y) of this place. The function `kernelUD()`, also from the package {adehabitatHR}, implements this method to estimate the UD in each pixel of a grid superposed to the relocations. Next, the function `getverticeshr()` allows for home range estimation, because the home range is deduced from the UD as the minimum area on which the probability to relocate the animal is equal to a specified value. For example, the 95% home range corresponds to the smallest area on which the probability to relocate the animal is equal to 0.95.
+
+```{r}
+#| warning: false
+# kernelUD method
+hr_kernel <- kernelUD(d_sp)
+hr_kernel95 <- getverticeshr(hr_kernel, percent = 95)
+ggplot() +
+  geom_sf(data = st_as_sf(polygon), aes(geometry = geometry), alpha = 0.5) +
+  geom_sf(data = st_as_sf(polygon95), aes(geometry = geometry), fill = "green", alpha = 0.3) +
+  geom_sf(data = st_as_sf(hr_kernel95), aes(geometry = geometry), fill = "blue", alpha = 0.3) +
+  geom_sf(data = st_as_sf(d_sp), aes(geometry = geometry), alpha = 0.3) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  theme(axis.text.x = element_text(angle = 90))
 ```
