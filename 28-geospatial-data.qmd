@@ -277,3 +277,39 @@ ggplot() +
   ylab("Latitude") +
   theme(axis.text.x = element_text(angle = 90))
 ```
+
+
+```{r prepare sp and sf data objects}
+f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/spider_monkeys.csv"
+d <- read_csv(f, col_names = TRUE)
+
+timezone <- "America/Bogota" # default timezone
+
+# create "locs" as a spatial points dataframe (spdf) using lon and lat
+coords <- d |>
+  dplyr::select(c("Longitude", "Latitude")) # coordinates as latlon
+d <- d |>
+  mutate(newdate = parse_date_time2(Date, orders = "%y-%b-%d", tz = timezone))
+
+crs <- CRS("+proj=longlat +datum=WGS84") # proj4string of coords
+locs <- SpatialPointsDataFrame(coords = coords, data = d, proj4string = crs)
+class(locs)
+# locs has class `sp` and `SpatialPointsDataFrame`
+plot(locs, pch = 1)
+
+# if we want, we can change CRS to UTM
+locs <- spTransform(locs, CRS("+proj=utm +zone=18 +south +datum=WGS84 +ellps=WGS84 +units=m +no_defs"))
+class(locs)
+# locs has class `sp` and `SpatialPointsDataFrame`
+plot(locs, pch = 2)
+
+# convert locs to a simple features (sf) spatial object instead of spdf
+locsSF <- st_as_sf(locs)
+class(locsSF)
+# locsSF has class `sf` and various data frame types
+plot(locsSF, pch = 1)
+(p <- ggplot() + geom_sf(data = locsSF)) # alternative plot
+
+# convert the CRS back to lat long just to keep with that CRS
+locsSF <- st_transform(locsSF, "+proj=longlat +datum=WGS84 +no_defs")
+```

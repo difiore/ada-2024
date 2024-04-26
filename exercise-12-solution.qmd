@@ -93,7 +93,7 @@ d$relWeaningMass <- resid(lm(`wean mass(g)` ~ `mass(g)`, data = d, na.action=na.
 
 - Plot residuals of max lifespan (**relLife**) in relation to **Order**. Which mammalian orders have the highest residual lifespan?
 - Plot residuals of newborn mass (**relNewbornMass**) in relation to **Order**. Which mammalian orders have the have highest residual newborn mass?
-- Plot residuals of weaning mass (**relWeaningMass**) in relation to **Order**. Which mammalian orders have the have highest relative weaning mass?
+- Plot residuals of weaning mass (**relWeaningMass**) in relation to **Order**. Which mammalian orders have the have highest residual weaning mass?
 
 ```{r}
 #| fig-height: 8
@@ -124,6 +124,8 @@ plot_grid(p1, p2, p3, nrow = 3)
 - Run models and a model selection process to evaluate what (now log transformed) variables best predict each of the two response variables, **max. life(mo)** and **AFR(mo)**, from the set of the following predictors: **gestation(mo)**, **newborn(g)**, **weaning(mo)**, **wean mass(g)**, **litters/year**, and overall body **mass(g)**.
 
 #### Maximum Lifespan
+
+##### Using Stepwise Model Selection
 
 ```{r}
 d1 <- d |> drop_na(c("max. life(mo)", "gestation(mo)", "newborn(g)", "weaning(mo)", "wean mass(g)", "litters/year", "mass(g)"))
@@ -156,16 +158,17 @@ Both forward and backward selection using F ratio tests yield the same best mode
 
 $$max. life(mo) \sim gestation(mo) + weaning(mo) + litters/year + mass(g)$$
 
+##### Using AICc
+
 ```{r}
-# using AICC
 ML_mods <- dredge(ML_full)
 head(coef(ML_mods), 10) # top 10 models
-(ML_mods.avg <- summary(model.avg(ML_mods, subset = delta <4)))
+(ML_mods.avg <- summary(model.avg(ML_mods, subset = delta < 4)))
 ```
 
 - What is the best model overall based on AICc and how many models have a delta AICc of 4 or less?
 
-The best model overall is `max. life(mo) ~ gestation(mo) + weaning(mo) + litters/year + mass(g)`, the same as identified by both forward and backwards selection.
+The best model overall is `max. life(mo) ~ gestation(mo) + weaning(mo) + litters/year + mass(g)`, the same as identified by both forward and backwards selection. Five models have a delta AICc of < 4.
 
 - What variables, if any, appear in all of this set of “top” models?
 
@@ -181,6 +184,8 @@ plot(ML_mods.avg, full = TRUE, intercept = FALSE)
 Based on the plot, we can again see that set of top models includes four predictors for which the 95% CI around the coefficient does not include zero. These are the same predictors identified by forward and backwards selection: **gestation(mo)**, **litters/year**, **mass(g)**, and **weaning(mo)**.
 
 #### Age at First Reproduction
+
+##### Using Stepwise Model Selection
 
 ```{r}
 d2 <- d |> drop_na(c("AFR(mo)", "gestation(mo)", "newborn(g)", "weaning(mo)", "wean mass(g)", "litters/year", "mass(g)"))
@@ -211,18 +216,17 @@ Again, both forward and backward selection using F ratio tests yield the same be
 
 $$max. life(mo) \sim gestation(mo) + weaning(mo) + litters/year + mass(g)$$
 
+##### Using AICc
+
 ```{r}
-# using AICC
 AFR_mods <- dredge(AFR_full)
 head(coef(AFR_mods), 10) # top 10 models
 (AFR_mods.avg <- summary(model.avg(AFR_mods, subset = delta < 4)))
-confint(AFR_mods.avg)
-plot(AFR_mods.avg, full = TRUE, intercept = FALSE)
 ```
 
 - What is the best model overall based on AICc and how many models have a delta AICc of 4 or less?
 
-Again, the best model overall is `max. life(mo) ~ gestation(mo) + weaning(mo) + litters/year + mass(g)`, the same as identified by both forward and backwards selection.
+Again, the best model overall is `max. life(mo) ~ gestation(mo) + weaning(mo) + litters/year + mass(g)`, the same as identified by both forward and backwards selection. Seven models have a delta AICc of < 4.
 
 - What variables, if any, appear in all of this set of “top” models?
 
@@ -231,8 +235,8 @@ Here, only three variables - **gestation(mo)**, **litters/year**, and **weaning(
 - Calculate and plot the model-averaged coefficients and their CIs across this set of top models.
 
 ```{r}
-confint(ML_mods.avg)
-plot(ML_mods.avg, full = TRUE, intercept = FALSE)
+confint(AFR_mods.avg)
+plot(AFR_mods.avg, full = TRUE, intercept = FALSE)
 ```
 
 Based on the plot, we again see that the set of top models only includes 3 predictors whose 95% CIs around the regression coefficients do not include 0: **gestation(mo)**, **litters/year**, and **weaning(mo)**.

@@ -44,7 +44,7 @@
 
 - Plot residuals of max lifespan (**relLife**) in relation to **Order**. Which mammalian orders have the highest residual lifespan?
 - Plot residuals of newborn mass (**relNewbornMass**) in relation to **Order**. Which mammalian orders have the have highest residual newborn mass?
-- Plot residuals of weaning mass (**relWeaningMass**) in relation to **Order**. Which mammalian orders have the have highest relative weaning mass?
+- Plot residuals of weaning mass (**relWeaningMass**) in relation to **Order**. Which mammalian orders have the have highest residual weaning mass?
 
 > **NOTE:** There will be lots of missing data for the latter two variables!
 
