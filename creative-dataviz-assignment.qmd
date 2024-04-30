@@ -6,7 +6,7 @@ The objective of this assignment is to use your skills in ***R*** to aid in prod
 
 > **NOTE**: I am using the term "visualization" here to mean something more general than that term would usually imply... i.e., your "visualization" can be in a sensory modality OTHER than sight. For example, you might imagine creating an auditory or olfactory or tactile representation of data!
 
-Your visualization does not have to be sophisticated, but it must involve loading, transforming, and visualizing a custom dataset - either a publicly-available one you find or one relevant to your own work or your field of study - into some kind of interesting, creative representation. Mostly, I am looking for you try to be **creative** and think **outside the box** in how to represent data... and to that end, it would be okay if you simply want to present a cool algorithm/protocol/description about how you would like to transform your data even if you are not able to implement it.
+Your visualization does not have to be sophisticated, but it must involve loading, transforming, and visualizing set of custom data - either a publicly-available dataset or data relevant to your own work or your field of study - into some kind of interesting, creative representation. Mostly, I am looking for you try think **outside the box** and be experimental or nontraditional in how you represent data... and to that end, it would be okay if you simply want to present a cool algorithm/protocol/description about how you would like to transform your data even if you are not able to implement it.
 
 Check out [this website](http://www.dnasonification.org/) for an example of the kind of thing I am thinking of...
 

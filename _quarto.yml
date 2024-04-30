@@ -84,8 +84,7 @@ book:
       - data-analysis-replication-assignment.qmd
       # - data-analysis-replication-assignment-template.qmd
       - collaborative-data-science-assignment.qmd
-      # - creative-dataviz-assignment.qmd
-      # - shiny-app-assignment.qmd
+      - creative-dataviz-assignment.qmd
     - part: "References"
       chapters:
         - packages.qmd
