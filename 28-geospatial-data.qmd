@@ -72,15 +72,53 @@ Now let’s convert our spider monkey data frame into an `sp` object. Our initia
 
 The World Geodetic System 1984 (WGS84) is a common standard datum to used. It is defined and maintained by the United States National Geospatial-Intelligence Agency, and so is typically the default for US GPS systems. Therefore, the datum for our coordinate reference system is "WGS84". The data we will import will have either been collected in longitude/latitude format (with projection "longlat") or may consist of  Easting/Northing coordinates already projected to UTM Zone 18S (with projection UTM Zone 18S). Lastly, we'll select meters as our **units** to include in our `proj4string` specification. Once we've projected and transformed the data into a common CRS, we can use the generic `plot()` function to see a spatial representation of our points stored in `sp` format.
 
+### Creating an `sp` Object
+
+By running the `coordinates()` function, we can specify which columns of a given data frame hold coordinate (x, y) data and convert the data frame to an `sp` object.
+
 ```{r}
-# project and plot focal points
-crs_original <- "+proj=longlat +datum=WGS84"
-coordinates(d) <- c("Longitude", "Latitude") # x, y values represent the longitude and latitude, respectively and match the names of the fields in our original data table
-proj4string(d) <- CRS(crs_original) # note that the data need to have an initial projection assigned in order to be transformed; here we know that our initial coordinates are in latitude-longitude
-crs_target <- "+proj=utm +zone=18 + south +datum=WGS84 +units=m"
-d_sp <- spTransform(d, CRS(crs_target))
-plot(d_sp, pch = 1, main = "Focal Points")
+# 
+coordinates(d) <- c("Longitude", "Latitude")
+class(d)
 ```
+
+We then need to set a CRS for this object based on the CRS that the original coordinate data were collected in...
+
+```{r}
+# specify the crs of original data
+proj_original <- "+proj=longlat +datum=WGS84"
+proj4string(d) <- CRS(proj_original)
+proj4string(d)
+plot(d, pch = 1, main = "Focal Points - LongLat")
+```
+
+If we want, we can change the CRS using the `spTransform()` function...
+
+```{r}
+proj_new <- "+proj=utm +zone=18 + south +datum=WGS84 +units=m"
+d_sp <- spTransform(d, CRS(proj_new))
+proj4string(d_sp)
+plot(d_sp, pch = 1, main = "Focal Points - UTM")
+proj4string(d_sp)
+```
+
+# extract coordinates from the original data frame
+coords <- d |> dplyr::select(Longitude, Latitude)
+# specify the crs of original data
+proj_original <- "+proj=longlat +datum=WGS84"
+# create an `sp` object
+d_sp <- SpatialPointsDataFrame(coords = coords, data = d, proj4string = CRS(proj_original))
+
+# we can then call `proj4string()` to assign the projection to our SpatialPointsDataFrame
+proj4string(d) <- CRS(crs_original) # note that the data need to have an initial projection assigned in order to be transformed; here we know that our initial coordinates are in latitude-longitude
+proj4string(d)
+
+
+# d_sp has class `sp` and `SpatialPointsDataFrame`
+plot(d_sp, pch = 1, main = "Focal Points")
+
+locs <- SpatialPointsDataFrame(coords = c(d$Longitude, d$Latitude), data = d, proj4string = crs_target)
+
 
 We can also ask ***R*** to confirm that these points are indeed projected or examine a summary of our `sp` object.
 
@@ -252,7 +290,7 @@ We can also exclude some points if we think they may be outliers and not accurat
 polygon95 <- mcp(d_sp, percent = 95) # set to 95%
 ggplot() +
   geom_sf(data = st_as_sf(polygon), aes(geometry = geometry), alpha = 0.5) +
-  geom_sf(data = st_as_sf(polygon95), aes(geometry = geometry), alpha = 0.5) +
+  geom_sf(data = st_as_sf(polygon95), aes(geometry = geometry), fill = "green", alpha = 0.3) +
   geom_sf(data = d_sf, color = "black", alpha = 0.2) +
   xlab("Longitude") +
   ylab("Latitude") +
@@ -278,38 +316,3 @@ ggplot() +
   theme(axis.text.x = element_text(angle = 90))
 ```
 
-
-```{r prepare sp and sf data objects}
-f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/spider_monkeys.csv"
-d <- read_csv(f, col_names = TRUE)
-
-timezone <- "America/Bogota" # default timezone
-
-# create "locs" as a spatial points dataframe (spdf) using lon and lat
-coords <- d |>
-  dplyr::select(c("Longitude", "Latitude")) # coordinates as latlon
-d <- d |>
-  mutate(newdate = parse_date_time2(Date, orders = "%y-%b-%d", tz = timezone))
-
-crs <- CRS("+proj=longlat +datum=WGS84") # proj4string of coords
-locs <- SpatialPointsDataFrame(coords = coords, data = d, proj4string = crs)
-class(locs)
-# locs has class `sp` and `SpatialPointsDataFrame`
-plot(locs, pch = 1)
-
-# if we want, we can change CRS to UTM
-locs <- spTransform(locs, CRS("+proj=utm +zone=18 +south +datum=WGS84 +ellps=WGS84 +units=m +no_defs"))
-class(locs)
-# locs has class `sp` and `SpatialPointsDataFrame`
-plot(locs, pch = 2)
-
-# convert locs to a simple features (sf) spatial object instead of spdf
-locsSF <- st_as_sf(locs)
-class(locsSF)
-# locsSF has class `sf` and various data frame types
-plot(locsSF, pch = 1)
-(p <- ggplot() + geom_sf(data = locsSF)) # alternative plot
-
-# convert the CRS back to lat long just to keep with that CRS
-locsSF <- st_transform(locsSF, "+proj=longlat +datum=WGS84 +no_defs")
-```

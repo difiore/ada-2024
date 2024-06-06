@@ -1086,11 +1086,11 @@ window.Quarto = {
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>spade <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(card <span class="sc">&lt;=</span> <span class="dv">13</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>(exp_spade <span class="ot">&lt;-</span> <span class="fu">sum</span>(spade)<span class="sc">/</span>reps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.2508</code></pre>
+<pre><code>## [1] 0.25008</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(exp_var_spade <span class="ot">&lt;-</span> <span class="fu">var</span>(spade))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.1879012</code></pre>
+<pre><code>## [1] 0.1875419</code></pre>
 </div>
 </div>
 <section id="the-binomial-distribution" class="level4 unnumbered">
@@ -1250,22 +1250,22 @@ window.Quarto = {
 <span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a><span class="co"># all 'ones' in 6 rolls</span></span>
 <span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(all_ones)<span class="sc">/</span>reps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 1.9e-05</code></pre>
+<pre><code>## [1] 2.1e-05</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># three 'ones' in 6 rolls</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(three_ones)<span class="sc">/</span>reps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.05351</code></pre>
+<pre><code>## [1] 0.053445</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># expected # 'ones' in 6 rolls</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(count_ones)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.999625</code></pre>
+<pre><code>## [1] 1.000488</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># variance in expected # 'ones' across rolls</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((count_ones <span class="sc">-</span> <span class="fu">mean</span>(count_ones))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(count_ones))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>## [1] 0.8334829</code></pre>
+<pre><code>## [1] 0.8325578</code></pre>
 </div>
 </div>
 <section id="the-poisson-distribution" class="level4 unnumbered">
@@ -1373,7 +1373,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 7.002897</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 7.006984</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -1382,7 +1382,7 @@ window.Quarto = {
 </details>
 <div class="cell-output cell-output-stdout">
 <details><summary>Show Output</summary>
-<pre class="details" data-summary="Show Output"><code>## [1] 0.3301507</code></pre>
+<pre class="details" data-summary="Show Output"><code>## [1] 0.3367222</code></pre>
 </details>
 </div>
 <details class="code-fold">
@@ -1406,7 +1406,7 @@ window.Quarto = {
 </div>
 <section id="the-normal-distribution" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="the-normal-distribution">The Normal Distribution</h4>
-<p>The <strong>Normal</strong> or <strong>Gaussian Distribution</strong> is perhaps the most familiar and most commonly applied probability density functions for modeling continuous random variables. Why is the normal distribution so important? Well, many traits are normally distributed, and the additive combination of many random factors is also commonly normally distributed. Even more importantly, as we will see in <a href="14-module.html"><strong>Module 14</strong></a>, the sampling distribution for many summary statistics (e.g., sample means) tends to be normally distributed when sample size is sufficiently large, and this fact is central to statistical inference.</p>
+<p>The <strong>Normal</strong> or <strong>Gaussian Distribution</strong> is perhaps the most familiar and most commonly applied probability density functions for modeling continuous random variables. Why is the normal distribution so important? Well, many traits are normally distributed, and the additive combination of many random factors is also commonly normally distributed. Even more importantly, as we will see in <a href="#module-14"><strong>Module 14</strong></a>, the sampling distribution for many summary statistics (e.g., sample means) tends to be normally distributed when sample size is sufficiently large, and this fact is central to statistical inference.</p>
 <p>For the normal distribution, two parameters, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, are used to describe the shape of the distribution.</p>
 <p>The code below allows us to visualize and play around with a normal distribution. First, try maniupulating <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
 <div class="cell" data-layout-align="center">
@@ -1736,7 +1736,7 @@ window.Quarto = {
 </details>
 </div>
 </div>
-<p>For each of these samples, we can then calculate a mean age, which is a statistic describing each sample. <strong>That statistic itself is a random variable with a mean and distribution!</strong> As we saw in <a href="12-module.html"><strong>Module 12</strong></a>, this is known as a <em>sampling distribution</em>.</p>
+<p>For each of these samples, we can then calculate a mean age, which is a statistic describing each sample. <strong>That statistic itself is a random variable with a mean and distribution!</strong> As we saw in <a href="#module-12"><strong>Module 12</strong></a>, this is known as a <em>sampling distribution</em>.</p>
 </section>
 <section id="challenge-9" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="challenge-9">CHALLENGE</h3>
