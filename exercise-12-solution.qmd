@@ -68,7 +68,7 @@ d <- d |> mutate(across(where(is.numeric), log))
 
 ### Step 4 {.unnumbered}
 
-- Regress the (now log transformed) age [**gestation(mo)**, **weaning(mo)**, **AFR(mo)** (age at first reproduction), and **max. life(mo)** (maximum lifespan)] and mass [**newborn(g)** and **wean mass(g)**] variables on (now log transformed) overall body **mass(g)** and add the residuals to the dataframe as new variables (**relGest**, **relWean**, **relAFR**, **relLife**, **relNewbornMass**, and **relWeaningMass**).
+- Regress the (now log transformed) *age* [**gestation(mo)**, **weaning(mo)**, **AFR(mo)** (i.e., age at first reproduction), and **max. life(mo)** (i.e., maximum lifespan)] and *mass* [**newborn(g)** and **wean mass(g)**] variables on (now log transformed) overall body **mass(g)** and add the residuals to the dataframe as new variables [**relGest**, **relWean**, **relAFR**, **relLife**, **relNewbornMass**, and **relWeaningMass**].
 
 ```{r}
 d$relGest <- resid(lm(`gestation(mo)` ~ `mass(g)`, data = d, na.action=na.exclude))

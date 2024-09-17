@@ -36,7 +36,7 @@
 
 #### Step 4 {.unnumbered}
 
-- Regress the (now log transformed) age [**gestation(mo)**, **weaning(mo)**, **AFR(mo)** (age at first reproduction), and **max. life(mo)** (maximum lifespan)] and mass [**newborn(g)** and **wean mass(g)**] variables on (now log transformed) overall body **mass(g)** and add the residuals to the dataframe as new variables (**relGest**, **relWean**, **relAFR**, **relLife**, **relNewbornMass**, and **relWeaningMass**).
+- Regress the (now log transformed) *age* [**gestation(mo)**, **weaning(mo)**, **AFR(mo)** (i.e., age at first reproduction), and **max. life(mo)** (i.e., maximum lifespan)] and *mass* [**newborn(g)** and **wean mass(g)**] variables on (now log transformed) overall body **mass(g)** and add the residuals to the dataframe as new variables [**relGest**, **relWean**, **relAFR**, **relLife**, **relNewbornMass**, and **relWeaningMass**].
 
 > **HINT:** Use "na.action=na.exclude" in your`lm()` calls. With this argument set, the residuals will be padded to the correct length by inserting NAs for cases with missing data.
 

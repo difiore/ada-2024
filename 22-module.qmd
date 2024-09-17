@@ -179,20 +179,28 @@ We get a few types of output that allow us to directly compare the relative fit 
 
 An alternative approach to model selection using AIC is provided by using the function `dredge()` in the {MuMIn} package, which explores subsets of a given global model in an automated way. With `dredge()`, we first run a global model that includes all of the terms we want to consider and then we run `dredge()` to fit subsets of that model without having to specify explicitly which submodels we want to run. The `dredge()` function returns a "model selection" table with models ranked in order of increasing AICc (i.e., lowest, or "best", first).
 
+We start by defining a "global.model"...
+
 ```{r}
 library(MuMIn)
-# start by defining a "global.model"
 m <- lm(data = z,
   height ~ age + weight + zombies_killed + years_of_education,
   na.action = "na.fail")
-# here, we need to change the "na.action" argument from the default of "na.omit" to "na.fail" to prevent `dredge()` from trying to fit submodels with different data sets than the global model if there are missing values
-# alternatively, we could set that option globally for our R session before running the global model by using `options(na.action = na.fail)` and then omitting the `na.action=` argument from our call to `lm()`
-# we could also filter our dataset to only include rows where none of the variables of interest have missing data using, e.g., `drop_na()`
-# options()$na.action shows the current na.action option
+```
+> **NOTE:** Here, we need to change the "na.action" argument from the default of "na.omit" to "na.fail" to prevent `dredge()` from trying to fit submodels with different data sets than the global model if there are missing values.
 
-# we then run `dredge()` to explore a set of submodels
-#   - the `m.lim=` argument is optional and sets lower and upper limits on the number of terms to include
-#   - the `beta=` argument specifies whether or not and how to standardize the beta coefficients; "none" is the default
+> Alternatively, we could set that option globally for our R session before running the global model by using `options(na.action = na.fail)` and then omitting the `na.action=` argument from our call to `lm()`.
+
+> We could also filter our dataset to only include rows where none of the variables of interest have missing data using, e.g., `drop_na()`.
+
+> The command `options()$na.action` shows the current "na.action" option.
+
+We then run `dredge()` to explore a set of submodels...
+
+  - the `m.lim=` argument is optional and sets lower and upper limits on the number of terms to include
+  - the `beta=` argument specifies whether or not and how to standardize the beta coefficients; "none" is the default
+
+```{r}
 mods <- dredge(m, beta = "none", m.lim = c(0, 4))
 class(mods)
 ```

@@ -1215,36 +1215,41 @@ window.Quarto = {
 <section id="automated-subset-selection-and-model-averaging-using-mumin" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="automated-subset-selection-and-model-averaging-using-mumin">Automated Subset Selection and Model Averaging using {MuMIn}</h4>
 <p>An alternative approach to model selection using AIC is provided by using the function <code>dredge()</code> in the {MuMIn} package, which explores subsets of a given global model in an automated way. With <code>dredge()</code>, we first run a global model that includes all of the terms we want to consider and then we run <code>dredge()</code> to fit subsets of that model without having to specify explicitly which submodels we want to run. The <code>dredge()</code> function returns a “model selection” table with models ranked in order of increasing AICc (i.e., lowest, or “best”, first).</p>
+<p>We start by defining a “global.model”…</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="co"># start by defining a 'global.model'</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co"># here, we need to change the 'na.action' argument from the default of</span></span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 'na.omit' to 'na.fail' to prevent `dredge()` from trying to fit submodels</span></span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="co"># with different data sets than the global model if there are missing values</span></span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, we could set that option globally for our R session before</span></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co"># running the global model by using `options(na.action = na.fail)` and then</span></span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co"># omitting the `na.action=` argument from our call to `lm()` we could also</span></span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co"># filter our dataset to only include rows where none of the variables of</span></span>
-<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co"># interest have missing data using, e.g., `drop_na()` options()$na.action shows</span></span>
-<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="co"># the current na.action option</span></span>
-<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="co"># we then run `dredge()` to explore a set of submodels - the `m.lim=` argument</span></span>
-<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="co"># is optional and sets lower and upper limits on the number of terms to include</span></span>
-<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="co"># - the `beta=` argument specifies whether or not and how to standardize the</span></span>
-<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="co"># beta coefficients; 'none' is the default</span></span>
-<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> <span class="fu">dredge</span>(m, <span class="at">beta =</span> <span class="st">"none"</span>, <span class="at">m.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>NOTE:</strong> Here, we need to change the “na.action” argument from the default of “na.omit” to “na.fail” to prevent <code>dredge()</code> from trying to fit submodels with different data sets than the global model if there are missing values.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Alternatively, we could set that option globally for our R session before running the global model by using <code>options(na.action = na.fail)</code> and then omitting the <code>na.action=</code> argument from our call to <code>lm()</code>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>We could also filter our dataset to only include rows where none of the variables of interest have missing data using, e.g., <code>drop_na()</code>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The command <code>options()$na.action</code> shows the current “na.action” option.</p>
+</blockquote>
+<p>We then run <code>dredge()</code> to explore a set of submodels…</p>
+<ul>
+<li>the <code>m.lim=</code> argument is optional and sets lower and upper limits on the number of terms to include</li>
+<li>the <code>beta=</code> argument specifies whether or not and how to standardize the beta coefficients; “none” is the default</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> <span class="fu">dredge</span>(m, <span class="at">beta =</span> <span class="st">"none"</span>, <span class="at">m.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>## Fixed term is "(Intercept)"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "model.selection" "data.frame"</code></pre>
 </div>
 </div>
 <p>The <code>dredge()</code> function returns a “model.selection” object summarizing all of the models that were tested. The <code>get.models()</code> function can be used to return a list of these models.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>(mods.list <span class="ot">&lt;-</span> <span class="fu">get.models</span>(mods, <span class="at">subset =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>(mods.list <span class="ot">&lt;-</span> <span class="fu">get.models</span>(mods, <span class="at">subset =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## $`4`
 ## 
@@ -1420,7 +1425,7 @@ window.Quarto = {
 ## attr(,"rank")
 ## function (x) 
 ## do.call("rank", list(x))
-## &lt;environment: 0x10f7531d0&gt;
+## &lt;environment: 0x123218478&gt;
 ## attr(,"call")
 ## AICc(x)
 ## attr(,"class")
@@ -1431,7 +1436,7 @@ window.Quarto = {
 </div>
 <p>Running the <code>coef()</code> function on the output of <code>dredge()</code> returns a table of coefficients from each model, where the rowname is the number of the corresponding model in the “model.selection” object.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mods)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mods)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##    (Intercept)       age    weight zombies_killed years_of_education
 ## 4     31.76339 0.6182699 0.1631067             NA                 NA
@@ -1457,7 +1462,7 @@ window.Quarto = {
 <h3 data-number="22.6.1" class="anchored" data-anchor-id="averaging-coefficients-across-sets-of-models"><span class="header-section-number">22.6.1</span> Averaging Coefficients across Sets of Models</h3>
 <p>The code below averages beta coefficients for the set of models with <strong>Delta AICc</strong> &lt; 4. Here, we also need to set the argument <code>fit=TRUE</code> because <code>dredge()</code> does not actually store the model results. The <code>model.avg()</code> function returns a “summary.averaging” object.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods, <span class="at">subset =</span> delta <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods, <span class="at">subset =</span> delta <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## 
 ## Call:
@@ -1497,14 +1502,14 @@ window.Quarto = {
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods.avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods.avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## [1] "summary.averaging" "averaging"</code></pre>
 </div>
 </div>
 <p>We can use the <code>confint()</code> function to confidence intervals for the averaged coefficient estimates across models…</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##                          2.5 %      97.5 %
 ## (Intercept)        30.77517771 32.65537579
@@ -1519,7 +1524,7 @@ window.Quarto = {
 </blockquote>
 <p>The code below averages beta coefficients for models in the 95% confidence set, i.e., for cumulative AIC weights up to 95%:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods, <span class="at">subset =</span> <span class="fu">cumsum</span>(weight) <span class="sc">&lt;=</span> <span class="fl">0.95</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods, <span class="at">subset =</span> <span class="fu">cumsum</span>(weight) <span class="sc">&lt;=</span> <span class="fl">0.95</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>## 
 ## Call:
@@ -1558,7 +1563,7 @@ window.Quarto = {
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>##                          2.5 %      97.5 %
 ## (Intercept)        30.79056281 32.66250541
@@ -1570,19 +1575,19 @@ window.Quarto = {
 </div>
 <p>With the {MuMIn} package loaded, we can use the <code>plot()</code> function to make a plot of averaged model coefficients, similar to <code>plot_summs()</code> from {jtools}.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">TRUE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">TRUE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="22-module_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="22-module_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">FALSE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">FALSE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="22-module_files/figure-html/unnamed-chunk-20-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+<p><img src="22-module_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2059,267 +2064,275 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb83" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Model Selection in Regression {#module-22}</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>The purpose of a model selection process in a regression analysis is to sort through our explanatory variables in a systematic fashion in order to establish which are best able to describe the response. There are different possible algorithms to use for model selection, e.g., forward and backward selection, and different ways of comparing models to one another, which may result in different parameters being included in the final model. The are also several different package that we can use to combine results from several different models.</span>
-<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminaries</span></span>
-<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install these packages in ***R***: <span class="co">[</span><span class="ot">{MASS}</span><span class="co">](https://cran.r-project.org/web/packages/MASS/MASS.pdf)</span>, <span class="co">[</span><span class="ot">{AICcmodavg}</span><span class="co">](https://cran.r-project.org/web/packages/AICcmodavg/AICcmodavg.pdf)</span>, and <span class="co">[</span><span class="ot">{MuMIn}</span><span class="co">](https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf)</span></span>
-<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load {tidyverse}</span>
-<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb83-17"><a href="#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-18"><a href="#cb83-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-19"><a href="#cb83-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nested Comparisons and F Tests</span></span>
-<span id="cb83-20"><a href="#cb83-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-21"><a href="#cb83-21" aria-hidden="true" tabindex="-1"></a>One way we can compare different models is to use F ratios and what are called **partial F tests**. This approach looks at two or more *nested* models - a larger, or more complex, model that contains explanatory variables that we are interested in and smaller, less complex, models that exclude one or more of those variables. Basically, we aim to compare the total variance in the response variable that is explained by the more complex model to that explained by a "reduced" model. If the more complex model explains a significantly greater proportion of the variation, then we conclude that predictor terms absent from the less complex model are important.</span>
-<span id="cb83-22"><a href="#cb83-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-23"><a href="#cb83-23" aria-hidden="true" tabindex="-1"></a>For example, if including an additional term with its associated $\beta$ coefficient results in significantly better fit to the observed data than we find for a model that lacks that particular terms, then this is evidence against the null hypothesis that the $\beta$ coefficient (slope) for that term equals zero.</span>
-<span id="cb83-24"><a href="#cb83-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-25"><a href="#cb83-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### EXAMPLE: {.unnumbered}</span></span>
-<span id="cb83-26"><a href="#cb83-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-27"><a href="#cb83-27" aria-hidden="true" tabindex="-1"></a>Let's go back to our zombie apocalypse survivors dataset and compare a few models. We need to calculate the following partial F statistic for a full versus reduced model:</span>
-<span id="cb83-28"><a href="#cb83-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-29"><a href="#cb83-29" aria-hidden="true" tabindex="-1"></a>$$F = \frac{(R^2_{full}-R^2_{reduced})(n-q-1)}{(1-R^2_{full})(q-p)}$$</span>
-<span id="cb83-30"><a href="#cb83-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-31"><a href="#cb83-31" aria-hidden="true" tabindex="-1"></a>where:</span>
-<span id="cb83-32"><a href="#cb83-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-33"><a href="#cb83-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The $R^2$ values are the coefficients of determination of the full model and the nested "reduced" model</span>
-<span id="cb83-34"><a href="#cb83-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$n$ is the number of observations in the data set</span>
-<span id="cb83-35"><a href="#cb83-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$p$ is the number of predictor terms in the nested (reduced) model</span>
-<span id="cb83-36"><a href="#cb83-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$q$ is the number of predictor terms in the full model</span>
-<span id="cb83-37"><a href="#cb83-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-38"><a href="#cb83-38" aria-hidden="true" tabindex="-1"></a>After we calculate this F statistic, we compare it to an $F$ distribution with "df1 = q-p" and "df2 = n-q" to derive a p value. The <span class="in">`lm()`</span> function will do this for us automatically, but we can also do it by hand.</span>
-<span id="cb83-39"><a href="#cb83-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-42"><a href="#cb83-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-43"><a href="#cb83-43" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"</span></span>
-<span id="cb83-44"><a href="#cb83-44" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb83-45"><a href="#cb83-45" aria-hidden="true" tabindex="-1"></a>z<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(z<span class="sc">$</span>gender)</span>
-<span id="cb83-46"><a href="#cb83-46" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">*</span> gender) <span class="co"># full model</span></span>
-<span id="cb83-47"><a href="#cb83-47" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> gender) <span class="co"># model without interaction</span></span>
-<span id="cb83-48"><a href="#cb83-48" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age) <span class="co"># model with one predictor</span></span>
-<span id="cb83-49"><a href="#cb83-49" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> <span class="dv">1</span>) <span class="co"># intercept only model</span></span>
-<span id="cb83-50"><a href="#cb83-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-51"><a href="#cb83-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-52"><a href="#cb83-52" aria-hidden="true" tabindex="-1"></a>Once we have fitted the full and three nested models, we can carry out partial F tests to compare particular models using the <span class="in">`anova()`</span> function, with the nested (reduced) and full model as arguments. The reduced model is included as the first argument and the full model is included as the second argument.</span>
-<span id="cb83-53"><a href="#cb83-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-56"><a href="#cb83-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-57"><a href="#cb83-57" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2, m1, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-58"><a href="#cb83-58" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the reduced model without interactions (m2) to the full model with interactions (m1)</span></span>
-<span id="cb83-59"><a href="#cb83-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-60"><a href="#cb83-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-61"><a href="#cb83-61" aria-hidden="true" tabindex="-1"></a>We can also calculate the F statistic by hand and compare it to the $F$ distribution.</span>
-<span id="cb83-62"><a href="#cb83-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-65"><a href="#cb83-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-66"><a href="#cb83-66" aria-hidden="true" tabindex="-1"></a>(f <span class="ot">&lt;-</span> ((<span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(m2)<span class="sc">$</span>r.squared) <span class="sc">*</span></span>
-<span id="cb83-67"><a href="#cb83-67" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> ((<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared) <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>)))</span>
-<span id="cb83-68"><a href="#cb83-68" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(f, <span class="at">df1 =</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb83-69"><a href="#cb83-69" aria-hidden="true" tabindex="-1"></a><span class="co"># df1 = q-p, df2 = n-q</span></span>
-<span id="cb83-70"><a href="#cb83-70" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m3, m2, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-71"><a href="#cb83-71" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the age only model (m3) to the age + gender model (m2)</span></span>
-<span id="cb83-72"><a href="#cb83-72" aria-hidden="true" tabindex="-1"></a>(f <span class="ot">&lt;-</span> ((<span class="fu">summary</span>(m2)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(m3)<span class="sc">$</span>r.squared) <span class="sc">*</span></span>
-<span id="cb83-73"><a href="#cb83-73" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> ((<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(m2)<span class="sc">$</span>r.squared) <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)))</span>
-<span id="cb83-74"><a href="#cb83-74" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(f, <span class="at">df1 =</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb83-75"><a href="#cb83-75" aria-hidden="true" tabindex="-1"></a><span class="co"># df1 = q-p, df2 = n-q</span></span>
-<span id="cb83-76"><a href="#cb83-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-77"><a href="#cb83-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-78"><a href="#cb83-78" aria-hidden="true" tabindex="-1"></a>In these cases, each comparison shows that the more complex model indeed results in signficantly more explantory power than the reduced model.</span>
-<span id="cb83-79"><a href="#cb83-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-80"><a href="#cb83-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Forward Selection</span></span>
-<span id="cb83-81"><a href="#cb83-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-82"><a href="#cb83-82" aria-hidden="true" tabindex="-1"></a>Forward selection starts with an intercept-only model and then tests which of the predictor variables best improves the goodness-of-fit. Then the model is updated by adding that term and tests which of the remaining predictors would further and best improve the fit. The process continues until there are not any other terms that could be added to improve the fit more. The ***R*** functions <span class="in">`add1()`</span> and <span class="in">`update()`</span>, respectively, perform the series of tests and update your fitted regression model. Setting the "test=" argument in <span class="in">`add1()`</span> to "F" includes the partial F statistic value and its significance. The ".~." part of the "scope=" argument means, basically, "what is already there", while the remainder of the "scope=" argument is the list of additional variables you might add for the fullest possible model.</span>
-<span id="cb83-83"><a href="#cb83-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-86"><a href="#cb83-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-87"><a href="#cb83-87" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> <span class="dv">1</span>)</span>
-<span id="cb83-88"><a href="#cb83-88" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m0)</span>
-<span id="cb83-89"><a href="#cb83-89" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m0, <span class="at">scope =</span> .<span class="sc">~</span>. <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-90"><a href="#cb83-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-91"><a href="#cb83-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-92"><a href="#cb83-92" aria-hidden="true" tabindex="-1"></a>Looking at the output of <span class="in">`add1()`</span>, we see that adding **weight**, **age**, or **years_of_education** all would add explanatory power to our model, but **weight** is associated with the highest new F statistic and the lowest new RSS, so we should update our model by adding it as a new predictor. We do this with the <span class="in">`update()`</span> function, passing it the old model and a "formula=" argument of ".~." (what is already there) "+ weight" (the new predictor).</span>
-<span id="cb83-93"><a href="#cb83-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-96"><a href="#cb83-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-97"><a href="#cb83-97" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, <span class="at">formula =</span> .<span class="sc">~</span>. <span class="sc">+</span> weight)</span>
-<span id="cb83-98"><a href="#cb83-98" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span>
-<span id="cb83-99"><a href="#cb83-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-100"><a href="#cb83-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-101"><a href="#cb83-101" aria-hidden="true" tabindex="-1"></a>We then repeat this process until adding additional predictors no longer improves the explanatory power of the model.</span>
-<span id="cb83-102"><a href="#cb83-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-105"><a href="#cb83-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-106"><a href="#cb83-106" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m1, <span class="at">scope =</span> .<span class="sc">~</span>. <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-107"><a href="#cb83-107" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="at">formula =</span> .<span class="sc">~</span>. <span class="sc">+</span> age)</span>
-<span id="cb83-108"><a href="#cb83-108" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
-<span id="cb83-109"><a href="#cb83-109" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m2, <span class="at">scope =</span> .<span class="sc">~</span>. <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-110"><a href="#cb83-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-111"><a href="#cb83-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-112"><a href="#cb83-112" aria-hidden="true" tabindex="-1"></a>After we add **weight** and **age**, no other variable improves the fit of the model significantly, so the final, best model in this case is **m2**.</span>
-<span id="cb83-113"><a href="#cb83-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-116"><a href="#cb83-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-117"><a href="#cb83-117" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
-<span id="cb83-118"><a href="#cb83-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-119"><a href="#cb83-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-120"><a href="#cb83-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backward Selection</span></span>
-<span id="cb83-121"><a href="#cb83-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-122"><a href="#cb83-122" aria-hidden="true" tabindex="-1"></a>Opposite to forward selection, backward selection starts with the fullest model you want to consider and systematically drops terms that do not contribute to the explanatory value of the model. The ***R*** functions for this process are <span class="in">`drop1()`</span> to inspect the partial F test results and <span class="in">`update()`</span> to update the model.</span>
-<span id="cb83-123"><a href="#cb83-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-126"><a href="#cb83-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-127"><a href="#cb83-127" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span></span>
-<span id="cb83-128"><a href="#cb83-128" aria-hidden="true" tabindex="-1"></a>  years_of_education)</span>
-<span id="cb83-129"><a href="#cb83-129" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m0)</span>
-<span id="cb83-130"><a href="#cb83-130" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m0, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-131"><a href="#cb83-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-132"><a href="#cb83-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-133"><a href="#cb83-133" aria-hidden="true" tabindex="-1"></a>Here, removing either **weight** or **age** would result in a significant loss of explanatory power for our model, while removing either **zombies_killed** or **years_of_education** would not. The latter variable is associated with the lowest F value and lowest increase in RSS, so we update our model by removing it. We then run the <span class="in">`drop1()`</span> function on the new, updated model and remove the next variable whose loss does not significantly reduce the explanatory power of the model. We continue doing this until removing any additional predictors results in a significantly worse model.</span>
-<span id="cb83-134"><a href="#cb83-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-137"><a href="#cb83-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-138"><a href="#cb83-138" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, .<span class="sc">~</span>. <span class="sc">-</span> years_of_education)</span>
-<span id="cb83-139"><a href="#cb83-139" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span>
-<span id="cb83-140"><a href="#cb83-140" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m1, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-141"><a href="#cb83-141" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, .<span class="sc">~</span>. <span class="sc">-</span> zombies_killed)</span>
-<span id="cb83-142"><a href="#cb83-142" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
-<span id="cb83-143"><a href="#cb83-143" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m2, <span class="at">test =</span> <span class="st">"F"</span>)</span>
-<span id="cb83-144"><a href="#cb83-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-145"><a href="#cb83-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-146"><a href="#cb83-146" aria-hidden="true" tabindex="-1"></a>At this point, all of the explanatory variables are still significant, so the final, best model in this case is also **m2**.</span>
-<span id="cb83-147"><a href="#cb83-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-150"><a href="#cb83-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-151"><a href="#cb83-151" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
-<span id="cb83-152"><a href="#cb83-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-153"><a href="#cb83-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-154"><a href="#cb83-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Selection Using AIC</span></span>
-<span id="cb83-155"><a href="#cb83-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-156"><a href="#cb83-156" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Stepwise Selection using {MASS} {.unnumbered}</span></span>
-<span id="cb83-157"><a href="#cb83-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-158"><a href="#cb83-158" aria-hidden="true" tabindex="-1"></a>There are two ***R*** functions that can act as further shortcuts for this process that use the <span class="co">[</span><span class="ot">Akaike Information Criterion (AIC)</span><span class="co">](https://en.wikipedia.org/wiki/Akaike_information_criterion)</span> rather than partial F tests to determine relative model fit. We will talk in more detail about how we get AIC in our upcoming modules on GLM and mixed modeling as well.</span>
-<span id="cb83-159"><a href="#cb83-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-160"><a href="#cb83-160" aria-hidden="true" tabindex="-1"></a>The AIC is typically calculated as ***-2(log-likelihood) + 2K***, where $K$ is the number of model parameters (i.e., the number of $\beta$ coefficients we estimate, which equals the number of variables in the model, plus the intercept), and the log-likelihood is a measure of model fit (the higher, the better). <span class="co">[</span><span class="ot">Keep in mind, though, that log-likelihood is a function of sample size, and larger samples will tend to have lower log-likelihoods regardless of fit!</span><span class="co">]</span> We will not derive log-likelihoods by hand in class, but if you want to know more about how log-likelihood values are derived, you can check out <span class="co">[</span><span class="ot">this helpful resource</span><span class="co">](https://newonlinecourses.science.psu.edu/stat504/node/27/)</span>.</span>
-<span id="cb83-161"><a href="#cb83-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-162"><a href="#cb83-162" aria-hidden="true" tabindex="-1"></a>As you might guess from how AIC is defined, the model with the **lowest** AIC is typically designated as the best fit for the data. Note that although AIC can be used to assess the relative fit of a model to a certain data set, it really does not say anything about the absolute fit or explanatory value of the model (e.g., like the $R^2$ value can). Keep in mind that the best fit model according to AIC, among the models you test against each other, may actually explain very little of the overall variation.</span>
-<span id="cb83-163"><a href="#cb83-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-164"><a href="#cb83-164" aria-hidden="true" tabindex="-1"></a>There are many functions within **R** that will perform stepwise model reduction automatically using AIC as a criterion. One of the most popular is called <span class="in">`stepAIC()`</span>, which is a function in the {MASS} package. To use it, you must simply specify the most complex version of the model and choose whether you would like to assess the model using backwards or forwards (or both) methods of stepwise comparison.</span>
-<span id="cb83-165"><a href="#cb83-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-166"><a href="#cb83-166" aria-hidden="true" tabindex="-1"></a>Let's try <span class="in">`stepAIC()`</span> with our **m0** from above. In the call for the function, we can ask it to run forward, backward, or both directions.</span>
-<span id="cb83-167"><a href="#cb83-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-170"><a href="#cb83-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-171"><a href="#cb83-171" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb83-172"><a href="#cb83-172" aria-hidden="true" tabindex="-1"></a><span class="co"># start with full model...</span></span>
-<span id="cb83-173"><a href="#cb83-173" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education)</span>
-<span id="cb83-174"><a href="#cb83-174" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(m, <span class="at">scope =</span> . <span class="sc">~</span> ., <span class="at">direction =</span> <span class="st">"both"</span>))</span>
-<span id="cb83-175"><a href="#cb83-175" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s)</span>
-<span id="cb83-176"><a href="#cb83-176" aria-hidden="true" tabindex="-1"></a><span class="co"># ... or start with minimal model</span></span>
-<span id="cb83-177"><a href="#cb83-177" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> <span class="dv">1</span>)</span>
-<span id="cb83-178"><a href="#cb83-178" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(m, <span class="at">scope =</span> <span class="sc">~</span> . <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span></span>
-<span id="cb83-179"><a href="#cb83-179" aria-hidden="true" tabindex="-1"></a>  years_of_education, <span class="at">direction =</span> <span class="st">"both"</span>))</span>
-<span id="cb83-180"><a href="#cb83-180" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s)</span>
-<span id="cb83-181"><a href="#cb83-181" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MASS)</span>
-<span id="cb83-182"><a href="#cb83-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-183"><a href="#cb83-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-184"><a href="#cb83-184" aria-hidden="true" tabindex="-1"></a>Note that the <span class="in">`stepAIC()`</span> function, whether we start with the full model more with a null model, has converged (using AIC, in this case) on the same best model we found above through forward and backwards selection by hand - i.e., the model with just **age** and **weight** retained as predictor variables after our process of model selection.</span>
-<span id="cb83-185"><a href="#cb83-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-186"><a href="#cb83-186" aria-hidden="true" tabindex="-1"></a>Finally, there's a very helpful model selection package called {AICcmodavg}. You may have noticed the extra "c" in AICc... this is a "corrected" version of AIC that can account for small sample sizes (helpful for most of us in anthropology and biology). It is derived from AIC using the following equation (which you do not need to know!):</span>
-<span id="cb83-187"><a href="#cb83-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-188"><a href="#cb83-188" aria-hidden="true" tabindex="-1"></a>$$AIC_c = AIC + \frac{2K^2 + 2K}{n-K-1}$$</span>
-<span id="cb83-189"><a href="#cb83-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-190"><a href="#cb83-190" aria-hidden="true" tabindex="-1"></a>where $n$ is sample size and $K$ is the number of parameters in the model. This is, essentially, a version of AIC with greater penalties for models with more parameters. Since the values for AICc and AIC converge as sample size increases, it has been argued that AICc should be the default model testing criterion rather than AIC.</span>
-<span id="cb83-191"><a href="#cb83-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-192"><a href="#cb83-192" aria-hidden="true" tabindex="-1"></a>What makes this wrapper especially useful is that the table output of the function very clearly compares AIC values for different models in a way often asked for in publications. Let's take a look using our already-defined models.</span>
-<span id="cb83-193"><a href="#cb83-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-196"><a href="#cb83-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-197"><a href="#cb83-197" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AICcmodavg)</span>
-<span id="cb83-198"><a href="#cb83-198" aria-hidden="true" tabindex="-1"></a><span class="fu">aictab</span>(<span class="fu">list</span>(m0, m1, m2), <span class="fu">c</span>(<span class="st">"m0"</span>, <span class="st">"m1"</span>, <span class="st">"m2"</span>))</span>
-<span id="cb83-199"><a href="#cb83-199" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>AICcmodavg)</span>
-<span id="cb83-200"><a href="#cb83-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-201"><a href="#cb83-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-202"><a href="#cb83-202" aria-hidden="true" tabindex="-1"></a>We get a few types of output that allow us to directly compare the relative fit of each model: the number of parameters (**k**), the **AICc** scores, and a number of other helpful outputs. **Delta AICc** (or $\Delta_i(AIC)=AIC_i-min(AIC)$) is simply a comparison showing how different each "least-best" model is from the best model in AICc score (i.e., the difference in their AICc scores). **AICcWt** shows us the "weight" of the model at each level (see [here](https://www.rdocumentation.org/packages/qpcR/versions/1.4-0/topics/akaike.weights) for an explanation of what this means). In this case, the best model is the first on the list and is, like in all our other model selection methods, **m2**.</span>
-<span id="cb83-203"><a href="#cb83-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-204"><a href="#cb83-204" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Automated Subset Selection and Model Averaging using {MuMIn} {.unnumbered}</span></span>
-<span id="cb83-205"><a href="#cb83-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-206"><a href="#cb83-206" aria-hidden="true" tabindex="-1"></a>An alternative approach to model selection using AIC is provided by using the function <span class="in">`dredge()`</span> in the {MuMIn} package, which explores subsets of a given global model in an automated way. With <span class="in">`dredge()`</span>, we first run a global model that includes all of the terms we want to consider and then we run <span class="in">`dredge()`</span> to fit subsets of that model without having to specify explicitly which submodels we want to run. The <span class="in">`dredge()`</span> function returns a "model selection" table with models ranked in order of increasing AICc (i.e., lowest, or "best", first).</span>
-<span id="cb83-207"><a href="#cb83-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-210"><a href="#cb83-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-211"><a href="#cb83-211" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
-<span id="cb83-212"><a href="#cb83-212" aria-hidden="true" tabindex="-1"></a><span class="co"># start by defining a "global.model"</span></span>
-<span id="cb83-213"><a href="#cb83-213" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z,</span>
-<span id="cb83-214"><a href="#cb83-214" aria-hidden="true" tabindex="-1"></a>  height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education,</span>
-<span id="cb83-215"><a href="#cb83-215" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
-<span id="cb83-216"><a href="#cb83-216" aria-hidden="true" tabindex="-1"></a><span class="co"># here, we need to change the "na.action" argument from the default of "na.omit" to "na.fail" to prevent `dredge()` from trying to fit submodels with different data sets than the global model if there are missing values</span></span>
-<span id="cb83-217"><a href="#cb83-217" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, we could set that option globally for our R session before running the global model by using `options(na.action = na.fail)` and then omitting the `na.action=` argument from our call to `lm()`</span></span>
-<span id="cb83-218"><a href="#cb83-218" aria-hidden="true" tabindex="-1"></a><span class="co"># we could also filter our dataset to only include rows where none of the variables of interest have missing data using, e.g., `drop_na()`</span></span>
-<span id="cb83-219"><a href="#cb83-219" aria-hidden="true" tabindex="-1"></a><span class="co"># options()$na.action shows the current na.action option</span></span>
-<span id="cb83-220"><a href="#cb83-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-221"><a href="#cb83-221" aria-hidden="true" tabindex="-1"></a><span class="co"># we then run `dredge()` to explore a set of submodels</span></span>
-<span id="cb83-222"><a href="#cb83-222" aria-hidden="true" tabindex="-1"></a><span class="co">#   - the `m.lim=` argument is optional and sets lower and upper limits on the number of terms to include</span></span>
-<span id="cb83-223"><a href="#cb83-223" aria-hidden="true" tabindex="-1"></a><span class="co">#   - the `beta=` argument specifies whether or not and how to standardize the beta coefficients; "none" is the default</span></span>
-<span id="cb83-224"><a href="#cb83-224" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> <span class="fu">dredge</span>(m, <span class="at">beta =</span> <span class="st">"none"</span>, <span class="at">m.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
-<span id="cb83-225"><a href="#cb83-225" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods)</span>
-<span id="cb83-226"><a href="#cb83-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-227"><a href="#cb83-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-228"><a href="#cb83-228" aria-hidden="true" tabindex="-1"></a>The <span class="in">`dredge()`</span> function returns a "model.selection" object summarizing all of the models that were tested. The <span class="in">`get.models()`</span> function can be used to return a list of these models.</span>
-<span id="cb83-229"><a href="#cb83-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-232"><a href="#cb83-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-233"><a href="#cb83-233" aria-hidden="true" tabindex="-1"></a>(mods.list <span class="ot">&lt;-</span> <span class="fu">get.models</span>(mods, <span class="at">subset=</span><span class="cn">TRUE</span>))</span>
-<span id="cb83-234"><a href="#cb83-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-235"><a href="#cb83-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-236"><a href="#cb83-236" aria-hidden="true" tabindex="-1"></a>Running the <span class="in">`coef()`</span> function on the output of <span class="in">`dredge()`</span> returns a table of coefficients from each model, where the rowname is the number of the corresponding model in the "model.selection" object.</span>
-<span id="cb83-237"><a href="#cb83-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-240"><a href="#cb83-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-241"><a href="#cb83-241" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mods)</span>
-<span id="cb83-242"><a href="#cb83-242" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-243"><a href="#cb83-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-244"><a href="#cb83-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### Averaging Coefficients across Sets of Models</span></span>
-<span id="cb83-245"><a href="#cb83-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-246"><a href="#cb83-246" aria-hidden="true" tabindex="-1"></a>The code below averages beta coefficients for the set of models with **Delta AICc** &lt; 4. Here, we also need to set the argument <span class="in">`fit=TRUE`</span> because <span class="in">`dredge()`</span> does not actually store the model results. The <span class="in">`model.avg()`</span> function returns a "summary.averaging" object.</span>
-<span id="cb83-247"><a href="#cb83-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-250"><a href="#cb83-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-251"><a href="#cb83-251" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods,</span>
-<span id="cb83-252"><a href="#cb83-252" aria-hidden="true" tabindex="-1"></a>  <span class="at">subset =</span> delta <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span>
-<span id="cb83-253"><a href="#cb83-253" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods.avg)</span>
-<span id="cb83-254"><a href="#cb83-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-255"><a href="#cb83-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-256"><a href="#cb83-256" aria-hidden="true" tabindex="-1"></a>We can use the <span class="in">`confint()`</span> function to confidence intervals for the averaged coefficient estimates across models...</span>
-<span id="cb83-257"><a href="#cb83-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-260"><a href="#cb83-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-261"><a href="#cb83-261" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span>
-<span id="cb83-262"><a href="#cb83-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-263"><a href="#cb83-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-264"><a href="#cb83-264" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; NOTE: The ‘subset’ (or ‘conditional’) average reported is only averaging over models where the term appears. The ‘full’ average reported assumes that a term is included in every model, but the estimate and standard error are set to zero in models where the term is not included.</span></span>
-<span id="cb83-265"><a href="#cb83-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-266"><a href="#cb83-266" aria-hidden="true" tabindex="-1"></a>The code below averages beta coefficients for models in the 95% confidence set, i.e., for cumulative AIC weights up to 95%:</span>
-<span id="cb83-267"><a href="#cb83-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-270"><a href="#cb83-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-271"><a href="#cb83-271" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods, <span class="at">subset =</span> <span class="fu">cumsum</span>(weight) <span class="sc">&lt;=</span> <span class="fl">0.95</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span>
-<span id="cb83-272"><a href="#cb83-272" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span>
-<span id="cb83-273"><a href="#cb83-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-274"><a href="#cb83-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-275"><a href="#cb83-275" aria-hidden="true" tabindex="-1"></a>With the {MuMIn} package loaded, we can use the <span class="in">`plot()`</span> function to make a plot of averaged model coefficients, similar to <span class="in">`plot_summs()`</span> from {jtools}.</span>
-<span id="cb83-276"><a href="#cb83-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-279"><a href="#cb83-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-280"><a href="#cb83-280" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">TRUE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb83-281"><a href="#cb83-281" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">FALSE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb83-282"><a href="#cb83-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-283"><a href="#cb83-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-284"><a href="#cb83-284" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; NOTE: Omitting the </span><span class="in">`intercept=`</span><span class="at"> argument or setting it to </span><span class="in">`TRUE`</span><span class="at"> will include the $\beta0$ coefficient. When </span><span class="in">`full=TRUE`</span><span class="at">, coefficient averaging is done over all models in the selected set (for models where a particular parameter does not appear, the corresponding coefficient and its variance are set to zero). When </span><span class="in">`full=FALSE`</span><span class="at">, coefficient averaging is done only over models in the selected set where the parameter appears.</span></span>
-<span id="cb83-285"><a href="#cb83-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-286"><a href="#cb83-286" aria-hidden="true" tabindex="-1"></a>Note that, here again, the two key predictors of zombie apocalypse survivor's **height** are **age** and **weight**, and the best models include both of these terms!</span>
-<span id="cb83-287"><a href="#cb83-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-290"><a href="#cb83-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb83-291"><a href="#cb83-291" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb83-292"><a href="#cb83-292" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MuMIn)</span>
-<span id="cb83-293"><a href="#cb83-293" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
-<span id="cb83-294"><a href="#cb83-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb83-295"><a href="#cb83-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-296"><a href="#cb83-296" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
-<span id="cb83-297"><a href="#cb83-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-298"><a href="#cb83-298" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
-<span id="cb83-299"><a href="#cb83-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-300"><a href="#cb83-300" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Model selection is an iterative process, done as part of a regression analysis, where we sort through our explanatory variables and alternative models involving those variables to discern which are best able to account for variation in the response variable</span>
-<span id="cb83-301"><a href="#cb83-301" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There are various criteria for evaluating alternative models, but all rely on comparing the "explanatory value" of more complex models versus less complex models</span>
-<span id="cb83-302"><a href="#cb83-302" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Forward selection evaluates whether adding a variable or interaction among variables to a less complex model increases the explanatory value of the model significantly</span>
-<span id="cb83-303"><a href="#cb83-303" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Backwards selection evaluates whether removing a variable or interaction among variables from a more complex model results in a significant loss of explanatory power</span>
+<div class="sourceCode" id="cb84" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Model Selection in Regression {#module-22}</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>The purpose of a model selection process in a regression analysis is to sort through our explanatory variables in a systematic fashion in order to establish which are best able to describe the response. There are different possible algorithms to use for model selection, e.g., forward and backward selection, and different ways of comparing models to one another, which may result in different parameters being included in the final model. The are also several different package that we can use to combine results from several different models.</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preliminaries</span></span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Install these packages in ***R***: <span class="co">[</span><span class="ot">{MASS}</span><span class="co">](https://cran.r-project.org/web/packages/MASS/MASS.pdf)</span>, <span class="co">[</span><span class="ot">{AICcmodavg}</span><span class="co">](https://cran.r-project.org/web/packages/AICcmodavg/AICcmodavg.pdf)</span>, and <span class="co">[</span><span class="ot">{MuMIn}</span><span class="co">](https://cran.r-project.org/web/packages/MuMIn/MuMIn.pdf)</span></span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Load {tidyverse}</span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-14"><a href="#cb84-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-15"><a href="#cb84-15" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb84-16"><a href="#cb84-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb84-17"><a href="#cb84-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-18"><a href="#cb84-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-19"><a href="#cb84-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nested Comparisons and F Tests</span></span>
+<span id="cb84-20"><a href="#cb84-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-21"><a href="#cb84-21" aria-hidden="true" tabindex="-1"></a>One way we can compare different models is to use F ratios and what are called **partial F tests**. This approach looks at two or more *nested* models - a larger, or more complex, model that contains explanatory variables that we are interested in and smaller, less complex, models that exclude one or more of those variables. Basically, we aim to compare the total variance in the response variable that is explained by the more complex model to that explained by a "reduced" model. If the more complex model explains a significantly greater proportion of the variation, then we conclude that predictor terms absent from the less complex model are important.</span>
+<span id="cb84-22"><a href="#cb84-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-23"><a href="#cb84-23" aria-hidden="true" tabindex="-1"></a>For example, if including an additional term with its associated $\beta$ coefficient results in significantly better fit to the observed data than we find for a model that lacks that particular terms, then this is evidence against the null hypothesis that the $\beta$ coefficient (slope) for that term equals zero.</span>
+<span id="cb84-24"><a href="#cb84-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-25"><a href="#cb84-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### EXAMPLE: {.unnumbered}</span></span>
+<span id="cb84-26"><a href="#cb84-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-27"><a href="#cb84-27" aria-hidden="true" tabindex="-1"></a>Let's go back to our zombie apocalypse survivors dataset and compare a few models. We need to calculate the following partial F statistic for a full versus reduced model:</span>
+<span id="cb84-28"><a href="#cb84-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-29"><a href="#cb84-29" aria-hidden="true" tabindex="-1"></a>$$F = \frac{(R^2_{full}-R^2_{reduced})(n-q-1)}{(1-R^2_{full})(q-p)}$$</span>
+<span id="cb84-30"><a href="#cb84-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-31"><a href="#cb84-31" aria-hidden="true" tabindex="-1"></a>where:</span>
+<span id="cb84-32"><a href="#cb84-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-33"><a href="#cb84-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The $R^2$ values are the coefficients of determination of the full model and the nested "reduced" model</span>
+<span id="cb84-34"><a href="#cb84-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$n$ is the number of observations in the data set</span>
+<span id="cb84-35"><a href="#cb84-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$p$ is the number of predictor terms in the nested (reduced) model</span>
+<span id="cb84-36"><a href="#cb84-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$q$ is the number of predictor terms in the full model</span>
+<span id="cb84-37"><a href="#cb84-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-38"><a href="#cb84-38" aria-hidden="true" tabindex="-1"></a>After we calculate this F statistic, we compare it to an $F$ distribution with "df1 = q-p" and "df2 = n-q" to derive a p value. The <span class="in">`lm()`</span> function will do this for us automatically, but we can also do it by hand.</span>
+<span id="cb84-39"><a href="#cb84-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-42"><a href="#cb84-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-43"><a href="#cb84-43" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/zombies.csv"</span></span>
+<span id="cb84-44"><a href="#cb84-44" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(f, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb84-45"><a href="#cb84-45" aria-hidden="true" tabindex="-1"></a>z<span class="sc">$</span>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(z<span class="sc">$</span>gender)</span>
+<span id="cb84-46"><a href="#cb84-46" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">*</span> gender) <span class="co"># full model</span></span>
+<span id="cb84-47"><a href="#cb84-47" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> gender) <span class="co"># model without interaction</span></span>
+<span id="cb84-48"><a href="#cb84-48" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age) <span class="co"># model with one predictor</span></span>
+<span id="cb84-49"><a href="#cb84-49" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> <span class="dv">1</span>) <span class="co"># intercept only model</span></span>
+<span id="cb84-50"><a href="#cb84-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-51"><a href="#cb84-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-52"><a href="#cb84-52" aria-hidden="true" tabindex="-1"></a>Once we have fitted the full and three nested models, we can carry out partial F tests to compare particular models using the <span class="in">`anova()`</span> function, with the nested (reduced) and full model as arguments. The reduced model is included as the first argument and the full model is included as the second argument.</span>
+<span id="cb84-53"><a href="#cb84-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-56"><a href="#cb84-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-57"><a href="#cb84-57" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2, m1, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-58"><a href="#cb84-58" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the reduced model without interactions (m2) to the full model with interactions (m1)</span></span>
+<span id="cb84-59"><a href="#cb84-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-60"><a href="#cb84-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-61"><a href="#cb84-61" aria-hidden="true" tabindex="-1"></a>We can also calculate the F statistic by hand and compare it to the $F$ distribution.</span>
+<span id="cb84-62"><a href="#cb84-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-65"><a href="#cb84-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-66"><a href="#cb84-66" aria-hidden="true" tabindex="-1"></a>(f <span class="ot">&lt;-</span> ((<span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(m2)<span class="sc">$</span>r.squared) <span class="sc">*</span></span>
+<span id="cb84-67"><a href="#cb84-67" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> ((<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(m1)<span class="sc">$</span>r.squared) <span class="sc">*</span> (<span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>)))</span>
+<span id="cb84-68"><a href="#cb84-68" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(f, <span class="at">df1 =</span> <span class="dv">3</span> <span class="sc">-</span> <span class="dv">2</span>, <span class="at">df2 =</span> <span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">3</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb84-69"><a href="#cb84-69" aria-hidden="true" tabindex="-1"></a><span class="co"># df1 = q-p, df2 = n-q</span></span>
+<span id="cb84-70"><a href="#cb84-70" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m3, m2, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-71"><a href="#cb84-71" aria-hidden="true" tabindex="-1"></a><span class="co"># compares the age only model (m3) to the age + gender model (m2)</span></span>
+<span id="cb84-72"><a href="#cb84-72" aria-hidden="true" tabindex="-1"></a>(f <span class="ot">&lt;-</span> ((<span class="fu">summary</span>(m2)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(m3)<span class="sc">$</span>r.squared) <span class="sc">*</span></span>
+<span id="cb84-73"><a href="#cb84-73" aria-hidden="true" tabindex="-1"></a>  (<span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> ((<span class="dv">1</span> <span class="sc">-</span> <span class="fu">summary</span>(m2)<span class="sc">$</span>r.squared) <span class="sc">*</span> (<span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)))</span>
+<span id="cb84-74"><a href="#cb84-74" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(f, <span class="at">df1 =</span> <span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>, <span class="at">df2 =</span> <span class="fu">nrow</span>(z) <span class="sc">-</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb84-75"><a href="#cb84-75" aria-hidden="true" tabindex="-1"></a><span class="co"># df1 = q-p, df2 = n-q</span></span>
+<span id="cb84-76"><a href="#cb84-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-77"><a href="#cb84-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-78"><a href="#cb84-78" aria-hidden="true" tabindex="-1"></a>In these cases, each comparison shows that the more complex model indeed results in signficantly more explantory power than the reduced model.</span>
+<span id="cb84-79"><a href="#cb84-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-80"><a href="#cb84-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Forward Selection</span></span>
+<span id="cb84-81"><a href="#cb84-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-82"><a href="#cb84-82" aria-hidden="true" tabindex="-1"></a>Forward selection starts with an intercept-only model and then tests which of the predictor variables best improves the goodness-of-fit. Then the model is updated by adding that term and tests which of the remaining predictors would further and best improve the fit. The process continues until there are not any other terms that could be added to improve the fit more. The ***R*** functions <span class="in">`add1()`</span> and <span class="in">`update()`</span>, respectively, perform the series of tests and update your fitted regression model. Setting the "test=" argument in <span class="in">`add1()`</span> to "F" includes the partial F statistic value and its significance. The ".~." part of the "scope=" argument means, basically, "what is already there", while the remainder of the "scope=" argument is the list of additional variables you might add for the fullest possible model.</span>
+<span id="cb84-83"><a href="#cb84-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-86"><a href="#cb84-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-87"><a href="#cb84-87" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb84-88"><a href="#cb84-88" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m0)</span>
+<span id="cb84-89"><a href="#cb84-89" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m0, <span class="at">scope =</span> .<span class="sc">~</span>. <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-90"><a href="#cb84-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-91"><a href="#cb84-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-92"><a href="#cb84-92" aria-hidden="true" tabindex="-1"></a>Looking at the output of <span class="in">`add1()`</span>, we see that adding **weight**, **age**, or **years_of_education** all would add explanatory power to our model, but **weight** is associated with the highest new F statistic and the lowest new RSS, so we should update our model by adding it as a new predictor. We do this with the <span class="in">`update()`</span> function, passing it the old model and a "formula=" argument of ".~." (what is already there) "+ weight" (the new predictor).</span>
+<span id="cb84-93"><a href="#cb84-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-96"><a href="#cb84-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-97"><a href="#cb84-97" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, <span class="at">formula =</span> .<span class="sc">~</span>. <span class="sc">+</span> weight)</span>
+<span id="cb84-98"><a href="#cb84-98" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span>
+<span id="cb84-99"><a href="#cb84-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-100"><a href="#cb84-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-101"><a href="#cb84-101" aria-hidden="true" tabindex="-1"></a>We then repeat this process until adding additional predictors no longer improves the explanatory power of the model.</span>
+<span id="cb84-102"><a href="#cb84-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-105"><a href="#cb84-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-106"><a href="#cb84-106" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m1, <span class="at">scope =</span> .<span class="sc">~</span>. <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-107"><a href="#cb84-107" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, <span class="at">formula =</span> .<span class="sc">~</span>. <span class="sc">+</span> age)</span>
+<span id="cb84-108"><a href="#cb84-108" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
+<span id="cb84-109"><a href="#cb84-109" aria-hidden="true" tabindex="-1"></a><span class="fu">add1</span>(m2, <span class="at">scope =</span> .<span class="sc">~</span>. <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-110"><a href="#cb84-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-111"><a href="#cb84-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-112"><a href="#cb84-112" aria-hidden="true" tabindex="-1"></a>After we add **weight** and **age**, no other variable improves the fit of the model significantly, so the final, best model in this case is **m2**.</span>
+<span id="cb84-113"><a href="#cb84-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-116"><a href="#cb84-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-117"><a href="#cb84-117" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
+<span id="cb84-118"><a href="#cb84-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-119"><a href="#cb84-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-120"><a href="#cb84-120" aria-hidden="true" tabindex="-1"></a><span class="fu">## Backward Selection</span></span>
+<span id="cb84-121"><a href="#cb84-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-122"><a href="#cb84-122" aria-hidden="true" tabindex="-1"></a>Opposite to forward selection, backward selection starts with the fullest model you want to consider and systematically drops terms that do not contribute to the explanatory value of the model. The ***R*** functions for this process are <span class="in">`drop1()`</span> to inspect the partial F test results and <span class="in">`update()`</span> to update the model.</span>
+<span id="cb84-123"><a href="#cb84-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-126"><a href="#cb84-126" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-127"><a href="#cb84-127" aria-hidden="true" tabindex="-1"></a>m0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span></span>
+<span id="cb84-128"><a href="#cb84-128" aria-hidden="true" tabindex="-1"></a>  years_of_education)</span>
+<span id="cb84-129"><a href="#cb84-129" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m0)</span>
+<span id="cb84-130"><a href="#cb84-130" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m0, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-131"><a href="#cb84-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-132"><a href="#cb84-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-133"><a href="#cb84-133" aria-hidden="true" tabindex="-1"></a>Here, removing either **weight** or **age** would result in a significant loss of explanatory power for our model, while removing either **zombies_killed** or **years_of_education** would not. The latter variable is associated with the lowest F value and lowest increase in RSS, so we update our model by removing it. We then run the <span class="in">`drop1()`</span> function on the new, updated model and remove the next variable whose loss does not significantly reduce the explanatory power of the model. We continue doing this until removing any additional predictors results in a significantly worse model.</span>
+<span id="cb84-134"><a href="#cb84-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-137"><a href="#cb84-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-138"><a href="#cb84-138" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">update</span>(m0, .<span class="sc">~</span>. <span class="sc">-</span> years_of_education)</span>
+<span id="cb84-139"><a href="#cb84-139" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)</span>
+<span id="cb84-140"><a href="#cb84-140" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m1, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-141"><a href="#cb84-141" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">update</span>(m1, .<span class="sc">~</span>. <span class="sc">-</span> zombies_killed)</span>
+<span id="cb84-142"><a href="#cb84-142" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
+<span id="cb84-143"><a href="#cb84-143" aria-hidden="true" tabindex="-1"></a><span class="fu">drop1</span>(m2, <span class="at">test =</span> <span class="st">"F"</span>)</span>
+<span id="cb84-144"><a href="#cb84-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-145"><a href="#cb84-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-146"><a href="#cb84-146" aria-hidden="true" tabindex="-1"></a>At this point, all of the explanatory variables are still significant, so the final, best model in this case is also **m2**.</span>
+<span id="cb84-147"><a href="#cb84-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-150"><a href="#cb84-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-151"><a href="#cb84-151" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)</span>
+<span id="cb84-152"><a href="#cb84-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-153"><a href="#cb84-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-154"><a href="#cb84-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Selection Using AIC</span></span>
+<span id="cb84-155"><a href="#cb84-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-156"><a href="#cb84-156" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Stepwise Selection using {MASS} {.unnumbered}</span></span>
+<span id="cb84-157"><a href="#cb84-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-158"><a href="#cb84-158" aria-hidden="true" tabindex="-1"></a>There are two ***R*** functions that can act as further shortcuts for this process that use the <span class="co">[</span><span class="ot">Akaike Information Criterion (AIC)</span><span class="co">](https://en.wikipedia.org/wiki/Akaike_information_criterion)</span> rather than partial F tests to determine relative model fit. We will talk in more detail about how we get AIC in our upcoming modules on GLM and mixed modeling as well.</span>
+<span id="cb84-159"><a href="#cb84-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-160"><a href="#cb84-160" aria-hidden="true" tabindex="-1"></a>The AIC is typically calculated as ***-2(log-likelihood) + 2K***, where $K$ is the number of model parameters (i.e., the number of $\beta$ coefficients we estimate, which equals the number of variables in the model, plus the intercept), and the log-likelihood is a measure of model fit (the higher, the better). <span class="co">[</span><span class="ot">Keep in mind, though, that log-likelihood is a function of sample size, and larger samples will tend to have lower log-likelihoods regardless of fit!</span><span class="co">]</span> We will not derive log-likelihoods by hand in class, but if you want to know more about how log-likelihood values are derived, you can check out <span class="co">[</span><span class="ot">this helpful resource</span><span class="co">](https://newonlinecourses.science.psu.edu/stat504/node/27/)</span>.</span>
+<span id="cb84-161"><a href="#cb84-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-162"><a href="#cb84-162" aria-hidden="true" tabindex="-1"></a>As you might guess from how AIC is defined, the model with the **lowest** AIC is typically designated as the best fit for the data. Note that although AIC can be used to assess the relative fit of a model to a certain data set, it really does not say anything about the absolute fit or explanatory value of the model (e.g., like the $R^2$ value can). Keep in mind that the best fit model according to AIC, among the models you test against each other, may actually explain very little of the overall variation.</span>
+<span id="cb84-163"><a href="#cb84-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-164"><a href="#cb84-164" aria-hidden="true" tabindex="-1"></a>There are many functions within **R** that will perform stepwise model reduction automatically using AIC as a criterion. One of the most popular is called <span class="in">`stepAIC()`</span>, which is a function in the {MASS} package. To use it, you must simply specify the most complex version of the model and choose whether you would like to assess the model using backwards or forwards (or both) methods of stepwise comparison.</span>
+<span id="cb84-165"><a href="#cb84-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-166"><a href="#cb84-166" aria-hidden="true" tabindex="-1"></a>Let's try <span class="in">`stepAIC()`</span> with our **m0** from above. In the call for the function, we can ask it to run forward, backward, or both directions.</span>
+<span id="cb84-167"><a href="#cb84-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-170"><a href="#cb84-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-171"><a href="#cb84-171" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb84-172"><a href="#cb84-172" aria-hidden="true" tabindex="-1"></a><span class="co"># start with full model...</span></span>
+<span id="cb84-173"><a href="#cb84-173" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education)</span>
+<span id="cb84-174"><a href="#cb84-174" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(m, <span class="at">scope =</span> . <span class="sc">~</span> ., <span class="at">direction =</span> <span class="st">"both"</span>))</span>
+<span id="cb84-175"><a href="#cb84-175" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s)</span>
+<span id="cb84-176"><a href="#cb84-176" aria-hidden="true" tabindex="-1"></a><span class="co"># ... or start with minimal model</span></span>
+<span id="cb84-177"><a href="#cb84-177" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z, height <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb84-178"><a href="#cb84-178" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(m, <span class="at">scope =</span> <span class="sc">~</span> . <span class="sc">+</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span></span>
+<span id="cb84-179"><a href="#cb84-179" aria-hidden="true" tabindex="-1"></a>  years_of_education, <span class="at">direction =</span> <span class="st">"both"</span>))</span>
+<span id="cb84-180"><a href="#cb84-180" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(s)</span>
+<span id="cb84-181"><a href="#cb84-181" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MASS)</span>
+<span id="cb84-182"><a href="#cb84-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-183"><a href="#cb84-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-184"><a href="#cb84-184" aria-hidden="true" tabindex="-1"></a>Note that the <span class="in">`stepAIC()`</span> function, whether we start with the full model more with a null model, has converged (using AIC, in this case) on the same best model we found above through forward and backwards selection by hand - i.e., the model with just **age** and **weight** retained as predictor variables after our process of model selection.</span>
+<span id="cb84-185"><a href="#cb84-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-186"><a href="#cb84-186" aria-hidden="true" tabindex="-1"></a>Finally, there's a very helpful model selection package called {AICcmodavg}. You may have noticed the extra "c" in AICc... this is a "corrected" version of AIC that can account for small sample sizes (helpful for most of us in anthropology and biology). It is derived from AIC using the following equation (which you do not need to know!):</span>
+<span id="cb84-187"><a href="#cb84-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-188"><a href="#cb84-188" aria-hidden="true" tabindex="-1"></a>$$AIC_c = AIC + \frac{2K^2 + 2K}{n-K-1}$$</span>
+<span id="cb84-189"><a href="#cb84-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-190"><a href="#cb84-190" aria-hidden="true" tabindex="-1"></a>where $n$ is sample size and $K$ is the number of parameters in the model. This is, essentially, a version of AIC with greater penalties for models with more parameters. Since the values for AICc and AIC converge as sample size increases, it has been argued that AICc should be the default model testing criterion rather than AIC.</span>
+<span id="cb84-191"><a href="#cb84-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-192"><a href="#cb84-192" aria-hidden="true" tabindex="-1"></a>What makes this wrapper especially useful is that the table output of the function very clearly compares AIC values for different models in a way often asked for in publications. Let's take a look using our already-defined models.</span>
+<span id="cb84-193"><a href="#cb84-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-196"><a href="#cb84-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-197"><a href="#cb84-197" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AICcmodavg)</span>
+<span id="cb84-198"><a href="#cb84-198" aria-hidden="true" tabindex="-1"></a><span class="fu">aictab</span>(<span class="fu">list</span>(m0, m1, m2), <span class="fu">c</span>(<span class="st">"m0"</span>, <span class="st">"m1"</span>, <span class="st">"m2"</span>))</span>
+<span id="cb84-199"><a href="#cb84-199" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>AICcmodavg)</span>
+<span id="cb84-200"><a href="#cb84-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-201"><a href="#cb84-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-202"><a href="#cb84-202" aria-hidden="true" tabindex="-1"></a>We get a few types of output that allow us to directly compare the relative fit of each model: the number of parameters (**k**), the **AICc** scores, and a number of other helpful outputs. **Delta AICc** (or $\Delta_i(AIC)=AIC_i-min(AIC)$) is simply a comparison showing how different each "least-best" model is from the best model in AICc score (i.e., the difference in their AICc scores). **AICcWt** shows us the "weight" of the model at each level (see [here](https://www.rdocumentation.org/packages/qpcR/versions/1.4-0/topics/akaike.weights) for an explanation of what this means). In this case, the best model is the first on the list and is, like in all our other model selection methods, **m2**.</span>
+<span id="cb84-203"><a href="#cb84-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-204"><a href="#cb84-204" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Automated Subset Selection and Model Averaging using {MuMIn} {.unnumbered}</span></span>
+<span id="cb84-205"><a href="#cb84-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-206"><a href="#cb84-206" aria-hidden="true" tabindex="-1"></a>An alternative approach to model selection using AIC is provided by using the function <span class="in">`dredge()`</span> in the {MuMIn} package, which explores subsets of a given global model in an automated way. With <span class="in">`dredge()`</span>, we first run a global model that includes all of the terms we want to consider and then we run <span class="in">`dredge()`</span> to fit subsets of that model without having to specify explicitly which submodels we want to run. The <span class="in">`dredge()`</span> function returns a "model selection" table with models ranked in order of increasing AICc (i.e., lowest, or "best", first).</span>
+<span id="cb84-207"><a href="#cb84-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-208"><a href="#cb84-208" aria-hidden="true" tabindex="-1"></a>We start by defining a "global.model"...</span>
+<span id="cb84-209"><a href="#cb84-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-212"><a href="#cb84-212" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-213"><a href="#cb84-213" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MuMIn)</span>
+<span id="cb84-214"><a href="#cb84-214" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> z,</span>
+<span id="cb84-215"><a href="#cb84-215" aria-hidden="true" tabindex="-1"></a>  height <span class="sc">~</span> age <span class="sc">+</span> weight <span class="sc">+</span> zombies_killed <span class="sc">+</span> years_of_education,</span>
+<span id="cb84-216"><a href="#cb84-216" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
+<span id="cb84-217"><a href="#cb84-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-218"><a href="#cb84-218" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **NOTE:** Here, we need to change the "na.action" argument from the default of "na.omit" to "na.fail" to prevent </span><span class="in">`dredge()`</span><span class="at"> from trying to fit submodels with different data sets than the global model if there are missing values.</span></span>
+<span id="cb84-219"><a href="#cb84-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-220"><a href="#cb84-220" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Alternatively, we could set that option globally for our R session before running the global model by using </span><span class="in">`options(na.action = na.fail)`</span><span class="at"> and then omitting the </span><span class="in">`na.action=`</span><span class="at"> argument from our call to </span><span class="in">`lm()`</span><span class="at">.</span></span>
+<span id="cb84-221"><a href="#cb84-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-222"><a href="#cb84-222" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; We could also filter our dataset to only include rows where none of the variables of interest have missing data using, e.g., </span><span class="in">`drop_na()`</span><span class="at">.</span></span>
+<span id="cb84-223"><a href="#cb84-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-224"><a href="#cb84-224" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; The command </span><span class="in">`options()$na.action`</span><span class="at"> shows the current "na.action" option.</span></span>
+<span id="cb84-225"><a href="#cb84-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-226"><a href="#cb84-226" aria-hidden="true" tabindex="-1"></a>We then run <span class="in">`dredge()`</span> to explore a set of submodels...</span>
+<span id="cb84-227"><a href="#cb84-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-228"><a href="#cb84-228" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the <span class="in">`m.lim=`</span> argument is optional and sets lower and upper limits on the number of terms to include</span>
+<span id="cb84-229"><a href="#cb84-229" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the <span class="in">`beta=`</span> argument specifies whether or not and how to standardize the beta coefficients; "none" is the default</span>
+<span id="cb84-230"><a href="#cb84-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-233"><a href="#cb84-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-234"><a href="#cb84-234" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> <span class="fu">dredge</span>(m, <span class="at">beta =</span> <span class="st">"none"</span>, <span class="at">m.lim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
+<span id="cb84-235"><a href="#cb84-235" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods)</span>
+<span id="cb84-236"><a href="#cb84-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-237"><a href="#cb84-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-238"><a href="#cb84-238" aria-hidden="true" tabindex="-1"></a>The <span class="in">`dredge()`</span> function returns a "model.selection" object summarizing all of the models that were tested. The <span class="in">`get.models()`</span> function can be used to return a list of these models.</span>
+<span id="cb84-239"><a href="#cb84-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-242"><a href="#cb84-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-243"><a href="#cb84-243" aria-hidden="true" tabindex="-1"></a>(mods.list <span class="ot">&lt;-</span> <span class="fu">get.models</span>(mods, <span class="at">subset=</span><span class="cn">TRUE</span>))</span>
+<span id="cb84-244"><a href="#cb84-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-245"><a href="#cb84-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-246"><a href="#cb84-246" aria-hidden="true" tabindex="-1"></a>Running the <span class="in">`coef()`</span> function on the output of <span class="in">`dredge()`</span> returns a table of coefficients from each model, where the rowname is the number of the corresponding model in the "model.selection" object.</span>
+<span id="cb84-247"><a href="#cb84-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-250"><a href="#cb84-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-251"><a href="#cb84-251" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(mods)</span>
+<span id="cb84-252"><a href="#cb84-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-253"><a href="#cb84-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-254"><a href="#cb84-254" aria-hidden="true" tabindex="-1"></a><span class="fu">### Averaging Coefficients across Sets of Models</span></span>
+<span id="cb84-255"><a href="#cb84-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-256"><a href="#cb84-256" aria-hidden="true" tabindex="-1"></a>The code below averages beta coefficients for the set of models with **Delta AICc** &lt; 4. Here, we also need to set the argument <span class="in">`fit=TRUE`</span> because <span class="in">`dredge()`</span> does not actually store the model results. The <span class="in">`model.avg()`</span> function returns a "summary.averaging" object.</span>
+<span id="cb84-257"><a href="#cb84-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-260"><a href="#cb84-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-261"><a href="#cb84-261" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods,</span>
+<span id="cb84-262"><a href="#cb84-262" aria-hidden="true" tabindex="-1"></a>  <span class="at">subset =</span> delta <span class="sc">&lt;</span> <span class="dv">4</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb84-263"><a href="#cb84-263" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mods.avg)</span>
+<span id="cb84-264"><a href="#cb84-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-265"><a href="#cb84-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-266"><a href="#cb84-266" aria-hidden="true" tabindex="-1"></a>We can use the <span class="in">`confint()`</span> function to confidence intervals for the averaged coefficient estimates across models...</span>
+<span id="cb84-267"><a href="#cb84-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-270"><a href="#cb84-270" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-271"><a href="#cb84-271" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span>
+<span id="cb84-272"><a href="#cb84-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-273"><a href="#cb84-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-274"><a href="#cb84-274" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; NOTE: The ‘subset’ (or ‘conditional’) average reported is only averaging over models where the term appears. The ‘full’ average reported assumes that a term is included in every model, but the estimate and standard error are set to zero in models where the term is not included.</span></span>
+<span id="cb84-275"><a href="#cb84-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-276"><a href="#cb84-276" aria-hidden="true" tabindex="-1"></a>The code below averages beta coefficients for models in the 95% confidence set, i.e., for cumulative AIC weights up to 95%:</span>
+<span id="cb84-277"><a href="#cb84-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-280"><a href="#cb84-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-281"><a href="#cb84-281" aria-hidden="true" tabindex="-1"></a>(mods.avg <span class="ot">&lt;-</span> <span class="fu">summary</span>(<span class="fu">model.avg</span>(mods, <span class="at">subset =</span> <span class="fu">cumsum</span>(weight) <span class="sc">&lt;=</span> <span class="fl">0.95</span>, <span class="at">fit =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb84-282"><a href="#cb84-282" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(mods.avg)</span>
+<span id="cb84-283"><a href="#cb84-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-284"><a href="#cb84-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-285"><a href="#cb84-285" aria-hidden="true" tabindex="-1"></a>With the {MuMIn} package loaded, we can use the <span class="in">`plot()`</span> function to make a plot of averaged model coefficients, similar to <span class="in">`plot_summs()`</span> from {jtools}.</span>
+<span id="cb84-286"><a href="#cb84-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-289"><a href="#cb84-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-290"><a href="#cb84-290" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">TRUE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb84-291"><a href="#cb84-291" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mods.avg, <span class="at">full =</span> <span class="cn">FALSE</span>, <span class="at">intercept =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb84-292"><a href="#cb84-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-293"><a href="#cb84-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-294"><a href="#cb84-294" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; NOTE: Omitting the </span><span class="in">`intercept=`</span><span class="at"> argument or setting it to </span><span class="in">`TRUE`</span><span class="at"> will include the $\beta0$ coefficient. When </span><span class="in">`full=TRUE`</span><span class="at">, coefficient averaging is done over all models in the selected set (for models where a particular parameter does not appear, the corresponding coefficient and its variance are set to zero). When </span><span class="in">`full=FALSE`</span><span class="at">, coefficient averaging is done only over models in the selected set where the parameter appears.</span></span>
+<span id="cb84-295"><a href="#cb84-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-296"><a href="#cb84-296" aria-hidden="true" tabindex="-1"></a>Note that, here again, the two key predictors of zombie apocalypse survivor's **height** are **age** and **weight**, and the best models include both of these terms!</span>
+<span id="cb84-297"><a href="#cb84-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-300"><a href="#cb84-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb84-301"><a href="#cb84-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb84-302"><a href="#cb84-302" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>MuMIn)</span>
+<span id="cb84-303"><a href="#cb84-303" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(package<span class="sc">:</span>tidyverse)</span>
+<span id="cb84-304"><a href="#cb84-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb84-305"><a href="#cb84-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-306"><a href="#cb84-306" aria-hidden="true" tabindex="-1"></a>&lt;hr&gt;</span>
+<span id="cb84-307"><a href="#cb84-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-308"><a href="#cb84-308" aria-hidden="true" tabindex="-1"></a><span class="fu">## Concept Review {.unnumbered}</span></span>
+<span id="cb84-309"><a href="#cb84-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-310"><a href="#cb84-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Model selection is an iterative process, done as part of a regression analysis, where we sort through our explanatory variables and alternative models involving those variables to discern which are best able to account for variation in the response variable</span>
+<span id="cb84-311"><a href="#cb84-311" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>There are various criteria for evaluating alternative models, but all rely on comparing the "explanatory value" of more complex models versus less complex models</span>
+<span id="cb84-312"><a href="#cb84-312" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Forward selection evaluates whether adding a variable or interaction among variables to a less complex model increases the explanatory value of the model significantly</span>
+<span id="cb84-313"><a href="#cb84-313" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Backwards selection evaluates whether removing a variable or interaction among variables from a more complex model results in a significant loss of explanatory power</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

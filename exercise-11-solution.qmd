@@ -355,7 +355,7 @@ interaction.plot(
 
 ## Additional Steps? {.unnumbered}
 
-Let's look at the model of relative beak size ~ trophic level.
+Let's look at the model of **relative beak size ~ trophic level**.
 
 First, we check the ratio of variances among different levels of the predictor...
 
