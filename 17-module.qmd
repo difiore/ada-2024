@@ -172,12 +172,21 @@ Can you explain what each step of this code is doing?
 Now, run our Type I error test function with a couple of different values of $\mu_0$, $\sigma$, and $\alpha$. What error rates are returned? They should be always be close to $\alpha$!
 
 ```{r}
-eI <- typeI(mu0=-3, sigma=2, n=1000, alternative="greater",
-  alpha=0.05)
-eI <- typeI(mu0=5, sigma=2, n=1000, alternative="less",
-  alpha=0.01)
-eI <- typeI(mu0=10, sigma=4, n=1000, alternative="two.tailed",
-  alpha=0.05)
+eI <- typeI(mu0 = -3,
+            sigma = 2,
+            n = 1000,
+            alternative = "greater",
+            alpha = 0.05)
+eI <- typeI(mu0 = 5,
+            sigma = 2,
+            n = 1000,
+            alternative = "less",
+            alpha = 0.01)
+eI <- typeI(mu0 = 10,
+            sigma = 4,
+            n = 1000,
+            alternative = "two.tailed",
+            alpha = 0.05)
 ```
 
 ### CHALLENGE {.unnumbered}

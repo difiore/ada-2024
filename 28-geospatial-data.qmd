@@ -102,24 +102,6 @@ plot(d_sp, pch = 1, main = "Focal Points - UTM")
 proj4string(d_sp)
 ```
 
-# extract coordinates from the original data frame
-coords <- d |> dplyr::select(Longitude, Latitude)
-# specify the crs of original data
-proj_original <- "+proj=longlat +datum=WGS84"
-# create an `sp` object
-d_sp <- SpatialPointsDataFrame(coords = coords, data = d, proj4string = CRS(proj_original))
-
-# we can then call `proj4string()` to assign the projection to our SpatialPointsDataFrame
-proj4string(d) <- CRS(crs_original) # note that the data need to have an initial projection assigned in order to be transformed; here we know that our initial coordinates are in latitude-longitude
-proj4string(d)
-
-
-# d_sp has class `sp` and `SpatialPointsDataFrame`
-plot(d_sp, pch = 1, main = "Focal Points")
-
-locs <- SpatialPointsDataFrame(coords = c(d$Longitude, d$Latitude), data = d, proj4string = crs_target)
-
-
 We can also ask ***R*** to confirm that these points are indeed projected or examine a summary of our `sp` object.
 
 ```{r}
@@ -130,7 +112,7 @@ summary(d_sp)
 We can convert `sp` format spatial data to `sf` format using the `st_as_sf()` function, and `sf` format spatial data can be plotted using `geom_sf()` from {ggplot}.
 
 ```{r}
-d_sf <- st_as_sf(d_sp, CRS(crs_target))
+d_sf <- st_as_sf(d_sp, CRS(proj_new))
 ggplot() +
   geom_sf(data = d_sf) +
   theme(axis.text.x = element_text(angle = 90))
@@ -161,17 +143,17 @@ Now let’s try importing and projecting two other spatial datasets. The first c
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/trees_2012.csv"
 trees <- read_csv(f, col_names = TRUE)
 coordinates(trees) <- c("FINAL_LON", "FINAL_LAT")
-proj4string(trees) <- CRS(crs_original)
-trees_sp <- spTransform(trees, CRS(crs_target))
-trees_sf <- st_as_sf(trees_sp, CRS(crs_target))
+proj4string(trees) <- CRS(proj_original)
+trees_sp <- spTransform(trees, CRS(proj_new))
+trees_sf <- st_as_sf(trees_sp, CRS(proj_new))
 
 # point data for TBS field station
 f <- "https://raw.githubusercontent.com/difiore/ada-2024-datasets/main/spatial_data/station.csv"
 station <- read_csv(f, col_names = TRUE)
 coordinates(station) <- c("Longitude", "Latitude")
-proj4string(station) <- CRS(crs_original)
-station_sp <- spTransform(station, CRS(crs_target))
-station_sf <- st_as_sf(station_sp, CRS(crs_target))
+proj4string(station) <- CRS(proj_original)
+station_sp <- spTransform(station, CRS(proj_new))
+station_sf <- st_as_sf(station_sp, CRS(proj_new))
 ```
 
 Sometimes we'll have spatial data in a data frame already provided in projected Easting/Northing coordinates. For example, here we import the point location of a mineral lick frequently used by the main study group of spider monkeys. Again, after importing, we want to convert this location to `sp` or `sf` format, project it, and set its CRS. This time, after loading in the data, we will convert it first to `sf` using the `st_as_sf()` function. With this function, we use the "coords =" argument to designate which columns in our data frame correspond to the x and y values for each location, and we use the "crs = " argument to designate the projection. In this case, 32718 is the EPSG code, which corresponds to UTM Zone 18 South.
@@ -200,24 +182,24 @@ There are a couple of options for loading shapefiles into ***R***, as seen below
 f <- "data/spatial_data/ec_provinces.shp"
 ecuador <- st_read(f)
 ecuador_sp <- as(ecuador, "Spatial")
-proj4string(ecuador_sp) <- CRS(crs_target)
-ecuador_sf <- st_as_sf(ecuador_sp, CRS(crs_target))
+proj4string(ecuador_sp) <- CRS(proj_new)
+ecuador_sf <- st_as_sf(ecuador_sp, CRS(proj_new))
 
 # load and project shapefile for the TBS trail system, convert to sp/sf
 f <- "data/spatial_data/trails.shp"
 trails <- st_read(f)
 trails_sp <- as(trails, "Spatial")
-proj4string(trails_sp) <- CRS(crs_original)
-trails_sp <- spTransform(trails_sp, CRS(crs_target))
-trails_sf <- st_as_sf(trails_sp, CRS(crs_target))
+proj4string(trails_sp) <- CRS(proj_original)
+trails_sp <- spTransform(trails_sp, CRS(proj_new))
+trails_sf <- st_as_sf(trails_sp, CRS(proj_new))
 
 # load and project shapefile for the Tiputini River, convert to sp/sf
 f <- "data/spatial_data/rio_tiputini.shp"
 rio <- st_read(f)
 rio_sp <- as(rio, "Spatial")
-proj4string(rio_sp) <- CRS(crs_original)
-rio_sp <- spTransform(rio_sp, CRS(crs_target))
-rio_sf <- st_as_sf(rio_sp, CRS(crs_target))
+proj4string(rio_sp) <- CRS(proj_original)
+rio_sp <- spTransform(rio_sp, CRS(proj_new))
+rio_sf <- st_as_sf(rio_sp, CRS(proj_new))
 ```
 
 ## Basic Plots
@@ -315,4 +297,3 @@ ggplot() +
   ylab("Latitude") +
   theme(axis.text.x = element_text(angle = 90))
 ```
-

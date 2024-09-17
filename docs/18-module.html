@@ -1281,7 +1281,7 @@ window.Quarto = {
 <h3 class="unnumbered anchored" data-anchor-id="simulation-based-inference">Simulation-Based Inference</h3>
 <section id="significance-of-coefficients-by-permutation" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="significance-of-coefficients-by-permutation">Significance of Coefficients by Permutation</h4>
-<p>As we saw in <a href="#module-16"><strong>Module 16</strong></a>, the {infer} package offers a convenient set of functions and a standard workflow for using permutation methods for statistical hypothesis testing, rather than relying on mathematical assumptions. In that module, we considered whether means, differences between means, proportions, or differences in proportions differed from what we would expect under a particular null hypothesis… and we can apply the same workflow to evaluating regression coefficients! The permutation approach lets us relax the <strong>normality</strong> condition of the <strong>LINE</strong> assumptions for linear regression. To demonstrate this process, we will run the same model of <strong>height</strong> ~ <strong>weight</strong> using the zombie apocalypse survivors dataset that we ran above:</p>
+<p>As we saw in <a href="16-module.html"><strong>Module 16</strong></a>, the {infer} package offers a convenient set of functions and a standard workflow for using permutation methods for statistical hypothesis testing, rather than relying on mathematical assumptions. In that module, we considered whether means, differences between means, proportions, or differences in proportions differed from what we would expect under a particular null hypothesis… and we can apply the same workflow to evaluating regression coefficients! The permutation approach lets us relax the <strong>normality</strong> condition of the <strong>LINE</strong> assumptions for linear regression. To demonstrate this process, we will run the same model of <strong>height</strong> ~ <strong>weight</strong> using the zombie apocalypse survivors dataset that we ran above:</p>
 <p>First, we run the model and pull out <span class="math inline">\(\beta_1\)</span>, the regression slope, and its estimated standard error:</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># first define alpha, CI boundaries, and critical values</span></span>
@@ -1328,12 +1328,12 @@ window.Quarto = {
 ## # A tibble: 6 × 2
 ##   replicate     stat
 ##       &lt;int&gt;    &lt;dbl&gt;
-## 1         1 -0.0156 
-## 2         2  0.00789
-## 3         3  0.00369
-## 4         4  0.00931
-## 5         5 -0.00136
-## 6         6  0.00880</code></pre>
+## 1         1 -0.00622
+## 2         2 -0.00135
+## 3         3 -0.0142 
+## 4         4  0.0194 
+## 5         5  0.00305
+## 6         6  0.00224</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create confidence intervals</span></span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1359,7 +1359,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 6
 ##    estimate std.error   lower  upper perm.lower perm.upper
 ##       &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-## 1 0.0000919   0.00743 -0.0145 0.0147    -0.0151     0.0143</code></pre>
+## 1 -0.000549   0.00765 -0.0156 0.0145    -0.0147     0.0153</code></pre>
 </div>
 </div>
 <p>The <code>get_ci()</code> function from {infer} can be used to return these different types of confidence intervals, too… i.e., either based on the standard error of the permutation distribution or actual quantiles from that distribution.</p>
@@ -1369,7 +1369,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 2
 ##   lower_ci upper_ci
 ##      &lt;dbl&gt;    &lt;dbl&gt;
-## 1  -0.0151   0.0143</code></pre>
+## 1  -0.0147   0.0153</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_ci</span>(permuted.slope, <span class="at">level =</span> <span class="dv">1</span> <span class="sc">-</span> alpha, <span class="at">type =</span> <span class="st">"se"</span>, <span class="at">point_estimate =</span> <span class="fu">pull</span>(permuted.slope.summary,</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>    estimate))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1377,7 +1377,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 2
 ##   lower_ci upper_ci
 ##      &lt;dbl&gt;    &lt;dbl&gt;
-## 1  -0.0145   0.0147</code></pre>
+## 1  -0.0155   0.0144</code></pre>
 </div>
 </div>
 <p>We can also visualize the null distribution of slope coefficients based on permutation and superimpose our actual slope coefficient.</p>
@@ -1457,11 +1457,11 @@ window.Quarto = {
 ## # A tibble: 6 × 2
 ##   replicate  stat
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1 0.192
-## 2         2 0.187
-## 3         3 0.198
-## 4         4 0.197
-## 5         5 0.201
+## 1         1 0.199
+## 2         2 0.195
+## 3         3 0.200
+## 4         4 0.194
+## 5         5 0.193
 ## 6         6 0.195</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create confidence intervals for regression coefficients</span></span>
@@ -1487,7 +1487,7 @@ window.Quarto = {
 <pre><code>## # A tibble: 1 × 6
 ##   estimate std.error lower upper boot.lower boot.upper
 ##      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-## 1    0.195   0.00407 0.187 0.203      0.187      0.203</code></pre>
+## 1    0.195   0.00419 0.187 0.203      0.187      0.203</code></pre>
 </div>
 </div>
 <p>Again, the <code>get_ci()</code> function from {infer} can be used to return these different types of confidence intervals…</p>
