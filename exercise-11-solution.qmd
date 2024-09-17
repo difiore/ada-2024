@@ -398,7 +398,7 @@ p2 <- ggqqplot(data = m3data, x = "residuals") + facet_wrap(~Migration)
 plot_grid(p1, p2, nrow=2)
 ```
 
-Although the variance ratios are under 2, given the clear deviation from normality for the residuals, we are not *really** justified in using standard (or general) linear regression for the analyses done above.
+Although the variance ratios are under 2, given the clear deviation from normality for the residuals, we are not **really** justified in using standard (or general) linear regression for the analyses done above.
 
 ```{r}
 #| include: false
