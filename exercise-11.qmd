@@ -17,7 +17,7 @@
 >
 > Tobias JA, et al. (2022). AVONET: Morphological, ecological and geographical data for all birds. *Ecology Letters* 25: 581–597.
 
-- Winnow the dataset to include only the following variables: **Species1**, **Family1**, **Order1**, **Beak.Length_Culmen**, **Beak.Width**, **Beak.Depth**, **Tarsus.Length**, **Wing.Length**, **Tail.Length**, **Mass**, **Habitat**, **Migration**, **Trophic.Level**, **Trophic.Niche**, **Min.Latitude**, **Max.Latitude**, **Centroid.Latitude**, **Primary.Lifestyle**, ** and **Range.Size**
+- Winnow the dataset to include only the following variables: **Species1**, **Family1**, **Order1**, **Beak.Length_Culmen**, **Beak.Width**, **Beak.Depth**, **Tarsus.Length**, **Wing.Length**, **Tail.Length**, **Mass**, **Habitat**, **Migration**, **Trophic.Level**, **Trophic.Niche**, **Min.Latitude**, **Max.Latitude**, **Centroid.Latitude**, **Primary.Lifestyle**, and **Range.Size**
 
 - Do a bit of exploratory data analysis with this dataset, e.g., using the {skimr} package. Which of the variables are categorical and which are numeric?
 
