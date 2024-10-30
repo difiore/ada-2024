@@ -59,26 +59,26 @@ book:
       - 26-python-from-R.qmd
       - 27-shiny.qmd
       - 28-geospatial-data.qmd
-    - part: "Exercises"
-      chapters:
-      - exercise-01.qmd
-      - exercise-02.qmd
-      - exercise-03.qmd
-      - exercise-04.qmd
-      - exercise-04-solution.qmd
-      - exercise-05.qmd
-      - exercise-05-solution.qmd
-      - exercise-07.qmd
-      - exercise-07-solution.qmd
-      - exercise-08.qmd
-      - exercise-09.qmd
-      - exercise-09-solution.qmd
-      - exercise-10.qmd
-      - exercise-10-solution.qmd
-      - exercise-11.qmd
-      - exercise-11-solution.qmd
-      - exercise-12.qmd
-      - exercise-12-solution.qmd
+    #- part: "Exercises"
+    #  chapters:
+    #  - exercise-01.qmd
+    #  - exercise-02.qmd
+    #  - exercise-03.qmd
+    #  - exercise-04.qmd
+    #  - exercise-04-solution.qmd
+    #  - exercise-05.qmd
+    #  - exercise-05-solution.qmd
+    #  - exercise-07.qmd
+    #  - exercise-07-solution.qmd
+    #  - exercise-08.qmd
+    #  - exercise-09.qmd
+    #  - exercise-09-solution.qmd
+    #  - exercise-10.qmd
+    #  - exercise-10-solution.qmd
+    #  - exercise-11.qmd
+    #  - exercise-11-solution.qmd
+    #  - exercise-12.qmd
+    #  - exercise-12-solution.qmd
     - part: "Assignments"
       chapters:
       - data-analysis-replication-assignment.qmd
