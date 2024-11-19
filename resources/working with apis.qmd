@@ -68,12 +68,7 @@ access_secret <- "[YOUR ACCESS SECRET]"
 ```
 
 ``` {r echo = FALSE}
-app_name <- "My twitteR Access App"
-consumer_api_key <- "Fd7uOzBwh40bEJsWFvrKDDyxg"
-consumer_secret <- "UOBOzzsCnGNSDzaW0SXPt7h7olYmepfI8mVCwumT8qiHy7CNUB"
-bearer_token <- "AAAAAAAAAAAAAAAAAAAAAFPMwwAAAAAAsKfFo2mixjm3b18j4TxYS4%2BwnIk%3Dg2mXm1UXvkZfidkv2dJeipMcshlXfcWnY6ocBBAZJAGeoNGsVT"
-access_token <- "145091749-19Fcj4IoOr52P8pqL1DnTxCv2BuxJ4SjQ7grVrUS"
-access_secret <- "WkJzStNWYtMQ9E8yz3vICnF6uhg2iEK6ffvlITyq8gRoE"
+
 ```
 
 ### Using the {RTwitterV2} Package
@@ -84,7 +79,7 @@ We’re now ready to ping the Twitter servers. Fortunately, the {twitteR} packag
 
 ```{r}
 library(RTwitterV2)
-Sys.setenv(BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAFPMwwAAAAAAsKfFo2mixjm3b18j4TxYS4%2BwnIk%3Dg2mXm1UXvkZfidkv2dJeipMcshlXfcWnY6ocBBAZJAGeoNGsVT")
+
 bearer_token <- Sys.getenv("BEARER_TOKEN")
 test <- get_timelines_v2(token = bearer_token, user_id = "145091749")
 test <- get_user_v2(token = bearer_token, user_ids = "145091749")
